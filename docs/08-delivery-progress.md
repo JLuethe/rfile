@@ -9,8 +9,8 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R2 immediate semantic repairs | merged in PR #6 | checked immutable TZif/POSIX contexts; local/UTC families and explicit corrected FILETIME; decoded regex lexer rejects backreferences and Rust-only groups |
 | R3 CDF | merged in PR #7 | shared positional sector/mini/FAT/DIFAT traversal, typed directory/property/catalog evidence, corrected rendering, pinned fallback and generated fixtures |
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
-| R5 codecs | implemented; 22 local verification stages passed, hosted CI pending | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
-| R6 full semantics | pending | bounded capture VM, GNU ERE/locale/date edge contracts |
+| R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
+| R6 full semantics | regex portion implemented; 23 local stages passed; hosted CI pending | bounded capture VM and GNU front end with explicit pinned restrictions; locale/date/float closure remains |
 | R7–R8 sandbox and C ABI | pending | real denied-operation tests and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
@@ -84,3 +84,24 @@ Validation: 82 independently encoded fixtures cover both profiles, empty/text/bi
 `tools/verify.py --all-features --benchmark` passed all 22 stages: 94 ordinary debug/release tests, exact database bytes, 103 original fixtures, existing 22,544 broad / 11,000 flag / 10,875 rule comparisons, 5,461 ELF / 400 CDF / 1,022 date comparisons, CLI, mutation replay and linkage checks. The new compression matrix has 3,268 comparisons: 2,444 exact and 824 individually frozen intentional decisions (264 `.Z` helper dispatch, 520 ZIP helper diagnostics, 40 valid-empty LZ4), zero unexpected. Lzip is validated independently and explicitly excluded from the capability-matched native oracle total. Both profiles intentionally avoid duplicating helper-dependent `.Z` output, inspect valid first ZIP contents and accept valid empty LZ4. Malformed codec errors remain typed Rust errors rather than a claim of exact native-library prose.
 
 Ten ASan targets with instrumented std executed 1,412,219 cases over 202.63 measured CPU seconds with no reported failure; final source and instrumented-binary hashes were rechecked. This is smoke only. The 20-case warm decoder benchmark validates all payloads and records median/p95 plus tracked memory; its supervised process peaked at 16,676 KiB RSS. It has no unfair raw-codec/native-classifier runtime ratio and no adversarial latency claim. The existing equivalent-output classification benchmark checksum still matches. Sustained campaigns, independent review and other-platform execution remain open.
+
+## R6a regex increment and explicit remaining work
+
+The original `(ab)\\1` discrepancy is now an ordinary passing regression in source and imported v21 form; the component suite now has five exact results. `regex_dialect` normalizes GNU C-byte escapes/classes and `regex_vm` retains complete capture histories under shared finite state/step/memory budgets. Regular patterns keep the automata fast path. Empty/unset captures, nested retained values, repeated references, case folding, anchors, compile expansion and profile/concurrency isolation have controls. The HIR reference marker has a nonempty sentinel so parser optimization cannot erase dynamic repetition.
+
+Pinned548 deliberately rejects a conservative class of quantified-reference history constructs whose native glibc behavior has not been ported; CorrectedV1 explicitly enumerates those histories. This is an announced capability boundary, not a false nonmatch or a claim of full GNU fidelity. The independently reproduced unknown-escaped-lowercase/ICASE glibc quirk is retained only in the pinned front end. Both profiles still use the pinned last-byte/NUL window. See [the exact contract](remaining/04-semantics.md#r6a-delivered-regex-contract-and-remaining-fidelity-boundary).
+
+The current matrix uses 84 pattern programs (including one separately rejected native grammar case), 83 inputs, case flags and two actual parser routes: 27,556 comparisons, 23,396 exact and 4,160 explicit unsupported results, zero unexpected. A separate source-only pathname avoids accidentally selecting its compiled neighbor. The invalid-range native compiler errors are reported separately, never counted as successful classifications. Locale display, exceptional dates/float formatting and full native quantified-history fidelity remain open; R6 is not marked complete by this increment.
+
+Final regex validation: all 23 `tools/verify.py --all-features --benchmark`
+stages passed, including 105 ordinary debug/release tests, one separately run
+ignored mutation campaign, unchanged database bytes and old corpora, the five
+exact component controls and existing named CLI/CDF/codec decisions. The extra
+newline/word-boundary/reference-count matrix was replayed against the same
+release binary after that full run. Default tests/Clippy, all-features Clippy and
+Rust 1.87 checks pass. The final ASan capture target executed 3,002 cases over
+27.43 measured CPU seconds without a reported failure; source and binary hashes
+match the candidate. This short structured run is not a sustained gate or
+independent review. The backreference expected-match regression is no longer
+ignored; only the separately executed stable mutation test stays ignored in the
+ordinary test invocation.

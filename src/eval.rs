@@ -724,7 +724,7 @@ impl<'a> Evaluator<'a> {
                 self.budget
                     .bytes(text.len().saturating_mul(regex.work_factor()))?;
                 let _scratch = self.budget.reserve(regex.scratch_bound())?;
-                let found = regex.find(text).map_err(Error::Unsupported)?;
+                let found = regex.find(text, &self.budget, self.profile)?;
                 let pass = if r.relation == b'!' {
                     found.is_none()
                 } else if r.relation == b'x' {

@@ -10,6 +10,11 @@ use regex_automata::{
 
 #[derive(Debug)]
 pub(crate) enum CompiledRegex {
+    Profiles {
+        pinned: Box<CompiledRegex>,
+        corrected: Box<CompiledRegex>,
+    },
+    Capture(crate::regex_vm::Program),
     Dfa {
         first: Box<dfa::regex::Regex>,
         longest: Box<dense::DFA<Vec<u32>>>,
@@ -19,97 +24,26 @@ pub(crate) enum CompiledRegex {
         longest: PikeVM,
     },
 }
-/// Inspect decoded regex bytes, keeping escaped backslashes and bracket
-/// predicates distinct from references. GNU ERE references must never be
-/// silently interpreted as octal literals by the regular backend.
-fn check_dialect(bytes: &[u8]) -> std::result::Result<(), String> {
-    let mut i = 0;
-    let mut class = false;
-    let mut first = false;
-    let mut can_negate = false;
-    while i < bytes.len() {
-        let b = bytes[i];
-        if b == b'\\' {
-            if let Some(&next) = bytes.get(i + 1) {
-                if !class && matches!(next, b'1'..=b'9') {
-                    return Err(format!(
-                        "regex backreference at byte {i} requires the bounded capture VM"
-                    ));
-                }
-                i += 2;
-                first = false;
-                continue;
-            }
-        }
-        if class {
-            // POSIX [[:class:]], [[.element.]], [[=equivalent=]] tokens
-            // contain an inner closing bracket that does not close the class.
-            if b == b'[' && bytes.get(i + 1).is_some_and(|c| b":.=".contains(c)) {
-                let marker = bytes[i + 1];
-                i += 2;
-                while i + 1 < bytes.len() && !(bytes[i] == marker && bytes[i + 1] == b']') {
-                    i += 1;
-                }
-                i = (i + 2).min(bytes.len());
-                first = false;
-                continue;
-            }
-            if b == b']' && !first {
-                class = false;
-            }
-            if !(first && can_negate && b == b'^') {
-                first = false;
-            }
-            can_negate = false;
-        } else if b == b'[' {
-            class = true;
-            first = true;
-            can_negate = true;
-        } else if b == b'(' && bytes.get(i + 1) == Some(&b'?') {
-            return Err(format!("non-ERE group extension at byte {i}"));
-        }
-        i += 1;
-    }
-    Ok(())
-}
-fn pattern(pattern: &[u8], insensitive: bool) -> (String, syntax::Config) {
-    let mut text = String::new();
-    for &c in pattern {
-        if c >= 128 || c == 0 {
-            text.push_str(&format!("\\x{c:02x}"));
-        } else {
-            text.push(c as char);
-        }
-    }
-    // POSIX REG_NEWLINE excludes LF from negated classes as well as dot.
-    let mut transformed = String::new();
-    let mut chars = text.chars().peekable();
-    while let Some(c) = chars.next() {
-        transformed.push(c);
-        if c == '\\' {
-            if let Some(next) = chars.next() {
-                transformed.push(next);
-            }
-            continue;
-        }
-        if c == '[' && chars.peek() == Some(&'^') {
-            transformed.push(chars.next().expect("peeked"));
-            transformed.push_str("\\n");
-        }
-    }
-    (
-        transformed,
+fn pattern(
+    bytes: &[u8],
+    insensitive: bool,
+    pinned: bool,
+) -> std::result::Result<(crate::regex_dialect::Pattern, syntax::Config), String> {
+    Ok((
+        crate::regex_dialect::normalize(bytes, insensitive, pinned)?,
         syntax::Config::new()
             .unicode(false)
             .utf8(false)
             .multi_line(true)
-            .case_insensitive(insensitive)
-            .octal(true),
-    )
+            .case_insensitive(insensitive),
+    ))
 }
 pub(crate) fn validate(bytes: &[u8], insensitive: bool) -> std::result::Result<(), String> {
-    check_dialect(bytes)?;
-    let (text, syntax) = pattern(bytes, insensitive);
+    let (pattern, syntax) = pattern(bytes, insensitive, false)?;
+    if pattern.references.iter().any(Option::is_some) {
+        return crate::regex_vm::Program::compile(&pattern, insensitive).map(|_| ());
+    }
+    let text = pattern.text;
     thompson::NFA::compiler()
         .syntax(syntax)
         .configure(
@@ -123,8 +57,28 @@ pub(crate) fn validate(bytes: &[u8], insensitive: bool) -> std::result::Result<(
 }
 impl CompiledRegex {
     pub fn compile(bytes: &[u8], insensitive: bool) -> std::result::Result<Self, String> {
-        check_dialect(bytes)?;
-        let (transformed, syntax) = pattern(bytes, insensitive);
+        let (pinned, syntax) = pattern(bytes, insensitive, true)?;
+        let (corrected, _) = pattern(bytes, insensitive, false)?;
+        if pinned.text != corrected.text {
+            return Ok(Self::Profiles {
+                pinned: Box::new(Self::compile_pattern(pinned, syntax, insensitive)?),
+                corrected: Box::new(Self::compile_pattern(corrected, syntax, insensitive)?),
+            });
+        }
+        Self::compile_pattern(pinned, syntax, insensitive)
+    }
+    fn compile_pattern(
+        pattern: crate::regex_dialect::Pattern,
+        syntax: syntax::Config,
+        insensitive: bool,
+    ) -> std::result::Result<Self, String> {
+        if pattern.references.iter().any(Option::is_some) {
+            return Ok(Self::Capture(crate::regex_vm::Program::compile(
+                &pattern,
+                insensitive,
+            )?));
+        }
+        let transformed = pattern.text;
         let dense = dense::Config::new()
             .dfa_size_limit(Some(4 * 1024 * 1024))
             .determinize_size_limit(Some(8 * 1024 * 1024));
@@ -134,7 +88,7 @@ impl CompiledRegex {
         // Bounded repetitions can require exponentially many DFA states. Use the
         // bounded Thompson VM directly for those patterns instead of first paying
         // the full determinization limit during an ordinary CLI invocation.
-        if !bytes.contains(&b'{') {
+        if !transformed.contains('{') {
             let first = dfa::regex::Regex::builder()
                 .syntax(syntax)
                 .thompson(nfa.clone())
@@ -170,6 +124,10 @@ impl CompiledRegex {
     }
     pub fn memory_usage(&self) -> usize {
         match self {
+            Self::Profiles { pinned, corrected } => pinned
+                .memory_usage()
+                .saturating_add(corrected.memory_usage()),
+            Self::Capture(program) => program.memory_usage(),
             Self::Dfa { first, longest } => {
                 first.forward().memory_usage()
                     + first.reverse().memory_usage()
@@ -184,6 +142,10 @@ impl CompiledRegex {
     /// epsilon stack and temporary match storage, before creating a Pike cache.
     pub fn scratch_bound(&self) -> usize {
         match self {
+            Self::Profiles { pinned, corrected } => {
+                pinned.scratch_bound().max(corrected.scratch_bound())
+            }
+            Self::Capture(_) => 0,
             Self::Dfa { .. } => 4096,
             Self::Nfa { first, .. } => {
                 let nfa = first.get_nfa();
@@ -198,16 +160,33 @@ impl CompiledRegex {
     }
     pub fn work_factor(&self) -> usize {
         match self {
+            Self::Profiles { pinned, corrected } => {
+                pinned.work_factor().max(corrected.work_factor())
+            }
+            Self::Capture(_) => 0,
             Self::Dfa { .. } => 2,
             Self::Nfa { first, .. } => first.get_nfa().states().len().saturating_mul(2),
         }
     }
-    pub fn find(&self, data: &[u8]) -> std::result::Result<Option<(usize, usize)>, String> {
+    pub fn find(
+        &self,
+        data: &[u8],
+        budget: &crate::InspectionBudget,
+        profile: crate::SemanticProfile,
+    ) -> crate::Result<Option<(usize, usize)>> {
         match self {
+            Self::Profiles { pinned, corrected } => {
+                if profile == crate::SemanticProfile::Pinned548 {
+                    pinned.find(data, budget, profile)
+                } else {
+                    corrected.find(data, budget, profile)
+                }
+            }
+            Self::Capture(program) => program.find(data, budget, profile),
             Self::Dfa { first, longest } => {
                 let Some(first) = first
                     .try_search(&Input::new(data))
-                    .map_err(|e| e.to_string())?
+                    .map_err(|e| crate::Error::Unsupported(e.to_string()))?
                 else {
                     return Ok(None);
                 };
@@ -215,7 +194,9 @@ impl CompiledRegex {
                 let input = Input::new(data)
                     .span(start..data.len())
                     .anchored(Anchored::Yes);
-                let last = longest.try_search_fwd(&input).map_err(|e| e.to_string())?;
+                let last = longest
+                    .try_search_fwd(&input)
+                    .map_err(|e| crate::Error::Unsupported(e.to_string()))?;
                 Ok(Some((start, last.map_or(first.end(), |m| m.offset()))))
             }
             Self::Nfa { first, longest } => {

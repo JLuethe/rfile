@@ -154,3 +154,10 @@ path = "fuzz_targets/codec_zip.rs"
 test = false
 doc = false
 bench = false
+
+[[bin]]
+name = "regex_captures"
+path = "fuzz_targets/regex_captures.rs"
+test = false
+doc = false
+bench = false

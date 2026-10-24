@@ -84,23 +84,28 @@ fn checked_tzif_and_named_path_fail_before_parsing_or_traversal() {
     );
 }
 #[test]
-fn known_backreference_now_errors_in_source_and_imported_database() {
-    let error = Database::from_source("0 regex (ab)\\\\1 match=%s\n")
-        .unwrap_err()
-        .to_string();
-    assert!(error.contains("backreference"), "{error}");
-    let good = Database::from_source("0 regex (ab)XX match=%s\n").unwrap();
-    let mut bytes = good.compile().unwrap();
-    let p = bytes.windows(6).position(|b| b == b"(ab)XX").unwrap();
-    bytes[p + 4] = b'\\';
-    bytes[p + 5] = b'1';
-    let db = Database::from_compiled(&bytes).unwrap();
-    let error = Engine::new(Arc::new(db))
-        .classify(b"abab\n")
-        .unwrap_err()
-        .to_string();
-    assert!(error.contains("backreference"), "{error}");
+fn known_backreference_matches_source_and_imported_database() {
+    let good = Database::from_source("0 regex (ab)\\\\1 match=%s\n").unwrap();
+    for db in [
+        Database::from_compiled(&good.compile().unwrap()).unwrap(),
+        good,
+    ] {
+        assert_eq!(
+            Engine::new(Arc::new(db))
+                .classify(b"abab\n")
+                .unwrap()
+                .output,
+            b"match=abab, ASCII text"
+        );
+    }
+    assert!(
+        Database::from_source("0 regex (ab)\\\\2 match=%s\n")
+            .unwrap_err()
+            .to_string()
+            .contains("backreference")
+    );
 }
+
 #[test]
 fn escaped_digits_and_bracket_predicates_are_not_references() {
     assert!(Database::from_source("0 regex [1] match=%s\n").is_ok());

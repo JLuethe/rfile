@@ -233,7 +233,7 @@ fn capabilities_report_selected_profile_and_real_missing_features() {
     let e = simple().with_profile(SemanticProfile::CorrectedV1);
     let c = e.capabilities();
     assert_eq!(c.profile, SemanticProfile::CorrectedV1);
-    assert!(!c.c_abi && !c.kernel_sandbox && !c.regex_backreferences);
+    assert!(!c.c_abi && !c.kernel_sandbox && c.regex_backreferences);
     let json: serde_json::Value = serde_json::from_str(&c.json()).unwrap();
     assert_eq!(json["profile"], "corrected-v1");
     assert_eq!(json["sandbox"]["enforced"], false);
