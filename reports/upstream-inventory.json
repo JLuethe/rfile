@@ -1,0 +1,4256 @@
+[
+  {
+    "path": ".cvsignore",
+    "bytes": 286,
+    "lines": 26,
+    "sha256": "6e5398a6ca6af47b6878238e5199f017f9e5226477fbc89558e24497eebf155e"
+  },
+  {
+    "path": ".github/workflows/amiga-packages.yml",
+    "bytes": 5626,
+    "lines": 147,
+    "sha256": "4f5345063bc842c449d53f2530c29ed89e2a5c80de75c2bd615d2798a13b4e39"
+  },
+  {
+    "path": ".github/workflows/codeql.yml",
+    "bytes": 4688,
+    "lines": 100,
+    "sha256": "0993adefd06b4ead64d1d9c9b22c3e285c200b4363014f887c9d703b33cb7393"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 558,
+    "lines": 56,
+    "sha256": "0b7feabaa990e2b005d08836a5096f40b02a3d17e154794c918377e8089b414f"
+  },
+  {
+    "path": ".travis.yml",
+    "bytes": 528,
+    "lines": 28,
+    "sha256": "a79567a9d6fce990e0421d52765e3d7a8d5ff2a66a4cb709e0ce43fab13c0b99"
+  },
+  {
+    "path": "AUTHORS",
+    "bytes": 13,
+    "lines": 1,
+    "sha256": "384608dfc681207f911ed051f8df01d95c5484675750d7280ed219a740ecfa6c"
+  },
+  {
+    "path": "COPYING",
+    "bytes": 1649,
+    "lines": 29,
+    "sha256": "0bfa856a9930bddadbef95d1be1cf4e163c0be618e76ea3275caaf255283e274"
+  },
+  {
+    "path": "ChangeLog",
+    "bytes": 65718,
+    "lines": 2241,
+    "sha256": "b9b098765784b8c7f566719ea23074af58e4792d9a22baa27580aee74d72d1ca"
+  },
+  {
+    "path": "DESCRIPT.ION",
+    "bytes": 2783,
+    "lines": 41,
+    "sha256": "49a3d552bd7137791a45efc8ef9407e3c2a465f53ad45cf8948046beaaa0d4f1"
+  },
+  {
+    "path": "INSTALL",
+    "bytes": 15578,
+    "lines": 365,
+    "sha256": "91826b889739b720e0da7055b74a5a579dd31ad2f3b683b15302039df676e34f"
+  },
+  {
+    "path": "MAINT",
+    "bytes": 1492,
+    "lines": 44,
+    "sha256": "764ae4bb291eac34b2feea837ecf1c3f8ad6172d34aed9fc52a76e31ff7c25ed"
+  },
+  {
+    "path": "Makefile.am",
+    "bytes": 354,
+    "lines": 11,
+    "sha256": "7cd958ecafb5c16a0db7187bb704aa1a4d5e725dbc505a89ae0ce24be1b7c4ba"
+  },
+  {
+    "path": "NEWS",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "f7ef8592651a53bfa54c9fb7755fc91205242dd964dc9ca082d6dfbfe4e120ea"
+  },
+  {
+    "path": "README.DEVELOPER",
+    "bytes": 918,
+    "lines": 49,
+    "sha256": "bc24f19c55fc10c3b2824860d597150f488a24ee6e56f1f54ec4dad5c1032427"
+  },
+  {
+    "path": "README.md",
+    "bytes": 19935,
+    "lines": 422,
+    "sha256": "ea8a164d947dcd2ea1c0f49fffa34b9e3ac8909343aa144b0d2134cb485ffa06"
+  },
+  {
+    "path": "RELEASE-PROCEDURE",
+    "bytes": 1243,
+    "lines": 29,
+    "sha256": "b0a522da34f83014cb771b68396d794315f9031bfdb384d4356d23f2db550fda"
+  },
+  {
+    "path": "TODO",
+    "bytes": 2065,
+    "lines": 49,
+    "sha256": "a829e9f85b712180fd5efd09e57ad5484c0af3b395c1c7915b295ff49b75a215"
+  },
+  {
+    "path": "acinclude.m4",
+    "bytes": 2134,
+    "lines": 61,
+    "sha256": "0900ded951a84bea826f3fb8f7ad5132566db16f2a6e93cf885bb51a264f568f"
+  },
+  {
+    "path": "amiga-variants.sh",
+    "bytes": 3623,
+    "lines": 69,
+    "sha256": "a1ba22cb680a2753899d8f4ca5537f0e53c2a3aa1bf7cde10fd7b0256f280d14"
+  },
+  {
+    "path": "build-amiga-sdk.sh",
+    "bytes": 3172,
+    "lines": 71,
+    "sha256": "78a17a3fbe8f901b597634900cb3c7e21a7248e0a783dc11fa2953e3c706b219"
+  },
+  {
+    "path": "configure.ac",
+    "bytes": 16228,
+    "lines": 463,
+    "sha256": "c9ee3b5caa23bfec44d77e27e4625bebfceb35347c5d0b7275856ad11a17a653"
+  },
+  {
+    "path": "contrib/amiga/build.sh",
+    "bytes": 4015,
+    "lines": 95,
+    "sha256": "03a1840f012f246f7aef72a654d42a2ac22e4afb2b8a4e6ded0b7151d0663d8e"
+  },
+  {
+    "path": "doc/.cvsignore",
+    "bytes": 48,
+    "lines": 7,
+    "sha256": "3faefa5e08caa2157d872ae0da1a61ccf2d25c7cdf68f6fe47d609746736f319"
+  },
+  {
+    "path": "doc/Makefile.am",
+    "bytes": 826,
+    "lines": 32,
+    "sha256": "31147f83a246336616f8ef14daa99cf744be6abca704a360d5874d7d4b931209"
+  },
+  {
+    "path": "doc/file.man",
+    "bytes": 22368,
+    "lines": 748,
+    "sha256": "42258c5151227a62d1c2c3afa9733637f7e28a0cfa45b50fcbfdaf0713fa353d"
+  },
+  {
+    "path": "doc/libmagic.man",
+    "bytes": 12549,
+    "lines": 458,
+    "sha256": "ba383f199d00e6c531d47479d3c9659ac550548a030e7413abb10ff3b32fb0b5"
+  },
+  {
+    "path": "doc/magic.man",
+    "bytes": 26452,
+    "lines": 876,
+    "sha256": "64b506531ac864fd8a5d7846d3c340c5e849a2fcf10b135043c04df741b6d87b"
+  },
+  {
+    "path": "file.readme",
+    "bytes": 2224,
+    "lines": 73,
+    "sha256": "1629be6af3eb5bff138a5a7aa265ddfa8d914249b0d1c857b85203bc6973987d"
+  },
+  {
+    "path": "fuzz/Dockerfile",
+    "bytes": 870,
+    "lines": 21,
+    "sha256": "330061385d4889d7107572fb910026f89e692546fc5c7ef4097425c023acff79"
+  },
+  {
+    "path": "fuzz/build.sh",
+    "bytes": 993,
+    "lines": 29,
+    "sha256": "b97d3340ff4811a5690add01682e41b4c2b3a65a76e8dfb2a6f838929ac96dfb"
+  },
+  {
+    "path": "fuzz/magic_fuzzer.c",
+    "bytes": 2359,
+    "lines": 75,
+    "sha256": "01113518abbb123e67d8ddb8e3648fd173996ad89d9e50d574fedb8545f19199"
+  },
+  {
+    "path": "fuzz/project.yaml",
+    "bytes": 129,
+    "lines": 6,
+    "sha256": "9e108b4664da75222e12e36338ea64c8ec98ca6e58429998414866bde5b1b7db"
+  },
+  {
+    "path": "libmagic.pc.in",
+    "bytes": 234,
+    "lines": 11,
+    "sha256": "65df538443e8f96910d91d577b8bafc095cab36809ed6cd6438dc75ba05ef162"
+  },
+  {
+    "path": "m4/.cvsignore",
+    "bytes": 16,
+    "lines": 2,
+    "sha256": "f451b9448c42818db3f0871064e3e73b49abb34eadd7a62f9bc5a0b0bd3738a3"
+  },
+  {
+    "path": "m4/visibility.m4",
+    "bytes": 3350,
+    "lines": 77,
+    "sha256": "bdef3cdae5b810dc3109c5442fcba11219f7f8eddb477fa5aa9be4f287f73f4d"
+  },
+  {
+    "path": "magic.readme",
+    "bytes": 3389,
+    "lines": 89,
+    "sha256": "74ad1345b2d982d989442055b90d573c12a9b87480200486d23b1c9213332dfd"
+  },
+  {
+    "path": "magic/.cvsignore",
+    "bytes": 55,
+    "lines": 6,
+    "sha256": "6a84b192e86fd7936928d95e0cd26a40b6d63c66cedadf4ec747e4a59a32686a"
+  },
+  {
+    "path": "magic/Header",
+    "bytes": 246,
+    "lines": 5,
+    "sha256": "e392e4a39000a765a2915c6953e695baad2fb17150e26f036a6e115bae8ce58f"
+  },
+  {
+    "path": "magic/Localstuff",
+    "bytes": 321,
+    "lines": 7,
+    "sha256": "ec56623d8249f221e4dbfa3f9c6df2c064f9100a8034001fd905a696aed5a10c"
+  },
+  {
+    "path": "magic/Magdir/a2ml",
+    "bytes": 1626,
+    "lines": 47,
+    "sha256": "effb52324e5b0e345c2d7cfbf4b7ff4239f30cb931d8a8b243ad51a1767bdfb1"
+  },
+  {
+    "path": "magic/Magdir/acorn",
+    "bytes": 2795,
+    "lines": 93,
+    "sha256": "ab82ecfe45d39f7ccff713314080d02fdf2ec05220a931922afd358d94f333bb"
+  },
+  {
+    "path": "magic/Magdir/adi",
+    "bytes": 425,
+    "lines": 13,
+    "sha256": "72a204e7dcb4db382124f45dadcd1c65c59968be1dee6bbf1e7f9cb8df71d7ca"
+  },
+  {
+    "path": "magic/Magdir/adventure",
+    "bytes": 4573,
+    "lines": 124,
+    "sha256": "66037481adead88c46f2a5f51fed1295fdded59dabe792b675b3f58015b1c93a"
+  },
+  {
+    "path": "magic/Magdir/aes",
+    "bytes": 1164,
+    "lines": 34,
+    "sha256": "ccb31dac8fef128eb2e90678e4b03428971230d74240e4c9d31e16a51b3b5188"
+  },
+  {
+    "path": "magic/Magdir/algol68",
+    "bytes": 1044,
+    "lines": 33,
+    "sha256": "bfc77b19622add317ec6cfd0fa106ee6fc7a2b5071107003058225807689737e"
+  },
+  {
+    "path": "magic/Magdir/allegro",
+    "bytes": 402,
+    "lines": 9,
+    "sha256": "d86b7ad175881ee8ddf6e0adad8a0aa071cdcd9c9f2c0feb4c523914303d751b"
+  },
+  {
+    "path": "magic/Magdir/alliant",
+    "bytes": 760,
+    "lines": 18,
+    "sha256": "06a9d7358ddcaf6d6801814de0e1b3c6217c91cb05af50135435cdc92a6903b9"
+  },
+  {
+    "path": "magic/Magdir/amanda",
+    "bytes": 385,
+    "lines": 12,
+    "sha256": "bdb1e2ef2a177ae74aa3782c891459dc0e3efea384d641c1252ad111df71819b"
+  },
+  {
+    "path": "magic/Magdir/amigaos",
+    "bytes": 10547,
+    "lines": 281,
+    "sha256": "7d78a0a475f17974e07aa941664a2ebdca9f6208f91f4e722b5adb433b071f5a"
+  },
+  {
+    "path": "magic/Magdir/andrew",
+    "bytes": 991,
+    "lines": 32,
+    "sha256": "801999445e5525899e16b48fbcb6e4474f1662c680e50cff7e317fa1fd5314da"
+  },
+  {
+    "path": "magic/Magdir/android",
+    "bytes": 10002,
+    "lines": 266,
+    "sha256": "91507e7979f30965604b9264da1ec4524add8d3ccf93eb7fca1d7d8128cab6fc"
+  },
+  {
+    "path": "magic/Magdir/animation",
+    "bytes": 53434,
+    "lines": 1253,
+    "sha256": "bfcb4f6af9463a6147d9a176e099fea96bf0a01c6ca57fc4dd0cc065cc5835ea"
+  },
+  {
+    "path": "magic/Magdir/aout",
+    "bytes": 1730,
+    "lines": 46,
+    "sha256": "ba88beae2cc3d8761d281c32564624b87ef973886bf6cbfa8202e3788a24aa9f"
+  },
+  {
+    "path": "magic/Magdir/apache",
+    "bytes": 1317,
+    "lines": 38,
+    "sha256": "e30df977dc83a09f6a62017d96ac1bfaeb16c2794022cc23bd16bb3ced686132"
+  },
+  {
+    "path": "magic/Magdir/apl",
+    "bytes": 276,
+    "lines": 7,
+    "sha256": "cce150019620c2dc5917fea205bac26d0f1f6411e3edc43b2394cc8aac059f3c"
+  },
+  {
+    "path": "magic/Magdir/apple",
+    "bytes": 32165,
+    "lines": 810,
+    "sha256": "849612e40bf00b2d5890972d0adc317508ef645e1d0d7682b4bd3db34094f920"
+  },
+  {
+    "path": "magic/Magdir/application",
+    "bytes": 273,
+    "lines": 7,
+    "sha256": "050e330b0f8b7c3327b29704f24c7dd41fe44637e9a460e2de5faa926c25c3ac"
+  },
+  {
+    "path": "magic/Magdir/applix",
+    "bytes": 428,
+    "lines": 13,
+    "sha256": "7ce1fe5cd05bf231e9a8f3c094c93425a110683e78d294f56f612812a22c209c"
+  },
+  {
+    "path": "magic/Magdir/apt",
+    "bytes": 1610,
+    "lines": 52,
+    "sha256": "1f64ca1ebfbe4d39047b46459e7de5bf4cc97f064e15e5b99048e32bcfb4234a"
+  },
+  {
+    "path": "magic/Magdir/archive",
+    "bytes": 107611,
+    "lines": 2927,
+    "sha256": "0e91b55e9c03d7f29a9581bd943f4c1b7ae65c55b4ff9f5c70e79cae8c4fe54d"
+  },
+  {
+    "path": "magic/Magdir/aria",
+    "bytes": 1783,
+    "lines": 40,
+    "sha256": "b63436890cafeec0dd5a94443397f7c088dfa25a340bdc44a8529932ed3873ca"
+  },
+  {
+    "path": "magic/Magdir/arm",
+    "bytes": 1692,
+    "lines": 59,
+    "sha256": "03eed13b030993901281a35a8ce874ebdcd527b651ce5c91607454755dfb173e"
+  },
+  {
+    "path": "magic/Magdir/asf",
+    "bytes": 6553,
+    "lines": 132,
+    "sha256": "aa37cf6b00c6db5a68754e15910ff2415820b213035bbd7dc0c2f8049d3fad76"
+  },
+  {
+    "path": "magic/Magdir/assembler",
+    "bytes": 700,
+    "lines": 18,
+    "sha256": "534e44e9cafe469125d0cd7766d89a68369e0d036322734d16fcd7d2e6d991a2"
+  },
+  {
+    "path": "magic/Magdir/asterix",
+    "bytes": 584,
+    "lines": 18,
+    "sha256": "e2d9b4a13ab40bf0a317edae58237750fa01f3561769335390e7e0e4bb159429"
+  },
+  {
+    "path": "magic/Magdir/atari",
+    "bytes": 6660,
+    "lines": 233,
+    "sha256": "919e13c05c3b1aa973d2b27392a47b778c6b01bb7ac161b0d0e35938b06c07ee"
+  },
+  {
+    "path": "magic/Magdir/att3b",
+    "bytes": 1259,
+    "lines": 41,
+    "sha256": "48a4bc111f4d5720602d39c69c1122802e4ab5bcd4090b06aa8302f63af0d986"
+  },
+  {
+    "path": "magic/Magdir/audio",
+    "bytes": 42911,
+    "lines": 1361,
+    "sha256": "e284e0141e57f2fb86285706cbf89f18b5714fece26d9b9fb5ba9c29c5adff51"
+  },
+  {
+    "path": "magic/Magdir/avm",
+    "bytes": 1232,
+    "lines": 33,
+    "sha256": "ed48a840a53a288d5180d2ba58a1d5bef5dbe02509671243e9351b564a827642"
+  },
+  {
+    "path": "magic/Magdir/basis",
+    "bytes": 571,
+    "lines": 18,
+    "sha256": "c93e025086b1b1fb5333f39364671d8e92327824656f1d41d0469957d39a669d"
+  },
+  {
+    "path": "magic/Magdir/beetle",
+    "bytes": 289,
+    "lines": 7,
+    "sha256": "bb6b4b8ee34fb6ce21bb2c55a748b0be3241ffad0b08e75ef7d8bc88cae082d8"
+  },
+  {
+    "path": "magic/Magdir/ber",
+    "bytes": 2387,
+    "lines": 64,
+    "sha256": "0cb5920e56cf7ee5eb857fdb3af1a84c57af220928f75af1d0f7af850723739f"
+  },
+  {
+    "path": "magic/Magdir/bflt",
+    "bytes": 414,
+    "lines": 14,
+    "sha256": "6e3342a4cd44d2457f37d5d3eed8d5bb38d9ce4246f3ef88799d8be063d08332"
+  },
+  {
+    "path": "magic/Magdir/bgcode",
+    "bytes": 286,
+    "lines": 9,
+    "sha256": "1c7cf31e4ebc4ee2ce63e170e944121a17e6a10cf4ab086636396387b74630f3"
+  },
+  {
+    "path": "magic/Magdir/bhl",
+    "bytes": 341,
+    "lines": 10,
+    "sha256": "663b243d37b665c353da666fc81ff776b7cb4930011dd895442cc1ab28fbfa4d"
+  },
+  {
+    "path": "magic/Magdir/bioinformatics",
+    "bytes": 7683,
+    "lines": 178,
+    "sha256": "e2ff2148f5a3ec37c2fe66c74fbb702272ff90ee30f3674b98adb92c22e89823"
+  },
+  {
+    "path": "magic/Magdir/biosig",
+    "bytes": 4905,
+    "lines": 154,
+    "sha256": "52cf4134188bc955ba409623120b58bb4d48a59cea852a41c0ab3c82184b3cac"
+  },
+  {
+    "path": "magic/Magdir/blackberry",
+    "bytes": 282,
+    "lines": 8,
+    "sha256": "9e5965c2dec40cc296636fa703daf355b1802d4536753e2ac729280d87b1e0b2"
+  },
+  {
+    "path": "magic/Magdir/blcr",
+    "bytes": 746,
+    "lines": 25,
+    "sha256": "62e52258712b49fff2890f6c8e1f650c8c07cb32252c1c5b5fe69ca482dd3bf7"
+  },
+  {
+    "path": "magic/Magdir/blender",
+    "bytes": 1875,
+    "lines": 59,
+    "sha256": "e5e6c6a422ba2163486ae178f343f560d9335f249705d2756ce995fec7d993ad"
+  },
+  {
+    "path": "magic/Magdir/blit",
+    "bytes": 1130,
+    "lines": 24,
+    "sha256": "10e29508fc4d0420175ec811749c1a3e3b6d43934773d233114497a8e5d786c7"
+  },
+  {
+    "path": "magic/Magdir/bm",
+    "bytes": 381,
+    "lines": 10,
+    "sha256": "c30049ac056fabeb80eac468ca3aaf3e141b9fa783e9dc31e8bc1f89dadbc4cd"
+  },
+  {
+    "path": "magic/Magdir/bout",
+    "bytes": 349,
+    "lines": 11,
+    "sha256": "8cca027a37d55e6a555c724580242cf339d99ea95652a980893d6ad67daeb1ca"
+  },
+  {
+    "path": "magic/Magdir/bsdi",
+    "bytes": 1351,
+    "lines": 38,
+    "sha256": "32bb362edc452d5ab626f89a86c9a1b939068f6f9446c3b332c84754f439aa3a"
+  },
+  {
+    "path": "magic/Magdir/bsi",
+    "bytes": 327,
+    "lines": 10,
+    "sha256": "b1e822c48f23986f76995f10d3e7bfdf5e8a354edeecaa20b29b1e77952a792c"
+  },
+  {
+    "path": "magic/Magdir/btsnoop",
+    "bytes": 429,
+    "lines": 13,
+    "sha256": "9f89cf72327f90b1b92cd01b8ee52b19bccad85d4f44031bee64e48454687d47"
+  },
+  {
+    "path": "magic/Magdir/burp",
+    "bytes": 304,
+    "lines": 7,
+    "sha256": "a0639bd7ed3679d23ea5e5ea544841fe0975544357773b05b87951631c49e66c"
+  },
+  {
+    "path": "magic/Magdir/bytecode",
+    "bytes": 1498,
+    "lines": 48,
+    "sha256": "c1011e128c05dc595e2808e299f07f53d062e39570d98cc46cdc787bd7c3f6b3"
+  },
+  {
+    "path": "magic/Magdir/c-lang",
+    "bytes": 3982,
+    "lines": 126,
+    "sha256": "dbf147adb02a763813c10b54b5cd41da0ef86f5f9c8683b72c7cbbe26b17c480"
+  },
+  {
+    "path": "magic/Magdir/c64",
+    "bytes": 27375,
+    "lines": 673,
+    "sha256": "c8f2495654b4a0b4501c0209e918fc795389d78f60ad8f518fb60a49d46affad"
+  },
+  {
+    "path": "magic/Magdir/cad",
+    "bytes": 17657,
+    "lines": 457,
+    "sha256": "00a4653dc85444b0724654800ce9da475be0abd683a41388e0b5ee87531b10ad"
+  },
+  {
+    "path": "magic/Magdir/cafebabe",
+    "bytes": 3697,
+    "lines": 106,
+    "sha256": "e950decc069db31f54e9e8a0949804d745493ba1e0c6c2e538e9ea337a7654bd"
+  },
+  {
+    "path": "magic/Magdir/cbor",
+    "bytes": 611,
+    "lines": 21,
+    "sha256": "2e976a7d1c84e44295516411897da625943f37027c5c954a98ba6e897efce3d6"
+  },
+  {
+    "path": "magic/Magdir/ccf",
+    "bytes": 599,
+    "lines": 14,
+    "sha256": "6213e2bbb983db34e80d577e8a45d52636c02a55594913601acfa9c4f70d4455"
+  },
+  {
+    "path": "magic/Magdir/cddb",
+    "bytes": 386,
+    "lines": 12,
+    "sha256": "eb08c00dcdbb5a629f454017f13165f7cc23e6afd4665887df3566917abb83b6"
+  },
+  {
+    "path": "magic/Magdir/chord",
+    "bytes": 577,
+    "lines": 15,
+    "sha256": "6501631199bd3de41c2e5f12094eab78dfdd768502adb6214e82fbcea3378c61"
+  },
+  {
+    "path": "magic/Magdir/cisco",
+    "bytes": 622,
+    "lines": 17,
+    "sha256": "faee2059d77f00bf8f001bb2aa57ea6efe822667f0c153dafbeff81ce3a8593f"
+  },
+  {
+    "path": "magic/Magdir/citrus",
+    "bytes": 462,
+    "lines": 12,
+    "sha256": "130fb208254822d989329296ceaf4a4e6f60a1ed8dcf2f24373190ce1468997a"
+  },
+  {
+    "path": "magic/Magdir/clarion",
+    "bytes": 769,
+    "lines": 27,
+    "sha256": "062796e2782ca4534e6e6494fd1c07841e6307c9e2c9af404398b74dc8777452"
+  },
+  {
+    "path": "magic/Magdir/claris",
+    "bytes": 2253,
+    "lines": 56,
+    "sha256": "5bc09ef4e384747da1840add0883c22b872afae28a99f41a68277a27fe65caeb"
+  },
+  {
+    "path": "magic/Magdir/clipper",
+    "bytes": 2140,
+    "lines": 65,
+    "sha256": "c1917f5cda664ba9d16444ead5ffced3bc7aa67379ac4783821cb47368006691"
+  },
+  {
+    "path": "magic/Magdir/clojure",
+    "bytes": 1138,
+    "lines": 30,
+    "sha256": "3edc234c0c2c51f95a891540b4845e5189cd4ddd7769dc4ca23fc61cca06259b"
+  },
+  {
+    "path": "magic/Magdir/coff",
+    "bytes": 8333,
+    "lines": 215,
+    "sha256": "830df8141d5c1fd5f5aa949dc772de58760e2f8ec446ec9d99b3b3e99312d5d0"
+  },
+  {
+    "path": "magic/Magdir/commands",
+    "bytes": 9584,
+    "lines": 256,
+    "sha256": "da2cfd78fa46cde902d505b412c6e25edfd78618b563c14906b4205a37c6cf8c"
+  },
+  {
+    "path": "magic/Magdir/communications",
+    "bytes": 853,
+    "lines": 22,
+    "sha256": "4753c68110ec69c245fe13e71ac6b26ebb981c89e060b6be37a066d099701c49"
+  },
+  {
+    "path": "magic/Magdir/compress",
+    "bytes": 16836,
+    "lines": 488,
+    "sha256": "f3cb550467ea9f8ee5efe30cebe1a41467881382fffb73b824b7a623ce907570"
+  },
+  {
+    "path": "magic/Magdir/console",
+    "bytes": 50936,
+    "lines": 1473,
+    "sha256": "4e4145d47a3d77fdbd7f316a03f6932fff21edf1230b9a411691e9f952e0affb"
+  },
+  {
+    "path": "magic/Magdir/convex",
+    "bytes": 2641,
+    "lines": 69,
+    "sha256": "7117a43bf6c02f0d9bda7a754400ad3c93988e8a1eb0117774fcbe32fe603458"
+  },
+  {
+    "path": "magic/Magdir/coverage",
+    "bytes": 3058,
+    "lines": 91,
+    "sha256": "8a6facfbe021134aa625f050e6527b9cd5afb3b8683e26f0de97b1803c136c7a"
+  },
+  {
+    "path": "magic/Magdir/cracklib",
+    "bytes": 531,
+    "lines": 14,
+    "sha256": "a21f7aff537e6d25822290c25ddfce8f5f2848e2b035694a97c120c5b8d05b0d"
+  },
+  {
+    "path": "magic/Magdir/creativeassembly",
+    "bytes": 954,
+    "lines": 26,
+    "sha256": "0776cdabd44286e678ef236912ca1100cf16203d5d32d19fdef2211075145b17"
+  },
+  {
+    "path": "magic/Magdir/crypto",
+    "bytes": 1549,
+    "lines": 49,
+    "sha256": "109f86841a59be0efd8ca11a5d63d158b86a5cfc16f950142444727729ec6139"
+  },
+  {
+    "path": "magic/Magdir/ctags",
+    "bytes": 297,
+    "lines": 6,
+    "sha256": "592325a482e1c4129e0564cb744a95505216b30a0def9e3bb8d322c662881e86"
+  },
+  {
+    "path": "magic/Magdir/ctf",
+    "bytes": 878,
+    "lines": 24,
+    "sha256": "bf0f83566d7b42a5871fd1a69475abd7bd97f108455b25111c3e449c868059f7"
+  },
+  {
+    "path": "magic/Magdir/cubemap",
+    "bytes": 403,
+    "lines": 8,
+    "sha256": "afcc8ca683f7d3e308d5df451b5598fcd4976ec84079bb5b6506ca0c4328f42f"
+  },
+  {
+    "path": "magic/Magdir/cups",
+    "bytes": 1793,
+    "lines": 56,
+    "sha256": "752c62df92fef4a51843ceb8dc05e572d8c1efda3028d31c3497a3849e6397f9"
+  },
+  {
+    "path": "magic/Magdir/dact",
+    "bytes": 379,
+    "lines": 11,
+    "sha256": "50fe68fe5bdb27376864a94ab784cba4e09383bd23ee8f2b9d0f6bb51407a185"
+  },
+  {
+    "path": "magic/Magdir/database",
+    "bytes": 37067,
+    "lines": 1019,
+    "sha256": "d0428b127784664085a8717d6a6ccfca11f169fdb524d6b27ee66df977382b21"
+  },
+  {
+    "path": "magic/Magdir/dataone",
+    "bytes": 1822,
+    "lines": 46,
+    "sha256": "2a79e282a14d3616c5d0956b0755e239f12ac807a7bbc4baf17b23f8dfdc2c17"
+  },
+  {
+    "path": "magic/Magdir/dbpf",
+    "bytes": 630,
+    "lines": 15,
+    "sha256": "9b72c1753489dc985f76437a56b3929ca63ce22e83d1791451eabe2de1039ef3"
+  },
+  {
+    "path": "magic/Magdir/der",
+    "bytes": 3685,
+    "lines": 146,
+    "sha256": "8e35fdee410ad32967b64bc4ff00922a72880265f86a68236fc762b2554267c3"
+  },
+  {
+    "path": "magic/Magdir/diamond",
+    "bytes": 509,
+    "lines": 12,
+    "sha256": "bd5c8a9d362dc73215b47db4c4fb7c0dd518d93ae4b45a2ecbb96882a813a543"
+  },
+  {
+    "path": "magic/Magdir/dif",
+    "bytes": 1430,
+    "lines": 33,
+    "sha256": "3d5c874669bc0f6cd960e2241ff1575925b82d1afe1ffe648fc08ad2388ebda8"
+  },
+  {
+    "path": "magic/Magdir/diff",
+    "bytes": 6560,
+    "lines": 150,
+    "sha256": "0c24889fc0f83b2a912506b6a44012f7ddf002631042fde4230d09427bab0f78"
+  },
+  {
+    "path": "magic/Magdir/digital",
+    "bytes": 2472,
+    "lines": 77,
+    "sha256": "36bb0d7cde705dee6d862d4a1c86f7988e996c76c7d5c79a3f51e196fdb0a266"
+  },
+  {
+    "path": "magic/Magdir/dolby",
+    "bytes": 2379,
+    "lines": 69,
+    "sha256": "2dd8cf28c1da3ddb78f38dfe23bc82875055374c619b934e2cf33c1fb52ae636"
+  },
+  {
+    "path": "magic/Magdir/dump",
+    "bytes": 2908,
+    "lines": 96,
+    "sha256": "3569a0aed38c56f6fbd83c696cf37794e1e85087c2c4d3d2080a6354fde18d63"
+  },
+  {
+    "path": "magic/Magdir/dwarfs",
+    "bytes": 1797,
+    "lines": 45,
+    "sha256": "64b26462e49faeb251cd8c52e99ea03b9f3a207b87185dda2105574b7711ae9c"
+  },
+  {
+    "path": "magic/Magdir/dyadic",
+    "bytes": 2584,
+    "lines": 62,
+    "sha256": "6c46942ce5028dc4498c2e7a7e928fb294bb959b5047e2b81a061d3e11d52bc0"
+  },
+  {
+    "path": "magic/Magdir/ebml",
+    "bytes": 350,
+    "lines": 8,
+    "sha256": "ed6fdaec6b2a79a72535f58c3aa0972f5b357dcbfbfc3bd09dbbdb747e939350"
+  },
+  {
+    "path": "magic/Magdir/edid",
+    "bytes": 377,
+    "lines": 11,
+    "sha256": "73690cd938e398af015650a0b077cf65b25a6ba5a0ede72e16db90ccef5e6df8"
+  },
+  {
+    "path": "magic/Magdir/editors",
+    "bytes": 1179,
+    "lines": 43,
+    "sha256": "13cf7457116af68f73f7178e18c8cbe750ad1926b27f30f42df74a1f0c3989ff"
+  },
+  {
+    "path": "magic/Magdir/efi",
+    "bytes": 2645,
+    "lines": 58,
+    "sha256": "341660704a1026af5054ea4c77574d55a57047865c35f0bfe0fd1912aaa01ea6"
+  },
+  {
+    "path": "magic/Magdir/elf",
+    "bytes": 13895,
+    "lines": 406,
+    "sha256": "3e47a7bf8dd368ce6899c7d61dc17c9b81db06b57dfcd47e460edd0524246133"
+  },
+  {
+    "path": "magic/Magdir/encore",
+    "bytes": 725,
+    "lines": 22,
+    "sha256": "3ddc8b79d81511d34d56b33e80f51e5943f684c1416fee7d785548ef8687c3e5"
+  },
+  {
+    "path": "magic/Magdir/epoc",
+    "bytes": 3203,
+    "lines": 89,
+    "sha256": "800bcda352a35c5eafb766e27d00a7430da2d275b0839c8527361e0a1dc1893d"
+  },
+  {
+    "path": "magic/Magdir/erlang",
+    "bytes": 709,
+    "lines": 21,
+    "sha256": "340841c62b5fac02f3b2318bbb5207a9b13ed3f467e6bdfb888acbabbb877fff"
+  },
+  {
+    "path": "magic/Magdir/espressif",
+    "bytes": 2103,
+    "lines": 59,
+    "sha256": "77145c670b4486f72d4bcd1225a9c4cfa84f674de025f5f93095564df56f8d04"
+  },
+  {
+    "path": "magic/Magdir/esri",
+    "bytes": 826,
+    "lines": 28,
+    "sha256": "69934c66f9fd944295ede6ea7927e86f4dbf32dad2834f03ca3aaa919ff5722c"
+  },
+  {
+    "path": "magic/Magdir/etf",
+    "bytes": 2033,
+    "lines": 33,
+    "sha256": "4ffe8dc21b95313dffd13345f89c61be14b4c360fc7b0a9b434b9016a9aa87a5"
+  },
+  {
+    "path": "magic/Magdir/fcs",
+    "bytes": 516,
+    "lines": 9,
+    "sha256": "41796739ee611406b7004bbdf79386a9a7d187ac9a3a2856711b0151ea4ec5de"
+  },
+  {
+    "path": "magic/Magdir/filesystems",
+    "bytes": 107744,
+    "lines": 2805,
+    "sha256": "b9170b9ab050bcd7d9484aa2f585744b7d602ef70239e48e886b23fccdfd0f9b"
+  },
+  {
+    "path": "magic/Magdir/finger",
+    "bytes": 672,
+    "lines": 21,
+    "sha256": "25cb17b687a3ab04b0959a39886850cfaa30a587487187952bcb0db68b07c343"
+  },
+  {
+    "path": "magic/Magdir/firmware",
+    "bytes": 15484,
+    "lines": 412,
+    "sha256": "2425d2f858c1b2f942c8be5e7d5688c32e066c8a1534882e4bb0fef8e67dad99"
+  },
+  {
+    "path": "magic/Magdir/flash",
+    "bytes": 1771,
+    "lines": 62,
+    "sha256": "6eb7b130db818c9fcaf3bc1991efa72e07665919d818652cbf82ff504f99fef5"
+  },
+  {
+    "path": "magic/Magdir/flif",
+    "bytes": 1107,
+    "lines": 36,
+    "sha256": "3a11f7efe4dea9083a6b740b49725462ff62df4ea842d5d79d7fb5bfc9e58dc8"
+  },
+  {
+    "path": "magic/Magdir/fonts",
+    "bytes": 17567,
+    "lines": 486,
+    "sha256": "61948c6d2d03133b68559601920b82369c86c3dd1bdcd808f781fea5bb6aa198"
+  },
+  {
+    "path": "magic/Magdir/forth",
+    "bytes": 3002,
+    "lines": 82,
+    "sha256": "6e0c331ee65153eec44e00749b602efe628158dcae3c1decd28db8ac0f8c76d0"
+  },
+  {
+    "path": "magic/Magdir/fortran",
+    "bytes": 349,
+    "lines": 9,
+    "sha256": "d5a51508396c19a52c429ef3486ef5093a2b49a4705ba1f9c9a773000eca9352"
+  },
+  {
+    "path": "magic/Magdir/frame",
+    "bytes": 6739,
+    "lines": 140,
+    "sha256": "9596be0a8044728d8e843c176271e5f59d1c3d404f614db999be574e64d21fa4"
+  },
+  {
+    "path": "magic/Magdir/freebsd",
+    "bytes": 5476,
+    "lines": 164,
+    "sha256": "f5ecceb989ff60a3560ccb1dee0c595a26f818f2d08af4b556ace648ea37510c"
+  },
+  {
+    "path": "magic/Magdir/fsav",
+    "bytes": 4228,
+    "lines": 128,
+    "sha256": "7320709af16ba03de87768efb65b76f49c6833284ab3702427c9969218a32b56"
+  },
+  {
+    "path": "magic/Magdir/fusecompress",
+    "bytes": 430,
+    "lines": 12,
+    "sha256": "4ec5ea5f7ed0f2437493a79f26ef7a48f0d108f3421fb09b8efd646c29d42d1d"
+  },
+  {
+    "path": "magic/Magdir/games",
+    "bytes": 27677,
+    "lines": 745,
+    "sha256": "2e9eb9de0f1f021bed055b7e20905502fcecfd21a4624c17b345e578ac44f7da"
+  },
+  {
+    "path": "magic/Magdir/gcc",
+    "bytes": 505,
+    "lines": 17,
+    "sha256": "fb1d67794f7fbc436bc7ee02fde9766b5114d72ea54664a42e485ecaefd4ce24"
+  },
+  {
+    "path": "magic/Magdir/gconv",
+    "bytes": 344,
+    "lines": 10,
+    "sha256": "1773382dcc07549bfbdb1cdc95d6b5ccbdc58fcbb7e769e59df2fc694c27aa9a"
+  },
+  {
+    "path": "magic/Magdir/gentoo",
+    "bytes": 3080,
+    "lines": 85,
+    "sha256": "851427b79ccc8788c251aa2ba17b1e2d49790efd8a6c4454ac156a28aff46fd4"
+  },
+  {
+    "path": "magic/Magdir/geo",
+    "bytes": 6158,
+    "lines": 170,
+    "sha256": "e63a36e70c73768ddb19aa57b0e03f3e0879df7e080af171ce41493b43aff37e"
+  },
+  {
+    "path": "magic/Magdir/geos",
+    "bytes": 975,
+    "lines": 34,
+    "sha256": "a7203b106c33c98e2ae26c3e02b4a74aaf8f0bda446ddb2fd779f1cb3c800c0d"
+  },
+  {
+    "path": "magic/Magdir/gguf",
+    "bytes": 1022,
+    "lines": 23,
+    "sha256": "af2dd2084e9c0b3dfd89935e445210f4556910c22f1c96b01bb5f75c3116bc38"
+  },
+  {
+    "path": "magic/Magdir/gimp",
+    "bytes": 2768,
+    "lines": 77,
+    "sha256": "a3e1beb50907c70dded1ab7bb5fb89c51a07785505c51dbf4e47cc6dc5206b60"
+  },
+  {
+    "path": "magic/Magdir/git",
+    "bytes": 330,
+    "lines": 13,
+    "sha256": "10031116d6163b417cb291a467a9479f8859df8acccd9c562a9917efe570b1f8"
+  },
+  {
+    "path": "magic/Magdir/glibc",
+    "bytes": 879,
+    "lines": 21,
+    "sha256": "e1f09fa01d6a4aa4bde19ba88e1fac75021448a1f6acb2dbb14b896025d6db10"
+  },
+  {
+    "path": "magic/Magdir/gnome",
+    "bytes": 2495,
+    "lines": 59,
+    "sha256": "d70ea4c26a61bdc8607851359db08613cee69948706760c2dc1fc09de652468e"
+  },
+  {
+    "path": "magic/Magdir/gnu",
+    "bytes": 6110,
+    "lines": 173,
+    "sha256": "ceb15b077ccd1ba3f32662036d1e3858addba16cf009c2c23f14256dd88ac868"
+  },
+  {
+    "path": "magic/Magdir/gnumeric",
+    "bytes": 411,
+    "lines": 8,
+    "sha256": "7181966aef15c105d6d3635b2dc4c55c0d7486449ec7a17c757fbc9a63d3bd9f"
+  },
+  {
+    "path": "magic/Magdir/gpt",
+    "bytes": 9979,
+    "lines": 240,
+    "sha256": "055fdbb268ef9e9ed821c4b0f629d28edd05457d9397bcd548a46b086e17127f"
+  },
+  {
+    "path": "magic/Magdir/gpu",
+    "bytes": 925,
+    "lines": 28,
+    "sha256": "8560465332943b9288642d4096d3ab1b14d132aa65acb69c94a72a3670e0c7c4"
+  },
+  {
+    "path": "magic/Magdir/grace",
+    "bytes": 892,
+    "lines": 21,
+    "sha256": "0fad24fa6dfcd4c6d02a1adf286cba594b5f768c818f0c008f99a5e1c39c91d9"
+  },
+  {
+    "path": "magic/Magdir/graphviz",
+    "bytes": 580,
+    "lines": 12,
+    "sha256": "850864b033798350dc469433522d223571bcd53ff20dd0fde4f2aa01c1b36922"
+  },
+  {
+    "path": "magic/Magdir/gringotts",
+    "bytes": 1577,
+    "lines": 48,
+    "sha256": "d710733c01673bf917e714e1ce694de003381c158372fc59d5cd7560bae363cc"
+  },
+  {
+    "path": "magic/Magdir/hardware",
+    "bytes": 385,
+    "lines": 12,
+    "sha256": "167703b7270bdc15fa86ccf1efe934c27f83559bd469c59ec0b77cb1c00fb4ac"
+  },
+  {
+    "path": "magic/Magdir/hitachi-sh",
+    "bytes": 1424,
+    "lines": 46,
+    "sha256": "ce0e20f82b74a9438b69462457dae58b5b41af1ade321cd9e8cb187f5c3ab7a7"
+  },
+  {
+    "path": "magic/Magdir/hp",
+    "bytes": 13672,
+    "lines": 418,
+    "sha256": "1404b2d81ea69e360db793924a0d3e80fa8816a718cbd06369da8acdf78e49b1"
+  },
+  {
+    "path": "magic/Magdir/human68k",
+    "bytes": 1003,
+    "lines": 26,
+    "sha256": "575d89dc9139a5916da1b766817cdf5d378abd7a5541cd85901c6a0ec12a8f90"
+  },
+  {
+    "path": "magic/Magdir/ibm370",
+    "bytes": 2232,
+    "lines": 64,
+    "sha256": "1eb06b67bd865abbd62113fb712da4d94cd55fb1cbf0b52aff98a84e5dbb15e6"
+  },
+  {
+    "path": "magic/Magdir/ibm6000",
+    "bytes": 1581,
+    "lines": 38,
+    "sha256": "15e09d5cfd59511ebeea056313b7c484518b7d85fb471e52ee4fcc111384ad00"
+  },
+  {
+    "path": "magic/Magdir/icc",
+    "bytes": 7846,
+    "lines": 214,
+    "sha256": "5078ff339b4a2dbb8d074b8bebabd12d4ccb509b5a0844cf781776931a95b8a3"
+  },
+  {
+    "path": "magic/Magdir/iff",
+    "bytes": 4065,
+    "lines": 101,
+    "sha256": "90b3ffb3d873887f9c18b05bb89ebd669d8add49293953c802c2682f5a9dab46"
+  },
+  {
+    "path": "magic/Magdir/images",
+    "bytes": 171023,
+    "lines": 4719,
+    "sha256": "9e2245c9616982a0f0e98a312136985230cf81d3fcf6921cc293b2145d30f86d"
+  },
+  {
+    "path": "magic/Magdir/inform",
+    "bytes": 333,
+    "lines": 9,
+    "sha256": "530760ccdf806b212be8cb04db0cf2474665bfc205dc5f7565a51a1253591848"
+  },
+  {
+    "path": "magic/Magdir/intel",
+    "bytes": 13964,
+    "lines": 314,
+    "sha256": "e424abe8051e48e61a948f3bf71bc7b9c96a1576a448b79d2da76faf5901206d"
+  },
+  {
+    "path": "magic/Magdir/interleaf",
+    "bytes": 672,
+    "lines": 19,
+    "sha256": "a1c05211bd35b3f3fe09984dc49cff757a280e27e47748f67d169cd4d2bfd5e6"
+  },
+  {
+    "path": "magic/Magdir/island",
+    "bytes": 345,
+    "lines": 10,
+    "sha256": "ef77d09f2e29fb9d2b404e1092b5843e5ebd31832dc3c45863945af24ddb1f11"
+  },
+  {
+    "path": "magic/Magdir/ispell",
+    "bytes": 11545,
+    "lines": 250,
+    "sha256": "ac2493c7eacdb21a66d2caf6fe7df50e7d04efd2da7a4f5d9340f89c89ee03e4"
+  },
+  {
+    "path": "magic/Magdir/isz",
+    "bytes": 514,
+    "lines": 15,
+    "sha256": "0d9cf7dbff478651c5eea298f42d0318c3fdee17fe96fa70c3238daf149e653c"
+  },
+  {
+    "path": "magic/Magdir/java",
+    "bytes": 1811,
+    "lines": 52,
+    "sha256": "fb08f447823182859efa1c4d772f00c7b06191e486b3a6f2c6df257bdad14db8"
+  },
+  {
+    "path": "magic/Magdir/javascript",
+    "bytes": 6438,
+    "lines": 168,
+    "sha256": "607a3f3bce00130f0d956b151f2089e726eb30b0f44285e8ffea5ebc5fd5ba1f"
+  },
+  {
+    "path": "magic/Magdir/jpeg",
+    "bytes": 9101,
+    "lines": 267,
+    "sha256": "38ef4ea36afc7f8f9a076d7393ee6d433de78aaa148eae8a7d13bbe442403def"
+  },
+  {
+    "path": "magic/Magdir/k9",
+    "bytes": 1354,
+    "lines": 31,
+    "sha256": "e8f74702dadd143da39e40850884903fa29fb87b2de18c3bb54cb6adb1e09b9d"
+  },
+  {
+    "path": "magic/Magdir/karma",
+    "bytes": 291,
+    "lines": 9,
+    "sha256": "4c7a46c66eafe27cc58df0406a974b37ba3203882f5e5626371dfdadb6f05ffc"
+  },
+  {
+    "path": "magic/Magdir/kde",
+    "bytes": 390,
+    "lines": 11,
+    "sha256": "fa26e99ab12e841b1d156cf795a6244c84254ef5365b3ca907010fa4c3a780d3"
+  },
+  {
+    "path": "magic/Magdir/keepass",
+    "bytes": 692,
+    "lines": 20,
+    "sha256": "3d613bbac6a8cc6b7a18b485ecb4034c9ffcc9acd76f9556a7d082b5c6b8ec02"
+  },
+  {
+    "path": "magic/Magdir/kerberos",
+    "bytes": 1461,
+    "lines": 45,
+    "sha256": "10028768adc1dc381e0550f75f383b9adcc85796d435d0c23889be637519f02c"
+  },
+  {
+    "path": "magic/Magdir/keyman",
+    "bytes": 519,
+    "lines": 14,
+    "sha256": "5e7c2d9ba9bd9a310b51ac625ae8785330d201e8064cfa7a1ddd60733523816a"
+  },
+  {
+    "path": "magic/Magdir/kicad",
+    "bytes": 2261,
+    "lines": 85,
+    "sha256": "bed4802bc8a5b2b59339442879831dceacc120a197a8e3469e88504692e2b34f"
+  },
+  {
+    "path": "magic/Magdir/kml",
+    "bytes": 1466,
+    "lines": 34,
+    "sha256": "8da8d81f4bab4253cc3a799cee278a25e7043a00279b8acdbe2370e258b78d2b"
+  },
+  {
+    "path": "magic/Magdir/lammps",
+    "bytes": 2467,
+    "lines": 63,
+    "sha256": "1ab62a8f00ab015e8604d51148928fe647265973aace2e4ed8adc8d2274128fb"
+  },
+  {
+    "path": "magic/Magdir/lauterbach",
+    "bytes": 248,
+    "lines": 7,
+    "sha256": "32ecc7d6bdad193fd7ae9733f9dfcf6fafcf68e7a219fb33141832f1f9be7989"
+  },
+  {
+    "path": "magic/Magdir/lecter",
+    "bytes": 269,
+    "lines": 6,
+    "sha256": "58b6a47843124076c98515cb04522e81b511a9458613a77d5509d3073e2c579b"
+  },
+  {
+    "path": "magic/Magdir/lex",
+    "bytes": 528,
+    "lines": 12,
+    "sha256": "61adf25afb433746d9f5dddac7fd81a4c0323e5b4226bdb3b357e32719f6c7a7"
+  },
+  {
+    "path": "magic/Magdir/lif",
+    "bytes": 2036,
+    "lines": 50,
+    "sha256": "76e009f07d9c9503aa7b9d6134f70b4135334d4c6c8f575da7177c22af9ef413"
+  },
+  {
+    "path": "magic/Magdir/linux",
+    "bytes": 44143,
+    "lines": 1000,
+    "sha256": "0d85f15ad7542aa2352063f4a17010b2e574526c2d771083caa56f6e8bbb1018"
+  },
+  {
+    "path": "magic/Magdir/lisp",
+    "bytes": 3204,
+    "lines": 88,
+    "sha256": "3ca19ac5362c10c27f2961a76cc0c96e60e96c66b0ab7ed8eda16c5b93b966c0"
+  },
+  {
+    "path": "magic/Magdir/llvm",
+    "bytes": 768,
+    "lines": 22,
+    "sha256": "3a610953532e09875199df3f8003bdde8967f421230aaa08681496c035192c00"
+  },
+  {
+    "path": "magic/Magdir/locoscript",
+    "bytes": 543,
+    "lines": 12,
+    "sha256": "a48a9160a5a15ac9df19277b319dc7c01cbd576f00275f33621e739180da1296"
+  },
+  {
+    "path": "magic/Magdir/lua",
+    "bytes": 1176,
+    "lines": 34,
+    "sha256": "751b30082f4c15dae2f4edff1e7bc7c4749caa7ee7556147cd3b8b639653449a"
+  },
+  {
+    "path": "magic/Magdir/luks",
+    "bytes": 4958,
+    "lines": 126,
+    "sha256": "692c7d230c141001a2cb0c98c04da6e959d0721b95c71f5501bbc38bacc0cab2"
+  },
+  {
+    "path": "magic/Magdir/m4",
+    "bytes": 370,
+    "lines": 11,
+    "sha256": "32d0c9d29769722cb49237f1385b97e732a8823c197008d57f4aea5d56ce7c67"
+  },
+  {
+    "path": "magic/Magdir/mach",
+    "bytes": 10853,
+    "lines": 303,
+    "sha256": "e2ec18d44553565050876ce531a73081315bf9b1299512e3495bf63da48b7e9c"
+  },
+  {
+    "path": "magic/Magdir/macintosh",
+    "bytes": 17026,
+    "lines": 505,
+    "sha256": "27a2f5142f330ba179da17ff695804f5ee3c608da9f10dcdb6cfcaea2563d94b"
+  },
+  {
+    "path": "magic/Magdir/macos",
+    "bytes": 206,
+    "lines": 7,
+    "sha256": "e12872f1619379f66075a7b1a36546455be0b79429f97cc24443a685d160bccf"
+  },
+  {
+    "path": "magic/Magdir/magic",
+    "bytes": 4383,
+    "lines": 98,
+    "sha256": "77d43184d5237a2167d3fc6a330bba7a536f77997b13dd5efbaaf0c0a7c23d7b"
+  },
+  {
+    "path": "magic/Magdir/mail.news",
+    "bytes": 6047,
+    "lines": 152,
+    "sha256": "ec77bc3375015ba3b3ec300ffeb84139f34a3b7e4ecbde8dd83ac15e3648e85d"
+  },
+  {
+    "path": "magic/Magdir/make",
+    "bytes": 893,
+    "lines": 21,
+    "sha256": "2da21eca456ae14f4edff8ac8a81fe4574af547c9632b2f5c55e27e5d58cab15"
+  },
+  {
+    "path": "magic/Magdir/map",
+    "bytes": 13953,
+    "lines": 412,
+    "sha256": "64af647e8c20c7c237244e70f41160c283c041cb34bbd221481c6c51908af6ed"
+  },
+  {
+    "path": "magic/Magdir/maple",
+    "bytes": 3873,
+    "lines": 109,
+    "sha256": "917fc95bf0fbc5d3850bf28e84a3aa731d24715b8ac0f8541e21d64d63ae74a7"
+  },
+  {
+    "path": "magic/Magdir/marc21",
+    "bytes": 1019,
+    "lines": 30,
+    "sha256": "5f2f1ff1b0f15abd3ff267f82a3b91673af6a00bfe600a7176cfd42b9ba83d5c"
+  },
+  {
+    "path": "magic/Magdir/mathcad",
+    "bytes": 300,
+    "lines": 8,
+    "sha256": "de4286933630c9f095b279093d98f6eb2d499c9f5c7dfa984faa4788ad1692f7"
+  },
+  {
+    "path": "magic/Magdir/mathematica",
+    "bytes": 6818,
+    "lines": 192,
+    "sha256": "c2f503801f0178a15dd29abc9addcab2772f2bf757422b3bb2e5aa669f280f44"
+  },
+  {
+    "path": "magic/Magdir/matroska",
+    "bytes": 422,
+    "lines": 17,
+    "sha256": "300a8d39f643d4743e6777876eed523bf85e8ea422749edb76d1d8752901860d"
+  },
+  {
+    "path": "magic/Magdir/mcrypt",
+    "bytes": 1783,
+    "lines": 52,
+    "sha256": "50cf5098188d821710131e1833e0053cc991676f44fde7d9890173917e11f442"
+  },
+  {
+    "path": "magic/Magdir/measure",
+    "bytes": 1483,
+    "lines": 51,
+    "sha256": "80538a394e6c277aa59d223310bbcbf325d80b15a327746281e1fe055088c360"
+  },
+  {
+    "path": "magic/Magdir/mercurial",
+    "bytes": 424,
+    "lines": 13,
+    "sha256": "0d45de6978f6ca071dd5f4a09f07767b2624a91cade6a173ab33bad794f88622"
+  },
+  {
+    "path": "magic/Magdir/metastore",
+    "bytes": 337,
+    "lines": 8,
+    "sha256": "f1a91fe44c7ad7ba5a7fd8739039ada339e796daabb2a5b58ce62b182de7ccc3"
+  },
+  {
+    "path": "magic/Magdir/meteorological",
+    "bytes": 2314,
+    "lines": 64,
+    "sha256": "73b4409fe3ac0a6456e4071071475a10cce76090ea67f50e53781161db043f35"
+  },
+  {
+    "path": "magic/Magdir/microfocus",
+    "bytes": 741,
+    "lines": 21,
+    "sha256": "0db446e09395a1bc56499b6a5078f8244afda12d58f47630282c8f9570a24de3"
+  },
+  {
+    "path": "magic/Magdir/mime",
+    "bytes": 280,
+    "lines": 9,
+    "sha256": "1b0d7060ea12e3dea973ee7c015c845f218f78e61c3c640f0e0b39e650d603c5"
+  },
+  {
+    "path": "magic/Magdir/mips",
+    "bytes": 2386,
+    "lines": 106,
+    "sha256": "efe0473452256f30b6002c8ec442920121411e24152363c0c7ef68bcee4cb852"
+  },
+  {
+    "path": "magic/Magdir/mirage",
+    "bytes": 258,
+    "lines": 8,
+    "sha256": "02773e547d5431c266ecb1d6d8de032e76ea31846aa82f1d8e8f88a05f52c1e7"
+  },
+  {
+    "path": "magic/Magdir/misctools",
+    "bytes": 6342,
+    "lines": 140,
+    "sha256": "9507df855c110a1494acfc617cad98270f9776236262d83542e2829353371e5b"
+  },
+  {
+    "path": "magic/Magdir/mkid",
+    "bytes": 318,
+    "lines": 11,
+    "sha256": "845baa1ffcadffe91661f05580242d733f0e6dfc6bc9f7b3c1e97baa0c54ab90"
+  },
+  {
+    "path": "magic/Magdir/mlssa",
+    "bytes": 277,
+    "lines": 8,
+    "sha256": "e483a23b6e2496c0a35eb42e1103a38b93663c35cfd86bcf4a624ca3dcda8b68"
+  },
+  {
+    "path": "magic/Magdir/mmdf",
+    "bytes": 1403,
+    "lines": 25,
+    "sha256": "25b4e07a3563605c873f030298aeba65245e90999f360e0c018937b2c758a0c6"
+  },
+  {
+    "path": "magic/Magdir/modem",
+    "bytes": 3445,
+    "lines": 92,
+    "sha256": "7a45b50f522cf8eab28c8c59738b2c3f97116151843047f6899e0c3199e30c7b"
+  },
+  {
+    "path": "magic/Magdir/modulefile",
+    "bytes": 421,
+    "lines": 9,
+    "sha256": "42761917f512318a0e5392b845f44929181f038bbf7597257927ae5783302344"
+  },
+  {
+    "path": "magic/Magdir/motorola",
+    "bytes": 2778,
+    "lines": 77,
+    "sha256": "629ab244d959a3f013027da16bb30281f2eafdada80de90733fcf2bbe383fa3b"
+  },
+  {
+    "path": "magic/Magdir/mozilla",
+    "bytes": 1444,
+    "lines": 37,
+    "sha256": "e41f7e805c22cc9b9d2261280285bf464cd231cb10415415edb80322570bd5df"
+  },
+  {
+    "path": "magic/Magdir/msdos",
+    "bytes": 129511,
+    "lines": 3103,
+    "sha256": "b7bcf3a2f79bd47c843bdb19bba5a5647dff91096cab65eb6b810da1359ef3f1"
+  },
+  {
+    "path": "magic/Magdir/msooxml",
+    "bytes": 3213,
+    "lines": 79,
+    "sha256": "9176ba4118f70a13af2cfd043ce8d7d0491c7eccfc6380ae4274f5529b6c3ac4"
+  },
+  {
+    "path": "magic/Magdir/msvc",
+    "bytes": 10543,
+    "lines": 227,
+    "sha256": "e5b065f34c0b5ec151c8c3a6b721983c9db31d3b95ea1ac310a3b27f5bebe56a"
+  },
+  {
+    "path": "magic/Magdir/msx",
+    "bytes": 9573,
+    "lines": 310,
+    "sha256": "458150f7e8eca4a86ef5a6b62467f2e5b2c6af7a5f86c975a5bc5cbaaab5dc3d"
+  },
+  {
+    "path": "magic/Magdir/mup",
+    "bytes": 781,
+    "lines": 24,
+    "sha256": "e51fb528b6f268dc496b03c1d5fd97f16e37963734470249cc2fd3a96fcc0212"
+  },
+  {
+    "path": "magic/Magdir/music",
+    "bytes": 2801,
+    "lines": 60,
+    "sha256": "5d39f1cef6a9e79759ca7f1874f7e1927ab9b7500886443013618651e764cea4"
+  },
+  {
+    "path": "magic/Magdir/nasa",
+    "bytes": 347,
+    "lines": 8,
+    "sha256": "0be26b2f6f28af5a540be3b576998a50264de867ab16039fa26794d398bb792e"
+  },
+  {
+    "path": "magic/Magdir/natinst",
+    "bytes": 1072,
+    "lines": 24,
+    "sha256": "d8a564cd5560e67abd99c3bd97b6107e098fd76ca7f856dd4c9e2a342d7ce554"
+  },
+  {
+    "path": "magic/Magdir/ncr",
+    "bytes": 1733,
+    "lines": 49,
+    "sha256": "8b8eef3111cf2a266ccab969876f4e6c210261ff6a995cc27e87111be20e26e7"
+  },
+  {
+    "path": "magic/Magdir/netbsd",
+    "bytes": 7541,
+    "lines": 251,
+    "sha256": "4e86a09ee3044d8bbf37eb82a1d832ab027130544cc423d8799490a96f2b8f85"
+  },
+  {
+    "path": "magic/Magdir/netscape",
+    "bytes": 902,
+    "lines": 26,
+    "sha256": "e8391f2eb41082af2a1b4ebc8c17e6d8afd00be54dec3f1513ecd9b920b9bb5a"
+  },
+  {
+    "path": "magic/Magdir/netware",
+    "bytes": 412,
+    "lines": 11,
+    "sha256": "0e6eeb136639498a27e745353d55308461b8ebbace8b774a9223b8f22db3a883"
+  },
+  {
+    "path": "magic/Magdir/news",
+    "bytes": 555,
+    "lines": 13,
+    "sha256": "87f83e94bd8020eb3f7e33d83691d0ea741428564791841b9454a5dde0633134"
+  },
+  {
+    "path": "magic/Magdir/nfdump",
+    "bytes": 501,
+    "lines": 17,
+    "sha256": "71b1ad4938f04be6c0a6bbc3068b318b8fa3e4df86d714549061947f13c6aba0"
+  },
+  {
+    "path": "magic/Magdir/nifty",
+    "bytes": 5129,
+    "lines": 202,
+    "sha256": "dbfe47591d11595ce81b701c1870a37aeebd5f8885a5696c82af1629013d638c"
+  },
+  {
+    "path": "magic/Magdir/nim-lang",
+    "bytes": 593,
+    "lines": 29,
+    "sha256": "7a15543be55fffbd53b2d618f0f27e3522fb23d6aab09acf29fe19a2cf5fa46b"
+  },
+  {
+    "path": "magic/Magdir/nitpicker",
+    "bytes": 460,
+    "lines": 14,
+    "sha256": "80a3564ce4eaaf93e667134841b7e683fde0db5a57c80bcedc003c8a187f49aa"
+  },
+  {
+    "path": "magic/Magdir/nix",
+    "bytes": 666,
+    "lines": 14,
+    "sha256": "347ad0eddae2694128208cfeb305f0e999cc539788d0b790c3b73359d7243433"
+  },
+  {
+    "path": "magic/Magdir/numpy",
+    "bytes": 401,
+    "lines": 9,
+    "sha256": "9692e6166b3f5aa18ed4bbeffe2b4b2ca42f331354aedbaaaf0d36d2e25b7e86"
+  },
+  {
+    "path": "magic/Magdir/oasis",
+    "bytes": 471,
+    "lines": 12,
+    "sha256": "793deaab4dedbe44e20d7ffe2e351573870ed21256a7ffe16c11c4255562673e"
+  },
+  {
+    "path": "magic/Magdir/ocaml",
+    "bytes": 542,
+    "lines": 14,
+    "sha256": "278e2e63c86909cfeb0fbfb31df5e785b4c26db709b6035b8e939bcbe619d905"
+  },
+  {
+    "path": "magic/Magdir/octave",
+    "bytes": 323,
+    "lines": 6,
+    "sha256": "5b00cf02a9213d13c6192a87679e6f3994c7178ae135e0fff88ae0275863887d"
+  },
+  {
+    "path": "magic/Magdir/ole2compounddocs",
+    "bytes": 32520,
+    "lines": 806,
+    "sha256": "e2e73c10513f7f2b42680c72ed17b1d6c11215462cb703f594cb4e37fc7bdfef"
+  },
+  {
+    "path": "magic/Magdir/olf",
+    "bytes": 3207,
+    "lines": 98,
+    "sha256": "2578527746e03f1ae243a0e5669a83541c2e0fc5565364b85eb694d78c32ccae"
+  },
+  {
+    "path": "magic/Magdir/openfst",
+    "bytes": 616,
+    "lines": 17,
+    "sha256": "ae49e7d1b3f1f06982b9100663af94ffd217f28610d82bee3932914496b22bef"
+  },
+  {
+    "path": "magic/Magdir/opentimestamps",
+    "bytes": 704,
+    "lines": 16,
+    "sha256": "d66be67f8a4a938824f3e38f2227247a1f4ce71fbd8d1c62bd91e2765044f0e2"
+  },
+  {
+    "path": "magic/Magdir/oric",
+    "bytes": 536,
+    "lines": 16,
+    "sha256": "345578f9d96fe257264fc2e77b02798ac827b3623e0a84a8db36a1b7e55aa94a"
+  },
+  {
+    "path": "magic/Magdir/os2",
+    "bytes": 7373,
+    "lines": 206,
+    "sha256": "c107c1f51e9092406718a3818e17bb654d044669410711044f2394278ef77701"
+  },
+  {
+    "path": "magic/Magdir/os400",
+    "bytes": 1923,
+    "lines": 39,
+    "sha256": "6ad146c5dff4a97354c298090cd33b98f8e8f0112533b86c1fb4bf4f5c40c462"
+  },
+  {
+    "path": "magic/Magdir/os9",
+    "bytes": 2614,
+    "lines": 80,
+    "sha256": "3163fb3dcc8138fbc1fa212988dde29defac997449093e607c36586230994159"
+  },
+  {
+    "path": "magic/Magdir/osf1",
+    "bytes": 254,
+    "lines": 10,
+    "sha256": "787319647d74ff9d234ac9a285e34514e00ad37a8a47150b2f6385c30ff53aa2"
+  },
+  {
+    "path": "magic/Magdir/pack",
+    "bytes": 4270,
+    "lines": 101,
+    "sha256": "b597dc1d12f1ebb91eed59fb83fb0fef0f48f393fbfa94473550c1519e3e6278"
+  },
+  {
+    "path": "magic/Magdir/palm",
+    "bytes": 5317,
+    "lines": 156,
+    "sha256": "f9e2cbea08e6fa2ec0f058761f4c7403323085e4a947ea1c1ccc3f0aa1daa17c"
+  },
+  {
+    "path": "magic/Magdir/parix",
+    "bytes": 384,
+    "lines": 13,
+    "sha256": "513218f0200af5cd26b85b6557eeb0c8b9db465b59c30dd8c8ddeda88d1ec7b2"
+  },
+  {
+    "path": "magic/Magdir/parrot",
+    "bytes": 764,
+    "lines": 22,
+    "sha256": "f3e738a459ababb57b3be8f685f5f7b94c9e4d9b3902a32f0a6149f303e2779f"
+  },
+  {
+    "path": "magic/Magdir/partclone",
+    "bytes": 1129,
+    "lines": 32,
+    "sha256": "2975d6747f2fdc4f1aa27e8d0f66727f6e11128e91206e06ad470bdca5e66288"
+  },
+  {
+    "path": "magic/Magdir/pascal",
+    "bytes": 1332,
+    "lines": 39,
+    "sha256": "3d3708e8b7f1fe198b89beb07ad1ca10ed7dedb2f15d2cf0682a0d8f7bda1750"
+  },
+  {
+    "path": "magic/Magdir/pbf",
+    "bytes": 444,
+    "lines": 11,
+    "sha256": "31bc1152499701c8fa44ae09b8af317be27661e6aa0b777899c2d85b09041482"
+  },
+  {
+    "path": "magic/Magdir/pbm",
+    "bytes": 258,
+    "lines": 8,
+    "sha256": "02bab017c33ffa7e7e344d34dba4b72eb77b028e2d07fd5ef2f8d613564c31e4"
+  },
+  {
+    "path": "magic/Magdir/pc98",
+    "bytes": 2790,
+    "lines": 77,
+    "sha256": "c67dbdcb7ff73ef533c08bec65035bb8b7aa4828304a389f5144ee22fea89e77"
+  },
+  {
+    "path": "magic/Magdir/pci_ids",
+    "bytes": 3673,
+    "lines": 116,
+    "sha256": "d46649eb474f3f9c35b127920f061e90e2a42fbf223577edf5dfda1df5daa61d"
+  },
+  {
+    "path": "magic/Magdir/pcjr",
+    "bytes": 355,
+    "lines": 8,
+    "sha256": "93d8e4c9cd72e0f37857715ec4288f7dda1fed9ff889e91c163a92c63cc45582"
+  },
+  {
+    "path": "magic/Magdir/pdf",
+    "bytes": 1154,
+    "lines": 47,
+    "sha256": "e5f44d3e28f96ecdcb13e46c975822f12d20d8a1e51e33a2a15e7160d6c070dc"
+  },
+  {
+    "path": "magic/Magdir/pdp",
+    "bytes": 1862,
+    "lines": 52,
+    "sha256": "bd011469fc2dec1e2eea79044d9d78116b7c5ea016b60ee44e163668313a11f0"
+  },
+  {
+    "path": "magic/Magdir/perl",
+    "bytes": 3727,
+    "lines": 100,
+    "sha256": "69e39516c633444f8604df379a641d3ce4dd2ba30b3219f83d98b83a696ce1b5"
+  },
+  {
+    "path": "magic/Magdir/pgf",
+    "bytes": 1410,
+    "lines": 52,
+    "sha256": "8e271b2f61c5c7ca7d58a267414eded704c1ec2d024c47565bd48f5b6d64d963"
+  },
+  {
+    "path": "magic/Magdir/pgp",
+    "bytes": 16199,
+    "lines": 646,
+    "sha256": "569a61f424926990d76699d1994492696dece84dc2fdc1e52f0e2a1f2db5cdd8"
+  },
+  {
+    "path": "magic/Magdir/pgp-binary-keys",
+    "bytes": 13416,
+    "lines": 388,
+    "sha256": "b62cc7e48629b3a33bdfcb0a2ba17ab42bbac647dae3d1a242886dd4e1af4a50"
+  },
+  {
+    "path": "magic/Magdir/pkgadd",
+    "bytes": 297,
+    "lines": 7,
+    "sha256": "f000757f68618a64c2ea3d58babd81f261af4dfab76682975b4a2ad0414477c1"
+  },
+  {
+    "path": "magic/Magdir/plan9",
+    "bytes": 1456,
+    "lines": 30,
+    "sha256": "4706ea8bcd9afcfcd60c99609d78405eb2365e3e1a49e52df94cfac3ca6f4904"
+  },
+  {
+    "path": "magic/Magdir/playdate",
+    "bytes": 1677,
+    "lines": 57,
+    "sha256": "ea4505a7bd2d7f50a2d0d4227e5c9821ef0e6444034f52f934fb94da3ff87a29"
+  },
+  {
+    "path": "magic/Magdir/plus5",
+    "bytes": 550,
+    "lines": 18,
+    "sha256": "8f1a1b1d0fa5e7900e5276000c373f9113081201075f39d93f34b5e5775839cd"
+  },
+  {
+    "path": "magic/Magdir/pmem",
+    "bytes": 1255,
+    "lines": 46,
+    "sha256": "268fd4a65de53873b78c674c3553aba4d41d9cd39da9e3c52f4bf6d2644ec0db"
+  },
+  {
+    "path": "magic/Magdir/polyml",
+    "bytes": 744,
+    "lines": 23,
+    "sha256": "d3f1f486db7cdd8c8d0f73bdf9121410a72a6fb65c15536f77fc913114680eb5"
+  },
+  {
+    "path": "magic/Magdir/printer",
+    "bytes": 11068,
+    "lines": 268,
+    "sha256": "b380e90fb80cc990645580b1e332b7555ac6a4772f35802f187e0f53ea10edc3"
+  },
+  {
+    "path": "magic/Magdir/project",
+    "bytes": 389,
+    "lines": 10,
+    "sha256": "82358c9808b654b44ef26e77d7458c7dc6109ec4e3ab78f4519939b326c2ac77"
+  },
+  {
+    "path": "magic/Magdir/psdbms",
+    "bytes": 483,
+    "lines": 14,
+    "sha256": "953e717a7e651ba4390cb6b7c1428316be088ecbc0ca7bbb3e24a38f2ba934f6"
+  },
+  {
+    "path": "magic/Magdir/psl",
+    "bytes": 559,
+    "lines": 14,
+    "sha256": "3c82cfe4b75c5af65529e338cc8e691a4c1afb6e3f178fe84f71c5874dfad001"
+  },
+  {
+    "path": "magic/Magdir/pulsar",
+    "bytes": 370,
+    "lines": 13,
+    "sha256": "34eb826145213db363ccf9f2923479722906934704674f7ce76a92d616b9438f"
+  },
+  {
+    "path": "magic/Magdir/puzzle",
+    "bytes": 588,
+    "lines": 17,
+    "sha256": "387045ec1d7b8fcf69fa2e13e369ca705f04036dd1845244fb6d003dd1f5c4da"
+  },
+  {
+    "path": "magic/Magdir/pwsafe",
+    "bytes": 669,
+    "lines": 14,
+    "sha256": "23855b4a2d3aae5961692cc89f1e46943f7f76e75d66ced0180c0fb7e696a451"
+  },
+  {
+    "path": "magic/Magdir/pyramid",
+    "bytes": 426,
+    "lines": 12,
+    "sha256": "e08195c1e4f7e71ccbd029ef3159bd89a4baf79516a08519b05ccf377fc98d88"
+  },
+  {
+    "path": "magic/Magdir/python",
+    "bytes": 12070,
+    "lines": 321,
+    "sha256": "da154def5e6e673b2294d8eee88647e8a8a8c605a864bb58a1c3b3048559893a"
+  },
+  {
+    "path": "magic/Magdir/qt",
+    "bytes": 1060,
+    "lines": 30,
+    "sha256": "e302a762d3fd0918429a3fc12216c39b2fc635c8c44dcb3b48f6e427de69b91b"
+  },
+  {
+    "path": "magic/Magdir/r",
+    "bytes": 2592,
+    "lines": 86,
+    "sha256": "cedc1a19ebad0197455dd4fd5ebf7799b04a0b751ff6a008e62e4dd97199732a"
+  },
+  {
+    "path": "magic/Magdir/revision",
+    "bytes": 1396,
+    "lines": 43,
+    "sha256": "e0b25a88fd40dfb44866e2b111042a4bf0cfd7edd1afad2edbe62d970c767c64"
+  },
+  {
+    "path": "magic/Magdir/riff",
+    "bytes": 36314,
+    "lines": 917,
+    "sha256": "aa421e1596088f96f27719040ad3cf19a23c4f624b85a884c8daccbecd909e8b"
+  },
+  {
+    "path": "magic/Magdir/ringdove",
+    "bytes": 2702,
+    "lines": 45,
+    "sha256": "c7aedee2f4ef18c4b913cfec205eda8a0184a8313579b74f1af32117b22e3463"
+  },
+  {
+    "path": "magic/Magdir/rpi",
+    "bytes": 1613,
+    "lines": 52,
+    "sha256": "6cdc3c0a4ffafc989cc3784f006b6e8ee4fe06a163d0e82a5336d41197b26bf3"
+  },
+  {
+    "path": "magic/Magdir/rpm",
+    "bytes": 1373,
+    "lines": 55,
+    "sha256": "70df97fbcb7924384ce4132f19652e45c05f560d0b1d9281f50cc8ac470e4243"
+  },
+  {
+    "path": "magic/Magdir/rpmsg",
+    "bytes": 349,
+    "lines": 7,
+    "sha256": "e6d0a5743507c5653a36589636c953265fee2fa09ec8a1bb909fd52acd6afe4a"
+  },
+  {
+    "path": "magic/Magdir/rst",
+    "bytes": 489,
+    "lines": 13,
+    "sha256": "70589f37f51fdea01429b23d95ba0feff93f33576d37e1e2e6a843bafe56e224"
+  },
+  {
+    "path": "magic/Magdir/rtf",
+    "bytes": 4011,
+    "lines": 99,
+    "sha256": "a9fb2627612282e7e45057f28c419fbb32b4e9cc7c254e4a150252fb3e7f66da"
+  },
+  {
+    "path": "magic/Magdir/ruby",
+    "bytes": 1790,
+    "lines": 52,
+    "sha256": "337a2cd12a28ca5fe2ebab9c975b396504ecfa0857289629a66896314008540a"
+  },
+  {
+    "path": "magic/Magdir/rust",
+    "bytes": 770,
+    "lines": 21,
+    "sha256": "1a80e9e4f83f5507f543cd4547b4ee56be5928a41e9178d73a7a792dfae5e387"
+  },
+  {
+    "path": "magic/Magdir/sc",
+    "bytes": 245,
+    "lines": 7,
+    "sha256": "51d348eed4e50c2027935c92ad6347383a40b310f8db54b5d97181dd36d84984"
+  },
+  {
+    "path": "magic/Magdir/sccs",
+    "bytes": 899,
+    "lines": 24,
+    "sha256": "9654a6a94bef786b5cc71beb4aa066592fe2135ac2e42da80f3626ff8bb61909"
+  },
+  {
+    "path": "magic/Magdir/scientific",
+    "bytes": 5120,
+    "lines": 144,
+    "sha256": "8e5d2e7ed631966bd4e7b63bddecff6fc69d289eab8223f36bfcc55fe0fd03d8"
+  },
+  {
+    "path": "magic/Magdir/securitycerts",
+    "bytes": 366,
+    "lines": 6,
+    "sha256": "3ee920ed40c80eff3857b896513cec6135cbaffef1499768d51e2e08c05a7f87"
+  },
+  {
+    "path": "magic/Magdir/selinux",
+    "bytes": 806,
+    "lines": 24,
+    "sha256": "1e6125e2fd1dbe6c7d7480f605c29a0c10fb5a33295fef2657f3055ad817c991"
+  },
+  {
+    "path": "magic/Magdir/sendmail",
+    "bytes": 1496,
+    "lines": 37,
+    "sha256": "c13cbfce07bd038ed175a8c5f8e2e4550703e5152bbdfa637dd644925e8c87bd"
+  },
+  {
+    "path": "magic/Magdir/sequent",
+    "bytes": 1714,
+    "lines": 42,
+    "sha256": "139156d0c7a87d45b386578210d65bffbfba42634b2fa06bc883428343de686b"
+  },
+  {
+    "path": "magic/Magdir/sereal",
+    "bytes": 1274,
+    "lines": 35,
+    "sha256": "da5ab5aeade52a17a2ce88d9296912bb160f49c6fa9582399c3dac2d8f9b4c95"
+  },
+  {
+    "path": "magic/Magdir/sf3",
+    "bytes": 2946,
+    "lines": 112,
+    "sha256": "d6cafc5fe21811e89a161c26cec86d2bd30ba98c9078e86d7a2f2a7fb1d3976a"
+  },
+  {
+    "path": "magic/Magdir/sgi",
+    "bytes": 4171,
+    "lines": 144,
+    "sha256": "a3388fcea9470eacc872084f14fb3a2e6b0152379040e8ef0f331fc131105298"
+  },
+  {
+    "path": "magic/Magdir/sgml",
+    "bytes": 5003,
+    "lines": 166,
+    "sha256": "e0aba740969b2645fbedb7b8794bb4dea508e0a01f80b4dce7ece182072512be"
+  },
+  {
+    "path": "magic/Magdir/sharc",
+    "bytes": 820,
+    "lines": 23,
+    "sha256": "5474f53fe14a0749c2411965f340d959dc6543c3dd2ee79fe3ab05bfd2f70875"
+  },
+  {
+    "path": "magic/Magdir/sinclair",
+    "bytes": 1060,
+    "lines": 40,
+    "sha256": "638d2de24b6a5ecf076c07902e5812654778beb043a2109a78f84a99a5d89a81"
+  },
+  {
+    "path": "magic/Magdir/sisu",
+    "bytes": 471,
+    "lines": 18,
+    "sha256": "493ae0b33061766cd4f39fcf9ee66892a0e5fe99346b36252d3303064f768f86"
+  },
+  {
+    "path": "magic/Magdir/sketch",
+    "bytes": 258,
+    "lines": 6,
+    "sha256": "2cb5b11b64efd8fdc689abf0ea4f33a2a995904554b1da4d9b00b79e232361b3"
+  },
+  {
+    "path": "magic/Magdir/smalltalk",
+    "bytes": 593,
+    "lines": 25,
+    "sha256": "4e5863dda9a6408450f31e9be7f39c974370a4068e15394f1c840b350df53c13"
+  },
+  {
+    "path": "magic/Magdir/smile",
+    "bytes": 1262,
+    "lines": 34,
+    "sha256": "942140ff12c7983a1f28ac81e39ecc8b0ea1637e79a89f45c2bc842773ef9d6b"
+  },
+  {
+    "path": "magic/Magdir/sniffer",
+    "bytes": 19095,
+    "lines": 485,
+    "sha256": "393597fea8ee84ac1a08d3337e0656afa26c9f8a4b18e41c3d8fa7ba876cc2a3"
+  },
+  {
+    "path": "magic/Magdir/softquad",
+    "bytes": 1677,
+    "lines": 40,
+    "sha256": "fad9b2824a862bcad1b117d6f3b3e412876e60d5ed8d8b40755f5ff871bfe4c9"
+  },
+  {
+    "path": "magic/Magdir/sosi",
+    "bytes": 1689,
+    "lines": 40,
+    "sha256": "738106e408f207b77025dd78f8a57c2cf0d84877cc4c5b81375bab8d5d217bae"
+  },
+  {
+    "path": "magic/Magdir/spec",
+    "bytes": 600,
+    "lines": 21,
+    "sha256": "fd6171157e96fbe5c1b581466dda84db93f1d2837367e798b452854a76250231"
+  },
+  {
+    "path": "magic/Magdir/spectrum",
+    "bytes": 7201,
+    "lines": 184,
+    "sha256": "80ebc1181afc18b83459dd8a85adc3b28819aa7e0faba91f3921f0153c78035e"
+  },
+  {
+    "path": "magic/Magdir/sql",
+    "bytes": 18174,
+    "lines": 387,
+    "sha256": "80c64674c92cd9b1d1a8ae50736a44306230ab8b512c8829a492a2e44a4e2262"
+  },
+  {
+    "path": "magic/Magdir/ssh",
+    "bytes": 3045,
+    "lines": 87,
+    "sha256": "38e6e7049f18a557950a50167c40a4dff7529bbfdaaa240d612889431cd382fd"
+  },
+  {
+    "path": "magic/Magdir/ssl",
+    "bytes": 1705,
+    "lines": 40,
+    "sha256": "2a606fb0edfe4df2cb3ffdef8a412a74cdf154bec64d21c8fd5624fbfbe3aee0"
+  },
+  {
+    "path": "magic/Magdir/statistics",
+    "bytes": 1962,
+    "lines": 45,
+    "sha256": "bd29b5b8d61c6f806c109e77077da3441e326df34d9b5eb141ba99d5322cbbf9"
+  },
+  {
+    "path": "magic/Magdir/subtitle",
+    "bytes": 1069,
+    "lines": 38,
+    "sha256": "3dc19f4b5396c011bd09ea2453e4ff2f7d934b828a5fd421f1552b60b37fbec9"
+  },
+  {
+    "path": "magic/Magdir/sun",
+    "bytes": 5171,
+    "lines": 152,
+    "sha256": "696989f5a33463bd3036f508e5df7bb7bc95200f82401c8c9b4b5b1046fe4426"
+  },
+  {
+    "path": "magic/Magdir/svf",
+    "bytes": 220,
+    "lines": 5,
+    "sha256": "7b357d155dd28220ec6676392b037be93c8adb09d16edaa2187b804a96745a9f"
+  },
+  {
+    "path": "magic/Magdir/syd",
+    "bytes": 1199,
+    "lines": 37,
+    "sha256": "7b6bc707a84e1def17da0536ca26f41b67b1ba222226640d445954190301eed5"
+  },
+  {
+    "path": "magic/Magdir/sylk",
+    "bytes": 1257,
+    "lines": 36,
+    "sha256": "fdd09150df692c7a42b9cb8fa19d30308cf34ba02618f935a1e7a0c0c31cd825"
+  },
+  {
+    "path": "magic/Magdir/symbos",
+    "bytes": 975,
+    "lines": 43,
+    "sha256": "411a5af2f6c99748481547e136080cb91899652e0ebad817a68cede153013697"
+  },
+  {
+    "path": "magic/Magdir/sysex",
+    "bytes": 16247,
+    "lines": 429,
+    "sha256": "f8134f2c962fe371154fc7a5e4cf93805180f4dd45fa0c4a45b6ceb47088038a"
+  },
+  {
+    "path": "magic/Magdir/sysstat",
+    "bytes": 1630,
+    "lines": 43,
+    "sha256": "d53d99ff2ab9ce5cbca73d6575be934b86cc2c60cbf5eff27c6f2fe49677ba01"
+  },
+  {
+    "path": "magic/Magdir/tapebackup",
+    "bytes": 906,
+    "lines": 29,
+    "sha256": "4958093f6d89406e450eff06cc32eeb0842d6193381ced6f3ba853cc84c3a121"
+  },
+  {
+    "path": "magic/Magdir/tarantool",
+    "bytes": 2079,
+    "lines": 41,
+    "sha256": "6f9a2749ed246ceb8b920cc98488f32fd0f5520cf030fedc5cea9d3074f5ea1f"
+  },
+  {
+    "path": "magic/Magdir/tcl",
+    "bytes": 1005,
+    "lines": 29,
+    "sha256": "21c19c858dcd80bbbbd84aa18fc4a8b824c25bbe24022218093758f48b3796b9"
+  },
+  {
+    "path": "magic/Magdir/teapot",
+    "bytes": 266,
+    "lines": 6,
+    "sha256": "6d7e1cb3e49041ff968786342cb505416b6e0dafdbd54a2a14775c3cb1274b98"
+  },
+  {
+    "path": "magic/Magdir/terminfo",
+    "bytes": 2674,
+    "lines": 63,
+    "sha256": "7cfc031f4e7520fc7e8d619bda625eb0845a2be27b24590ce4203413d092c871"
+  },
+  {
+    "path": "magic/Magdir/tex",
+    "bytes": 5543,
+    "lines": 163,
+    "sha256": "c0b76e956359edfdcf134cbd4dae203da245feed7aa4fa8221cba9dba35daf9b"
+  },
+  {
+    "path": "magic/Magdir/tgif",
+    "bytes": 262,
+    "lines": 7,
+    "sha256": "615660727c08a2931cbb33cd8d27872479da52aff839657e00148ce61db11e55"
+  },
+  {
+    "path": "magic/Magdir/ti-8x",
+    "bytes": 7868,
+    "lines": 244,
+    "sha256": "8f904e91b19ba7a56849259fc887e3222001309e27ab54f419a6295e263ce740"
+  },
+  {
+    "path": "magic/Magdir/timezone",
+    "bytes": 1701,
+    "lines": 42,
+    "sha256": "5ff2c1c89a34b7748daf4bab44892f04d520532b3db0583cf04437d06e259869"
+  },
+  {
+    "path": "magic/Magdir/tplink",
+    "bytes": 3372,
+    "lines": 95,
+    "sha256": "98e47114a4f2281027bc6f2ad7b9f8e3d628d85b9df6eadf168d1eb2ca9b3445"
+  },
+  {
+    "path": "magic/Magdir/troff",
+    "bytes": 1344,
+    "lines": 44,
+    "sha256": "c4caba721f7570b91df8c41d265141f852d14a23148ec35f147e7c44c4597230"
+  },
+  {
+    "path": "magic/Magdir/tuxedo",
+    "bytes": 306,
+    "lines": 8,
+    "sha256": "a55ffd40b41f3284bc38203154da7a96b028832ca1c2880e2f4a86d9695b5827"
+  },
+  {
+    "path": "magic/Magdir/typeset",
+    "bytes": 417,
+    "lines": 13,
+    "sha256": "524f7a3b1a1e826e888f952fa8634d415851f0a6ec6f671dcdec74a49899cb42"
+  },
+  {
+    "path": "magic/Magdir/uf2",
+    "bytes": 3946,
+    "lines": 106,
+    "sha256": "0ec8d60d404b644e7b7b15da80c9b5a4f37183cc10faff0896366c380ad69a46"
+  },
+  {
+    "path": "magic/Magdir/unicode",
+    "bytes": 771,
+    "lines": 15,
+    "sha256": "35725c813529ddcfdec117c643443dfea853c23c6c9d0998ba43880c8bf530ca"
+  },
+  {
+    "path": "magic/Magdir/unisig",
+    "bytes": 402,
+    "lines": 12,
+    "sha256": "269ae2b958e8b7da183038bab79d1dfab5b3f53d14861a827e1af3225cb0eec9"
+  },
+  {
+    "path": "magic/Magdir/unknown",
+    "bytes": 1370,
+    "lines": 34,
+    "sha256": "2950280ef73e456eeac0cee53491c99dfc88c05f22201a2bd48888648dcb4878"
+  },
+  {
+    "path": "magic/Magdir/usd",
+    "bytes": 568,
+    "lines": 21,
+    "sha256": "894d7a2e15bd78bf69beaf8fda213b8eee5f39f1d221ec83f14430e9228816d6"
+  },
+  {
+    "path": "magic/Magdir/uterus",
+    "bytes": 469,
+    "lines": 16,
+    "sha256": "4345ed900627e7d0e473fcdd93a97e68c4f65daa5b4500d6796f334212f7d761"
+  },
+  {
+    "path": "magic/Magdir/uuencode",
+    "bytes": 1192,
+    "lines": 28,
+    "sha256": "6da462e9835acb35c852c790b979e47fade207660bbde988b37b384ccb10583a"
+  },
+  {
+    "path": "magic/Magdir/uxn",
+    "bytes": 567,
+    "lines": 18,
+    "sha256": "93adae8a8ac99075bc23cb4db810e04843ad305a4ad87f9c82f7de045d8476d7"
+  },
+  {
+    "path": "magic/Magdir/vacuum-cleaner",
+    "bytes": 2109,
+    "lines": 54,
+    "sha256": "3d0bbf0d6f79e01f0b2ab6d607c4b995e176b557b646139b6d120a43d36048b4"
+  },
+  {
+    "path": "magic/Magdir/varied.out",
+    "bytes": 1664,
+    "lines": 46,
+    "sha256": "b8ba572eb3231e448f7ac541a27cf9d51e0fc1f464e686684b3dfef7d4694282"
+  },
+  {
+    "path": "magic/Magdir/varied.script",
+    "bytes": 920,
+    "lines": 33,
+    "sha256": "b75264901c720b49a5043af2eb48917f728eeee6ed5af0ab44688af8a2362b2b"
+  },
+  {
+    "path": "magic/Magdir/vax",
+    "bytes": 1002,
+    "lines": 32,
+    "sha256": "02a6254c7798014de6e91a7869866ddef92b2d71f4a2c65a4ee017d23e7984d5"
+  },
+  {
+    "path": "magic/Magdir/vicar",
+    "bytes": 759,
+    "lines": 17,
+    "sha256": "3f65887a954426d06663e91abe4600f2c65fd4047fec7683fbb4f48c431fb329"
+  },
+  {
+    "path": "magic/Magdir/virtual",
+    "bytes": 16035,
+    "lines": 436,
+    "sha256": "bf09a7bae94c7b88189e65e6df43fd844316814861254b20307770b2d82c754d"
+  },
+  {
+    "path": "magic/Magdir/virtutech",
+    "bytes": 524,
+    "lines": 12,
+    "sha256": "04ea1ad2d369aea4a46502def0ce7ee2a892645bebb358de809040f8b6050a7a"
+  },
+  {
+    "path": "magic/Magdir/visx",
+    "bytes": 972,
+    "lines": 32,
+    "sha256": "801a3437f097b3fc86b78a01c7a7fe09f5582e795938fa92ff154356602a7e12"
+  },
+  {
+    "path": "magic/Magdir/vms",
+    "bytes": 1444,
+    "lines": 30,
+    "sha256": "adc6eb2cfab02dbdaf0d74be7e09b567ed466c4cfb2f8c999b5e1ca82b3a4649"
+  },
+  {
+    "path": "magic/Magdir/vmware",
+    "bytes": 283,
+    "lines": 6,
+    "sha256": "14a35432830332d5d59d1e85036a482e927fba1d2587452521763ee327010681"
+  },
+  {
+    "path": "magic/Magdir/vorbis",
+    "bytes": 6112,
+    "lines": 154,
+    "sha256": "2f42574301888aa4f83dc6158f84dfc36941faf59d84d0bad131bafdf93f928d"
+  },
+  {
+    "path": "magic/Magdir/vxl",
+    "bytes": 489,
+    "lines": 14,
+    "sha256": "dba97428be0decc6b309a71b31225509778392f85949f7b5471d6c7f1d5abcc9"
+  },
+  {
+    "path": "magic/Magdir/warc",
+    "bytes": 596,
+    "lines": 16,
+    "sha256": "497198228eefd965e632751d003688ee642a1ebfb08f7c40a3adcb7e3075604d"
+  },
+  {
+    "path": "magic/Magdir/weak",
+    "bytes": 684,
+    "lines": 17,
+    "sha256": "869883c38337605b1607281c3bbbbc57469a717c33e759b7d928724d535d7c63"
+  },
+  {
+    "path": "magic/Magdir/web",
+    "bytes": 522,
+    "lines": 18,
+    "sha256": "c002a251cb2c95ed838fc0a9cb28270334e6cf1d1e9072580f5144d15d897e07"
+  },
+  {
+    "path": "magic/Magdir/webassembly",
+    "bytes": 693,
+    "lines": 18,
+    "sha256": "66d542539460417c2a42edf2d738b4940931e31dfbf454f4a8a5577eb041776e"
+  },
+  {
+    "path": "magic/Magdir/windows",
+    "bytes": 79378,
+    "lines": 1925,
+    "sha256": "6cfbbbaa843e461da1095dd93815c1f9a5e7c626a93b2f107a16f11fea252f75"
+  },
+  {
+    "path": "magic/Magdir/wireless",
+    "bytes": 295,
+    "lines": 7,
+    "sha256": "a17c82e6fbaf9494c608a880ef7e79daea4e99ca2e0bd59991ffbb0d8496d611"
+  },
+  {
+    "path": "magic/Magdir/wordprocessors",
+    "bytes": 24914,
+    "lines": 670,
+    "sha256": "ffae6557abc7f0bdcd9e57beb98ff03c946740fb1b47a6ef322d9a031cbd303c"
+  },
+  {
+    "path": "magic/Magdir/wsdl",
+    "bytes": 760,
+    "lines": 23,
+    "sha256": "3d9377272b6a08be3af3ea6ccaf03c75a9fb4bd8e82a201a8b50adbda8ec58d9"
+  },
+  {
+    "path": "magic/Magdir/x68000",
+    "bytes": 743,
+    "lines": 25,
+    "sha256": "ec8a0db82970381a1bf59c303c6e1f0c2929679babac15dedfa3c191a7de2454"
+  },
+  {
+    "path": "magic/Magdir/xdelta",
+    "bytes": 548,
+    "lines": 13,
+    "sha256": "bdcfb41abfa9d2a715edfe87c601ffff88f600841e2c6bdfd30b508add7aad37"
+  },
+  {
+    "path": "magic/Magdir/xenix",
+    "bytes": 7559,
+    "lines": 178,
+    "sha256": "47362b5e1567f67f4f5cc1da7dafcd66e576ed0d77960fe8e9e11a2d55825a8b"
+  },
+  {
+    "path": "magic/Magdir/xilinx",
+    "bytes": 3058,
+    "lines": 81,
+    "sha256": "75ec5ca0797f6549fd9e8756f7781519d8c899c52e8f5dffb5dc7994e126733a"
+  },
+  {
+    "path": "magic/Magdir/xo65",
+    "bytes": 1194,
+    "lines": 37,
+    "sha256": "e891522d2d92e7fc1e59644f904b828098a9518e0a210f35cc9ada7bc50cd82a"
+  },
+  {
+    "path": "magic/Magdir/xwindows",
+    "bytes": 1347,
+    "lines": 45,
+    "sha256": "3665ee10b66d78dc090f697d633d795d50581bfdd01dfdb3c6bdc24e51cff735"
+  },
+  {
+    "path": "magic/Magdir/yara",
+    "bytes": 467,
+    "lines": 17,
+    "sha256": "0e5039bda5e8b5fa09b749ead02eae6090d093dc086a12ff02ac2fdae3736391"
+  },
+  {
+    "path": "magic/Magdir/zfs",
+    "bytes": 2423,
+    "lines": 96,
+    "sha256": "2804eb31bb15034c2569f325e82899445ae91303540d859ada02bcf9f68d006f"
+  },
+  {
+    "path": "magic/Magdir/zilog",
+    "bytes": 451,
+    "lines": 12,
+    "sha256": "4c876e76aa514c388bf7938ce0a8ba8267318732f75ec40027d0db874c0d4610"
+  },
+  {
+    "path": "magic/Magdir/zip",
+    "bytes": 4183,
+    "lines": 131,
+    "sha256": "5a6c1f1c82174946b8562c61888279756df32ddc67c75fccc51d31a63678ebaa"
+  },
+  {
+    "path": "magic/Magdir/zyxel",
+    "bytes": 613,
+    "lines": 17,
+    "sha256": "25dfb98c01b4cb3924ce21d058c38b64245edf45b168b47ada69fe57b94c23a6"
+  },
+  {
+    "path": "magic/Makefile.am",
+    "bytes": 12387,
+    "lines": 406,
+    "sha256": "090131840ce96009077d3010ba9a9374d9a4a64a1b9130ea4a24697f1c350ea0"
+  },
+  {
+    "path": "magic/scripts/create_filemagic_flac",
+    "bytes": 2268,
+    "lines": 71,
+    "sha256": "6ffd7a7f2204779aca495e644d14e61edb5baed6f31bce54c4ad3527d27125e5"
+  },
+  {
+    "path": "make-curated-magic.sh",
+    "bytes": 1612,
+    "lines": 38,
+    "sha256": "a5f1c8a49d62c60164d4077c65bc1acfe33b6fb5398343f0418d434d265966be"
+  },
+  {
+    "path": "package-amiga.sh",
+    "bytes": 4055,
+    "lines": 94,
+    "sha256": "549212c057ad2b2d5c342f1046bb9ccadc8090c4c0a07bdf8f00ef9856daea73"
+  },
+  {
+    "path": "python/.cvsignore",
+    "bytes": 84,
+    "lines": 7,
+    "sha256": "b4db47b58fa485cff7e43ea3ed6adc2eae8f42144318df349313c6c67c3bf4bc"
+  },
+  {
+    "path": "python/CHANGELOG.md",
+    "bytes": 495,
+    "lines": 21,
+    "sha256": "9c9923aceca10bb956a2c87304cd570fec1fc412724e8a0e483664f520ee5e70"
+  },
+  {
+    "path": "python/HOWTO",
+    "bytes": 155,
+    "lines": 7,
+    "sha256": "0b3abdc3c49e997c28e27e2298d813281f044785d1444eae67e0b260e9230fec"
+  },
+  {
+    "path": "python/LICENSE",
+    "bytes": 1432,
+    "lines": 25,
+    "sha256": "9d402e401ecfd65d9c600cf84ecb317aba1c5c6fcb788dd79af94fd1fdc527a8"
+  },
+  {
+    "path": "python/Makefile.am",
+    "bytes": 110,
+    "lines": 4,
+    "sha256": "496adeeb5b2057b0fdf8696ab9c3f57136174655802000d2ce781d630d7df632"
+  },
+  {
+    "path": "python/README.md",
+    "bytes": 584,
+    "lines": 31,
+    "sha256": "2046b2b74938451e2662ffb161e3a0f229087d153d1da5733fac31932f02162d"
+  },
+  {
+    "path": "python/example.py",
+    "bytes": 207,
+    "lines": 17,
+    "sha256": "cb850beab2a97f0bf9b6ff44253d2f9e0c3a0d05d4239dd5e8e50d341bdf107d"
+  },
+  {
+    "path": "python/file_magic/__init__.py",
+    "bytes": 20,
+    "lines": 1,
+    "sha256": "899a1bee2dd66b495fa6b388095a93f81e2efcc7eb242741d9d03597518d1e35"
+  },
+  {
+    "path": "python/magic.py",
+    "bytes": 10722,
+    "lines": 363,
+    "sha256": "c9ebbd3e15d6d9c181811f3a3529499e9a2875f9ba00f1977d4bf319ace4137e"
+  },
+  {
+    "path": "python/magic.pyi",
+    "bytes": 2326,
+    "lines": 93,
+    "sha256": "9dcd754e7a9cd2facac984a519c5e99fada4ffbf4c6c5d531a0683b5614cac1b"
+  },
+  {
+    "path": "python/pyproject.toml",
+    "bytes": 720,
+    "lines": 31,
+    "sha256": "d2b13b1c78d0492f5bdec5c859d56da6b9446a2811267e2f90914f57594b20da"
+  },
+  {
+    "path": "python/setup.py",
+    "bytes": 824,
+    "lines": 27,
+    "sha256": "22e08bc5ca3b3a39c41dd05da652d3c7fd538bfbce262ffa10bc12c700b8238d"
+  },
+  {
+    "path": "python/tests.py",
+    "bytes": 983,
+    "lines": 32,
+    "sha256": "18e2aae6d7b40e01054acde709f72796af9c5e18640efac1320fb496ea8770cc"
+  },
+  {
+    "path": "python/threads.py",
+    "bytes": 497,
+    "lines": 24,
+    "sha256": "b7d0ecf233e14dda8cb4c3c9e6d5c576131fc3ee913c580fc0a06564528a429c"
+  },
+  {
+    "path": "src/.cvsignore",
+    "bytes": 123,
+    "lines": 15,
+    "sha256": "13234d890310823003cf8fe9d960eb20f896b5869975a78ee42c9e5358ba13c5"
+  },
+  {
+    "path": "src/BNF",
+    "bytes": 5020,
+    "lines": 151,
+    "sha256": "7561594bd36997b442f89c421bdc3678848c8a2eef8332441ec41577e987fd9f"
+  },
+  {
+    "path": "src/Makefile.am",
+    "bytes": 1633,
+    "lines": 47,
+    "sha256": "2d5070101d9581a1ed31f09ab84d4d66fe7fe664090cd819e9992fe58d836ed1"
+  },
+  {
+    "path": "src/apprentice.c",
+    "bytes": 82543,
+    "lines": 3736,
+    "sha256": "0030e36aab46107514acfba643f4713e80637359eb0819690f112d89d108af36"
+  },
+  {
+    "path": "src/apptype.c",
+    "bytes": 4562,
+    "lines": 168,
+    "sha256": "9daa4f02a15598de46efb468e843e3fbde5e49977d303be4e8126e61ac9efcd9"
+  },
+  {
+    "path": "src/ascmagic.c",
+    "bytes": 9937,
+    "lines": 395,
+    "sha256": "f18b3de6b147c72df85b6d213142fedf0245a63ae6b19a6942a271757d4d837d"
+  },
+  {
+    "path": "src/buffer.c",
+    "bytes": 2766,
+    "lines": 99,
+    "sha256": "b5a6c9a0c6c77a7e830ad8f49b960e3678a8a1700e55d2e9d1e1e8b9b0ea9f00"
+  },
+  {
+    "path": "src/cdf.c",
+    "bytes": 43949,
+    "lines": 1701,
+    "sha256": "0ee13137f0d240ff7f047d9c540871900175a49c07e1eeccf471621cad2ea9f5"
+  },
+  {
+    "path": "src/cdf.h",
+    "bytes": 12504,
+    "lines": 364,
+    "sha256": "45c5fe2b241a807d4493de1eebe64f5720fb941148f519a72a9f3ec6a38cba29"
+  },
+  {
+    "path": "src/cdf.mk",
+    "bytes": 99,
+    "lines": 3,
+    "sha256": "3af715c00d223e4b44506f7dda5399859767aee1b6d0e18ea9db9efa10ea7e6b"
+  },
+  {
+    "path": "src/cdf_time.c",
+    "bytes": 4755,
+    "lines": 207,
+    "sha256": "5c0627f9cfba4567f719cc63913daf75c5448b7041c89494bb997f3fe1c023c7"
+  },
+  {
+    "path": "src/compress.c",
+    "bytes": 32880,
+    "lines": 1368,
+    "sha256": "192eb9ef34201d737f7507860b53fc17509553ee917082fe76636ac07b384778"
+  },
+  {
+    "path": "src/der.c",
+    "bytes": 11635,
+    "lines": 458,
+    "sha256": "f53aae3de34d3268f845d7588532376415b91e36ce45a70ab51042083ceec44c"
+  },
+  {
+    "path": "src/der.h",
+    "bytes": 1516,
+    "lines": 28,
+    "sha256": "e4361c7aaacede1ffb5fb432041777af612944d84910d9e064861952fdc26787"
+  },
+  {
+    "path": "src/elfclass.h",
+    "bytes": 3139,
+    "lines": 82,
+    "sha256": "a1d79dbaafe3a7f692e8945dd7e95bda8a4142a1755f0a193ae457dd44fa23d5"
+  },
+  {
+    "path": "src/encoding.c",
+    "bytes": 22851,
+    "lines": 666,
+    "sha256": "f52149f951fdf839e349e65d258c3cd4f8ad9f9e8d3ba814d94edc7cf2a5cad6"
+  },
+  {
+    "path": "src/file.c",
+    "bytes": 20116,
+    "lines": 884,
+    "sha256": "12a4019e8aea2544e574eee552d0732c28a75b1ac325f89da1bf5580308aab1f"
+  },
+  {
+    "path": "src/file.h",
+    "bytes": 24106,
+    "lines": 786,
+    "sha256": "c4140e9ad4178eb132cba6ea191a5780b001fa403700051482d25b2fc357339c"
+  },
+  {
+    "path": "src/file_opts.h",
+    "bytes": 3837,
+    "lines": 89,
+    "sha256": "7c0065fca525bba040a6b8f7f89a2c5813d01962590ea764cfc23d004abc5fa0"
+  },
+  {
+    "path": "src/fsmagic.c",
+    "bytes": 13129,
+    "lines": 523,
+    "sha256": "e60d7c9c597dfbdd90775a968b68b6caef8ce477c624975f8bcdfab0db2cda5f"
+  },
+  {
+    "path": "src/funcs.c",
+    "bytes": 22865,
+    "lines": 1057,
+    "sha256": "7bd40aa8195ee06b5c9940a87d21750cc49cc1fb7436c1d96a0f191ad74e2c9a"
+  },
+  {
+    "path": "src/is_csv.c",
+    "bytes": 4653,
+    "lines": 200,
+    "sha256": "d88a56c183e162f9b4088d20580f4c18a3823e32e780b33ce76341212fad4e52"
+  },
+  {
+    "path": "src/is_json.c",
+    "bytes": 10511,
+    "lines": 500,
+    "sha256": "ecf8078bab5854b02f9ba7b7f016080b01c833430fa104c8942e3b72e576d93e"
+  },
+  {
+    "path": "src/is_simh.c",
+    "bytes": 5056,
+    "lines": 217,
+    "sha256": "016c2ba07c785ef0a7bfd69341a0943ce23b18041b6cc25379a90c9c96545501"
+  },
+  {
+    "path": "src/is_tar.c",
+    "bytes": 5347,
+    "lines": 177,
+    "sha256": "6fb6e9527ed7eedb3dea72ac45e6451568542fa4d47b5422342dd6c71a85269a"
+  },
+  {
+    "path": "src/landlock.c",
+    "bytes": 5455,
+    "lines": 180,
+    "sha256": "080491da2a8564e1e5e477c3a8c0611cd8220a6dc629e8c0e63790b174bad9f5"
+  },
+  {
+    "path": "src/magic.c",
+    "bytes": 16907,
+    "lines": 722,
+    "sha256": "6ac5ded0029727164472a33ae4703e0d786d59c83c5fa40b64f2e91818d1143e"
+  },
+  {
+    "path": "src/magic.h.in",
+    "bytes": 6103,
+    "lines": 168,
+    "sha256": "36d74c3a44a04df6a5ecb498710d8c9b91a930ad9474a3dacd5361501408c37f"
+  },
+  {
+    "path": "src/memtest.c",
+    "bytes": 3737,
+    "lines": 148,
+    "sha256": "76db64f04d8b5ffb4c86910e8827a4ee8f5e8a5a61c6e66b3749945f3f6bd91a"
+  },
+  {
+    "path": "src/missing/REGEX-COPYRIGHT",
+    "bytes": 2713,
+    "lines": 54,
+    "sha256": "b8f40a1cf4a5364715b9bff5944d589e6d4dee1b17d156c8b296bfc776604beb"
+  },
+  {
+    "path": "src/missing/asctime_r.c",
+    "bytes": 415,
+    "lines": 19,
+    "sha256": "42ced8665e1b6131976387dab5db0d21f71df2bf489332a880cd1dc67131f5e6"
+  },
+  {
+    "path": "src/missing/asprintf.c",
+    "bytes": 1811,
+    "lines": 45,
+    "sha256": "48cc4db0ceee37630753204d51f7c5eef33531fe954fe6954587b8ce4f9a5a36"
+  },
+  {
+    "path": "src/missing/cname.h",
+    "bytes": 4115,
+    "lines": 142,
+    "sha256": "51a618a5e68bb1c5fb0c736ccf5733423f9b04ed25026150119a881efd1fd58a"
+  },
+  {
+    "path": "src/missing/ctime_r.c",
+    "bytes": 402,
+    "lines": 19,
+    "sha256": "2d4045c317b3630be70fd7222080f94c487a0663e7377c8b2e2f5acd6d2cb00d"
+  },
+  {
+    "path": "src/missing/dprintf.c",
+    "bytes": 2069,
+    "lines": 58,
+    "sha256": "316246178eae442718c5b3f1788ad4914098b70b22e17f8e40a72ffb1f62296f"
+  },
+  {
+    "path": "src/missing/engine.c",
+    "bytes": 32676,
+    "lines": 1273,
+    "sha256": "9ba9fd4858cda111fa93538572caf26b9110611fc7d9f3c6276f6862c3e7db02"
+  },
+  {
+    "path": "src/missing/fmtcheck.c",
+    "bytes": 5636,
+    "lines": 254,
+    "sha256": "1b2db8446cb3ebd504dc321e8f773d5d0da9284c4545210c0ba61a23913abc2c"
+  },
+  {
+    "path": "src/missing/getline.c",
+    "bytes": 2820,
+    "lines": 104,
+    "sha256": "516d21c9e24ae0e09adc0742d2a2aff312ae7f78de7d3252af92d79d89e06482"
+  },
+  {
+    "path": "src/missing/getopt_long.c",
+    "bytes": 12815,
+    "lines": 498,
+    "sha256": "160acd4f42402fae39c63fbf8af2ec671103745a4849346963965bda93ee05d8"
+  },
+  {
+    "path": "src/missing/gmtime_r.c",
+    "bytes": 436,
+    "lines": 19,
+    "sha256": "900b825d2c9dec93814ae3d222543d4da4c527325fda24f48ce122757a01460a"
+  },
+  {
+    "path": "src/missing/localtime_r.c",
+    "bytes": 448,
+    "lines": 19,
+    "sha256": "ddb813a92b4c007fc3b4347e68bb549898b01584612237af6185980e34f5ddc9"
+  },
+  {
+    "path": "src/missing/namespace.h",
+    "bytes": 342,
+    "lines": 7,
+    "sha256": "679cd28d369f7deb6e3fd5161bf2de72b6ea628dacb1c5d72a8c302caeec6696"
+  },
+  {
+    "path": "src/missing/pread.c",
+    "bytes": 424,
+    "lines": 23,
+    "sha256": "19b4cb6b4dc4c0e2c73f9aeeefb6d95dc99c5fac7182d057f1d5c589fc237ea0"
+  },
+  {
+    "path": "src/missing/reallocarray.c",
+    "bytes": 389,
+    "lines": 17,
+    "sha256": "daa6e68121320a5cc5366a3b55b5e3b6e6b207d3e090af5777d2e67710419e08"
+  },
+  {
+    "path": "src/missing/regcomp.c",
+    "bytes": 57390,
+    "lines": 2443,
+    "sha256": "f0487d41983d570977b770f2dfe48d1cb69a1397a6cf0602aa35aaacdd0774fb"
+  },
+  {
+    "path": "src/missing/regerror.c",
+    "bytes": 6101,
+    "lines": 198,
+    "sha256": "e53d7581175a482cdd2db3d38e38cca9ed80f7cec61add983049da32bd2f744e"
+  },
+  {
+    "path": "src/missing/regex2.h",
+    "bytes": 8013,
+    "lines": 216,
+    "sha256": "0e1c7dc588ec680bd33075e350dff3e98da4a40eeeec44d9fbbe0f1316ba0866"
+  },
+  {
+    "path": "src/missing/regexec.c",
+    "bytes": 8087,
+    "lines": 267,
+    "sha256": "46b9aab12cbf4ebfc5d96b6838f6a12aa99439fd66fa1df431eb57f8e9b1d3a5"
+  },
+  {
+    "path": "src/missing/regfree.c",
+    "bytes": 3568,
+    "lines": 117,
+    "sha256": "d547d41ae88e6e39f49774bd0ada8fdd14b910f69282a4389f0e7b74d441e647"
+  },
+  {
+    "path": "src/missing/strcasestr.c",
+    "bytes": 2827,
+    "lines": 84,
+    "sha256": "0acc71ef0bf501b24d11cf7668b8f4e9db6cd95869a9136d18ddfd46a83312c9"
+  },
+  {
+    "path": "src/missing/strlcat.c",
+    "bytes": 1848,
+    "lines": 61,
+    "sha256": "51e0792270830aca325a0d0f2c870540908b223cd961ea59b5865fe170e9984e"
+  },
+  {
+    "path": "src/missing/strlcpy.c",
+    "bytes": 1737,
+    "lines": 57,
+    "sha256": "df73f126cb4ee245f1a7c3cb464bf150caf7fe665ad99ee3d3e0a47fca9fd782"
+  },
+  {
+    "path": "src/missing/utils.h",
+    "bytes": 3796,
+    "lines": 105,
+    "sha256": "a7cc98b4a4d8be69bb6a220c9014190f92e30831bfc53c16c0da13f61730abd9"
+  },
+  {
+    "path": "src/missing/vasprintf.c",
+    "bytes": 19613,
+    "lines": 650,
+    "sha256": "be5a77c00b521454d0b240c6aaa30232f592b797474a6df6c88d37779662e961"
+  },
+  {
+    "path": "src/mygetopt.h",
+    "bytes": 2245,
+    "lines": 61,
+    "sha256": "828896085b45f9d9e621a177016824f39d579a9e65e3082a7e961faa92cc0c00"
+  },
+  {
+    "path": "src/print.c",
+    "bytes": 10848,
+    "lines": 413,
+    "sha256": "87d4173c82c77a6854028efc317f344c8f80bfb6adc0464a70859c9d4e000ae6"
+  },
+  {
+    "path": "src/readcdf.c",
+    "bytes": 17361,
+    "lines": 703,
+    "sha256": "db99040df1abc2009cda6cd689118b0c3855746e75aa7e8ac8107f26eaba8fb4"
+  },
+  {
+    "path": "src/readelf.c",
+    "bytes": 49346,
+    "lines": 1980,
+    "sha256": "2e521d90a20f3b19bb908e500f5538983c5b87d3acf1c565a8eabe7b11d0ac5e"
+  },
+  {
+    "path": "src/readelf.h",
+    "bytes": 17801,
+    "lines": 576,
+    "sha256": "c5e20111e919db74f9dffcddcc865ac6f95af56b3c5af19d0ad7246fbca925d7"
+  },
+  {
+    "path": "src/regex-bsd.h",
+    "bytes": 4324,
+    "lines": 133,
+    "sha256": "1ba1d52675a103f8980fc4658beba1c455522561972603a09853100f4f2dea58"
+  },
+  {
+    "path": "src/seccomp.c",
+    "bytes": 8408,
+    "lines": 284,
+    "sha256": "e3bd5c0dadd44ee3d6cc7808c6388879799acba4bcec96afb1044c6923cca56c"
+  },
+  {
+    "path": "src/softmagic.c",
+    "bytes": 61227,
+    "lines": 2609,
+    "sha256": "73d03999e4701a46b8c7cba9815787e96617a37a6ba407f03d00d3a51e05eede"
+  },
+  {
+    "path": "src/swap.c",
+    "bytes": 2747,
+    "lines": 101,
+    "sha256": "a26cbf7e4da2af3ac3a8a849dac5f17fa5dbca01c46b83281887e82ee671c6bc"
+  },
+  {
+    "path": "src/swap.h",
+    "bytes": 2033,
+    "lines": 48,
+    "sha256": "580a1be53a35724e62406f0cf608e3debff1c3d64b33e68c40626517f6d9aac7"
+  },
+  {
+    "path": "src/tar.h",
+    "bytes": 2628,
+    "lines": 73,
+    "sha256": "349ad8be69ed82d5f89d8c958d523bec87a4b264a6877b356b9322ae5902a33f"
+  },
+  {
+    "path": "tests/.cvsignore",
+    "bytes": 38,
+    "lines": 5,
+    "sha256": "f5ac44c872b1dec5b22ed400f48c7633ef382018c6054ec52f28caab04fec0fd"
+  },
+  {
+    "path": "tests/Animated_PNG_example_bouncing_beach_ball.result",
+    "bytes": 99,
+    "lines": 1,
+    "sha256": "700a6067b76fc270a3b1a1a6273ed0e8207185b5c9ffe476d15520488efbaaf8"
+  },
+  {
+    "path": "tests/Animated_PNG_example_bouncing_beach_ball.testfile",
+    "bytes": 61968,
+    "lines": 273,
+    "sha256": "3b28e2462f1b31d0d15d795e6e58baf397899c3f864be7034bf47939b5bbbc3b"
+  },
+  {
+    "path": "tests/CVE-2014-1943.result",
+    "bytes": 30,
+    "lines": 1,
+    "sha256": "a8d5bcdabe79384b76befeb743b699a3883311003af4df5c86a35abb1deb9829"
+  },
+  {
+    "path": "tests/CVE-2014-1943.testfile",
+    "bytes": 5,
+    "lines": 0,
+    "sha256": "3a913606f9e98c4ea6d9ec81e28bb2695a8e947c89dc6e38c593d1c4bd98f34d"
+  },
+  {
+    "path": "tests/HWP2016.hwp.result",
+    "bytes": 53,
+    "lines": 1,
+    "sha256": "7c7f138de6a45a4f23cd9570dc3d027a95f54721ae5ae5c5007705843dcccbd3"
+  },
+  {
+    "path": "tests/HWP2016.hwp.testfile",
+    "bytes": 9216,
+    "lines": 16,
+    "sha256": "7cf434b26fbc05f37838e9a790f0a2f9091d4f365ec291c903049c13d6ddd7d1"
+  },
+  {
+    "path": "tests/HWP2016.hwpx.zip.result",
+    "bytes": 46,
+    "lines": 1,
+    "sha256": "8104db67afdfd7df19888aae3e56df68cf43f4d78617a74d1f1709cf12c300b8"
+  },
+  {
+    "path": "tests/HWP2016.hwpx.zip.testfile",
+    "bytes": 14377,
+    "lines": 34,
+    "sha256": "05ee144c846154b24f12310dcb74a16b77d9264b0255c41e06beb17b37693091"
+  },
+  {
+    "path": "tests/HWP97.hwp.result",
+    "bytes": 53,
+    "lines": 1,
+    "sha256": "fa750527f8e18898b6f9ad523a04478b2c3e45f1fa0c9ab16c78f5e00e10b262"
+  },
+  {
+    "path": "tests/HWP97.hwp.testfile",
+    "bytes": 8975,
+    "lines": 26,
+    "sha256": "eed7c41e6e46fbbc1ff01fd9d0684e8a24bb8c4f56cf894fbdb71511e185a14b"
+  },
+  {
+    "path": "tests/JW07022A.mp3.result",
+    "bytes": 99,
+    "lines": 1,
+    "sha256": "2937c34b70c8c6138ffb7695b68135b2da1b05a8003a7ad09faca5a459ebb6cb"
+  },
+  {
+    "path": "tests/JW07022A.mp3.testfile",
+    "bytes": 15887,
+    "lines": 40,
+    "sha256": "0db1aeac626c2ae30a12c8690f5caa6347d74b49d00058b264f748afd4c7573a"
+  },
+  {
+    "path": "tests/Makefile.am",
+    "bytes": 5701,
+    "lines": 252,
+    "sha256": "fe0e6d77ff0e13c25d9e6288a55758715649e9e05c23186d655617bd56809807"
+  },
+  {
+    "path": "tests/README",
+    "bytes": 402,
+    "lines": 14,
+    "sha256": "9cd7e3d1f846baca51656284344c0c4520e2ec238d88f57906ff3c3572dcd5d9"
+  },
+  {
+    "path": "tests/android-vdex-1.result",
+    "bytes": 124,
+    "lines": 1,
+    "sha256": "3310a51186c38e95a18785e5f1ee2a1c192dd067e0cc0fab8c0cab354ff637b8"
+  },
+  {
+    "path": "tests/android-vdex-1.testfile",
+    "bytes": 20,
+    "lines": 0,
+    "sha256": "52beba212b44f3b6abf5dc7416dc4b108919e1d334ef320f5596f435fc0d1854"
+  },
+  {
+    "path": "tests/android-vdex-2.result",
+    "bytes": 150,
+    "lines": 1,
+    "sha256": "ded1ecec3639f66c5ee9afe13a9e0593224c6963617846754e45b8ce6e075f57"
+  },
+  {
+    "path": "tests/android-vdex-2.testfile",
+    "bytes": 20,
+    "lines": 0,
+    "sha256": "f1a25f30e3c0dc06d0025fb7671cb403b88f6ed4b043b8ce5f7d675cd4e36790"
+  },
+  {
+    "path": "tests/apng-ffmpeg.result",
+    "bytes": 98,
+    "lines": 1,
+    "sha256": "1747289f547ebc13fc2226000c89d3d04a152dde2c3f9a968dc0585d07da7f96"
+  },
+  {
+    "path": "tests/apng-ffmpeg.testfile",
+    "bytes": 25513,
+    "lines": 85,
+    "sha256": "6f44310badbd0f8ba5145474f4d325ad469135e072e26b5b5b7b812831c4a2c0"
+  },
+  {
+    "path": "tests/arj.result",
+    "bytes": 140,
+    "lines": 1,
+    "sha256": "bcf096bf934f72ecbf12af35f0f6decb4cbf651ccf780ae8bd4be37cd4c8f339"
+  },
+  {
+    "path": "tests/arj.testfile",
+    "bytes": 54,
+    "lines": 0,
+    "sha256": "9a15947d82d4f7d709fd4999c8e3c5701bf52b5904bd994977faa39eb07749dc"
+  },
+  {
+    "path": "tests/ascii-escape-so-si.result",
+    "bytes": 34,
+    "lines": 1,
+    "sha256": "d49cc607968bcaa4e8b5d83f169b0bac2dbac603f569a87eb3fc5993e7518256"
+  },
+  {
+    "path": "tests/ascii-escape-so-si.testfile",
+    "bytes": 23,
+    "lines": 2,
+    "sha256": "60836d0cb6b1b7cb5040936a25b240d25f0b965ada174306aa16e40b48f9af4c"
+  },
+  {
+    "path": "tests/bcachefs.result",
+    "bytes": 158,
+    "lines": 1,
+    "sha256": "044f12312da651d221469d36913fee71baf8771a28b422694c0d3da4270ef483"
+  },
+  {
+    "path": "tests/bcachefs.testfile",
+    "bytes": 8192,
+    "lines": 1,
+    "sha256": "bb7151f1be68457d89bc4f88f732ae44e644739dde2742abe040e65fb4fdfc19"
+  },
+  {
+    "path": "tests/bcachefs2.result",
+    "bytes": 168,
+    "lines": 1,
+    "sha256": "8f6d1cf17f3b69394599ca654f17e672802fd797a89abdb106da9c78b877c113"
+  },
+  {
+    "path": "tests/bcachefs2.testfile",
+    "bytes": 8192,
+    "lines": 3,
+    "sha256": "f2d0a1b95a8bc3593be0c3ab6391de246f79f769c2c11a1fd5dd28b30b0a3454"
+  },
+  {
+    "path": "tests/bgcode.result",
+    "bytes": 40,
+    "lines": 1,
+    "sha256": "022607db8dd6b2814bd9115874922d6f81a315ad2e556327089a425c92319579"
+  },
+  {
+    "path": "tests/bgcode.testfile",
+    "bytes": 1430943,
+    "lines": 11409,
+    "sha256": "250cd0f9c0537866fa2103d9133c960bbec45a31128230fe057ea9709a83d8bb"
+  },
+  {
+    "path": "tests/cl8m8ocofedso.result",
+    "bytes": 101,
+    "lines": 1,
+    "sha256": "cc6218739419b18f676ac23975d3e1c9a2335a7236b72cc9e37841f03ff0b72a"
+  },
+  {
+    "path": "tests/cl8m8ocofedso.testfile",
+    "bytes": 27777,
+    "lines": 106,
+    "sha256": "e3eba2397e334bcd2f8633c40166f537e23418804744fa183ae6d28cb2bead50"
+  },
+  {
+    "path": "tests/cmd1.result",
+    "bytes": 46,
+    "lines": 1,
+    "sha256": "c569ffb505ed642fdcab98d7f0c5d33acbb44df1905f9d3873eac146cda8525a"
+  },
+  {
+    "path": "tests/cmd1.testfile",
+    "bytes": 17,
+    "lines": 1,
+    "sha256": "6a4558153a3d363f378f718b37388afba735db44d825ec1537b0a6261985ead3"
+  },
+  {
+    "path": "tests/cmd2.result",
+    "bytes": 46,
+    "lines": 1,
+    "sha256": "7f0f39c2ba68b4c8f66c7c400e6f5f43ed4fc340bd71478c546370b057c5eed6"
+  },
+  {
+    "path": "tests/cmd2.testfile",
+    "bytes": 16,
+    "lines": 1,
+    "sha256": "6c3750d2f2722cb2676e95253ff1ccb5022c0562f0baa008887ea1a431e8cbf0"
+  },
+  {
+    "path": "tests/cmd3.result",
+    "bytes": 48,
+    "lines": 1,
+    "sha256": "065c49f325930eba9621b6728470a02ba5bf2f46ca4f76a82101820ae82c9814"
+  },
+  {
+    "path": "tests/cmd3.testfile",
+    "bytes": 26,
+    "lines": 2,
+    "sha256": "df2f2d8f66e50f2caf6ce983634b718d47f2ca36fd921c8503fa08d4e1bdeea7"
+  },
+  {
+    "path": "tests/cmd4.result",
+    "bytes": 48,
+    "lines": 1,
+    "sha256": "26f7fac31722540d1ba263f02c1ed30f4e0991657f039b0837419b96322d6315"
+  },
+  {
+    "path": "tests/cmd4.testfile",
+    "bytes": 27,
+    "lines": 2,
+    "sha256": "d31bdbce5ae0ead61a942748541775ca8dec91e0ba0389b2098185278f0c2f48"
+  },
+  {
+    "path": "tests/dsd64-dff.result",
+    "bytes": 97,
+    "lines": 1,
+    "sha256": "9b50321131a8e29d24d0cbf8cbab96b1871535c5fbf36c5deae9337b9c584cf3"
+  },
+  {
+    "path": "tests/dsd64-dff.testfile",
+    "bytes": 17922,
+    "lines": 6,
+    "sha256": "41694cf56a7143752ef2b8de7d192c04cee432ed717baac0b9ced1d9ce292cff"
+  },
+  {
+    "path": "tests/dsd64-dsf.result",
+    "bytes": 94,
+    "lines": 1,
+    "sha256": "f4bae34fa0ed748cae5a2f296d562a7b3c12128db0767d3fdc9c5ec95f27756b"
+  },
+  {
+    "path": "tests/dsd64-dsf.testfile",
+    "bytes": 20707,
+    "lines": 10,
+    "sha256": "3217396ba53c5510eb4a4bdb4c9b76dcadfa262064d35b3d8cc0136fed4bba8c"
+  },
+  {
+    "path": "tests/efi-signature-list-sha256.result",
+    "bytes": 49,
+    "lines": 1,
+    "sha256": "1495ed2a827841c707e63750d9c276d00aa23267c58b19d8fa8ee38ac35ffcfd"
+  },
+  {
+    "path": "tests/efi-signature-list-sha256.testfile",
+    "bytes": 76,
+    "lines": 0,
+    "sha256": "c247d0cdf5b5134588c1f947047d284bcda4d98d406d7181a59928776c63f684"
+  },
+  {
+    "path": "tests/escapevel.result",
+    "bytes": 65,
+    "lines": 1,
+    "sha256": "3bbf9ac4be2229c7cfba91412104b835dc57f7f50f69fd76662426a24aa28964"
+  },
+  {
+    "path": "tests/escapevel.testfile",
+    "bytes": 8813,
+    "lines": 37,
+    "sha256": "492efdc7cba52f845a739a0695af46b4e93785cec5d3a50f15eff01457d4d87f"
+  },
+  {
+    "path": "tests/ext4.result",
+    "bytes": 123,
+    "lines": 1,
+    "sha256": "ff6bb81381a3b58d06b90f4f79169ef841b5add4d08d44101b93536bc414d4bd"
+  },
+  {
+    "path": "tests/ext4.testfile",
+    "bytes": 2048,
+    "lines": 2,
+    "sha256": "3dcc9c1a9eaf697d08969e80ad3ddf1acf4e8a616c659e58601c9b7580dc2463"
+  },
+  {
+    "path": "tests/fit-map-data.result",
+    "bytes": 131,
+    "lines": 1,
+    "sha256": "5b6972806d8b0acc47ff61e0024688d537051cf7f27003bb6ad3688d98ddb42a"
+  },
+  {
+    "path": "tests/fit-map-data.testfile",
+    "bytes": 16001,
+    "lines": 229,
+    "sha256": "abecf7bce30faa9e1a118f13c16937985c82bc500c87f00c0311418b13e4ac16"
+  },
+  {
+    "path": "tests/gedcom.result",
+    "bytes": 46,
+    "lines": 1,
+    "sha256": "7c2eb4b45a17383608da823491a3135787cbaf724a51cb0bab328787e2222c78"
+  },
+  {
+    "path": "tests/gedcom.testfile",
+    "bytes": 100,
+    "lines": 8,
+    "sha256": "95fd5fe67b0bed51020089c4863880cdd039a26ae6546cb3c7cb9a85892e97f9"
+  },
+  {
+    "path": "tests/gpkg-1-zst.result",
+    "bytes": 86,
+    "lines": 1,
+    "sha256": "ffc2cfed9bfaac6fb920f36370c78e0b599246bdb7a24a2f534ce1d681d8da24"
+  },
+  {
+    "path": "tests/gpkg-1-zst.testfile",
+    "bytes": 1024,
+    "lines": 0,
+    "sha256": "479a810e825cdc8134edc33b75c78c50da5da203b8a3cd55a666965eb7536b15"
+  },
+  {
+    "path": "tests/hddrawcopytool.result",
+    "bytes": 75,
+    "lines": 1,
+    "sha256": "21431fdad8c52940863c5b113894897ead26b80a4e66c11d830902f65d5105a5"
+  },
+  {
+    "path": "tests/hddrawcopytool.testfile",
+    "bytes": 1280,
+    "lines": 0,
+    "sha256": "b0d7dc24dda3fa4be35dd6b204b4ffb8267d5df5086ee6cf72bddfae89bd368e"
+  },
+  {
+    "path": "tests/hello-racket_rkt.result",
+    "bytes": 30,
+    "lines": 1,
+    "sha256": "eca41a067220be7255cfb11a045a77a030c77ba0acb7708a870be4ba26efd8c4"
+  },
+  {
+    "path": "tests/hello-racket_rkt.testfile",
+    "bytes": 1664,
+    "lines": 18,
+    "sha256": "7535c9401ad7ff5c744b4d7bd505931adb3ca83bafaf1b6071664be3660f4d7f"
+  },
+  {
+    "path": "tests/issue311docx.result",
+    "bytes": 21,
+    "lines": 1,
+    "sha256": "4ee861b0897fb2ed6938ef4cfd3082edb1666b2d0c184dfab8972c589ee3ccca"
+  },
+  {
+    "path": "tests/issue311docx.testfile",
+    "bytes": 3770,
+    "lines": 9,
+    "sha256": "6cd7e92fb9cc516d2c0f89666c0355d70ebab632f086065b77b35f43ab60aad3"
+  },
+  {
+    "path": "tests/issue359xlsx.result",
+    "bytes": 22,
+    "lines": 1,
+    "sha256": "df6dfe898ba97e8391a02bb506da54bc32232b1dda67ce41bb449786686a906f"
+  },
+  {
+    "path": "tests/issue359xlsx.testfile",
+    "bytes": 4483,
+    "lines": 7,
+    "sha256": "ff717a50cb6fd1795ca6ec985cdc2f7bfe91593f3804e5798f067a1e22afbe40"
+  },
+  {
+    "path": "tests/jpeg-text.result",
+    "bytes": 37,
+    "lines": 1,
+    "sha256": "16805173ce21ea31c71bc8210cb2119d4b84c606152b6ab4985df7841c196e9c"
+  },
+  {
+    "path": "tests/jpeg-text.testfile",
+    "bytes": 6,
+    "lines": 0,
+    "sha256": "2510cb3545289507f1c23d6074129e5e79c1f3d5a5085626ef4c971330d9d507"
+  },
+  {
+    "path": "tests/json1.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json1.testfile",
+    "bytes": 392,
+    "lines": 14,
+    "sha256": "d6afae4dde6f83aa278a098ab5b803bd2c14cd1bbd0fc6d35c74a15d244766cf"
+  },
+  {
+    "path": "tests/json2.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json2.testfile",
+    "bytes": 573,
+    "lines": 22,
+    "sha256": "0ae85d7f837d3a40b3546ece531751750d3d2c268ecf5aa5fbd4285715642e5a"
+  },
+  {
+    "path": "tests/json3.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json3.testfile",
+    "bytes": 172,
+    "lines": 13,
+    "sha256": "8cc562ca306725bd1c9508a6d23bc309007a159128b762243413d7001e97c075"
+  },
+  {
+    "path": "tests/json4.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json4.testfile",
+    "bytes": 4,
+    "lines": 1,
+    "sha256": "acc07b62f23f458923737c4cd4a66bd05d1e71eb4f384003baaf2dcc760d6349"
+  },
+  {
+    "path": "tests/json5.result",
+    "bytes": 11,
+    "lines": 1,
+    "sha256": "2ebeccb2a82df1dd6fe228a9308aa9c8a7532484206dc5428d59d43a2fd9cd1a"
+  },
+  {
+    "path": "tests/json5.testfile",
+    "bytes": 6,
+    "lines": 1,
+    "sha256": "a627fc45bcd3e85d64dd97efab93a59fda4cca83d52cc7d42330f72b3e550c0e"
+  },
+  {
+    "path": "tests/json6.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json6.testfile",
+    "bytes": 10,
+    "lines": 1,
+    "sha256": "225bc44614cb00505a2f0567e8fbf0e84b901e473a9e4d3e52a11dc3ac0417cc"
+  },
+  {
+    "path": "tests/json7.result",
+    "bytes": 11,
+    "lines": 1,
+    "sha256": "2ebeccb2a82df1dd6fe228a9308aa9c8a7532484206dc5428d59d43a2fd9cd1a"
+  },
+  {
+    "path": "tests/json7.testfile",
+    "bytes": 14,
+    "lines": 1,
+    "sha256": "443c6989103d9d934faf0256a48d8b51011ae619a8cb263b61a5ffb9fe72df28"
+  },
+  {
+    "path": "tests/json8.result",
+    "bytes": 15,
+    "lines": 1,
+    "sha256": "0d81abcabf874b74b4e6e20a87d9ea243a3d3eef2df4bc932e2739fd272375c0"
+  },
+  {
+    "path": "tests/json8.testfile",
+    "bytes": 14,
+    "lines": 1,
+    "sha256": "bfaac780e72757417e943b9592d4828efaf10753b32d82e6b88773b852554897"
+  },
+  {
+    "path": "tests/jsonlines1.result",
+    "bytes": 34,
+    "lines": 1,
+    "sha256": "8f0806b61760bcf3e1374659c579d5ae462362753e001c721802f128b6a22dd6"
+  },
+  {
+    "path": "tests/jsonlines1.testfile",
+    "bytes": 6,
+    "lines": 2,
+    "sha256": "3b00ba5361676a0a8152642a6edaf54a222bd409b5774b5b461ac8d1cee09cb4"
+  },
+  {
+    "path": "tests/keyman-0.result",
+    "bytes": 55,
+    "lines": 1,
+    "sha256": "f47dffe87dc07052ad449d69e1fdec84f513422b5310f89fdef9b7d78b03d986"
+  },
+  {
+    "path": "tests/keyman-0.testfile",
+    "bytes": 1494,
+    "lines": 7,
+    "sha256": "075f9f1c38f6d608cfe40d4dc58fb01c12165ff104d57c3187366305445b0cea"
+  },
+  {
+    "path": "tests/keyman-1.result",
+    "bytes": 44,
+    "lines": 1,
+    "sha256": "a35965be14e65a2f4792ef5cdfcb49d349512b054f4cfa2c3d42c82698432fe2"
+  },
+  {
+    "path": "tests/keyman-1.testfile",
+    "bytes": 378,
+    "lines": 0,
+    "sha256": "225e906ffacf8cfca19e2bd495f9d389ecbbece974650c9d1574487e16de95ba"
+  },
+  {
+    "path": "tests/keyman-2.result",
+    "bytes": 29,
+    "lines": 1,
+    "sha256": "13040d1e0c77ef991c7988d136a51c822cb1820d087b4f2559cd7b7d18f34c67"
+  },
+  {
+    "path": "tests/keyman-2.testfile",
+    "bytes": 1092,
+    "lines": 11,
+    "sha256": "8a478d0fb11fc07db8d434cbd662acb93f3c14572a68a81af1e7264dd34c6fa3"
+  },
+  {
+    "path": "tests/matilde.arm.result",
+    "bytes": 42,
+    "lines": 1,
+    "sha256": "df99f22c0f11aecbcde5be3f914858722586ef47c4139604fc412b754ceac416"
+  },
+  {
+    "path": "tests/matilde.arm.testfile",
+    "bytes": 14790,
+    "lines": 51,
+    "sha256": "f74d411363cb7a2ff55e0d9632e257750e121dd188884a166e1f83adfafec13b"
+  },
+  {
+    "path": "tests/multiple-A.magic",
+    "bytes": 53,
+    "lines": 2,
+    "sha256": "fe4138b88b0e82fdf3f1c35360221d5ff764fa41d58fc63540671d7af29e897f"
+  },
+  {
+    "path": "tests/multiple-B.magic",
+    "bytes": 53,
+    "lines": 2,
+    "sha256": "2d27b4d71e55cd0fdcb564773cdec401f092e387653e99fb9761facf72f64ed8"
+  },
+  {
+    "path": "tests/multiple.flags",
+    "bytes": 2,
+    "lines": 1,
+    "sha256": "19732980d68fbd00358a0a4d98246c960400b87e4fa2a2e155db98be2b42ed6c"
+  },
+  {
+    "path": "tests/multiple.result",
+    "bytes": 98,
+    "lines": 1,
+    "sha256": "5d492d0656ca73da50db8a3cab3f02c52de314f820725475ef93080176751c70"
+  },
+  {
+    "path": "tests/multiple.testfile",
+    "bytes": 22,
+    "lines": 0,
+    "sha256": "391d7c09cd36db55daeb0de496b215f5bc15fb0f4d52dff990e96c7424588a22"
+  },
+  {
+    "path": "tests/osm.result",
+    "bytes": 35,
+    "lines": 1,
+    "sha256": "0d7cec4b5543c4158828d7a0c5fa05ba06c0f794b3bcee7254e366d3126b212a"
+  },
+  {
+    "path": "tests/osm.testfile",
+    "bytes": 91,
+    "lines": 3,
+    "sha256": "493ef8be3c331905cb70276244eb99637a309fc5cc97f9be627a5b145a50e245"
+  },
+  {
+    "path": "tests/pcjr.result",
+    "bytes": 21,
+    "lines": 1,
+    "sha256": "01af4c96c52445122e803ab354025ff80d3232b590e8c71635832ff7b72ef6b2"
+  },
+  {
+    "path": "tests/pcjr.testfile",
+    "bytes": 514,
+    "lines": 2,
+    "sha256": "53108762a402c7ff711beb0a695d45c5ce6a444e6a8b9fc07923bb2e1cf58fac"
+  },
+  {
+    "path": "tests/pdf-no-version.result",
+    "bytes": 25,
+    "lines": 1,
+    "sha256": "b27dad43ab5056ad7d4705bfe2b8ca8395a29f5affc643fe940b640c090952d1"
+  },
+  {
+    "path": "tests/pdf-no-version.testfile",
+    "bytes": 25,
+    "lines": 1,
+    "sha256": "7f076d2212b0d6c185215c88b0a760a9b423b2fc5feb489e5eb9898568d0f84a"
+  },
+  {
+    "path": "tests/pdf-utf8-bom.result",
+    "bytes": 34,
+    "lines": 1,
+    "sha256": "5ec0df6197fae4833684f1bab2396f027431809382f74321c1e1df533ae22779"
+  },
+  {
+    "path": "tests/pdf-utf8-bom.testfile",
+    "bytes": 18,
+    "lines": 2,
+    "sha256": "afb8cf63f90ca98f3b6b8c4fa3214dfc318a043e3d37d28af4a4b67c91d526af"
+  },
+  {
+    "path": "tests/pgp-binary-key-v2-phil.result",
+    "bytes": 138,
+    "lines": 1,
+    "sha256": "ab24a41831c183f5d1a2ad0c5c631dadc51651b7a8fadc77d39ada784db9a394"
+  },
+  {
+    "path": "tests/pgp-binary-key-v2-phil.testfile",
+    "bytes": 975,
+    "lines": 5,
+    "sha256": "86c4e1c5e7aa8d964e74375db7193912a545430f210cea079a5d22733a54c437"
+  },
+  {
+    "path": "tests/pgp-binary-key-v3-lutz.result",
+    "bytes": 138,
+    "lines": 1,
+    "sha256": "893afcf22df0a830ba572efb4a123945d9296290658ee29df2041f70d0404b8a"
+  },
+  {
+    "path": "tests/pgp-binary-key-v3-lutz.testfile",
+    "bytes": 11722,
+    "lines": 50,
+    "sha256": "3b8515e58982a1ba99d1dbf730dc0a5fbc65b623876bba0ba5988b6fbca5144f"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-dsa.result",
+    "bytes": 121,
+    "lines": 1,
+    "sha256": "0392d516e754eb873becbce33a88f0cedf216e3bfc84578bc2d6ebcdfe72b3b2"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-dsa.testfile",
+    "bytes": 1677,
+    "lines": 5,
+    "sha256": "069501aa7bba2fb424cb3bf66364b4f14686d352e4523b2c4860f0fd93f0738d"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-ecc-no-userid-secret.result",
+    "bytes": 117,
+    "lines": 1,
+    "sha256": "c0125594a0822a7059445dfd786550393815a6404cf446deaf16c03b08bd3112"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-ecc-no-userid-secret.testfile",
+    "bytes": 794,
+    "lines": 8,
+    "sha256": "37d0ea76ffb8aac44feb03593534047af1046ce241582397e6be208c9d06d922"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-ecc-rev.result",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-ecc-secret-key.result",
+    "bytes": 111,
+    "lines": 1,
+    "sha256": "7995194b338dc79d8ac2c6b7cbdc3bac547cce6a71bbb68e3abb3c93f7b976ad"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-ecc-secret-key.testfile",
+    "bytes": 494,
+    "lines": 4,
+    "sha256": "90b5d649ea489f1e3dc08699e0049ea4b40e2e9635a9eb6741642636ceac7d38"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-key.result",
+    "bytes": 138,
+    "lines": 1,
+    "sha256": "6cb2a2fc253e9065fabf14013ab1b38c3e0c5ff53be845781abf21b129cd93ff"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-key.testfile",
+    "bytes": 3695,
+    "lines": 22,
+    "sha256": "fe1021358513e742b0a9ff2dc613e097ae52c026264d6be9deff28785c02fa7b"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-no-userid-rev.result",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-no-userid-secret.result",
+    "bytes": 144,
+    "lines": 1,
+    "sha256": "6410ae312a524512ead1774847d010796785a30e2376c82028651b8b9a8bbe5a"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-no-userid-secret.testfile",
+    "bytes": 5907,
+    "lines": 28,
+    "sha256": "e60d6454bc51d3fb15004297335057f5fea7d8d71a691316c9cefe06325cbdf2"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-secret-key.result",
+    "bytes": 138,
+    "lines": 1,
+    "sha256": "6cb2a2fc253e9065fabf14013ab1b38c3e0c5ff53be845781abf21b129cd93ff"
+  },
+  {
+    "path": "tests/pgp-binary-key-v4-rsa-secret-key.testfile",
+    "bytes": 3695,
+    "lines": 22,
+    "sha256": "fe1021358513e742b0a9ff2dc613e097ae52c026264d6be9deff28785c02fa7b"
+  },
+  {
+    "path": "tests/pnm1.result",
+    "bytes": 53,
+    "lines": 1,
+    "sha256": "e8896aa1dedc7bf64b88c3997601e6becc2d1f9569d7234fad9b541ae8364987"
+  },
+  {
+    "path": "tests/pnm1.testfile",
+    "bytes": 19,
+    "lines": 5,
+    "sha256": "64353f26e626b440f4869ace0f3ef256903b947ebcb982e75f1c23de8be76b3a"
+  },
+  {
+    "path": "tests/pnm2.result",
+    "bytes": 50,
+    "lines": 1,
+    "sha256": "6e02f578c892c0b2dd462d4c959667302523a412b22652b688eb7907fc40be30"
+  },
+  {
+    "path": "tests/pnm2.testfile",
+    "bytes": 15,
+    "lines": 4,
+    "sha256": "41d37cf9dde83ef36609cf1a9e7fbd1cb7e97882413d4db2af14ae71b824cf6c"
+  },
+  {
+    "path": "tests/pnm3.result",
+    "bytes": 54,
+    "lines": 1,
+    "sha256": "70a706ec1ba8177d44c3596188661ccd139a9ca7af0096766c5ca13259383ea8"
+  },
+  {
+    "path": "tests/pnm3.testfile",
+    "bytes": 56,
+    "lines": 5,
+    "sha256": "ddf3c07f83431f4160b5bcc620c7b888c8601cd8ab280007342eb01d25f758d1"
+  },
+  {
+    "path": "tests/regex-eol.magic",
+    "bytes": 234,
+    "lines": 6,
+    "sha256": "62b83309ad0ea078bc5767ceb37dc5ab6e7a731caaf1fb4824241ff216abe41a"
+  },
+  {
+    "path": "tests/regex-eol.result",
+    "bytes": 57,
+    "lines": 1,
+    "sha256": "2d196a4c27755d64ac6a06f5e8e1fdb4f37fcb4961a225055974b610cd11ee4b"
+  },
+  {
+    "path": "tests/regex-eol.testfile",
+    "bytes": 1845,
+    "lines": 24,
+    "sha256": "64005a9507c50967eadfc94797ad89e1dd0188f4862aca815e1532ff542da0cf"
+  },
+  {
+    "path": "tests/registry-pol.result",
+    "bytes": 40,
+    "lines": 1,
+    "sha256": "7a865887a372e51faf4ffed33d4f9d0132f7ad66a786e526d533e4db27ea5a0b"
+  },
+  {
+    "path": "tests/registry-pol.testfile",
+    "bytes": 7094,
+    "lines": 1,
+    "sha256": "9072bf4d2a79570878f48e570174aa7b4b229ea7ab01270f42e9b640667a54c3"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-aarch64.result",
+    "bytes": 21,
+    "lines": 1,
+    "sha256": "7caa644e8707530998fcbf4c4f6a012a3e5d5413420b8fa0db225647e2a05383"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-aarch64.testfile",
+    "bytes": 6361,
+    "lines": 4,
+    "sha256": "5b9c416fba1d8f5e13f96a46bf475d003615528fe23fad3284de79c4f79ac9d0"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-powerpc64.result",
+    "bytes": 23,
+    "lines": 1,
+    "sha256": "b640c2d864b1d8c36d924ec027ea77b5cd8c9bc9c10e6f056fd29e03248cffdd"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-powerpc64.testfile",
+    "bytes": 6309,
+    "lines": 4,
+    "sha256": "27aa662a4b5d984a4ec7fa0c5d112b8e4d4483cc1069bc47cced759b4dba0b7c"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-s390x.result",
+    "bytes": 20,
+    "lines": 1,
+    "sha256": "057c799ab619f720ae0a037282d22c28c1d14e61ebfa8ade446b186d5c23e5b2"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-s390x.testfile",
+    "bytes": 6301,
+    "lines": 4,
+    "sha256": "de0f2e127e315ba84dbf67ad37c3b1d29381b62d3a3ec580bc91f54666d78f93"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-x86_64.result",
+    "bytes": 25,
+    "lines": 1,
+    "sha256": "f6e9f73c6727333cfaad7e7d4031c86d20b0cccd0230d28f57f933569d36eaa0"
+  },
+  {
+    "path": "tests/rpm-v3.0-bin-x86_64.testfile",
+    "bytes": 6365,
+    "lines": 5,
+    "sha256": "a48bb1ad3b86734dcc308378138a64f771732d9bd6a67b391ff222f0e67bdd9c"
+  },
+  {
+    "path": "tests/rpm-v3.0-src.result",
+    "bytes": 13,
+    "lines": 1,
+    "sha256": "53424a0786a90dfda8339e22894d4a9498f2ab7cc181368fc7858e854fde6a1d"
+  },
+  {
+    "path": "tests/rpm-v3.0-src.testfile",
+    "bytes": 6554,
+    "lines": 25,
+    "sha256": "051064f9d500a208d9685da320c37ce510012b1d5bda29d4d1a68c321e5f4435"
+  },
+  {
+    "path": "tests/rtfd.result",
+    "bytes": 27,
+    "lines": 1,
+    "sha256": "57b81feb44b424d0825e29c4443226708d567e0a0edc76f9d375fb4c47dfc998"
+  },
+  {
+    "path": "tests/rtfd.testfile",
+    "bytes": 100,
+    "lines": 0,
+    "sha256": "cc13210c893c52dcd5d282195429ccbb53e593ec894f9e1c9ead92f168da4dda"
+  },
+  {
+    "path": "tests/searchbug.magic",
+    "bytes": 192,
+    "lines": 12,
+    "sha256": "dbe9ee09f2b7958afc7522720a504b5119710183347327e2d96e215d7d2a30f7"
+  },
+  {
+    "path": "tests/searchbug.result",
+    "bytes": 97,
+    "lines": 1,
+    "sha256": "1bc6c1ca439d40a548695938966887754454eacc4f5d869a87c35cefa0bc134c"
+  },
+  {
+    "path": "tests/searchbug.testfile",
+    "bytes": 256,
+    "lines": 0,
+    "sha256": "63746807199fd8b4d123fcbded52bd75d32f75e7bd20aafda6efdb2a1095b263"
+  },
+  {
+    "path": "tests/sh-other-be.result",
+    "bytes": 57,
+    "lines": 1,
+    "sha256": "6d776cdfc2667b4eb379124fce0819d73d3b36c016ac874fcf019517322dc7de"
+  },
+  {
+    "path": "tests/sh-other-be.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "61a7faa7a15f12ae1152bd270cca23ea8a970ba883b55a85697674edf42bed89"
+  },
+  {
+    "path": "tests/sh-other-le.result",
+    "bytes": 57,
+    "lines": 1,
+    "sha256": "a78397f38c4bf860ba2aebd55b834b935accbb265492c87a594f1cc8f5eae4ca"
+  },
+  {
+    "path": "tests/sh-other-le.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "1f884a1c97ae18872856e4c9babb6409061db75af2db81813224719bc357543e"
+  },
+  {
+    "path": "tests/sh4a-extra-be.result",
+    "bytes": 70,
+    "lines": 1,
+    "sha256": "be8c8ec514a8e063e1c09021b2a21d4c037d3bd91ba7b43cbb254f18335f72b4"
+  },
+  {
+    "path": "tests/sh4a-extra-be.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "c149bd53eeebd863a06e813ab557130ce2c372fdcdf87b21c87f56a9a0e110ba"
+  },
+  {
+    "path": "tests/sh4a-extra-le.result",
+    "bytes": 70,
+    "lines": 1,
+    "sha256": "6b14d2ebd304bd170d608dbf579749286a6b9d1d9ce7d8f88336058fa259f1b4"
+  },
+  {
+    "path": "tests/sh4a-extra-le.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "8e0f7b6aef7265cfd63404a730728b4f2b8575f641135aca945abc1d29666243"
+  },
+  {
+    "path": "tests/sh4a-nofpu-be.result",
+    "bytes": 70,
+    "lines": 1,
+    "sha256": "be8c8ec514a8e063e1c09021b2a21d4c037d3bd91ba7b43cbb254f18335f72b4"
+  },
+  {
+    "path": "tests/sh4a-nofpu-be.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "ce31acb51cc5104d790a06154a8056c4473a95d07fb0eded87609ed43ee079c1"
+  },
+  {
+    "path": "tests/sh4a-nofpu-le.result",
+    "bytes": 70,
+    "lines": 1,
+    "sha256": "6b14d2ebd304bd170d608dbf579749286a6b9d1d9ce7d8f88336058fa259f1b4"
+  },
+  {
+    "path": "tests/sh4a-nofpu-le.testfile",
+    "bytes": 52,
+    "lines": 0,
+    "sha256": "62437ac175bb1455d731f6f390d3e083dc2bd807af6d1f943f0da7d9c0b32b8d"
+  },
+  {
+    "path": "tests/tarantool-index.result",
+    "bytes": 43,
+    "lines": 1,
+    "sha256": "05466e00929e85ab5177de4c17132bd78664f6683a32c7f767d34112704aa41e"
+  },
+  {
+    "path": "tests/tarantool-index.testfile",
+    "bytes": 227,
+    "lines": 5,
+    "sha256": "65c597182f0cfeaafd261bf19a9113c6104d0846ef9053dc78d372db81017290"
+  },
+  {
+    "path": "tests/tarantool-not.result",
+    "bytes": 11,
+    "lines": 1,
+    "sha256": "2ebeccb2a82df1dd6fe228a9308aa9c8a7532484206dc5428d59d43a2fd9cd1a"
+  },
+  {
+    "path": "tests/tarantool-not.testfile",
+    "bytes": 40,
+    "lines": 3,
+    "sha256": "822064856d4490432255d3828115de5e153188e7ff5376755697798b4b799a40"
+  },
+  {
+    "path": "tests/tarantool-run.result",
+    "bytes": 41,
+    "lines": 1,
+    "sha256": "aff990bbbc1bd586c95f5cf2fe1f6ae3ea5491fd9474d313298d9cefcac9d0be"
+  },
+  {
+    "path": "tests/tarantool-run.testfile",
+    "bytes": 133,
+    "lines": 5,
+    "sha256": "ac4aa542014f38fd9b199aa162661a7a2df4b4d8aefea2b627605b42d186c357"
+  },
+  {
+    "path": "tests/tarantool-snap.result",
+    "bytes": 40,
+    "lines": 1,
+    "sha256": "eec157b7966c5dcd17f4f2d33909ffee0f6ccd247f1ba50a415e4185816763e0"
+  },
+  {
+    "path": "tests/tarantool-snap.testfile",
+    "bytes": 162,
+    "lines": 6,
+    "sha256": "a7927c570ab31a73f930027b800617c08b3d27acff025abfb9626d51b5e1db58"
+  },
+  {
+    "path": "tests/tarantool-vylog.result",
+    "bytes": 41,
+    "lines": 1,
+    "sha256": "f212df3010ba5c65a2df605bbb0c0d73101074a8e7b3ac869cbbf6c0f581e0eb"
+  },
+  {
+    "path": "tests/tarantool-vylog.testfile",
+    "bytes": 231,
+    "lines": 6,
+    "sha256": "2bc78a29df33912ee1cb36517f1129a5fb8da5514b709db6bf626c7c8db00b34"
+  },
+  {
+    "path": "tests/tarantool-xlog.result",
+    "bytes": 47,
+    "lines": 1,
+    "sha256": "5b5b0b8432b4ad4471282d088e7d322816aeb5e24f00f80b8d379e2579855654"
+  },
+  {
+    "path": "tests/tarantool-xlog.testfile",
+    "bytes": 108,
+    "lines": 6,
+    "sha256": "da14c6cf8de1ac109b9346feb12eeb84dd566ec9b25892b4c4efdf87f476328b"
+  },
+  {
+    "path": "tests/test.c",
+    "bytes": 3920,
+    "lines": 162,
+    "sha256": "663398561f59f0540ebcbcf8ba59b012d1a6b738a0237f6ab924387ff6151782"
+  },
+  {
+    "path": "tests/uf2.result",
+    "bytes": 78,
+    "lines": 1,
+    "sha256": "16f28e06c2f73964708454de3004c59cfd8b4974f958902e6e40c277f45e917c"
+  },
+  {
+    "path": "tests/uf2.testfile",
+    "bytes": 512,
+    "lines": 2,
+    "sha256": "d1235099ad60ed87ed99c1a8ffa3a5d3a4bb8ccc4415f396d14762e01d5c18b1"
+  },
+  {
+    "path": "tests/utf16xmlsvg.result",
+    "bytes": 77,
+    "lines": 1,
+    "sha256": "b22f1505a2d22005a6b4bd6d9dd449ece98f285406a361bcbb60f83e1a85620c"
+  },
+  {
+    "path": "tests/utf16xmlsvg.testfile",
+    "bytes": 5564,
+    "lines": 31,
+    "sha256": "06f83f3512927d8653070e521a85e36cd1f6fcbff8823c4ca76b3a9406b36bd0"
+  },
+  {
+    "path": "tests/xclbin.result",
+    "bytes": 193,
+    "lines": 1,
+    "sha256": "edeea829e815c2750b438d4419e0037fd1fcf01e486ea47d2e40395c25793683"
+  },
+  {
+    "path": "tests/xclbin.testfile",
+    "bytes": 512,
+    "lines": 0,
+    "sha256": "7a9b9b2711841903aa74bac46d02c6431ac3041f4642df2236005d18d7008fb1"
+  },
+  {
+    "path": "tests/xilinx.result",
+    "bytes": 137,
+    "lines": 1,
+    "sha256": "f2df2c17b73a447d19be012f335d7025686dbaaa572c5a1d561e6b6c4002801b"
+  },
+  {
+    "path": "tests/xilinx.testfile",
+    "bytes": 128,
+    "lines": 0,
+    "sha256": "213d1560d4b3d4e7723e2aed7f350a1bde94767d48dbed65ba33571aebb9fc67"
+  },
+  {
+    "path": "tests/zstd-3-skippable-frames.result",
+    "bytes": 52,
+    "lines": 1,
+    "sha256": "23f50366d891f6fc3a5c291a686559132409b9c8e7e5db7b6ee1d7b76ac9d961"
+  },
+  {
+    "path": "tests/zstd-dictionary-0.result",
+    "bytes": 28,
+    "lines": 1,
+    "sha256": "367bfec8064dd8223dbb74b51a644c591a14b33e97b79e58472831b6aee40381"
+  },
+  {
+    "path": "tests/zstd-dictionary-1.result",
+    "bytes": 28,
+    "lines": 1,
+    "sha256": "d86f354cc0e5eaf47efec2f94df7c261651bff4681dd5b02a4693d1a4cec142c"
+  },
+  {
+    "path": "tests/zstd-dictionary-2.result",
+    "bytes": 36,
+    "lines": 1,
+    "sha256": "6685ea70e0428e6b237d45e7072aa89cc77c53aee15c83190f98a59a540ff498"
+  },
+  {
+    "path": "tests/zstd-skippable-frame-0.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "344e202e0dcead7c06a4e7a7ad6db715df294650f43d94a070d832c5deb77287"
+  },
+  {
+    "path": "tests/zstd-skippable-frame-4.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "0c711f641651e37b313ca9ce327b23ad92683733227353926e7bb3ac55091165"
+  },
+  {
+    "path": "tests/zstd-skippable-frame-8.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "58e48937a7595671071228aff5b3bb7599f051c96cf206ee8969fe83537cc75c"
+  },
+  {
+    "path": "tests/zstd-skippable-frame-C.result",
+    "bytes": 52,
+    "lines": 1,
+    "sha256": "23f50366d891f6fc3a5c291a686559132409b9c8e7e5db7b6ee1d7b76ac9d961"
+  },
+  {
+    "path": "tests/zstd-v0.2-FF.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "344e202e0dcead7c06a4e7a7ad6db715df294650f43d94a070d832c5deb77287"
+  },
+  {
+    "path": "tests/zstd-v0.2-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "6284282c1febb2839b4de75445df89b730573df60ddae4effcf6aff8cd133e0b"
+  },
+  {
+    "path": "tests/zstd-v0.3-FF.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "0c711f641651e37b313ca9ce327b23ad92683733227353926e7bb3ac55091165"
+  },
+  {
+    "path": "tests/zstd-v0.3-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "ef21fc58afc825d444faf1a45e84b1663cfcd74fb5f6027c4cff56fc724b0791"
+  },
+  {
+    "path": "tests/zstd-v0.4-FF.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "58e48937a7595671071228aff5b3bb7599f051c96cf206ee8969fe83537cc75c"
+  },
+  {
+    "path": "tests/zstd-v0.4-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "689e8282b3d65cf1aaaa6ae91df90223d3a85ca99ae167d58ac06e4588a41636"
+  },
+  {
+    "path": "tests/zstd-v0.5-FF.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "bcfc9fd07a769edd128d90b902e7b2533da74097886f4f3a191adfeeef9ef3ef"
+  },
+  {
+    "path": "tests/zstd-v0.5-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "b5933c2858378076909249eba9ab247ccb8f3a6362b9bda49771a96c9e920f8e"
+  },
+  {
+    "path": "tests/zstd-v0.6-FF.result",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "2d8802643f84949ae09f808b0965760d307008acd5e5d37e40d807f0ca05dfd0"
+  },
+  {
+    "path": "tests/zstd-v0.6-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "a17312d657d648b8e2f1d85f48ff426426028466e071b8637503809cc71371fa"
+  },
+  {
+    "path": "tests/zstd-v0.7-00.result",
+    "bytes": 54,
+    "lines": 1,
+    "sha256": "27ded098219fe917e6af59fe6fa014af1835cce61e056c64b8432f4101b4eaea"
+  },
+  {
+    "path": "tests/zstd-v0.7-21.result",
+    "bytes": 51,
+    "lines": 1,
+    "sha256": "b4334f00cd7916e4e7fb36722776e66757427a32ad356881ca0930a482696b17"
+  },
+  {
+    "path": "tests/zstd-v0.7-21.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "e95bced9b8ad3d83a5be6b79cc12805a5ca0213347476589c4026a212da467a4"
+  },
+  {
+    "path": "tests/zstd-v0.7-22.result",
+    "bytes": 53,
+    "lines": 1,
+    "sha256": "6a4b3ee6b865dd01aca56dc0fa7df16c46408061db5c78caa3d05a563e9e96e3"
+  },
+  {
+    "path": "tests/zstd-v0.7-22.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "4e3fc2acec92751cc1e8128118c3eae17adb461e56e5a124c66531350075c441"
+  },
+  {
+    "path": "tests/zstd-v0.8-00.result",
+    "bytes": 55,
+    "lines": 1,
+    "sha256": "da150e8e99d313d892d7d7b76f4ed5cf38798a636686fc609d9900e70ac3985d"
+  },
+  {
+    "path": "tests/zstd-v0.8-01.result",
+    "bytes": 52,
+    "lines": 1,
+    "sha256": "85690e249f1be08b9437dc8a12c0cdf7189980d612daed26e930c254392c127a"
+  },
+  {
+    "path": "tests/zstd-v0.8-01.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "61ae24540609bbb1daacd444687c588cecff842b20b040f8e8ea10bdba262919"
+  },
+  {
+    "path": "tests/zstd-v0.8-02.result",
+    "bytes": 54,
+    "lines": 1,
+    "sha256": "731b152ac4a4f9b94d9cf37dc36fe7566bc528df4dfc3e9de7319bb8e8e930fb"
+  },
+  {
+    "path": "tests/zstd-v0.8-02.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "f77657aee205c5f122a68cdfcc2c91d187b16c659d46ed3d1debd2ac70e9b3ea"
+  },
+  {
+    "path": "tests/zstd-v0.8-03.result",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "b115ecae9a592e1a447e042702ef17ac341db6bf694d219108d996221f79f5ac"
+  },
+  {
+    "path": "tests/zstd-v0.8-03.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "49fb370ba480752f56b7e1b512f9945fa5b32e5d333ebae29cf1690c747a5845"
+  },
+  {
+    "path": "tests/zstd-v0.8-16.result",
+    "bytes": 54,
+    "lines": 1,
+    "sha256": "731b152ac4a4f9b94d9cf37dc36fe7566bc528df4dfc3e9de7319bb8e8e930fb"
+  },
+  {
+    "path": "tests/zstd-v0.8-16.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "ca6650a7e7173ca31f011915885997a6673598f7d20ab75709a3476898bde37a"
+  },
+  {
+    "path": "tests/zstd-v0.8-20.result",
+    "bytes": 55,
+    "lines": 1,
+    "sha256": "da150e8e99d313d892d7d7b76f4ed5cf38798a636686fc609d9900e70ac3985d"
+  },
+  {
+    "path": "tests/zstd-v0.8-20.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "3fe749a61f1d7f67cc29cede84cdcbe025506ff04b9f98f8e2a1e96327db816f"
+  },
+  {
+    "path": "tests/zstd-v0.8-21.result",
+    "bytes": 52,
+    "lines": 1,
+    "sha256": "23f50366d891f6fc3a5c291a686559132409b9c8e7e5db7b6ee1d7b76ac9d961"
+  },
+  {
+    "path": "tests/zstd-v0.8-21.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "1e18d3215029e7e57a5e87b2123da2c50bed5a4d691a650b184e39c1ea8db9de"
+  },
+  {
+    "path": "tests/zstd-v0.8-22.result",
+    "bytes": 54,
+    "lines": 1,
+    "sha256": "cd767de7ca659cbd1002b7af151f475d34f8a322e493efd672d6c74f00e11ab6"
+  },
+  {
+    "path": "tests/zstd-v0.8-22.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "e28a3e94da35805b70b83e14cd790609fbee4f9ccf3e8a97291d1a6f8df83e03"
+  },
+  {
+    "path": "tests/zstd-v0.8-23.result",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "3b2485bc7f3738f9676d0be2421ae6731b9c96c07b0c71010d9d2060c0eac7f4"
+  },
+  {
+    "path": "tests/zstd-v0.8-23.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "7c35cd7a30d597acb90489fd3621873011de28998e892176766a14b647556e1d"
+  },
+  {
+    "path": "tests/zstd-v0.8-F4.result",
+    "bytes": 55,
+    "lines": 1,
+    "sha256": "da150e8e99d313d892d7d7b76f4ed5cf38798a636686fc609d9900e70ac3985d"
+  },
+  {
+    "path": "tests/zstd-v0.8-F4.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "c1f063a6084bf8b544d89674e85f52d27ba857d408fc89e9d8ce694a9954ded9"
+  },
+  {
+    "path": "tests/zstd-v0.8-FF.result",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "3b2485bc7f3738f9676d0be2421ae6731b9c96c07b0c71010d9d2060c0eac7f4"
+  },
+  {
+    "path": "tests/zstd-v0.8-FF.testfile",
+    "bytes": 10,
+    "lines": 0,
+    "sha256": "7082d20d87b035fc746750c835a0251f53a90527466c021345ccb996fcffcc94"
+  }
+]

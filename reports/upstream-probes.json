@@ -1,0 +1,895 @@
+{
+  "cli": [
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [],
+      "stdout": "empty\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "inode/x-empty; charset=binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "inode/x-empty\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "empty\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "empty",
+      "data_hex": "",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [],
+      "stdout": "very short file (no magic)\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "application/octet-stream; charset=binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "application/octet-stream\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "very short file (no magic)\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-ascii",
+      "data_hex": "41",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [],
+      "stdout": "very short file (no magic)\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "application/octet-stream; charset=binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "application/octet-stream\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "very short file (no magic)\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "one-nul",
+      "data_hex": "00",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [],
+      "stdout": "ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "text/plain; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "text/plain\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "ascii",
+      "data_hex": "68656c6c6f0a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [],
+      "stdout": "ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "text/plain; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "text/plain\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-scalar",
+      "data_hex": "3132330a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [],
+      "stdout": "JSON text data\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "application/json; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "application/json\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "JSON text data\\012- , ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-object",
+      "data_hex": "7b2261223a20317d0a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [],
+      "stdout": "JSON text data\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "application/json; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "application/json\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "JSON text data\\012- , ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "json-array",
+      "data_hex": "5b312c325d0a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [],
+      "stdout": "New Line Delimited JSON text data\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "application/x-ndjson; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "application/x-ndjson\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "New Line Delimited JSON text data\\012- , ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "jsonlines",
+      "data_hex": "7b2261223a317d0a7b2262223a327d0a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [],
+      "stdout": "CSV ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "text/csv; charset=us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "text/csv\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "us-ascii\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "CSV ASCII text\\012- , ASCII text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "csv",
+      "data_hex": "612c620a632c640a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [],
+      "stdout": "Targa image data - RGBA (1027-1541) 3340 x 3854 x 16 +2312 +2826 - 1-bit alpha - right\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "image/x-tga; charset=binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "image/x-tga\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "binary\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "Targa image data - RGBA (1027-1541) 3340 x 3854 x 16 +2312 +2826 - 1-bit alpha - right\\012- data\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "tga/tpic/icb/vda/vst\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "binary",
+      "data_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "????TPIC\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [],
+      "stdout": "Unicode text, UTF-8 text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "text/plain; charset=utf-8\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "text/plain\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "utf-8\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "Unicode text, UTF-8 text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf8",
+      "data_hex": "636166c3a90a",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [],
+      "stdout": "Unicode text, UTF-16, little-endian text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "text/plain; charset=utf-16le\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "--mime-type"
+      ],
+      "stdout": "text/plain\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "stdout": "utf-16le\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "-k"
+      ],
+      "stdout": "Unicode text, UTF-16, little-endian text\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "--extension"
+      ],
+      "stdout": "???\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "utf16",
+      "data_hex": "fffe680069000a00",
+      "flags": [
+        "--apple"
+      ],
+      "stdout": "UNKNUNKN\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "missing",
+      "flags": [],
+      "stdout": "cannot open `/tmp/tmp_dpda861/missing' (No such file or directory)\n",
+      "stderr": "",
+      "status": 0
+    },
+    {
+      "case": "missing",
+      "flags": [
+        "-E"
+      ],
+      "stdout": "ERROR: cannot stat `/tmp/tmp_dpda861/missing' (No such file or directory)\n",
+      "stderr": "",
+      "status": 1
+    },
+    {
+      "case": "missing",
+      "flags": [
+        "-i"
+      ],
+      "stdout": "cannot open `/tmp/tmp_dpda861/missing' (No such file or directory)\n",
+      "stderr": "",
+      "status": 0
+    }
+  ],
+  "library": [
+    {
+      "case": "empty",
+      "buffer": "empty"
+    },
+    {
+      "case": "one-ascii",
+      "buffer": "very short file (no magic)"
+    },
+    {
+      "case": "one-nul",
+      "buffer": "very short file (no magic)"
+    },
+    {
+      "case": "ascii",
+      "buffer": "ASCII text"
+    },
+    {
+      "case": "json-scalar",
+      "buffer": "ASCII text"
+    },
+    {
+      "case": "json-object",
+      "buffer": "JSON text data"
+    },
+    {
+      "case": "json-array",
+      "buffer": "JSON text data"
+    },
+    {
+      "case": "jsonlines",
+      "buffer": "New Line Delimited JSON text data"
+    },
+    {
+      "case": "csv",
+      "buffer": "CSV ASCII text"
+    },
+    {
+      "case": "binary",
+      "buffer": "Targa image data - RGBA (1027-1541) 3340 x 3854 x 16 +2312 +2826 - 1-bit alpha - right"
+    },
+    {
+      "case": "utf8",
+      "buffer": "Unicode text, UTF-8 text"
+    },
+    {
+      "case": "utf16",
+      "buffer": "Unicode text, UTF-16, little-endian text"
+    }
+  ]
+}
