@@ -384,11 +384,22 @@ impl Database {
         };
         Ok(db)
     }
-    pub(crate) fn regex<'r>(&self, rule: &'r Rule) -> Result<&'r CompiledRegex> {
+    pub(crate) fn regex<'r>(
+        &self,
+        rule: &'r Rule,
+        budget: &crate::InspectionBudget,
+    ) -> Result<&'r CompiledRegex> {
         let cell = rule
             .regex
             .as_ref()
             .ok_or_else(|| Error::Database("regex cache absent".into()))?;
+        // Compilation is bounded separately from the shared 64 MiB cache.
+        // Reserve a conservative transient envelope before entering the compiler.
+        let _compilation = if cell.get().is_none() {
+            Some(budget.reserve(64 * 1024 * 1024)?)
+        } else {
+            None
+        };
         let cached = cell.get_or_init(|| {
             let compiled = CompiledRegex::compile(rule.name(), rule.string_flags & 12 != 0)?;
             let size = compiled.memory_usage();

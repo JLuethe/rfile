@@ -125,6 +125,22 @@ impl CompiledRegex {
             }
         }
     }
+    /// Conservative upper bound for two active-state tables, capture slots,
+    /// epsilon stack and temporary match storage, before creating a Pike cache.
+    pub fn scratch_bound(&self) -> usize {
+        match self {
+            Self::Dfa { .. } => 4096,
+            Self::Nfa { first, .. } => {
+                let nfa = first.get_nfa();
+                nfa.states()
+                    .len()
+                    .saturating_add(1)
+                    .saturating_mul(nfa.group_info().slot_len().saturating_add(16))
+                    .saturating_mul(std::mem::size_of::<usize>())
+                    .saturating_mul(4)
+            }
+        }
+    }
     pub fn work_factor(&self) -> usize {
         match self {
             Self::Dfa { .. } => 2,

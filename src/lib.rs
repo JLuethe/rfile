@@ -40,15 +40,22 @@ mod eval;
 mod filesystem;
 mod flags;
 mod format;
+pub mod input;
+mod inspection;
 mod limits;
+mod options;
 mod parser;
 mod regex_engine;
 pub use database::{Database, FORMAT_VERSION, UPSTREAM_COMMIT};
-pub use error::{Error, Result};
+pub use error::{Error, LimitViolation, Result};
 pub use flags::Flags;
+pub use inspection::{
+    CancellationToken, ExecutionControl, InspectionBudget, InspectionMetrics, MemoryReservation,
+};
 pub use limits::Limits;
+pub use options::{Capabilities, SemanticProfile};
 
-use std::{io::Read, sync::Arc};
+use std::sync::Arc;
 
 #[derive(Clone, Debug)]
 pub struct Classification {
@@ -60,6 +67,7 @@ pub struct Classification {
     pub output: Vec<u8>,
     pub truncated: bool,
     pub diagnostics: Vec<String>,
+    pub metrics: InspectionMetrics,
 }
 impl Classification {
     pub fn as_bytes(&self) -> &[u8] {
@@ -72,6 +80,8 @@ pub struct Engine {
     database: Arc<Database>,
     pub flags: Flags,
     pub limits: Limits,
+    pub profile: SemanticProfile,
+    control: ExecutionControl,
 }
 impl Engine {
     pub fn new(database: Arc<Database>) -> Self {
@@ -79,6 +89,8 @@ impl Engine {
             database,
             flags: Flags::default(),
             limits: Limits::default(),
+            profile: SemanticProfile::default(),
+            control: ExecutionControl::default(),
         }
     }
     pub fn builtin() -> Result<Self> {
@@ -93,31 +105,54 @@ impl Engine {
     pub fn database(&self) -> &Database {
         &self.database
     }
+    pub fn with_profile(mut self, profile: SemanticProfile) -> Self {
+        self.profile = profile;
+        self
+    }
+    pub fn with_control(mut self, control: ExecutionControl) -> Self {
+        self.control = control;
+        self
+    }
+    pub fn capabilities(&self) -> Capabilities {
+        Capabilities::current(self.profile)
+    }
+    fn budget(&self) -> Result<InspectionBudget> {
+        InspectionBudget::new(&self.limits, self.control.clone())
+    }
     pub fn classify(&self, data: &[u8]) -> Result<Classification> {
-        self.limits.validate()?;
-        self.check_output(self.classify_input(data, None, false, None))
+        let budget = self.budget()?;
+        self.check_output(
+            self.classify_input(data, None, false, None, &budget),
+            &budget,
+        )
     }
     pub fn classify_path(&self, path: &std::path::Path) -> Result<Classification> {
-        self.limits.validate()?;
-        self.check_output(filesystem::classify_path(self, path))
+        let budget = self.budget()?;
+        self.check_output(filesystem::classify_path(self, path, &budget), &budget)
     }
     pub fn classify_reader(&self, reader: &mut impl std::io::Read) -> Result<Classification> {
-        self.limits.validate()?;
-        let mut b = Vec::new();
-        reader.take(self.limits.bytes as u64).read_to_end(&mut b)?;
-        let mut c = self.classify(&b)?;
-        c.truncated = b.len() == self.limits.bytes;
-        Ok(c)
+        let budget = self.budget()?;
+        let bytes = input::read_prefix(reader, self.limits.bytes, &budget)?;
+        let mut result = self.classify_input(&bytes, None, false, None, &budget)?;
+        result.truncated = bytes.len() == self.limits.bytes;
+        self.check_output(Ok(result), &budget)
     }
     pub fn classify_file(&self, file: &mut std::fs::File) -> Result<Classification> {
-        self.limits.validate()?;
-        self.check_output(filesystem::classify_file(self, file))
+        let budget = self.budget()?;
+        self.check_output(filesystem::classify_file(self, file, &budget), &budget)
     }
-    fn check_output(&self, result: Result<Classification>) -> Result<Classification> {
-        let classified = result?;
+    fn check_output(
+        &self,
+        result: Result<Classification>,
+        budget: &InspectionBudget,
+    ) -> Result<Classification> {
+        let mut classified = result?;
+        budget.checkpoint()?;
         if classified.output.len() > self.limits.output {
             return Err(Error::Limit("output"));
         }
+        budget.charge_retained(classified.output.len())?;
+        classified.metrics = budget.metrics();
         Ok(classified)
     }
     pub(crate) fn basic(
@@ -157,6 +192,7 @@ impl Engine {
             },
             truncated,
             diagnostics: Vec::new(),
+            metrics: InspectionMetrics::default(),
         }
     }
     pub(crate) fn classify_input(
@@ -165,6 +201,7 @@ impl Engine {
         tail: Option<&[u8]>,
         executable: bool,
         elf_suffix: Option<&[u8]>,
+        budget: &InspectionBudget,
     ) -> Result<Classification> {
         let truncated = data.len() > self.limits.bytes;
         let data = &data[..data.len().min(self.limits.bytes)];
@@ -192,6 +229,9 @@ impl Engine {
             }
             return Ok(c);
         }
+        budget.checkpoint()?;
+        let encoding_bytes = data.len().min(self.limits.encoding);
+        let _encoding_memory = budget.reserve(encoding_bytes.saturating_mul(8))?;
         let enc = if self.flags.has(Flags::NO_ENCODING) {
             encoding::Encoding::binary()
         } else {
@@ -202,8 +242,8 @@ impl Engine {
             && detectors::compression(data).is_some()
         {
             let expanded = match detectors::compression(data) {
-                Some("gzip") => detectors::decompress_gzip(data, self.limits.bytes)?,
-                Some("zlib") => detectors::decompress_zlib(data, self.limits.bytes)?,
+                Some("gzip") => detectors::decompress_gzip(data, self.limits.bytes, budget)?,
+                Some("zlib") => detectors::decompress_zlib(data, self.limits.bytes, budget)?,
                 Some(codec) => {
                     return Err(Error::Unsupported(format!(
                         "{codec} decompression; built-in codecs are gzip and zlib"
@@ -213,18 +253,18 @@ impl Engine {
             };
             let mut inner = self.clone();
             inner.flags.0 &= !Flags::COMPRESS;
-            let mut result = inner.classify(&expanded)?;
+            let mut result = inner.classify_input(&expanded, None, false, None, budget)?;
             if !self.flags.has(Flags::TRANSPARENT)
                 && (!self.flags.has(Flags::MIME) || self.flags.0 & Flags::MIME == Flags::MIME)
             {
-                let outer = inner.classify(data)?;
+                let outer = inner.classify_input(data, None, false, None, budget)?;
                 let mut output = result.output.clone();
                 output.extend_from_slice(if self.flags.has(Flags::MIME) {
                     b" compressed-encoding="
                 } else {
                     b" ("
                 });
-                output.extend_from_slice(&outer.output);
+                append_output(&mut output, &outer.output, budget)?;
                 if !self.flags.has(Flags::MIME) {
                     output.push(b')');
                 }
@@ -238,7 +278,7 @@ impl Engine {
         let mut evaluator = eval::Evaluator::new(
             &self.database,
             self.flags,
-            &self.limits,
+            budget.clone(),
             enc.text,
             executable,
         );
@@ -296,6 +336,12 @@ impl Engine {
             if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
                 && !self.flags.has(Flags::NO_CDF)
             {
+                let _cdf_memory =
+                    if data.starts_with(&[0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]) {
+                        Some(budget.reserve(data.len().saturating_mul(16))?)
+                    } else {
+                        None
+                    };
                 let detected = cdf::detect(data);
                 stage_matched = detected.is_some();
                 if let Some(t) = detected {
@@ -313,7 +359,7 @@ impl Engine {
                 } else {
                     &desc
                 };
-                output.extend_from_slice(part);
+                append_output(&mut output, part, budget)?;
                 description = desc;
                 mime = typ.into();
                 if !self.flags.has(Flags::CONTINUE) {
@@ -337,11 +383,11 @@ impl Engine {
                 if !output.is_empty() && !output.ends_with(b"\n- ") {
                     output.extend_from_slice(b"\n- ");
                 }
-                output.extend_from_slice(&matched.bytes);
+                append_output(&mut output, &matched.bytes, budget)?;
                 if !self.flags.annotation() {
                     description = matched.bytes;
                     if let Some(suffix) = elf_suffix {
-                        output.extend_from_slice(suffix);
+                        append_output(&mut output, suffix, budget)?;
                         description.extend_from_slice(suffix);
                     }
                 }
@@ -375,6 +421,7 @@ impl Engine {
         }
         let mut text_found = false;
         if !self.flags.has(Flags::NO_TEXT) {
+            let _text_memory = budget.reserve(encoding_bytes.saturating_mul(16))?;
             let text_enc = encoding::for_text(data, self.limits.encoding);
             if text_enc.text && data.len() > 1 {
                 let utf8 = text_enc.utf8();
@@ -399,7 +446,7 @@ impl Engine {
                         if !output.is_empty() && !output.ends_with(b"\n- ") {
                             output.extend_from_slice(b"\n- ");
                         }
-                        output.extend_from_slice(&matched.bytes);
+                        append_output(&mut output, &matched.bytes, budget)?;
                         if let Some(v) = matched.mime {
                             mime = String::from_utf8_lossy(&v).into_owned();
                         }
@@ -419,7 +466,7 @@ impl Engine {
                         if !output.is_empty() && !output.ends_with(b"\n- ") {
                             output.extend_from_slice(b"\n- ");
                         }
-                        output.extend_from_slice(&matched.bytes);
+                        append_output(&mut output, &matched.bytes, budget)?;
                     }
                     output = encoding::text_description(&output, &text_enc);
                     description = output.clone();
@@ -498,6 +545,20 @@ impl Engine {
             output,
             truncated,
             diagnostics: Vec::new(),
+            metrics: InspectionMetrics::default(),
         }
     }
+}
+
+fn append_output(out: &mut Vec<u8>, bytes: &[u8], budget: &InspectionBudget) -> Result<()> {
+    let n = out
+        .len()
+        .checked_add(bytes.len())
+        .ok_or(Error::Limit("output"))?;
+    if n > budget.limits.output {
+        return Err(Error::Limit("output"));
+    }
+    budget.charge_retained(bytes.len().saturating_mul(4))?;
+    out.extend_from_slice(bytes);
+    Ok(())
 }

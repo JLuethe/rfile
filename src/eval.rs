@@ -75,7 +75,7 @@ impl Default for PrintState {
 pub(crate) struct Evaluator<'a> {
     db: &'a Database,
     flags: Flags,
-    budget: Budget<'a>,
+    budget: Budget,
     text: bool,
     executable: bool,
     indirect_count: usize,
@@ -85,14 +85,14 @@ impl<'a> Evaluator<'a> {
     pub fn new(
         db: &'a Database,
         flags: Flags,
-        limits: &'a crate::Limits,
+        budget: Budget,
         text: bool,
         executable: bool,
     ) -> Self {
         Self {
             db,
             flags,
-            budget: Budget::new(limits),
+            budget,
             text,
             executable,
             indirect_count: 0,
@@ -111,6 +111,7 @@ impl<'a> Evaluator<'a> {
         {
             return Err(Error::Limit("output"));
         }
+        self.budget.charge_retained(part.len().saturating_mul(4))?;
         out.extend_from_slice(part);
         Ok(())
     }
@@ -713,9 +714,10 @@ impl<'a> Evaluator<'a> {
                     text = &text[..n];
                 }
                 self.budget.bytes(text.len())?;
-                let regex = self.db.regex(r)?;
+                let regex = self.db.regex(r, &self.budget)?;
                 self.budget
                     .bytes(text.len().saturating_mul(regex.work_factor()))?;
+                let _scratch = self.budget.reserve(regex.scratch_bound())?;
                 let found = regex.find(text).map_err(Error::Unsupported)?;
                 let pass = if r.relation == b'!' {
                     found.is_none()
@@ -1089,12 +1091,7 @@ fn compare_order(c: Ordering, r: u8) -> bool {
         _ => false,
     }
 }
-fn string_cmp(
-    pattern: &[u8],
-    actual: &[u8],
-    flags: u32,
-    budget: &mut Budget<'_>,
-) -> Result<Ordering> {
+fn string_cmp(pattern: &[u8], actual: &[u8], flags: u32, budget: &mut Budget) -> Result<Ordering> {
     let mut p = 0;
     let mut i = 0;
     while p < pattern.len() {

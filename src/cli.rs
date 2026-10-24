@@ -29,7 +29,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
-use crate::{Database, Engine, Error, Flags, Limits, Result};
+use crate::{Capabilities, Database, Engine, Error, Flags, Limits, Result, SemanticProfile};
 use std::{
     ffi::{OsStr, OsString},
     io::{self, BufRead, Read, Write},
@@ -70,7 +70,12 @@ fn os_bytes(b: Vec<u8>) -> OsString {
 fn db_path(explicit: &Option<OsString>) -> Option<OsString> {
     explicit.clone().or_else(|| std::env::var_os("MAGIC"))
 }
-fn load(path: &Option<OsString>, flags: Flags, limits: &Limits) -> Result<Engine> {
+fn load(
+    path: &Option<OsString>,
+    flags: Flags,
+    limits: &Limits,
+    profile: SemanticProfile,
+) -> Result<Engine> {
     let db = if let Some(path) = db_path(path) {
         let mut databases = Vec::new();
         let mut count = 0usize;
@@ -107,11 +112,11 @@ fn load(path: &Option<OsString>, flags: Flags, limits: &Limits) -> Result<Engine
         databases.push(Database::builtin()?);
         Database::merge(databases)?
     };
-    Ok(Engine {
-        database: Arc::new(db),
-        flags,
-        limits: limits.clone(),
-    })
+    let mut engine = Engine::new(Arc::new(db));
+    engine.flags = flags;
+    engine.profile = profile;
+    engine.limits = limits.clone();
+    Ok(engine)
 }
 fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Result<bool> {
     let stdin = name == OsStr::new("-");
@@ -230,6 +235,7 @@ fn file_list(engine: &Engine, path: &OsStr, p: &Presentation) -> Result<bool> {
 }
 
 fn help() {
+    println!("Additional options: --profile=pinned-5.48|corrected-v1; --capabilities");
     println!(
         "Usage: rfile [options] FILE...\n       rfile -C [-m MAGIC]\nIndependent Rust file classifier, pinned magic v21.\n\n  -b, --brief                 omit filename\n  -m, --magic-file LIST       colon-separated magic sources/databases\n  -i, --mime                  output MIME type and encoding\n      --mime-type             output MIME type\n      --mime-encoding         output encoding\n      --extension             output extensions\n      --apple                 output Apple creator/type\n  -k, --keep-going            continue matching\n  -e, --exclude TEST          skip a detector\n  -f, --files-from FILE       read newline-delimited filenames (- for stdin)\n  -F, --separator STRING      filename separator\n  -N, --no-pad                disable filename padding\n  -n, --no-buffer             flush each result\n  -0, --print0                NUL after filename; twice for NUL records\n  -L, --dereference           follow symbolic links\n  -h, --no-dereference        inspect symbolic links\n  -s, --special-files         read devices\n  -p, --preserve-date         restore access/modification times\n  -z, --uncompress            inspect gzip/zlib contents (bounded)\n  -Z, --uncompress-noreport   inspect gzip/zlib; omit wrapper\n  -P, --parameter NAME=N      set input/recursion/regex/work limits\n  -E                          make filesystem failures errors\n  -r, --raw                   preserve nonprintable output\n  -d, --debug                 diagnostic evaluation trace\n  -c, --checking-printout     parse/check source and list groups\n  -C, --compile               compile source to v21 .mgc\n  -l, --list                  list rule strengths\n  -S, --no-sandbox            accepted; kernel sandbox not implemented\n  -v, --version               engine, rule identity and features\n      --help                  show this help"
     );
@@ -274,6 +280,7 @@ fn execute() -> Result<i32> {
         flags.0 |= Flags::SYMLINK;
     }
     let mut limits = Limits::default();
+    let mut profile = SemanticProfile::default();
     let mut magic_path = None;
     let mut loaded: Option<Engine> = None;
     let mut action = None;
@@ -303,6 +310,31 @@ fn execute() -> Result<i32> {
                 .split_once('=')
                 .map_or((long, None), |(a, b)| (a, Some(OsString::from(b))));
             match name {
+                "profile" => {
+                    let selected = if let Some(v) = value {
+                        v
+                    } else {
+                        let v = args
+                            .get(i)
+                            .ok_or_else(|| {
+                                Error::Unsupported("--profile requires an argument".into())
+                            })?
+                            .clone();
+                        i += 1;
+                        v
+                    };
+                    profile = SemanticProfile::parse(&selected.to_string_lossy())?;
+                    continue;
+                }
+                "capabilities" => {
+                    if value.is_some() {
+                        return Err(Error::Unsupported(
+                            "--capabilities does not take an argument".into(),
+                        ));
+                    }
+                    println!("{}", Capabilities::current(profile).json());
+                    return Ok(0);
+                }
                 "help" => {
                     help();
                     return Ok(0);
@@ -416,7 +448,7 @@ fn execute() -> Result<i32> {
                         return Err(Error::Unsupported("file list with database action".into()));
                     }
                     if loaded.is_none() {
-                        loaded = Some(load(&magic_path, flags, &limits)?);
+                        loaded = Some(load(&magic_path, flags, &limits, profile)?);
                     }
                     let engine = loaded.as_mut().expect("loaded");
                     engine.limits = limits.clone();
@@ -475,7 +507,7 @@ fn execute() -> Result<i32> {
         return Ok(1);
     }
     if loaded.is_none() {
-        loaded = Some(load(&magic_path, flags, &limits)?);
+        loaded = Some(load(&magic_path, flags, &limits, profile)?);
     }
     let engine = loaded.as_mut().expect("loaded");
     engine.limits = limits;

@@ -6,9 +6,20 @@ use std::fmt;
 pub enum Error {
     Io(std::io::Error),
     Database(String),
-    Parse { line: usize, message: String },
+    Parse {
+        line: usize,
+        message: String,
+    },
     Limit(&'static str),
     Unsupported(String),
+    ResourceLimit(LimitViolation),
+    Cancelled,
+    DeadlineExceeded,
+    Malformed {
+        format: &'static str,
+        stage: &'static str,
+        offset: u64,
+    },
 }
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -18,6 +29,14 @@ impl fmt::Display for Error {
             Self::Parse { line, message } => write!(f, "magic line {line}: {message}"),
             Self::Limit(s) => write!(f, "{s} limit exceeded"),
             Self::Unsupported(s) => write!(f, "unsupported: {s}"),
+            Self::ResourceLimit(v) => write!(f, "{} limit exceeded", v.resource),
+            Self::Cancelled => f.write_str("inspection cancelled"),
+            Self::DeadlineExceeded => f.write_str("inspection deadline exceeded"),
+            Self::Malformed {
+                format,
+                stage,
+                offset,
+            } => write!(f, "malformed {format} {stage} at offset {offset}"),
         }
     }
 }
@@ -28,3 +47,22 @@ impl From<std::io::Error> for Error {
     }
 }
 pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub struct LimitViolation {
+    pub resource: &'static str,
+    pub limit: usize,
+    pub observed: usize,
+}
+impl Error {
+    pub fn is_limit(&self) -> bool {
+        matches!(self, Self::Limit(_) | Self::ResourceLimit(_))
+    }
+    pub fn limit_detail(&self) -> Option<LimitViolation> {
+        if let Self::ResourceLimit(v) = self {
+            Some(*v)
+        } else {
+            None
+        }
+    }
+}
