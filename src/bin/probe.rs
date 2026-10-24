@@ -35,6 +35,10 @@ fn main() {
                 .and_then(|f| f.take(engine.limits.bytes as u64).read_to_end(&mut b))
                 .map_err(rfile::Error::from)
                 .and_then(|_| engine.classify(&b))
+        } else if mode == "descriptor" {
+            std::fs::File::open(path)
+                .map_err(rfile::Error::from)
+                .and_then(|mut file| engine.classify_file(&mut file))
         } else {
             engine.classify_path(path)
         };

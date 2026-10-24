@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
-  "rust_commit": "795d90b7e93643ee641a2d25bafad4e86e98a543",
+  "rust_commit": "00673a197171639bec44d9f381aa560e86b6fad1",
   "environment": {
     "LC_ALL": "C",
     "TZ": "UTC"

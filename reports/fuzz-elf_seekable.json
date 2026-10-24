@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "configuration": {
+    "target": "elf_seekable",
+    "binary_sha256": "aa050c030e4c4639aad33f956530295cbc72f3885e7fdb0869881800eafc8bc9",
+    "source_sha256": "216566f6073221e164075c783481baf6f88ba9f947b84f6adefcbe6dcd714443",
+    "seed": 548,
+    "max_len": 65536,
+    "rss_mib": 512,
+    "sanitizer": "address",
+    "build": "cargo +nightly fuzz build; default optimized debug assertions + instrumented std",
+    "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59"
+  },
+  "initial_corpus": {
+    "files": 188,
+    "bytes": 57125,
+    "sha256": "85625eecc6745648bb28ae5897c421744e0339330efa175cad3c92736e4af6f8"
+  },
+  "chunks": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "supervisor_kill": false,
+      "cpu_seconds": 28.615795000000002,
+      "wall_seconds": 31.225340704011614,
+      "peak_rss_kib": 286876,
+      "stats": {
+        "number_of_executed_units": 445255,
+        "average_exec_per_sec": 14363,
+        "new_units_added": 2456,
+        "slowest_unit_time_sec": 0,
+        "peak_rss_mb": 280
+      },
+      "log": "fuzz/campaign-logs/elf_seekable/chunk-0.log",
+      "log_sha256": "f9360341b2ed2948b8248815b1cbf1b168a17fe9b31c37795e34af8c26f0938a"
+    }
+  ],
+  "measured_cpu_seconds": 28.615795000000002,
+  "wall_seconds": 31.225340704011614,
+  "completed_gate": false,
+  "current_corpus": {
+    "files": 1005,
+    "bytes": 458703,
+    "sha256": "66f7d30248e17070bd465d88f7cd7f3148eab47c068f27e1e172d86c8e05215e"
+  },
+  "requested_cpu_hours": 0,
+  "status": "smoke-only"
+}

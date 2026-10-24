@@ -13,6 +13,7 @@ def library():
   getattr(lib,f).argtypes=[ctypes.c_void_p,ctypes.c_char_p]
  lib.magic_file.restype=ctypes.c_char_p
  lib.magic_buffer.argtypes=[ctypes.c_void_p,ctypes.c_void_p,ctypes.c_size_t];lib.magic_buffer.restype=ctypes.c_char_p
+ lib.magic_descriptor.argtypes=[ctypes.c_void_p,ctypes.c_int];lib.magic_descriptor.restype=ctypes.c_char_p
  lib.magic_close.argtypes=[ctypes.c_void_p];lib.magic_error.argtypes=[ctypes.c_void_p];lib.magic_error.restype=ctypes.c_char_p
  return lib
 
@@ -37,7 +38,10 @@ def run_group(lib,files,db,flags,mode,extra=0):
  comparisons=[]
  for path,row in zip(files,rows):
   if mode=='buffer':
-   data=path.read_bytes()[:7*1024*1024];result=lib.magic_buffer(h,data,len(data))
+   with path.open('rb')as source:data=source.read(7*1024*1024)
+   result=lib.magic_buffer(h,data,len(data))
+  elif mode=='descriptor':
+   with path.open('rb')as descriptor:result=lib.magic_descriptor(h,descriptor.fileno())
   else:result=lib.magic_file(h,os.fsencode(path))
   expected=result if result is not None else None
   actual=bytes.fromhex(row['hex']) if 'hex'in row else None
