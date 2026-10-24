@@ -10,6 +10,8 @@ Read in order:
 6. [Delivered implementation status and remaining gaps](06-implementation-status.md)
 7. [Implementation specifications for remaining fidelity, sandbox, hardening and C ABI work](07-remaining-work-spec.md)
 
+[Live delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
+
 Upstream commit: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`.
 
 Build/run instructions: [project README](../README.md). Machine-readable evidence: [verification](../reports/verification.json).
