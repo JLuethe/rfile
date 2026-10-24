@@ -21,7 +21,7 @@ Baseline: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Reasonable working assumpt
 | Medium | Rules updates introduce new syntax | pin explicit commit; scan grammar/types and run all rule compiler/evaluator regressions before promoting. Never auto-fetch mutable master in normal build. |
 | Medium | Shared DB regex cache memory | hundreds of patterns, per-rule compilation and caches can exceed input-sized assumptions; cap aggregate cache or precompile with measured budget. |
 | Medium | Platform certification | only Linux run here; byte order, inode descriptions, Windows path search and BSD flags require native testing. Source review is not executed coverage. |
-| Low | Optional libmagic C ABI required by adopters? | independent Rust API first; ABI later only with panic containment, ownership and symbols tested. |
+| High | C ABI is now requested; behavioral compatibility extends beyond exported symbols | [ABI specification](remaining/07-c-abi.md) requires all 19 functions, loaded/error state, pointer and descriptor ownership, diagnostic parity, client tests and isolated packaging. It remains unimplemented. |
 
 Decision rule: preserve safe, observed compatibility quirks; expose corrected behavior only as an explicit semantic profile. Fail safely on malformed/unsupported states instead of reproducing UB. Report the resulting deviation with reproducible evidence. No unresolved issue should be hidden by changing expected files to match the Rust output.
 
