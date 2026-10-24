@@ -22,7 +22,7 @@ def main():
                 rows=run_group(lib,paths,ROOT/'data/magic.mgc',flags,mode)
                 for row in rows:
                     row['case']=Path(row['path']).stem
-                    if row.get('reference') is None and row.get('rust') is None and row.get('reference_error') is not None and row.get('reference_error')==row.get('rust_error'):row['equal']=True
+                    if row.get('reference') is None and row.get('rust') is None and row.get('reference_error_hex') is not None and row.get('reference_error_hex')==row.get('rust_error_hex'):row['equal']=True
                     row['error_comparison']=row.get('reference_error') is not None
                 api+=rows
         for path in paths:

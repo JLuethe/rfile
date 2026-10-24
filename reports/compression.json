@@ -6,7 +6,7 @@
     "TZ": "UTC"
   },
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
-  "binary_sha256": "a0cae148baad38165e1487d449f8f1ce5079372ad1e7cff2089a28106f3e66c8",
+  "binary_sha256": "3400c11cade0afceeee544caf39ec6aadd34e619902818b4b117f6f41a297b9a",
   "features": "extended-codecs",
   "api": [
     {

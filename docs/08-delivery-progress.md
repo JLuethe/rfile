@@ -10,7 +10,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R3 CDF | merged in PR #7 | shared positional sector/mini/FAT/DIFAT traversal, typed directory/property/catalog evidence, corrected rendering, pinned fallback and generated fixtures |
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
-| R6 full semantics | regex portion implemented; 23 local stages passed; hosted CI pending | bounded capture VM and GNU front end with explicit pinned restrictions; locale/date/float closure remains |
+| R6 full semantics | regex merged in PR #10; locale/display implemented locally with 24 local stages passed | bounded capture VM and GNU front end with explicit pinned restrictions; date/float/full native history closure remains |
 | R7–R8 sandbox and C ABI | pending | real denied-operation tests and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
@@ -105,3 +105,42 @@ match the candidate. This short structured run is not a sustained gate or
 independent review. The backreference expected-match regression is no longer
 ignored; only the separately executed stable mutation test stays ignored in the
 ordinary test invocation.
+
+## R6b locale display and C-string output
+
+The root is now a workspace with `rfile-platform`. Its Linux/glibc locale adapter
+owns an immutable locale acquisition, uses a private thread-bound restoration
+guard, and contains the inventoried unsafe ABI calls. Core detection still
+forbids unsafe. Rust API defaults are portable C display/UTC; callers can provide
+`DisplayContext::locale("C.UTF-8")`. CLI initialization snapshots LC_ALL, then
+LC_CTYPE, then LANG, configuring only LC_CTYPE before rule parsing. It does not
+mutate process locale/environment or apply locale to numeric/time categories.
+C, C.UTF-8 and en_US.UTF-8 are executed; other ASCII/UTF8 locales need their own
+certification, and other encodings/native platforms return explicit errors.
+
+Filename rendering, displayed width, library result escaping and byte capture
+printing are separate contracts. Invalid filename sequences reset/consume one
+byte; invalid result sequences restart the entire result byte-wise. Native
+low-byte escaping of nonprintable wide filename characters and width clamping
+are preserved. Result escaping now occurs once after the full detection pipeline.
+Formatted NULs obey C-string boundaries on later appends/final results, including
+raw mode; successful empty matches stay empty, and the three-byte keep-going
+separator quirk remains. Filesystem errors retain original diagnostic bytes and
+OS error sources. Paths are capped at 65,536 encoded bytes before OS conversion
+or diagnostic copying, with a tracked workspace reservation and work charge.
+
+All 24 full-project stages passed with 113 ordinary debug/release tests, default
+and all-feature checks, Rust 1.87, unchanged database bytes/old corpora and the
+existing explicit decisions. The locale matrix has 1,660 exact CLI/API results
+across C/C.UTF-8/en_US.UTF-8, including invalid/truncated UTF8, controls, combining/
+wide/emoji names, lists, raw/NUL/alignment, missing/broken links, environment
+precedence, whole-result fallback, compression with NUL/keep-going, empty
+matches, MIME and path/buffer/descriptor entry points. Reports retain raw
+channels/status, compiled-rule and locale-data hashes. Error comparisons in the
+ELF harness now use authoritative diagnostic bytes. The final locale ASan run
+executed 689,299 cases over 30.99 measured CPU seconds, no reported failure;
+source/binary identities match. This is smoke only, and does not instrument or
+prove the host C library itself. `reports/unsafe.json` inventories 15 first-party
+unsafe declarations/blocks (including tests) within the locale adapter. The
+[platform contract](../crates/rfile-platform/README.md) states the invariants and
+trusted-host assumptions. No independent audit or sustained gate is claimed.

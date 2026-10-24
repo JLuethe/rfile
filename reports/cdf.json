@@ -2811,7 +2811,7 @@
   ],
   "api": [
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2821,7 +2821,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2831,7 +2831,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2841,7 +2841,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2851,7 +2851,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2861,7 +2861,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2871,7 +2871,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2881,7 +2881,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2891,7 +2891,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2901,7 +2901,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2911,7 +2911,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2921,7 +2921,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2931,7 +2931,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2941,7 +2941,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2951,7 +2951,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2961,7 +2961,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2971,7 +2971,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2981,7 +2981,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -2991,7 +2991,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3001,11 +3001,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3015,7 +3017,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3025,7 +3027,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3035,7 +3037,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3045,7 +3047,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3055,7 +3057,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "buffer",
       "flags": 0,
       "effective_flags": 0,
@@ -3065,7 +3067,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3075,7 +3077,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3085,7 +3087,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3095,7 +3097,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3105,7 +3107,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3115,7 +3117,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3125,7 +3127,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3135,7 +3137,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3145,7 +3147,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3155,7 +3157,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3165,7 +3167,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3175,7 +3177,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3185,7 +3187,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3195,7 +3197,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3205,7 +3207,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3215,7 +3217,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3225,7 +3227,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3235,7 +3237,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3245,7 +3247,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3255,11 +3257,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3269,7 +3273,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3279,7 +3283,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3289,7 +3293,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3299,7 +3303,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3309,7 +3313,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "buffer",
       "flags": 1040,
       "effective_flags": 1040,
@@ -3319,7 +3323,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3329,7 +3333,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3339,7 +3343,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3349,7 +3353,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3359,7 +3363,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3369,7 +3373,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3379,7 +3383,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3389,7 +3393,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3399,7 +3403,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3409,7 +3413,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3419,7 +3423,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3429,7 +3433,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3439,7 +3443,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3449,7 +3453,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3459,7 +3463,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3469,7 +3473,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3479,7 +3483,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3489,7 +3493,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3499,7 +3503,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3509,11 +3513,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3523,7 +3529,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3533,7 +3539,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3543,7 +3549,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3553,7 +3559,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3563,7 +3569,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "buffer",
       "flags": 16,
       "effective_flags": 16,
@@ -3573,7 +3579,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3583,7 +3589,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3593,7 +3599,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3603,7 +3609,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3613,7 +3619,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3623,7 +3629,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3633,7 +3639,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3643,7 +3649,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3653,7 +3659,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3663,7 +3669,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3673,7 +3679,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3683,7 +3689,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3693,7 +3699,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3703,7 +3709,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3713,7 +3719,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3723,7 +3729,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3733,7 +3739,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3743,7 +3749,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3753,7 +3759,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3763,11 +3769,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3777,7 +3785,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3787,7 +3795,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3797,7 +3805,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3807,7 +3815,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3817,7 +3825,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "buffer",
       "flags": 1024,
       "effective_flags": 1024,
@@ -3827,7 +3835,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3837,7 +3845,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3847,7 +3855,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3857,7 +3865,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3867,7 +3875,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3877,7 +3885,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3887,7 +3895,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3897,7 +3905,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3907,7 +3915,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3917,7 +3925,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3927,7 +3935,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3937,7 +3945,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3947,7 +3955,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3957,7 +3965,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3967,7 +3975,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3977,7 +3985,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3987,7 +3995,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -3997,7 +4005,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4007,7 +4015,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4017,11 +4025,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4031,7 +4041,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4041,7 +4051,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4051,7 +4061,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4061,7 +4071,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4071,7 +4081,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "buffer",
       "flags": 32,
       "effective_flags": 32,
@@ -4081,7 +4091,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4091,7 +4101,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4101,7 +4111,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4111,7 +4121,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4121,7 +4131,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4131,7 +4141,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4141,7 +4151,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4151,7 +4161,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4161,7 +4171,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4171,7 +4181,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4181,7 +4191,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4191,7 +4201,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4201,7 +4211,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4211,7 +4221,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4221,7 +4231,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4231,7 +4241,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4241,7 +4251,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4251,7 +4261,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4261,7 +4271,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4271,11 +4281,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4285,7 +4297,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4295,7 +4307,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4305,7 +4317,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4315,7 +4327,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4325,7 +4337,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "path",
       "flags": 0,
       "effective_flags": 0,
@@ -4335,7 +4347,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4345,7 +4357,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4355,7 +4367,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4365,7 +4377,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4375,7 +4387,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4385,7 +4397,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4395,7 +4407,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4405,7 +4417,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4415,7 +4427,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4425,7 +4437,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4435,7 +4447,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4445,7 +4457,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4455,7 +4467,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4465,7 +4477,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4475,7 +4487,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4485,7 +4497,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4495,7 +4507,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4505,7 +4517,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4515,7 +4527,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4525,11 +4537,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4539,7 +4553,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4549,7 +4563,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4559,7 +4573,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4569,7 +4583,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4579,7 +4593,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "path",
       "flags": 1040,
       "effective_flags": 1040,
@@ -4589,7 +4603,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4599,7 +4613,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4609,7 +4623,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4619,7 +4633,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4629,7 +4643,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4639,7 +4653,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4649,7 +4663,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4659,7 +4673,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4669,7 +4683,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4679,7 +4693,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4689,7 +4703,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4699,7 +4713,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4709,7 +4723,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4719,7 +4733,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4729,7 +4743,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4739,7 +4753,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4749,7 +4763,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4759,7 +4773,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4769,7 +4783,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4779,11 +4793,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4793,7 +4809,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4803,7 +4819,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4813,7 +4829,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4823,7 +4839,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4833,7 +4849,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "path",
       "flags": 16,
       "effective_flags": 16,
@@ -4843,7 +4859,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4853,7 +4869,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4863,7 +4879,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4873,7 +4889,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4883,7 +4899,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4893,7 +4909,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4903,7 +4919,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4913,7 +4929,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4923,7 +4939,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4933,7 +4949,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4943,7 +4959,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4953,7 +4969,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4963,7 +4979,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4973,7 +4989,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4983,7 +4999,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -4993,7 +5009,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5003,7 +5019,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5013,7 +5029,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5023,7 +5039,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5033,11 +5049,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5047,7 +5065,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5057,7 +5075,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5067,7 +5085,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5077,7 +5095,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5087,7 +5105,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "path",
       "flags": 1024,
       "effective_flags": 1024,
@@ -5097,7 +5115,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-regular.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5107,7 +5125,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v3-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v3-mini.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5117,7 +5135,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-regular.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-regular.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5127,7 +5145,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/summary-v4-mini.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/summary-v4-mini.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5137,7 +5155,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-root.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5147,7 +5165,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/empty-root.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/empty-root.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5157,7 +5175,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-EncryptedPackage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-EncryptedPackage.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5167,7 +5185,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-mfbu_header.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-mfbu_header.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5177,7 +5195,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-Workbook.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-Workbook.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5187,7 +5205,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-WordDocument.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-WordDocument.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5197,7 +5215,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-PowerPoint Document.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-PowerPoint Document.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5207,7 +5225,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/type-__properties_version1.0.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/type-__properties_version1.0.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5217,7 +5235,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/hwp-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/hwp-precedence.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5227,7 +5245,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/all-properties.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/all-properties.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5237,7 +5255,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/two-sets.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/two-sets.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5247,7 +5265,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/msi-precedence.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/msi-precedence.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5257,7 +5275,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/unsupported-codepage.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/unsupported-codepage.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5267,7 +5285,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/property-overlap.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/property-overlap.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5277,7 +5295,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/vector-limit.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/vector-limit.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5287,11 +5305,13 @@
       "rust": null,
       "rust_error": "CDF vector elements limit exceeded",
       "reference_error": null,
+      "reference_error_hex": null,
+      "rust_error_hex": "43444620766563746f7220656c656d656e7473206c696d6974206578636565646564",
       "case": "vector-limit",
       "disposition": "safety-limit"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5301,7 +5321,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/catalog-header12.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/catalog-header12.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5311,7 +5331,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-chain-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-chain-cycle.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5321,7 +5341,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/directory-tree-cycle.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/directory-tree-cycle.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5331,7 +5351,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/missing-fat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/missing-fat.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,
@@ -5341,7 +5361,7 @@
       "disposition": "exact"
     },
     {
-      "path": "/tmp/rfile-cdf-bvdvz3v4/beyond-seven-mib-difat.cfb",
+      "path": "/tmp/rfile-cdf-hcr3pnme/beyond-seven-mib-difat.cfb",
       "mode": "path",
       "flags": 32,
       "effective_flags": 32,

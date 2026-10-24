@@ -1,6 +1,6 @@
 # Fuzzing
 
-Twenty-one buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings, registry/decompression and ten per-codec targets,, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
+Twenty-two buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings, registry/decompression and ten per-codec targets,, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
 
 ```sh
 cargo check --manifest-path fuzz/Cargo.toml --locked --bins
@@ -40,3 +40,10 @@ conformance and does not close native glibc history restrictions.
 The R6a final capture smoke executed 3,002 cases over 27.43 measured CPU seconds
 with no reported ASan failure. See `reports/fuzz-regex_captures.json` for the exact
 source/binary/corpus identity. It is not 24-hour or independent-review evidence.
+
+`display_locale` exercises C and C.UTF-8 filename/result conversions, widths,
+invalid/incomplete sequences, bounded expansion and guard cleanup after cap
+errors. The campaign identity now includes platform-crate source/manifests.
+Its final smoke ran 689,299 cases over 30.99 measured CPU seconds, without a
+reported failure; this does not instrument/prove glibc or satisfy sustained
+security gates. The core's C display remains safe Rust.

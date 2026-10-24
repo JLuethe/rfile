@@ -100,3 +100,57 @@ A standalone C regcomp/regexec control confirmed that host glibc 2.44 has observ
 An additional deterministic glibc quirk is preserved in the pinned front end: an unknown escaped lowercase letter with ICASE, such as `\d`, becomes a predicate matching no byte on this host, while escaped uppercase `\D` folds normally. A standalone C control tested all non-NUL byte values. CorrectedV1 treats unknown quoted letters as ordinary case-folded literals. Profile-specific compiled variants share the immutable cache but are separately counted in its memory budget. Capabilities report backreference support plus the explicit pinned restriction, group and instruction bounds.
 
 Both profiles currently retain the pinned final-byte and embedded-NUL search-window behavior. Full-window corrected matching remains an unimplemented optional profile change. GNU constructs outside the described dialect can still produce explicit syntax/capability errors. Locale display, exceptional custom timezone/calendar cases and expanded float formatting remain separate SEM deliverables; this regex increment does not close those gates.
+
+## R6b implemented locale and output contract
+
+`src/display.rs::DisplayContext` provides portable C bytes or an immutable
+`rfile_platform::Locale`. The CLI snapshots LC_ALL/LC_CTYPE/LANG in that precedence
+and selects LC_CTYPE only; Rust API construction stays C/UTC unless configured.
+`newlocale` acquires the object with a NULL base; its other categories stay C.
+The private non-Send guard in `crates/rfile-platform/src/locale.rs` restores the
+prior thread binding on success, error and unwind. No production `setlocale` or
+environment writes occur. Guard borrowing/Arc ownership keeps acquired data live
+across concurrent calls; shared/static C locale data is released according to
+`freelocale` semantics, not an assumption of unique pointer addresses.
+
+Names are capped at 1,024 bytes; adapter input at 16 MiB; output reserves a checked
+four-byte-per-byte bound under the supplied cap before conversion. Host locale
+data is trusted setup configuration, outside per-inspection reservations.
+Unknown names and unsupported encodings fail clearly instead of silently using
+UTF8; this deliberately differs from the native CLI's ignored setlocale failure.
+Only ASCII/UTF8 codesets are currently accepted. Linux/glibc C, C.UTF-8 and
+en_US.UTF-8 are compared; other native ABIs are not certified and reject locale
+mode. The default C Rust policy remains portable without locale FFI.
+
+The four distinct operations follow the source contracts at
+`upstream/src/file.c:609` (`fname_print`), `:689` (`file_mbswidth`),
+`src/funcs.c:562` (`file_getbuffer`) and `:866` (`file_printable`). A bad filename
+sequence consumes one offending byte and resets conversion state; an incomplete
+result sequence restarts escaping for the entire result. Raw filename width
+still charges four for invalid bytes. Wide printable width is clamped to at
+least one. Nonprintable wide filename characters retain the native low-byte
+escape quirk; result escaping octalizes all original encoded bytes instead.
+Capture scratch remains byte-oriented and capped at 511, independently of
+multibyte final result rendering.
+
+`Engine::check_output` now performs final escaping once after classification,
+including compressed inner/outer output. `Evaluator::append` and `append_output`
+respect the visible C-string prefix before subsequent prints, matching the
+`%s%s` merge in `upstream/src/funcs.c:154–190`. A formatted NUL ends the returned
+visible result even in raw mode; later appends can replace the hidden suffix.
+Raw formatted bytes remain charged conservatively against safety limits.
+Successful empty-format matches return empty bytes rather than an invented data
+fallback; the native three-byte keep-going separator case is preserved.
+`Error::Filesystem` exposes raw diagnostic bytes and the original OS source;
+Display is a lossy UTF8 convenience. A 65,536-byte path cap is checked before
+OS conversion/diagnostic copies; scratch reserves `4 * encoded_length + 1024`.
+These are explicit resource boundaries rather than unbounded native behavior.
+
+The [platform boundary](../../crates/rfile-platform/README.md) and
+[unsafe inventory](../../reports/unsafe.json) record ownership/pointer/ABI
+invariants. Native locale-data loading and glibc character conversion are not
+reimplemented or certified memory-safe by these wrappers. Final-candidate ASan
+smoke, concurrency and unwind controls supplement the exact locale differential;
+independent review, sustained campaigns, other encodings and platforms remain
+open. Date/float edge closure and full native quantified-regex histories are
+separate SEM work.

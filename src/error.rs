@@ -5,6 +5,10 @@ use std::fmt;
 #[derive(Debug)]
 pub enum Error {
     Io(std::io::Error),
+    Filesystem {
+        source: std::io::Error,
+        diagnostic: Vec<u8>,
+    },
     Decode(crate::codecs::DecodeError),
     Database(String),
     Parse {
@@ -31,6 +35,9 @@ impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::Io(e) => e.fmt(f),
+            Self::Filesystem { diagnostic, .. } => {
+                f.write_str(&String::from_utf8_lossy(diagnostic))
+            }
             Self::Decode(e) => e.fmt(f),
             Self::Database(s) => write!(f, "invalid magic database: {s}"),
             Self::Parse { line, message } => write!(f, "magic line {line}: {message}"),
@@ -52,7 +59,14 @@ impl fmt::Display for Error {
         }
     }
 }
-impl std::error::Error for Error {}
+impl std::error::Error for Error {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Io(e) | Self::Filesystem { source: e, .. } => Some(e),
+            _ => None,
+        }
+    }
+}
 impl From<std::io::Error> for Error {
     fn from(e: std::io::Error) -> Self {
         Self::Io(e)
@@ -70,6 +84,7 @@ impl Error {
     pub fn raw_diagnostic(&self) -> Option<&[u8]> {
         match self {
             Self::LegacyLimit(bytes) => Some(bytes),
+            Self::Filesystem { diagnostic, .. } => Some(diagnostic),
             _ => None,
         }
     }

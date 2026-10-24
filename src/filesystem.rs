@@ -61,11 +61,7 @@ fn diagnostic(engine: &Engine, description: Vec<u8>) -> Classification {
         "binary",
         false,
     );
-    c.output = if engine.flags.has(Flags::RAW) {
-        description
-    } else {
-        crate::format::escape(&description)
-    };
+    c.output = description;
     c
 }
 fn metadata_result(engine: &Engine, description: Vec<u8>, kind: &str) -> Classification {
@@ -76,6 +72,13 @@ pub(crate) fn classify_path(
     path: &Path,
     budget: &InspectionBudget,
 ) -> Result<Classification> {
+    // Bound the path before std's OS-string conversion or diagnostic copies.
+    let path_len = path.as_os_str().as_encoded_bytes().len();
+    if path_len > 65536 {
+        return Err(Error::Limit("path length"));
+    }
+    let _path_memory = budget.reserve(path_len.saturating_mul(4).saturating_add(1024))?;
+    budget.bytes(path_len)?;
     let metadata = if engine.flags.has(Flags::SYMLINK) {
         fs::metadata(path)
     } else {
@@ -85,14 +88,13 @@ pub(crate) fn classify_path(
         Ok(m) => m,
         Err(e) => {
             if engine.flags.has(Flags::ERROR) {
-                return Err(Error::Io(std::io::Error::new(
-                    e.kind(),
-                    format!(
-                        "cannot stat `{}' ({})",
-                        path.to_string_lossy(),
-                        error_text(&e)
-                    ),
-                )));
+                let mut diagnostic = b"cannot stat `".to_vec();
+                diagnostic.extend(path_bytes(path));
+                diagnostic.extend(format!("' ({})", error_text(&e)).as_bytes());
+                return Err(Error::Filesystem {
+                    source: e,
+                    diagnostic,
+                });
             }
             let mut text = b"cannot open `".to_vec();
             text.extend(path_bytes(path));
@@ -104,10 +106,13 @@ pub(crate) fn classify_path(
         engine.flags.has(Flags::APPLE | Flags::EXTENSION) && !engine.flags.has(Flags::MIME);
     if meta.is_dir() {
         if annotation_only {
-            return Err(Error::Io(std::io::Error::other(format!(
-                "cannot read `{}' (Is a directory)",
-                path.to_string_lossy()
-            ))));
+            let mut diagnostic = b"cannot read `".to_vec();
+            diagnostic.extend(path_bytes(path));
+            diagnostic.extend_from_slice(b"' (Is a directory)");
+            return Err(Error::Filesystem {
+                source: std::io::Error::from(std::io::ErrorKind::IsADirectory),
+                diagnostic,
+            });
         }
         return Ok(metadata_result(engine, b"directory".to_vec(), "directory"));
     }
@@ -118,11 +123,11 @@ pub(crate) fn classify_path(
             let mut desc = b"broken symbolic link to ".to_vec();
             desc.extend(path_bytes(&target));
             if engine.flags.has(Flags::ERROR) && !engine.flags.has(Flags::MIME) {
-                return Err(Error::Io(std::io::Error::other(format!(
-                    "{} ({})",
-                    String::from_utf8_lossy(&desc),
-                    error_text(&e)
-                ))));
+                desc.extend(format!(" ({})", error_text(&e)).as_bytes());
+                return Err(Error::Filesystem {
+                    source: e,
+                    diagnostic: desc,
+                });
             }
             let mut c = diagnostic(engine, desc);
             if engine.flags.has(Flags::MIME_TYPE) {

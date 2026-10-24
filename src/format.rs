@@ -56,21 +56,10 @@ impl Value {
         }
     }
 }
-pub(crate) fn escape(bytes: &[u8]) -> Vec<u8> {
-    let mut out = Vec::with_capacity(bytes.len());
-    for &c in bytes {
-        if (32..=126).contains(&c) {
-            out.push(c);
-        } else {
-            out.extend_from_slice(format!("\\{c:03o}").as_bytes());
-        }
-    }
-    out
-}
-pub(crate) fn printable(bytes: &[u8], raw: bool) -> Vec<u8> {
+pub(crate) fn printable(bytes: &[u8], raw: bool, display: &crate::DisplayContext) -> Vec<u8> {
     let mut out = Vec::new();
     for &c in crate::database::cstr(bytes) {
-        if raw || (32..=126).contains(&c) {
+        if raw || display.byte_printable(c) {
             if out.len() == 511 {
                 break;
             }
