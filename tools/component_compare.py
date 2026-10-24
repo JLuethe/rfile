@@ -19,7 +19,7 @@ def invoke(binary, database, path, flags):
     command = [str(binary), '-b', '-m', str(database), *flags, str(path)]
     result = subprocess.run(command, env=ENV, capture_output=True, timeout=10)
     return dict(status=result.returncode, stdout_hex=result.stdout.hex(),
-                stderr_hex=result.stderr.hex())
+                stderr_hex=result.stderr.replace(str(path.parent).encode(), b'$FIXTURE').hex())
 
 
 def main():
@@ -57,8 +57,12 @@ def main():
             equal = reference == rust
             known = (not equal and reference_valid and rust == expected_rust
                      and name in {'cdf-summary-0', 'regex-backreference'})
-            disposition = ('reference-drift' if not reference_valid else
-                           'exact' if equal else 'known-open' if known else
+            explicit_unsupported = (reference_valid and name == 'regex-backreference' and rust == dict(
+                status=1, stdout_hex='', stderr_hex=(
+                    'rfile: magic line 1: $FIXTURE/regex-backreference.magic: magic line 1: '
+                    'regex backreference at byte 4 requires the bounded capture VM\n').encode().hex()))
+            disposition = ('reference-drift'  if not reference_valid else
+                           'exact' if equal else 'explicit-unsupported' if explicit_unsupported else 'known-open' if known else
                            'unclassified-disagreement')
             rows.append(dict(case=name, input_sha256=hashlib.sha256(data).hexdigest(),
                              flags=flags, reference=reference, rust=rust,
@@ -69,7 +73,8 @@ def main():
                   environment={'LC_ALL': 'C', 'TZ': 'UTC'}, comparisons=rows,
                   total=len(rows), exact=sum(r['equal'] for r in rows),
                   known_open=sum(r['disposition'] == 'known-open' for r in rows),
-                  unexpected=sum(r['disposition'] not in {'exact', 'known-open'} for r in rows))
+                  explicit_unsupported=sum(r['disposition'] == 'explicit-unsupported' for r in rows),
+                  unexpected=sum(r['disposition'] not in {'exact', 'known-open', 'explicit-unsupported'} for r in rows))
     (ROOT / 'reports/components.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'comparisons'}))
     if report['unexpected']:

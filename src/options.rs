@@ -32,7 +32,7 @@ pub struct Capabilities {
     pub c_abi: bool,
     pub kernel_sandbox: bool,
     pub display_locale: &'static str,
-    pub time_zone: &'static str,
+    pub time_zone: String,
 }
 impl Capabilities {
     pub(crate) fn current(profile: SemanticProfile) -> Self {
@@ -46,7 +46,7 @@ impl Capabilities {
             c_abi: false,
             kernel_sandbox: false,
             display_locale: "C",
-            time_zone: "UTC",
+            time_zone: "UTC".into(),
         }
     }
     pub fn json(&self) -> String {

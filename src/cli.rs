@@ -116,6 +116,7 @@ fn load(
     engine.flags = flags;
     engine.profile = profile;
     engine.limits = limits.clone();
+    engine = engine.with_time_context(crate::TimeContext::from_environment()?);
     Ok(engine)
 }
 fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Result<bool> {
@@ -332,7 +333,10 @@ fn execute() -> Result<i32> {
                             "--capabilities does not take an argument".into(),
                         ));
                     }
-                    println!("{}", Capabilities::current(profile).json());
+                    let mut capabilities = Capabilities::current(profile);
+                    capabilities.time_zone =
+                        crate::TimeContext::from_environment()?.source().to_owned();
+                    println!("{}", capabilities.json());
                     return Ok(0);
                 }
                 "help" => {

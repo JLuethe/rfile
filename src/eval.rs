@@ -78,6 +78,8 @@ pub(crate) struct Evaluator<'a> {
     budget: Budget,
     text: bool,
     executable: bool,
+    time: &'a crate::TimeContext,
+    profile: crate::SemanticProfile,
     indirect_count: usize,
     print: PrintState,
 }
@@ -88,6 +90,8 @@ impl<'a> Evaluator<'a> {
         budget: Budget,
         text: bool,
         executable: bool,
+        time: &'a crate::TimeContext,
+        profile: crate::SemanticProfile,
     ) -> Self {
         Self {
             db,
@@ -95,6 +99,8 @@ impl<'a> Evaluator<'a> {
             budget,
             text,
             executable,
+            time,
+            profile,
             indirect_count: 0,
             print: PrintState::default(),
         }
@@ -444,7 +450,7 @@ impl<'a> Evaluator<'a> {
                                 f64::from_bits(n)
                             })
                         } else {
-                            number_value(r.kind, n, r.unsigned(), w)
+                            number_value(r.kind, n, r.unsigned(), w, self.time, self.profile)
                         }
                     } else if matches!(r.kind, 5 | 13 | 18 | 19 | 61) {
                         Value::Bytes(format::printable(r.name(), self.flags.has(Flags::RAW)))
@@ -938,7 +944,7 @@ impl<'a> Evaluator<'a> {
         if !compare(n, r.number(), r.relation, r.unsigned(), width) {
             return Ok(None);
         }
-        let value = number_value(kind, n, r.unsigned(), width);
+        let value = number_value(kind, n, r.unsigned(), width, self.time, self.profile);
         Ok(hit(
             value,
             if matches!(kind, 42..=44) {
@@ -949,11 +955,25 @@ impl<'a> Evaluator<'a> {
         ))
     }
 }
-fn number_value(kind: u8, n: u64, unsigned: bool, width: usize) -> Value {
+fn number_value(
+    kind: u8,
+    n: u64,
+    unsigned: bool,
+    width: usize,
+    time: &crate::TimeContext,
+    profile: crate::SemanticProfile,
+) -> Value {
     match kind {
-        6 | 9 | 12 | 14 | 15 | 16 | 21 | 22 | 27..=32 | 42..=44 => {
-            Value::Bytes(format::datetime(n, matches!(kind, 42..=44)).into_bytes())
-        }
+        6 | 9 | 12 | 14 | 15 | 16 | 21 | 22 | 27..=32 | 42..=44 => Value::Bytes(
+            format::datetime(
+                n,
+                matches!(kind, 42..=44),
+                matches!(kind, 14..=16 | 22 | 30..=32),
+                time,
+                profile,
+            )
+            .into_bytes(),
+        ),
         55..=57 => Value::Bytes(format::dos_date(n as u16).into_bytes()),
         58..=60 => Value::Bytes(format::dos_time(n as u16).into_bytes()),
         _ => Value::Number {
