@@ -1,0 +1,122 @@
+[
+  {
+    "name": "summary-v3-regular",
+    "bytes": 5632,
+    "sha256": "c1ed9561ddfac8d6cd0afe79cfa61803763bea889051bf3249e27852f0b8221f"
+  },
+  {
+    "name": "summary-v3-mini",
+    "bytes": 2560,
+    "sha256": "50fe932b9665de372af03a3d352e0cd14920f9c4db569ed1ed283db4c8396525"
+  },
+  {
+    "name": "summary-v4-regular",
+    "bytes": 16384,
+    "sha256": "190d6b3b5a7fe9450e584d7e51b44071f809d6738a207953c0312024915b873e"
+  },
+  {
+    "name": "summary-v4-mini",
+    "bytes": 20480,
+    "sha256": "d5736013ad3b5e444e9f8ef1ea8c828bcafe21fd299f32184738208b3bff3437"
+  },
+  {
+    "name": "missing-root",
+    "bytes": 5632,
+    "sha256": "885ccfd0d924d01bb2b1c4eb9fc57344dd0cc527d843b63e003f86fc5292938b"
+  },
+  {
+    "name": "empty-root",
+    "bytes": 1536,
+    "sha256": "7c841c8c047acd85951f0da2e58c18d43c5b8d2ca2c4c7127aa8e11bfddaa94e"
+  },
+  {
+    "name": "type-EncryptedPackage",
+    "bytes": 2560,
+    "sha256": "3c82bb3b3e31a6aac64b6ec24a41bf1db4655b82c04119b951c4a93c549107b1"
+  },
+  {
+    "name": "type-mfbu_header",
+    "bytes": 2560,
+    "sha256": "858076cc3a1d2317c83761fb5ea051211387df3859a8afb391c933c5eab8d5f8"
+  },
+  {
+    "name": "type-Workbook",
+    "bytes": 2560,
+    "sha256": "c395e76f12aa272b327b5d9271493ca60ff045ef7c8bd2c74d00687056f0c9c9"
+  },
+  {
+    "name": "type-WordDocument",
+    "bytes": 2560,
+    "sha256": "9d401ba3a264a253844fe2039eeb4ff3a43ef4e832030646b1325affc0cc1b3e"
+  },
+  {
+    "name": "type-PowerPoint Document",
+    "bytes": 2560,
+    "sha256": "7c5ded70e134a39922fa9e87fa27f32d64af8d6f41bb688e6d1fe7a483590d19"
+  },
+  {
+    "name": "type-__properties_version1.0",
+    "bytes": 2560,
+    "sha256": "b270658179efd68bf18e7878d45142e06187eedf831bddd7d36c7869504d8ea7"
+  },
+  {
+    "name": "hwp-precedence",
+    "bytes": 2560,
+    "sha256": "ed21ca4ea92e6d8d7b382e78b097f8c5e29d68414be4b73c5b1332ed7e08bfe1"
+  },
+  {
+    "name": "all-properties",
+    "bytes": 5632,
+    "sha256": "380eb6169fdab9a941f036c75efb8d6a7572c2cfd65d714df8593a307e12f573"
+  },
+  {
+    "name": "two-sets",
+    "bytes": 2560,
+    "sha256": "eba1763b46e64855ee31403480016c3be567cee1da0db0b29b707a9e2bfcf79d"
+  },
+  {
+    "name": "msi-precedence",
+    "bytes": 2560,
+    "sha256": "5a7930e2f65ab65eac5fa98a1eed720d175bfcb0115c9602e7bc6280c197a1b2"
+  },
+  {
+    "name": "unsupported-codepage",
+    "bytes": 2560,
+    "sha256": "ba564c53397d17c30c9ddbe1d2fcc3e3b84e13214baf68fcebf2e6c422442532"
+  },
+  {
+    "name": "property-overlap",
+    "bytes": 2560,
+    "sha256": "d33e569a1b9b93a3ecafce61bfec79130298c0b9995ecd428dba5d671f49e356"
+  },
+  {
+    "name": "vector-limit",
+    "bytes": 2560,
+    "sha256": "ffae7a43882b683c08175121a2a5108c9ee17a029a7be97bb6fe23c2e5c231ae"
+  },
+  {
+    "name": "catalog",
+    "bytes": 2560,
+    "sha256": "8d676898274ecb9849159b31a67e01ab8a5cdd2ac69979281ae969b47cafedda"
+  },
+  {
+    "name": "catalog-header12",
+    "bytes": 2560,
+    "sha256": "3151ea7a123725c47ba2a6d986378103f461ae4ce6ac5bd367bcd2c3b1692936"
+  },
+  {
+    "name": "directory-chain-cycle",
+    "bytes": 1536,
+    "sha256": "1c683323bffee8b92fc95dcfb24545cd557c575bdee4f5406ddbbcbc4a40e87e"
+  },
+  {
+    "name": "directory-tree-cycle",
+    "bytes": 1536,
+    "sha256": "9ca53708f7d33f4f6e38af5e7deb4247f73ea8178176f18dbc74a8f3ffc1fde5"
+  },
+  {
+    "name": "missing-fat",
+    "bytes": 1536,
+    "sha256": "ee7d3f48f5da1170b60629c8ad88ba2e1f85fea2f7e96a4cb6769438f16e7295"
+  }
+]

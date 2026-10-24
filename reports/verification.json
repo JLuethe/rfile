@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "elapsed_seconds": 101.4663980089972,
+  "elapsed_seconds": 114.12594357800845,
   "steps": [
     {
       "name": "format",
       "status": 0,
-      "seconds": 0.10032480099471286,
+      "seconds": 0.10328046200447716,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -17,7 +17,7 @@
     {
       "name": "clippy",
       "status": 0,
-      "seconds": 0.4037778450001497,
+      "seconds": 0.07953302899841219,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "clippy",
@@ -31,7 +31,7 @@
     {
       "name": "cargo-test",
       "status": 0,
-      "seconds": 1.2979874850134365,
+      "seconds": 0.5338655710074818,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -41,7 +41,7 @@
     {
       "name": "cargo-release-test",
       "status": 0,
-      "seconds": 31.09346924300189,
+      "seconds": 37.85558697700617,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -52,7 +52,7 @@
     {
       "name": "cargo-build",
       "status": 0,
-      "seconds": 0.019933146992116235,
+      "seconds": 0.03057334500772413,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -63,7 +63,7 @@
     {
       "name": "database-rebuild",
       "status": 0,
-      "seconds": 0.1114439550001407,
+      "seconds": 0.14008379699953366,
       "command": [
         "python3",
         "tools/rebuild_database.py"
@@ -72,7 +72,7 @@
     {
       "name": "fuzz-smoke",
       "status": 0,
-      "seconds": 1.8341651369992178,
+      "seconds": 1.9666869150096318,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -88,7 +88,7 @@
     {
       "name": "fuzz-format",
       "status": 0,
-      "seconds": 0.03397365700220689,
+      "seconds": 0.04604927099717315,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -101,7 +101,7 @@
     {
       "name": "fuzz-build",
       "status": 0,
-      "seconds": 0.3122204630053602,
+      "seconds": 0.3713326660072198,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "check",
@@ -114,7 +114,7 @@
     {
       "name": "upstream-check",
       "status": 0,
-      "seconds": 2.013906214997405,
+      "seconds": 1.3272331789921736,
       "command": [
         "make",
         "-C",
@@ -125,7 +125,7 @@
     {
       "name": "compiler",
       "status": 0,
-      "seconds": 0.29351710599439684,
+      "seconds": 0.2734001800126862,
       "command": [
         "python3",
         "tools/compiler_compare.py"
@@ -134,7 +134,7 @@
     {
       "name": "fixtures",
       "status": 0,
-      "seconds": 2.3546465340041323,
+      "seconds": 2.1726416120072827,
       "command": [
         "python3",
         "tools/fixture_compare.py"
@@ -143,7 +143,7 @@
     {
       "name": "differential-broad",
       "status": 0,
-      "seconds": 14.126411011995515,
+      "seconds": 15.610960145000718,
       "command": [
         "python3",
         "tools/differential.py",
@@ -154,7 +154,7 @@
     {
       "name": "extended",
       "status": 0,
-      "seconds": 20.273589228003402,
+      "seconds": 15.853926574010984,
       "command": [
         "python3",
         "tools/extended_compare.py"
@@ -163,16 +163,25 @@
     {
       "name": "semantics-differential",
       "status": 0,
-      "seconds": 2.1044043059955584,
+      "seconds": 2.1906056059960974,
       "command": [
         "python3",
         "tools/semantics_compare.py"
       ]
     },
     {
+      "name": "cdf-differential",
+      "status": 0,
+      "seconds": 7.327368435988319,
+      "command": [
+        "python3",
+        "tools/cdf_compare.py"
+      ]
+    },
+    {
       "name": "time-differential",
       "status": 0,
-      "seconds": 18.82558034399699,
+      "seconds": 21.140845976988203,
       "command": [
         "python3",
         "tools/time_compare.py"
@@ -181,7 +190,7 @@
     {
       "name": "component-differential",
       "status": 0,
-      "seconds": 0.1698100180074107,
+      "seconds": 0.1957530559884617,
       "command": [
         "python3",
         "tools/component_compare.py"
@@ -190,7 +199,7 @@
     {
       "name": "cli-differential",
       "status": 0,
-      "seconds": 4.306855506001739,
+      "seconds": 5.18109127500793,
       "command": [
         "python3",
         "tools/cli_compare.py"
@@ -199,7 +208,7 @@
     {
       "name": "benchmark",
       "status": 0,
-      "seconds": 1.7236767009890173,
+      "seconds": 1.6628637349931523,
       "command": [
         "python3",
         "tools/benchmark.py"
@@ -208,12 +217,12 @@
   ],
   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-  "binary_sha256": "202bfc61199c702c185b3a9fe22a8908d31e2296e6e56e65c31550efad9e4772",
+  "binary_sha256": "a080a41e9e0cf3fea850cf48cc27d4c7cdc27d7c6454c15456211eb9419fe7ff",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "mutation_smoke": [
     {
       "database_cases": 10000,
-      "elapsed_seconds": 1.807456448,
+      "elapsed_seconds": 1.9312781509999999,
       "fixture_truncations": 1339,
       "random_input_cases": 10000,
       "seed": "4f6c655275737421",

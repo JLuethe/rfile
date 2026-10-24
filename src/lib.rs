@@ -29,7 +29,7 @@
 
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
 #![forbid(unsafe_code)]
-mod cdf;
+pub mod cdf;
 pub mod cli;
 mod database;
 mod detectors;
@@ -70,8 +70,16 @@ pub struct Classification {
     pub truncated: bool,
     pub diagnostics: Vec<String>,
     pub metrics: InspectionMetrics,
+    pub compound_document: Option<cdf::CompoundDocument>,
 }
 impl Classification {
+    fn with_compound_document(mut self, facts: Option<cdf::CompoundDocument>) -> Self {
+        if let Some(ref f) = facts {
+            self.diagnostics.extend(f.diagnostics.iter().cloned());
+        }
+        self.compound_document = facts;
+        self
+    }
     pub fn as_bytes(&self) -> &[u8] {
         &self.output
     }
@@ -132,7 +140,7 @@ impl Engine {
     pub fn classify(&self, data: &[u8]) -> Result<Classification> {
         let budget = self.budget()?;
         self.check_output(
-            self.classify_input(data, None, false, None, &budget),
+            self.classify_input(data, None, false, None, None, &budget),
             &budget,
         )
     }
@@ -143,7 +151,7 @@ impl Engine {
     pub fn classify_reader(&self, reader: &mut impl std::io::Read) -> Result<Classification> {
         let budget = self.budget()?;
         let bytes = input::read_prefix(reader, self.limits.bytes, &budget)?;
-        let mut result = self.classify_input(&bytes, None, false, None, &budget)?;
+        let mut result = self.classify_input(&bytes, None, false, None, None, &budget)?;
         result.truncated = bytes.len() == self.limits.bytes;
         self.check_output(Ok(result), &budget)
     }
@@ -203,6 +211,7 @@ impl Engine {
             truncated,
             diagnostics: Vec::new(),
             metrics: InspectionMetrics::default(),
+            compound_document: None,
         }
     }
     pub(crate) fn classify_input(
@@ -211,6 +220,7 @@ impl Engine {
         tail: Option<&[u8]>,
         executable: bool,
         elf_suffix: Option<&[u8]>,
+        view: Option<&mut dyn input::InputView>,
         budget: &InspectionBudget,
     ) -> Result<Classification> {
         let truncated = data.len() > self.limits.bytes;
@@ -263,11 +273,11 @@ impl Engine {
             };
             let mut inner = self.clone();
             inner.flags.0 &= !Flags::COMPRESS;
-            let mut result = inner.classify_input(&expanded, None, false, None, budget)?;
+            let mut result = inner.classify_input(&expanded, None, false, None, None, budget)?;
             if !self.flags.has(Flags::TRANSPARENT)
                 && (!self.flags.has(Flags::MIME) || self.flags.0 & Flags::MIME == Flags::MIME)
             {
-                let outer = inner.classify_input(data, None, false, None, budget)?;
+                let outer = inner.classify_input(data, None, false, None, None, budget)?;
                 let mut output = result.output.clone();
                 output.extend_from_slice(if self.flags.has(Flags::MIME) {
                     b" compressed-encoding="
@@ -294,6 +304,7 @@ impl Engine {
             &self.time,
             self.profile,
         );
+        let mut cdf_facts = None;
         let mut output = Vec::new();
         let mut description = Vec::new();
         let mut mime = String::new();
@@ -348,16 +359,11 @@ impl Engine {
             if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
                 && !self.flags.has(Flags::NO_CDF)
             {
-                let _cdf_memory =
-                    if data.starts_with(&[0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]) {
-                        Some(budget.reserve(data.len().saturating_mul(16))?)
-                    } else {
-                        None
-                    };
-                let detected = cdf::detect(data);
+                let detected = cdf::detect(data, view, budget, self.profile, &self.time)?;
                 stage_matched = detected.is_some();
-                if let Some(t) = detected {
-                    builtins.push(t);
+                if let Some(detected) = detected {
+                    cdf_facts = Some(detected.facts);
+                    builtins.push((detected.description, detected.mime));
                 }
             }
             for (desc, typ) in builtins {
@@ -375,14 +381,9 @@ impl Engine {
                 description = desc;
                 mime = typ.into();
                 if !self.flags.has(Flags::CONTINUE) {
-                    return Ok(self.finish(
-                        output,
-                        description,
-                        mime,
-                        enc.mime,
-                        (None, None),
-                        truncated,
-                    ));
+                    return Ok(self
+                        .finish(output, description, mime, enc.mime, (None, None), truncated)
+                        .with_compound_document(cdf_facts));
                 }
                 output.extend_from_slice(b"\n- ");
             }
@@ -413,18 +414,20 @@ impl Engine {
                     .apple
                     .map(|x| String::from_utf8_lossy(&x).into_owned());
                 if !self.flags.has(Flags::CONTINUE) && !output.is_empty() {
-                    return Ok(self.finish(
-                        output,
-                        description,
-                        if mime.is_empty() {
-                            "application/octet-stream".into()
-                        } else {
-                            mime
-                        },
-                        enc.mime,
-                        (extensions, apple),
-                        truncated,
-                    ));
+                    return Ok(self
+                        .finish(
+                            output,
+                            description,
+                            if mime.is_empty() {
+                                "application/octet-stream".into()
+                            } else {
+                                mime
+                            },
+                            enc.mime,
+                            (extensions, apple),
+                            truncated,
+                        )
+                        .with_compound_document(cdf_facts));
                 }
                 if self.flags.has(Flags::CONTINUE) {
                     output.extend_from_slice(b"\n- ");
@@ -517,14 +520,16 @@ impl Engine {
         if mime.is_empty() {
             mime = "application/octet-stream".into();
         }
-        Ok(self.finish(
-            output,
-            description,
-            mime,
-            enc.mime,
-            (extensions, apple),
-            truncated,
-        ))
+        Ok(self
+            .finish(
+                output,
+                description,
+                mime,
+                enc.mime,
+                (extensions, apple),
+                truncated,
+            )
+            .with_compound_document(cdf_facts))
     }
     fn finish(
         &self,
@@ -558,6 +563,7 @@ impl Engine {
             truncated,
             diagnostics: Vec::new(),
             metrics: InspectionMetrics::default(),
+            compound_document: None,
         }
     }
 }

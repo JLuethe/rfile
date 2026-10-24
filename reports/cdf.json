@@ -1,0 +1,5910 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "environment": {
+    "LC_ALL": "C",
+    "TZ": "UTC"
+  },
+  "fixtures": [
+    {
+      "name": "summary-v3-regular",
+      "bytes": 5632,
+      "sha256": "c1ed9561ddfac8d6cd0afe79cfa61803763bea889051bf3249e27852f0b8221f"
+    },
+    {
+      "name": "summary-v3-mini",
+      "bytes": 2560,
+      "sha256": "50fe932b9665de372af03a3d352e0cd14920f9c4db569ed1ed283db4c8396525"
+    },
+    {
+      "name": "summary-v4-regular",
+      "bytes": 16384,
+      "sha256": "190d6b3b5a7fe9450e584d7e51b44071f809d6738a207953c0312024915b873e"
+    },
+    {
+      "name": "summary-v4-mini",
+      "bytes": 20480,
+      "sha256": "d5736013ad3b5e444e9f8ef1ea8c828bcafe21fd299f32184738208b3bff3437"
+    },
+    {
+      "name": "missing-root",
+      "bytes": 5632,
+      "sha256": "885ccfd0d924d01bb2b1c4eb9fc57344dd0cc527d843b63e003f86fc5292938b"
+    },
+    {
+      "name": "empty-root",
+      "bytes": 1536,
+      "sha256": "7c841c8c047acd85951f0da2e58c18d43c5b8d2ca2c4c7127aa8e11bfddaa94e"
+    },
+    {
+      "name": "type-EncryptedPackage",
+      "bytes": 2560,
+      "sha256": "3c82bb3b3e31a6aac64b6ec24a41bf1db4655b82c04119b951c4a93c549107b1"
+    },
+    {
+      "name": "type-mfbu_header",
+      "bytes": 2560,
+      "sha256": "858076cc3a1d2317c83761fb5ea051211387df3859a8afb391c933c5eab8d5f8"
+    },
+    {
+      "name": "type-Workbook",
+      "bytes": 2560,
+      "sha256": "c395e76f12aa272b327b5d9271493ca60ff045ef7c8bd2c74d00687056f0c9c9"
+    },
+    {
+      "name": "type-WordDocument",
+      "bytes": 2560,
+      "sha256": "9d401ba3a264a253844fe2039eeb4ff3a43ef4e832030646b1325affc0cc1b3e"
+    },
+    {
+      "name": "type-PowerPoint Document",
+      "bytes": 2560,
+      "sha256": "7c5ded70e134a39922fa9e87fa27f32d64af8d6f41bb688e6d1fe7a483590d19"
+    },
+    {
+      "name": "type-__properties_version1.0",
+      "bytes": 2560,
+      "sha256": "b270658179efd68bf18e7878d45142e06187eedf831bddd7d36c7869504d8ea7"
+    },
+    {
+      "name": "hwp-precedence",
+      "bytes": 2560,
+      "sha256": "ed21ca4ea92e6d8d7b382e78b097f8c5e29d68414be4b73c5b1332ed7e08bfe1"
+    },
+    {
+      "name": "all-properties",
+      "bytes": 5632,
+      "sha256": "380eb6169fdab9a941f036c75efb8d6a7572c2cfd65d714df8593a307e12f573"
+    },
+    {
+      "name": "two-sets",
+      "bytes": 2560,
+      "sha256": "eba1763b46e64855ee31403480016c3be567cee1da0db0b29b707a9e2bfcf79d"
+    },
+    {
+      "name": "msi-precedence",
+      "bytes": 2560,
+      "sha256": "5a7930e2f65ab65eac5fa98a1eed720d175bfcb0115c9602e7bc6280c197a1b2"
+    },
+    {
+      "name": "unsupported-codepage",
+      "bytes": 2560,
+      "sha256": "ba564c53397d17c30c9ddbe1d2fcc3e3b84e13214baf68fcebf2e6c422442532"
+    },
+    {
+      "name": "property-overlap",
+      "bytes": 2560,
+      "sha256": "d33e569a1b9b93a3ecafce61bfec79130298c0b9995ecd428dba5d671f49e356"
+    },
+    {
+      "name": "vector-limit",
+      "bytes": 2560,
+      "sha256": "ffae7a43882b683c08175121a2a5108c9ee17a029a7be97bb6fe23c2e5c231ae"
+    },
+    {
+      "name": "catalog",
+      "bytes": 2560,
+      "sha256": "8d676898274ecb9849159b31a67e01ab8a5cdd2ac69979281ae969b47cafedda"
+    },
+    {
+      "name": "catalog-header12",
+      "bytes": 2560,
+      "sha256": "3151ea7a123725c47ba2a6d986378103f461ae4ce6ac5bd367bcd2c3b1692936"
+    },
+    {
+      "name": "directory-chain-cycle",
+      "bytes": 1536,
+      "sha256": "1c683323bffee8b92fc95dcfb24545cd557c575bdee4f5406ddbbcbc4a40e87e"
+    },
+    {
+      "name": "directory-tree-cycle",
+      "bytes": 1536,
+      "sha256": "9ca53708f7d33f4f6e38af5e7deb4247f73ea8178176f18dbc74a8f3ffc1fde5"
+    },
+    {
+      "name": "missing-fat",
+      "bytes": 1536,
+      "sha256": "ee7d3f48f5da1170b60629c8ad88ba2e1f85fea2f7e96a4cb6769438f16e7295"
+    },
+    {
+      "name": "beyond-seven-mib-difat",
+      "bytes": 8460800,
+      "sha256": "d7d53cf9b62676007060c49caaba3a18ff91d6e39a1403e701c2a552e2559288"
+    }
+  ],
+  "cli": [
+    {
+      "case": "summary-v3-regular",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c2030204d696e692046415420736563746f722c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c2030204d696e692046415420736563746f722c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c2030204d696e692046415420736563746f722c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c2030204d696e692046415420736563746f722c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c204d696e692046415420737461727420736563746f72203078322c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c204d696e692046415420737461727420736563746f72203078322c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c204d696e692046415420737461727420736563746f72203078322c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076342e36322c20536563494420302c204d696e692046415420737461727420736563746f72203078322c20626c6f636b73697a652034303936203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f725c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f725c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f720a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f720a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "434446563220456e637279707465640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "434446563220456e637279707465640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f656e637279707465643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f656e637279707465643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f656e637279707465640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f656e637279707465640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "434446563220456e637279707465645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320456e637279707465645061636b616765202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "434446563220456e637279707465645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320456e637279707465645061636b616765202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320456e637279707465645061636b616765202020647420200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320456e637279707465645061636b616765202020647420200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "434446563220517569636b426f6f6b730a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "434446563220517569636b426f6f6b730a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f717569636b626f6f6b733b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f717569636b626f6f6b733b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f717569636b626f6f6b730a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f717569636b626f6f6b730a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "434446563220517569636b426f6f6b735c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573206d6662755f686561646572202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "434446563220517569636b426f6f6b735c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573206d6662755f686561646572202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573206d6662755f686561646572202020647420200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573206d6662755f686561646572202020647420200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420457863656c0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420457863656c0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d657863656c3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d657863656c3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d657863656c0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d657863656c0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420457863656c5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f667420457863656c2039372d3230303320776f726b7368656574203020636c7369645c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420457863656c5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f667420457863656c2039372d3230303320776f726b7368656574203020636c7369645c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f667420457863656c2039372d3230303320776f726b7368656574203020636c7369640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f667420457863656c2039372d3230303320776f726b7368656574203020636c7369640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72640a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72640a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320576f7264446f63756d656e74202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72645c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320576f7264446f63756d656e74202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320576f7264446f63756d656e74202020647420200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320576f7264446f63756d656e74202020647420200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420506f776572506f696e740a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420506f776572506f696e740a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d706f776572706f696e743b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d706f776572706f696e743b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d706f776572706f696e740a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d706f776572706f696e740a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420506f776572506f696e745c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320506f776572506f696e7420446f63756d656e74202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420506f776572506f696e745c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320506f776572506f696e7420446f63756d656e74202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320506f776572506f696e7420446f63756d656e74202020647420200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320506f776572506f696e7420446f63756d656e74202020647420200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f6674204f75746c6f6f6b204d6573736167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f6674204f75746c6f6f6b204d6573736167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f75746c6f6f6b3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f75746c6f6f6b3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f75746c6f6f6b0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f75746c6f6f6b0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f6674204f75746c6f6f6b204d6573736167655c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205f5f70726f706572746965735f76657273696f6e202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f6674204f75746c6f6f6b204d6573736167655c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205f5f70726f706572746965735f76657273696f6e202020647420205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205f5f70726f706572746965735f76657273696f6e202020647420200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205f5f70726f706572746965735f76657273696f6e202020647420200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "48616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e300a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "48616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e300a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6877703b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6877703b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6877700a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6877700a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "48616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e305c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a2048616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e305c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "48616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e305c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a2048616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e305c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a2048616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e300a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a2048616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e300a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736205c333131205c3033365c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736205c333131205c3033365c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736205c333131205c3033360a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736205c333131205c3033360a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736206f205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736206f205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736206f200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c333736206f200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f66742057696e646f777320496e7374616c6c6572205061636b616765206f722076616c69646174696f6e206d6f64756c655c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f66742057696e646f777320496e7374616c6c6572205061636b616765206f722076616c69646174696f6e206d6f64756c655c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f66742057696e646f777320496e7374616c6c6572205061636b616765206f722076616c69646174696f6e206d6f64756c650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a204d6963726f736f66742057696e646f777320496e7374616c6c6572205061636b616765206f722076616c69646174696f6e206d6f64756c650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "safety-limit"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "safety-limit"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "safety-limit"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "safety-limit"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "safety-limit"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d6174692020205c33373620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c30333620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c30333620205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c30333620200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c30333620200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c3031345c3030375c3020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c3031345c3030375c3020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c3031345c3030375c3020200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c204d696e692046415420737461727420736563746f7220307832203a20554e4b4e4f574e2077697468206e616d657320436174616c6f672020205c3031345c3030375c3020200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72795c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d657320202020205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72795c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d657320202020205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d657320202020205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d657320202020205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72795c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72795c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c335c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c2030204d696e692046415420736563746f72203a20554e4b4e4f574e2077697468206e616d6573202020205c3337365c3337375c33205c3337375c3337375c33205c3337375c3337375c330a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "--mime-type"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167650a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "--mime-encoding"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "-k"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c203133302046415420736563746f72732c2030204d696e692046415420736563746f722c20444946415420737461727420736563746f72203078343038622c203120444946415420736563746f7273203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f5c3031322d204f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c203133302046415420736563746f72732c2030204d696e692046415420736563746f722c20444946415420737461727420736563746f72203078343038622c203120444946415420736563746f7273203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020205c3031322d20646174610a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "-e",
+        "cdf"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c203133302046415420736563746f72732c2030204d696e692046415420736563746f722c20444946415420737461727420736563746f72203078343038622c203120444946415420736563746f7273203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "4f4c45203220436f6d706f756e6420446f63756d656e742c2076332e36322c20536563494420302c203133302046415420736563746f72732c2030204d696e692046415420736563746f722c20444946415420737461727420736563746f72203078343038622c203120444946415420736563746f7273203a20554e4b4e4f574e2077697468206e616d6573205c30303553756d6d617279496e666f726d61746920202020200a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    }
+  ],
+  "api": [
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "Composite Document File V2 Document, Cannot read section info",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "buffer",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "application/x-ole-storage; charset=binary",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "buffer",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "application/x-ole-storage",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "buffer",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "binary",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "buffer",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "Composite Document File V2 Document, Cannot read section info\\012- OLE 2 Compound Document, v3.62, SecID 0, Mini FAT start sector 0x2 : UNKNOWN with names \\005SummaryInformati   \\376  \\012- data",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "buffer",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "Composite Document File V2 Document, Cannot read section info",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "path",
+      "flags": 0,
+      "effective_flags": 0,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "application/x-ole-storage; charset=binary",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "path",
+      "flags": 1040,
+      "effective_flags": 1040,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "application/x-ole-storage",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "path",
+      "flags": 16,
+      "effective_flags": 16,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "binary",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "path",
+      "flags": 1024,
+      "effective_flags": 1024,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-regular.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v3-mini.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v3-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-regular.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-regular",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/summary-v4-mini.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "summary-v4-mini",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-root.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/empty-root.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "empty-root",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-EncryptedPackage.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-EncryptedPackage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-mfbu_header.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-mfbu_header",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-Workbook.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-Workbook",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-WordDocument.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-WordDocument",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-PowerPoint Document.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-PowerPoint Document",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/type-__properties_version1.0.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "type-__properties_version1.0",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/hwp-precedence.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "hwp-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/all-properties.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "all-properties",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/two-sets.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "two-sets",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/msi-precedence.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "msi-precedence",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/unsupported-codepage.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "unsupported-codepage",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/property-overlap.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "property-overlap",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/vector-limit.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": false,
+      "reference": "Composite Document File V2 Document, Cannot read section info\\012- OLE 2 Compound Document, v3.62, SecID 0, Mini FAT start sector 0x2 : UNKNOWN with names \\005SummaryInformati   \\376  \\012- data",
+      "rust": null,
+      "rust_error": "CDF vector elements limit exceeded",
+      "reference_error": null,
+      "case": "vector-limit",
+      "disposition": "safety-limit"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/catalog-header12.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "catalog-header12",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-chain-cycle.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-chain-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/directory-tree-cycle.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "directory-tree-cycle",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/missing-fat.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "missing-fat",
+      "disposition": "exact"
+    },
+    {
+      "path": "/tmp/rfile-cdf-jup1pcxm/beyond-seven-mib-difat.cfb",
+      "mode": "path",
+      "flags": 32,
+      "effective_flags": 32,
+      "database": "data/magic.mgc",
+      "equal": true,
+      "case": "beyond-seven-mib-difat",
+      "disposition": "exact"
+    }
+  ],
+  "corrected": [
+    {
+      "case": "summary-v3-regular",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v3-regular",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v3-mini",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v4-regular",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "summary-v4-mini",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "missing-root",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "missing-root",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "empty-root",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "empty-root",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "434446563220456e637279707465640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-EncryptedPackage",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f656e637279707465643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "434446563220517569636b426f6f6b730a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-mfbu_header",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f717569636b626f6f6b733b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420457863656c0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-Workbook",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d657863656c3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-WordDocument",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f667420506f776572506f696e740a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-PowerPoint Document",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d706f776572706f696e743b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4344465632204d6963726f736f6674204f75746c6f6f6b204d6573736167650a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "type-__properties_version1.0",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f75746c6f6f6b3b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "48616e636f6d20485750202848616e67756c20576f72642050726f636573736f72292066696c652c2076657273696f6e20352e300a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "hwp-precedence",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6877703b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "all-properties",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c205469746c653a206361665c3330335c3235312c205469746c653a206475706c6963617465207469746c652c205375626a6563743a205c3335315c3233335c3235325c3334345c3237325c323732212c204e756d626572206f662050616765733a202d3132332c204e756d626572206f6620576f7264733a20343239343936373239352c204e756d626572206f6620436861726163746572733a202d313233343536373839303132332c2053656375726974793a20393232333337323033363835343737353830392c20307863383a202d312c20307863393a20312e32352c20307863613a202d322e352c20546f74616c2045646974696e672054696d653a2032303a33302c204372656174652054696d652f446174653a20546875204a616e2020312030303a30303a303020313937302c20307863643a202d313b20323b20332c20307863653a202d313b20322c20307863663a20413b20422c20307864303a20373b20382c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "all-properties",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "two-sets",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c205469746c653a2066697273742c205c757b357d53756d6d617279496e666f726d6174696f6e203078323a20637573746f6d0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "two-sets",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f66666963653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c204d6963726f736f667420496e7374616c6c65722c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "msi-precedence",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6d73693b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a203933320a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "unsupported-codepage",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f766e642e6d732d6f66666963653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "property-overlap",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [],
+      "result": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "vector-limit",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 1,
+        "stdout_hex": "4552524f523a2043444620766563746f7220656c656d656e7473206c696d69742065786365656465640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "catalog",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4d6963726f736f6674205468756d62732e6462205b66697273742e6a70672c207365636f6e642e706e675d0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "catalog",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f43444656323b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "4d6963726f736f6674205468756d62732e6462205b66697273742e6a70672c207365636f6e642e706e675d0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "catalog-header12",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f43444656323b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164206469726563746f72790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "directory-chain-cycle",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "directory-tree-cycle",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e27742072656164205341540a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "missing-fat",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [],
+      "result": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c204c6974746c6520456e6469616e2c204f733a2057696e646f77732c2056657273696f6e20362e302c20436f646520706167653a20313235322c204e616d65206f66204372656174696e67204170706c69636174696f6e3a204d6963726f736f667420576f72640a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    },
+    {
+      "case": "beyond-seven-mib-difat",
+      "flags": [
+        "-i"
+      ],
+      "result": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f6d73776f72643b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "oracle": "independent wire fixtures; primary C summary pointer defect not corrected truth"
+    }
+  ],
+  "total": 400,
+  "exact": 385,
+  "safety_limits": 15,
+  "unexpected": 0
+}

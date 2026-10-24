@@ -63,3 +63,17 @@ path = "fuzz_targets/compression.rs"
 test = false
 doc = false
 bench = false
+
+[[bin]]
+name = "cdf_container"
+path = "fuzz_targets/cdf_container.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "cdf_properties"
+path = "fuzz_targets/cdf_properties.rs"
+test = false
+doc = false
+bench = false

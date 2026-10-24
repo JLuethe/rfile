@@ -9,7 +9,21 @@ use std::{
 
 pub trait InputView {
     fn known_len(&self) -> Option<u64>;
-    fn read_at(&mut self, offset: u64, out: &mut [u8], budget: &InspectionBudget) -> Result<usize>;
+    /// Primitive positional read; core range drivers charge attempts, including
+    /// interruptions, before invoking adapters. This prevents an adapter's error
+    /// path from accidentally bypassing the request cap.
+    fn read_at_unaccounted(&mut self, offset: u64, out: &mut [u8]) -> Result<usize>;
+    fn read_at(&mut self, offset: u64, out: &mut [u8], budget: &InspectionBudget) -> Result<usize> {
+        offset
+            .checked_add(out.len() as u64)
+            .ok_or(Error::Malformed {
+                format: "input",
+                stage: "range",
+                offset,
+            })?;
+        budget.record_read(out.len())?;
+        self.read_at_unaccounted(offset, out)
+    }
 }
 pub struct SliceView<'a> {
     bytes: &'a [u8],
@@ -23,8 +37,7 @@ impl InputView for SliceView<'_> {
     fn known_len(&self) -> Option<u64> {
         Some(self.bytes.len() as u64)
     }
-    fn read_at(&mut self, offset: u64, out: &mut [u8], budget: &InspectionBudget) -> Result<usize> {
-        budget.record_read(out.len())?;
+    fn read_at_unaccounted(&mut self, offset: u64, out: &mut [u8]) -> Result<usize> {
         let start = usize::try_from(offset)
             .ok()
             .and_then(|o| self.bytes.get(o..));
@@ -53,7 +66,7 @@ impl InputView for FileView<'_> {
     fn known_len(&self) -> Option<u64> {
         self.len
     }
-    fn read_at(&mut self, offset: u64, out: &mut [u8], budget: &InspectionBudget) -> Result<usize> {
+    fn read_at_unaccounted(&mut self, offset: u64, out: &mut [u8]) -> Result<usize> {
         offset
             .checked_add(out.len() as u64)
             .ok_or(Error::Malformed {
@@ -61,7 +74,6 @@ impl InputView for FileView<'_> {
                 stage: "range",
                 offset,
             })?;
-        budget.record_read(out.len())?;
         #[cfg(unix)]
         {
             use std::os::unix::fs::FileExt;
@@ -186,7 +198,8 @@ pub fn read_range(
     let mut pos = 0;
     while pos < size {
         let end = size.min(pos + 4096);
-        let got = match view.read_at(offset + pos as u64, &mut out[pos..end], budget) {
+        budget.record_read(end - pos)?;
+        let got = match view.read_at_unaccounted(offset + pos as u64, &mut out[pos..end]) {
             Err(Error::Io(e)) if e.kind() == io::ErrorKind::Interrupted => continue,
             r => r?,
         };
