@@ -44,6 +44,8 @@ pub mod input;
 mod inspection;
 mod limits;
 mod options;
+mod time_context;
+pub use time_context::TimeContext;
 mod parser;
 mod regex_engine;
 pub use database::{Database, FORMAT_VERSION, UPSTREAM_COMMIT};
@@ -82,6 +84,7 @@ pub struct Engine {
     pub limits: Limits,
     pub profile: SemanticProfile,
     control: ExecutionControl,
+    time: TimeContext,
 }
 impl Engine {
     pub fn new(database: Arc<Database>) -> Self {
@@ -91,6 +94,7 @@ impl Engine {
             limits: Limits::default(),
             profile: SemanticProfile::default(),
             control: ExecutionControl::default(),
+            time: TimeContext::default(),
         }
     }
     pub fn builtin() -> Result<Self> {
@@ -113,8 +117,14 @@ impl Engine {
         self.control = control;
         self
     }
+    pub fn with_time_context(mut self, time: TimeContext) -> Self {
+        self.time = time;
+        self
+    }
     pub fn capabilities(&self) -> Capabilities {
-        Capabilities::current(self.profile)
+        let mut capabilities = Capabilities::current(self.profile);
+        capabilities.time_zone = self.time.source().to_owned();
+        capabilities
     }
     fn budget(&self) -> Result<InspectionBudget> {
         InspectionBudget::new(&self.limits, self.control.clone())
@@ -281,6 +291,8 @@ impl Engine {
             budget.clone(),
             enc.text,
             executable,
+            &self.time,
+            self.profile,
         );
         let mut output = Vec::new();
         let mut description = Vec::new();

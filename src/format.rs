@@ -502,17 +502,36 @@ fn windows_seconds(ticks: i64) -> Option<i64> {
     let before: i64 = lengths[..month].iter().sum();
     Some((civil_days(year, 1, 1) + before + day - 1) * 86400 + seconds % 86400)
 }
-pub(crate) fn datetime(n: u64, windows: bool) -> String {
-    let seconds = if windows {
+pub(crate) fn datetime(
+    n: u64,
+    windows: bool,
+    local: bool,
+    time: &crate::TimeContext,
+    profile: crate::SemanticProfile,
+) -> String {
+    let mut seconds = if windows && profile == crate::SemanticProfile::CorrectedV1 {
+        (n as i64)
+            .div_euclid(10_000_000)
+            .saturating_sub(11_644_473_600)
+    } else if windows {
         let Some(seconds) = windows_seconds(n as i64) else {
+            return "*Invalid datetime*".into();
+        };
+        let Some(seconds) = time.legacy_windows_seconds(seconds) else {
             return "*Invalid datetime*".into();
         };
         seconds
     } else {
         n as i64
     };
-    if seconds > 253_402_300_799 {
+    if seconds > 0x3a_fff4_87cf {
         return "*Invalid datetime*".into();
+    }
+    if local {
+        let Some(adjusted) = time.local_seconds(seconds) else {
+            return "*Invalid datetime*".into();
+        };
+        seconds = adjusted;
     }
     let days = seconds.div_euclid(86400);
     let sec = seconds.rem_euclid(86400);

@@ -19,6 +19,59 @@ pub(crate) enum CompiledRegex {
         longest: PikeVM,
     },
 }
+/// Inspect decoded regex bytes, keeping escaped backslashes and bracket
+/// predicates distinct from references. GNU ERE references must never be
+/// silently interpreted as octal literals by the regular backend.
+fn check_dialect(bytes: &[u8]) -> std::result::Result<(), String> {
+    let mut i = 0;
+    let mut class = false;
+    let mut first = false;
+    let mut can_negate = false;
+    while i < bytes.len() {
+        let b = bytes[i];
+        if b == b'\\' {
+            if let Some(&next) = bytes.get(i + 1) {
+                if !class && matches!(next, b'1'..=b'9') {
+                    return Err(format!(
+                        "regex backreference at byte {i} requires the bounded capture VM"
+                    ));
+                }
+                i += 2;
+                first = false;
+                continue;
+            }
+        }
+        if class {
+            // POSIX [[:class:]], [[.element.]], [[=equivalent=]] tokens
+            // contain an inner closing bracket that does not close the class.
+            if b == b'[' && bytes.get(i + 1).is_some_and(|c| b":.=".contains(c)) {
+                let marker = bytes[i + 1];
+                i += 2;
+                while i + 1 < bytes.len() && !(bytes[i] == marker && bytes[i + 1] == b']') {
+                    i += 1;
+                }
+                i = (i + 2).min(bytes.len());
+                first = false;
+                continue;
+            }
+            if b == b']' && !first {
+                class = false;
+            }
+            if !(first && can_negate && b == b'^') {
+                first = false;
+            }
+            can_negate = false;
+        } else if b == b'[' {
+            class = true;
+            first = true;
+            can_negate = true;
+        } else if b == b'(' && bytes.get(i + 1) == Some(&b'?') {
+            return Err(format!("non-ERE group extension at byte {i}"));
+        }
+        i += 1;
+    }
+    Ok(())
+}
 fn pattern(pattern: &[u8], insensitive: bool) -> (String, syntax::Config) {
     let mut text = String::new();
     for &c in pattern {
@@ -55,6 +108,7 @@ fn pattern(pattern: &[u8], insensitive: bool) -> (String, syntax::Config) {
     )
 }
 pub(crate) fn validate(bytes: &[u8], insensitive: bool) -> std::result::Result<(), String> {
+    check_dialect(bytes)?;
     let (text, syntax) = pattern(bytes, insensitive);
     thompson::NFA::compiler()
         .syntax(syntax)
@@ -69,6 +123,7 @@ pub(crate) fn validate(bytes: &[u8], insensitive: bool) -> std::result::Result<(
 }
 impl CompiledRegex {
     pub fn compile(bytes: &[u8], insensitive: bool) -> std::result::Result<Self, String> {
+        check_dialect(bytes)?;
         let (transformed, syntax) = pattern(bytes, insensitive);
         let dense = dense::Config::new()
             .dfa_size_limit(Some(4 * 1024 * 1024))

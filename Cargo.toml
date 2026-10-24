@@ -13,6 +13,7 @@ default-run = "rfile"
 regex-automata = { version = "0.4", default-features = false, features = ["std", "syntax", "dfa-build", "dfa-search", "nfa-pikevm"] }
 flate2 = { version = "1.1", default-features = false, features = ["miniz_oxide"] }
 serde_json = "1.0"
+jiff = { version = "=0.2.38", default-features = false, features = ["std", "tz-fat"] }
 
 [profile.release]
 lto = "thin"
