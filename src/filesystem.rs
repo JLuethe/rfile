@@ -28,10 +28,13 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
-use crate::{Classification, Engine, Error, Flags, Result};
+use crate::{
+    Classification, Engine, Error, Flags, InspectionBudget, Result,
+    input::{self, FileView},
+};
 use std::{
     fs::{self, File},
-    io::{Read, Seek, SeekFrom},
+    io::{Seek, SeekFrom},
     path::Path,
 };
 
@@ -68,7 +71,11 @@ fn diagnostic(engine: &Engine, description: Vec<u8>) -> Classification {
 fn metadata_result(engine: &Engine, description: Vec<u8>, kind: &str) -> Classification {
     engine.basic(description, &format!("inode/{kind}"), "binary", false)
 }
-pub(crate) fn classify_path(engine: &Engine, path: &Path) -> Result<Classification> {
+pub(crate) fn classify_path(
+    engine: &Engine,
+    path: &Path,
+    budget: &InspectionBudget,
+) -> Result<Classification> {
     let metadata = if engine.flags.has(Flags::SYMLINK) {
         fs::metadata(path)
     } else {
@@ -197,7 +204,7 @@ pub(crate) fn classify_path(engine: &Engine, path: &Path) -> Result<Classificati
     }
     if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
         return if annotation_only {
-            engine.classify(&[])
+            engine.classify_input(&[], None, false, None, budget)
         } else {
             Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
         };
@@ -227,7 +234,7 @@ pub(crate) fn classify_path(engine: &Engine, path: &Path) -> Result<Classificati
             ));
         }
     };
-    let result = read_file(engine, &mut file, false);
+    let result = read_file(engine, &mut file, false, budget);
     if engine.flags.has(Flags::PRESERVE_ATIME) {
         if let (Ok(a), Ok(m)) = (meta.accessed(), meta.modified()) {
             let _ = file.set_times(std::fs::FileTimes::new().set_accessed(a).set_modified(m));
@@ -261,29 +268,35 @@ pub(crate) fn classify_path(engine: &Engine, path: &Path) -> Result<Classificati
     }
     result
 }
-pub(crate) fn classify_file(engine: &Engine, file: &mut File) -> Result<Classification> {
+pub(crate) fn classify_file(
+    engine: &Engine,
+    file: &mut File,
+    budget: &InspectionBudget,
+) -> Result<Classification> {
     let position = file.stream_position().ok();
-    let result = read_file(engine, file, true);
+    let result = read_file(engine, file, true, budget);
     if let Some(p) = position {
         file.seek(SeekFrom::Start(p))?;
     }
     result
 }
-fn read_file(engine: &Engine, file: &mut File, borrowed: bool) -> Result<Classification> {
+fn read_file(
+    engine: &Engine,
+    file: &mut File,
+    borrowed: bool,
+    budget: &InspectionBudget,
+) -> Result<Classification> {
     let meta = file.metadata()?;
     if !borrowed && !engine.flags.has(Flags::DEVICES) && !meta.is_file() {
         return Err(Error::Unsupported(
             "path changed to a special file during open".into(),
         ));
     }
-    let mut prefix = Vec::new();
-    file.take(engine.limits.bytes as u64)
-        .read_to_end(&mut prefix)?;
-    let mut tail = Vec::new();
+    let prefix = input::read_prefix(file, engine.limits.bytes, budget)?;
+    let mut tail = input::InspectionBytes::new(budget)?;
     if meta.is_file() && meta.len() > prefix.len() as u64 && !prefix.is_empty() {
         let n = prefix.len().min(meta.len().min(usize::MAX as u64) as usize);
-        file.seek(SeekFrom::End(-(n as i64)))?;
-        file.take(n as u64).read_to_end(&mut tail)?;
+        tail = input::read_range(&mut FileView::new(file)?, meta.len() - n as u64, n, budget)?;
     }
     let executable = {
         #[cfg(unix)]
@@ -306,6 +319,7 @@ fn read_file(engine: &Engine, file: &mut File, borrowed: bool) -> Result<Classif
             &engine.limits,
             executable,
             engine.flags.has(Flags::MIME),
+            budget,
         )?
     } else {
         None
@@ -316,6 +330,7 @@ fn read_file(engine: &Engine, file: &mut File, borrowed: bool) -> Result<Classif
         if tail.is_empty() { None } else { Some(&tail) },
         executable,
         elf.as_ref().map(|info| info.suffix.as_slice()),
+        budget,
     )?;
     result.truncated = meta.len() > prefix.len() as u64;
     Ok(result)

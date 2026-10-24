@@ -17,6 +17,13 @@ pub struct Limits {
     pub elf_shnum: usize,
     pub elf_shsize: usize,
     pub magwarn: usize,
+    pub memory: usize,
+    pub io_bytes: usize,
+    pub io_reads: usize,
+    pub codec_window: usize,
+    pub codec_members: usize,
+    pub regex_steps: usize,
+    pub regex_states: usize,
 }
 impl Default for Limits {
     fn default() -> Self {
@@ -34,6 +41,13 @@ impl Default for Limits {
             elf_shnum: 32768,
             elf_shsize: 128 * 1024 * 1024,
             magwarn: 64,
+            memory: 128 * 1024 * 1024,
+            io_bytes: 128 * 1024 * 1024,
+            io_reads: 65_536,
+            codec_window: 64 * 1024 * 1024,
+            codec_members: 64,
+            regex_steps: 1_000_000,
+            regex_states: 65_536,
         }
     }
 }
@@ -48,60 +62,48 @@ impl Limits {
         if self.output > 16 * 1024 * 1024 {
             return Err(Error::Limit("output configuration"));
         }
+        if self.memory > 512 * 1024 * 1024
+            || self.io_bytes > 512 * 1024 * 1024
+            || self.io_reads > 1_000_000
+            || self.codec_window > 256 * 1024 * 1024
+            || self.codec_members > 1024
+            || self.regex_steps > 10_000_000
+            || self.regex_states > 262_144
+        {
+            return Err(Error::Limit("inspection configuration"));
+        }
         Ok(())
     }
     pub fn set(&mut self, name: &str, value: usize) -> Result<()> {
+        let mut proposed = self.clone();
         let field = match name {
-            "bytes" => &mut self.bytes,
-            "encoding" => &mut self.encoding,
-            "indir" => &mut self.indirect,
-            "name" => &mut self.names,
-            "regex" => &mut self.regex,
-            "elf_notes" => &mut self.elf_notes,
-            "elf_phnum" => &mut self.elf_phnum,
-            "elf_shnum" => &mut self.elf_shnum,
-            "elf_shsize" => &mut self.elf_shsize,
-            "magwarn" => &mut self.magwarn,
-            "steps" => &mut self.steps,
-            "work" => &mut self.work_bytes,
-            "output" => &mut self.output,
+            "bytes" => &mut proposed.bytes,
+            "encoding" => &mut proposed.encoding,
+            "indir" => &mut proposed.indirect,
+            "name" => &mut proposed.names,
+            "regex" => &mut proposed.regex,
+            "elf_notes" => &mut proposed.elf_notes,
+            "elf_phnum" => &mut proposed.elf_phnum,
+            "elf_shnum" => &mut proposed.elf_shnum,
+            "elf_shsize" => &mut proposed.elf_shsize,
+            "magwarn" => &mut proposed.magwarn,
+            "steps" => &mut proposed.steps,
+            "work" => &mut proposed.work_bytes,
+            "output" => &mut proposed.output,
+            "memory" => &mut proposed.memory,
+            "io_bytes" => &mut proposed.io_bytes,
+            "io_reads" => &mut proposed.io_reads,
+            "codec_window" => &mut proposed.codec_window,
+            "codec_members" => &mut proposed.codec_members,
+            "regex_steps" => &mut proposed.regex_steps,
+            "regex_states" => &mut proposed.regex_states,
             _ => return Err(Error::Unsupported(format!("parameter {name}"))),
         };
-        let old = *field;
         *field = value;
-        if let Err(e) = self.validate() {
-            self.set(name, old)?;
-            return Err(e);
-        }
+        proposed.validate()?;
+        *self = proposed;
         Ok(())
     }
 }
 
-pub(crate) struct Budget<'a> {
-    pub limits: &'a Limits,
-    steps: usize,
-    work: usize,
-}
-impl<'a> Budget<'a> {
-    pub fn new(limits: &'a Limits) -> Self {
-        Self {
-            limits,
-            steps: 0,
-            work: 0,
-        }
-    }
-    pub fn step(&mut self) -> Result<()> {
-        self.steps = self.steps.checked_add(1).ok_or(Error::Limit("steps"))?;
-        if self.steps > self.limits.steps {
-            return Err(Error::Limit("steps"));
-        }
-        Ok(())
-    }
-    pub fn bytes(&mut self, n: usize) -> Result<()> {
-        self.work = self.work.checked_add(n).ok_or(Error::Limit("work bytes"))?;
-        if self.work > self.limits.work_bytes {
-            return Err(Error::Limit("work bytes"));
-        }
-        Ok(())
-    }
-}
+pub(crate) use crate::inspection::InspectionBudget as Budget;

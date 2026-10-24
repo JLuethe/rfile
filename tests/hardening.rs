@@ -51,7 +51,7 @@ fn work_budget_covers_whitespace_search() {
     e.limits.work_bytes = 1000;
     assert!(matches!(
         e.classify(&vec![b' '; 2000]),
-        Err(Error::Limit(_))
+        Err(e) if e.is_limit()
     ));
 }
 #[test]

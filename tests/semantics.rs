@@ -1,6 +1,6 @@
 // rfile contributions: Copyright (C) 2026 rfile contributors.
 // SPDX-License-Identifier: GPL-3.0-only
-use rfile::{Database, Engine, Error, Flags};
+use rfile::{Database, Engine, Flags};
 use std::{
     fs,
     io::{Cursor, Seek},
@@ -136,10 +136,10 @@ fn malformed_database() {
 fn recursion_and_work_are_errors() {
     let mut e = engine("0 name loop\n>0 use loop\n0 string AB\n>0 use loop\n");
     e.limits.names = 4;
-    assert!(matches!(e.classify(b"ABcd"), Err(Error::Limit(_))));
+    assert!(matches!(e.classify(b"ABcd"), Err(e) if e.is_limit()));
     let mut e = engine("0 string AB type\n");
     e.limits.steps = 0;
-    assert!(matches!(e.classify(b"ABcd"), Err(Error::Limit(_))));
+    assert!(matches!(e.classify(b"ABcd"), Err(e) if e.is_limit()));
 }
 #[test]
 fn source_rejects_bad_trees_and_directives() {
@@ -222,7 +222,7 @@ fn maximum_configured_recursion_is_bounded() {
     e.limits.names = 150;
     std::thread::Builder::new()
         .stack_size(2 * 1024 * 1024)
-        .spawn(move || assert!(matches!(e.classify(b"ABcd"), Err(Error::Limit(_)))))
+        .spawn(move || assert!(matches!(e.classify(b"ABcd"), Err(e) if e.is_limit())))
         .unwrap()
         .join()
         .unwrap();

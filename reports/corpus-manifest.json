@@ -2901,8 +2901,8 @@
   },
   {
     "path": "/home/john/Code/rfile/upstream/src/seccomp.c",
-    "size": 8408,
-    "sha256": "e3bd5c0dadd44ee3d6cc7808c6388879799acba4bcec96afb1044c6923cca56c"
+    "size": 8582,
+    "sha256": "4567cfc9480cad2ec3ed5c47e066693825dc6ce642c007402dc3cc1ddc7fb410"
   },
   {
     "path": "/home/john/Code/rfile/upstream/src/softmagic.c",

@@ -495,12 +495,13 @@ pub(crate) fn der_match(
     }
     Some((value, position.checked_add(p)?, position.checked_add(end)?))
 }
-pub(crate) fn decompress_gzip(data: &[u8], limit: usize) -> Result<Vec<u8>> {
-    use std::io::Read;
-    let decoder = flate2::read::GzDecoder::new(data);
-    let mut out = Vec::new();
-    let mut decoder = decoder.take(limit as u64 + 1);
-    decoder.read_to_end(&mut out)?;
+pub(crate) fn decompress_gzip(
+    data: &[u8],
+    limit: usize,
+    budget: &crate::InspectionBudget,
+) -> Result<crate::input::InspectionBytes> {
+    let mut decoder = flate2::read::GzDecoder::new(data);
+    let out = crate::input::read_prefix(&mut decoder, limit.saturating_add(1), budget)?;
     if out.len() > limit {
         return Err(Error::Limit("decompression output"));
     }
@@ -535,11 +536,13 @@ pub(crate) fn compression(data: &[u8]) -> Option<&'static str> {
     }
     None
 }
-pub(crate) fn decompress_zlib(data: &[u8], limit: usize) -> Result<Vec<u8>> {
-    use std::io::Read;
-    let decoder = flate2::read::ZlibDecoder::new(data);
-    let mut out = Vec::new();
-    decoder.take(limit as u64 + 1).read_to_end(&mut out)?;
+pub(crate) fn decompress_zlib(
+    data: &[u8],
+    limit: usize,
+    budget: &crate::InspectionBudget,
+) -> Result<crate::input::InspectionBytes> {
+    let mut decoder = flate2::read::ZlibDecoder::new(data);
+    let out = crate::input::read_prefix(&mut decoder, limit.saturating_add(1), budget)?;
     if out.len() > limit {
         return Err(Error::Limit("decompression output"));
     }

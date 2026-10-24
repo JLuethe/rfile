@@ -29,17 +29,18 @@
 
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
 //! Checked ELF metadata enrichment for descriptor/path entry points.
-use crate::{Error, Limits, Result};
-use std::{
-    fs::File,
-    io::{Read, Seek, SeekFrom},
+use crate::{
+    Error, InspectionBudget, Limits, Result,
+    input::{self, FileView, InspectionBytes},
 };
+use std::fs::File;
 pub(crate) struct Info {
     pub suffix: Vec<u8>,
     pub executable: bool,
 }
 struct Elf<'a> {
-    file: &'a mut File,
+    view: FileView<'a>,
+    budget: &'a InspectionBudget,
     big: bool,
     is64: bool,
     read_bytes: usize,
@@ -63,7 +64,7 @@ impl Elf<'_> {
     fn word(&self, b: &[u8], p: usize) -> Option<u64> {
         self.integer(b, p, if self.is64 { 8 } else { 4 })
     }
-    fn read(&mut self, offset: u64, size: usize) -> Result<Vec<u8>> {
+    fn read(&mut self, offset: u64, size: usize) -> Result<InspectionBytes> {
         self.read_bytes = self
             .read_bytes
             .checked_add(size)
@@ -71,10 +72,7 @@ impl Elf<'_> {
         if size > self.limits.elf_shsize || self.read_bytes > self.limits.work_bytes {
             return Err(Error::Limit("ELF read bytes"));
         }
-        self.file.seek(SeekFrom::Start(offset))?;
-        let mut out = Vec::new();
-        self.file.take(size as u64).read_to_end(&mut out)?;
-        Ok(out)
+        input::read_range(&mut self.view, offset, size, self.budget)
     }
 }
 fn notes(
@@ -171,6 +169,7 @@ pub(crate) fn analyze(
     limits: &Limits,
     executable: bool,
     mime_only: bool,
+    budget: &InspectionBudget,
 ) -> Result<Option<Info>> {
     if head.len() < 16 || !head.starts_with(b"\x7fELF") {
         return Ok(None);
@@ -183,7 +182,8 @@ pub(crate) fn analyze(
         }));
     }
     let mut e = Elf {
-        file,
+        view: FileView::new(file)?,
+        budget,
         big: head[5] == 2,
         is64: class == 2,
         read_bytes: 0,
