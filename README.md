@@ -33,7 +33,7 @@ assert_eq!(result.as_bytes(), b"text/plain; charset=us-ascii");
 
 The code uses `#![forbid(unsafe_code)]`. Limits cover input, database size/count/files, recursion, matching work, regex construction/cache, expanded data, formatting and final output. This is not a completed security audit: the long fuzz campaign and remaining format/platform gates are tracked in the status document.
 
-The [specification set](docs/README.md) was committed before Rust implementation (`fc385f1`). It includes architecture, source evidence, compatibility decisions, implementation semantics, verification milestones and open risks.
+The [specification set](docs/README.md) was committed before Rust implementation (`fc385f1`). It includes architecture, source evidence, compatibility decisions, implementation semantics, verification milestones and open risks. The [remaining-work specification](docs/07-remaining-work-spec.md) defines the next CDF/ELF, codec, locale/date/regex, sandbox, security and C ABI milestones; these are planned contracts, not implemented features.
 
 ```sh
 cargo test --locked

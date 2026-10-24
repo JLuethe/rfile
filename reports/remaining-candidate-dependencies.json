@@ -1,0 +1,360 @@
+[
+  {
+    "name": "bzip2-rs",
+    "version": "0.1.2",
+    "license": "MIT/Apache-2.0",
+    "rust_version": null,
+    "repository": "https://github.com/paolobarbolini/bzip2-rs",
+    "manifest_sha256": "8fdd1ba07d7f158008e96be6e415536522c901f0c7edddfa2c6b47ca3936b5f1",
+    "features": {
+      "default": [],
+      "nightly": [
+        "rustc_1_40",
+        "tinyvec/nightly_const_generics",
+        "crc32fast/nightly"
+      ],
+      "rustc_1_37": [],
+      "rustc_1_40": [
+        "rustc_1_37",
+        "tinyvec/rustc_1_40"
+      ],
+      "rustc_1_51": []
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "Decoder::write/read low-level interface",
+      "DecoderReader",
+      "block-size preflight/concatenation integration remains a gate"
+    ]
+  },
+  {
+    "name": "lzma-rust2",
+    "version": "0.23.0",
+    "license": "Apache-2.0",
+    "rust_version": "1.85",
+    "repository": "https://github.com/hasenbanck/lzma-rust2/",
+    "manifest_sha256": "71801b400af1bac4be068ce5d2874dea70d73b7c7e6ac615404a44034dc69ce1",
+    "features": {
+      "default": [
+        "std",
+        "encoder",
+        "optimization",
+        "lzip",
+        "xz"
+      ],
+      "encoder": [],
+      "lzip": [],
+      "optimization": [],
+      "std": [],
+      "xz": [
+        "sha2"
+      ]
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "XZ new_mem_limit and pre-filter memory checks",
+      "LZMA property-derived memory checks",
+      "optimization feature is enabled by defaults and must be disabled"
+    ]
+  },
+  {
+    "name": "ruzstd",
+    "version": "0.9.1",
+    "license": "MIT",
+    "rust_version": "1.87",
+    "repository": "https://github.com/KillingSpark/zstd-rs",
+    "manifest_sha256": "bc0aed1cbef827ad6366effb31fa7c01a3d5655ea5ed9040b755f91cce871636",
+    "features": {
+      "default": [
+        "hash",
+        "std"
+      ],
+      "dict_builder": [
+        "std",
+        "dep:fastrand"
+      ],
+      "fuzz_exports": [],
+      "hash": [
+        "dep:twox-hash"
+      ],
+      "rustc-dep-of-std": [
+        "dep:core",
+        "dep:alloc"
+      ],
+      "std": []
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "FrameDecoder::set_max_window_size before initialization/reset",
+      "window cap checked before scratch creation",
+      "MSRV 1.87 exceeds current rfile declaration"
+    ]
+  },
+  {
+    "name": "lz4_flex",
+    "version": "0.14.0",
+    "license": "MIT",
+    "rust_version": "1.81",
+    "repository": "https://github.com/pseitz/lz4_flex",
+    "manifest_sha256": "efdd72c2f1dbf2967c6ce36371e48950c50daddd1fa1634467d362a9224687c2",
+    "features": {
+      "alloc": [],
+      "checked-decode": [],
+      "default": [
+        "std",
+        "safe-encode",
+        "safe-decode",
+        "frame",
+        "checked-decode"
+      ],
+      "frame": [
+        "std",
+        "dep:twox-hash"
+      ],
+      "nightly": [],
+      "safe-decode": [],
+      "safe-encode": [],
+      "std": [
+        "alloc"
+      ]
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "FrameDecoder block-size-dependent reserve behavior",
+      "safe-decode and checked-decode feature flags",
+      "linked-block history multiplier must be budgeted"
+    ]
+  },
+  {
+    "name": "jiff",
+    "version": "0.2.38",
+    "license": "Unlicense OR MIT",
+    "rust_version": "1.70",
+    "repository": "https://github.com/BurntSushi/jiff",
+    "manifest_sha256": "f6c22ad65a367c083edbb1edb98207e6e838f9cfbcfdb8caef78fca7f83fbd23",
+    "features": {
+      "alloc": [
+        "jcore/alloc",
+        "serde_core?/alloc",
+        "portable-atomic-util/alloc",
+        "defmt?/alloc"
+      ],
+      "arbitrary": [
+        "dep:arbitrary",
+        "jcore/arbitrary",
+        "std"
+      ],
+      "default": [
+        "std",
+        "tz-system",
+        "tz-fat",
+        "tzdb-bundle-platform",
+        "tzdb-zoneinfo",
+        "tzdb-concatenated",
+        "perf-inline"
+      ],
+      "defmt": [
+        "dep:defmt",
+        "jcore/defmt"
+      ],
+      "js": [
+        "dep:wasm-bindgen",
+        "dep:js-sys"
+      ],
+      "logging": [
+        "dep:log",
+        "jcore/logging"
+      ],
+      "perf-inline": [],
+      "serde": [
+        "dep:serde_core"
+      ],
+      "static": [
+        "static-tz",
+        "jiff-static?/tzdb"
+      ],
+      "static-tz": [
+        "dep:jiff-static"
+      ],
+      "std": [
+        "alloc",
+        "jcore/std",
+        "log?/std",
+        "serde_core?/std"
+      ],
+      "tz-fat": [
+        "jcore/tz-fat",
+        "jiff-static?/tz-fat"
+      ],
+      "tz-system": [
+        "std",
+        "dep:windows-link"
+      ],
+      "tzdb-bundle-always": [
+        "dep:jiff-tzdb",
+        "alloc"
+      ],
+      "tzdb-bundle-platform": [
+        "dep:jiff-tzdb-platform",
+        "alloc"
+      ],
+      "tzdb-concatenated": [
+        "std"
+      ],
+      "tzdb-zoneinfo": [
+        "std"
+      ]
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "TimeZone immutable state",
+      "IANA, POSIX and TZif constructors",
+      "system-zone fallback requires explicit policy"
+    ]
+  },
+  {
+    "name": "landlock",
+    "version": "0.4.7",
+    "license": "MIT OR Apache-2.0",
+    "rust_version": "1.71",
+    "repository": "https://github.com/landlock-lsm/rust-landlock",
+    "manifest_sha256": "559eb1b796d965ff9baf640a726c423dd52302be0463c8bfc4cd3228a0d15e19",
+    "features": {},
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "manifest license/MSRV",
+      "kernel ABI/handled-rights requirements",
+      "selected-crate runtime enforcement verification remains a gate"
+    ]
+  },
+  {
+    "name": "seccompiler",
+    "version": "0.5.0",
+    "license": "Apache-2.0 OR BSD-3-Clause",
+    "rust_version": null,
+    "repository": "https://github.com/rust-vmm/seccompiler",
+    "manifest_sha256": "e1235f8a3c3260083b11b1ae0c49c4bb61a0097011362aa517c3406fcd58adc9",
+    "features": {
+      "json": [
+        "serde",
+        "serde_json"
+      ]
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "typed filter/rule construction and application public API",
+      "optional JSON feature must remain disabled",
+      "actual Rust runtime syscall policy must be tested"
+    ]
+  },
+  {
+    "name": "rustix",
+    "version": "1.1.5",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "rust_version": "1.65",
+    "repository": "https://github.com/bytecodealliance/rustix",
+    "manifest_sha256": "f57824af546c008210d8d6d63bc0fe866a3887d06100469448de3432ffa108ec",
+    "features": {
+      "all-apis": [
+        "event",
+        "fs",
+        "io_uring",
+        "mm",
+        "mount",
+        "net",
+        "param",
+        "pipe",
+        "process",
+        "pty",
+        "rand",
+        "runtime",
+        "shm",
+        "stdio",
+        "system",
+        "termios",
+        "thread",
+        "time"
+      ],
+      "alloc": [],
+      "default": [
+        "std"
+      ],
+      "event": [],
+      "fs": [],
+      "io_uring": [
+        "event",
+        "fs",
+        "net",
+        "thread",
+        "linux-raw-sys/io_uring"
+      ],
+      "linux_4_11": [],
+      "linux_5_1": [
+        "linux_4_11"
+      ],
+      "linux_5_11": [
+        "linux_5_1"
+      ],
+      "linux_latest": [
+        "linux_5_11"
+      ],
+      "mm": [],
+      "mount": [],
+      "net": [
+        "linux-raw-sys/net",
+        "linux-raw-sys/netlink",
+        "linux-raw-sys/if_ether",
+        "linux-raw-sys/xdp"
+      ],
+      "param": [],
+      "pipe": [],
+      "process": [
+        "linux-raw-sys/prctl"
+      ],
+      "pty": [
+        "fs"
+      ],
+      "rand": [],
+      "runtime": [
+        "linux-raw-sys/prctl"
+      ],
+      "rustc-dep-of-std": [
+        "core",
+        "rustc-std-workspace-alloc",
+        "linux-raw-sys/rustc-dep-of-std",
+        "bitflags/rustc-dep-of-std"
+      ],
+      "shm": [
+        "fs"
+      ],
+      "std": [
+        "bitflags/std",
+        "alloc",
+        "libc?/std",
+        "libc_errno?/std"
+      ],
+      "stdio": [],
+      "system": [
+        "linux-raw-sys/system"
+      ],
+      "termios": [],
+      "thread": [
+        "linux-raw-sys/prctl"
+      ],
+      "time": [],
+      "try_close": [],
+      "use-explicitly-provided-auxv": [],
+      "use-libc": [
+        "libc_errno",
+        "libc"
+      ],
+      "use-libc-auxv": []
+    },
+    "status": "manifest metadata and selected public API/source fragments inspected; not integrated, fully audited or security certified",
+    "checked_contracts": [
+      "manifest license/MSRV/features",
+      "safe OS wrapper candidate",
+      "backend unsafe/native audit remains a gate"
+    ]
+  }
+]

@@ -8,6 +8,7 @@ Read in order:
 4. [Prioritized verification and delivery plan](04-verification-and-delivery.md)
 5. [Open questions and risks](05-open-questions-and-risks.md)
 6. [Delivered implementation status and remaining gaps](06-implementation-status.md)
+7. [Implementation specifications for remaining fidelity, sandbox, hardening and C ABI work](07-remaining-work-spec.md)
 
 Upstream commit: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`.
 
