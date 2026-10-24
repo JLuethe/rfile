@@ -281,8 +281,16 @@ dependencies = [
  "lzma-rust2",
  "regex-automata",
  "regex-syntax",
+ "rfile-platform",
  "ruzstd",
  "serde_json",
+]
+
+[[package]]
+name = "rfile-platform"
+version = "0.1.0"
+dependencies = [
+ "libc",
 ]
 
 [[package]]

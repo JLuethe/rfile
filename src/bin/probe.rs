@@ -26,6 +26,9 @@ fn main() {
             .map_or(0, |n| u32::from_str_radix(n, 16).unwrap()),
     );
     let mode = args.get(3).map_or("path", String::as_str);
+    if let Some(locale) = args.get(4) {
+        engine = engine.with_display_context(rfile::DisplayContext::locale(locale).unwrap());
+    }
     for line in io::stdin().lock().lines() {
         let line = line.unwrap();
         let path = Path::new(&line);
@@ -47,7 +50,19 @@ fn main() {
                 "{}",
                 serde_json::json!({"path":line,"output":String::from_utf8_lossy(&c.output),"hex":c.output.iter().map(|x|format!("{x:02x}")).collect::<String>(),"mime":c.mime_type,"encoding":c.encoding,"truncated":c.truncated})
             ),
-            Err(e) => println!("{}", serde_json::json!({"path":line,"error":e.to_string()})),
+            Err(e) => {
+                let message = e.to_string();
+                let error_hex = e
+                    .raw_diagnostic()
+                    .unwrap_or(message.as_bytes())
+                    .iter()
+                    .map(|b| format!("{b:02x}"))
+                    .collect::<String>();
+                println!(
+                    "{}",
+                    serde_json::json!({"path":line,"error":message,"error_hex":error_hex})
+                );
+            }
         }
     }
 }

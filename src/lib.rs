@@ -34,6 +34,8 @@ pub mod cli;
 pub mod codecs;
 mod database;
 mod detectors;
+mod display;
+pub use display::DisplayContext;
 pub mod elf;
 mod encoding;
 mod error;
@@ -98,6 +100,7 @@ pub struct Engine {
     pub profile: SemanticProfile,
     control: ExecutionControl,
     time: TimeContext,
+    display: DisplayContext,
 }
 impl Engine {
     pub fn new(database: Arc<Database>) -> Self {
@@ -108,6 +111,7 @@ impl Engine {
             profile: SemanticProfile::default(),
             control: ExecutionControl::default(),
             time: TimeContext::default(),
+            display: DisplayContext::default(),
         }
     }
     pub fn builtin() -> Result<Self> {
@@ -134,9 +138,17 @@ impl Engine {
         self.time = time;
         self
     }
+    pub fn with_display_context(mut self, display: DisplayContext) -> Self {
+        self.display = display;
+        self
+    }
+    pub fn display_context(&self) -> &DisplayContext {
+        &self.display
+    }
     pub fn capabilities(&self) -> Capabilities {
         let mut capabilities = Capabilities::current(self.profile);
         capabilities.time_zone = self.time.source().to_owned();
+        capabilities.display_locale = self.display.name().to_owned();
         capabilities
     }
     fn budget(&self) -> Result<InspectionBudget> {
@@ -230,6 +242,12 @@ impl Engine {
         if classified.output.len() > self.limits.output {
             return Err(Error::Limit("output"));
         }
+        let raw = classified.output;
+        let _display_memory = budget.reserve(raw.len().saturating_mul(4))?;
+        budget.bytes(raw.len())?;
+        classified.output =
+            self.display
+                .result(&raw, self.flags.has(Flags::RAW), self.limits.output)?;
         budget.charge_retained(classified.output.len())?;
         classified.metrics = budget.metrics();
         Ok(classified)
@@ -264,11 +282,7 @@ impl Engine {
             encoding: encoding.into(),
             extensions: None,
             apple: None,
-            output: if self.flags.has(Flags::RAW) {
-                raw
-            } else {
-                format::escape(&raw)
-            },
+            output: raw,
             truncated,
             diagnostics: Vec::new(),
             metrics: InspectionMetrics::default(),
@@ -339,14 +353,18 @@ impl Engine {
             {
                 let outer = inner.classify_input(data, None, false, None, None, budget)?;
                 let mut output = result.output.clone();
-                output.extend_from_slice(if self.flags.has(Flags::MIME) {
-                    b" compressed-encoding="
-                } else {
-                    b" ("
-                });
-                append_output(&mut output, &outer.output, budget)?;
+                append_output(
+                    &mut output,
+                    if self.flags.has(Flags::MIME) {
+                        b" compressed-encoding="
+                    } else {
+                        b" ("
+                    },
+                    budget,
+                )?;
+                append_output(&mut output, database::cstr(&outer.output), budget)?;
                 if !self.flags.has(Flags::MIME) {
-                    output.push(b')');
+                    append_output(&mut output, b")", budget)?;
                 }
                 if output.len() > self.limits.output {
                     return Err(Error::Limit("output"));
@@ -362,8 +380,11 @@ impl Engine {
             budget.clone(),
             enc.text,
             executable,
-            &self.time,
-            self.profile,
+            eval::Context {
+                time: &self.time,
+                display: &self.display,
+                profile: self.profile,
+            },
         );
         let mut cdf_facts = None;
         let mut output = Vec::new();
@@ -429,7 +450,7 @@ impl Engine {
             }
             for (desc, typ) in builtins {
                 if !output.is_empty() && !output.ends_with(b"\n- ") {
-                    output.extend_from_slice(b"\n- ");
+                    append_output(&mut output, b"\n- ", budget)?;
                 }
                 let part: &[u8] = if self.flags.has(Flags::MIME_TYPE) {
                     typ.as_bytes()
@@ -446,7 +467,7 @@ impl Engine {
                         .finish(output, description, mime, enc.mime, (None, None), truncated)
                         .with_compound_document(cdf_facts));
                 }
-                output.extend_from_slice(b"\n- ");
+                append_output(&mut output, b"\n- ", budget)?;
             }
         }
         if !self.flags.has(Flags::NO_SOFT) {
@@ -455,7 +476,7 @@ impl Engine {
                 matched.found && (!self.flags.annotation() || !matched.bytes.is_empty());
             if stage_matched {
                 if !output.is_empty() && !output.ends_with(b"\n- ") {
-                    output.extend_from_slice(b"\n- ");
+                    append_output(&mut output, b"\n- ", budget)?;
                 }
                 append_output(&mut output, &matched.bytes, budget)?;
                 if !self.flags.annotation() {
@@ -474,7 +495,9 @@ impl Engine {
                 apple = matched
                     .apple
                     .map(|x| String::from_utf8_lossy(&x).into_owned());
-                if !self.flags.has(Flags::CONTINUE) && !output.is_empty() {
+                if !self.flags.has(Flags::CONTINUE)
+                    && (!self.flags.annotation() || !output.is_empty())
+                {
                     return Ok(self
                         .finish(
                             output,
@@ -491,7 +514,7 @@ impl Engine {
                         .with_compound_document(cdf_facts));
                 }
                 if self.flags.has(Flags::CONTINUE) {
-                    output.extend_from_slice(b"\n- ");
+                    append_output(&mut output, b"\n- ", budget)?;
                 }
             }
         }
@@ -520,7 +543,7 @@ impl Engine {
                 } else if self.flags.has(Flags::MIME) {
                     if !matched.bytes.is_empty() {
                         if !output.is_empty() && !output.ends_with(b"\n- ") {
-                            output.extend_from_slice(b"\n- ");
+                            append_output(&mut output, b"\n- ", budget)?;
                         }
                         append_output(&mut output, &matched.bytes, budget)?;
                         if let Some(v) = matched.mime {
@@ -531,16 +554,16 @@ impl Engine {
                         && self.flags.has(Flags::MIME_TYPE)
                     {
                         if !output.is_empty() && !output.ends_with(b"\n- ") {
-                            output.extend_from_slice(b"\n- ");
+                            append_output(&mut output, b"\n- ", budget)?;
                         }
-                        output.extend_from_slice(b"text/plain");
+                        append_output(&mut output, b"text/plain", budget)?;
                         mime = "text/plain".into();
                     }
                     text_found = true;
                 } else {
                     if !matched.bytes.is_empty() {
                         if !output.is_empty() && !output.ends_with(b"\n- ") {
-                            output.extend_from_slice(b"\n- ");
+                            append_output(&mut output, b"\n- ", budget)?;
                         }
                         append_output(&mut output, &matched.bytes, budget)?;
                     }
@@ -564,14 +587,14 @@ impl Engine {
                 && (!self.flags.has(Flags::MIME_ENCODING) || self.flags.has(Flags::MIME_TYPE))
         {
             if self.flags.has(Flags::MIME_TYPE) {
-                output.extend_from_slice(b"application/octet-stream");
+                append_output(&mut output, b"application/octet-stream", budget)?;
                 mime = "application/octet-stream".into();
             } else if self.flags.has(Flags::APPLE) {
-                output.extend_from_slice(b"UNKNUNKN");
+                append_output(&mut output, b"UNKNUNKN", budget)?;
             } else if self.flags.has(Flags::EXTENSION) {
-                output.extend_from_slice(b"???");
+                append_output(&mut output, b"???", budget)?;
             } else if !self.flags.has(Flags::MIME_ENCODING) {
-                output.extend_from_slice(b"data");
+                append_output(&mut output, b"data", budget)?;
                 description = b"data".to_vec();
             }
         }
@@ -611,9 +634,6 @@ impl Engine {
             }
             output.extend_from_slice(encoding.as_bytes());
         }
-        if !self.flags.has(Flags::RAW) {
-            output = format::escape(&output);
-        }
         Classification {
             description: String::from_utf8_lossy(&description).into_owned(),
             mime_type,
@@ -632,6 +652,9 @@ impl Engine {
 }
 
 fn append_output(out: &mut Vec<u8>, bytes: &[u8], budget: &InspectionBudget) -> Result<()> {
+    // file_vprintf reuses the old buffer through %s on every later append.
+    // Bytes beyond an embedded NUL cannot survive another print operation.
+    out.truncate(database::cstr(out).len());
     let n = out
         .len()
         .checked_add(bytes.len())

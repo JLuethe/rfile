@@ -7,7 +7,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | CLI defaults / ordered options | no implicit stdin; flags/order/default symlink policy | B | name/version `rfile`; never impersonate upstream version | argc permutations, POSIXLY_CORRECT |
 | stdin `-` | consume prefix, label `/dev/stdin` | A/B | reader cap explicit; no implicit tempfiles | pipe/regular redirected stdin, repeated `-` |
 | file list `-f` | trim/parse order, width and immediate action | B | arbitrary NUL filenames unavailable just as source | options before/after -f; `-n` |
-| output framing | brief, -bb quirk, -N, -F, -0/-00 | B | C locale byte widths initially; Unicode display pending | byte capture and invalid UTF8 paths |
+| output framing | brief, -bb quirk, -N, -F, -0/-00 | B | C bytes plus certified Linux/glibc C.UTF-8/en_US.UTF-8 widths; other locales/platforms need separate evidence | byte capture and invalid UTF8 paths |
 | errors/status | stdout per-file messages, -E, stderr setup errors | B | Rust messages only where declared; never silently swallow resource errors | absent/unreadable paths, broken output pipe |
 | MIME type/charset | exact annotation timing and builtin defaults | B/C | structured result owns strings | test separately and combined with -k |
 | Apple/extensions | exact annotation/fallback behavior | B | no guessed extensions from filename | missing and child annotations |

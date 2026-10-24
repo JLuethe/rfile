@@ -76,6 +76,8 @@ fn load(
     limits: &Limits,
     profile: SemanticProfile,
 ) -> Result<Engine> {
+    let display = crate::DisplayContext::from_environment()?;
+    let time = crate::TimeContext::from_environment()?;
     let db = if let Some(path) = db_path(path) {
         let mut databases = Vec::new();
         let mut count = 0usize;
@@ -116,7 +118,7 @@ fn load(
     engine.flags = flags;
     engine.profile = profile;
     engine.limits = limits.clone();
-    engine = engine.with_time_context(crate::TimeContext::from_environment()?);
+    engine = engine.with_time_context(time).with_display_context(display);
     Ok(engine)
 }
 fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Result<bool> {
@@ -134,11 +136,11 @@ fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Res
     };
     let mut line = Vec::new();
     if p.brief == 0 {
-        line.extend(if engine.flags.has(Flags::RAW) {
-            raw_name
-        } else {
-            crate::format::escape(&raw_name)
-        });
+        line.extend(
+            engine
+                .display_context()
+                .filename(&raw_name, engine.flags.has(Flags::RAW))?,
+        );
         if p.nulls > 0 {
             line.push(0);
         }
@@ -147,7 +149,7 @@ fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Res
             if !p.no_pad {
                 line.extend(std::iter::repeat_n(
                     b' ',
-                    width.saturating_sub(display_width(name, engine.flags)),
+                    width.saturating_sub(display_width(name, engine)?),
                 ));
             }
             line.push(b' ');
@@ -176,16 +178,12 @@ fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Res
     }
     Ok(failed)
 }
-fn display_width(s: &OsStr, flags: Flags) -> usize {
-    let b = bytes(s);
-    if flags.has(Flags::RAW) {
-        // file_mbswidth's C-locale mbrtowc failure branch charges four
-        // columns for high bytes even when the filename is printed raw.
-        b.iter().map(|&c| if c >= 128 { 4 } else { 1 }).sum()
-    } else {
-        crate::format::escape(&b).len()
-    }
+fn display_width(s: &OsStr, engine: &Engine) -> Result<usize> {
+    engine
+        .display_context()
+        .filename_width(&bytes(s), engine.flags.has(Flags::RAW))
 }
+
 fn file_list(engine: &Engine, path: &OsStr, p: &Presentation) -> Result<bool> {
     fn read_list(reader: &mut impl io::BufRead, engine: &Engine, p: &Presentation) -> Result<bool> {
         let mut paths = Vec::new();
@@ -209,7 +207,7 @@ fn file_list(engine: &Engine, path: &OsStr, p: &Presentation) -> Result<bool> {
             }
             let name = os_bytes(line);
             if p.no_buffer {
-                failed |= operand(engine, &name, display_width(&name, engine.flags), p)?;
+                failed |= operand(engine, &name, display_width(&name, engine)?, p)?;
             } else {
                 paths.push(name);
                 if paths.len() > 1_000_000 {
@@ -218,11 +216,9 @@ fn file_list(engine: &Engine, path: &OsStr, p: &Presentation) -> Result<bool> {
             }
         }
         if !p.no_buffer {
-            let width = paths
-                .iter()
-                .map(|x| display_width(x, engine.flags))
-                .max()
-                .unwrap_or(0);
+            let width = paths.iter().try_fold(0usize, |width, x| {
+                display_width(x, engine).map(|n| width.max(n))
+            })?;
             for name in paths {
                 failed |= operand(engine, &name, width, p)?;
             }
@@ -341,6 +337,8 @@ fn execute() -> Result<i32> {
                     let mut capabilities = Capabilities::current(profile);
                     capabilities.time_zone =
                         crate::TimeContext::from_environment()?.source().to_owned();
+                    capabilities.display_locale =
+                        crate::DisplayContext::from_environment()?.name().to_owned();
                     println!("{}", capabilities.json());
                     return Ok(0);
                 }
@@ -523,11 +521,9 @@ fn execute() -> Result<i32> {
     if p.brief == 2 {
         p.brief = usize::from(names.len() <= 1);
     }
-    let width = names
-        .iter()
-        .map(|s| display_width(s, engine.flags))
-        .max()
-        .unwrap_or(0);
+    let width = names.iter().try_fold(0usize, |width, s| {
+        display_width(s, engine).map(|n| width.max(n))
+    })?;
     for name in names {
         failed |= operand(engine, &name, width, &p)?;
     }

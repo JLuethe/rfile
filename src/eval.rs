@@ -72,6 +72,11 @@ impl Default for PrintState {
         }
     }
 }
+pub(crate) struct Context<'a> {
+    pub time: &'a crate::TimeContext,
+    pub display: &'a crate::DisplayContext,
+    pub profile: crate::SemanticProfile,
+}
 pub(crate) struct Evaluator<'a> {
     db: &'a Database,
     flags: Flags,
@@ -79,6 +84,7 @@ pub(crate) struct Evaluator<'a> {
     text: bool,
     executable: bool,
     time: &'a crate::TimeContext,
+    display: &'a crate::DisplayContext,
     profile: crate::SemanticProfile,
     indirect_count: usize,
     print: PrintState,
@@ -90,9 +96,13 @@ impl<'a> Evaluator<'a> {
         budget: Budget,
         text: bool,
         executable: bool,
-        time: &'a crate::TimeContext,
-        profile: crate::SemanticProfile,
+        context: Context<'a>,
     ) -> Self {
+        let Context {
+            time,
+            display,
+            profile,
+        } = context;
         Self {
             db,
             flags,
@@ -100,6 +110,7 @@ impl<'a> Evaluator<'a> {
             text,
             executable,
             time,
+            display,
             profile,
             indirect_count: 0,
             print: PrintState::default(),
@@ -110,6 +121,7 @@ impl<'a> Evaluator<'a> {
         self.groups(input, mode, 0)
     }
     fn append(&self, out: &mut Vec<u8>, part: &[u8]) -> Result<()> {
+        out.truncate(crate::database::cstr(out).len());
         if out
             .len()
             .checked_add(part.len())
@@ -453,7 +465,11 @@ impl<'a> Evaluator<'a> {
                             number_value(r.kind, n, r.unsigned(), w, self.time, self.profile)
                         }
                     } else if matches!(r.kind, 5 | 13 | 18 | 19 | 61) {
-                        Value::Bytes(format::printable(r.name(), self.flags.has(Flags::RAW)))
+                        Value::Bytes(format::printable(
+                            r.name(),
+                            self.flags.has(Flags::RAW),
+                            self.display,
+                        ))
                     } else {
                         Value::Bytes(Vec::new())
                     };
@@ -668,7 +684,11 @@ impl<'a> Evaluator<'a> {
                 return Ok(None);
             };
             return Ok(Some(Hit {
-                value: Value::Bytes(format::printable(&value, self.flags.has(Flags::RAW))),
+                value: Value::Bytes(format::printable(
+                    &value,
+                    self.flags.has(Flags::RAW),
+                    self.display,
+                )),
                 end: child,
                 position,
                 der_parent_end: Some(parent_end),
@@ -748,7 +768,11 @@ impl<'a> Evaluator<'a> {
                     value = trim(value);
                 }
                 return Ok(hit(
-                    Value::Bytes(format::printable(value, self.flags.has(Flags::RAW))),
+                    Value::Bytes(format::printable(
+                        value,
+                        self.flags.has(Flags::RAW),
+                        self.display,
+                    )),
                     end.saturating_sub(base),
                 ));
             }
@@ -792,7 +816,11 @@ impl<'a> Evaluator<'a> {
                     value = trim(value);
                 }
                 return Ok(hit(
-                    Value::Bytes(format::printable(value, self.flags.has(Flags::RAW))),
+                    Value::Bytes(format::printable(
+                        value,
+                        self.flags.has(Flags::RAW),
+                        self.display,
+                    )),
                     end,
                 ));
             }
@@ -880,7 +908,11 @@ impl<'a> Evaluator<'a> {
                     .into_bytes();
             }
             return Ok(hit(
-                Value::Bytes(format::printable(&value, self.flags.has(Flags::RAW))),
+                Value::Bytes(format::printable(
+                    &value,
+                    self.flags.has(Flags::RAW),
+                    self.display,
+                )),
                 end,
             ));
         }

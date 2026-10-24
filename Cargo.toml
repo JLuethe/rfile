@@ -20,6 +20,7 @@ codec-compress = []
 codec-zip = []
 
 [dependencies]
+rfile-platform = { path = "crates/rfile-platform" }
 regex-syntax = { version = "=0.8.11", default-features = false, features = ["std"] }
 regex-automata = { version = "0.4", default-features = false, features = ["std", "syntax", "dfa-build", "dfa-search", "nfa-pikevm"] }
 flate2 = { version = "1.1", default-features = false, features = ["miniz_oxide"] }
@@ -40,3 +41,8 @@ path = "src/main.rs"
 [[bin]]
 name = "rfile-probe"
 path = "src/bin/probe.rs"
+
+[workspace]
+members = [".", "crates/rfile-platform"]
+default-members = [".", "crates/rfile-platform"]
+resolver = "3"

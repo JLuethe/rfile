@@ -47,6 +47,9 @@ def run_group(lib,files,db,flags,mode,extra=0):
   actual=bytes.fromhex(row['hex']) if 'hex'in row else None
   equal=actual is not None and expected is not None and actual==expected
   comparisons.append({'path':str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),'mode':mode,'flags':requested_flags,'effective_flags':flags,'database':str(db.relative_to(ROOT)),'equal':equal,**({} if equal else {'reference':expected.decode('utf-8','backslashreplace') if expected is not None else None,'rust':actual.decode('utf-8','backslashreplace') if actual is not None else None,'rust_error':row.get('error'),'reference_error':lib.magic_error(h).decode(errors='replace') if expected is None and lib.magic_error(h) else None})})
+  if expected is None or actual is None:
+   error=lib.magic_error(h)if expected is None else None
+   comparisons[-1].update(reference_error_hex=error.hex()if error is not None else None,rust_error_hex=row.get('error_hex'))
  lib.magic_close(h);return comparisons
 
 def main():

@@ -42,6 +42,7 @@ if not args.no_oracle:
  run('elf-differential',['python3','tools/elf_compare.py'])
  if args.all_features:run('compression-differential',['python3','tools/compression_compare.py'])
  run('cdf-differential',['python3','tools/cdf_compare.py'])
+ run('locale-differential',['python3','tools/locale_compare.py'])
  run('time-differential',['python3','tools/time_compare.py'])
  run('component-differential',['python3','tools/component_compare.py'])
  run('cli-differential',['python3','tools/cli_compare.py'])

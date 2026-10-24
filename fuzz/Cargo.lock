@@ -342,6 +342,7 @@ dependencies = [
  "lzma-rust2",
  "regex-automata",
  "regex-syntax",
+ "rfile-platform",
  "ruzstd",
  "serde_json",
 ]
@@ -352,6 +353,14 @@ version = "0.0.0"
 dependencies = [
  "libfuzzer-sys",
  "rfile",
+ "rfile-platform",
+]
+
+[[package]]
+name = "rfile-platform"
+version = "0.1.0"
+dependencies = [
+ "libc",
 ]
 
 [[package]]

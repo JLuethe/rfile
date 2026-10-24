@@ -31,7 +31,7 @@ pub struct Capabilities {
     pub regex_backreferences: bool,
     pub c_abi: bool,
     pub kernel_sandbox: bool,
-    pub display_locale: &'static str,
+    pub display_locale: String,
     pub time_zone: String,
 }
 impl Capabilities {
@@ -45,7 +45,7 @@ impl Capabilities {
             regex_backreferences: true,
             c_abi: false,
             kernel_sandbox: false,
-            display_locale: "C",
+            display_locale: "C".into(),
             time_zone: "UTC".into(),
         }
     }
@@ -56,7 +56,7 @@ impl Capabilities {
         "regex_backreferences":self.regex_backreferences,
         "regex":{"capture_groups":32,"instructions":65536,"pinned_quantified_backreferences":"restricted","corrected_capture_histories":true},"c_abi":self.c_abi,
         "sandbox":{"compiled":self.kernel_sandbox,"enforced":false},
-        "display_locale":self.display_locale,"time_zone":self.time_zone,
+        "display_locale":self.display_locale,"display_backend":if self.display_locale=="C"{"portable C bytes"}else{"glibc locale_t"},"time_zone":self.time_zone,
         "hardening":{"sustained_fuzz_gate":false,"independent_security_review":false}
     }).to_string()
     }

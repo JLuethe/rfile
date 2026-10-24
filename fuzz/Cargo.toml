@@ -11,6 +11,7 @@ cargo-fuzz = true
 [dependencies]
 libfuzzer-sys = "0.4"
 rfile = { path = "..", features = ["extended-codecs"] }
+rfile-platform = { path = "../crates/rfile-platform" }
 
 [workspace]
 members = ["."]
@@ -158,6 +159,13 @@ bench = false
 [[bin]]
 name = "regex_captures"
 path = "fuzz_targets/regex_captures.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "display_locale"
+path = "fuzz_targets/display_locale.rs"
 test = false
 doc = false
 bench = false

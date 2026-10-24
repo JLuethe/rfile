@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "scope": "Lexical first-party inventory, includes test code. Not reachability analysis, a soundness proof, or an independent security review. Std/third-party unsafe is separately inventoried.",
+  "core_forbids_unsafe": true,
+  "permitted_crates": [
+    "crates/rfile-platform"
+  ],
+  "items": [
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 11,
+      "code": "unsafe extern \"C\" {",
+      "context": "    marker::PhantomData,\n    ptr::NonNull,\n    rc::Rc,\n};",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 31,
+      "code": "unsafe impl Send for Locale {}",
+      "context": "}\n// SAFETY: newlocale acquires an immutable object reference; methods never mutate/free it.\n// A Guard borrows &Locale, so final Drop cannot free a locale in active use.\n// Each thread has its own uselocale binding and conversion-state buffer.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 33,
+      "code": "unsafe impl Sync for Locale {}",
+      "context": "// A Guard borrows &Locale, so final Drop cannot free a locale in active use.\n// Each thread has its own uselocale binding and conversion-state buffer.\nunsafe impl Send for Locale {}\n// SAFETY: the same owned locale may be selected independently on many threads.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 38,
+      "code": "unsafe { libc::freelocale(self.handle.as_ptr()) };",
+      "context": "impl Drop for Locale {\n    fn drop(&mut self) {\n        // SAFETY: this handle comes only from successful newlocale(base=NULL),\n        // is released once for this acquisition, never LC_GLOBAL_LOCALE, and has no live guard.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 50,
+      "code": "unsafe { libc::uselocale(self.previous) };",
+      "context": "impl Drop for Guard<'_> {\n    fn drop(&mut self) {\n        // SAFETY: previous is exactly the valid binding returned by uselocale;\n        // this guard cannot cross threads and restores before its Locale can drop.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 93,
+      "code": "unsafe { std::mem::zeroed() }",
+      "context": "}\nfn zero_state() -> libc::mbstate_t {\n    // SAFETY: glibc mbstate_t consists only of integer/character storage. The\n    // all-zero representation is its documented initial conversion state.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 107,
+      "code": "let handle = NonNull::new(unsafe {",
+      "context": "        let encoded = CString::new(name)\n            .map_err(|_| io::Error::new(io::ErrorKind::InvalidInput, \"NUL in locale name\"))?;\n        // SAFETY: encoded is a valid NUL-terminated string for this call. NULL\n        // base requests a fresh owned locale; only LC_CTYPE is configured.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 118,
+      "code": "unsafe { CStr::from_ptr(libc::nl_langinfo_l(libc::CODESET, locale.handle.as_ptr())) }",
+      "context": "        };\n        // SAFETY: CODESET is valid; the returned immutable NUL-terminated libc\n        // string belongs to the still-live locale and is only read here.\n        let charset =",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 141,
+      "code": "let previous = unsafe { libc::uselocale(self.handle.as_ptr()) };",
+      "context": "        &self.name\n    }\n    fn enter(&self) -> io::Result<Guard<'_>> {\n        // SAFETY: the owned handle stays alive for the complete borrowing guard.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 153,
+      "code": "unsafe { isprint_l(b as libc::c_int, self.handle.as_ptr()) != 0 }",
+      "context": "        })\n    }\n    pub fn byte_printable(&self, b: u8) -> bool {\n        // SAFETY: ctype accepts every unsigned-char value; locale is valid/live.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 158,
+      "code": "unsafe { iswprint_l(c as libc::c_uint, self.handle.as_ptr()) != 0 }",
+      "context": "    }\n    fn printable(&self, c: libc::wchar_t) -> bool {\n        // SAFETY: c is a wide character produced by successful mbrtowc under\n        // this locale; the unsigned wint_t conversion preserves its value.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 167,
+      "code": "let n = unsafe { mbrtowc(&mut c, bytes.as_ptr().cast(), bytes.len(), state) };",
+      "context": "    ) -> io::Result<Option<(usize, libc::wchar_t)>> {\n        let mut c = 0;\n        // SAFETY: the source slice is live and n is exactly its readable bound;\n        // c/state are aligned writable objects with the documented ABI/layout.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 236,
+      "code": "let w = unsafe { wcwidth(c) };",
+      "context": "                }\n                Some((n, c)) => {\n                    // SAFETY: c came from mbrtowc and the same locale is selected\n                    // by the non-Send guard for the entire wcwidth operation.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 298,
+      "code": "let original = unsafe { libc::uselocale(std::ptr::null_mut()) };",
+      "context": "    use super::*;\n    #[test]\n    fn guard_restores_on_success_error_and_unwind() {\n        // SAFETY: NULL queries the current thread locale without changing it.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    },
+    {
+      "path": "crates/rfile-platform/src/locale.rs",
+      "line": 307,
+      "code": "assert_eq!(unsafe { libc::uselocale(std::ptr::null_mut()) }, original);",
+      "context": "            let _guard = locale.enter().unwrap();\n            panic!(\"unwind control\");\n        }));\n        // SAFETY: NULL only queries the same thread after all guards dropped.",
+      "source_sha256": "31d3e8245ae18ec484b019f49870faa9004d6b342d28e362793bb3b24a0447c7"
+    }
+  ]
+}
