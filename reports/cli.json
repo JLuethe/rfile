@@ -1,7 +1,7 @@
 {
   "total": 108,
   "equal": 102,
-  "elapsed_seconds": 4.805138787996839,
+  "elapsed_seconds": 5.103338448010618,
   "environment": {
     "LC_ALL": "C",
     "TZ": "UTC"
@@ -719,7 +719,7 @@
         "status": -31
       },
       "rust": {
-        "stdout": "/tmp/rfile-cli-ioqno27q/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stdout": "/tmp/rfile-cli-hjlm_e4l/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
         "stderr": "",
         "status": 1
       }
@@ -740,7 +740,7 @@
         "status": -31
       },
       "rust": {
-        "stdout": "/tmp/rfile-cli-ioqno27q/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stdout": "/tmp/rfile-cli-hjlm_e4l/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
         "stderr": "",
         "status": 1
       }
@@ -965,7 +965,7 @@
       "case": 84,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-ioqno27q/list"
+        "/tmp/rfile-cli-hjlm_e4l/list"
       ],
       "args": [],
       "equal": true
@@ -976,7 +976,7 @@
       "flags": [
         "-n",
         "-f",
-        "/tmp/rfile-cli-ioqno27q/list"
+        "/tmp/rfile-cli-hjlm_e4l/list"
       ],
       "args": [],
       "equal": true
@@ -987,7 +987,7 @@
       "flags": [
         "-i",
         "-f",
-        "/tmp/rfile-cli-ioqno27q/list"
+        "/tmp/rfile-cli-hjlm_e4l/list"
       ],
       "args": [],
       "equal": true
@@ -998,7 +998,7 @@
       "flags": [
         "-0",
         "-f",
-        "/tmp/rfile-cli-ioqno27q/list"
+        "/tmp/rfile-cli-hjlm_e4l/list"
       ],
       "args": [],
       "equal": true
@@ -1008,7 +1008,7 @@
       "case": 88,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-ioqno27q/blank"
+        "/tmp/rfile-cli-hjlm_e4l/blank"
       ],
       "args": [],
       "equal": true
@@ -1268,7 +1268,7 @@
       "case": 105,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-ioqno27q/weird-list"
+        "/tmp/rfile-cli-hjlm_e4l/weird-list"
       ],
       "args": [],
       "equal": true
@@ -1279,7 +1279,7 @@
       "flags": [
         "-n",
         "-f",
-        "/tmp/rfile-cli-ioqno27q/weird-list"
+        "/tmp/rfile-cli-hjlm_e4l/weird-list"
       ],
       "args": [],
       "equal": true
@@ -1290,7 +1290,7 @@
       "flags": [
         "-r",
         "-f",
-        "/tmp/rfile-cli-ioqno27q/weird-list"
+        "/tmp/rfile-cli-hjlm_e4l/weird-list"
       ],
       "args": [],
       "equal": true

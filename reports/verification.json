@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "elapsed_seconds": 40.65458897499775,
+  "elapsed_seconds": 60.21171082499495,
   "steps": [
     {
       "name": "format",
       "status": 0,
-      "seconds": 0.09576829899742734,
+      "seconds": 0.09256365400506184,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -17,7 +17,7 @@
     {
       "name": "clippy",
       "status": 0,
-      "seconds": 0.10056861599878175,
+      "seconds": 0.5881437470088713,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "clippy",
@@ -31,7 +31,7 @@
     {
       "name": "cargo-test",
       "status": 0,
-      "seconds": 0.4181772160009132,
+      "seconds": 1.4984555929986527,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -41,7 +41,7 @@
     {
       "name": "cargo-release-test",
       "status": 0,
-      "seconds": 0.13212203100556508,
+      "seconds": 17.534808894997695,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -52,7 +52,7 @@
     {
       "name": "cargo-build",
       "status": 0,
-      "seconds": 0.01799528900301084,
+      "seconds": 0.021213093990809284,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -63,7 +63,7 @@
     {
       "name": "database-rebuild",
       "status": 0,
-      "seconds": 0.09585922399855917,
+      "seconds": 0.0941634569899179,
       "command": [
         "python3",
         "tools/rebuild_database.py"
@@ -72,7 +72,7 @@
     {
       "name": "fuzz-smoke",
       "status": 0,
-      "seconds": 1.5156531549946521,
+      "seconds": 1.5955485059967032,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -88,7 +88,7 @@
     {
       "name": "fuzz-format",
       "status": 0,
-      "seconds": 0.03967261600337224,
+      "seconds": 0.03492447799362708,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -101,7 +101,7 @@
     {
       "name": "fuzz-build",
       "status": 0,
-      "seconds": 0.024744239999563433,
+      "seconds": 0.4518934930092655,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "check",
@@ -114,7 +114,7 @@
     {
       "name": "upstream-check",
       "status": 0,
-      "seconds": 2.2487065449968213,
+      "seconds": 2.0729985750076594,
       "command": [
         "make",
         "-C",
@@ -125,7 +125,7 @@
     {
       "name": "compiler",
       "status": 0,
-      "seconds": 0.22604620600031922,
+      "seconds": 0.2228289040067466,
       "command": [
         "python3",
         "tools/compiler_compare.py"
@@ -134,7 +134,7 @@
     {
       "name": "fixtures",
       "status": 0,
-      "seconds": 2.187302047997946,
+      "seconds": 2.146624259010423,
       "command": [
         "python3",
         "tools/fixture_compare.py"
@@ -143,7 +143,7 @@
     {
       "name": "differential-broad",
       "status": 0,
-      "seconds": 11.414528323999548,
+      "seconds": 11.753446925999015,
       "command": [
         "python3",
         "tools/differential.py",
@@ -154,7 +154,7 @@
     {
       "name": "extended",
       "status": 0,
-      "seconds": 12.251492661001976,
+      "seconds": 12.040838845001417,
       "command": [
         "python3",
         "tools/extended_compare.py"
@@ -163,7 +163,7 @@
     {
       "name": "semantics-differential",
       "status": 0,
-      "seconds": 3.3835047949978616,
+      "seconds": 3.2495005759992637,
       "command": [
         "python3",
         "tools/semantics_compare.py"
@@ -172,7 +172,7 @@
     {
       "name": "cli-differential",
       "status": 0,
-      "seconds": 4.8507886590014095,
+      "seconds": 5.143949830002384,
       "command": [
         "python3",
         "tools/cli_compare.py"
@@ -181,7 +181,7 @@
     {
       "name": "benchmark",
       "status": 0,
-      "seconds": 1.5947404980033753,
+      "seconds": 1.611039637005888,
       "command": [
         "python3",
         "tools/benchmark.py"
@@ -190,12 +190,12 @@
   ],
   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-  "binary_sha256": "8612e16c186d82c93cb22adc13aae932bca14f76e31889b86a8d21b4a53569a0",
+  "binary_sha256": "9512f3cdf2cd009f1801b8e18a1461603ba793435baeb094354ca967c60e192c",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "mutation_smoke": [
     {
       "database_cases": 10000,
-      "elapsed_seconds": 1.488868968,
+      "elapsed_seconds": 1.5741559550000002,
       "fixture_truncations": 1339,
       "random_input_cases": 10000,
       "seed": "4f6c655275737421",

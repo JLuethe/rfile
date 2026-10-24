@@ -1,3 +1,5 @@
+// rfile contributions: Copyright (C) 2026 rfile contributors.
+// SPDX-License-Identifier: GPL-3.0-only
 //! Select the earliest start, then its longest overall match, without C regex FFI.
 use regex_automata::{
     Anchored, Input, MatchKind,

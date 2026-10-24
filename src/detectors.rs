@@ -25,6 +25,9 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+// rfile contributions: Copyright (C) 2026 rfile contributors.
+// SPDX-License-Identifier: GPL-3.0-only
+
 /*-
  * Copyright (c) 2018 Christos Zoulas
  * All rights reserved.

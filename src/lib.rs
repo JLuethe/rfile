@@ -24,6 +24,9 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
+// rfile contributions: Copyright (C) 2026 rfile contributors.
+// SPDX-License-Identifier: GPL-3.0-only
+
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
 #![forbid(unsafe_code)]
 mod cdf;

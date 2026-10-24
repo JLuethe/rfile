@@ -1,12 +1,12 @@
 # Open questions and risks
 
-Baseline: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Reasonable working assumptions: Linux first; binary called `rfile`; BSD-2-Clause for new Rust code; retain upstream v21 data as rules; no mandatory C ABI or external decompression processes in first release. Final user instruction supersedes the earlier “do not implement yet”: specification first, then build and verify.
+Baseline: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Reasonable working assumptions: Linux first; binary called `rfile`; GPL-3.0-only for current rfile contributions (initial local revisions used BSD-2-Clause); retain upstream v21 data as rules; no mandatory C ABI or external decompression processes in first release. Final user instruction supersedes the earlier “do not implement yet”: specification first, then build and verify.
 
 | Priority | Question/risk | Evidence and resolution path |
 |---|---|---|
 | Critical | Full upstream replacement is much larger than signature matching | 25,176 rule records plus CDF/ELF/encoding/compression; each incomplete subsystem needs explicit scope/status. Do not call a fixture subset complete. |
 | Critical | Bounded memory does not bound total CPU | source rules multiply input scanning, nested use/indirect and regex; enforce aggregate work/byte budgets across all child calls, not just recursion depth. |
-| High | POSIX longest regex vs Rust regex | offsets/rendered spans depend on longest match; overall earliest/longest selection is now implemented and regression-tested. Backreferences/collation/libc syntax and platform cases still need closure. Unsupported backreferences need explicit diagnostics. |
+| High | POSIX longest regex vs Rust regex | offsets/rendered spans depend on longest match; overall earliest/longest selection is now implemented and regression-tested. Backreferences/collation/libc syntax and platform cases still need closure. Unsupported backreferences need explicit diagnostics: the current octal-enabled backend can silently interpret a backreference-looking escape as octal. A minimal `(ab)\1`/`abab` oracle example differs and is outside the passing corpus. |
 | High | Upstream regex discards search-region final byte | `softmagic.c:2387`; source-observed behavior needs minimal oracle test and versioned compatibility handling. Do not “fix” unnoticed. |
 | High | Native sort ties and hidden provenance bytes | `apprentice_sort` compares complete record except line; empty desc contains debug filename. Source-compiler ordering may be architecture/path dependent; compiled-oracle comparison isolates evaluator. |
 | High | Recently added types might parse but not evaluate | ID3, varints and certain indirect doubles have enum/parser entries but incomplete-looking `mconvert`/`magiccheck` switches. Treat as suspected defects, add custom magic repro before deciding parity. No unverified claim that every documented type works. |

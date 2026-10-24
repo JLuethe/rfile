@@ -1,3 +1,5 @@
+// rfile contributions: Copyright (C) 2026 rfile contributors.
+// SPDX-License-Identifier: GPL-3.0-only
 use crate::{Error, Result};
 
 #[derive(Clone, Debug)]

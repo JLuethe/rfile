@@ -15,7 +15,11 @@ pinned upstream compiler. data/SOURCES.json maps every retained source asset.
 The etf fragment is retained separately because upstream does not include it
 in the default build at this commit.
 
-New Rust code: BSD-2-Clause, LICENSE. Existing notices remain applicable.
+rfile contributions are distributed under GPL-3.0-only; see LICENSE.
+Original upstream portions, rules and dependencies retain their original
+notices and license terms. Preserve these notices when redistributing.
+The earlier local revision used BSD-2-Clause; its notice is retained in
+LICENSES/rfile-initial-BSD-2-Clause.txt and its Git history.
 Dependency metadata: reports/dependencies.json; exact terms are reproduced in
 LICENSES/dependencies. Cargo.lock is the resolved dependency identity.
 Test-only libFuzzer tooling is separate from the production detector.

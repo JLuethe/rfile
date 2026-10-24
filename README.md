@@ -1,5 +1,10 @@
 # rfile
 
+[![Rust checks](https://github.com/JLuethe/rfile/actions/workflows/check.yml/badge.svg)](https://github.com/JLuethe/rfile/actions/workflows/check.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
+**Early development: compatibility, platform coverage, and security hardening are ongoing.**
+
 An independent Rust implementation of `file` magic detection, with a CLI and library. Detection, magic parsing and compilation execute in Rust. The program does not link to libmagic or run the C utility. The pinned upstream rules are bundled, so ordinary builds and detection do not need the upstream checkout or a C compiler.
 
 This is version **0.1.0**, tested on x86_64 Linux. [Implementation status and remaining gaps](docs/06-implementation-status.md) distinguish the working profile from full libmagic replacement.
@@ -40,4 +45,8 @@ python3 tools/verify.py --benchmark    # full local conformance/hardening report
 
 The test oracle is upstream commit `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59` (file 5.48). The Rust compiler produces byte-identical v21 database bytes from the same selected input directory. [Reports](reports/) contain fixture, differential, CLI, compiler, hardening, dependency and benchmark evidence. Tests using system files are reproducible through their manifests and scripts; those files are not redistributed.
 
-Rule data and source notices are preserved under [data](data/). `etf` remains separate because upstream excludes it from its default database build. [NOTICE](NOTICE), [LICENSE](LICENSE), [upstream license](data/UPSTREAM-COPYING), and [dependency licenses](LICENSES/dependencies/) accompany redistribution. No system utility was replaced and nothing was published or installed globally.
+rfile contributions are licensed under **GPL-3.0-only**. Upstream portions, rules and dependencies retain their original license terms and notices. See [licensing details](LICENSES/README.md).
+
+Report vulnerabilities through [private security reporting](https://github.com/JLuethe/rfile/security/advisories/new); see [SECURITY.md](SECURITY.md). Contribution and verification instructions are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Rule data and source notices are preserved under [data](data/). `etf` remains separate because upstream excludes it from its default database build. [NOTICE](NOTICE), [LICENSE](LICENSE), [upstream license](data/UPSTREAM-COPYING), and [dependency licenses](LICENSES/dependencies/) accompany redistribution. No system utility is replaced by building this project. The GitHub release is experimental; no crates.io package is published.
