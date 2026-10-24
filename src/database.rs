@@ -221,7 +221,7 @@ impl Database {
         if bytes.len() > MAX_DB {
             return Err(Error::Limit("database size"));
         }
-        if bytes.len() < RECORD_SIZE || bytes.len() % RECORD_SIZE != 0 {
+        if bytes.len() < RECORD_SIZE || !bytes.len().is_multiple_of(RECORD_SIZE) {
             return Err(bad("size is not a multiple of 432"));
         }
         let little = match bytes.get(..4) {

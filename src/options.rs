@@ -41,7 +41,7 @@ impl Capabilities {
             upstream_commit: UPSTREAM_COMMIT,
             database_format: crate::FORMAT_VERSION,
             profile,
-            codecs: &["gzip", "zlib"],
+            codecs: crate::codecs::COMPILED,
             regex_backreferences: false,
             c_abi: false,
             kernel_sandbox: false,

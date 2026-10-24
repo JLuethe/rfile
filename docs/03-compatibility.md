@@ -29,7 +29,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | text/encoding | ordered recognizers, character tables, normalized rules, suffixes | B/C | unsupported encodings must be listed, not guessed as UTF8 | BOM, invalid/truncated Unicode, EBCDIC |
 | tar/JSON/CSV/SIMH | upstream heuristic, not just format validity | B/C | dedicated bounded heuristic recognizer; retain malformed-prefix behavior | existing+generated fixtures |
 | ELF/CDF | metadata ordering and bounded malformed handling | C | generic identification is not equivalent to detailed output | real files, core notes, sector cycles |
-| compression | -z/-Z one layer, wrapper MIME and error descriptions | B/C | gzip and zlib implemented; no external helper; other codecs explicit unsupported errors | same codec feature set, bombs and truncation |
+| compression | -z/-Z one layer, wrapper MIME and error descriptions | B/C | default gzip/zlib; opt-in additional codecs and named helper/empty-frame output decisions; no production helper; see [codec decisions](remaining/03-compression.md#r5-implemented-adapter-decisions) | same codec feature set, bombs and truncation |
 | limits | upstream defaults plus safe global budgets | A+ | new limit errors are intentional, never masquerade as data match | tiny/zero/absurd limit values |
 | preserve atime | platform restoration behavior | C | reject flag if not implemented rather than no-op | timestamp/fd ownership tests |
 | sandbox | Linux seccomp/Landlock enabled features reported | C | safe parser does not imply kernel sandbox; missing sandbox declared | strace/denial process tests |

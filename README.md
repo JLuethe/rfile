@@ -17,7 +17,7 @@ printf 'hello\n' | ./target/release/rfile -b -
 ./target/release/rfile -m custom.magic example.bin
 ```
 
-If Cargo is outside the shell PATH on this machine, use `/home/john/.cargo/bin/cargo`. `--help` lists CLI options. Gzip/zlib inspection uses `-z`; `-Z` omits the outer description. Other compressed formats are identified by rules, but requesting decompression of an unsupported codec returns an explicit error.
+Rust 1.87 or later is required. `--help` lists CLI options. Gzip/zlib inspection uses `-z`; `-Z` omits the outer description. Experimental additional codecs are available with `cargo build --release --locked --features extended-codecs`: bzip2, XZ/LZMA/lzip, modern Zstd/LZ4, UNIX compress and the first stored/deflate ZIP entry. They remain off by default pending sustained security gates. `--capabilities` reports the actual compiled set. Unsupported codecs return an explicit inspection error; ordinary outer identification still uses the rules. See [codec contracts and gaps](docs/remaining/03-compression.md).
 
 ```rust
 use rfile::{Engine, Flags};

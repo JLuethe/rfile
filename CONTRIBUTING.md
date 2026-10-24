@@ -20,10 +20,11 @@ cargo build --release --locked
 python3 tools/rebuild_database.py
 ```
 
-Rust stable is used by CI. The initial local run used Rust 1.99.1; other compiler
+CI checks default and all-features builds plus the declared Rust 1.87 minimum. The initial local run used Rust 1.99.1; other compiler
 versions must be checked rather than assumed compatible. For full local oracle
 checks, prepare the pinned C build using `bash tools/build_reference.sh`, then run
-`python3 tools/verify.py --benchmark`. System corpus contents vary by host; retain
+`python3 tools/verify.py --benchmark` (default) and
+`python3 tools/verify.py --all-features --benchmark` (extended codecs). System corpus contents vary by host; retain
 hash manifests and complete discrepancies. Do not copy arbitrary system files
 into this repository.
 

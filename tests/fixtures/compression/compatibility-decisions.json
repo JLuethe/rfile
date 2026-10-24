@@ -1,0 +1,3303 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "policy": "Single in-process .Z result; first ZIP entry without helper diagnostics; accept valid empty LZ4. Both profiles. Freeze raw observations; changed disagreements fail.",
+  "cases": {
+    "[\"api\",\"compress\",\"path\",4,null]": {
+      "observation_sha256": "42bf54ccdb4cdb0d4a8029f773fc1744324e9b282ee1571b9db5b4c38fec6561",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"path\",4,null]": {
+      "observation_sha256": "47b498ed2cbb4716f21e6731b17f3870b4b527edb3b97c0d3f4ccb639d338741",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",4,null]": {
+      "observation_sha256": "19d83077a9984f97e7c75d08b7066aab7fa4b04975241c307641b431273fdf36",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",4,null]": {
+      "observation_sha256": "e698a2b4e8948e69f70b41c35ffd48c7e5afd0e6a4b6057ee8c62730c0c92651",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"path\",4,null]": {
+      "observation_sha256": "6094f0951b3d24be15e458fddb42d1d6b601729cad1380d5eea2f9091417b155",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",4,null]": {
+      "observation_sha256": "518ad49576d4744d4208bd4e3c2a46aa0de58d70fd512154ea6fa61c7612e1c4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",4,null]": {
+      "observation_sha256": "a66463a6ecf04ea7a6dea75c3cf365f6c691c1cae5a5b3de01ff0bf5ed1b74c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"path\",4,null]": {
+      "observation_sha256": "b526766c8224329d76216fdbe5d0d3076416a955db43edae66ee743b6f6b2333",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",4,null]": {
+      "observation_sha256": "199d7e46c29cad4e3f2c18258a0ba5f863b052e15e0da450a7a06cc4b604f455",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",4,null]": {
+      "observation_sha256": "a67cb7d24485f2b8f36d50311d9b72482b856663f274df50a24ba754783ac35a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"path\",4,null]": {
+      "observation_sha256": "5c84af7fbaf1f01c7da155499ec0914d48f85a0b0ae6bb91ae1a5c9bd7a15e69",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",4,null]": {
+      "observation_sha256": "0fac80756da7ea2b55f27c4c964e6b75bd19f14697556f7f4575e5b0255b632c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",4,null]": {
+      "observation_sha256": "c06c2cbfc99d6ff332d7e5667221f523d5c699e617c7593aff4efb54eb715976",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"path\",4,null]": {
+      "observation_sha256": "09719bb0d1f66e79b790b74164c3f6fcd456730571718fb3e88242cf6c31eb5d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",4,null]": {
+      "observation_sha256": "e529db18b35a4dc9145c2e7ad796754d2726776cb732eb6fdb8604bb9fdfd506",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",4,null]": {
+      "observation_sha256": "f307dbfe8c67a1e93c8120273d8e32131ce362af01b52685d67f4e8d6abfb94a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",4,null]": {
+      "observation_sha256": "cd5dcbd472f8fed42a49957ca0a3ca162f2331e2864195e97ca6c2ed1067a9ac",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"path\",4,null]": {
+      "observation_sha256": "57eae1184acc5dcb68577e2e0744ca31e573142e1b766734e41a8272bc7c568f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"path\",4,null]": {
+      "observation_sha256": "cc6a213c4c91ef791d1d3841f4bc4b93d7a301255a8611c7ffa429ab5e5426cb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"path\",4,null]": {
+      "observation_sha256": "872f81310213a6192e030e995920e657c5aa5a1881cdee7ae23aeb5644ac5ef7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",4,null]": {
+      "observation_sha256": "72534583377583f3723ce606034b82c95f86f91439599affc156f2a97cf39d72",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",4,null]": {
+      "observation_sha256": "d941b81aa7377b9748fa12b6432910ce00167b367aa309e6d85bba7a114dc8fa",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",4,null]": {
+      "observation_sha256": "2f37e4b4ea70d45878ad90e5f0053e62b013c9118e07fe53ddf1282ec8f7d0e1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"path\",33554436,null]": {
+      "observation_sha256": "df9879e826c0bc31d8f34bc1532eccd8bbdeee779cf16c5ac46b4cd94d3c7280",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",33554436,null]": {
+      "observation_sha256": "385e9a49d5e7d1181ccb0a44e4ec430fe2a0344b31f6af020b2e58ce2c245a23",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",33554436,null]": {
+      "observation_sha256": "dcfbb88fb33e5da3ca869b6296f60c40b905a483418010fed2986d746cf6749d",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",33554436,null]": {
+      "observation_sha256": "a4724c3584278aef01ba7e6f6259a2910bd1600fb24b9398ce65bf1c2af8c5c3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",33554436,null]": {
+      "observation_sha256": "9881284458732322f68d666dc1b81afa986a02d3f7ea1bd78d9690d26599a2e3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",33554436,null]": {
+      "observation_sha256": "72dc1decf0934058a40329fb72c4ffb6771401f94e440d43bc286a2e3abb7018",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",33554436,null]": {
+      "observation_sha256": "204952b4221f474a22d4f11d858b1399727444020c72ac00701a0aafcf437071",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",33554436,null]": {
+      "observation_sha256": "9c8419a497db65e6629d402b4f25aa1cd859fa0182417d5e3179df87c359e276",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",33554436,null]": {
+      "observation_sha256": "20fe88179e79b021d29192a6ef046a88206f2f86ebdc773c488f9de08c1aeab0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",33554436,null]": {
+      "observation_sha256": "f1436a4ced788b1fe7c65158c244a5e5e93e1177f11172613890ba724ddfa8f4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",33554436,null]": {
+      "observation_sha256": "384547bb381bf0bd2d6b7c38dbf83623ff025f8bc02047211db395514f956e78",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",33554436,null]": {
+      "observation_sha256": "3bcc8e44be6472ed3360094e308d4eede946a21718a3bcfb872b895c634115d6",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",33554436,null]": {
+      "observation_sha256": "9000c2c05d6f8f28e9288561ddbcaf4ef7d44de20e6400b881dd9a5aecb9ff7c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",33554436,null]": {
+      "observation_sha256": "7e3d04b9a5092da956ebe58a3568a158127837112fee3656dfdfff9d1bc2e71a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",33554436,null]": {
+      "observation_sha256": "5481e64f9b5e4120e1dae36d827ce2ce8d12c23bce0e1cc15fe9cf71ec3a4341",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"path\",1044,null]": {
+      "observation_sha256": "837d60922edafd1783ded6aa8b9849ce349e9d2bbbacf8e4f1d22a5dc28243c6",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"path\",1044,null]": {
+      "observation_sha256": "41934e5b3e85caee96f9ce3c2b3e294d6035944914275c9ad2bc97030af69637",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",1044,null]": {
+      "observation_sha256": "fafb95c941db7bcddcd856ac07f1d7152384944bfc593566869dc2806a33d5c3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",1044,null]": {
+      "observation_sha256": "5c355bf219123aaea119ce1573ff7d9e99a2cd9741e04cff29a3c70fe245214e",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"path\",1044,null]": {
+      "observation_sha256": "cafe3ee5708e05fb3b70f5b98c74196ea567b7a6734e5968a2a1d1b610f40c80",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",1044,null]": {
+      "observation_sha256": "9475e58df840825913208a462264aa9b753646bb642441f8c95ac84bc1b49c0d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",1044,null]": {
+      "observation_sha256": "71feee1d9154b1a9f75da4d90c722a5dac013f5f893213bdf7486d738e733f76",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"path\",1044,null]": {
+      "observation_sha256": "b8ae6bc24bdded5a4bb657b26516a13d11a0e19b7e83d4fc74dacbc05cd14e14",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",1044,null]": {
+      "observation_sha256": "7c4cfec789afeb8aa2a9ee475f483f0092e0ab576a1cdf968f8c9981f9dedd48",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",1044,null]": {
+      "observation_sha256": "45588b484202ae515c6d7c454ba7d8b623d45cb4ace64a1dcb7dfded15e594f6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"path\",1044,null]": {
+      "observation_sha256": "2d71a04103295ce8b1f4dbc30c6bb086ec285e16125f2e5ef49181061df4ee1a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",1044,null]": {
+      "observation_sha256": "1527a1a16d0dc7ee13025295d25b7dc790785fd37cd094159e6bbd81f60ce487",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",1044,null]": {
+      "observation_sha256": "402c8a487356c0ab9e66e54d12b37faa62475d6f6846d638156a02594c2c75bb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"path\",1044,null]": {
+      "observation_sha256": "89dc7d852e1a4b983ace7cbf03dc802d332972ca9f2c3d7989f494b87e10f961",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",1044,null]": {
+      "observation_sha256": "2b57556a39d8983837b45bb4cd3d97419fec28a3447f5774546b46f86e4590a2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",1044,null]": {
+      "observation_sha256": "85b9e89e73ce8d5bcc7f4ac6611ec55d45492327e2e29c3b075772f025a9beae",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",1044,null]": {
+      "observation_sha256": "ff522aaad3b707c8d8c5615c811b3cd56f28d87ed97ac118700edb2ca58d973f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"path\",1044,null]": {
+      "observation_sha256": "b5595231b51da20fd7387f9b1927bea439b583074f2646345e4f0e940ce3a5d9",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"path\",1044,null]": {
+      "observation_sha256": "7d5f1df44a8e73147e6cf56c7105153bf6788a6aa80ea851e0561c35859ff365",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"path\",1044,null]": {
+      "observation_sha256": "ddadc50673ef3730e95972ac8de39e3d104aa140394dd8494cbb71dd5b0ade93",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",1044,null]": {
+      "observation_sha256": "fb576c3896d691449e7c8622b1e181405a4483903eed1b695a4819fc93f1882c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",1044,null]": {
+      "observation_sha256": "774267ae2cd3ef84f787a72adda567b73c35b3c47ab3ba6e81f9d11c05c6d3d6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",1044,null]": {
+      "observation_sha256": "e26c19d18d290bdba0abadd784348e9a5c1565b660fe3cbf198a33e6b94a3e80",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"path\",20,null]": {
+      "observation_sha256": "f3b4cde646f63285d61ee858dbeac94a8afc617e76b6cdea8d1ec1dc31e50f01",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",20,null]": {
+      "observation_sha256": "c7f946c533db41269189e938f5e59e4217f406a52582f35fda264a039f18d869",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",20,null]": {
+      "observation_sha256": "ede418d47e900046a4356910c2e4523e2a96e9b7f3c9a9da29238bae8ee27423",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",20,null]": {
+      "observation_sha256": "ff685dc04f6647f17fbc7580e0e9ae63dea354a59ffc85c0b647cab44f9afbb4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",20,null]": {
+      "observation_sha256": "375af3a54839b72b8ffdf2b138c8dd414d3457181c6098d5179e4ff23d0f9df5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",20,null]": {
+      "observation_sha256": "c77c8edcf7c2695b1f4c994678c65425c800c35e51a227445e8e51bc6e47b069",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",20,null]": {
+      "observation_sha256": "1e7b4e08c2d3a0e8ac608f80df58f828bcdc0d6f607073e125f106b6ef3a193c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",20,null]": {
+      "observation_sha256": "1b655d9956dd91fcda67484b9487066c96b251d6bdaa7eb576987e6a1dcc1a7f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",20,null]": {
+      "observation_sha256": "026c0de93b25544f19d90d5540510f3c606ca03119d02fe19204f13e5e6b54f5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",20,null]": {
+      "observation_sha256": "4af98626805184f655ab4f646cdd33ebcc4492e7f60b6481a3fb00a471a799fc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",20,null]": {
+      "observation_sha256": "4415d89fa85694f7741cff1d1f133535a550bd69a34811f7dc10b1f3e97a77c3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",20,null]": {
+      "observation_sha256": "942b2302293861363d39d4dc0eacb3feefd7f0edd2294b6acad0b544ebdd9238",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",20,null]": {
+      "observation_sha256": "1e8640bfc0cb1be9a1a56bae1f5270653ab076fd6ac8cae1cff957af32d53a22",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",20,null]": {
+      "observation_sha256": "35ee4c1f05d13dc10578e839e7616562e26b540842e6630db3827f564e291220",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",20,null]": {
+      "observation_sha256": "9e3233030feaed253fd4d4ad9b16f035c9684d4647e0e3887ba5fd252993ffa5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"path\",1028,null]": {
+      "observation_sha256": "f9369f6c3704ddea23dee8e55cedfc32fe448a555f05445fa59470e68754061a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",1028,null]": {
+      "observation_sha256": "322703dac9a6c8d74d49477c21c5126a290a0a817ae193603a7af8e7e079f148",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",1028,null]": {
+      "observation_sha256": "b72e869efa7440019dd34cfcbd0ce43f80d980057cf3064641e069aa06201c60",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",1028,null]": {
+      "observation_sha256": "fd2566ca5dfd777c919a42b1e8c02fe973e5114fc21efa01851e9e15a25cb9ec",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",1028,null]": {
+      "observation_sha256": "c867b54dce17575e70d16eefec5a4f0fa99859ebd00dea892af276e9678134bd",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",1028,null]": {
+      "observation_sha256": "160242687bac2eedf61d9363961af848b3f5570794aaaf1a770f95bcb99313dc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",1028,null]": {
+      "observation_sha256": "dd447d49d2c3fe8a82292ffeb627e0a90bf307a46ab5345503a3de92f655200f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",1028,null]": {
+      "observation_sha256": "0ed2f1af680fb472923e377036f163aa09031eb507f733840475a6c3c34e4ec7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",1028,null]": {
+      "observation_sha256": "d0dc645b11ffb856196666173f71754c12367fe7c61dc6ffe42259183a63b2eb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",1028,null]": {
+      "observation_sha256": "da3b8e8b4c807c43da0486d07672c002b1350537bbf0aa8c5de1e50e252bc579",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",1028,null]": {
+      "observation_sha256": "759967e7e2ad30d36895ab4d7d9746d2d8b48365d2b51871c33df31258b350bc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",1028,null]": {
+      "observation_sha256": "3d71074caa8ac9a0208ce0bb4f577bb3b2bde0c7d9d6d1f9e615fb43c4787277",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",1028,null]": {
+      "observation_sha256": "84a9b59926c250cdba3133011b493434adece71e366c19272a6cfba45e76cbdc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",1028,null]": {
+      "observation_sha256": "986d4fd69a5f785c62389024a8c7e4955b160e791fb6c3fc67080560b0d4b064",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",1028,null]": {
+      "observation_sha256": "952692352ee37763f5cc2aab5b85da4421376c2d6ea29158f150a7154cf6489e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"path\",36,null]": {
+      "observation_sha256": "9a7ef5b30e4031745c2c1e3bad2df0c1a0aa3a03d0d04fc15fbc3aa5c587a242",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"path\",36,null]": {
+      "observation_sha256": "e1a53b71cf6f620dbce02888ca3f938fe99de43951808125bdfd634b30d8f42e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",36,null]": {
+      "observation_sha256": "9a34fdeb19a9252c02d9d0bd008081ec9d9349fdea8a289a4070ae429e3619d7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",36,null]": {
+      "observation_sha256": "fa1cf2fef8e9d6dd39327fbd7eeb241e706c71a2c97ade5dc842dd09373e8033",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"path\",36,null]": {
+      "observation_sha256": "2bb8ec5f8c04dcd8bd88bd9696d4c1bfe3faa4714c6828dfd910155654599b27",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",36,null]": {
+      "observation_sha256": "091e186c4ebb56ba7e0208bffa3a8757f6e6ee3696a53025d4d32da4c1229268",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",36,null]": {
+      "observation_sha256": "c1463c0f1329e4c5770c255c80f4f845b7b5f7ece2c077fc6ab891b2fe908af5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"path\",36,null]": {
+      "observation_sha256": "b338dea5688fc8939c940e726977367e86ff785100a9a1402b8dce4f4ccdb241",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",36,null]": {
+      "observation_sha256": "88b68522199fa5dd329df7f429558094130317cd69df1346a277c15e68f780a3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",36,null]": {
+      "observation_sha256": "a321e6eb2653df45fecc57a54ea0da9735bdcf9914ed30f7e61e62302c0b5273",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"path\",36,null]": {
+      "observation_sha256": "a8e0d1bd84a8965ef21acefe13b09ac7b89594f0a974364b7a163d132a972014",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",36,null]": {
+      "observation_sha256": "e36c8e247b1e229118e6c6745ebd0745f0004e969925c8169399aed49597db60",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",36,null]": {
+      "observation_sha256": "0a0986d350f5391a905fdaaeec5fca64b89d015e0e14a22f339e3c82d67e053f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"path\",36,null]": {
+      "observation_sha256": "39c94539e6493a4e701b2e09024bbf228853dc9f1a741d5d049cc7f9abba06b5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",36,null]": {
+      "observation_sha256": "3b7624936927a7c7ab230bf941cf9781f125e0a9b6c2f96f33b278042dc00cbf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",36,null]": {
+      "observation_sha256": "33ce676d51c608494b2a9e12ad07a01e400577c436248f92ff7f7a955a18e326",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",36,null]": {
+      "observation_sha256": "9bf0ab6d23985c51c829f555ee716ca0e618d9dce9a25d0bff9434c9f46f247c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"path\",36,null]": {
+      "observation_sha256": "2a3be609afaa9b8d703cc92d02c9e8e09a8ee0dac8a4a0b63e14562493ee68f5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"path\",36,null]": {
+      "observation_sha256": "d2468433cbc1828c30f484482abb41a3f45d588c77d9981d3a8567fdd7b8e5c1",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"path\",36,null]": {
+      "observation_sha256": "0ee36df6475dd4f0fc31a000d66e93a84cb4e2a2cda617b93216aefc4b192ee2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",36,null]": {
+      "observation_sha256": "4c56b9aec7a04c4cc12e645462fc622afb2edef171b458409213a16a3372aca9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",36,null]": {
+      "observation_sha256": "851ba466acd81a51c45e5e4acae09832ea9016ef8f4a80b83d45bd75eb32a7f6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",36,null]": {
+      "observation_sha256": "905075014193caf0152ed5431567c0fbbd9bede6e8cd0c4d92b362b7d361c886",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"path\",2052,null]": {
+      "observation_sha256": "29be83f6d300e6c9488fe1fcb982b0252b7d21219093426896075c655d74bf80",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"path\",2052,null]": {
+      "observation_sha256": "58350197b1cdbcdb3c2e63a3a1495481c1ce493afe0dac71a5d5140e097fac9c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",2052,null]": {
+      "observation_sha256": "6b167f5cc67f6f8db05e3a4d675d28455259daa1335166609e8a1c4c5e47a61c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",2052,null]": {
+      "observation_sha256": "5a35ee1857b94981c31eedcf00b05ef39d6fde2e07b8dd35ef32a799dd1f20c5",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"path\",2052,null]": {
+      "observation_sha256": "0a159374e4488820b4b481aa9f9daeaeb13ff30a4c85580d5addd63165c2c578",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",2052,null]": {
+      "observation_sha256": "118677d0ab514c1201889274b5c95dc3c3a886227adb21271445d2249efc5349",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",2052,null]": {
+      "observation_sha256": "a08b1aa770d51ba535b4edd3b3f4b6933fb24ca33bd69becec0d581747e39334",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"path\",2052,null]": {
+      "observation_sha256": "3a8dc08a4019d7b52671abce43b0aa85086c493c396a38d69918a8c331f7e639",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",2052,null]": {
+      "observation_sha256": "dda29e439e99000b2aa2b5955ba5717e7edc672ce9fd18a969b80dfef6cedb9a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",2052,null]": {
+      "observation_sha256": "da0bca0dbeff2050a946716e61ea7d0e221fe0fe59b795e43712349e04dd1283",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"path\",2052,null]": {
+      "observation_sha256": "eb35e26d1b3736eccfd76272f1c5c04421abc38826cbc51328de85e323277f99",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",2052,null]": {
+      "observation_sha256": "b4009be1c524a0801df14010628592a1dc011adf396ad84b3b99a6e71413a834",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",2052,null]": {
+      "observation_sha256": "aa856ec0f91ae89afb32a94adc662a970b3b75e567c9d47a7640dcafd3b84157",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"path\",2052,null]": {
+      "observation_sha256": "bba14d6dc17ca1537f173a9aff13283de487be287bcdf98cb4941d9a4a56b6a8",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",2052,null]": {
+      "observation_sha256": "4e53dd753a256aaa25957399090e0de22f8bd6195e1977edc450fb6b7b5c0613",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",2052,null]": {
+      "observation_sha256": "cf95a858aaf4bb0781b239c7e6514bc7924a35da20e8c42f47d5a33f71da1f52",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",2052,null]": {
+      "observation_sha256": "0aec191e7698a659811cef2ff047288d287a55784ea190361286476d57793d6e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"path\",2052,null]": {
+      "observation_sha256": "31ce18a503643350bab06c89d825c07eaa71318a4edbf7cfcee2e9bc930e6e43",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"path\",2052,null]": {
+      "observation_sha256": "7d63fd91f9226e6ca0ceab4ebc882a9ac4877d7017efc2d73bd01bdba97a190f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"path\",2052,null]": {
+      "observation_sha256": "8f6276e80c84783e401338a62185d2d2cf521f09a68e121d9cbb0642f816ad0e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",2052,null]": {
+      "observation_sha256": "d3d141549ac061025481b1dfae1301385c489a63e874b9154b9c11204d5dd452",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",2052,null]": {
+      "observation_sha256": "f08af35c4b9a5091603244039a18862dba6b50cd086e807af1e5025d924a85bf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",2052,null]": {
+      "observation_sha256": "4efe91c152d5b1eece3fdffd3871c9796a1841923d1e335219e200353d7d2c21",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"path\",16777220,null]": {
+      "observation_sha256": "138496ce1719c0e052d07922bc635bd834776e1fe576b7df194eed939db439f5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"path\",16777220,null]": {
+      "observation_sha256": "7f2032cd89c0594d5602d0d0fa3d1d542e453367d560cebae137d4c20b208525",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"path\",16777220,null]": {
+      "observation_sha256": "abfa38965ce83700bd3652431c1424eb1f82b58415db7e5e6c5e9be44ac6015a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"path\",16777220,null]": {
+      "observation_sha256": "fcd815e06bf6566e9b02376ac22c14560e650b7ca9b39d77a8207ef01d9b922c",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"path\",16777220,null]": {
+      "observation_sha256": "51b7cdb564e9f95ad11f1706f693ef899d2c805e32bce7294b05ebb46acce4e7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"path\",16777220,null]": {
+      "observation_sha256": "b3751a8056a506d49086d5a36d9d1c8318b310b927d1a869086086f12f8986db",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"path\",16777220,null]": {
+      "observation_sha256": "31e98e960c5ee7dc396295b764cf700aa745b00b1bd5e8dcb1fdf34799bf4d10",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"path\",16777220,null]": {
+      "observation_sha256": "fbe14770bd7518399fd5bb0576c813d55f2379a5ffa9033938cfcf665746133e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"path\",16777220,null]": {
+      "observation_sha256": "6b4cd5adb1f17a35ae083d2251708014017a1829319a9c49aaa2d4e7b3f4928d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"path\",16777220,null]": {
+      "observation_sha256": "bfca9759fb741bacc0aadae5de88056a5aab88889420704868218683412311fe",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"path\",16777220,null]": {
+      "observation_sha256": "e99c0a46c0d5ce18990dc2b2bc3503c28c7c4e17db2c9b9c89c2a029649334e1",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"path\",16777220,null]": {
+      "observation_sha256": "16ec222a564ca9a06acba0149d89b7918ac7fc985aadf385f9566d542d015d2a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"path\",16777220,null]": {
+      "observation_sha256": "bc403bab8e60d5a54acfe7211a6abcfb68b70da80676d1ce5b01904235f43d11",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"path\",16777220,null]": {
+      "observation_sha256": "12629826c9f846004cdd25dde5b330533a3849744edc7ec68e336dee82288d34",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"path\",16777220,null]": {
+      "observation_sha256": "84c57d37ce1de3043b3789c1a2407a07d45e9fcd1f9997c0e9ee404313b559a2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"path\",16777220,null]": {
+      "observation_sha256": "1486b580e91a685f6638dd7cf578cd6fb6426f7ccf80a2c14d69045c22de8251",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"path\",16777220,null]": {
+      "observation_sha256": "25c6f91aa3c017ea6813493d39ca9883cc48c9977dfcc220211502727748b7ab",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"path\",16777220,null]": {
+      "observation_sha256": "0b921dc7db466b59c036f6b3b476c293db64682bec91e33120fcaf323d831252",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"path\",16777220,null]": {
+      "observation_sha256": "8e4bf0c66dd90e709a5c37e957a5a097eb0b77c0d3370d465168742480c8c3a5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"path\",16777220,null]": {
+      "observation_sha256": "90ffdbf6beb58fda3de84e27a0649f62a436765d5cb41a16c444c0c36f3212f7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"path\",16777220,null]": {
+      "observation_sha256": "c53e7edd491a95d7be332907528c22fb4b768ef8db09dab90c02702d630b638e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",16777220,null]": {
+      "observation_sha256": "4ad67cf628d70622b898915e6301da6dded57e00a4fa3b4ce3c6766804d9b600",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",16777220,null]": {
+      "observation_sha256": "61e2ef02a6a5e0eaa430d421ff054f2f25a901a3c36124315278a7cd213fe4f8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"buffer\",4,null]": {
+      "observation_sha256": "fa4fbfaad4b5891abc27b94fe87febee7983caf8a17c98744f97237fba26ff24",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",4,null]": {
+      "observation_sha256": "fd36e40dfff43a5243dd2b59a75dbd4588b108fdfb0b15717d3af5f2bcfbc921",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",4,null]": {
+      "observation_sha256": "c026a494b02be8a41dd4eb3f91a72ee386e1f6df701162dad4ea69b3e0e37891",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",4,null]": {
+      "observation_sha256": "b915f6a8a9e1178be445ee88e706b7fc19c6e28daeb0e3ed1839d843912f7af8",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"buffer\",4,null]": {
+      "observation_sha256": "4f56e7f0d21ad064444d67b286e26fce335f8cb60009b831f64eccf1bd96801f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",4,null]": {
+      "observation_sha256": "3324dcb52cc7512ccf76095bd2cd5914be0c1965882570448fa98ec70ff2b09d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",4,null]": {
+      "observation_sha256": "1c2de5fe304a783d9bd6ad509ded9c05776a0acb59617ac2c5c9aa0dabbd9727",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"buffer\",4,null]": {
+      "observation_sha256": "36d1d995d78060d07162ccf70d5b15f50275278838d31c2ee7e2b4cd51ea9517",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",4,null]": {
+      "observation_sha256": "fe5297b46767f4835b50770b05e9e6fcc99ffef4144d7bcecd3e76daffeddccb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",4,null]": {
+      "observation_sha256": "2150049eedb16fb5ce3006bb62215cb73bdbffda8bccb25379bf6784bcc41687",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"buffer\",4,null]": {
+      "observation_sha256": "f06b4cb6e7c7706206648fc9cd9976f5d99c48d25749fe05af2ae633831961ea",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",4,null]": {
+      "observation_sha256": "362f425fd2e81b9f8ffff4fe46a8cd546be645c4821c4db434fbd6485a0d108f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",4,null]": {
+      "observation_sha256": "6f6a59764b17c1897d9e889cdb3fa183d7110396426f3a3967d452d1d11e61e7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"buffer\",4,null]": {
+      "observation_sha256": "b1cbea7febe45cf7056911d6506301b0b966b7ff169b166a292dda7251fcac89",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",4,null]": {
+      "observation_sha256": "f78e5bacd0223117280be05b46399b0babdb185e547ec692d35b84d10bdab043",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",4,null]": {
+      "observation_sha256": "f9e238f5878ef061e4ea81b060cc8cc93e1640c37dea9408a18109aa114f40dd",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",4,null]": {
+      "observation_sha256": "1c378b33df02b83de8ecf62df277308a0f9034425089bc9eaf74555dfe764d26",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"buffer\",4,null]": {
+      "observation_sha256": "dd969e1d52d611ac0ea27c76d90da0a12d9061e8671b381c0240a03420a2c6e1",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"buffer\",4,null]": {
+      "observation_sha256": "03420e149cbc34ee6bea9dd4e1b6712c4ed1f3dadffa00c9f02040f8fded73ce",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"buffer\",4,null]": {
+      "observation_sha256": "0dd8b9bdaeaf92b562cc5eca643f6abd62fb3e6c7d892cb694545b45251784c2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",4,null]": {
+      "observation_sha256": "63383d1034340074cb1aa79c1c870e62f968bee5f01c029594a340cdcfc1937a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",4,null]": {
+      "observation_sha256": "4a2bfdc2dc31097753fad41029b8b0325f3298d778a750af1b3890dcfb32cb0a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",4,null]": {
+      "observation_sha256": "f0bf270e5743cc18e30226b944eb604cbdbaa8e90bd6e3a9128d5b040e191d62",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",33554436,null]": {
+      "observation_sha256": "1c1800d5cbe9575eed19a00c9b38dfd65c8db3b4a8df13ff15062c7efa4f62ef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",33554436,null]": {
+      "observation_sha256": "7ed2c8e6c4a371ec0dcc702713571844fc48fd24d98b089557f7aa789f63b9a6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",33554436,null]": {
+      "observation_sha256": "f8511352ec2b7e7012846aae5b19bfaf0568d13de9a8438e2ee7beeeba9b7bac",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",33554436,null]": {
+      "observation_sha256": "290e7b0c5d84b7ae2d3aac94b570fc2165e431c3ad3dc9b1af2c8e8f996f1695",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",33554436,null]": {
+      "observation_sha256": "b1a43f0ae238abe04ace57ccb7f81259a943c522b10a61ffa634eff86aeb9d71",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",33554436,null]": {
+      "observation_sha256": "94a951538c5490d41b93aa58fc38ccaa9fc6b6f4781c4e1337de233480c55da3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",33554436,null]": {
+      "observation_sha256": "0c1f353f4bd773a87f70faf4b5f0ec2c58159c7828b242ed5f260f405e44e422",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",33554436,null]": {
+      "observation_sha256": "8111e59e8907f9799fd8de144193e75468ebe1ae30358a396159de7158e0baed",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",33554436,null]": {
+      "observation_sha256": "88f53499583d938365efc5eaba7cb63cf77aa6beb18d6b9aee0d476f8fe690a4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",33554436,null]": {
+      "observation_sha256": "d50b41b43cd5757b765e218ed7cacd67f2320bef14ca83f3584e2a6b871d0da3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",33554436,null]": {
+      "observation_sha256": "3e19bf0880673bb08b1ebfa47d04f490b6027b0f66ed9154c8f2b47c2fda2451",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",33554436,null]": {
+      "observation_sha256": "542fdbe69afd588ba978d73ebd0d3e3eaba5106f9599bf9396d375acd467c115",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",33554436,null]": {
+      "observation_sha256": "0d0ababc4a0c852da4a1613751061e6c73b08682a14efb28e4f76b89d7c337dc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",33554436,null]": {
+      "observation_sha256": "a5df5d55ca52d5df9f08e917a76b1fda3e599c236dbd9907dfce513627d93935",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",33554436,null]": {
+      "observation_sha256": "bc5df9983d8955e80b6d1fb49da6f941aa1bbbd194c65b48237c3d862e7aa0cd",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"buffer\",1044,null]": {
+      "observation_sha256": "e64a28bd1a9c853ad9208c36a0f75447118a0930544aeac2f03439c4b0b47542",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",1044,null]": {
+      "observation_sha256": "16f70814567463d150eab88c456d43e91f72000299544e2428f75cc751336ca6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",1044,null]": {
+      "observation_sha256": "2d67497dbc17127d89742d04ad69781ae61f2573bdadd1e8ef471b75c795475a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",1044,null]": {
+      "observation_sha256": "65207b50ffd6d4ed2952cce05566799fb4af2b02bd923d5fa9b8c23d675a63e5",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"buffer\",1044,null]": {
+      "observation_sha256": "876a358d00da5e0f041a8ad45b2d9345fe38c847817d84a63cd8162d3f4d5545",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",1044,null]": {
+      "observation_sha256": "658ee0887384efbe5dd5bbb5a1f04a69a59654400c4a47e18e7eba246d5cc368",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",1044,null]": {
+      "observation_sha256": "727f094026261ae1e5e24d1ddec013db6d7c85fde89b0ae92f49fad7cef1464b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"buffer\",1044,null]": {
+      "observation_sha256": "1b24ac29ae5791c77c4f32db2a7f0bd024cc800336a2dfc349f3618656f1beb3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",1044,null]": {
+      "observation_sha256": "46842dad5ea7e256460cb4fe03c29fc91da1173e8752a223754740cc7c055474",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",1044,null]": {
+      "observation_sha256": "1901cc03210f6705ad1e3d81a86a226d45dcea94caee424fd6e30fa857c30e6e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"buffer\",1044,null]": {
+      "observation_sha256": "c57f4b0dbe9a0ed4d15c964c3fc43628792d823f09da463f9d08a34bf04b25d0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",1044,null]": {
+      "observation_sha256": "ebb5c6b87d9389ad415aaa54e722f7e6fca2f902d7534e25a287eeb495404a89",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",1044,null]": {
+      "observation_sha256": "6323a65977f10062b4eae589da03b0bb61187433183f7e372d591f956f13f160",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"buffer\",1044,null]": {
+      "observation_sha256": "83f141317af3587fb818e5e86643c2cfd16d42fe1124822dd91fcc8928e1f741",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",1044,null]": {
+      "observation_sha256": "9204f8b9584ce4ca6721dfb5a4675602a6c374aeb675a94b386243a5b53f0094",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",1044,null]": {
+      "observation_sha256": "48247d78772173854259b239cc7f39116c2cc2191b1886e2c6b022edbd6266de",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",1044,null]": {
+      "observation_sha256": "00d51d589d5c3d424a90c5de0a12f026e9761ee0bdc2e1421bd8e6759e74f3a1",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"buffer\",1044,null]": {
+      "observation_sha256": "38a922210d2f1dfbaa68cc79f5f372fe0a5c0916649d8126b992feede6419dc2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"buffer\",1044,null]": {
+      "observation_sha256": "25222035e988ef64c764041489a8c2df30ff9d038c5262978514c329012aea82",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"buffer\",1044,null]": {
+      "observation_sha256": "70f5db1d76f1502ab379a956ab8718b71498c03a09dff0366bd62a17596bbe92",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",1044,null]": {
+      "observation_sha256": "6dd6ae4051f3c058115bf5181aed2fb53ca1a40f422fd855f4a1a54b3561efc6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",1044,null]": {
+      "observation_sha256": "1aff3c081dfe17f689a095bd1272289ebcde576592d908fae545a14dbf877074",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",1044,null]": {
+      "observation_sha256": "77f1a350f93be988d609aaabf286337ab3e5c00ac1ebd2b45d6917615c9ac2c0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",20,null]": {
+      "observation_sha256": "f8a51e106177cac37dece9cb41bf081547ed683f9f2d31e2c54d3788afcac455",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",20,null]": {
+      "observation_sha256": "62ceb476f12ecf4b439edfc4d1e0044c5f8a1cc0838361c824ae2dc5e0be95b9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",20,null]": {
+      "observation_sha256": "dbe2fa50895638a965a629410ef86c8af90df976cde26aa6bed75561b9d16ca3",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",20,null]": {
+      "observation_sha256": "b9de00adb2ad41703a8bca7a48567c8a533aedcac0cfdf4dfd2f5ce473fc792c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",20,null]": {
+      "observation_sha256": "a4033edd9e4e35bb053a2b1dc9db0211b86516ebe8ef8cc0cc91b25583f1470a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",20,null]": {
+      "observation_sha256": "5eed73aa1bd6c2d8700ed94e29dd50c7b4266e9cb2c5fc6df654cf7e73ce18af",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",20,null]": {
+      "observation_sha256": "9e683c8ffb9841ad1ac1f4b34911b7c0f66cedadec3e532430a92dbee83af72e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",20,null]": {
+      "observation_sha256": "db2afff66fb18b0fd774eafb3b39abeee0ac1b35019e9c07c6e29954bc22256f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",20,null]": {
+      "observation_sha256": "d51a9f09427cf7803f501b0288a81e78494e58c50f2d3b731586e1c453287fb5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",20,null]": {
+      "observation_sha256": "f0594d84f0f835fb2b873a16ad65e279b88abae776558f6b2b3d7716474f6119",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",20,null]": {
+      "observation_sha256": "80f3ae9b9ea024e97917d498ad121c3943e41946cbb8de9e0be063737f93d639",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",20,null]": {
+      "observation_sha256": "8da6e17b0a58adb2666efce706fb1bb974237d72320d449a6325976404c29937",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",20,null]": {
+      "observation_sha256": "374fe81613f6b145dbd2996031d22ffd261f0a47ec606cc4150581abeb99d689",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",20,null]": {
+      "observation_sha256": "764540c0e93bdcc753e8e8b05d5c216fef7d885e0b4b9c10e1b2f24b7c8169d2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",20,null]": {
+      "observation_sha256": "8bcb305f9b6f7c42de9c87e6b9ce392a72ba6a31a05ac51d05262416bd971ce1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",1028,null]": {
+      "observation_sha256": "b3af6df0951bcd0dcfb9f784e77eb9c72509d7edad7eb440e58627bc4ee49e31",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",1028,null]": {
+      "observation_sha256": "9937d090a715b7dad9f049080aef8c52a51edef0360f72e62a79d1022293d014",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",1028,null]": {
+      "observation_sha256": "e3df947f0fce8688e402437a10ca7347939f438de5ae06e7672bd504c21c51f0",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",1028,null]": {
+      "observation_sha256": "6999a0eff97b2ba7fbb2751a728e426b3b4e20fa3fab8d3437e202dd8f8e4389",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",1028,null]": {
+      "observation_sha256": "b42337246cdf16cbc638fd3ffec59d0d6d6fae92dab439c8c7b9b24916886a8c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",1028,null]": {
+      "observation_sha256": "31ca395c7282de1544905d502373f1c0a1809a710f6af7a592060a7d4f4c284b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",1028,null]": {
+      "observation_sha256": "383218db4e469d3ca906bd79e82390537e95bb98c5ffde9c3c4d3abb901ab42c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",1028,null]": {
+      "observation_sha256": "e20d65eeaa671cfc6607b011c285a667f97a022a2937579ac5a306746b9e5b17",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",1028,null]": {
+      "observation_sha256": "60852ef64d7958a416d1930eb1e1dab14afa058137a61b3eef9b022bb96d291c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",1028,null]": {
+      "observation_sha256": "a5dd89c1e7a983ee346c0decb90de669a9b0ae29f59103fb28507b7c7891aca5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",1028,null]": {
+      "observation_sha256": "648bb16b7516dcf32662fad1363da91b971ef7adc50eca12ff3a31caba4e0193",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",1028,null]": {
+      "observation_sha256": "a7938adfd69faac5aab6b1a9a55548f622d97258683b4eb92905b6e8d45ccaeb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",1028,null]": {
+      "observation_sha256": "8c49cc6ae6236c76c328d7d3ebcecfa2d0a1f868157afc05ea3b03e12e8341f7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",1028,null]": {
+      "observation_sha256": "bbc8247c1d08885ee82e611ced93012f8f0907405174e8616a9501656d239220",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",1028,null]": {
+      "observation_sha256": "12adabb783747f17430656271301b7adc9d9092ca7d35a0842a353aaae082897",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"buffer\",36,null]": {
+      "observation_sha256": "84441021722e229f22cd6f468064a0dd2ec2fad01be53d191381e7e2409a91ce",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",36,null]": {
+      "observation_sha256": "457405cf5a6233c5b139f26c344c6cfd641c019e6f3e576c094fc61072992535",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",36,null]": {
+      "observation_sha256": "7b3c717b6cddad035ce71bc85e22f973418e434de28ca6addac6b5bedd66fa3f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",36,null]": {
+      "observation_sha256": "69055850c32388a899c51687a52fe570bb348a105ff86f66ff66f5b3a89c2461",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"buffer\",36,null]": {
+      "observation_sha256": "5bbdbaed40287c4b72fddfef6c05522fc0b937008d28eabbd034bfe3e573d060",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",36,null]": {
+      "observation_sha256": "ea9f04bbee1adddf07a64d95768af6ccef9d75e436d73b80aa5751ecbcce3105",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",36,null]": {
+      "observation_sha256": "cd9536b34c8771d4f172e34b4991a21704e6e682dace1c9869dd9e818e416458",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"buffer\",36,null]": {
+      "observation_sha256": "bd2c08aaec29cc5dec893d8b298521d21fef7c65a3344226c2ccd56ef06cb97f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",36,null]": {
+      "observation_sha256": "cd13cf8aa15e3a8f2783d9a7b606616faf9eb637c22d5950ee459f958c60f5e6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",36,null]": {
+      "observation_sha256": "4d77a50c2c82f2e92ed262c9433206775f3b1386623298cef8b444a86e3ff68a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"buffer\",36,null]": {
+      "observation_sha256": "79c0b13c54b02d9d89a06a4b47eff670700ad8ee6ef9572b2d3817de58ff8de0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",36,null]": {
+      "observation_sha256": "c866a8efddd12d902c49946968b335cbcad5bfdad2223cc9cfc569f68a8a9cf3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",36,null]": {
+      "observation_sha256": "d8e7b254ab886ee8cb2cece54da89719e50b975deb479106e2a7d52e90676232",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"buffer\",36,null]": {
+      "observation_sha256": "bac31e6b1e24ada1b8d85f9489de6054afbecc9b4e4bf8037d1b79a55492f3c0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",36,null]": {
+      "observation_sha256": "56a8530bf43e47c5789a742f9fd22290cb7861960c90937170024e646370ab9c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",36,null]": {
+      "observation_sha256": "2ee443428c4eb84ef37210820f21272076b0618fb12db8aeec7a37724ad90a50",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",36,null]": {
+      "observation_sha256": "f8fef5835675127c4051188ecbd2a547c75214f2445aa78ae7859bff60b66a2b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"buffer\",36,null]": {
+      "observation_sha256": "15f922cbc9c7e241d819a8f11b63b5cc2195bf19dd958f68389cea424e38587b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"buffer\",36,null]": {
+      "observation_sha256": "15d506069583d33a480a4045604badb9652fd461629286d474de64bb325f0c3d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"buffer\",36,null]": {
+      "observation_sha256": "d0bad15cd1ac236474efa0ad088d9b19038866f0859c0bef100fec80f25218ac",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",36,null]": {
+      "observation_sha256": "7e629cae942121bb3119f09018ee9b068f3752958943de27806e666bfb9b5b34",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",36,null]": {
+      "observation_sha256": "f2471a2590454873feb77f9f33588db6ebe31fe06ec26752ea3c70d239071d18",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",36,null]": {
+      "observation_sha256": "3c03219c946c2004a2186c9b0b537af73be04fb4e88d4f877a7d9b824868054a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"buffer\",2052,null]": {
+      "observation_sha256": "41b92c7315d0a0981156860bf6c9d33391d3118db8427dc78ffe72589196ad90",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",2052,null]": {
+      "observation_sha256": "34aaba2d0b9fc6f0dea562177ece9ab03b2ebd3341d0a57bb7efdc1f518067c3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",2052,null]": {
+      "observation_sha256": "720f5f70e8610b7ef9d0b076d17d5588bd98c26f9dc6575f5eb1e7c4bbab2546",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",2052,null]": {
+      "observation_sha256": "f53178164210bed8c32276dd682d3da7556b18dbd538d5f5f48fd35fd8c4be0f",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"buffer\",2052,null]": {
+      "observation_sha256": "2f96d0db6c33a391eb3a31f09fd296d746a109429d49651529973b76c24c3b64",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",2052,null]": {
+      "observation_sha256": "ae4f46380daa9e56f8f81679c52204e0901aefbf4422a805b79a6c3b48b0b23d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",2052,null]": {
+      "observation_sha256": "1fc95cc426f138e1c73d58e3b7be351a818d265210e60a4088d863d63f09577a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"buffer\",2052,null]": {
+      "observation_sha256": "c7a87382a508b846d025e4f4a179b6c4ce08c53a1567892851300dfbf346908c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",2052,null]": {
+      "observation_sha256": "50aefb01e5ef2e3d649d420bf18a0c0770483a9644375c6c33bfeb874ae75ee7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",2052,null]": {
+      "observation_sha256": "4299917531822555fca513383953ffa8273068f9e23a7b63eb76ceb0fce2e45a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"buffer\",2052,null]": {
+      "observation_sha256": "c16f66ab3ca9a49a3d04ddb9d3d168556d477f100401731184442de1c510ffc5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",2052,null]": {
+      "observation_sha256": "4e53571ff9f41edfbc65c3f24fc9aa3992fae770afd07cdefca4fe80113a5cb4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",2052,null]": {
+      "observation_sha256": "2c3458448825f0b66eea52f3b66a04cf49ced3ee4fae4055e3275a36a2d5d650",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"buffer\",2052,null]": {
+      "observation_sha256": "6691574ef6a27717cf7abffc0b6571055a53b7259973cb5515acb91cd4f57f56",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",2052,null]": {
+      "observation_sha256": "ae7f4ef2f7dad8ca96d79429385282060b9afe20442d195d1d8cc099012039ce",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",2052,null]": {
+      "observation_sha256": "d1763520c2546988636bdb2244f33be49cbc01aea7fe87b21c2c2d6e781ee3ee",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",2052,null]": {
+      "observation_sha256": "b40156461a1a464b803ec8469155c6f27b13ae3e37c3743d5cf5d417258b2f36",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"buffer\",2052,null]": {
+      "observation_sha256": "8e5f5d3bc8adc238762b2bf2c7d60444ad2c900a72ea52f2518e586dc493a676",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"buffer\",2052,null]": {
+      "observation_sha256": "e1a99a7e37554c827cd36c675cb7c728e87e8177c642cf78fa5868e99b62795a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"buffer\",2052,null]": {
+      "observation_sha256": "fc93020d4e07f0ef59daa1382e4cac1300f0ede0862c84104d1c3db87a04dffa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",2052,null]": {
+      "observation_sha256": "b9e67b51f78d9888a81db85a06ebf04ee9f4c7072d5ef8c025efcdcb6bece8c2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",2052,null]": {
+      "observation_sha256": "85c865e3a41b452773a9bb4b11a402b71e7f8a3bda98ae26a5a15690eb3925d7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",2052,null]": {
+      "observation_sha256": "89208ca9abab36baae1f5000931e216e4c61b93d7cbdba00c9ba5742f0fc01f5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"buffer\",16777220,null]": {
+      "observation_sha256": "0be2a489dbef511914f4145e8751edeab035f29091508253aae778be723bd97c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"buffer\",16777220,null]": {
+      "observation_sha256": "68d2641d9f8687c339e868b6881b68258bce949385a61145ec916001d8cdb3af",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"buffer\",16777220,null]": {
+      "observation_sha256": "68c2a24bc96a5754f17ed2724bae4fe40992b7409bcab176288dc22bb9222247",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"buffer\",16777220,null]": {
+      "observation_sha256": "b5f6252735475b591cc71999a3a023cb76c18cffd4c964bcf232c37ea8408e62",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"buffer\",16777220,null]": {
+      "observation_sha256": "e8ed4ff91eb6234e2590c382bb70329c81bafaee602688958ed1025dacb74c71",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"buffer\",16777220,null]": {
+      "observation_sha256": "b440cb07e5f28da531c8613cbac3cf3a49335a75bc8003dc300fd754140b3aad",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"buffer\",16777220,null]": {
+      "observation_sha256": "1df988fed776257d8e3a9135f1544fad7a6eaa1a2f9af179d3b8d043a66b6a37",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"buffer\",16777220,null]": {
+      "observation_sha256": "e9653486e5275ea588d963a46dd0a6d235d9aeaaa9f68f95ea3c136ac6f6d832",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"buffer\",16777220,null]": {
+      "observation_sha256": "f40068ca68b22a147499b8aec952ee0b9967c83e171ec31a6a5132acfbd7ebca",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"buffer\",16777220,null]": {
+      "observation_sha256": "53009b9988e407d4beb30f078a20ef58da25982832ddae0e66900fee64e8ecef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"buffer\",16777220,null]": {
+      "observation_sha256": "ba3e1029cb7a1d1fe77124d611c177d0e3d725a7c597f21aeed7095515a05114",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"buffer\",16777220,null]": {
+      "observation_sha256": "991cce2336795a3d7dbd5de982f319819bf6dc76f3b3269d6f849565edb3bf0f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"buffer\",16777220,null]": {
+      "observation_sha256": "80af5fffad72317c3390a95554de8f3426c5e665324773263306f3bc2f4eed55",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"buffer\",16777220,null]": {
+      "observation_sha256": "e5ea055ae71ca0c2b3ded41b2d781770f8a10b33a7aaca610f37d9c8bb935698",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"buffer\",16777220,null]": {
+      "observation_sha256": "265321ea791170f5f1ed42cedc844c605b0a8ca738e8778f7a4011a2d41d720b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"buffer\",16777220,null]": {
+      "observation_sha256": "02a007a7367d6595a0720810882563c32e4346a974f08e975911d9528fa4c6ed",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"buffer\",16777220,null]": {
+      "observation_sha256": "8ca629ac6009282d411005812a8e3b1df0f62e3efaf669ea815241ef7166bd51",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"buffer\",16777220,null]": {
+      "observation_sha256": "0401624f388c9ecb5eca1eefa82d12ba43d20e4f6d36ca89aea2adfd0639f6b2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"buffer\",16777220,null]": {
+      "observation_sha256": "5340a1e110e6131dc67836f6db48cf7c8cef045ef97695ee93de170476f68c2a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"buffer\",16777220,null]": {
+      "observation_sha256": "afe7055a76a9afedc59b1de57f884accfcc56046f6e8d9469cac9eb496625bac",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"buffer\",16777220,null]": {
+      "observation_sha256": "d3892b7da8a97e982f08832c5ae4829d5c6dfed80c58dc6f9bb1064b56783621",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",16777220,null]": {
+      "observation_sha256": "9fc9ea60f2eb38dcc7815c04532ed025f3d6fdf7fab0977eee8aa47e01a0a445",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",16777220,null]": {
+      "observation_sha256": "d773c194ee6c7df38d5e3132df945b220f7774ac91eedc8b5ce6e93e8aa9c574",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"descriptor\",4,null]": {
+      "observation_sha256": "bc7536fdb6ce42258ae5deafb14e0b315389cdee634f2b8f722b96598d6f7551",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",4,null]": {
+      "observation_sha256": "2f93189d54157e51abe017550444d9fd60e7102de6b759148d1d7e9c0951c2b8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",4,null]": {
+      "observation_sha256": "53d16a338e3bb25490af300d0b3e811305070e89d44ec2c501352d2ffd885d7d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",4,null]": {
+      "observation_sha256": "bce3f4ad3497af2c884ea403fb17548c7e421ed7ef58af71c02bf85c0e0229ab",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"descriptor\",4,null]": {
+      "observation_sha256": "4602686e5aa45a138c804f6998ffc705ea2fd53a4007dfe7848ee65f6ed66505",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",4,null]": {
+      "observation_sha256": "d66fc8625d97cb7cc9c69961fd83956a39c5877343ae7b226990e7bd5d8c94b6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",4,null]": {
+      "observation_sha256": "65027583250e8f96f4cbd3060a0b5f55ab46e9e9f45c79194f46fec221e5e8ef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"descriptor\",4,null]": {
+      "observation_sha256": "beeae4b4ad8fe24044f22188a6ad606882b27547b14861748f333a4d8a3eecd3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",4,null]": {
+      "observation_sha256": "dcd95f8c3ab93b6cd3b8e9aaa7c626cfe2e9a3c83dc75f8f6ca0b628d05fd5a8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",4,null]": {
+      "observation_sha256": "60eef0063668537f45666e1eb6af667d780dd0a442b59232b89f9c2bc5955899",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"descriptor\",4,null]": {
+      "observation_sha256": "575f88e44ddaa31dc69d01a1ef78db233df1d771b229bbe3413788f46dd41504",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",4,null]": {
+      "observation_sha256": "ef7a110d4151ba27c71b9637012bbfe55513de287925dc953a14907388131681",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",4,null]": {
+      "observation_sha256": "3d5c70f11ae0425ecf3b5577922886f160a56a2235e9583edffa951116ddc783",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"descriptor\",4,null]": {
+      "observation_sha256": "e24b6cdd171a727ec037904f2e19b5ea78d845af834535548f41942d4df0d584",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",4,null]": {
+      "observation_sha256": "8470b3632823e63ceadac5dc9aefaa7edfe8277980481463d6c3a972a734f854",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",4,null]": {
+      "observation_sha256": "1927fd07fdfd5bbd1057f3bfc2aeee9d075160381e3cc62240b8bbf141f8e97c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",4,null]": {
+      "observation_sha256": "c5de5fbda62914b9dbec9e91031e85ea2bf4bc45d677090232540383cecf335c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"descriptor\",4,null]": {
+      "observation_sha256": "8006a1daa714dc2167aa913e6c3d1f3b3fdfc56db21c3596138cd7eb991c2520",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"descriptor\",4,null]": {
+      "observation_sha256": "667ae3a8125e520a857e8fc41d2927ab592d9e96fb479e41bee9563b68264bcd",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"descriptor\",4,null]": {
+      "observation_sha256": "145e9f066e7b383616f6082b9d5f607d4c44f39c8723e609660731fb00b3aacb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",4,null]": {
+      "observation_sha256": "468b512d450778e314d5ec721ddcee1dbcd036d35bd4476afbbc414645931bde",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",4,null]": {
+      "observation_sha256": "ebace06f605a05fcde1d0e17e34af29d453f1424f397be1fa3bf7749ae5cc2d8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",4,null]": {
+      "observation_sha256": "09a0e77a9cc243aec0e217eefb97944d9121c0f503eb1af1eb1f5e9d3c64a893",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "1248933d0ba2f2c760d9215d3ff303e68ebde7a5e180b6e6672f2f1ec9952634",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "2265d384d2ee875f880c8a4049fc10dbed2dd46e9f7af840353883d5cd8f09de",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "f4d326c6cff30e2c6f68490c764232a3cd443f6fc9c25374bec15177e5b4c79a",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "1d0885ae1fdb14752734e70f033fdc910babc193f8e7cfb6ff32d426bfd4cfad",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "12898b159c48a9796944c8d07ffd20331191a742c6dfd8fb854117a405cd1ff4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "b46f66faddd6a3cba9a04fd9dc129d5a641a81521025f378e622c3ef4d66190b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "37ef9a4ac33461a7410e2b2e97bddb6571d672ebb16921a3504f3df2ed50be25",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "df402f042242f9bb89c71e2312abc5a7b1e11539e26bf3a0c1d36c5300096995",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "ed9e12c9e6d2c79e6c3c2cfa8ef65fc5eb65b9267304e054baf76010c37fb2e3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "f0761254acdcc72b3d1deac0ce96c9ad30432646731b27831cf098b02ef558e6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "092acafc0a1886430ab2709cd27f3c3a13469551ddb4c1244f3fb2f4f645bdd5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "333ad5fc1207e04276f2b593d2feeb3570f62534f6e32f5939a4221853d46114",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "f443b7e6e379ed33e3d170cc8330bb7aa2eb4015c7e9bc22b22e98c2f62cf3f9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "f210ab57f6f06ff8ef28996dfea685a7ae46434133965e06a4829de0b0857548",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "53564523ffdc45429150032bf8ba498c20543f408f1cdc48397cf5ff9981f4f8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"descriptor\",1044,null]": {
+      "observation_sha256": "6734f181cfa98083122b1a050c85ce713b86e4f04bbddd1606ecad11ba9ac1ef",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",1044,null]": {
+      "observation_sha256": "edb722e6cdf4b3c1a7e7add51fcbd1626dbc3f8acc877af7e39518ea9837292c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",1044,null]": {
+      "observation_sha256": "0a7c8fcedf087d0098096b099c562786148fcda2f3048a1f1482a94bceb80d5b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",1044,null]": {
+      "observation_sha256": "91a1b0e8bcfe43074327699527a26e36853e45b9ff2f35080b5993b1a0ca1287",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"descriptor\",1044,null]": {
+      "observation_sha256": "161a2fa91f2e0649def4cfe52360788a6348d014ef3ae904eae9343e70477fc0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",1044,null]": {
+      "observation_sha256": "6bfa6a2fb1fdcf1b6c372e21d242c5cae6979f90edbdf941036d17dac3213a8e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",1044,null]": {
+      "observation_sha256": "b3919ba6bbb042dc90ee203581e37377fb3d9855ba060eb229700eb870369df6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"descriptor\",1044,null]": {
+      "observation_sha256": "4788aadfce53c846eeb2f184497d26816b93353f8fdf14362197b3ca2f1988db",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",1044,null]": {
+      "observation_sha256": "1b1c4f9d987baf1ed1856b68defa246fd5981058e4caba928abe0c0bcacea1bf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",1044,null]": {
+      "observation_sha256": "6e487eb015b458f1755dae090098f03c06d8aedd38c01d5575b082ab9c681dbd",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"descriptor\",1044,null]": {
+      "observation_sha256": "9e499f0f0ffd76c0b811d1fda8c374606a062c85af6fded011c0d42019d08372",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",1044,null]": {
+      "observation_sha256": "4513e829fde0bcf58238f315b16336ee568f9f8f9272bae2737221cbc94f1b37",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",1044,null]": {
+      "observation_sha256": "3e1d49a94d490e38f9e3e03e0aad3c6194cfeda71aa41cf3fb658f8c2a6fcb72",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"descriptor\",1044,null]": {
+      "observation_sha256": "2d5a449bb17466767690e387eebc3dd0477f88dd61a38c8db7ca7b9e823a0f06",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",1044,null]": {
+      "observation_sha256": "4277fa307d35cfbd9a2941c838d016a0cd0bb80a88e17e07ececa53e38d6594f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",1044,null]": {
+      "observation_sha256": "81fa44a4bec122161848b3d4574c762021422b5e85b3418f01b9d61c6c6f3619",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",1044,null]": {
+      "observation_sha256": "03b4ea1c7132f5eb463b48bcc32767e7f8bec93815fe0562d192e56cc33ad1e8",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"descriptor\",1044,null]": {
+      "observation_sha256": "a34023160c381ac1246b0a8dd97de212d9fb4598c02121809d9f2ecc8a491e1e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"descriptor\",1044,null]": {
+      "observation_sha256": "7b6b2bec2c4b1ef0943d0fc7f91b1a7ee55d03b00dbb7680f7d054338f7721e4",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"descriptor\",1044,null]": {
+      "observation_sha256": "89fd98beb8815f934c4997163c0977d534feabafcd29e2ea214ec5a5313118f5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",1044,null]": {
+      "observation_sha256": "a6ba634b4b0df787f84db28e1815a609a78f187fbc76ed3ee74c1ffbdb2c2482",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",1044,null]": {
+      "observation_sha256": "3e65f181f30e475972d56c86e8cab09d2437c24a6a2c2e3c540415841a4ad043",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",1044,null]": {
+      "observation_sha256": "7c2314d8b33c4668151838a28485ea4035add1eea211a01cb6f7a4d38c623003",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",20,null]": {
+      "observation_sha256": "e0e60f222a6506e3cf8e5b756563fc80c375122c1f83f94b97f796b4324a0e85",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",20,null]": {
+      "observation_sha256": "b3a5d919b28763aba1057c460d3e41626a3bd21a54609744f9ddb98ee83b19da",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",20,null]": {
+      "observation_sha256": "d6e7c1c9e3872a9856291b6909a2588afd1e1eeb4eadcaac72c2383125d9f8cb",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",20,null]": {
+      "observation_sha256": "4aed6d28c7fe45a9d495133cd8e900c769324dff73dbc8fed11b966cf7997c6d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",20,null]": {
+      "observation_sha256": "825e175b9a72379706ac91b9e29afa8f9af28fbdbcc4314f3827ea974b854773",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",20,null]": {
+      "observation_sha256": "ec7b115cad830429522c9548cd700e2c48962089c9353d1aefb22098e5aed4b7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",20,null]": {
+      "observation_sha256": "ba22da9946ebabca7996213cb96a50964101f0db1d9428252c9a459fb42a6840",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",20,null]": {
+      "observation_sha256": "bf9b375a88b897ece47e353768a2d1e07fa0819d8a461577299beba18a81dcf4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",20,null]": {
+      "observation_sha256": "9e3bdb9258666716ee04e42e2d51f5923f1970b79901a194058a6aebbaef68a8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",20,null]": {
+      "observation_sha256": "6ad88aee7f61705a17c9d2ee00e60583ee3ceea90652f8f3c9517b37ba614330",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",20,null]": {
+      "observation_sha256": "213607d2fa552f722f193b37bd1517daf24c2bbc0ae983054d24c5a524177c01",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",20,null]": {
+      "observation_sha256": "9461048f3213ae2bce6b9ad097de5a1067b47b8e311f000e53b4db22f5d4df83",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",20,null]": {
+      "observation_sha256": "e2f9ab078a38c42ebcc7998080893020021223fdbf972a5e78c940c62026e495",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",20,null]": {
+      "observation_sha256": "20a74008a8ce0c72d567106a9f7b88b571eb0963a76b176e1761d22f3699f70e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",20,null]": {
+      "observation_sha256": "0bd78637f8b7218038230fe6ee0b6ea9ff394983f91960940d2f17275e7ea793",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",1028,null]": {
+      "observation_sha256": "7cb22c5381dcb0298ee075311eac008bacbc44cf25678880808518473c006d97",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",1028,null]": {
+      "observation_sha256": "7516fd47b50072911c284380b92fd6b4204eb1f849f8d3d628ad3ab85b75f8aa",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",1028,null]": {
+      "observation_sha256": "06c19c4a9928bbc83798ce6a91d27264aeeaf8079b598d4a3d1f2796bcfa2944",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",1028,null]": {
+      "observation_sha256": "8800e1720655683a5c0291ff01525d4f8a0366d519910ec1ad1f27d2d93d93ee",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",1028,null]": {
+      "observation_sha256": "30d5c57c8e722eee1b65b0d5bef5d6f0646c9e8b7815b992486f250e9cd114e3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",1028,null]": {
+      "observation_sha256": "e87405ebceba80834c6e6a5e31292e0dbd3490b689793c21eb84698f4cfc97c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",1028,null]": {
+      "observation_sha256": "d3387b856fd8b9ec0509325af8c26d56be4b073cf8d73c304c70ce352884e4d0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",1028,null]": {
+      "observation_sha256": "184d3f0a84361f12ee20e8acef732205e66d3298ce50b01ef77cb82a8039a0c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",1028,null]": {
+      "observation_sha256": "72e83d72350a21c8b375bed272bdfdb59e68ed1f9d83c5633acd623f07499830",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",1028,null]": {
+      "observation_sha256": "8aa3ca533cb41b86c9d89d5139d3f51f616d5cddcb1c6b919f620ed87d1b2068",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",1028,null]": {
+      "observation_sha256": "124bb2542b6c5bfdba893646d54f81559ce6ae8606bae2a84c8087a807f3cd00",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",1028,null]": {
+      "observation_sha256": "3de197795148aa8efb53699b46153510955ac62d8c502814669344856ba95122",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",1028,null]": {
+      "observation_sha256": "402a9feb61a2547c26d3223647b626c22d33b3882abfc91f771e62ecea3713af",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",1028,null]": {
+      "observation_sha256": "bebbdeeff810b4d7a3087e122ab6c39f34a4ba100a40a3bf40838037963f3ac0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",1028,null]": {
+      "observation_sha256": "3da84aa00b47d35e6b34162ee263555d0029bed412ec7551ed0af1b392f2ae8d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"descriptor\",36,null]": {
+      "observation_sha256": "1783d189e9ef711be782aad937e8064f6a8b127b01f1f9060b4f19986decb7b7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",36,null]": {
+      "observation_sha256": "5d8823776ff3e26cff7027a9c9d03a506c687b57a34b8f65b363df778894c68f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",36,null]": {
+      "observation_sha256": "94678de21e092539289a9a0e4871869910459c9980be16665514766c27f47127",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",36,null]": {
+      "observation_sha256": "af4e9a13dc6d7099bbbfb0f4988aa0eb70e3aaa19772d8bb76c41e983d90d766",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"descriptor\",36,null]": {
+      "observation_sha256": "0473ec40332fa752a0f6d64a3cde5dd8db294cc06ae740dfb1bb20cfc8e66e48",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",36,null]": {
+      "observation_sha256": "de3b35acf8632567e4b5d2337884dc24d065f462ccf59e4e84956c5c5a2d4b1d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",36,null]": {
+      "observation_sha256": "fa02a38c8aeb2274528179bff4de4a026196312614853d07fa0c561413bd278e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"descriptor\",36,null]": {
+      "observation_sha256": "d5d028c11213f46ea629f547621d05148606aaf6b25846b55a49ae3f6f6483cb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",36,null]": {
+      "observation_sha256": "cd11bbaf112624ba783bf754ec194a439f65b30a5266e86451893961b2f2ba1a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",36,null]": {
+      "observation_sha256": "ea3410f598b4cba8ce1e676412208b1b1022a4abb84887f723ceac1002f9c036",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"descriptor\",36,null]": {
+      "observation_sha256": "f2d4084b98f662be0ec58dd5b9880277c158dd75c69e65decd307d640b4ef05a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",36,null]": {
+      "observation_sha256": "c99c556ac346073bf3b6992c92454aaba153ed3cee7c0aef11481532e5b390fc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",36,null]": {
+      "observation_sha256": "50722a0b07ae36c70e85d983f96c8fa3f05e8604cef69f8c7a6816497e05930b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"descriptor\",36,null]": {
+      "observation_sha256": "c1b1daeff9c5e2619b3145c709935c022af285c3585af1d059575b463574c581",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",36,null]": {
+      "observation_sha256": "f68491625051fec73023c22ae8ccf009199eef353243b7d9e6a535dc75225720",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",36,null]": {
+      "observation_sha256": "4564885af6fa01f7426b4b640ffe7d6555d72d70bfae5531af6f83299d30be28",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",36,null]": {
+      "observation_sha256": "faf59106da6543e4b5f2b929bc8e4c53f9ba1f6c00c7f5b0ed40490cd533f5aa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"descriptor\",36,null]": {
+      "observation_sha256": "bc6e05711059d35633ebf3af48f11f4367a505837d066283d7ba5bc57df79689",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"descriptor\",36,null]": {
+      "observation_sha256": "e7f6b117d120b519ba8bff7cbe3ea30d90eeb413ab4838ba014df1c8625a21b4",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"descriptor\",36,null]": {
+      "observation_sha256": "d24be95082c244b1ccec0e42a44de2bef4de41daeb7a811f50b6d48b10d1c77d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",36,null]": {
+      "observation_sha256": "16719433e0db2afb9b45d3235cebebd27d12e13fdb5c129847c0a838382ede91",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",36,null]": {
+      "observation_sha256": "92dd412ecfcd76dcfa3b8ed132d790d467cedb59aca351f6e686a8ca7331a4ad",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",36,null]": {
+      "observation_sha256": "174b492bbf5793eb307161c6c2c0b27004d05c9da77daa042a8ecf6969e2b986",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"descriptor\",2052,null]": {
+      "observation_sha256": "26bd9ed43da73e147216f830640eadcb53e5d16efd759570c154d844d5fee5ae",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",2052,null]": {
+      "observation_sha256": "0697135c92f9a5686063ff54799c2aa213bf11b06492b556d0f1b47611db25d5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",2052,null]": {
+      "observation_sha256": "5495be28038bf2101e8f072d7e6678764f355d9a760b21779abb7cc17336e65a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",2052,null]": {
+      "observation_sha256": "d57c85504e33907879c3b03939816916b2af50c51e606ac15af71b3ae7970aaf",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"descriptor\",2052,null]": {
+      "observation_sha256": "d01867e103480adabbdfdefbf85eb594d5f993b8e603e13ae8abe2dec67f3c0f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",2052,null]": {
+      "observation_sha256": "2483521dfe3c02a8201ad79a482b1ef1e823748bcbdf0305e391770054621240",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",2052,null]": {
+      "observation_sha256": "8de36bd5a1c38b44090082cae87242a5beab38d60ffe58040ddc0279777ff3c0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"descriptor\",2052,null]": {
+      "observation_sha256": "a7100f0f16b2f8b590632ad1a651b8fd02cb616ee832f6d833831286218cb9c8",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",2052,null]": {
+      "observation_sha256": "a9217387ec5e89e0edd9a43ebbf7dc50564e0928b9fe3f538aae29139f1933fb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",2052,null]": {
+      "observation_sha256": "f0e8bbf008a8ee51e18550d2ef2c82b39a80cbd70a8101690d292346bfbf41fb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"descriptor\",2052,null]": {
+      "observation_sha256": "0b42f172e022ce8daa2c172ce2bfb9abb376dfff4afb3788d008eea0d887bd98",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",2052,null]": {
+      "observation_sha256": "ee7724c9271dbf5c783605f15632e5942529fe7e7d4d3b60c95d3d0e4c045d78",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",2052,null]": {
+      "observation_sha256": "3f4476f6672c7c2fe57e2b82665401c0b03e494002992df752115f3b718a5318",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"descriptor\",2052,null]": {
+      "observation_sha256": "065c4cfe691faa593459dd1c74e67422a024157913a3f42116105c53776a4c7a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",2052,null]": {
+      "observation_sha256": "c9211e50ffb162edf059cd22572834ee89c3e0be5b000fb6041b1e64cd722f41",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",2052,null]": {
+      "observation_sha256": "8672ed093d4a11f4596cde49e0f3f0190a0a35b337869a2130158b3bcf3cb1b6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",2052,null]": {
+      "observation_sha256": "a8266134f1cb1a5afa8cb462e5c90b77b75b1881f2ce9a3a89180e9e69022e24",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"descriptor\",2052,null]": {
+      "observation_sha256": "a1d92432db8cfbef6056d4dc4bebfffb0b98828c0c39919ba8209d8ad389b884",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"descriptor\",2052,null]": {
+      "observation_sha256": "de05644a3fcc1094702c0e9d6c9398853da911a8e68045a1ab7250f27b61f76d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"descriptor\",2052,null]": {
+      "observation_sha256": "dadf914c8434456657c1b3002b0bc2f097b8198a663b49109cba15b83be5184f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",2052,null]": {
+      "observation_sha256": "282e1cad34518132dc509dedb9ede3821b54656dd918faea3052f78b171bca50",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",2052,null]": {
+      "observation_sha256": "47925c91a78663598341b4e5cf449744ae872986148129d9301eafad7692b432",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",2052,null]": {
+      "observation_sha256": "14dd698a226dfe775dc53c5b21ad184a7697e62f556a71b413bd50b089fb5ba6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "7eb0cd107fc893c3dd9e49af85733ac052078f7acf377621419ef540980efffb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "d0647b2a6f92cdf7e63aad485de2e6e8e274fdae3ae01979838f177539757c02",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "ff760838ed0ee56463aa6dbdffb8957feae0d205f53c19474d27f91488e59e56",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"lz4-empty\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "f0034a6b0f125b5878d8f99f58ea8e61d66d54e1282e6823fd5993b89767dcbf",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"api\",\"compress-empty\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "0397e5273c298f4522d335cf663a2a71920e9129488135ea6aec63d1c548e10d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-empty\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "f87cfc2dc00170ecfcb07c729778fcdf0273686347e46758cf12d6f4931f6520",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-empty\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "2ba89e43688f058ab8593e5f4fdc595263072248d55effd0303a6a7aff17c8b9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-binary\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "848bd60d0c9fa13574fe616ec98fd0c1ec2ed28114d184f224709243377098f2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-binary\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "0d160a80edf62b5f819066de3b0a9707b99d821e477c5967e94dd4040ba96321",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-binary\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "96dbda2ebcdde1713c967a1c6c70250b001e3583e075ea92375770d92405ee8d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-random\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "11420d683c86be758d760dbe15cc1ae91389ff3595bb3b89f21bbd2216489cef",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-random\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "4feff7c30601404f1570471977da8913e949fb28400d7a05015f8b1ed249f7cb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-random\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "7f3b8de81d9a8665f52dbb8d6f8289e4ffbe8f7dce23d37398f7427a96c0b134",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-runs\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "f4634620487db8b6f930f828b3211ddc2b98ec5624496edbba8d563f33e322bb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-stored-runs\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "80d38e79b703ca0f53cd7f79c48213796cea8b7cfdf4b92625f2743d5922ea4a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip-deflate-runs\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "049f1e9ffec1593460329a4f4412967e1ff4ca96b37a57151ce3b598dd9ac7ef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"compress-bits-9\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "ffdc1a048fb90fb08a1626b223c44afac1e272d2aab251a9eaa1a1917c11e812",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-10\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "8372b440b415a7cf6458577341111c5c41ac532d16586dbbd35cdac2f949afab",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-12\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "778c161c60d85af695209d6015946a7ce06c2291ab75f48e755e99027f252969",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"compress-bits-16\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "27de3439fcabf390cc22e1886db51a3e4283e7b52b2499b185b9ee1acf956105",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"api\",\"zip-descriptor\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "66751ba5bb15ff48cf7adbdc747a140fb7ac1109407335b80ab5a6ac096f960b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "20a1fd3bfd3fdcb4ff6ef0ec7dfd37e6034850e362f3c016e5c0c285e5bddd48",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "bfa2fcf71fbc6d4286ab1a1ff2285f520632a3f8a1150dc50025c154609c6aa6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"compress\",null,null,[\"-z\"]]": {
+      "observation_sha256": "1bde203231234c256a543b778ef3f4f8e2da6dd382d526e251ddb74b1a1e0a48",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "bf48b29f7a503094a4464e9cd9e45bef183b5f4a00f4295250f791e078d1f662",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "0140a5597f7066343adfc185263132b1c03b8031fe4e342c8a4917a8c8c0d571",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "d38a71eea199c039416fc1fb1b7232d386a4ae38226a6fb69b40e1c53050d3b8",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "4b330fd81b9e578d898e6d81296eb9c31ac031b9437da1538ee21730cd74b7ca",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\"]]": {
+      "observation_sha256": "d018af2daae3abb5100c7e6e3e28062f24516bf6e02fc33fb2f4f8911b6af7c5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "dc18bbbc958107f7beabf5d55c9451d8d66027b3d4f8c843319582c57e0ca02f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "2217d4978ca073d482bd23f3dc914b226a475fe9082f29f53847562655796fdf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "795afd38487bc648ef0ed17c4ee95e59244f43da5f1c317f698400776d6b3d98",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "da572123c2049e02d166c356c12af713c1bce8ab3243adb1f876a40563dc251f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "f91ac5d4748d8d1007b335b38ecab81faeb9483b84cd7b289d374a6881d5f91a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "f55764ba2fcf047b8a8f3f60e4ef54bcfc5fd34f8832d9cc8c6baaac199e7f4c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "4ada7e4916d8bf2ba625e198395c76d96df8d54b00c2250532d62c4dfafee03c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\"]]": {
+      "observation_sha256": "c9604cc91f17bc4d0376d43348def533581d74ecb5c46c5ff9616d0c8dfb9f6a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "28e826ceb71d9e615ee3ac08a3ae161581e3c5e614e9a671d30ee4e19ca14640",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "bc558ca73aa9363bc10ee7563329386509feec917a50bc1a5ec42e1298baa8be",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "6632e95059ce514714ece8b15e68b4ee73ae77881f154ac5e3db871c04df3571",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "650b1ffda5dc5ddf18fd00cd66d460e0770ce003983a9fc5307caf080cac36d6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "f2145ee78e3bd6b059ce25a2d08a53a1d28d81f994b2affa1259e2d4bb3c44ef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "31455380b883b09272c63742456e28cb0fd922cd0cca9f8c8b18d6c41463365d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "37bccc423a911c2727855bdb4211a06827b58d854211abb4d0ce9a0fdf0e18cf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "aa74f2f60d4ce08a63b2d5646c07e7779e69cc5c2d76b6e97ddab225ee9535a3",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "267c6180907b6470a4a73584e7e30a2e090c3c6385bde9fdc0eeb4708445faf5",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "22e6a029eeb0b751a0c851e5762e3d659de71fb502fba5be17a32bcfff1d0330",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "7acce87b8dd718b5db488460d0438e25959468d2b2545d2341b2b92c03cc889a",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "2c6f08879342d86922f96f014d185f8f8204d24c12644d9a37899a1d7cad2349",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "5f036ce3f00e72436fa7c4f59f807350e17f3a3db7319de2ed48ff186c79cf3a",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "820a6f794e2b1ee52c632cbb966bcdd4119cae5c6b0c10a3931a44f501337556",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"lz4-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "a6a290669373cf6eee7f915df0d333e341b9d9ad86b10b062266f0d557f8e138",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"cli\",\"compress-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "8b63bb9c3d211c5c7393c24e0a76e17c4b705b0d0b8961a9a344528bf1cf601f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "0fa08aeb3b39d72e5c03933496cdb3bddd42ed21b599eaeab4a41bf8811cd3b3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "92e3293048a88128a9e78f1fc4e265d802688e438bae10099b027573918991f7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "0a116cfa718dc5eceebcd78fa8212a2a4954bab4066db98b1d5da20313084cea",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "d9a46e2474f7e8ba3361b330334a01728b1158fe1e0d724447dff06238edbb15",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "ef8c44f55c1f14be22879259050b6823e367480c8f50a0dfe364400ae65ef9a5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "582424d09dd514ec2cafc72e120b146677d2e8eb0c0dd85e122a61bbe8ae3769",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "d0d83399de35efd487b277b33fe673e128ea83a4367993490058adc364bcfc08",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "c128c18624dfd510276fc1d352aa5bed63f4673b55a17bd23846e4fa89e5a0c7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "c722431bb67b9ccb52ce2b4cea795994ef712a29c80afe2df44708fd4bbcd0cc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "0b4048280a390b283cf6cb12572d14cd58008729530bcf2bbc96b8fcd6856e0e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "a05a9f01889fb7a7aadadbc5981baefa39ea8da4627b613e9238cc6f58feff45",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "f2c90a2fae50ce4e9b62f2a086d1ea7d37534f0094b611c037fef7c95fd9de86",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "7c64dbe0585ae954886b559a6e1f5f1563f7b64ec176fd7131708a7e89ec2121",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "af7b36532f045c72d8e4e0813cf8dbc48a99580e0655c351099a3567ce3a9561",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "bfc058ee7abe286d9e02085baa270b7a6af0f1788452a0090e1c09bd38b12d52",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "03047429a6e27c19cb5dc1d502da2503d8a3fc2841bd3f4fbe11cf473adb6ad8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "cc7cf0b80aa15287951635683db1083257c007175f57498b61249881e9889aeb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "7898a418e8deb520ac2ad23c7420dab55a0ebc7dcadabfc797363d4bd4edb247",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "37edb6eda350851ff2a249e61e9bf3675db821ac682c88f61d68c174905cdfd0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "28a9a954c68f6c9239ed03bcbcfeb1c7a536e51309208152d3fbcd36b5f0d8b7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"compress-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "ea60d2108b7a8da311529ab15b823e16d2a825582734a4d223f5d25754722439",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "74cdaa7fb321f5c27f86a0bffbf3543d7eaca545f9abab82eba986a38b6e05b0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "042eada071b9da2d325fbdf3307318f8bb234d3d8c567316ccdfc300a7b7522e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "81efb6fd76004dd9c52f1063185e0aedbed123042e3528f5882ab5e123da9dd4",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "d6333a6dad3bd4f820c4c6a5e7b4a96ac2318e548a86d72f2ef2b0bdddec1826",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "bc4f45d65d5a6e8dc6a2dfbe8e3bc07a8358ca11de67ae06cfe7cfccf18dafde",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "604f02cd96b673d12d3a9512e14df3b336838e761478faf00a2493f226bbf7ab",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "9376c09ed62ac0620ee1b1e497dbfca87db446e71a33c4f6cf54142c4c349f71",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "480ace011b315a5b06d5bed8b8ddb5b350d5c0cd1f506722deedf712e002355e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "fdaafb6d6f2ce108e2c24bda92a8027bbae8beb8d8834cf3aa6a55ab987f904e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "34fbaf0814dd3172c8060fbe9b5d8b577fa7d7966f9e88b4216f64a927058c4b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "75c49cdf8ec6a058176d5cf698572f2b091f27b618796f4f73716eafc9d9cf3b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "9b219a8e77f0df5b1e66ab96a001212d5dbd1daf72aa48fd00592ac1cabe8607",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "461156a217c849f7ca15d53def411d7b7666debec60125491f8580fa1d5b5dd4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "dcaa7631e92b52132917d0d6db05471767134e8122858c2342ae0e1b46834c99",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "583eccde5ac5941f842d1c133014fa79a35e060001aa504a8a9b0f40ae605d34",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "e177160107e56041951ebc23e0d2a13572da64208c3f953179ab510c17f90ec1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "9e2501273b76ed6a804d3e6fb20a44634184ececb8b4cd1ba5c19904d43b3f14",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "4680868047343c5c4112915473c6f6ce306add286ba967ef8fac4e24cc51033f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "8486e8842bfe76051a758098ebfb0765facc6e1fe2c4a33af420ce6446f877a9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "9108b21f067924c718dcc9a10ebf610d3607f7f49f2855293f9b9f63d2a6c19b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"compress-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "9923279b5c2e2727d0e6a04fc4081e74bcb56fc9c1855b37e50181d780c33945",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "94bdff90ce6fe8ec64d410fa9e8d8f725321fae4bd94b4eab106894538e291c2",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "abfa7ac5e0cdf6a9eb00dc1f2b43596b1528739e5b75c344e403e2a6f57f814a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "913a73127a7301e6ba1385917c465df15e693419c5b3514bff0f86291f9eadc3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "d49a7b9d115217293fde54a8a342c3fbfdef4a99bc074f0aa888338195e50485",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "c35c586a62b81b716fe086fca29f79ecb0305b3ddbbfd99f53b37930ba6d4f68",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "1b52e720c25d2a96b591797f99bf3791cf799ff9327cbc504f8df0e283606e03",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "a674fa3de917f50568d031238d7935b52344594ae872b7950846f3f2fa1f6db3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "5b8f9a02addbac6825842f39e0dc88dc1e5213e3acad3793a1eccef6ded695df",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "3480bea13dd3df9f3f5acdaf267198a2b707e8f10306848e6c9531f35225472f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "61d29dc3bce68954e275e844e86242d1f47fd2ae306ed4ed57c3a35f85e4dfb6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "11ad78ce0ee43194b2c00df00951e13f52529627399084da8c58bec5754887c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "bde8e7e28fdbd064b6294f3db118b0f097ed7a2f9f13680562cb1beda24ca66c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "390024f5b107a65aad0c4df83b317c7a824e02832cd1d586855d0cb7faa31954",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "0117c44076f7477914bba5641a00fce843284cdc9f0999c7055814a10a899ceb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "a7bd0b92dfa79c4c87079e1cd033397726027796e48f8a5dd8da6c2d5f0634c5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "e04e18b7ca70028be11eb276f20fdf276e0e5d69364dbbc564111414907d8613",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "062023ace8d83332362cb138069e3006c01dfd932751c9f3e40256f059fb2749",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "86d4a52eee93c7ad6d0f6fd5f7f1223c50ee2b3099054b9cecaed56f496caf4f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "26b5c53087024b60ec99740fc64a0d408c09468430110252aaa34ab35716be36",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "bbb85f3c9d0e93bb586ebd75df15dab3a11145b7716f7c2db89e25ae53e0d716",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"compress-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "92af1241e1169a6059afa1ac1a88903010c0a54bab73292412929765ca5850aa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "6d60156e409dcac312731181427f246c9aa1f2decc9f75d4e9c196edabf9aada",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "35900ff603b2a59851e91b5fd561a1cd41398c25bdb54a3a3813ab014e7ff667",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "bb9a19c80713539f2a26243490059d960e07058a8751a3bce226b8b13668f020",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "2815714085537300e9dc574dd2f853bbc54416f8b3d7915ea60b74f137520ed5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "082733a1d197d2b2bfa0b06e5a5cbaaf0e373b120717929dc0177a1081c724e6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "7a1fc74c5cb3c98797b581e2c18324b0585a7809111e64afa5271677433d6deb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "2b16a53c779f9826cd6da96d7bdb07c36406aaf032a03970aa54f4b72e1edded",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "e7fa7c834df97d08226848d56e70aab92c5fc7f698beff1da2d0afdd34fdac8b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "6d265af8121d48dabbe8fa1fe336a5a6b363bb3989442a510cb697f65e2b6c94",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "5e9addb081d2ee536d1de5124f8087ca17000efd859f6210d11fe453db922ffc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "c1be3beea747d2eb9e2b12ece7d42826365acf9ff006cb9025ad183b312932ce",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-stored-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "e4813d802fe4e7642caba93f725220068ace7513b27de13af51962769df9eb5c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "cc4eba65e70827acbe4118eefae93b2b598512dd85ab70d1f2ea5774a1d5bbd9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "770f0e0f495dbd13692f681d5dab25319f198d1509450c0468632137472c2c6f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "3dbc65711e25b3fe97ab2887976dcb0c2b7ac61708062b4037ed2403185eea4b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "b969fa94b224c5789e56aa052f446b6dea6688c4e19b78f1a14b5353c8a30ef1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "a212dcbd1711ca5fbd98e0e5c1756ede11f4e639965d0a1be0c1fd0049eac796",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "490cab1b9b2259a3181d8866aba4a149e0c335bb274c56d7aac25510c911904b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "094b683a773d19aa15df3d9a991a7729ef56e1171c1919dd22e45d0e98644186",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-deflate-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "27e6bbe7a58a4e25f351233d043c8486f28b23bf8c6d597c48b1ee09fe189d5d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\"]]": {
+      "observation_sha256": "3b183acca3cf6cce0eea5215a9600f0b1225ff73369c585063d145c4b0911202",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "db3f8d6ef7ab469f33619f74dd1d14f517b05a3d704285ecc0fcfef8d14f6272",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "91d1de8958a71ebc3f743c747715ab5b9e812006b1dbcc4f63438639d414241a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "720c96e6774a66afe93722a4a3676678fbf2d45e802ddf5c87b9de1d9a851ffd",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "5e01ea3533cc2555089c9ad9e312a464d92a742fba1b2dbc6e14b00b0a391580",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "2acb7a9c244755b128774cb247d0a3a2e583b2eb28c7c9e9bfde36ad240d9f67",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "b71edadd86a356925a70ec712dc07b31aa2133389f8de62203db23737cabf1a9",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-9\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "55f08e832f510020e68f1a1e179d8b858725e38fa4ccd97f5c71acc4426a5958",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-10\",null,null,[\"-z\"]]": {
+      "observation_sha256": "5685f717616ea1905319b315c09f94ebb433294c566fcf72d0250c489ec55508",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-10\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "659d36f4e0c66638fd0b70be139a524d22b042e3036dc7523e2f299bafc6809c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-10\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "00e388cb7a61e353d5a8458197b287d0b7a8190208df2dc9cf177fd47aa39db4",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-10\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "1a2640aa8e8f977da54ca9900cf23f5c720712d3af82953402b9b15bec608eaa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-10\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "188a993f2b92ddc275e633541a8c192bde5d6e5c60b6065fe6112fea0388bac3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-12\",null,null,[\"-z\"]]": {
+      "observation_sha256": "7d899095203b28e26008442669949ed4af0a92b70f01b7701a53fcc41a977bc3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-12\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "6c3aba235d7637cdcedd411c5bebf64f91c9f5cf27b7a591d36c729446b4dd2b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-12\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "5df4cdede6d2da4092c474c356045a641bf3500cb419bc182e0642f0ae96e7f7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-12\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "b38f22390734e2730b95240c9e809da9ba24607274e5ed768e561ed97614da43",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-12\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "f5cc02959ee457bc2f4ea42a15f993493da0f3180d786a920d5c8be84bac08cb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-16\",null,null,[\"-z\"]]": {
+      "observation_sha256": "e18f10425c5eee8485d3b74fe3329b8214e11cad93b58accd8d7ca0f628763d5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-16\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "2e83d545a829b6d0ae8dac9df39d0d7fcc5950827938c79a5feda61e55bea8ee",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-16\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "08c36a0cc549f4e0b5e3e99c548212a73b71bb09052a9bdb9299adc12550283b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-16\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "3d8064f81987d0571030a8c9f83758cdb8868031da5505f2316f4b461c589d6e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"compress-bits-16\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "eeabc2a793e03d315d9271deb309142d36cdf40389dcfd7f7857d1b763727953",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\"]]": {
+      "observation_sha256": "f2432a0b86c9c923a4d8ec4bd85a79e155b44cb8a57cd21d1a864383629b8fc6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "eea39ed64b7417e89ed18fd18ca5313f922f049300c3187c023c01e437e11683",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "134a99f65ea447e8fe5e63de1b0e2067c6f0d532522c087b98488d33b3d0dbb4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "19452d1330a6957374bbf0c86c2ac273d16c651cb1731f93298ee93be6024a58",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "f07b7656b8faf852472c85fa7e390ba08b8da59dcb4fcf99b9ab21c331c2ac00",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "6cfff7c1cbfc2e43a8f92d3374f779447a509f3bf1f3bbdc638ab6dbc904c77b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "f29a2e37667317c997e5149b8d1384a17618641cde4cc9dff40e30f72fe3fa29",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip-descriptor\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "6b0cecc3341f47a5339cc303900d415c9c34d5ec85b80909b9f8f4fc904ffa6a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\"]]": {
+      "observation_sha256": "9a76e97279cc5da09b46c44b59a4c5ffbc4e315076aa580aaeed1ce3de9d8f66",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "2d77e8246136db5d10f91412ea43544dd52195f11671e76c4656e96d332ca870",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "d0bf44a71242f6d0453022dd6ac765b02747ce9517e3a13d3c8bc6e4a4c08f54",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "d307d2f9046f76cfa63e597277de44f9b895e98e148f08354034329818595897",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "d4715c48e873d91f37a3a057f2399d306235e78974f9d396c062afc012299a99",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "8c0e13a9b75a48a3641d5fd0bb4d7df781d9ef2a71075f25141af1d18312f9d8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "74fcb1639ba664130b7d8dd422304bfce5a35662900f9776060ca0cd376449de",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "bf9543e8d92bdfd7f1a70b8af10f3b6750a2950fca92e8294813549c74f6eb40",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\"]]": {
+      "observation_sha256": "c34516b33edf4106d1235b9a13d0f30f233f614804c5a109669f7bb335ca9745",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "d469277ed0199ecf1cec808c690c726c17a9d42df73747e5781d5e1e2acf481b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "4db82c7e70b982f4f2ae8e64780b8f04a82616e5aeead4cb5767cde6accc4ce8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "b624c56fc24d7a306d4049e393a35967f85b32955b0858a504f7a595e72bf8ab",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "f891b43ace41843bc0191d8b30e494b76bf90f1e9b9233dd1d7231f879c6fabe",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "41162679c8ddfec1dad77116e3fd54dbffebd428c246731f5659bacbcbea17a2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "fd236ae26d3180ae7fb58ca09d70dd7cf57fa8bed571bb40aed3bedbff00367c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "60df5374a86bbb4a9042cbc3d928d9f5015faa7d92b8726f4ea2baeb287d812d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\"]]": {
+      "observation_sha256": "f880b4bc6b27c106a1d70b147fc2f607c23d0b8bb5746efef97ffdd72497e53c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "7d2cf736602491fec5b0c14839f7c6da4216e8444f804ed07fd080af1e33359b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "cd4e3b7e1090a7dd4fb13f40240be890f4bb9cedeb6e6cd10e34698b0c33d4e9",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "d1e776c5150d9e50d6e1ca540ca69ca415c63e911b754ebbad10441359bd8660",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "e75065b0d9ed0170eb5bc74cc1494a66aff0416a1cee2e40f3d8e700d39186cd",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "b6cc7a8cd22fd3c94db6d918684a85e73bba02e7ca8462e6d72cb1e66056c77e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "80a35690abba1b4238175a3906aa607b3a77c420d4e1be338dff803334e5fa2f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "78fde92fabb051eb0c1e9cf16f26c82c69ffc0a0cf872b2c9c540f5685cb0c4c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\"]]": {
+      "observation_sha256": "4effb10daaba022f8990b24158d6a50907dfaca3593667d25fc627d7a3160cfe",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "bdf477f22836bb6ecde5db1416f19a11d2277428f3268a26da8096a31b9ddceb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "ea887e605cf28a7efcbd0309cbb723bf19fc49d062818ec2b566370aea9e45c5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "97006eec78975e8028bddbb791b5325c9042a4638b8961dacbcd417552564247",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "c63df80e09026a315ef7b84e7918396dfb0d28abbc9ec7613ce06b3d4c90f487",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "1e1eb7727cda278a73006089035c97e26b3204f5f84b30c7beea45f0cd501f54",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "d44c8de428aeae241c97b6b79ce1aa913091427034f0f9db4156618ad4c3fd46",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "4d8d8b1cb662c6c1f39fd618b1fa281ff8ea0492923fa5ac9356280ef8a198cb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\"]]": {
+      "observation_sha256": "12f0afd8f36269fb33b3725237e8f390503fe610ef9c3b6d9e321ba806967d49",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "9a416da05c31fdc41fc3ef9fda8e434d6de714260d0dd69a8f87e20df5bf8937",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "c3120b68b32a2e1aa37d56cb1d009723f2582237b18fb58d51cbdc35c9adb54d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "1f195fc44e4025d2f1e38b88713ec33bf0375a9cdf8756c98f79050c274b8cee",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "613e050a8da2f1f626e4275b41f42df1358c3c95ce9325f1fa38dd1c04d17289",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "949fd7fa9137774cc3218a5efd402b653a4b852466c3584f61a0018a63a8442f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "6149efd9339749f9c909fed15b19cf59410ff29c705dbe01bc1a3b7aecc9d5fe",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "c942ab82fc707c6467546b4d6a045c5f2de305e8c3660f3cec12e0b00bb7beef",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "aa74f2f60d4ce08a63b2d5646c07e7779e69cc5c2d76b6e97ddab225ee9535a3",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "267c6180907b6470a4a73584e7e30a2e090c3c6385bde9fdc0eeb4708445faf5",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "22e6a029eeb0b751a0c851e5762e3d659de71fb502fba5be17a32bcfff1d0330",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "7acce87b8dd718b5db488460d0438e25959468d2b2545d2341b2b92c03cc889a",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "2c6f08879342d86922f96f014d185f8f8204d24c12644d9a37899a1d7cad2349",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "5f036ce3f00e72436fa7c4f59f807350e17f3a3db7319de2ed48ff186c79cf3a",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "820a6f794e2b1ee52c632cbb966bcdd4119cae5c6b0c10a3931a44f501337556",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"lz4-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "a6a290669373cf6eee7f915df0d333e341b9d9ad86b10b062266f0d557f8e138",
+      "decision": "native-LZ4-valid-empty"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "6518fd3744b409b1112169f3c7581d50977c82d9b2ff8efa9c0feb43e332cad7",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "ca6b0453f7de717f8d383a69d8ee5424555499ed3704d24a2f505e2d64f181cd",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "9f977da981bdd26c9c04d42b327b7ca7abdf6991e941dd0a3abc6aa42e37f11b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "7924ba3cd41a5e06459c26e9fc78e64f9c092f550e099eabcddb3465434be3c3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "100939db7443f4af88cfe254a51efb9757a0d994142b0b8ac806be84b82fe874",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "0ddc9530fe1684127ed3d80a49d4d94ee0e09bdf5dda3bbd38b39169014486ed",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "a30c742f5719b2a2102f7db994893c9d09711bfbefc01944a7251745cdebb401",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "fdca3875aacb33acecea959eb38cc87c68e3072725b7e3779ee0b136ad77ab0a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "ef8c44f55c1f14be22879259050b6823e367480c8f50a0dfe364400ae65ef9a5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "582424d09dd514ec2cafc72e120b146677d2e8eb0c0dd85e122a61bbe8ae3769",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "d0d83399de35efd487b277b33fe673e128ea83a4367993490058adc364bcfc08",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "c128c18624dfd510276fc1d352aa5bed63f4673b55a17bd23846e4fa89e5a0c7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "c722431bb67b9ccb52ce2b4cea795994ef712a29c80afe2df44708fd4bbcd0cc",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "0b4048280a390b283cf6cb12572d14cd58008729530bcf2bbc96b8fcd6856e0e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "a05a9f01889fb7a7aadadbc5981baefa39ea8da4627b613e9238cc6f58feff45",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "f2c90a2fae50ce4e9b62f2a086d1ea7d37534f0094b611c037fef7c95fd9de86",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\"]]": {
+      "observation_sha256": "7c64dbe0585ae954886b559a6e1f5f1563f7b64ec176fd7131708a7e89ec2121",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "af7b36532f045c72d8e4e0813cf8dbc48a99580e0655c351099a3567ce3a9561",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "bfc058ee7abe286d9e02085baa270b7a6af0f1788452a0090e1c09bd38b12d52",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "03047429a6e27c19cb5dc1d502da2503d8a3fc2841bd3f4fbe11cf473adb6ad8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "cc7cf0b80aa15287951635683db1083257c007175f57498b61249881e9889aeb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "7898a418e8deb520ac2ad23c7420dab55a0ebc7dcadabfc797363d4bd4edb247",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "37edb6eda350851ff2a249e61e9bf3675db821ac682c88f61d68c174905cdfd0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-empty\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "28a9a954c68f6c9239ed03bcbcfeb1c7a536e51309208152d3fbcd36b5f0d8b7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "477e3e5be0d540724733ef420358722af1bb282e14b638be2cc649ab0fae1b71",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "8da89bf0fe9beb498614ab18d02048ec72d565936ba6f8f10a5404ecc999229d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "d83683e0d5cad59262bdefcb9b0d18b21950d8123990614de864dce6026f855a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "2ab44c32b078340afb475da783532b219d6f400ac3a54831776850421522d065",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "3b84fab1336a4395efeb59cdff55be2ad0a68046a29364787609b83f4e6467b4",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "281ed028062b93c7f017c8f4ca190bbcf150523d51a8406825ebeb97ddc9e612",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "248c66df0aee7a9bf93457312dedf9d76281609b15c18d3fe3939e57d93db581",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "2058eff7c5012d6c198d0e8c56dbaf4923abf6707d121758585c6ee91107e8e6",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "2265bcb6c4da6da006c4785739d29b313bc70ffc76ecbd01750fd2a63cf19b36",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "19fa3678b7b321ca7fb9d3679c592d3e824b370ec823fbde3dfd823d31f56a37",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "64eaf18cd9339245f2475692df596f03ab9d41b41c4d0fb82f2ff22c2346b875",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "22f68fd5f02a061b1e9872f5bb0cef83d8408cbf2252212e82a9f11c47466285",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "12bb1aa100ff83ea3a167f093cfde8dbffa72db1c98c4c8d35caad85b999457e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "3fe09ac79bef7b2393bebe55476489a9d74def86d4fe2f2ce813b0a405ba7045",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "f35f619fcefce496b018cb8ef85412edb8815ff5d088470346bb431bf2a896c3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "e6b69f34ed95284ffdb323a1107694c4e3f715efeb45d460fe9ef1a203af9e53",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\"]]": {
+      "observation_sha256": "c2c44f16dbea35b1fc668baf87d82076cda68a036a257bf4d670fdfa6a4b7ddf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "c7e85a34e7e8b4a0111ff4c26000897ce9f07176e06621d5ad353b2e31f60814",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "5e3b5248200dde42ef2364d6b311306ffd27273562cd176049a3adc1b412d19f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "915ece07440009b3ad9ef3fe5f04614e657794aa716b6cb0a60b8b54f390dab1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "ca13bc0e1e801cf36551d4f78b0ab9f4b8eebd1f87da05b23950737f1d8a1959",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "3483f0877c0f45569e518bd31f982549723df0ff7f1c60a45737d1c898e91f2f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "72c090847a6183410634f3912204332fe68ed4bd4c7c262f2d722d0e81d08c31",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-binary\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "f738969425e894284cc89b2f30f4e92ebf1ee128e8dbf1e4c338b79da9e45e2a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "ab0fee23338b75506a6806872800276eb7eb69c1591493deeb3436cfd05e351f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "a5ced828824b5c1be0962cb05d4c31f65efb5c59f1fd941d8847cf33ff518905",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "adc3ead2043913983c55bdf98ef8a89151e3817b3d502e4f3724b005be440b27",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "a8d25505e3d3a3d2085a05414d095d5f56678161cdd318b28c7d8f8778c8d467",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "3f444da6e2850069d31df69bb780f28f38be2a0336ffaf08db2a341313338e9c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "5e66316007a0bf312935d1fc64dfd94a3280a5208ad5083bf5c226a2a619f4e3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "c9744d72238ed5a10c26eb4a6ceb6aae65d22140b82653223d5f59359e56ca8e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "ab6a34c728fe02b4516da94de56adb2f20a1276fb74247580f5dde202837411d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "c7d2feb51d892814cd0b2df1a0f8114a6ffc2385c942d0b1d90e3bb7bfcb3b67",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "f94f4c659d9a863e947634f01f53285ae3f269abdc9bc886eba2ef595dcab4d7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "1d9cf30bdca39f9ed869039c20d3edb41ea4a62d056145d67995e3efd6659048",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "66841443641dc85c5dd07208307bb04fe7b73bd1197de64cd0f6629d216f0373",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "e405a2d9ac89557bace21c45ad7f98768f28177109d297b51aa2be76d375923b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "69d12bbbf31f675eb8b2af94a6f530e89a638cbc083b8d5f1bc8a027a66eb968",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "06284912d8a4ae48734e8428494cabc4d53d289884259b05bae39003d79a3f1d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "a249b5aa16db3556b9597dfd8a869dea8df24ccdef32fbe28627e9627d8529b6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\"]]": {
+      "observation_sha256": "a884a81f0874961cddc6a79afeb8eebc549e3d6372fdd36969d73fc3d3647d4d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "6f61b41cd5e8e82be8c8e52d6f38204e9c76174e48f3c25399c5ecc0735e60b6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "673a13a18f64dfc5c580440156145ed1bf5d0b10305c5ac7d3dc89082ec0013a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "f9025d1fa93d3eaa09758c3762be856b134dbbd6c5ea0cd1a9f522979eaac30f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "33b2c6952a3e41e6ef9c732122208fb528426c59cc661d5e76a9161c4c20091b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "1346f22badb6015d9126fb9894b1e52cd3f072c2e864d6ab268ebb5b39c41e66",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "6c8a47e7c6fc672164816b8690bff455b75cbb6ec205abd012249356673af95b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-random\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "f70715e3ca1a19be1ae2220cc6bd78953e856ff3f9751694fc3cb078b06457c2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "fe3b639d9214468e30d83849d772a63d586837209eea97d84b71a1fbae83ff71",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "5a3a0d10a44df9e78fd0ff497b219a99e336f45c7637b0c6ace8a86de48f4040",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "2ce91b009c176f50d183d6fb6138faf52ddec19cdbe84e20cdb3e872cafb8101",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "15eceb72464509375a718c69ebee3f14440e40f60270fa534159a3b2977ab5e5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "64b501d4d0ee9fb842154f29d48fcfea7823fd2f047b4bb67befb3e69ada57c3",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "27ece873b0bc43bb0b4c88127ed3f8b0930deb9233f75f352d4d666178932442",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "103049111d0dc854a6695c87a0bb0a0a33e3717742017dceb81d218868f67568",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "0adc82bf470bcb27153ebac237ef73558cdb5d5eb6ce21a8fe84bbfaed9eb3a9",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "6e295b6dd280fc8a7c67e46aeb13f16855cdafcd0de888998fed647cc81a2b34",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "fce8ccf99bf78a174c2c072b2f62f8736bb459d4312b6c3d6d0dc91677bd42ae",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "4a393e851dcdf71fdae7fbf3c6d7bcb87089ef251247ae240746a045d7ad77ce",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "5901f470347e09c0ef463c97b35f127cdb9c1d7634cdc66a51be11eb8bda380a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "f991976b40f31da2b523eb297f6a36e4a239323ff6dd1e77586411aae835324e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "a469c9fa509d2bd6d6dd16a15323f8b9902e9f9eeb86173451e656483023f1e3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "9bf23880e2244fdee787882d14703a19d6d026fb3af51f716b7541d81e908c81",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-stored-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "0c8599e38f316982f712bb2499634e2d6dab39ba086b491e4c7d7ff12b6f2cf4",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\"]]": {
+      "observation_sha256": "f97f3456c2510c7ec22990f1eb9a22c1013b36df558b998150a5ee7849f17d68",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "301517ef624e09b68ac701bb914095243365eda75bcf98ad08635973c6506e08",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "4f24cf20d4b396bf4fed21ccc340f2c611031bbb89c11c59dab750211d62e2a8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "241e421262f81f0b4336ce84c4c03ecb24b7c8f862bb159e76337bb726303855",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "103456c9e8a163a3351d02115ec21a77a9e040e078725ad3224f9e12dabaeab8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "b3fe6f8310bab9853207543db5d272f0a7fb4fccf95b41bdd9dd2e4764adcb37",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "ecfeeca3aed20e433c4d5b07c4554f2f09bea49b0e0d653e828dda182f01cf95",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-deflate-runs\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "aebe34e4ff830d045ebc05f7afb573da9eff23317eacbd23a7778adbe30a90ee",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\"]]": {
+      "observation_sha256": "4bbaf6660f64b06b04f0e5724e8b9f38f4a5b95345a5fff472f7aae7e3a5c658",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "db9477dd879524fef8521f1d58865b69b7eb847d8e31d8e0c53efa47a6b14fde",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "16c49fcb816703f744883b2d5c8dd8c55e0258000b77f73e13de2101436c3c58",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "95613dafdd6b4006c6173e9d903a4228855d6a8ea20c2ab56553934687a9cbe0",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "79422d8fa330934862a5e2dfbdb14777e3d861ad783c512fed2d824d968c2edb",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "fc223ec41e7046fdf49bc643fed9e77c0af623a1a27acac3b90f2f66ae6e002e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "b1ca7e9e45869f38d0d2d70e1aa4f9b91061765bdc629d344dda382a2193366e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-9\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "e72d1890ce56ecfa8cfaea6273b627a1a93221dd8775f7107b95561affa97c2a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\"]]": {
+      "observation_sha256": "3777b40b1d9461b678a3ced98fc0cbad8c4cab2053aeff6818a029fac03d1880",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "b33afa9743faa412a64f97475d5eab711d506e5789febc687843fe6e42b8b527",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "820c0872e635181a56b86172aa5fbfb0950b69041a7829f13c6c93dc6e724112",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "ab1a06f81ada7b083b265eba9e9b39ae4cd91181f0d1815ea26c2cb54cb8a3e9",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "df77f3229998cb18c08930d1514e4109e786dafbe5368b397e47664a702c9bfa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "ab31dbb6f1f58f77158016cca9eb889432ad4016909f6de24f0616785a09beaa",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "71d6e3f617bd3f0d281dd2f0c78cf13c2ac772b42ea1802f4eb7edad90ae0cde",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-10\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "0a516e0a01ba858031ce76d1f9022dd64040a90c83bf6a2d5aa7be72b923312a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\"]]": {
+      "observation_sha256": "7dca95b231d980457e6ae8da2dd16bcb72b82beba6b00e8ce8365670e6bfcf8e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "6448db1be0b71e4fe48b7265740bb72d7796a4e44d4500561309394038afce7b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "b5665a58ca0d7afac06832af71ea66266ae8c67065cf95eacc3cc5715d14816d",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "028c7b772e21b20c17f01ca869b498e719e241919395beaba78b7abfcee99b1a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "22e2d58a48c2c85b8053f721133137e247595a2f06c62572dc8caa7990093a7f",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "1dcbc58186003e922e76a6e5fb8800da31d2a85382c630f9dbecc2078481874c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "5078285f4976777456201c28bc1660f226b202e14f6c04bc95248ff687f4c10a",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-12\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "2975146bbbe6028f7484e8edf52f1e2a8dc2a8786c9020f0d812d658a23b9714",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\"]]": {
+      "observation_sha256": "a63099559a510604987ad30e860f7493f3f3aa7ef5ef8cda4b0ac1cda5bddfdd",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "317576d9ef6f97f0a42a52e9bde708defa169ecf947b2816744a83101bbfa754",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "a57f9045b142ae1b2753cf917d23203c2475fb9ec7d912954723ffe43b4a316c",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "a100c2839dfc6165b902fb21d53e08137e32d06dc0ebb0d34b5723c90f9e5a0e",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "329fc5cb7b783bcd558a04fb064e426cb2e0218a64b4119cee3044bfae1ae8ee",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "215e2245e801dd9b115001e60bde0735161d1663993669ec602ca8469ca9c14b",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "bcd6aa48fefca5dd99ee5bc50d058a58dc19a0afcab4f84d9128365251b504b5",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"compress-bits-16\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "9d41184281f416c9c2c10549710d8a961d254a6d4e7681e711307c0a61575e02",
+      "decision": "helper-Z-single-result"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\"]]": {
+      "observation_sha256": "2f87f25f69c3f5ebbcdfa4fee18e9fc531b44dedf6423a7317e8109b374f81ae",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "1960577e8dfeb57845612aca6081cb3fee4bab82a2e8c0e50f05b58f70ab14e6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "6ce51eb54a6924220d201d37b034f5069d15a187c4b32bd4990f8564c9112dd5",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "c8627cd9e86f32c73ab212d961866f736cff3f6f4ac704ef6e353471d4340baa",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "5302600e08ce41177c661bc118aea58d8c185b2f97c9b2ddb7605340fa00b80f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "69b6d132cf765397eb03b0d9fc1b8c205d35d557dc1a553681cb3561724ed600",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "6005fe18f649bf6a77f250c9d7a834104fb8d2e678bb0f6eb147e8023d930115",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip-descriptor\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "2089941ed9345d20dccd40dba20715be12d1f989ea4439f0da9a2123ca86991b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\"]]": {
+      "observation_sha256": "9a76e97279cc5da09b46c44b59a4c5ffbc4e315076aa580aaeed1ce3de9d8f66",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "2d77e8246136db5d10f91412ea43544dd52195f11671e76c4656e96d332ca870",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "d0bf44a71242f6d0453022dd6ac765b02747ce9517e3a13d3c8bc6e4a4c08f54",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "d307d2f9046f76cfa63e597277de44f9b895e98e148f08354034329818595897",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "d4715c48e873d91f37a3a057f2399d306235e78974f9d396c062afc012299a99",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "8c0e13a9b75a48a3641d5fd0bb4d7df781d9ef2a71075f25141af1d18312f9d8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "74fcb1639ba664130b7d8dd422304bfce5a35662900f9776060ca0cd376449de",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "bf9543e8d92bdfd7f1a70b8af10f3b6750a2950fca92e8294813549c74f6eb40",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\"]]": {
+      "observation_sha256": "4b20c7e970041b15f044cba694569e3b5b049b662eef5122276e6f7f02e2063d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "760d4ddb18102f52dad73e2febe72896758f95d5fdb0f704d585e8063269c54d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "1206be6cf26cde90a41f5bcf1e3c290eec881be84cdeec6432e38e1d9eb1f24c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "d8ed5999762a60700f28b205bdb2420df34d57c71d3316843c71ade0c8ec7507",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "874dadf9b4c42234e7c2a366cb1f5ecc1c059460effc9c28755209df374b72c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "b7830830ef009caa01ac29a4eba8945150b0be402cd012e8688787598f16357f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "fa800346640f5178838446b29e71d909e9a49846c656bbf0cc5e39ae38d3e910",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"stdin\",\"zip64-descriptor\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "570dcc3eaef5110ac907c1c0f0658b946862ec54dc71d032390af4ae0444e01f",
+      "decision": "helper-ZIP-first-entry"
+    }
+  }
+}

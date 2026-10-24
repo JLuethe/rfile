@@ -204,10 +204,10 @@ fn freebsd_version(n: u32) -> String {
         out.push_str(" 4.6.2");
     } else if n < 460100 {
         out.push_str(&format!(" {}.{}", n / 100000, n / 10000 % 10));
-        if n / 1000 % 10 > 0 {
+        if !(n / 1000).is_multiple_of(10) {
             out.push_str(&format!(".{}", n / 1000 % 10));
         }
-        if n % 1000 > 0 || n % 100000 == 0 {
+        if !n.is_multiple_of(1000) || n.is_multiple_of(100000) {
             out.push_str(&format!(" ({})", n as i32));
         }
     } else if n < 500000 {
@@ -216,16 +216,16 @@ fn freebsd_version(n: u32) -> String {
             n / 100000,
             n / 10000 % 10 + n / 1000 % 10
         ));
-        if n / 100 % 10 > 0 {
+        if !(n / 100).is_multiple_of(10) {
             out.push_str(&format!(" ({})", n as i32));
-        } else if n / 10 % 10 > 0 {
+        } else if !(n / 10).is_multiple_of(10) {
             out.push_str(&format!(".{}", n / 10 % 10));
         }
     } else {
         out.push_str(&format!(" {}.{}", n / 100000, n / 1000 % 100));
-        if n / 100 % 10 > 0 || n % 100000 / 100 == 0 {
+        if !(n / 100).is_multiple_of(10) || n % 100000 / 100 == 0 {
             out.push_str(&format!(" ({})", n as i32));
-        } else if n / 10 % 10 > 0 {
+        } else if !(n / 10).is_multiple_of(10) {
             out.push_str(&format!(".{}", n / 10 % 10));
         }
     }

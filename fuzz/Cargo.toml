@@ -10,7 +10,7 @@ cargo-fuzz = true
 
 [dependencies]
 libfuzzer-sys = "0.4"
-rfile = { path = ".." }
+rfile = { path = "..", features = ["extended-codecs"] }
 
 [workspace]
 members = ["."]
@@ -81,6 +81,76 @@ bench = false
 [[bin]]
 name = "elf_seekable"
 path = "fuzz_targets/elf_seekable.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_gzip"
+path = "fuzz_targets/codec_gzip.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_zlib"
+path = "fuzz_targets/codec_zlib.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_bzip"
+path = "fuzz_targets/codec_bzip.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_xz"
+path = "fuzz_targets/codec_xz.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_lzma"
+path = "fuzz_targets/codec_lzma.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_lzip"
+path = "fuzz_targets/codec_lzip.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_zstd"
+path = "fuzz_targets/codec_zstd.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_lzfour"
+path = "fuzz_targets/codec_lzfour.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_compress"
+path = "fuzz_targets/codec_compress.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "codec_zip"
+path = "fuzz_targets/codec_zip.rs"
 test = false
 doc = false
 bench = false

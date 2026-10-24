@@ -79,7 +79,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
-use crate::{Error, Result};
 
 pub(crate) fn tar(b: &[u8]) -> Option<&'static str> {
     let header = b.get(..512)?;
@@ -494,57 +493,4 @@ pub(crate) fn der_match(
         return None;
     }
     Some((value, position.checked_add(p)?, position.checked_add(end)?))
-}
-pub(crate) fn decompress_gzip(
-    data: &[u8],
-    limit: usize,
-    budget: &crate::InspectionBudget,
-) -> Result<crate::input::InspectionBytes> {
-    let mut decoder = flate2::read::GzDecoder::new(data);
-    let out = crate::input::read_prefix(&mut decoder, limit.saturating_add(1), budget)?;
-    if out.len() > limit {
-        return Err(Error::Limit("decompression output"));
-    }
-    Ok(out)
-}
-
-pub(crate) fn compression(data: &[u8]) -> Option<&'static str> {
-    for (magic, name) in [
-        (b"\x1f\x8b".as_slice(), "gzip"),
-        (b"\x1f\x9d", "compress"),
-        (b"BZh", "bzip2"),
-        (b"\xfd7zXZ\0", "xz"),
-        (b"LZIP", "lzip"),
-        (b"LRZI", "lrzip"),
-        (b"\x04\x22M\x18", "lz4"),
-        (b"\x28\xb5\x2f\xfd", "zstd"),
-        (b"PK\x03\x04", "zip"),
-    ] {
-        if data.starts_with(magic) {
-            return Some(name);
-        }
-    }
-    if data.len() >= 2
-        && (data[0] & 15) == 8
-        && data[0] & 128 == 0
-        && u16::from_be_bytes([data[0], data[1]]) % 31 == 0
-    {
-        return Some("zlib");
-    }
-    if data.len() >= 13 && data[..3] == [0x5d, 0, 0] && (data[12] == 0 || data[12] == 255) {
-        return Some("lzma");
-    }
-    None
-}
-pub(crate) fn decompress_zlib(
-    data: &[u8],
-    limit: usize,
-    budget: &crate::InspectionBudget,
-) -> Result<crate::input::InspectionBytes> {
-    let mut decoder = flate2::read::ZlibDecoder::new(data);
-    let out = crate::input::read_prefix(&mut decoder, limit.saturating_add(1), budget)?;
-    if out.len() > limit {
-        return Err(Error::Limit("decompression output"));
-    }
-    Ok(out)
 }

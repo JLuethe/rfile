@@ -326,7 +326,7 @@ impl Reader<'_, '_> {
             if d[66] == 0 {
                 continue;
             }
-            if !(2..=64).contains(&n) || n % 2 != 0 {
+            if !(2..=64).contains(&n) || !n.is_multiple_of(2) {
                 return Err(bad("Can't read directory", 64));
             }
             let size = u64le(d, 120)?;
@@ -594,7 +594,7 @@ fn catalog(bytes: &[u8], budget: &InspectionBudget) -> Result<Vec<CatalogEntry>>
             pos += len;
             continue;
         }
-        if len < 16 || (len - 16) % 2 != 0 {
+        if len < 16 || !(len - 16).is_multiple_of(2) {
             return Err(bad("catalog record", pos));
         }
         budget.charge_retained(len.saturating_mul(4))?;

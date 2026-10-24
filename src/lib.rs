@@ -31,6 +31,7 @@
 #![forbid(unsafe_code)]
 pub mod cdf;
 pub mod cli;
+pub mod codecs;
 mod database;
 mod detectors;
 pub mod elf;
@@ -72,6 +73,7 @@ pub struct Classification {
     pub metrics: InspectionMetrics,
     pub compound_document: Option<cdf::CompoundDocument>,
     pub elf: Option<elf::Info>,
+    pub compression: Option<codecs::DecodeFacts>,
 }
 impl Classification {
     fn with_compound_document(mut self, facts: Option<cdf::CompoundDocument>) -> Self {
@@ -270,6 +272,7 @@ impl Engine {
             metrics: InspectionMetrics::default(),
             compound_document: None,
             elf: None,
+            compression: None,
         }
     }
     pub(crate) fn classify_input(
@@ -317,21 +320,18 @@ impl Engine {
         };
         if self.flags.has(Flags::COMPRESS)
             && !self.flags.has(Flags::NO_COMPRESS)
-            && detectors::compression(data).is_some()
+            && codecs::probe_with_profile(data, self.profile).is_some()
         {
-            let expanded = match detectors::compression(data) {
-                Some("gzip") => detectors::decompress_gzip(data, self.limits.bytes, budget)?,
-                Some("zlib") => detectors::decompress_zlib(data, self.limits.bytes, budget)?,
-                Some(codec) => {
-                    return Err(Error::Unsupported(format!(
-                        "{codec} decompression; built-in codecs are gzip and zlib"
-                    )));
-                }
-                None => unreachable!("checked compression signature"),
-            };
+            let decoded = codecs::decode(
+                data,
+                codecs::probe_with_profile(data, self.profile).expect("checked probe"),
+                budget,
+                self.profile,
+            )?;
+            let expanded = &decoded.bytes;
             let mut inner = self.clone();
             inner.flags.0 &= !Flags::COMPRESS;
-            let mut result = inner.classify_input(&expanded, None, false, None, None, budget)?;
+            let mut result = inner.classify_input(expanded, None, false, None, None, budget)?;
             if !self.flags.has(Flags::TRANSPARENT)
                 && (!self.flags.has(Flags::MIME) || self.flags.0 & Flags::MIME == Flags::MIME)
             {
@@ -351,6 +351,7 @@ impl Engine {
                 }
                 result.output = output;
             }
+            result.compression = Some(decoded.facts);
             return Ok(result);
         }
         let mut evaluator = eval::Evaluator::new(
@@ -623,6 +624,7 @@ impl Engine {
             metrics: InspectionMetrics::default(),
             compound_document: None,
             elf: None,
+            compression: None,
         }
     }
 }
