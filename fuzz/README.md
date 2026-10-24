@@ -1,6 +1,6 @@
 # Fuzzing
 
-Nine buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings decompression, positional CDF containers and property sets. Production detection remains independent of the fuzz engine and any C library.
+Ten buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings decompression, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
 
 ```sh
 cargo check --manifest-path fuzz/Cargo.toml --locked --bins
@@ -14,6 +14,7 @@ cargo +nightly fuzz run encoding -- -max_len=65536
 cargo +nightly fuzz run compression -- -max_len=65536
 cargo +nightly fuzz run cdf_container -- -max_len=65536
 cargo +nightly fuzz run cdf_properties -- -max_len=65536
+cargo +nightly fuzz run elf_seekable -- -max_len=65536
 ```
 
 Run from the repository root. Seed content targets with public upstream fixtures and the database target with small valid compiled custom rules. Keep minimized failures and record seed, toolchain, limits and feature manifest. No 24-hour fuzz campaign has been completed. Stable deterministic mutation smoke testing is separate:

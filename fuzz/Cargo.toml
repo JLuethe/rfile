@@ -77,3 +77,10 @@ path = "fuzz_targets/cdf_properties.rs"
 test = false
 doc = false
 bench = false
+
+[[bin]]
+name = "elf_seekable"
+path = "fuzz_targets/elf_seekable.rs"
+test = false
+doc = false
+bench = false

@@ -1,7 +1,7 @@
 {
   "total": 108,
   "equal": 102,
-  "elapsed_seconds": 5.1396959369885735,
+  "elapsed_seconds": 4.856709692990989,
   "environment": {
     "LC_ALL": "C",
     "TZ": "UTC"
@@ -714,12 +714,12 @@
       ],
       "equal": false,
       "reference": {
-        "stdout": "/tmp/rfile-cli-2zcargfg/fifo: writable, no read permission\n",
+        "stdout": "/tmp/rfile-cli-e22_c21s/fifo: writable, no read permission\n",
         "stderr": "",
         "status": 0
       },
       "rust": {
-        "stdout": "/tmp/rfile-cli-2zcargfg/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stdout": "/tmp/rfile-cli-e22_c21s/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
         "stderr": "",
         "status": 1
       }
@@ -735,12 +735,12 @@
       ],
       "equal": false,
       "reference": {
-        "stdout": "/tmp/rfile-cli-2zcargfg/fifo: writable, no read permission\n",
+        "stdout": "/tmp/rfile-cli-e22_c21s/fifo: writable, no read permission\n",
         "stderr": "",
         "status": 0
       },
       "rust": {
-        "stdout": "/tmp/rfile-cli-2zcargfg/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stdout": "/tmp/rfile-cli-e22_c21s/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
         "stderr": "",
         "status": 1
       }
@@ -965,7 +965,7 @@
       "case": 84,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-2zcargfg/list"
+        "/tmp/rfile-cli-e22_c21s/list"
       ],
       "args": [],
       "equal": true
@@ -976,7 +976,7 @@
       "flags": [
         "-n",
         "-f",
-        "/tmp/rfile-cli-2zcargfg/list"
+        "/tmp/rfile-cli-e22_c21s/list"
       ],
       "args": [],
       "equal": true
@@ -987,7 +987,7 @@
       "flags": [
         "-i",
         "-f",
-        "/tmp/rfile-cli-2zcargfg/list"
+        "/tmp/rfile-cli-e22_c21s/list"
       ],
       "args": [],
       "equal": true
@@ -998,7 +998,7 @@
       "flags": [
         "-0",
         "-f",
-        "/tmp/rfile-cli-2zcargfg/list"
+        "/tmp/rfile-cli-e22_c21s/list"
       ],
       "args": [],
       "equal": true
@@ -1008,7 +1008,7 @@
       "case": 88,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-2zcargfg/blank"
+        "/tmp/rfile-cli-e22_c21s/blank"
       ],
       "args": [],
       "equal": true
@@ -1268,7 +1268,7 @@
       "case": 105,
       "flags": [
         "-f",
-        "/tmp/rfile-cli-2zcargfg/weird-list"
+        "/tmp/rfile-cli-e22_c21s/weird-list"
       ],
       "args": [],
       "equal": true
@@ -1279,7 +1279,7 @@
       "flags": [
         "-n",
         "-f",
-        "/tmp/rfile-cli-2zcargfg/weird-list"
+        "/tmp/rfile-cli-e22_c21s/weird-list"
       ],
       "args": [],
       "equal": true
@@ -1290,7 +1290,7 @@
       "flags": [
         "-r",
         "-f",
-        "/tmp/rfile-cli-2zcargfg/weird-list"
+        "/tmp/rfile-cli-e22_c21s/weird-list"
       ],
       "args": [],
       "equal": true

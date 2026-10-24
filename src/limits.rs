@@ -24,6 +24,7 @@ pub struct Limits {
     pub codec_members: usize,
     pub regex_steps: usize,
     pub regex_states: usize,
+    pub stream_bytes: usize,
 }
 impl Default for Limits {
     fn default() -> Self {
@@ -48,6 +49,7 @@ impl Default for Limits {
             codec_members: 64,
             regex_steps: 1_000_000,
             regex_states: 65_536,
+            stream_bytes: 64 * 1024 * 1024,
         }
     }
 }
@@ -69,6 +71,7 @@ impl Limits {
             || self.codec_members > 1024
             || self.regex_steps > 10_000_000
             || self.regex_states > 262_144
+            || self.stream_bytes > 256 * 1024 * 1024
         {
             return Err(Error::Limit("inspection configuration"));
         }
@@ -97,6 +100,7 @@ impl Limits {
             "codec_members" => &mut proposed.codec_members,
             "regex_steps" => &mut proposed.regex_steps,
             "regex_states" => &mut proposed.regex_states,
+            "spool" => &mut proposed.stream_bytes,
             _ => return Err(Error::Unsupported(format!("parameter {name}"))),
         };
         *field = value;

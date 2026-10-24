@@ -159,7 +159,12 @@ fn operand(engine: &Engine, name: &OsStr, width: usize, p: &Presentation) -> Res
             false
         }
         Err(e) => {
-            line.extend_from_slice(format!("ERROR: {e}").as_bytes());
+            line.extend_from_slice(b"ERROR: ");
+            if let Some(bytes) = e.raw_diagnostic() {
+                line.extend_from_slice(bytes);
+            } else {
+                line.extend_from_slice(e.to_string().as_bytes());
+            }
             true
         }
     };

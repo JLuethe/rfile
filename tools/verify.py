@@ -37,6 +37,7 @@ if not args.no_oracle:
  run('semantics-differential',['python3','tools/semantics_compare.py'])
  semantics=json.loads((ROOT/'reports/semantics.json').read_text())
  if semantics['total']!=semantics['equal'] or semantics['compiler_errors']:raise SystemExit('custom rule differential mismatch')
+ run('elf-differential',['python3','tools/elf_compare.py'])
  run('cdf-differential',['python3','tools/cdf_compare.py'])
  run('time-differential',['python3','tools/time_compare.py'])
  run('component-differential',['python3','tools/component_compare.py'])

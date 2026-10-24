@@ -185,6 +185,9 @@ impl MemoryReservation {
     pub fn bytes(&self) -> usize {
         self.bytes
     }
+    pub(crate) fn retain_until_inspection_end(mut self) {
+        self.bytes = 0;
+    }
 }
 impl Drop for MemoryReservation {
     fn drop(&mut self) {

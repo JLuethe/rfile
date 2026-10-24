@@ -33,7 +33,7 @@ pub mod cdf;
 pub mod cli;
 mod database;
 mod detectors;
-mod elf;
+pub mod elf;
 mod encoding;
 mod error;
 mod eval;
@@ -71,6 +71,7 @@ pub struct Classification {
     pub diagnostics: Vec<String>,
     pub metrics: InspectionMetrics,
     pub compound_document: Option<cdf::CompoundDocument>,
+    pub elf: Option<elf::Info>,
 }
 impl Classification {
     fn with_compound_document(mut self, facts: Option<cdf::CompoundDocument>) -> Self {
@@ -150,9 +151,65 @@ impl Engine {
     }
     pub fn classify_reader(&self, reader: &mut impl std::io::Read) -> Result<Classification> {
         let budget = self.budget()?;
-        let bytes = input::read_prefix(reader, self.limits.bytes, &budget)?;
-        let mut result = self.classify_input(&bytes, None, false, None, None, &budget)?;
-        result.truncated = bytes.len() == self.limits.bytes;
+        let mut bytes = input::read_prefix(reader, self.limits.bytes, &budget)?;
+        let sampled = bytes.len() == self.limits.bytes;
+        let seekable_elf = (bytes.starts_with(b"\x7fELF") || bytes.starts_with(b"\x7fOLF"))
+            && !self
+                .flags
+                .has(Flags::NO_ELF | Flags::APPLE | Flags::EXTENSION);
+        let mut elf = None;
+        if seekable_elf {
+            if bytes.len() > self.limits.stream_bytes {
+                return Err(Error::Limit("ELF stream spool"));
+            }
+            if sampled {
+                let mut chunk = [0u8; 4096];
+                loop {
+                    let remaining = self.limits.stream_bytes - bytes.len();
+                    let request = chunk.len().min(remaining.saturating_add(1));
+                    budget.record_read(request)?;
+                    let n = match reader.read(&mut chunk[..request]) {
+                        Err(e) if e.kind() == std::io::ErrorKind::Interrupted => continue,
+                        r => r?,
+                    };
+                    if n > request {
+                        return Err(Error::Malformed {
+                            format: "input",
+                            stage: "reader over-report",
+                            offset: bytes.len() as u64,
+                        });
+                    }
+                    if n == 0 {
+                        break;
+                    }
+                    if n > remaining {
+                        return Err(Error::Limit("ELF stream spool"));
+                    }
+                    bytes.extend(&chunk[..n])?;
+                }
+            }
+            elf = elf::inspect(
+                &mut input::SliceView::new(&bytes),
+                &bytes[..bytes.len().min(self.limits.bytes)],
+                elf::Options {
+                    executable: false,
+                    mime_only: self.flags.has(Flags::MIME),
+                    raw: self.flags.has(Flags::RAW),
+                    profile: self.profile,
+                },
+                &budget,
+            )?;
+        }
+        let mut result = self.classify_input(
+            &bytes,
+            None,
+            elf.as_ref().is_some_and(|e| e.executable),
+            elf.as_ref().map(|e| e.suffix.as_slice()),
+            None,
+            &budget,
+        )?;
+        result.elf = elf;
+        result.truncated = sampled;
         self.check_output(Ok(result), &budget)
     }
     pub fn classify_file(&self, file: &mut std::fs::File) -> Result<Classification> {
@@ -212,6 +269,7 @@ impl Engine {
             diagnostics: Vec::new(),
             metrics: InspectionMetrics::default(),
             compound_document: None,
+            elf: None,
         }
     }
     pub(crate) fn classify_input(
@@ -564,6 +622,7 @@ impl Engine {
             diagnostics: Vec::new(),
             metrics: InspectionMetrics::default(),
             compound_document: None,
+            elf: None,
         }
     }
 }

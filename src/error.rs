@@ -13,6 +13,11 @@ pub enum Error {
     Limit(&'static str),
     Unsupported(String),
     ResourceLimit(LimitViolation),
+    LegacyLimit(Vec<u8>),
+    LegacyOutput {
+        attempted: usize,
+        previous: usize,
+    },
     Cancelled,
     DeadlineExceeded,
     Malformed {
@@ -30,6 +35,11 @@ impl fmt::Display for Error {
             Self::Limit(s) => write!(f, "{s} limit exceeded"),
             Self::Unsupported(s) => write!(f, "unsupported: {s}"),
             Self::ResourceLimit(v) => write!(f, "{} limit exceeded", v.resource),
+            Self::LegacyLimit(bytes) => f.write_str(&String::from_utf8_lossy(bytes)),
+            Self::LegacyOutput {
+                attempted,
+                previous,
+            } => write!(f, "Output buffer space exceeded {attempted}+{previous}"),
             Self::Cancelled => f.write_str("inspection cancelled"),
             Self::DeadlineExceeded => f.write_str("inspection deadline exceeded"),
             Self::Malformed {
@@ -55,8 +65,20 @@ pub struct LimitViolation {
     pub observed: usize,
 }
 impl Error {
+    pub fn raw_diagnostic(&self) -> Option<&[u8]> {
+        match self {
+            Self::LegacyLimit(bytes) => Some(bytes),
+            _ => None,
+        }
+    }
     pub fn is_limit(&self) -> bool {
-        matches!(self, Self::Limit(_) | Self::ResourceLimit(_))
+        matches!(
+            self,
+            Self::Limit(_)
+                | Self::ResourceLimit(_)
+                | Self::LegacyOutput { .. }
+                | Self::LegacyLimit(_)
+        )
     }
     pub fn limit_detail(&self) -> Option<LimitViolation> {
         if let Self::ResourceLimit(v) = self {

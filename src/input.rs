@@ -137,6 +137,15 @@ impl InspectionBytes {
         self.bytes.extend_from_slice(bytes);
         Ok(())
     }
+    pub(crate) fn into_retained_vec(self) -> Vec<u8> {
+        let Self {
+            bytes,
+            reservation,
+            budget: _,
+        } = self;
+        reservation.retain_until_inspection_end();
+        bytes
+    }
     pub fn truncate(&mut self, len: usize) {
         self.bytes.truncate(len);
     }

@@ -316,10 +316,11 @@ fn read_file(
         crate::elf::analyze(
             file,
             &prefix,
-            &engine.limits,
             executable,
             engine.flags.has(Flags::MIME),
             budget,
+            engine.profile,
+            engine.flags.has(Flags::RAW),
         )?
     } else {
         None
@@ -334,6 +335,7 @@ fn read_file(
         Some(&mut view),
         budget,
     )?;
+    result.elf = elf;
     result.truncated = meta.len() > prefix.len() as u64;
     Ok(result)
 }
