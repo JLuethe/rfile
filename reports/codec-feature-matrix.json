@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "feature": "codec-bzip2",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-bzip2"
+      ],
+      "status": 0,
+      "seconds": 0.578108127010637
+    },
+    {
+      "feature": "codec-lzma",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-lzma"
+      ],
+      "status": 0,
+      "seconds": 0.5941038759920048
+    },
+    {
+      "feature": "codec-zstd",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-zstd"
+      ],
+      "status": 0,
+      "seconds": 0.8182401340018259
+    },
+    {
+      "feature": "codec-lz4",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-lz4"
+      ],
+      "status": 0,
+      "seconds": 0.6897834940027678
+    },
+    {
+      "feature": "codec-compress",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-compress"
+      ],
+      "status": 0,
+      "seconds": 0.5482703300076537
+    },
+    {
+      "feature": "codec-zip",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "codec-zip"
+      ],
+      "status": 0,
+      "seconds": 0.5783654520055279
+    }
+  ]
+}

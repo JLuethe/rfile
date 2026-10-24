@@ -20,7 +20,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def source_digest():
-    paths=[*ROOT.glob('src/**/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.rs'),ROOT/'Cargo.toml',ROOT/'Cargo.lock',ROOT/'fuzz/Cargo.toml',ROOT/'fuzz/Cargo.lock']
+    paths=[*ROOT.glob('src/**/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.inc'),ROOT/'Cargo.toml',ROOT/'Cargo.lock',ROOT/'fuzz/Cargo.toml',ROOT/'fuzz/Cargo.lock']
     h=hashlib.sha256()
     for path in sorted(paths):
         h.update(str(path.relative_to(ROOT)).encode()+b'\0'+bytes.fromhex(digest(path)))

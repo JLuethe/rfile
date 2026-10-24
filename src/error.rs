@@ -5,6 +5,7 @@ use std::fmt;
 #[derive(Debug)]
 pub enum Error {
     Io(std::io::Error),
+    Decode(crate::codecs::DecodeError),
     Database(String),
     Parse {
         line: usize,
@@ -30,6 +31,7 @@ impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::Io(e) => e.fmt(f),
+            Self::Decode(e) => e.fmt(f),
             Self::Database(s) => write!(f, "invalid magic database: {s}"),
             Self::Parse { line, message } => write!(f, "magic line {line}: {message}"),
             Self::Limit(s) => write!(f, "{s} limit exceeded"),

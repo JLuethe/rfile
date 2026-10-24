@@ -8,7 +8,7 @@ import shutil
 import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 CARGO = os.environ.get('CARGO', shutil.which('cargo') or str(Path.home()/'.cargo/bin/cargo'))
-metadata = json.loads(subprocess.check_output([CARGO, 'metadata', '--locked', '--format-version', '1'], cwd=ROOT))
+metadata = json.loads(subprocess.check_output([CARGO, 'metadata', '--locked', '--all-features', '--format-version', '1'], cwd=ROOT))
 packages = [p for p in metadata['packages'] if p['source'] is not None]
 rows = []
 for p in sorted(packages, key=lambda p: p['name']):

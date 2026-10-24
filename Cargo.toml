@@ -2,17 +2,30 @@
 name = "rfile"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.87"
 description = "Independent bounded Rust implementation of file magic evaluation"
 license = "GPL-3.0-only"
 repository = "https://github.com/JLuethe/rfile"
 publish = false
 default-run = "rfile"
 
+[features]
+default = []
+extended-codecs = ["codec-bzip2", "codec-lzma", "codec-zstd", "codec-lz4", "codec-compress", "codec-zip"]
+codec-bzip2 = []
+codec-lzma = ["dep:lzma-rust2"]
+codec-zstd = ["dep:ruzstd"]
+codec-lz4 = ["dep:lz4_flex"]
+codec-compress = []
+codec-zip = []
+
 [dependencies]
 regex-automata = { version = "0.4", default-features = false, features = ["std", "syntax", "dfa-build", "dfa-search", "nfa-pikevm"] }
 flate2 = { version = "1.1", default-features = false, features = ["miniz_oxide"] }
 serde_json = "1.0"
+lzma-rust2 = { version = "=0.23.0", default-features = false, features = ["std", "xz", "lzip"], optional = true }
+ruzstd = { version = "=0.9.1", default-features = false, features = ["std", "hash"], optional = true }
+lz4_flex = { version = "=0.14.0", default-features = false, features = ["std", "frame", "safe-decode", "safe-encode", "checked-decode"], optional = true }
 jiff = { version = "=0.2.38", default-features = false, features = ["std", "tz-fat"] }
 
 [profile.release]

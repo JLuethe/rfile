@@ -1,0 +1,631 @@
+{
+  "schema_version": 1,
+  "scope": "Source/feature inventory, not a reachability proof or security audit; lexical unsafe includes disabled code/comments. Rust std and transitive cryptographic intrinsics also contain unsafe.",
+  "packages": [
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [],
+      "manifest_sha256": "2e82ee61a94e8ef99197ca59723e9794d0f08363f28bacab680292af6ccdde61",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/aarch64.rs",
+          "lines": [
+            37,
+            114,
+            122,
+            141,
+            160
+          ],
+          "sha256": "19590674eda029d224e174238daf9c797982dc835de16214c1cbb578a0be5c34"
+        },
+        {
+          "path": "src/loongarch64.rs",
+          "lines": [
+            30,
+            49
+          ],
+          "sha256": "215c691fd67d63739ee802807f75b682b8d6cae4a56c278e3402df48c9fcf49c"
+        },
+        {
+          "path": "src/x86.rs",
+          "lines": [
+            41,
+            45,
+            49,
+            71
+          ],
+          "sha256": "1a97811711ae4130324e2169a1933ee694e0a1a418f94c6960b5ed1fee5e3194"
+        }
+      ]
+    },
+    {
+      "name": "lz4_flex",
+      "version": "0.14.0",
+      "license": "MIT",
+      "features": [
+        "alloc",
+        "checked-decode",
+        "frame",
+        "safe-decode",
+        "safe-encode",
+        "std"
+      ],
+      "manifest_sha256": "efdd72c2f1dbf2967c6ce36371e48950c50daddd1fa1634467d362a9224687c2",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/block/compress.rs",
+          "lines": [
+            38,
+            54,
+            165,
+            170,
+            174,
+            187,
+            191,
+            203,
+            206,
+            212,
+            281,
+            477,
+            502,
+            517,
+            534,
+            678,
+            821,
+            831,
+            841
+          ],
+          "sha256": "08225a806718562f053637f32e2aa7020897d569aba01b6357c7e44b747b55b1"
+        },
+        {
+          "path": "src/block/decompress.rs",
+          "lines": [
+            3,
+            14,
+            44,
+            60,
+            88,
+            104,
+            146,
+            147,
+            166,
+            221,
+            222,
+            223,
+            227,
+            229,
+            231,
+            252,
+            253,
+            271,
+            279,
+            289,
+            296,
+            309,
+            312,
+            318,
+            325,
+            352,
+            354,
+            360,
+            361,
+            398,
+            405,
+            414,
+            434,
+            437,
+            438,
+            448,
+            492,
+            522
+          ],
+          "sha256": "e1c00de65ae0c8f94105b7f7dcf1ea12eba87368fb40b29eedc61716ab3d99b9"
+        },
+        {
+          "path": "src/block/mod.rs",
+          "lines": [
+            18,
+            23
+          ],
+          "sha256": "9f48789c8a13510bea3407ec22115d8d6dea0ff614ed741dba2293ffe0a2b66f"
+        },
+        {
+          "path": "src/fastcpy_unsafe.rs",
+          "lines": [
+            58,
+            71,
+            72,
+            75,
+            87,
+            94,
+            107,
+            108,
+            110
+          ],
+          "sha256": "cfbd64aa10a1511490ea4d67855e9b038bedafd7739335de7e062c23db1576f3"
+        },
+        {
+          "path": "src/frame/mod.rs",
+          "lines": [
+            22,
+            24
+          ],
+          "sha256": "97f44388951671638b517c3eeeef45a291d85bf9e51446847574b97a6c33e295"
+        },
+        {
+          "path": "src/lib.rs",
+          "lines": [
+            103,
+            130
+          ],
+          "sha256": "a61ef4b28733e7bdd1b758387dece2d8be72059155f9b87d87916b464329b923"
+        },
+        {
+          "path": "src/sink.rs",
+          "lines": [
+            49,
+            60,
+            67,
+            120,
+            139,
+            155,
+            254,
+            261,
+            268,
+            275,
+            291,
+            311
+          ],
+          "sha256": "563b4358c3185b8fc1e89ff4924b235c513a5da861e81c2c557dc29158efbc38"
+        }
+      ]
+    },
+    {
+      "name": "lzma-rust2",
+      "version": "0.23.0",
+      "license": "Apache-2.0",
+      "features": [
+        "lzip",
+        "sha2",
+        "std",
+        "xz"
+      ],
+      "manifest_sha256": "71801b400af1bac4be068ce5d2874dea70d73b7c7e6ac615404a44034dc69ce1",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/lib.rs",
+          "lines": [
+            8,
+            52
+          ],
+          "sha256": "415d238f9c881d38c84580130a34df6891b4888e34c8ea04669b9ccab57e54f9"
+        },
+        {
+          "path": "src/lz/lz_encoder.rs",
+          "lines": [
+            194,
+            198,
+            206,
+            401,
+            487,
+            488,
+            519,
+            520,
+            551,
+            552
+          ],
+          "sha256": "40d5b21246750bc6adce5aff59b0d06b58a8b476562d9d82e24ef78c57a9f830"
+        },
+        {
+          "path": "src/lz/mod.rs",
+          "lines": [
+            26,
+            101
+          ],
+          "sha256": "e67c19a87860a198a80a5fea28db7d40e1d97f7fe642f82499d996f95726a8a4"
+        },
+        {
+          "path": "src/range_dec.rs",
+          "lines": [
+            256,
+            339
+          ],
+          "sha256": "bc163f37226454a994eee4dcc1f83a239a1ff558d6681ab34fc07b110c31150d"
+        }
+      ]
+    },
+    {
+      "name": "ruzstd",
+      "version": "0.9.1",
+      "license": "MIT",
+      "features": [
+        "hash",
+        "std"
+      ],
+      "manifest_sha256": "bc0aed1cbef827ad6366effb31fa7c01a3d5655ea5ed9040b755f91cce871636",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/decoding/decode_buffer.rs",
+          "lines": [
+            102,
+            134
+          ],
+          "sha256": "a51131817133ea71b4da429d3af4a60e18ab397d880872015dfbc9e280401fdb"
+        },
+        {
+          "path": "src/decoding/ringbuffer.rs",
+          "lines": [
+            24,
+            27,
+            77,
+            106,
+            116,
+            141,
+            154,
+            181,
+            224,
+            232,
+            261,
+            283,
+            293,
+            294,
+            315,
+            322,
+            329,
+            347,
+            359,
+            381,
+            388,
+            395,
+            414,
+            421,
+            428,
+            452,
+            459,
+            475,
+            481,
+            500,
+            508,
+            525,
+            587,
+            589,
+            609,
+            660,
+            684,
+            716
+          ],
+          "sha256": "37269636f9abf9c2e1ef7de005739e7529488b70214a0c342ad0b10eed43a32f"
+        }
+      ]
+    },
+    {
+      "name": "sha2",
+      "version": "0.11.0",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc",
+        "default",
+        "oid"
+      ],
+      "manifest_sha256": "bb187fe9b788b66dc91c717ace2a41b5da5518672a302696ab79bf4619d510a9",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/sha256/aarch64_sha2.rs",
+          "lines": [
+            4,
+            13
+          ],
+          "sha256": "d9245fa28ba2a5cac5c2ba3015f422b7eca8e604aa21c9bece93766127c22451"
+        },
+        {
+          "path": "src/sha256/loongarch64_asm.rs",
+          "lines": [
+            89
+          ],
+          "sha256": "eda57073e3dbcadca88e908dd261a2782b2bb89c06f1b97468a6ffd1cad407ff"
+        },
+        {
+          "path": "src/sha256/riscv_zknh/utils.rs",
+          "lines": [
+            18,
+            49,
+            51,
+            61,
+            67,
+            87
+          ],
+          "sha256": "9970c93e9e9c180f836a0fc18d14b51c411e181b77b1002b5ec486da4492d630"
+        },
+        {
+          "path": "src/sha256/soft/unroll.rs",
+          "lines": [
+            39
+          ],
+          "sha256": "69af1d7a57c05b3a69fda30fb0039bc7c8b53e5d9a679bf9973eb6eda245b81a"
+        },
+        {
+          "path": "src/sha256/wasm32_simd128.rs",
+          "lines": [
+            1,
+            20,
+            31,
+            50,
+            141
+          ],
+          "sha256": "006a8667660283d340d44c91b7e2cc1bee866ef0fe13b58f5b65535542942acd"
+        },
+        {
+          "path": "src/sha256/x86_sha.rs",
+          "lines": [
+            3,
+            14,
+            46
+          ],
+          "sha256": "19d8c7c15ffa081332e5b438e98809ce52f14706553ec8965d6c54c5fbf7cccf"
+        },
+        {
+          "path": "src/sha256.rs",
+          "lines": [
+            16,
+            31,
+            41,
+            67,
+            72
+          ],
+          "sha256": "cb03fddc1325b60935409f097f2fab3ae51cfab15bed1254f4e93d13b28b7eff"
+        },
+        {
+          "path": "src/sha512/aarch64_sha3.rs",
+          "lines": [
+            2,
+            11
+          ],
+          "sha256": "7ccb33877955e8bb200adfe1b32a036d63e23b0bfcec377bd62841f8f2ce494e"
+        },
+        {
+          "path": "src/sha512/loongarch64_asm.rs",
+          "lines": [
+            88
+          ],
+          "sha256": "e66005dc654c69248834e05377eb3580d6a689960edcbd276ca08af7d3721354"
+        },
+        {
+          "path": "src/sha512/riscv_zknh/utils.rs",
+          "lines": [
+            16,
+            32,
+            49,
+            51,
+            61,
+            67,
+            99,
+            101,
+            110,
+            116,
+            138,
+            150
+          ],
+          "sha256": "7e34eb03b68a38e2de461086b3c6220a2a0bcece7b9b037aa697dd23dc91ead3"
+        },
+        {
+          "path": "src/sha512/soft/unroll.rs",
+          "lines": [
+            33
+          ],
+          "sha256": "4a68218d52b722bb4e11c6d70db9e5256c930bd41b23905a0d69cd893f1e3c6d"
+        },
+        {
+          "path": "src/sha512/wasm32_simd128.rs",
+          "lines": [
+            1,
+            18,
+            29,
+            48,
+            135
+          ],
+          "sha256": "f90ec0fa19ce76c2de5461d748e2ed73565b563ce00b3b17e8eabbd6df012f92"
+        },
+        {
+          "path": "src/sha512/x86_avx2.rs",
+          "lines": [
+            3,
+            18,
+            47,
+            60,
+            82,
+            115,
+            136,
+            243,
+            330,
+            335
+          ],
+          "sha256": "b67aa758f16086b47bdac0b79614773dbaa66946842c9883f794e6a13e51af67"
+        },
+        {
+          "path": "src/sha512.rs",
+          "lines": [
+            16,
+            26,
+            36,
+            62,
+            67
+          ],
+          "sha256": "942a7d6180507d68a3feb9d953410a884314b8022d989a854838c5426a8ea1a0"
+        }
+      ]
+    },
+    {
+      "name": "twox-hash",
+      "version": "2.1.5",
+      "license": "MIT",
+      "features": [
+        "xxhash32",
+        "xxhash64"
+      ],
+      "manifest_sha256": "4328ba632874f6bdea89bc93ddfd432f635361578c76cdd4e1820818cd32cc3e",
+      "unsafe_lexical_inventory": [
+        {
+          "path": "src/xxhash3/large/avx2.rs",
+          "lines": [
+            14,
+            23,
+            29,
+            38,
+            48,
+            58
+          ],
+          "sha256": "3c5db7833c6d09c71ffa5e7339bb65f0e22446bf9d0606f258ece98133021aea"
+        },
+        {
+          "path": "src/xxhash3/large/neon.rs",
+          "lines": [
+            15,
+            24,
+            30,
+            39,
+            49,
+            79,
+            87,
+            178,
+            199,
+            202,
+            203
+          ],
+          "sha256": "bf3e0edf071e35829107adddc566ac61070433e70015216f24296329beb64d6c"
+        },
+        {
+          "path": "src/xxhash3/large/scalar.rs",
+          "lines": [
+            57
+          ],
+          "sha256": "d25def031448433dd8e290ec04d4160ed22c2a46befd0fd6b9911e0037f08a66"
+        },
+        {
+          "path": "src/xxhash3/large/sse2.rs",
+          "lines": [
+            14,
+            23,
+            29,
+            38,
+            48,
+            58
+          ],
+          "sha256": "8cb9e1b9b85254940b29002ae81e817c836cd213fe79e1ce783166384a9fd401"
+        },
+        {
+          "path": "src/xxhash3/large.rs",
+          "lines": [
+            43,
+            48,
+            59,
+            64,
+            75,
+            80,
+            88,
+            91,
+            94,
+            107,
+            115,
+            118,
+            163,
+            203,
+            267
+          ],
+          "sha256": "e1a6330dc2df1e4a4724cf3c2a72cbd1113d49ce03c34180768059cecb79d98a"
+        },
+        {
+          "path": "src/xxhash3/secret.rs",
+          "lines": [
+            20,
+            35,
+            38,
+            76,
+            81,
+            123
+          ],
+          "sha256": "f9dba51ae757f5efa755841770644a1bcbd930762128a457568503e7d8f35dec"
+        },
+        {
+          "path": "src/xxhash3/streaming.rs",
+          "lines": [
+            10,
+            19,
+            22,
+            25,
+            28,
+            31,
+            34,
+            105,
+            216,
+            265,
+            282,
+            309,
+            376,
+            379,
+            474
+          ],
+          "sha256": "1fdda1dcf2dda4a4b0fffbb9b31310483c73c0fe53a9b5270610d024a03ddba3"
+        },
+        {
+          "path": "src/xxhash3.rs",
+          "lines": [
+            62,
+            327,
+            332,
+            340,
+            345
+          ],
+          "sha256": "948804e18cb439066f85eec62aebe8a91ced857ff5bbffc454633e235cdeb982"
+        },
+        {
+          "path": "src/xxhash32.rs",
+          "lines": [
+            36,
+            41,
+            73,
+            160
+          ],
+          "sha256": "4370cc7dcc5d4c5b13cd3ac40c4816dc920ae83cfb118886c00453d9c7fd18c9"
+        },
+        {
+          "path": "src/xxhash3_128.rs",
+          "lines": [
+            5,
+            6,
+            55,
+            92
+          ],
+          "sha256": "05410f81fcce2f84600a5afca702b54d82ae472fc96801fecb39d35eb438b9f7"
+        },
+        {
+          "path": "src/xxhash3_64.rs",
+          "lines": [
+            5,
+            6,
+            52,
+            89,
+            368
+          ],
+          "sha256": "e8d2c930fb2d88ca218aea4fd1fede7915d523cbab138620789510b7567c9802"
+        },
+        {
+          "path": "src/xxhash64.rs",
+          "lines": [
+            36,
+            41,
+            73,
+            160
+          ],
+          "sha256": "c644234b948126d259d80719013f05632f9edb553ec76fdd1526f1322020cd15"
+        }
+      ]
+    }
+  ],
+  "decisions": {
+    "lzma-rust2": "optimization disabled: crate forbids unsafe; XZ checksum SHA2 dependency remains inventoried",
+    "lz4_flex": "both safe features enabled: crate forbids unsafe",
+    "ruzstd": "unsafe ring buffer/copy operations retained, explicitly opt-in pending sustained review; no native FFI"
+  }
+}

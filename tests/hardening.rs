@@ -114,7 +114,7 @@ fn deterministic_mutation_campaign() {
             let p = next(&mut state) as usize % bytes.len();
             bytes[p] = next(&mut state) as u8;
         }
-        let length = if next(&mut state) % 4 == 0 {
+        let length = if next(&mut state).is_multiple_of(4) {
             next(&mut state) as usize % bytes.len()
         } else {
             bytes.len()

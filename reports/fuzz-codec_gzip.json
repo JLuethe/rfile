@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "configuration": {
+    "target": "codec_gzip",
+    "binary_sha256": "eb7052b114acb0b8ac9fbaaa70838d2336717533c7f00cbd6f30bf77a232c9a4",
+    "source_sha256": "0eb603536480867c8387dd659461c4bd107a3cdc400b42687650791f9c06afa0",
+    "seed": 548,
+    "max_len": 262144,
+    "rss_mib": 512,
+    "sanitizer": "address",
+    "build": "cargo +nightly fuzz build; default optimized debug assertions + instrumented std",
+    "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59"
+  },
+  "initial_corpus": {
+    "files": 6,
+    "bytes": 181035,
+    "sha256": "d71177eebd356cd19b71276eb255bb4c366ad550d3a8751b31f4dadcae40ea38"
+  },
+  "chunks": [
+    {
+      "index": 0,
+      "returncode": 0,
+      "supervisor_kill": false,
+      "cpu_seconds": 19.505132,
+      "wall_seconds": 20.41319281599135,
+      "peak_rss_kib": 304004,
+      "stats": {
+        "number_of_executed_units": 12225,
+        "average_exec_per_sec": 582,
+        "new_units_added": 448,
+        "slowest_unit_time_sec": 0,
+        "peak_rss_mb": 296
+      },
+      "log": "fuzz/campaign-logs/codec_gzip/chunk-0.log",
+      "log_sha256": "bd1fd3f3e79aca22848515e0dc12af03482b552e1aef6372e16bcae5203d8291"
+    }
+  ],
+  "measured_cpu_seconds": 19.505132,
+  "wall_seconds": 20.41319281599135,
+  "completed_gate": false,
+  "current_corpus": {
+    "files": 240,
+    "bytes": 1019022,
+    "sha256": "f6bc4849f4306b99de3c568d1514a3cc0ee8acfa1dcaf8b994258b0d9cbca6b4"
+  },
+  "requested_cpu_hours": 0,
+  "status": "smoke-only"
+}

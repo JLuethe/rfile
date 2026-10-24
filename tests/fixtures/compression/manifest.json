@@ -1,0 +1,773 @@
+{
+  "schema_version": 1,
+  "encoders": {
+    "python": "3.14.8 (main, Oct  2 2026, 10:23:31) [GCC 16.2.1 20260810]; stdlib gzip/zlib/bz2/lzma/zipfile",
+    "xz": "xz (XZ Utils) 5.8.4",
+    "zstd": "*** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***",
+    "lz4": "*** lz4 v1.10.0 64-bit multithread, by Yann Collet ***",
+    "ncompress_commit": "03592d7a4702bb83558b6f1520c2a6a5381374c8",
+    "ncompress_build": "make CC=\"cc -Wno-error=incompatible-pointer-types\"; unmodified test-only source"
+  },
+  "payloads": {
+    "payload": {
+      "bytes": 136,
+      "sha256": "5099fdce87335e8ac62831bc7662419b9e183e878dae959786d22c5bf6929bcf"
+    },
+    "empty": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "binary": {
+      "bytes": 2048,
+      "sha256": "10fc3c51a152e90e5b90319b601d92ccf37290ef53c35ff92507687d8a911a08"
+    },
+    "random": {
+      "bytes": 180000,
+      "sha256": "3545551530c7677e3fe750c067f3f72575a42788f195154e72966871875ba3c5"
+    },
+    "runs": {
+      "bytes": 460000,
+      "sha256": "68460dbca9b73afb567a6f760ceec3af6a604c66c48d8e1452e566732546a144"
+    }
+  },
+  "cases": [
+    {
+      "name": "gzip",
+      "codec": "gzip",
+      "bytes": 57,
+      "sha256": "9729ffa0fa37a8421e5cc288306b70b4249c46de2d8e15cd5efd8fc722c591f6",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zlib",
+      "codec": "zlib",
+      "bytes": 45,
+      "sha256": "2a2025a67d49966abd1744aded6c746457815433f39806a296419980c5af22b2",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "bzip2",
+      "codec": "bzip2",
+      "bytes": 87,
+      "sha256": "ee654096fa636fdf97a3a0b3577c8daedbc6805dc9a3348c11c4d9726b7e03ea",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "xz",
+      "codec": "xz",
+      "bytes": 108,
+      "sha256": "a764222fde2a3a9860edb089277230dff989453991434a035c0e2f017869cfaf",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "lzma",
+      "codec": "lzma",
+      "bytes": 61,
+      "sha256": "caeb464879e0a9d4a7461d16f2f285af64f5a55218ba5f964454367b2b41e304",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "lzip",
+      "codec": "lzip",
+      "bytes": 74,
+      "sha256": "b4ba1b74d7af89a3a7df2c3a69cbccf7560aa0c4c90905819aec98b2178df17e",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zstd",
+      "codec": "zstd",
+      "bytes": 55,
+      "sha256": "a09000531ac47d686e104607ed3261c15bd9e1fc834da3955522053fa23aac9b",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "lz4",
+      "codec": "lz4",
+      "bytes": 64,
+      "sha256": "33e8295aab8c04032f25bccc89ae32762fca85fab585fb9ea2084d11c4b1e0da",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "compress",
+      "codec": "compress",
+      "bytes": 92,
+      "sha256": "2c433e3410f28d7a9c7021f1de71c9262df47322e8a2535035ad6c2c96aab3f9",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zip-stored",
+      "codec": "zip",
+      "bytes": 337,
+      "sha256": "5cd55d5d5cfa7d9a2c21fb9592797a70e2a749721979a5eff08fcc09ca070992",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zip-deflate",
+      "codec": "zip",
+      "bytes": 242,
+      "sha256": "d14e80364c281b99426164ec3ea95da3ea0fff3be4c6e10f22f93ca1b5833ed8",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "gzip-empty",
+      "codec": "gzip",
+      "bytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "zlib-empty",
+      "codec": "zlib",
+      "bytes": 8,
+      "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "bzip2-empty",
+      "codec": "bzip2",
+      "bytes": 14,
+      "sha256": "c82685296a2d914c9acd6f6f6db1d1ad364f502b26af5e6ca8874c09880d5cf9",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "xz-empty",
+      "codec": "xz",
+      "bytes": 32,
+      "sha256": "0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "lzma-empty",
+      "codec": "lzma",
+      "bytes": 23,
+      "sha256": "b8d8686989e9c36d659dddb4f0c7e800c778cf973adf59fc3e1022bfeaac4874",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "lzip-empty",
+      "codec": "lzip",
+      "bytes": 36,
+      "sha256": "3b73bb6ddf1f0dc41d0cf5f2eb4231abbd1ef3613878fe7101ebcd4d22624c27",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "zstd-empty",
+      "codec": "zstd",
+      "bytes": 13,
+      "sha256": "f96deff1816083fdff8bc3e46c3fe6ca46a6bb49f4d5a00627616c13237a512c",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "lz4-empty",
+      "codec": "lz4",
+      "bytes": 15,
+      "sha256": "a01ab6c73734fbe3eac2971567666b6cd7d9586d5becc29c4a57b2c5a9225237",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "compress-empty",
+      "codec": "compress",
+      "bytes": 3,
+      "sha256": "7aa6f58a0a8f57b9e6a70d89961f4668b7d69eb177a8da8344d4e5ed12d7858e",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "zip-stored-empty",
+      "codec": "zip",
+      "bytes": 201,
+      "sha256": "d2a81ba824e36ee2bcabf527c047dd4a4afae1852375be465e0ccd7291e83deb",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "zip-deflate-empty",
+      "codec": "zip",
+      "bytes": 205,
+      "sha256": "9abed54b2d51577b89b943715aab6c9a4cb135a8e2ee195e4dbc5e926ec94611",
+      "payload": "empty",
+      "pinned_payload": "empty",
+      "corrected_payload": "empty"
+    },
+    {
+      "name": "gzip-binary",
+      "codec": "gzip",
+      "bytes": 308,
+      "sha256": "9108ec40ed6f2b394919ccf720077c4fba476a926ca9a9a0548382fe93f60024",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "zlib-binary",
+      "codec": "zlib",
+      "bytes": 296,
+      "sha256": "e91a53e605b2052dc6fc405b6e7f19841f5de998c655a350d522197346dfe302",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "bzip2-binary",
+      "codec": "bzip2",
+      "bytes": 590,
+      "sha256": "798d56703772d0c8859b059817cee3743b8ce634ef07328f284ee2970fa7ce5e",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "xz-binary",
+      "codec": "xz",
+      "bytes": 312,
+      "sha256": "89d88a42b67e728a677f2d8e0538ae99cde154204123f08273502f5a4ca35f2b",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "lzma-binary",
+      "codec": "lzma",
+      "bytes": 266,
+      "sha256": "d5d0586ee0364dc2cb3b9307d75965c83b9319d5e92c559c9862119ac3dd03c4",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "lzip-binary",
+      "codec": "lzip",
+      "bytes": 279,
+      "sha256": "b369d8e3e8572b5690b3e651ca0ea40895f9474735eb530d28ce0a246968aa81",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "zstd-binary",
+      "codec": "zstd",
+      "bytes": 279,
+      "sha256": "37615e4116f7834eb2bd2d1e48e5a9c71271049b5b4df6f375097d8662409d3d",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "lz4-binary",
+      "codec": "lz4",
+      "bytes": 292,
+      "sha256": "e5f89ba49c578c408878509b89164fba500870ab2475f26e4b10198d2bb4ae30",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "compress-binary",
+      "codec": "compress",
+      "bytes": 1107,
+      "sha256": "b7f39c71c30ade07e92d44f5a23386a8b114839b335c56fe15a4899cac936830",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "zip-stored-binary",
+      "codec": "zip",
+      "bytes": 2249,
+      "sha256": "f996e9efc3b0021bb07ccbff74a0b7f407c06895896c4a1f186ddae9160c4777",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "zip-deflate-binary",
+      "codec": "zip",
+      "bytes": 493,
+      "sha256": "10e7058f90d9b7bb6ee623419e15e993619c0ecb5af771c372a0ba9e708cc041",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "gzip-random",
+      "codec": "gzip",
+      "bytes": 180073,
+      "sha256": "eaafaf86ef3b93c494f0828fd581a12928fadd75ed28f13589c959f62e1008e8",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "zlib-random",
+      "codec": "zlib",
+      "bytes": 180061,
+      "sha256": "bd47bdac3797c0b1ab6066f18d8fac745460b572e37464211cb18d31154f705f",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "bzip2-random",
+      "codec": "bzip2",
+      "bytes": 181514,
+      "sha256": "77a66c110cdeb044d0d130da813e0ab3c1e63ddb57e583dedb045c54fa611bea",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "xz-random",
+      "codec": "xz",
+      "bytes": 180068,
+      "sha256": "2ee32a15437c4673301b848dbc7035ac03726d64d12ffc05962d80f2b5cb10e6",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "lzma-random",
+      "codec": "lzma",
+      "bytes": 182519,
+      "sha256": "3e2ca8b0ccc61d9ac1e37cd4e826d1829ad98777bea9b9229592a93f382c80fc",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "lzip-random",
+      "codec": "lzip",
+      "bytes": 182532,
+      "sha256": "d3aafb2d01374c77c5343dbb1725c2145d4707dc46fdf05f93566ae1f497904d",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "zstd-random",
+      "codec": "zstd",
+      "bytes": 180016,
+      "sha256": "d4ed841cb8f716c3cb2d01f43fcd7da4d686b92e500b2f30ee37f110d9616b71",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "lz4-random",
+      "codec": "lz4",
+      "bytes": 180027,
+      "sha256": "92ff3fda76d7d19915be907d27be8ab79ccb6fc8829c06bf7ba0d4ae14678e6b",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "compress-random",
+      "codec": "compress",
+      "bytes": 233983,
+      "sha256": "b056db16bb130df308ac1d8e8e82748513a0a11d83f0352cf90db20a39d0f566",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "zip-stored-random",
+      "codec": "zip",
+      "bytes": 180201,
+      "sha256": "843ccdaca2321b0434713ef5666bc20444595989e32cc1225ae6f6d00a6cf1df",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "zip-deflate-random",
+      "codec": "zip",
+      "bytes": 180258,
+      "sha256": "47249234a22a53c241ede67338f2afb92f3b35673b1bdc49a50cc195c22d1c38",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "gzip-runs",
+      "codec": "gzip",
+      "bytes": 486,
+      "sha256": "836fa80a754dbbe3889438d503b3aeb774dd4e726df92f20047c4a4c1de84e27",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "zlib-runs",
+      "codec": "zlib",
+      "bytes": 474,
+      "sha256": "e4f4cb22c6f3d6386ef00a16c0f768b7ee84abb2e9aa679fed0596b2e4cf7973",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "bzip2-runs",
+      "codec": "bzip2",
+      "bytes": 87,
+      "sha256": "8ad409d27940eba24f8cfdef83f9a6ab85f8e3f3b7c16116dc1cb63ba7dacb78",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "xz-runs",
+      "codec": "xz",
+      "bytes": 208,
+      "sha256": "2d97b8b754ea5ed5dab63a8bbd78f7a2d9f91a3544646eb0878261f511b6cb86",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lzma-runs",
+      "codec": "lzma",
+      "bytes": 161,
+      "sha256": "721aad3a68ecb6db9263bb0b0c416f5ce91bc254ca760628ff13edef3a079ce9",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lzip-runs",
+      "codec": "lzip",
+      "bytes": 174,
+      "sha256": "9734f5193bc5c02f5baa8eee67b9b58c3d4d07a24dbb8b43836937731207dc8a",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "zstd-runs",
+      "codec": "zstd",
+      "bytes": 67,
+      "sha256": "b523db9aad007a0bdcea6cbf09eedc771b1dc1cfc7a9845fccf8986402cb01e9",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lz4-runs",
+      "codec": "lz4",
+      "bytes": 1940,
+      "sha256": "fb7bcef368ed61a5daf65e3eb1d37136f1d83b85416da13fc813214badb5629b",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "compress-runs",
+      "codec": "compress",
+      "bytes": 2040,
+      "sha256": "cf0497b72f52692f20f7f1516b7241fb891ebcfd96f44bafa2e946322249837a",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "zip-stored-runs",
+      "codec": "zip",
+      "bytes": 460201,
+      "sha256": "63c2211dee8ce9d8a6253b96b3419fb6c962fda6e3635dfe93db11125978c3c4",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "zip-deflate-runs",
+      "codec": "zip",
+      "bytes": 671,
+      "sha256": "df1f74d69f51f829ef8ef053a5c6a621cae94278aed059624786784d7d820aef",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "gzip-concat",
+      "codec": "gzip",
+      "bytes": 91,
+      "sha256": "6682b48ec4c27e4ce39fb872a8538cc540266f9674f28a101112f4c64f2285a5",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "zlib-concat",
+      "codec": "zlib",
+      "bytes": 67,
+      "sha256": "b8102907a506bedaba6bdc1f5dcb0f90f16e0c1b7dd9de142eb2b2aa971da487",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "bzip2-concat",
+      "codec": "bzip2",
+      "bytes": 144,
+      "sha256": "f32d92bc3fdce0876e2fb0c7ff337162ac26033fd6672499d722ed3102f81814",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "xz-concat",
+      "codec": "xz",
+      "bytes": 180,
+      "sha256": "9e6b542a9ba4743bd844719a2e53874223d0b0194e208b936d5e7e9bd7d652fa",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "lzip-concat",
+      "codec": "lzip",
+      "bytes": 125,
+      "sha256": "6d8cbae109d53064887f48c672d85f0502ea4c6067da07d97735ec48b6dbfb47",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "zstd-concat",
+      "codec": "zstd",
+      "bytes": 82,
+      "sha256": "2b745b32820d8b02cc3c6bdb7314da62c3651e680f87a794d631a301a32ac58e",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "lz4-concat",
+      "codec": "lz4",
+      "bytes": 97,
+      "sha256": "ea0fe19a4a478fdc759748ce887b640dedb9ab5d3ded773862d8be689b67a9cc",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "two-members"
+    },
+    {
+      "name": "compress-bits-9",
+      "codec": "compress",
+      "bytes": 201783,
+      "sha256": "4117926e031f49dabdf406f117cedfe15d9cc921b9da90b6c273422f3f6139e4",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "compress-bits-10",
+      "codec": "compress",
+      "bytes": 222485,
+      "sha256": "749f4aadfaefedbb487a6aec252f35c86bd10185539663de017f015be6d99de9",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "compress-bits-12",
+      "codec": "compress",
+      "bytes": 254509,
+      "sha256": "1184a41d2aef2c1f20429f8c897e93f88cdd735f15d701e593208b8a38b15765",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "compress-bits-16",
+      "codec": "compress",
+      "bytes": 233983,
+      "sha256": "b056db16bb130df308ac1d8e8e82748513a0a11d83f0352cf90db20a39d0f566",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "xz-check-0",
+      "codec": "xz",
+      "bytes": 100,
+      "sha256": "4e57049269a3831d82c60303a719fbc95873c445399a3178c2be5fb8efb48d0f",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "xz-check-1",
+      "codec": "xz",
+      "bytes": 104,
+      "sha256": "6a1d81b3db033bb76d268914edb8887158aca56ae0db2c62e83b78d65d1c2d1a",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "xz-check-4",
+      "codec": "xz",
+      "bytes": 108,
+      "sha256": "a764222fde2a3a9860edb089277230dff989453991434a035c0e2f017869cfaf",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "xz-check-10",
+      "codec": "xz",
+      "bytes": 132,
+      "sha256": "78de778a6b2ee23e417c927b3087b3276f4710d15227111b1227e06f970aec68",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "xz-filter-delta",
+      "codec": "xz",
+      "bytes": 88,
+      "sha256": "f026b66ec05252fe5f67fd01a339f883d3588d8aa00cb1ef0be1bbf4f378c600",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "xz-filter-x86",
+      "codec": "xz",
+      "bytes": 312,
+      "sha256": "72a3427df4cf3012a2d8e60bea233b21829e8e313cb61bedb22a14e785758754",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "xz-filter-delta-x86",
+      "codec": "xz",
+      "bytes": 88,
+      "sha256": "4bd0e5fc702525cb5e5a9b601f50b689262b0c024bcf0577bc910e9c948f602c",
+      "payload": "binary",
+      "pinned_payload": "binary",
+      "corrected_payload": "binary"
+    },
+    {
+      "name": "zip-descriptor",
+      "codec": "zip",
+      "bytes": 274,
+      "sha256": "71968b8548207f72d06e4be3fafd12e1652138df9e847b0ee4652e48224b33d1",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zip64",
+      "codec": "zip",
+      "bytes": 262,
+      "sha256": "d227ec3819b86166cc5cb7fb0412ca8510fcc28cfcf08e2766b87597fd72b62f",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "zip64-descriptor",
+      "codec": "zip",
+      "bytes": 302,
+      "sha256": "34c58db8d36ea27df7fce14ba0583fd081a4f29a4197e5795825aff18b499561",
+      "payload": "payload",
+      "pinned_payload": "payload",
+      "corrected_payload": "payload"
+    },
+    {
+      "name": "lz4-linked",
+      "codec": "lz4",
+      "bytes": 1930,
+      "sha256": "8f4c44e12d0def94287714f0826ea9cd983fa777437fa5cbd0fe8760b1a01bd0",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lz4-block-check",
+      "codec": "lz4",
+      "bytes": 1972,
+      "sha256": "21dda1734b522b1abad50a1e95cc152a7681d28db2d707f3b2c02991eb47b75d",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lz4-no-check",
+      "codec": "lz4",
+      "bytes": 1936,
+      "sha256": "47ebd9d8706c9e2857316b59dd89d4cb10245fe5ebb040b66c7f9573b9d00693",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "lz4-large-block",
+      "codec": "lz4",
+      "bytes": 1839,
+      "sha256": "2c5315c9cfafedda60ed8864dc4acef46cba6e9d2ea6583b80176efcefbcdf0d",
+      "payload": "runs",
+      "pinned_payload": "runs",
+      "corrected_payload": "runs"
+    },
+    {
+      "name": "zstd-no-check",
+      "codec": "zstd",
+      "bytes": 180012,
+      "sha256": "12045dd812fc68192b043d4c8a6f687d6612d6193cba0fbe5cb3afddef336f2e",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    },
+    {
+      "name": "xz-multiblock",
+      "codec": "xz",
+      "bytes": 180232,
+      "sha256": "eac74ba16d2dbe0d302e344780a262fdec1ae01018f5626ec250ae079655fefe",
+      "payload": "random",
+      "pinned_payload": "random",
+      "corrected_payload": "random"
+    }
+  ]
+}
