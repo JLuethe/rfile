@@ -1,0 +1,36 @@
+{
+  "reader": "olefile",
+  "version": "0.47",
+  "observations": [
+    {
+      "case": "summary-v3-mini",
+      "status": "parsed",
+      "values": "{1: 1252, 18: b'Microsoft Word'}",
+      "simple_expected": true
+    },
+    {
+      "case": "summary-v3-regular",
+      "status": "parsed",
+      "values": "{1: 1252, 18: b'Microsoft Word'}",
+      "simple_expected": true
+    },
+    {
+      "case": "summary-v4-mini",
+      "status": "parsed",
+      "values": "{1: 1252, 18: b'Microsoft Word'}",
+      "simple_expected": true
+    },
+    {
+      "case": "summary-v4-regular",
+      "status": "parsed",
+      "values": "{1: 1252, 18: b'Microsoft Word'}",
+      "simple_expected": true
+    },
+    {
+      "case": "all-properties",
+      "status": "reader-error",
+      "error": "error: Error while parsing property id 207 in stream '\\x05SummaryInformation': unpack requires a buffer of 4 bytes"
+    }
+  ],
+  "caveat": "This reader fails its LPWSTR-vector path in the all-properties fixture; it is not independent proof for that vector. Microsoft MS-OLEPS wire layouts and typed vector tests are separate evidence."
+}

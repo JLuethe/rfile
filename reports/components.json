@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
-  "rust_commit": "05064e9cd67b9a1161a0fc64470eb5e1bbea59a7",
+  "rust_commit": "795d90b7e93643ee641a2d25bafad4e86e98a543",
   "environment": {
     "LC_ALL": "C",
     "TZ": "UTC"
@@ -18,11 +18,11 @@
       },
       "rust": {
         "status": 0,
-        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e740a",
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
         "stderr_hex": ""
       },
-      "equal": false,
-      "disposition": "known-open"
+      "equal": true,
+      "disposition": "exact"
     },
     {
       "case": "cdf-summary-1",
@@ -96,8 +96,8 @@
     }
   ],
   "total": 5,
-  "exact": 3,
-  "known_open": 1,
+  "exact": 4,
+  "known_open": 0,
   "explicit_unsupported": 1,
   "unexpected": 0
 }

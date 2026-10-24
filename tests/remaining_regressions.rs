@@ -41,7 +41,6 @@ fn regex_longest_and_collating_controls() {
     );
 }
 #[test]
-#[ignore = "R3: known pinned CDF fallback suffix mismatch; issue #3"]
 fn cdf_summary_fallback_matches_pinned_reference() {
     assert_eq!(
         Engine::builtin().unwrap().classify(&cdf()).unwrap().output,

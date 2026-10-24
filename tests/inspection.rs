@@ -147,13 +147,7 @@ impl InputView for ShortView {
     fn known_len(&self) -> Option<u64> {
         Some(8)
     }
-    fn read_at(
-        &mut self,
-        offset: u64,
-        out: &mut [u8],
-        budget: &InspectionBudget,
-    ) -> rfile::Result<usize> {
-        budget.record_read(out.len())?;
+    fn read_at_unaccounted(&mut self, offset: u64, out: &mut [u8]) -> rfile::Result<usize> {
         if offset == 0 {
             out[..2].copy_from_slice(b"AB");
             Ok(2)
@@ -243,4 +237,27 @@ fn capabilities_report_selected_profile_and_real_missing_features() {
     let json: serde_json::Value = serde_json::from_str(&c.json()).unwrap();
     assert_eq!(json["profile"], "corrected-v1");
     assert_eq!(json["sandbox"]["enforced"], false);
+}
+
+struct InterruptedView;
+impl InputView for InterruptedView {
+    fn known_len(&self) -> Option<u64> {
+        Some(10)
+    }
+    fn read_at_unaccounted(&mut self, _: u64, _: &mut [u8]) -> rfile::Result<usize> {
+        Err(io::Error::from(io::ErrorKind::Interrupted).into())
+    }
+}
+#[test]
+fn range_driver_bounds_interruptions_even_when_adapter_does_no_accounting() {
+    let b = budget(&Limits {
+        io_reads: 3,
+        ..Limits::default()
+    });
+    let e = input::read_range(&mut InterruptedView, 0, 1, &b).unwrap_err();
+    let detail = e.limit_detail().unwrap();
+    assert_eq!(
+        (detail.resource, detail.limit, detail.observed),
+        ("IO requests", 3, 4)
+    );
 }

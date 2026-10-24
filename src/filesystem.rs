@@ -204,7 +204,7 @@ pub(crate) fn classify_path(
     }
     if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
         return if annotation_only {
-            engine.classify_input(&[], None, false, None, budget)
+            engine.classify_input(&[], None, false, None, None, budget)
         } else {
             Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
         };
@@ -325,11 +325,13 @@ fn read_file(
         None
     };
     let executable = elf.as_ref().map_or(executable, |e| e.executable);
+    let mut view = crate::input::FileView::new(file)?;
     let mut result = engine.classify_input(
         &prefix,
         if tail.is_empty() { None } else { Some(&tail) },
         executable,
         elf.as_ref().map(|info| info.suffix.as_slice()),
+        Some(&mut view),
         budget,
     )?;
     result.truncated = meta.len() > prefix.len() as u64;
