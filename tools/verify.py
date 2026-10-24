@@ -36,6 +36,7 @@ if not args.no_oracle:
   data=json.loads((ROOT/('reports/'+report+'.json')).read_text())
   if not all(x['equal']for x in data['comparisons']):raise SystemExit(report+' mismatch; inspect reports')
  run('semantics-differential',['python3','tools/semantics_compare.py'])
+ run('regex-differential',['python3','tools/regex_compare.py'])
  semantics=json.loads((ROOT/'reports/semantics.json').read_text())
  if semantics['total']!=semantics['equal'] or semantics['compiler_errors']:raise SystemExit('custom rule differential mismatch')
  run('elf-differential',['python3','tools/elf_compare.py'])

@@ -42,7 +42,7 @@ impl Capabilities {
             database_format: crate::FORMAT_VERSION,
             profile,
             codecs: crate::codecs::COMPILED,
-            regex_backreferences: false,
+            regex_backreferences: true,
             c_abi: false,
             kernel_sandbox: false,
             display_locale: "C",
@@ -53,7 +53,8 @@ impl Capabilities {
         serde_json::json!({"schema_version":1,
         "engine_version":self.engine_version,"upstream_commit":self.upstream_commit,
         "database_format":self.database_format,"profile":self.profile.name(),"codecs":self.codecs,
-        "regex_backreferences":self.regex_backreferences,"c_abi":self.c_abi,
+        "regex_backreferences":self.regex_backreferences,
+        "regex":{"capture_groups":32,"instructions":65536,"pinned_quantified_backreferences":"restricted","corrected_capture_histories":true},"c_abi":self.c_abi,
         "sandbox":{"compiled":self.kernel_sandbox,"enforced":false},
         "display_locale":self.display_locale,"time_zone":self.time_zone,
         "hardening":{"sustained_fuzz_gate":false,"independent_security_review":false}

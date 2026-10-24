@@ -23,7 +23,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | name/use, endian flip | recursive context/evidence/limits | B | bounded calls and no uncontrolled stack | recursive/cyclic names and ^ uses |
 | string/pstring/string16 | byte-oriented quirks and displayed values | B | no full Unicode replacement of string16 semantics | prefix/width/NUL/whitespace/case vectors |
 | literal search | bounded positions and continuation base | B | memmem boundary quirk retained only when verified | range last-position tests |
-| regex | POSIX ERE C-locale leftmost-longest, last-byte truncation | B/C | earliest-start/longest-overall-match implemented; unsupported backreferences/collation remain gaps; no C FFI | alternation, NUL, $, classes, limits |
+| regex | POSIX ERE C-locale leftmost-longest, last-byte truncation | B/C | bounded capture VM plus regular fast path; pinned quantified-history restrictions and multicharacter collation remain explicit gaps; corrected histories are opt-in; no regex FFI | alternation, NUL, $, classes, limits |
 | dates/float/GUID/DER/octal/varints | typed matching and exact display | B/C | varint/ID3 at pin may have broken evaluator support; track suspected defects | cross-endian vectors, TZ, NaN |
 | metadata/symlinks/special files | Unix lstat/stat and MIME inode results | B/C | no reading devices without -s; unsupported platforms declared | fifo/socket/link/device/permissions |
 | text/encoding | ordered recognizers, character tables, normalized rules, suffixes | B/C | unsupported encodings must be listed, not guessed as UTF8 | BOM, invalid/truncated Unicode, EBCDIC |

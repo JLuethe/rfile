@@ -48,7 +48,6 @@ fn cdf_summary_fallback_matches_pinned_reference() {
     );
 }
 #[test]
-#[ignore = "R6: backreference VM is not implemented; issue #3; never count ignored as passing"]
 fn regex_backreference_matches_pinned_reference() {
     assert_eq!(
         regex("0 regex (ab)\\\\1 match=%s\n", b"abab\n"),

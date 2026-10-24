@@ -280,6 +280,7 @@ dependencies = [
  "lz4_flex",
  "lzma-rust2",
  "regex-automata",
+ "regex-syntax",
  "ruzstd",
  "serde_json",
 ]
