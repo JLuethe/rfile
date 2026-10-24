@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "rust_commit": "3d09bdd1d2c71cd38261a5b597b946607b8428c7",
+  "environment": {
+    "LC_ALL": "C",
+    "TZ": "UTC"
+  },
+  "comparisons": [
+    {
+      "case": "cdf-summary-0",
+      "input_sha256": "fd1eb0c74c59357c71c0dd9178377753310ddc71e0272cdedeb5109d44958aee",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e742c2043616e6e6f7420726561642073656374696f6e20696e666f0a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "436f6d706f7369746520446f63756d656e742046696c6520563220446f63756d656e740a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "known-open"
+    },
+    {
+      "case": "cdf-summary-1",
+      "input_sha256": "fd1eb0c74c59357c71c0dd9178377753310ddc71e0272cdedeb5109d44958aee",
+      "flags": [
+        "-i"
+      ],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6170706c69636174696f6e2f782d6f6c652d73746f726167653b20636861727365743d62696e6172790a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "regex-backreference",
+      "input_sha256": "70f3e7e6d8e91ae9a643fca67d03a5762e02cd2890b65c8adc143c1f737051e1",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6d617463683d616261622c20415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "equal": false,
+      "disposition": "known-open"
+    },
+    {
+      "case": "regex-longest-alternative",
+      "input_sha256": "a63d8014dba891345b30174df2b2a57efbb65b4f9f09b98f245d1b3192277ece",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6d617463683d61622c20415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6d617463683d61622c20415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    },
+    {
+      "case": "regex-collating-element",
+      "input_sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+      "flags": [],
+      "reference": {
+        "status": 0,
+        "stdout_hex": "6d617463683d612c20415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "6d617463683d612c20415343494920746578740a",
+        "stderr_hex": ""
+      },
+      "equal": true,
+      "disposition": "exact"
+    }
+  ],
+  "total": 5,
+  "exact": 3,
+  "known_open": 2,
+  "unexpected": 0
+}
