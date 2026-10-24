@@ -1,0 +1,2174 @@
+[
+  {
+    "upstream": "magic/Header",
+    "vendored": "data/magic-source/Header",
+    "included_in_default_database": true,
+    "sha256": "e392e4a39000a765a2915c6953e695baad2fb17150e26f036a6e115bae8ce58f"
+  },
+  {
+    "upstream": "magic/Localstuff",
+    "vendored": "data/magic-source/Localstuff",
+    "included_in_default_database": true,
+    "sha256": "ec56623d8249f221e4dbfa3f9c6df2c064f9100a8034001fd905a696aed5a10c"
+  },
+  {
+    "upstream": "magic/Magdir/a2ml",
+    "vendored": "data/magic-source/a2ml",
+    "included_in_default_database": true,
+    "sha256": "effb52324e5b0e345c2d7cfbf4b7ff4239f30cb931d8a8b243ad51a1767bdfb1"
+  },
+  {
+    "upstream": "magic/Magdir/acorn",
+    "vendored": "data/magic-source/acorn",
+    "included_in_default_database": true,
+    "sha256": "ab82ecfe45d39f7ccff713314080d02fdf2ec05220a931922afd358d94f333bb"
+  },
+  {
+    "upstream": "magic/Magdir/adi",
+    "vendored": "data/magic-source/adi",
+    "included_in_default_database": true,
+    "sha256": "72a204e7dcb4db382124f45dadcd1c65c59968be1dee6bbf1e7f9cb8df71d7ca"
+  },
+  {
+    "upstream": "magic/Magdir/adventure",
+    "vendored": "data/magic-source/adventure",
+    "included_in_default_database": true,
+    "sha256": "66037481adead88c46f2a5f51fed1295fdded59dabe792b675b3f58015b1c93a"
+  },
+  {
+    "upstream": "magic/Magdir/aes",
+    "vendored": "data/magic-source/aes",
+    "included_in_default_database": true,
+    "sha256": "ccb31dac8fef128eb2e90678e4b03428971230d74240e4c9d31e16a51b3b5188"
+  },
+  {
+    "upstream": "magic/Magdir/algol68",
+    "vendored": "data/magic-source/algol68",
+    "included_in_default_database": true,
+    "sha256": "bfc77b19622add317ec6cfd0fa106ee6fc7a2b5071107003058225807689737e"
+  },
+  {
+    "upstream": "magic/Magdir/allegro",
+    "vendored": "data/magic-source/allegro",
+    "included_in_default_database": true,
+    "sha256": "d86b7ad175881ee8ddf6e0adad8a0aa071cdcd9c9f2c0feb4c523914303d751b"
+  },
+  {
+    "upstream": "magic/Magdir/alliant",
+    "vendored": "data/magic-source/alliant",
+    "included_in_default_database": true,
+    "sha256": "06a9d7358ddcaf6d6801814de0e1b3c6217c91cb05af50135435cdc92a6903b9"
+  },
+  {
+    "upstream": "magic/Magdir/amanda",
+    "vendored": "data/magic-source/amanda",
+    "included_in_default_database": true,
+    "sha256": "bdb1e2ef2a177ae74aa3782c891459dc0e3efea384d641c1252ad111df71819b"
+  },
+  {
+    "upstream": "magic/Magdir/amigaos",
+    "vendored": "data/magic-source/amigaos",
+    "included_in_default_database": true,
+    "sha256": "7d78a0a475f17974e07aa941664a2ebdca9f6208f91f4e722b5adb433b071f5a"
+  },
+  {
+    "upstream": "magic/Magdir/andrew",
+    "vendored": "data/magic-source/andrew",
+    "included_in_default_database": true,
+    "sha256": "801999445e5525899e16b48fbcb6e4474f1662c680e50cff7e317fa1fd5314da"
+  },
+  {
+    "upstream": "magic/Magdir/android",
+    "vendored": "data/magic-source/android",
+    "included_in_default_database": true,
+    "sha256": "91507e7979f30965604b9264da1ec4524add8d3ccf93eb7fca1d7d8128cab6fc"
+  },
+  {
+    "upstream": "magic/Magdir/animation",
+    "vendored": "data/magic-source/animation",
+    "included_in_default_database": true,
+    "sha256": "bfcb4f6af9463a6147d9a176e099fea96bf0a01c6ca57fc4dd0cc065cc5835ea"
+  },
+  {
+    "upstream": "magic/Magdir/aout",
+    "vendored": "data/magic-source/aout",
+    "included_in_default_database": true,
+    "sha256": "ba88beae2cc3d8761d281c32564624b87ef973886bf6cbfa8202e3788a24aa9f"
+  },
+  {
+    "upstream": "magic/Magdir/apache",
+    "vendored": "data/magic-source/apache",
+    "included_in_default_database": true,
+    "sha256": "e30df977dc83a09f6a62017d96ac1bfaeb16c2794022cc23bd16bb3ced686132"
+  },
+  {
+    "upstream": "magic/Magdir/apl",
+    "vendored": "data/magic-source/apl",
+    "included_in_default_database": true,
+    "sha256": "cce150019620c2dc5917fea205bac26d0f1f6411e3edc43b2394cc8aac059f3c"
+  },
+  {
+    "upstream": "magic/Magdir/apple",
+    "vendored": "data/magic-source/apple",
+    "included_in_default_database": true,
+    "sha256": "849612e40bf00b2d5890972d0adc317508ef645e1d0d7682b4bd3db34094f920"
+  },
+  {
+    "upstream": "magic/Magdir/application",
+    "vendored": "data/magic-source/application",
+    "included_in_default_database": true,
+    "sha256": "050e330b0f8b7c3327b29704f24c7dd41fe44637e9a460e2de5faa926c25c3ac"
+  },
+  {
+    "upstream": "magic/Magdir/applix",
+    "vendored": "data/magic-source/applix",
+    "included_in_default_database": true,
+    "sha256": "7ce1fe5cd05bf231e9a8f3c094c93425a110683e78d294f56f612812a22c209c"
+  },
+  {
+    "upstream": "magic/Magdir/apt",
+    "vendored": "data/magic-source/apt",
+    "included_in_default_database": true,
+    "sha256": "1f64ca1ebfbe4d39047b46459e7de5bf4cc97f064e15e5b99048e32bcfb4234a"
+  },
+  {
+    "upstream": "magic/Magdir/archive",
+    "vendored": "data/magic-source/archive",
+    "included_in_default_database": true,
+    "sha256": "0e91b55e9c03d7f29a9581bd943f4c1b7ae65c55b4ff9f5c70e79cae8c4fe54d"
+  },
+  {
+    "upstream": "magic/Magdir/aria",
+    "vendored": "data/magic-source/aria",
+    "included_in_default_database": true,
+    "sha256": "b63436890cafeec0dd5a94443397f7c088dfa25a340bdc44a8529932ed3873ca"
+  },
+  {
+    "upstream": "magic/Magdir/arm",
+    "vendored": "data/magic-source/arm",
+    "included_in_default_database": true,
+    "sha256": "03eed13b030993901281a35a8ce874ebdcd527b651ce5c91607454755dfb173e"
+  },
+  {
+    "upstream": "magic/Magdir/asf",
+    "vendored": "data/magic-source/asf",
+    "included_in_default_database": true,
+    "sha256": "aa37cf6b00c6db5a68754e15910ff2415820b213035bbd7dc0c2f8049d3fad76"
+  },
+  {
+    "upstream": "magic/Magdir/assembler",
+    "vendored": "data/magic-source/assembler",
+    "included_in_default_database": true,
+    "sha256": "534e44e9cafe469125d0cd7766d89a68369e0d036322734d16fcd7d2e6d991a2"
+  },
+  {
+    "upstream": "magic/Magdir/asterix",
+    "vendored": "data/magic-source/asterix",
+    "included_in_default_database": true,
+    "sha256": "e2d9b4a13ab40bf0a317edae58237750fa01f3561769335390e7e0e4bb159429"
+  },
+  {
+    "upstream": "magic/Magdir/atari",
+    "vendored": "data/magic-source/atari",
+    "included_in_default_database": true,
+    "sha256": "919e13c05c3b1aa973d2b27392a47b778c6b01bb7ac161b0d0e35938b06c07ee"
+  },
+  {
+    "upstream": "magic/Magdir/att3b",
+    "vendored": "data/magic-source/att3b",
+    "included_in_default_database": true,
+    "sha256": "48a4bc111f4d5720602d39c69c1122802e4ab5bcd4090b06aa8302f63af0d986"
+  },
+  {
+    "upstream": "magic/Magdir/audio",
+    "vendored": "data/magic-source/audio",
+    "included_in_default_database": true,
+    "sha256": "e284e0141e57f2fb86285706cbf89f18b5714fece26d9b9fb5ba9c29c5adff51"
+  },
+  {
+    "upstream": "magic/Magdir/avm",
+    "vendored": "data/magic-source/avm",
+    "included_in_default_database": true,
+    "sha256": "ed48a840a53a288d5180d2ba58a1d5bef5dbe02509671243e9351b564a827642"
+  },
+  {
+    "upstream": "magic/Magdir/basis",
+    "vendored": "data/magic-source/basis",
+    "included_in_default_database": true,
+    "sha256": "c93e025086b1b1fb5333f39364671d8e92327824656f1d41d0469957d39a669d"
+  },
+  {
+    "upstream": "magic/Magdir/beetle",
+    "vendored": "data/magic-source/beetle",
+    "included_in_default_database": true,
+    "sha256": "bb6b4b8ee34fb6ce21bb2c55a748b0be3241ffad0b08e75ef7d8bc88cae082d8"
+  },
+  {
+    "upstream": "magic/Magdir/ber",
+    "vendored": "data/magic-source/ber",
+    "included_in_default_database": true,
+    "sha256": "0cb5920e56cf7ee5eb857fdb3af1a84c57af220928f75af1d0f7af850723739f"
+  },
+  {
+    "upstream": "magic/Magdir/bflt",
+    "vendored": "data/magic-source/bflt",
+    "included_in_default_database": true,
+    "sha256": "6e3342a4cd44d2457f37d5d3eed8d5bb38d9ce4246f3ef88799d8be063d08332"
+  },
+  {
+    "upstream": "magic/Magdir/bgcode",
+    "vendored": "data/magic-source/bgcode",
+    "included_in_default_database": true,
+    "sha256": "1c7cf31e4ebc4ee2ce63e170e944121a17e6a10cf4ab086636396387b74630f3"
+  },
+  {
+    "upstream": "magic/Magdir/bhl",
+    "vendored": "data/magic-source/bhl",
+    "included_in_default_database": true,
+    "sha256": "663b243d37b665c353da666fc81ff776b7cb4930011dd895442cc1ab28fbfa4d"
+  },
+  {
+    "upstream": "magic/Magdir/bioinformatics",
+    "vendored": "data/magic-source/bioinformatics",
+    "included_in_default_database": true,
+    "sha256": "e2ff2148f5a3ec37c2fe66c74fbb702272ff90ee30f3674b98adb92c22e89823"
+  },
+  {
+    "upstream": "magic/Magdir/biosig",
+    "vendored": "data/magic-source/biosig",
+    "included_in_default_database": true,
+    "sha256": "52cf4134188bc955ba409623120b58bb4d48a59cea852a41c0ab3c82184b3cac"
+  },
+  {
+    "upstream": "magic/Magdir/blackberry",
+    "vendored": "data/magic-source/blackberry",
+    "included_in_default_database": true,
+    "sha256": "9e5965c2dec40cc296636fa703daf355b1802d4536753e2ac729280d87b1e0b2"
+  },
+  {
+    "upstream": "magic/Magdir/blcr",
+    "vendored": "data/magic-source/blcr",
+    "included_in_default_database": true,
+    "sha256": "62e52258712b49fff2890f6c8e1f650c8c07cb32252c1c5b5fe69ca482dd3bf7"
+  },
+  {
+    "upstream": "magic/Magdir/blender",
+    "vendored": "data/magic-source/blender",
+    "included_in_default_database": true,
+    "sha256": "e5e6c6a422ba2163486ae178f343f560d9335f249705d2756ce995fec7d993ad"
+  },
+  {
+    "upstream": "magic/Magdir/blit",
+    "vendored": "data/magic-source/blit",
+    "included_in_default_database": true,
+    "sha256": "10e29508fc4d0420175ec811749c1a3e3b6d43934773d233114497a8e5d786c7"
+  },
+  {
+    "upstream": "magic/Magdir/bm",
+    "vendored": "data/magic-source/bm",
+    "included_in_default_database": true,
+    "sha256": "c30049ac056fabeb80eac468ca3aaf3e141b9fa783e9dc31e8bc1f89dadbc4cd"
+  },
+  {
+    "upstream": "magic/Magdir/bout",
+    "vendored": "data/magic-source/bout",
+    "included_in_default_database": true,
+    "sha256": "8cca027a37d55e6a555c724580242cf339d99ea95652a980893d6ad67daeb1ca"
+  },
+  {
+    "upstream": "magic/Magdir/bsdi",
+    "vendored": "data/magic-source/bsdi",
+    "included_in_default_database": true,
+    "sha256": "32bb362edc452d5ab626f89a86c9a1b939068f6f9446c3b332c84754f439aa3a"
+  },
+  {
+    "upstream": "magic/Magdir/bsi",
+    "vendored": "data/magic-source/bsi",
+    "included_in_default_database": true,
+    "sha256": "b1e822c48f23986f76995f10d3e7bfdf5e8a354edeecaa20b29b1e77952a792c"
+  },
+  {
+    "upstream": "magic/Magdir/btsnoop",
+    "vendored": "data/magic-source/btsnoop",
+    "included_in_default_database": true,
+    "sha256": "9f89cf72327f90b1b92cd01b8ee52b19bccad85d4f44031bee64e48454687d47"
+  },
+  {
+    "upstream": "magic/Magdir/burp",
+    "vendored": "data/magic-source/burp",
+    "included_in_default_database": true,
+    "sha256": "a0639bd7ed3679d23ea5e5ea544841fe0975544357773b05b87951631c49e66c"
+  },
+  {
+    "upstream": "magic/Magdir/bytecode",
+    "vendored": "data/magic-source/bytecode",
+    "included_in_default_database": true,
+    "sha256": "c1011e128c05dc595e2808e299f07f53d062e39570d98cc46cdc787bd7c3f6b3"
+  },
+  {
+    "upstream": "magic/Magdir/c-lang",
+    "vendored": "data/magic-source/c-lang",
+    "included_in_default_database": true,
+    "sha256": "dbf147adb02a763813c10b54b5cd41da0ef86f5f9c8683b72c7cbbe26b17c480"
+  },
+  {
+    "upstream": "magic/Magdir/c64",
+    "vendored": "data/magic-source/c64",
+    "included_in_default_database": true,
+    "sha256": "c8f2495654b4a0b4501c0209e918fc795389d78f60ad8f518fb60a49d46affad"
+  },
+  {
+    "upstream": "magic/Magdir/cad",
+    "vendored": "data/magic-source/cad",
+    "included_in_default_database": true,
+    "sha256": "00a4653dc85444b0724654800ce9da475be0abd683a41388e0b5ee87531b10ad"
+  },
+  {
+    "upstream": "magic/Magdir/cafebabe",
+    "vendored": "data/magic-source/cafebabe",
+    "included_in_default_database": true,
+    "sha256": "e950decc069db31f54e9e8a0949804d745493ba1e0c6c2e538e9ea337a7654bd"
+  },
+  {
+    "upstream": "magic/Magdir/cbor",
+    "vendored": "data/magic-source/cbor",
+    "included_in_default_database": true,
+    "sha256": "2e976a7d1c84e44295516411897da625943f37027c5c954a98ba6e897efce3d6"
+  },
+  {
+    "upstream": "magic/Magdir/ccf",
+    "vendored": "data/magic-source/ccf",
+    "included_in_default_database": true,
+    "sha256": "6213e2bbb983db34e80d577e8a45d52636c02a55594913601acfa9c4f70d4455"
+  },
+  {
+    "upstream": "magic/Magdir/cddb",
+    "vendored": "data/magic-source/cddb",
+    "included_in_default_database": true,
+    "sha256": "eb08c00dcdbb5a629f454017f13165f7cc23e6afd4665887df3566917abb83b6"
+  },
+  {
+    "upstream": "magic/Magdir/chord",
+    "vendored": "data/magic-source/chord",
+    "included_in_default_database": true,
+    "sha256": "6501631199bd3de41c2e5f12094eab78dfdd768502adb6214e82fbcea3378c61"
+  },
+  {
+    "upstream": "magic/Magdir/cisco",
+    "vendored": "data/magic-source/cisco",
+    "included_in_default_database": true,
+    "sha256": "faee2059d77f00bf8f001bb2aa57ea6efe822667f0c153dafbeff81ce3a8593f"
+  },
+  {
+    "upstream": "magic/Magdir/citrus",
+    "vendored": "data/magic-source/citrus",
+    "included_in_default_database": true,
+    "sha256": "130fb208254822d989329296ceaf4a4e6f60a1ed8dcf2f24373190ce1468997a"
+  },
+  {
+    "upstream": "magic/Magdir/clarion",
+    "vendored": "data/magic-source/clarion",
+    "included_in_default_database": true,
+    "sha256": "062796e2782ca4534e6e6494fd1c07841e6307c9e2c9af404398b74dc8777452"
+  },
+  {
+    "upstream": "magic/Magdir/claris",
+    "vendored": "data/magic-source/claris",
+    "included_in_default_database": true,
+    "sha256": "5bc09ef4e384747da1840add0883c22b872afae28a99f41a68277a27fe65caeb"
+  },
+  {
+    "upstream": "magic/Magdir/clipper",
+    "vendored": "data/magic-source/clipper",
+    "included_in_default_database": true,
+    "sha256": "c1917f5cda664ba9d16444ead5ffced3bc7aa67379ac4783821cb47368006691"
+  },
+  {
+    "upstream": "magic/Magdir/clojure",
+    "vendored": "data/magic-source/clojure",
+    "included_in_default_database": true,
+    "sha256": "3edc234c0c2c51f95a891540b4845e5189cd4ddd7769dc4ca23fc61cca06259b"
+  },
+  {
+    "upstream": "magic/Magdir/coff",
+    "vendored": "data/magic-source/coff",
+    "included_in_default_database": true,
+    "sha256": "830df8141d5c1fd5f5aa949dc772de58760e2f8ec446ec9d99b3b3e99312d5d0"
+  },
+  {
+    "upstream": "magic/Magdir/commands",
+    "vendored": "data/magic-source/commands",
+    "included_in_default_database": true,
+    "sha256": "da2cfd78fa46cde902d505b412c6e25edfd78618b563c14906b4205a37c6cf8c"
+  },
+  {
+    "upstream": "magic/Magdir/communications",
+    "vendored": "data/magic-source/communications",
+    "included_in_default_database": true,
+    "sha256": "4753c68110ec69c245fe13e71ac6b26ebb981c89e060b6be37a066d099701c49"
+  },
+  {
+    "upstream": "magic/Magdir/compress",
+    "vendored": "data/magic-source/compress",
+    "included_in_default_database": true,
+    "sha256": "f3cb550467ea9f8ee5efe30cebe1a41467881382fffb73b824b7a623ce907570"
+  },
+  {
+    "upstream": "magic/Magdir/console",
+    "vendored": "data/magic-source/console",
+    "included_in_default_database": true,
+    "sha256": "4e4145d47a3d77fdbd7f316a03f6932fff21edf1230b9a411691e9f952e0affb"
+  },
+  {
+    "upstream": "magic/Magdir/convex",
+    "vendored": "data/magic-source/convex",
+    "included_in_default_database": true,
+    "sha256": "7117a43bf6c02f0d9bda7a754400ad3c93988e8a1eb0117774fcbe32fe603458"
+  },
+  {
+    "upstream": "magic/Magdir/coverage",
+    "vendored": "data/magic-source/coverage",
+    "included_in_default_database": true,
+    "sha256": "8a6facfbe021134aa625f050e6527b9cd5afb3b8683e26f0de97b1803c136c7a"
+  },
+  {
+    "upstream": "magic/Magdir/cracklib",
+    "vendored": "data/magic-source/cracklib",
+    "included_in_default_database": true,
+    "sha256": "a21f7aff537e6d25822290c25ddfce8f5f2848e2b035694a97c120c5b8d05b0d"
+  },
+  {
+    "upstream": "magic/Magdir/creativeassembly",
+    "vendored": "data/magic-source/creativeassembly",
+    "included_in_default_database": true,
+    "sha256": "0776cdabd44286e678ef236912ca1100cf16203d5d32d19fdef2211075145b17"
+  },
+  {
+    "upstream": "magic/Magdir/crypto",
+    "vendored": "data/magic-source/crypto",
+    "included_in_default_database": true,
+    "sha256": "109f86841a59be0efd8ca11a5d63d158b86a5cfc16f950142444727729ec6139"
+  },
+  {
+    "upstream": "magic/Magdir/ctags",
+    "vendored": "data/magic-source/ctags",
+    "included_in_default_database": true,
+    "sha256": "592325a482e1c4129e0564cb744a95505216b30a0def9e3bb8d322c662881e86"
+  },
+  {
+    "upstream": "magic/Magdir/ctf",
+    "vendored": "data/magic-source/ctf",
+    "included_in_default_database": true,
+    "sha256": "bf0f83566d7b42a5871fd1a69475abd7bd97f108455b25111c3e449c868059f7"
+  },
+  {
+    "upstream": "magic/Magdir/cubemap",
+    "vendored": "data/magic-source/cubemap",
+    "included_in_default_database": true,
+    "sha256": "afcc8ca683f7d3e308d5df451b5598fcd4976ec84079bb5b6506ca0c4328f42f"
+  },
+  {
+    "upstream": "magic/Magdir/cups",
+    "vendored": "data/magic-source/cups",
+    "included_in_default_database": true,
+    "sha256": "752c62df92fef4a51843ceb8dc05e572d8c1efda3028d31c3497a3849e6397f9"
+  },
+  {
+    "upstream": "magic/Magdir/dact",
+    "vendored": "data/magic-source/dact",
+    "included_in_default_database": true,
+    "sha256": "50fe68fe5bdb27376864a94ab784cba4e09383bd23ee8f2b9d0f6bb51407a185"
+  },
+  {
+    "upstream": "magic/Magdir/database",
+    "vendored": "data/magic-source/database",
+    "included_in_default_database": true,
+    "sha256": "d0428b127784664085a8717d6a6ccfca11f169fdb524d6b27ee66df977382b21"
+  },
+  {
+    "upstream": "magic/Magdir/dataone",
+    "vendored": "data/magic-source/dataone",
+    "included_in_default_database": true,
+    "sha256": "2a79e282a14d3616c5d0956b0755e239f12ac807a7bbc4baf17b23f8dfdc2c17"
+  },
+  {
+    "upstream": "magic/Magdir/dbpf",
+    "vendored": "data/magic-source/dbpf",
+    "included_in_default_database": true,
+    "sha256": "9b72c1753489dc985f76437a56b3929ca63ce22e83d1791451eabe2de1039ef3"
+  },
+  {
+    "upstream": "magic/Magdir/der",
+    "vendored": "data/magic-source/der",
+    "included_in_default_database": true,
+    "sha256": "8e35fdee410ad32967b64bc4ff00922a72880265f86a68236fc762b2554267c3"
+  },
+  {
+    "upstream": "magic/Magdir/diamond",
+    "vendored": "data/magic-source/diamond",
+    "included_in_default_database": true,
+    "sha256": "bd5c8a9d362dc73215b47db4c4fb7c0dd518d93ae4b45a2ecbb96882a813a543"
+  },
+  {
+    "upstream": "magic/Magdir/dif",
+    "vendored": "data/magic-source/dif",
+    "included_in_default_database": true,
+    "sha256": "3d5c874669bc0f6cd960e2241ff1575925b82d1afe1ffe648fc08ad2388ebda8"
+  },
+  {
+    "upstream": "magic/Magdir/diff",
+    "vendored": "data/magic-source/diff",
+    "included_in_default_database": true,
+    "sha256": "0c24889fc0f83b2a912506b6a44012f7ddf002631042fde4230d09427bab0f78"
+  },
+  {
+    "upstream": "magic/Magdir/digital",
+    "vendored": "data/magic-source/digital",
+    "included_in_default_database": true,
+    "sha256": "36bb0d7cde705dee6d862d4a1c86f7988e996c76c7d5c79a3f51e196fdb0a266"
+  },
+  {
+    "upstream": "magic/Magdir/dolby",
+    "vendored": "data/magic-source/dolby",
+    "included_in_default_database": true,
+    "sha256": "2dd8cf28c1da3ddb78f38dfe23bc82875055374c619b934e2cf33c1fb52ae636"
+  },
+  {
+    "upstream": "magic/Magdir/dump",
+    "vendored": "data/magic-source/dump",
+    "included_in_default_database": true,
+    "sha256": "3569a0aed38c56f6fbd83c696cf37794e1e85087c2c4d3d2080a6354fde18d63"
+  },
+  {
+    "upstream": "magic/Magdir/dwarfs",
+    "vendored": "data/magic-source/dwarfs",
+    "included_in_default_database": true,
+    "sha256": "64b26462e49faeb251cd8c52e99ea03b9f3a207b87185dda2105574b7711ae9c"
+  },
+  {
+    "upstream": "magic/Magdir/dyadic",
+    "vendored": "data/magic-source/dyadic",
+    "included_in_default_database": true,
+    "sha256": "6c46942ce5028dc4498c2e7a7e928fb294bb959b5047e2b81a061d3e11d52bc0"
+  },
+  {
+    "upstream": "magic/Magdir/ebml",
+    "vendored": "data/magic-source/ebml",
+    "included_in_default_database": true,
+    "sha256": "ed6fdaec6b2a79a72535f58c3aa0972f5b357dcbfbfc3bd09dbbdb747e939350"
+  },
+  {
+    "upstream": "magic/Magdir/edid",
+    "vendored": "data/magic-source/edid",
+    "included_in_default_database": true,
+    "sha256": "73690cd938e398af015650a0b077cf65b25a6ba5a0ede72e16db90ccef5e6df8"
+  },
+  {
+    "upstream": "magic/Magdir/editors",
+    "vendored": "data/magic-source/editors",
+    "included_in_default_database": true,
+    "sha256": "13cf7457116af68f73f7178e18c8cbe750ad1926b27f30f42df74a1f0c3989ff"
+  },
+  {
+    "upstream": "magic/Magdir/efi",
+    "vendored": "data/magic-source/efi",
+    "included_in_default_database": true,
+    "sha256": "341660704a1026af5054ea4c77574d55a57047865c35f0bfe0fd1912aaa01ea6"
+  },
+  {
+    "upstream": "magic/Magdir/elf",
+    "vendored": "data/magic-source/elf",
+    "included_in_default_database": true,
+    "sha256": "3e47a7bf8dd368ce6899c7d61dc17c9b81db06b57dfcd47e460edd0524246133"
+  },
+  {
+    "upstream": "magic/Magdir/encore",
+    "vendored": "data/magic-source/encore",
+    "included_in_default_database": true,
+    "sha256": "3ddc8b79d81511d34d56b33e80f51e5943f684c1416fee7d785548ef8687c3e5"
+  },
+  {
+    "upstream": "magic/Magdir/epoc",
+    "vendored": "data/magic-source/epoc",
+    "included_in_default_database": true,
+    "sha256": "800bcda352a35c5eafb766e27d00a7430da2d275b0839c8527361e0a1dc1893d"
+  },
+  {
+    "upstream": "magic/Magdir/erlang",
+    "vendored": "data/magic-source/erlang",
+    "included_in_default_database": true,
+    "sha256": "340841c62b5fac02f3b2318bbb5207a9b13ed3f467e6bdfb888acbabbb877fff"
+  },
+  {
+    "upstream": "magic/Magdir/espressif",
+    "vendored": "data/magic-source/espressif",
+    "included_in_default_database": true,
+    "sha256": "77145c670b4486f72d4bcd1225a9c4cfa84f674de025f5f93095564df56f8d04"
+  },
+  {
+    "upstream": "magic/Magdir/esri",
+    "vendored": "data/magic-source/esri",
+    "included_in_default_database": true,
+    "sha256": "69934c66f9fd944295ede6ea7927e86f4dbf32dad2834f03ca3aaa919ff5722c"
+  },
+  {
+    "upstream": "magic/Magdir/fcs",
+    "vendored": "data/magic-source/fcs",
+    "included_in_default_database": true,
+    "sha256": "41796739ee611406b7004bbdf79386a9a7d187ac9a3a2856711b0151ea4ec5de"
+  },
+  {
+    "upstream": "magic/Magdir/filesystems",
+    "vendored": "data/magic-source/filesystems",
+    "included_in_default_database": true,
+    "sha256": "b9170b9ab050bcd7d9484aa2f585744b7d602ef70239e48e886b23fccdfd0f9b"
+  },
+  {
+    "upstream": "magic/Magdir/finger",
+    "vendored": "data/magic-source/finger",
+    "included_in_default_database": true,
+    "sha256": "25cb17b687a3ab04b0959a39886850cfaa30a587487187952bcb0db68b07c343"
+  },
+  {
+    "upstream": "magic/Magdir/firmware",
+    "vendored": "data/magic-source/firmware",
+    "included_in_default_database": true,
+    "sha256": "2425d2f858c1b2f942c8be5e7d5688c32e066c8a1534882e4bb0fef8e67dad99"
+  },
+  {
+    "upstream": "magic/Magdir/flash",
+    "vendored": "data/magic-source/flash",
+    "included_in_default_database": true,
+    "sha256": "6eb7b130db818c9fcaf3bc1991efa72e07665919d818652cbf82ff504f99fef5"
+  },
+  {
+    "upstream": "magic/Magdir/flif",
+    "vendored": "data/magic-source/flif",
+    "included_in_default_database": true,
+    "sha256": "3a11f7efe4dea9083a6b740b49725462ff62df4ea842d5d79d7fb5bfc9e58dc8"
+  },
+  {
+    "upstream": "magic/Magdir/fonts",
+    "vendored": "data/magic-source/fonts",
+    "included_in_default_database": true,
+    "sha256": "61948c6d2d03133b68559601920b82369c86c3dd1bdcd808f781fea5bb6aa198"
+  },
+  {
+    "upstream": "magic/Magdir/forth",
+    "vendored": "data/magic-source/forth",
+    "included_in_default_database": true,
+    "sha256": "6e0c331ee65153eec44e00749b602efe628158dcae3c1decd28db8ac0f8c76d0"
+  },
+  {
+    "upstream": "magic/Magdir/fortran",
+    "vendored": "data/magic-source/fortran",
+    "included_in_default_database": true,
+    "sha256": "d5a51508396c19a52c429ef3486ef5093a2b49a4705ba1f9c9a773000eca9352"
+  },
+  {
+    "upstream": "magic/Magdir/frame",
+    "vendored": "data/magic-source/frame",
+    "included_in_default_database": true,
+    "sha256": "9596be0a8044728d8e843c176271e5f59d1c3d404f614db999be574e64d21fa4"
+  },
+  {
+    "upstream": "magic/Magdir/freebsd",
+    "vendored": "data/magic-source/freebsd",
+    "included_in_default_database": true,
+    "sha256": "f5ecceb989ff60a3560ccb1dee0c595a26f818f2d08af4b556ace648ea37510c"
+  },
+  {
+    "upstream": "magic/Magdir/fsav",
+    "vendored": "data/magic-source/fsav",
+    "included_in_default_database": true,
+    "sha256": "7320709af16ba03de87768efb65b76f49c6833284ab3702427c9969218a32b56"
+  },
+  {
+    "upstream": "magic/Magdir/fusecompress",
+    "vendored": "data/magic-source/fusecompress",
+    "included_in_default_database": true,
+    "sha256": "4ec5ea5f7ed0f2437493a79f26ef7a48f0d108f3421fb09b8efd646c29d42d1d"
+  },
+  {
+    "upstream": "magic/Magdir/games",
+    "vendored": "data/magic-source/games",
+    "included_in_default_database": true,
+    "sha256": "2e9eb9de0f1f021bed055b7e20905502fcecfd21a4624c17b345e578ac44f7da"
+  },
+  {
+    "upstream": "magic/Magdir/gcc",
+    "vendored": "data/magic-source/gcc",
+    "included_in_default_database": true,
+    "sha256": "fb1d67794f7fbc436bc7ee02fde9766b5114d72ea54664a42e485ecaefd4ce24"
+  },
+  {
+    "upstream": "magic/Magdir/gconv",
+    "vendored": "data/magic-source/gconv",
+    "included_in_default_database": true,
+    "sha256": "1773382dcc07549bfbdb1cdc95d6b5ccbdc58fcbb7e769e59df2fc694c27aa9a"
+  },
+  {
+    "upstream": "magic/Magdir/gentoo",
+    "vendored": "data/magic-source/gentoo",
+    "included_in_default_database": true,
+    "sha256": "851427b79ccc8788c251aa2ba17b1e2d49790efd8a6c4454ac156a28aff46fd4"
+  },
+  {
+    "upstream": "magic/Magdir/geo",
+    "vendored": "data/magic-source/geo",
+    "included_in_default_database": true,
+    "sha256": "e63a36e70c73768ddb19aa57b0e03f3e0879df7e080af171ce41493b43aff37e"
+  },
+  {
+    "upstream": "magic/Magdir/geos",
+    "vendored": "data/magic-source/geos",
+    "included_in_default_database": true,
+    "sha256": "a7203b106c33c98e2ae26c3e02b4a74aaf8f0bda446ddb2fd779f1cb3c800c0d"
+  },
+  {
+    "upstream": "magic/Magdir/gguf",
+    "vendored": "data/magic-source/gguf",
+    "included_in_default_database": true,
+    "sha256": "af2dd2084e9c0b3dfd89935e445210f4556910c22f1c96b01bb5f75c3116bc38"
+  },
+  {
+    "upstream": "magic/Magdir/gimp",
+    "vendored": "data/magic-source/gimp",
+    "included_in_default_database": true,
+    "sha256": "a3e1beb50907c70dded1ab7bb5fb89c51a07785505c51dbf4e47cc6dc5206b60"
+  },
+  {
+    "upstream": "magic/Magdir/git",
+    "vendored": "data/magic-source/git",
+    "included_in_default_database": true,
+    "sha256": "10031116d6163b417cb291a467a9479f8859df8acccd9c562a9917efe570b1f8"
+  },
+  {
+    "upstream": "magic/Magdir/glibc",
+    "vendored": "data/magic-source/glibc",
+    "included_in_default_database": true,
+    "sha256": "e1f09fa01d6a4aa4bde19ba88e1fac75021448a1f6acb2dbb14b896025d6db10"
+  },
+  {
+    "upstream": "magic/Magdir/gnome",
+    "vendored": "data/magic-source/gnome",
+    "included_in_default_database": true,
+    "sha256": "d70ea4c26a61bdc8607851359db08613cee69948706760c2dc1fc09de652468e"
+  },
+  {
+    "upstream": "magic/Magdir/gnu",
+    "vendored": "data/magic-source/gnu",
+    "included_in_default_database": true,
+    "sha256": "ceb15b077ccd1ba3f32662036d1e3858addba16cf009c2c23f14256dd88ac868"
+  },
+  {
+    "upstream": "magic/Magdir/gnumeric",
+    "vendored": "data/magic-source/gnumeric",
+    "included_in_default_database": true,
+    "sha256": "7181966aef15c105d6d3635b2dc4c55c0d7486449ec7a17c757fbc9a63d3bd9f"
+  },
+  {
+    "upstream": "magic/Magdir/gpt",
+    "vendored": "data/magic-source/gpt",
+    "included_in_default_database": true,
+    "sha256": "055fdbb268ef9e9ed821c4b0f629d28edd05457d9397bcd548a46b086e17127f"
+  },
+  {
+    "upstream": "magic/Magdir/gpu",
+    "vendored": "data/magic-source/gpu",
+    "included_in_default_database": true,
+    "sha256": "8560465332943b9288642d4096d3ab1b14d132aa65acb69c94a72a3670e0c7c4"
+  },
+  {
+    "upstream": "magic/Magdir/grace",
+    "vendored": "data/magic-source/grace",
+    "included_in_default_database": true,
+    "sha256": "0fad24fa6dfcd4c6d02a1adf286cba594b5f768c818f0c008f99a5e1c39c91d9"
+  },
+  {
+    "upstream": "magic/Magdir/graphviz",
+    "vendored": "data/magic-source/graphviz",
+    "included_in_default_database": true,
+    "sha256": "850864b033798350dc469433522d223571bcd53ff20dd0fde4f2aa01c1b36922"
+  },
+  {
+    "upstream": "magic/Magdir/gringotts",
+    "vendored": "data/magic-source/gringotts",
+    "included_in_default_database": true,
+    "sha256": "d710733c01673bf917e714e1ce694de003381c158372fc59d5cd7560bae363cc"
+  },
+  {
+    "upstream": "magic/Magdir/hardware",
+    "vendored": "data/magic-source/hardware",
+    "included_in_default_database": true,
+    "sha256": "167703b7270bdc15fa86ccf1efe934c27f83559bd469c59ec0b77cb1c00fb4ac"
+  },
+  {
+    "upstream": "magic/Magdir/hitachi-sh",
+    "vendored": "data/magic-source/hitachi-sh",
+    "included_in_default_database": true,
+    "sha256": "ce0e20f82b74a9438b69462457dae58b5b41af1ade321cd9e8cb187f5c3ab7a7"
+  },
+  {
+    "upstream": "magic/Magdir/hp",
+    "vendored": "data/magic-source/hp",
+    "included_in_default_database": true,
+    "sha256": "1404b2d81ea69e360db793924a0d3e80fa8816a718cbd06369da8acdf78e49b1"
+  },
+  {
+    "upstream": "magic/Magdir/human68k",
+    "vendored": "data/magic-source/human68k",
+    "included_in_default_database": true,
+    "sha256": "575d89dc9139a5916da1b766817cdf5d378abd7a5541cd85901c6a0ec12a8f90"
+  },
+  {
+    "upstream": "magic/Magdir/ibm370",
+    "vendored": "data/magic-source/ibm370",
+    "included_in_default_database": true,
+    "sha256": "1eb06b67bd865abbd62113fb712da4d94cd55fb1cbf0b52aff98a84e5dbb15e6"
+  },
+  {
+    "upstream": "magic/Magdir/ibm6000",
+    "vendored": "data/magic-source/ibm6000",
+    "included_in_default_database": true,
+    "sha256": "15e09d5cfd59511ebeea056313b7c484518b7d85fb471e52ee4fcc111384ad00"
+  },
+  {
+    "upstream": "magic/Magdir/icc",
+    "vendored": "data/magic-source/icc",
+    "included_in_default_database": true,
+    "sha256": "5078ff339b4a2dbb8d074b8bebabd12d4ccb509b5a0844cf781776931a95b8a3"
+  },
+  {
+    "upstream": "magic/Magdir/iff",
+    "vendored": "data/magic-source/iff",
+    "included_in_default_database": true,
+    "sha256": "90b3ffb3d873887f9c18b05bb89ebd669d8add49293953c802c2682f5a9dab46"
+  },
+  {
+    "upstream": "magic/Magdir/images",
+    "vendored": "data/magic-source/images",
+    "included_in_default_database": true,
+    "sha256": "9e2245c9616982a0f0e98a312136985230cf81d3fcf6921cc293b2145d30f86d"
+  },
+  {
+    "upstream": "magic/Magdir/inform",
+    "vendored": "data/magic-source/inform",
+    "included_in_default_database": true,
+    "sha256": "530760ccdf806b212be8cb04db0cf2474665bfc205dc5f7565a51a1253591848"
+  },
+  {
+    "upstream": "magic/Magdir/intel",
+    "vendored": "data/magic-source/intel",
+    "included_in_default_database": true,
+    "sha256": "e424abe8051e48e61a948f3bf71bc7b9c96a1576a448b79d2da76faf5901206d"
+  },
+  {
+    "upstream": "magic/Magdir/interleaf",
+    "vendored": "data/magic-source/interleaf",
+    "included_in_default_database": true,
+    "sha256": "a1c05211bd35b3f3fe09984dc49cff757a280e27e47748f67d169cd4d2bfd5e6"
+  },
+  {
+    "upstream": "magic/Magdir/island",
+    "vendored": "data/magic-source/island",
+    "included_in_default_database": true,
+    "sha256": "ef77d09f2e29fb9d2b404e1092b5843e5ebd31832dc3c45863945af24ddb1f11"
+  },
+  {
+    "upstream": "magic/Magdir/ispell",
+    "vendored": "data/magic-source/ispell",
+    "included_in_default_database": true,
+    "sha256": "ac2493c7eacdb21a66d2caf6fe7df50e7d04efd2da7a4f5d9340f89c89ee03e4"
+  },
+  {
+    "upstream": "magic/Magdir/isz",
+    "vendored": "data/magic-source/isz",
+    "included_in_default_database": true,
+    "sha256": "0d9cf7dbff478651c5eea298f42d0318c3fdee17fe96fa70c3238daf149e653c"
+  },
+  {
+    "upstream": "magic/Magdir/java",
+    "vendored": "data/magic-source/java",
+    "included_in_default_database": true,
+    "sha256": "fb08f447823182859efa1c4d772f00c7b06191e486b3a6f2c6df257bdad14db8"
+  },
+  {
+    "upstream": "magic/Magdir/javascript",
+    "vendored": "data/magic-source/javascript",
+    "included_in_default_database": true,
+    "sha256": "607a3f3bce00130f0d956b151f2089e726eb30b0f44285e8ffea5ebc5fd5ba1f"
+  },
+  {
+    "upstream": "magic/Magdir/jpeg",
+    "vendored": "data/magic-source/jpeg",
+    "included_in_default_database": true,
+    "sha256": "38ef4ea36afc7f8f9a076d7393ee6d433de78aaa148eae8a7d13bbe442403def"
+  },
+  {
+    "upstream": "magic/Magdir/k9",
+    "vendored": "data/magic-source/k9",
+    "included_in_default_database": true,
+    "sha256": "e8f74702dadd143da39e40850884903fa29fb87b2de18c3bb54cb6adb1e09b9d"
+  },
+  {
+    "upstream": "magic/Magdir/karma",
+    "vendored": "data/magic-source/karma",
+    "included_in_default_database": true,
+    "sha256": "4c7a46c66eafe27cc58df0406a974b37ba3203882f5e5626371dfdadb6f05ffc"
+  },
+  {
+    "upstream": "magic/Magdir/kde",
+    "vendored": "data/magic-source/kde",
+    "included_in_default_database": true,
+    "sha256": "fa26e99ab12e841b1d156cf795a6244c84254ef5365b3ca907010fa4c3a780d3"
+  },
+  {
+    "upstream": "magic/Magdir/keepass",
+    "vendored": "data/magic-source/keepass",
+    "included_in_default_database": true,
+    "sha256": "3d613bbac6a8cc6b7a18b485ecb4034c9ffcc9acd76f9556a7d082b5c6b8ec02"
+  },
+  {
+    "upstream": "magic/Magdir/kerberos",
+    "vendored": "data/magic-source/kerberos",
+    "included_in_default_database": true,
+    "sha256": "10028768adc1dc381e0550f75f383b9adcc85796d435d0c23889be637519f02c"
+  },
+  {
+    "upstream": "magic/Magdir/keyman",
+    "vendored": "data/magic-source/keyman",
+    "included_in_default_database": true,
+    "sha256": "5e7c2d9ba9bd9a310b51ac625ae8785330d201e8064cfa7a1ddd60733523816a"
+  },
+  {
+    "upstream": "magic/Magdir/kicad",
+    "vendored": "data/magic-source/kicad",
+    "included_in_default_database": true,
+    "sha256": "bed4802bc8a5b2b59339442879831dceacc120a197a8e3469e88504692e2b34f"
+  },
+  {
+    "upstream": "magic/Magdir/kml",
+    "vendored": "data/magic-source/kml",
+    "included_in_default_database": true,
+    "sha256": "8da8d81f4bab4253cc3a799cee278a25e7043a00279b8acdbe2370e258b78d2b"
+  },
+  {
+    "upstream": "magic/Magdir/lammps",
+    "vendored": "data/magic-source/lammps",
+    "included_in_default_database": true,
+    "sha256": "1ab62a8f00ab015e8604d51148928fe647265973aace2e4ed8adc8d2274128fb"
+  },
+  {
+    "upstream": "magic/Magdir/lauterbach",
+    "vendored": "data/magic-source/lauterbach",
+    "included_in_default_database": true,
+    "sha256": "32ecc7d6bdad193fd7ae9733f9dfcf6fafcf68e7a219fb33141832f1f9be7989"
+  },
+  {
+    "upstream": "magic/Magdir/lecter",
+    "vendored": "data/magic-source/lecter",
+    "included_in_default_database": true,
+    "sha256": "58b6a47843124076c98515cb04522e81b511a9458613a77d5509d3073e2c579b"
+  },
+  {
+    "upstream": "magic/Magdir/lex",
+    "vendored": "data/magic-source/lex",
+    "included_in_default_database": true,
+    "sha256": "61adf25afb433746d9f5dddac7fd81a4c0323e5b4226bdb3b357e32719f6c7a7"
+  },
+  {
+    "upstream": "magic/Magdir/lif",
+    "vendored": "data/magic-source/lif",
+    "included_in_default_database": true,
+    "sha256": "76e009f07d9c9503aa7b9d6134f70b4135334d4c6c8f575da7177c22af9ef413"
+  },
+  {
+    "upstream": "magic/Magdir/linux",
+    "vendored": "data/magic-source/linux",
+    "included_in_default_database": true,
+    "sha256": "0d85f15ad7542aa2352063f4a17010b2e574526c2d771083caa56f6e8bbb1018"
+  },
+  {
+    "upstream": "magic/Magdir/lisp",
+    "vendored": "data/magic-source/lisp",
+    "included_in_default_database": true,
+    "sha256": "3ca19ac5362c10c27f2961a76cc0c96e60e96c66b0ab7ed8eda16c5b93b966c0"
+  },
+  {
+    "upstream": "magic/Magdir/llvm",
+    "vendored": "data/magic-source/llvm",
+    "included_in_default_database": true,
+    "sha256": "3a610953532e09875199df3f8003bdde8967f421230aaa08681496c035192c00"
+  },
+  {
+    "upstream": "magic/Magdir/locoscript",
+    "vendored": "data/magic-source/locoscript",
+    "included_in_default_database": true,
+    "sha256": "a48a9160a5a15ac9df19277b319dc7c01cbd576f00275f33621e739180da1296"
+  },
+  {
+    "upstream": "magic/Magdir/lua",
+    "vendored": "data/magic-source/lua",
+    "included_in_default_database": true,
+    "sha256": "751b30082f4c15dae2f4edff1e7bc7c4749caa7ee7556147cd3b8b639653449a"
+  },
+  {
+    "upstream": "magic/Magdir/luks",
+    "vendored": "data/magic-source/luks",
+    "included_in_default_database": true,
+    "sha256": "692c7d230c141001a2cb0c98c04da6e959d0721b95c71f5501bbc38bacc0cab2"
+  },
+  {
+    "upstream": "magic/Magdir/m4",
+    "vendored": "data/magic-source/m4",
+    "included_in_default_database": true,
+    "sha256": "32d0c9d29769722cb49237f1385b97e732a8823c197008d57f4aea5d56ce7c67"
+  },
+  {
+    "upstream": "magic/Magdir/mach",
+    "vendored": "data/magic-source/mach",
+    "included_in_default_database": true,
+    "sha256": "e2ec18d44553565050876ce531a73081315bf9b1299512e3495bf63da48b7e9c"
+  },
+  {
+    "upstream": "magic/Magdir/macintosh",
+    "vendored": "data/magic-source/macintosh",
+    "included_in_default_database": true,
+    "sha256": "27a2f5142f330ba179da17ff695804f5ee3c608da9f10dcdb6cfcaea2563d94b"
+  },
+  {
+    "upstream": "magic/Magdir/macos",
+    "vendored": "data/magic-source/macos",
+    "included_in_default_database": true,
+    "sha256": "e12872f1619379f66075a7b1a36546455be0b79429f97cc24443a685d160bccf"
+  },
+  {
+    "upstream": "magic/Magdir/magic",
+    "vendored": "data/magic-source/magic",
+    "included_in_default_database": true,
+    "sha256": "77d43184d5237a2167d3fc6a330bba7a536f77997b13dd5efbaaf0c0a7c23d7b"
+  },
+  {
+    "upstream": "magic/Magdir/mail.news",
+    "vendored": "data/magic-source/mail.news",
+    "included_in_default_database": true,
+    "sha256": "ec77bc3375015ba3b3ec300ffeb84139f34a3b7e4ecbde8dd83ac15e3648e85d"
+  },
+  {
+    "upstream": "magic/Magdir/make",
+    "vendored": "data/magic-source/make",
+    "included_in_default_database": true,
+    "sha256": "2da21eca456ae14f4edff8ac8a81fe4574af547c9632b2f5c55e27e5d58cab15"
+  },
+  {
+    "upstream": "magic/Magdir/map",
+    "vendored": "data/magic-source/map",
+    "included_in_default_database": true,
+    "sha256": "64af647e8c20c7c237244e70f41160c283c041cb34bbd221481c6c51908af6ed"
+  },
+  {
+    "upstream": "magic/Magdir/maple",
+    "vendored": "data/magic-source/maple",
+    "included_in_default_database": true,
+    "sha256": "917fc95bf0fbc5d3850bf28e84a3aa731d24715b8ac0f8541e21d64d63ae74a7"
+  },
+  {
+    "upstream": "magic/Magdir/marc21",
+    "vendored": "data/magic-source/marc21",
+    "included_in_default_database": true,
+    "sha256": "5f2f1ff1b0f15abd3ff267f82a3b91673af6a00bfe600a7176cfd42b9ba83d5c"
+  },
+  {
+    "upstream": "magic/Magdir/mathcad",
+    "vendored": "data/magic-source/mathcad",
+    "included_in_default_database": true,
+    "sha256": "de4286933630c9f095b279093d98f6eb2d499c9f5c7dfa984faa4788ad1692f7"
+  },
+  {
+    "upstream": "magic/Magdir/mathematica",
+    "vendored": "data/magic-source/mathematica",
+    "included_in_default_database": true,
+    "sha256": "c2f503801f0178a15dd29abc9addcab2772f2bf757422b3bb2e5aa669f280f44"
+  },
+  {
+    "upstream": "magic/Magdir/matroska",
+    "vendored": "data/magic-source/matroska",
+    "included_in_default_database": true,
+    "sha256": "300a8d39f643d4743e6777876eed523bf85e8ea422749edb76d1d8752901860d"
+  },
+  {
+    "upstream": "magic/Magdir/mcrypt",
+    "vendored": "data/magic-source/mcrypt",
+    "included_in_default_database": true,
+    "sha256": "50cf5098188d821710131e1833e0053cc991676f44fde7d9890173917e11f442"
+  },
+  {
+    "upstream": "magic/Magdir/measure",
+    "vendored": "data/magic-source/measure",
+    "included_in_default_database": true,
+    "sha256": "80538a394e6c277aa59d223310bbcbf325d80b15a327746281e1fe055088c360"
+  },
+  {
+    "upstream": "magic/Magdir/mercurial",
+    "vendored": "data/magic-source/mercurial",
+    "included_in_default_database": true,
+    "sha256": "0d45de6978f6ca071dd5f4a09f07767b2624a91cade6a173ab33bad794f88622"
+  },
+  {
+    "upstream": "magic/Magdir/metastore",
+    "vendored": "data/magic-source/metastore",
+    "included_in_default_database": true,
+    "sha256": "f1a91fe44c7ad7ba5a7fd8739039ada339e796daabb2a5b58ce62b182de7ccc3"
+  },
+  {
+    "upstream": "magic/Magdir/meteorological",
+    "vendored": "data/magic-source/meteorological",
+    "included_in_default_database": true,
+    "sha256": "73b4409fe3ac0a6456e4071071475a10cce76090ea67f50e53781161db043f35"
+  },
+  {
+    "upstream": "magic/Magdir/microfocus",
+    "vendored": "data/magic-source/microfocus",
+    "included_in_default_database": true,
+    "sha256": "0db446e09395a1bc56499b6a5078f8244afda12d58f47630282c8f9570a24de3"
+  },
+  {
+    "upstream": "magic/Magdir/mime",
+    "vendored": "data/magic-source/mime",
+    "included_in_default_database": true,
+    "sha256": "1b0d7060ea12e3dea973ee7c015c845f218f78e61c3c640f0e0b39e650d603c5"
+  },
+  {
+    "upstream": "magic/Magdir/mips",
+    "vendored": "data/magic-source/mips",
+    "included_in_default_database": true,
+    "sha256": "efe0473452256f30b6002c8ec442920121411e24152363c0c7ef68bcee4cb852"
+  },
+  {
+    "upstream": "magic/Magdir/mirage",
+    "vendored": "data/magic-source/mirage",
+    "included_in_default_database": true,
+    "sha256": "02773e547d5431c266ecb1d6d8de032e76ea31846aa82f1d8e8f88a05f52c1e7"
+  },
+  {
+    "upstream": "magic/Magdir/misctools",
+    "vendored": "data/magic-source/misctools",
+    "included_in_default_database": true,
+    "sha256": "9507df855c110a1494acfc617cad98270f9776236262d83542e2829353371e5b"
+  },
+  {
+    "upstream": "magic/Magdir/mkid",
+    "vendored": "data/magic-source/mkid",
+    "included_in_default_database": true,
+    "sha256": "845baa1ffcadffe91661f05580242d733f0e6dfc6bc9f7b3c1e97baa0c54ab90"
+  },
+  {
+    "upstream": "magic/Magdir/mlssa",
+    "vendored": "data/magic-source/mlssa",
+    "included_in_default_database": true,
+    "sha256": "e483a23b6e2496c0a35eb42e1103a38b93663c35cfd86bcf4a624ca3dcda8b68"
+  },
+  {
+    "upstream": "magic/Magdir/mmdf",
+    "vendored": "data/magic-source/mmdf",
+    "included_in_default_database": true,
+    "sha256": "25b4e07a3563605c873f030298aeba65245e90999f360e0c018937b2c758a0c6"
+  },
+  {
+    "upstream": "magic/Magdir/modem",
+    "vendored": "data/magic-source/modem",
+    "included_in_default_database": true,
+    "sha256": "7a45b50f522cf8eab28c8c59738b2c3f97116151843047f6899e0c3199e30c7b"
+  },
+  {
+    "upstream": "magic/Magdir/modulefile",
+    "vendored": "data/magic-source/modulefile",
+    "included_in_default_database": true,
+    "sha256": "42761917f512318a0e5392b845f44929181f038bbf7597257927ae5783302344"
+  },
+  {
+    "upstream": "magic/Magdir/motorola",
+    "vendored": "data/magic-source/motorola",
+    "included_in_default_database": true,
+    "sha256": "629ab244d959a3f013027da16bb30281f2eafdada80de90733fcf2bbe383fa3b"
+  },
+  {
+    "upstream": "magic/Magdir/mozilla",
+    "vendored": "data/magic-source/mozilla",
+    "included_in_default_database": true,
+    "sha256": "e41f7e805c22cc9b9d2261280285bf464cd231cb10415415edb80322570bd5df"
+  },
+  {
+    "upstream": "magic/Magdir/msdos",
+    "vendored": "data/magic-source/msdos",
+    "included_in_default_database": true,
+    "sha256": "b7bcf3a2f79bd47c843bdb19bba5a5647dff91096cab65eb6b810da1359ef3f1"
+  },
+  {
+    "upstream": "magic/Magdir/msooxml",
+    "vendored": "data/magic-source/msooxml",
+    "included_in_default_database": true,
+    "sha256": "9176ba4118f70a13af2cfd043ce8d7d0491c7eccfc6380ae4274f5529b6c3ac4"
+  },
+  {
+    "upstream": "magic/Magdir/msvc",
+    "vendored": "data/magic-source/msvc",
+    "included_in_default_database": true,
+    "sha256": "e5b065f34c0b5ec151c8c3a6b721983c9db31d3b95ea1ac310a3b27f5bebe56a"
+  },
+  {
+    "upstream": "magic/Magdir/msx",
+    "vendored": "data/magic-source/msx",
+    "included_in_default_database": true,
+    "sha256": "458150f7e8eca4a86ef5a6b62467f2e5b2c6af7a5f86c975a5bc5cbaaab5dc3d"
+  },
+  {
+    "upstream": "magic/Magdir/mup",
+    "vendored": "data/magic-source/mup",
+    "included_in_default_database": true,
+    "sha256": "e51fb528b6f268dc496b03c1d5fd97f16e37963734470249cc2fd3a96fcc0212"
+  },
+  {
+    "upstream": "magic/Magdir/music",
+    "vendored": "data/magic-source/music",
+    "included_in_default_database": true,
+    "sha256": "5d39f1cef6a9e79759ca7f1874f7e1927ab9b7500886443013618651e764cea4"
+  },
+  {
+    "upstream": "magic/Magdir/nasa",
+    "vendored": "data/magic-source/nasa",
+    "included_in_default_database": true,
+    "sha256": "0be26b2f6f28af5a540be3b576998a50264de867ab16039fa26794d398bb792e"
+  },
+  {
+    "upstream": "magic/Magdir/natinst",
+    "vendored": "data/magic-source/natinst",
+    "included_in_default_database": true,
+    "sha256": "d8a564cd5560e67abd99c3bd97b6107e098fd76ca7f856dd4c9e2a342d7ce554"
+  },
+  {
+    "upstream": "magic/Magdir/ncr",
+    "vendored": "data/magic-source/ncr",
+    "included_in_default_database": true,
+    "sha256": "8b8eef3111cf2a266ccab969876f4e6c210261ff6a995cc27e87111be20e26e7"
+  },
+  {
+    "upstream": "magic/Magdir/netbsd",
+    "vendored": "data/magic-source/netbsd",
+    "included_in_default_database": true,
+    "sha256": "4e86a09ee3044d8bbf37eb82a1d832ab027130544cc423d8799490a96f2b8f85"
+  },
+  {
+    "upstream": "magic/Magdir/netscape",
+    "vendored": "data/magic-source/netscape",
+    "included_in_default_database": true,
+    "sha256": "e8391f2eb41082af2a1b4ebc8c17e6d8afd00be54dec3f1513ecd9b920b9bb5a"
+  },
+  {
+    "upstream": "magic/Magdir/netware",
+    "vendored": "data/magic-source/netware",
+    "included_in_default_database": true,
+    "sha256": "0e6eeb136639498a27e745353d55308461b8ebbace8b774a9223b8f22db3a883"
+  },
+  {
+    "upstream": "magic/Magdir/news",
+    "vendored": "data/magic-source/news",
+    "included_in_default_database": true,
+    "sha256": "87f83e94bd8020eb3f7e33d83691d0ea741428564791841b9454a5dde0633134"
+  },
+  {
+    "upstream": "magic/Magdir/nfdump",
+    "vendored": "data/magic-source/nfdump",
+    "included_in_default_database": true,
+    "sha256": "71b1ad4938f04be6c0a6bbc3068b318b8fa3e4df86d714549061947f13c6aba0"
+  },
+  {
+    "upstream": "magic/Magdir/nifty",
+    "vendored": "data/magic-source/nifty",
+    "included_in_default_database": true,
+    "sha256": "dbfe47591d11595ce81b701c1870a37aeebd5f8885a5696c82af1629013d638c"
+  },
+  {
+    "upstream": "magic/Magdir/nim-lang",
+    "vendored": "data/magic-source/nim-lang",
+    "included_in_default_database": true,
+    "sha256": "7a15543be55fffbd53b2d618f0f27e3522fb23d6aab09acf29fe19a2cf5fa46b"
+  },
+  {
+    "upstream": "magic/Magdir/nitpicker",
+    "vendored": "data/magic-source/nitpicker",
+    "included_in_default_database": true,
+    "sha256": "80a3564ce4eaaf93e667134841b7e683fde0db5a57c80bcedc003c8a187f49aa"
+  },
+  {
+    "upstream": "magic/Magdir/nix",
+    "vendored": "data/magic-source/nix",
+    "included_in_default_database": true,
+    "sha256": "347ad0eddae2694128208cfeb305f0e999cc539788d0b790c3b73359d7243433"
+  },
+  {
+    "upstream": "magic/Magdir/numpy",
+    "vendored": "data/magic-source/numpy",
+    "included_in_default_database": true,
+    "sha256": "9692e6166b3f5aa18ed4bbeffe2b4b2ca42f331354aedbaaaf0d36d2e25b7e86"
+  },
+  {
+    "upstream": "magic/Magdir/oasis",
+    "vendored": "data/magic-source/oasis",
+    "included_in_default_database": true,
+    "sha256": "793deaab4dedbe44e20d7ffe2e351573870ed21256a7ffe16c11c4255562673e"
+  },
+  {
+    "upstream": "magic/Magdir/ocaml",
+    "vendored": "data/magic-source/ocaml",
+    "included_in_default_database": true,
+    "sha256": "278e2e63c86909cfeb0fbfb31df5e785b4c26db709b6035b8e939bcbe619d905"
+  },
+  {
+    "upstream": "magic/Magdir/octave",
+    "vendored": "data/magic-source/octave",
+    "included_in_default_database": true,
+    "sha256": "5b00cf02a9213d13c6192a87679e6f3994c7178ae135e0fff88ae0275863887d"
+  },
+  {
+    "upstream": "magic/Magdir/ole2compounddocs",
+    "vendored": "data/magic-source/ole2compounddocs",
+    "included_in_default_database": true,
+    "sha256": "e2e73c10513f7f2b42680c72ed17b1d6c11215462cb703f594cb4e37fc7bdfef"
+  },
+  {
+    "upstream": "magic/Magdir/olf",
+    "vendored": "data/magic-source/olf",
+    "included_in_default_database": true,
+    "sha256": "2578527746e03f1ae243a0e5669a83541c2e0fc5565364b85eb694d78c32ccae"
+  },
+  {
+    "upstream": "magic/Magdir/openfst",
+    "vendored": "data/magic-source/openfst",
+    "included_in_default_database": true,
+    "sha256": "ae49e7d1b3f1f06982b9100663af94ffd217f28610d82bee3932914496b22bef"
+  },
+  {
+    "upstream": "magic/Magdir/opentimestamps",
+    "vendored": "data/magic-source/opentimestamps",
+    "included_in_default_database": true,
+    "sha256": "d66be67f8a4a938824f3e38f2227247a1f4ce71fbd8d1c62bd91e2765044f0e2"
+  },
+  {
+    "upstream": "magic/Magdir/oric",
+    "vendored": "data/magic-source/oric",
+    "included_in_default_database": true,
+    "sha256": "345578f9d96fe257264fc2e77b02798ac827b3623e0a84a8db36a1b7e55aa94a"
+  },
+  {
+    "upstream": "magic/Magdir/os2",
+    "vendored": "data/magic-source/os2",
+    "included_in_default_database": true,
+    "sha256": "c107c1f51e9092406718a3818e17bb654d044669410711044f2394278ef77701"
+  },
+  {
+    "upstream": "magic/Magdir/os400",
+    "vendored": "data/magic-source/os400",
+    "included_in_default_database": true,
+    "sha256": "6ad146c5dff4a97354c298090cd33b98f8e8f0112533b86c1fb4bf4f5c40c462"
+  },
+  {
+    "upstream": "magic/Magdir/os9",
+    "vendored": "data/magic-source/os9",
+    "included_in_default_database": true,
+    "sha256": "3163fb3dcc8138fbc1fa212988dde29defac997449093e607c36586230994159"
+  },
+  {
+    "upstream": "magic/Magdir/osf1",
+    "vendored": "data/magic-source/osf1",
+    "included_in_default_database": true,
+    "sha256": "787319647d74ff9d234ac9a285e34514e00ad37a8a47150b2f6385c30ff53aa2"
+  },
+  {
+    "upstream": "magic/Magdir/pack",
+    "vendored": "data/magic-source/pack",
+    "included_in_default_database": true,
+    "sha256": "b597dc1d12f1ebb91eed59fb83fb0fef0f48f393fbfa94473550c1519e3e6278"
+  },
+  {
+    "upstream": "magic/Magdir/palm",
+    "vendored": "data/magic-source/palm",
+    "included_in_default_database": true,
+    "sha256": "f9e2cbea08e6fa2ec0f058761f4c7403323085e4a947ea1c1ccc3f0aa1daa17c"
+  },
+  {
+    "upstream": "magic/Magdir/parix",
+    "vendored": "data/magic-source/parix",
+    "included_in_default_database": true,
+    "sha256": "513218f0200af5cd26b85b6557eeb0c8b9db465b59c30dd8c8ddeda88d1ec7b2"
+  },
+  {
+    "upstream": "magic/Magdir/parrot",
+    "vendored": "data/magic-source/parrot",
+    "included_in_default_database": true,
+    "sha256": "f3e738a459ababb57b3be8f685f5f7b94c9e4d9b3902a32f0a6149f303e2779f"
+  },
+  {
+    "upstream": "magic/Magdir/partclone",
+    "vendored": "data/magic-source/partclone",
+    "included_in_default_database": true,
+    "sha256": "2975d6747f2fdc4f1aa27e8d0f66727f6e11128e91206e06ad470bdca5e66288"
+  },
+  {
+    "upstream": "magic/Magdir/pascal",
+    "vendored": "data/magic-source/pascal",
+    "included_in_default_database": true,
+    "sha256": "3d3708e8b7f1fe198b89beb07ad1ca10ed7dedb2f15d2cf0682a0d8f7bda1750"
+  },
+  {
+    "upstream": "magic/Magdir/pbf",
+    "vendored": "data/magic-source/pbf",
+    "included_in_default_database": true,
+    "sha256": "31bc1152499701c8fa44ae09b8af317be27661e6aa0b777899c2d85b09041482"
+  },
+  {
+    "upstream": "magic/Magdir/pbm",
+    "vendored": "data/magic-source/pbm",
+    "included_in_default_database": true,
+    "sha256": "02bab017c33ffa7e7e344d34dba4b72eb77b028e2d07fd5ef2f8d613564c31e4"
+  },
+  {
+    "upstream": "magic/Magdir/pc98",
+    "vendored": "data/magic-source/pc98",
+    "included_in_default_database": true,
+    "sha256": "c67dbdcb7ff73ef533c08bec65035bb8b7aa4828304a389f5144ee22fea89e77"
+  },
+  {
+    "upstream": "magic/Magdir/pci_ids",
+    "vendored": "data/magic-source/pci_ids",
+    "included_in_default_database": true,
+    "sha256": "d46649eb474f3f9c35b127920f061e90e2a42fbf223577edf5dfda1df5daa61d"
+  },
+  {
+    "upstream": "magic/Magdir/pcjr",
+    "vendored": "data/magic-source/pcjr",
+    "included_in_default_database": true,
+    "sha256": "93d8e4c9cd72e0f37857715ec4288f7dda1fed9ff889e91c163a92c63cc45582"
+  },
+  {
+    "upstream": "magic/Magdir/pdf",
+    "vendored": "data/magic-source/pdf",
+    "included_in_default_database": true,
+    "sha256": "e5f44d3e28f96ecdcb13e46c975822f12d20d8a1e51e33a2a15e7160d6c070dc"
+  },
+  {
+    "upstream": "magic/Magdir/pdp",
+    "vendored": "data/magic-source/pdp",
+    "included_in_default_database": true,
+    "sha256": "bd011469fc2dec1e2eea79044d9d78116b7c5ea016b60ee44e163668313a11f0"
+  },
+  {
+    "upstream": "magic/Magdir/perl",
+    "vendored": "data/magic-source/perl",
+    "included_in_default_database": true,
+    "sha256": "69e39516c633444f8604df379a641d3ce4dd2ba30b3219f83d98b83a696ce1b5"
+  },
+  {
+    "upstream": "magic/Magdir/pgf",
+    "vendored": "data/magic-source/pgf",
+    "included_in_default_database": true,
+    "sha256": "8e271b2f61c5c7ca7d58a267414eded704c1ec2d024c47565bd48f5b6d64d963"
+  },
+  {
+    "upstream": "magic/Magdir/pgp",
+    "vendored": "data/magic-source/pgp",
+    "included_in_default_database": true,
+    "sha256": "569a61f424926990d76699d1994492696dece84dc2fdc1e52f0e2a1f2db5cdd8"
+  },
+  {
+    "upstream": "magic/Magdir/pgp-binary-keys",
+    "vendored": "data/magic-source/pgp-binary-keys",
+    "included_in_default_database": true,
+    "sha256": "b62cc7e48629b3a33bdfcb0a2ba17ab42bbac647dae3d1a242886dd4e1af4a50"
+  },
+  {
+    "upstream": "magic/Magdir/pkgadd",
+    "vendored": "data/magic-source/pkgadd",
+    "included_in_default_database": true,
+    "sha256": "f000757f68618a64c2ea3d58babd81f261af4dfab76682975b4a2ad0414477c1"
+  },
+  {
+    "upstream": "magic/Magdir/plan9",
+    "vendored": "data/magic-source/plan9",
+    "included_in_default_database": true,
+    "sha256": "4706ea8bcd9afcfcd60c99609d78405eb2365e3e1a49e52df94cfac3ca6f4904"
+  },
+  {
+    "upstream": "magic/Magdir/playdate",
+    "vendored": "data/magic-source/playdate",
+    "included_in_default_database": true,
+    "sha256": "ea4505a7bd2d7f50a2d0d4227e5c9821ef0e6444034f52f934fb94da3ff87a29"
+  },
+  {
+    "upstream": "magic/Magdir/plus5",
+    "vendored": "data/magic-source/plus5",
+    "included_in_default_database": true,
+    "sha256": "8f1a1b1d0fa5e7900e5276000c373f9113081201075f39d93f34b5e5775839cd"
+  },
+  {
+    "upstream": "magic/Magdir/pmem",
+    "vendored": "data/magic-source/pmem",
+    "included_in_default_database": true,
+    "sha256": "268fd4a65de53873b78c674c3553aba4d41d9cd39da9e3c52f4bf6d2644ec0db"
+  },
+  {
+    "upstream": "magic/Magdir/polyml",
+    "vendored": "data/magic-source/polyml",
+    "included_in_default_database": true,
+    "sha256": "d3f1f486db7cdd8c8d0f73bdf9121410a72a6fb65c15536f77fc913114680eb5"
+  },
+  {
+    "upstream": "magic/Magdir/printer",
+    "vendored": "data/magic-source/printer",
+    "included_in_default_database": true,
+    "sha256": "b380e90fb80cc990645580b1e332b7555ac6a4772f35802f187e0f53ea10edc3"
+  },
+  {
+    "upstream": "magic/Magdir/project",
+    "vendored": "data/magic-source/project",
+    "included_in_default_database": true,
+    "sha256": "82358c9808b654b44ef26e77d7458c7dc6109ec4e3ab78f4519939b326c2ac77"
+  },
+  {
+    "upstream": "magic/Magdir/psdbms",
+    "vendored": "data/magic-source/psdbms",
+    "included_in_default_database": true,
+    "sha256": "953e717a7e651ba4390cb6b7c1428316be088ecbc0ca7bbb3e24a38f2ba934f6"
+  },
+  {
+    "upstream": "magic/Magdir/psl",
+    "vendored": "data/magic-source/psl",
+    "included_in_default_database": true,
+    "sha256": "3c82cfe4b75c5af65529e338cc8e691a4c1afb6e3f178fe84f71c5874dfad001"
+  },
+  {
+    "upstream": "magic/Magdir/pulsar",
+    "vendored": "data/magic-source/pulsar",
+    "included_in_default_database": true,
+    "sha256": "34eb826145213db363ccf9f2923479722906934704674f7ce76a92d616b9438f"
+  },
+  {
+    "upstream": "magic/Magdir/puzzle",
+    "vendored": "data/magic-source/puzzle",
+    "included_in_default_database": true,
+    "sha256": "387045ec1d7b8fcf69fa2e13e369ca705f04036dd1845244fb6d003dd1f5c4da"
+  },
+  {
+    "upstream": "magic/Magdir/pwsafe",
+    "vendored": "data/magic-source/pwsafe",
+    "included_in_default_database": true,
+    "sha256": "23855b4a2d3aae5961692cc89f1e46943f7f76e75d66ced0180c0fb7e696a451"
+  },
+  {
+    "upstream": "magic/Magdir/pyramid",
+    "vendored": "data/magic-source/pyramid",
+    "included_in_default_database": true,
+    "sha256": "e08195c1e4f7e71ccbd029ef3159bd89a4baf79516a08519b05ccf377fc98d88"
+  },
+  {
+    "upstream": "magic/Magdir/python",
+    "vendored": "data/magic-source/python",
+    "included_in_default_database": true,
+    "sha256": "da154def5e6e673b2294d8eee88647e8a8a8c605a864bb58a1c3b3048559893a"
+  },
+  {
+    "upstream": "magic/Magdir/qt",
+    "vendored": "data/magic-source/qt",
+    "included_in_default_database": true,
+    "sha256": "e302a762d3fd0918429a3fc12216c39b2fc635c8c44dcb3b48f6e427de69b91b"
+  },
+  {
+    "upstream": "magic/Magdir/r",
+    "vendored": "data/magic-source/r",
+    "included_in_default_database": true,
+    "sha256": "cedc1a19ebad0197455dd4fd5ebf7799b04a0b751ff6a008e62e4dd97199732a"
+  },
+  {
+    "upstream": "magic/Magdir/revision",
+    "vendored": "data/magic-source/revision",
+    "included_in_default_database": true,
+    "sha256": "e0b25a88fd40dfb44866e2b111042a4bf0cfd7edd1afad2edbe62d970c767c64"
+  },
+  {
+    "upstream": "magic/Magdir/riff",
+    "vendored": "data/magic-source/riff",
+    "included_in_default_database": true,
+    "sha256": "aa421e1596088f96f27719040ad3cf19a23c4f624b85a884c8daccbecd909e8b"
+  },
+  {
+    "upstream": "magic/Magdir/ringdove",
+    "vendored": "data/magic-source/ringdove",
+    "included_in_default_database": true,
+    "sha256": "c7aedee2f4ef18c4b913cfec205eda8a0184a8313579b74f1af32117b22e3463"
+  },
+  {
+    "upstream": "magic/Magdir/rpi",
+    "vendored": "data/magic-source/rpi",
+    "included_in_default_database": true,
+    "sha256": "6cdc3c0a4ffafc989cc3784f006b6e8ee4fe06a163d0e82a5336d41197b26bf3"
+  },
+  {
+    "upstream": "magic/Magdir/rpm",
+    "vendored": "data/magic-source/rpm",
+    "included_in_default_database": true,
+    "sha256": "70df97fbcb7924384ce4132f19652e45c05f560d0b1d9281f50cc8ac470e4243"
+  },
+  {
+    "upstream": "magic/Magdir/rpmsg",
+    "vendored": "data/magic-source/rpmsg",
+    "included_in_default_database": true,
+    "sha256": "e6d0a5743507c5653a36589636c953265fee2fa09ec8a1bb909fd52acd6afe4a"
+  },
+  {
+    "upstream": "magic/Magdir/rst",
+    "vendored": "data/magic-source/rst",
+    "included_in_default_database": true,
+    "sha256": "70589f37f51fdea01429b23d95ba0feff93f33576d37e1e2e6a843bafe56e224"
+  },
+  {
+    "upstream": "magic/Magdir/rtf",
+    "vendored": "data/magic-source/rtf",
+    "included_in_default_database": true,
+    "sha256": "a9fb2627612282e7e45057f28c419fbb32b4e9cc7c254e4a150252fb3e7f66da"
+  },
+  {
+    "upstream": "magic/Magdir/ruby",
+    "vendored": "data/magic-source/ruby",
+    "included_in_default_database": true,
+    "sha256": "337a2cd12a28ca5fe2ebab9c975b396504ecfa0857289629a66896314008540a"
+  },
+  {
+    "upstream": "magic/Magdir/rust",
+    "vendored": "data/magic-source/rust",
+    "included_in_default_database": true,
+    "sha256": "1a80e9e4f83f5507f543cd4547b4ee56be5928a41e9178d73a7a792dfae5e387"
+  },
+  {
+    "upstream": "magic/Magdir/sc",
+    "vendored": "data/magic-source/sc",
+    "included_in_default_database": true,
+    "sha256": "51d348eed4e50c2027935c92ad6347383a40b310f8db54b5d97181dd36d84984"
+  },
+  {
+    "upstream": "magic/Magdir/sccs",
+    "vendored": "data/magic-source/sccs",
+    "included_in_default_database": true,
+    "sha256": "9654a6a94bef786b5cc71beb4aa066592fe2135ac2e42da80f3626ff8bb61909"
+  },
+  {
+    "upstream": "magic/Magdir/scientific",
+    "vendored": "data/magic-source/scientific",
+    "included_in_default_database": true,
+    "sha256": "8e5d2e7ed631966bd4e7b63bddecff6fc69d289eab8223f36bfcc55fe0fd03d8"
+  },
+  {
+    "upstream": "magic/Magdir/securitycerts",
+    "vendored": "data/magic-source/securitycerts",
+    "included_in_default_database": true,
+    "sha256": "3ee920ed40c80eff3857b896513cec6135cbaffef1499768d51e2e08c05a7f87"
+  },
+  {
+    "upstream": "magic/Magdir/selinux",
+    "vendored": "data/magic-source/selinux",
+    "included_in_default_database": true,
+    "sha256": "1e6125e2fd1dbe6c7d7480f605c29a0c10fb5a33295fef2657f3055ad817c991"
+  },
+  {
+    "upstream": "magic/Magdir/sendmail",
+    "vendored": "data/magic-source/sendmail",
+    "included_in_default_database": true,
+    "sha256": "c13cbfce07bd038ed175a8c5f8e2e4550703e5152bbdfa637dd644925e8c87bd"
+  },
+  {
+    "upstream": "magic/Magdir/sequent",
+    "vendored": "data/magic-source/sequent",
+    "included_in_default_database": true,
+    "sha256": "139156d0c7a87d45b386578210d65bffbfba42634b2fa06bc883428343de686b"
+  },
+  {
+    "upstream": "magic/Magdir/sereal",
+    "vendored": "data/magic-source/sereal",
+    "included_in_default_database": true,
+    "sha256": "da5ab5aeade52a17a2ce88d9296912bb160f49c6fa9582399c3dac2d8f9b4c95"
+  },
+  {
+    "upstream": "magic/Magdir/sf3",
+    "vendored": "data/magic-source/sf3",
+    "included_in_default_database": true,
+    "sha256": "d6cafc5fe21811e89a161c26cec86d2bd30ba98c9078e86d7a2f2a7fb1d3976a"
+  },
+  {
+    "upstream": "magic/Magdir/sgi",
+    "vendored": "data/magic-source/sgi",
+    "included_in_default_database": true,
+    "sha256": "a3388fcea9470eacc872084f14fb3a2e6b0152379040e8ef0f331fc131105298"
+  },
+  {
+    "upstream": "magic/Magdir/sgml",
+    "vendored": "data/magic-source/sgml",
+    "included_in_default_database": true,
+    "sha256": "e0aba740969b2645fbedb7b8794bb4dea508e0a01f80b4dce7ece182072512be"
+  },
+  {
+    "upstream": "magic/Magdir/sharc",
+    "vendored": "data/magic-source/sharc",
+    "included_in_default_database": true,
+    "sha256": "5474f53fe14a0749c2411965f340d959dc6543c3dd2ee79fe3ab05bfd2f70875"
+  },
+  {
+    "upstream": "magic/Magdir/sinclair",
+    "vendored": "data/magic-source/sinclair",
+    "included_in_default_database": true,
+    "sha256": "638d2de24b6a5ecf076c07902e5812654778beb043a2109a78f84a99a5d89a81"
+  },
+  {
+    "upstream": "magic/Magdir/sisu",
+    "vendored": "data/magic-source/sisu",
+    "included_in_default_database": true,
+    "sha256": "493ae0b33061766cd4f39fcf9ee66892a0e5fe99346b36252d3303064f768f86"
+  },
+  {
+    "upstream": "magic/Magdir/sketch",
+    "vendored": "data/magic-source/sketch",
+    "included_in_default_database": true,
+    "sha256": "2cb5b11b64efd8fdc689abf0ea4f33a2a995904554b1da4d9b00b79e232361b3"
+  },
+  {
+    "upstream": "magic/Magdir/smalltalk",
+    "vendored": "data/magic-source/smalltalk",
+    "included_in_default_database": true,
+    "sha256": "4e5863dda9a6408450f31e9be7f39c974370a4068e15394f1c840b350df53c13"
+  },
+  {
+    "upstream": "magic/Magdir/smile",
+    "vendored": "data/magic-source/smile",
+    "included_in_default_database": true,
+    "sha256": "942140ff12c7983a1f28ac81e39ecc8b0ea1637e79a89f45c2bc842773ef9d6b"
+  },
+  {
+    "upstream": "magic/Magdir/sniffer",
+    "vendored": "data/magic-source/sniffer",
+    "included_in_default_database": true,
+    "sha256": "393597fea8ee84ac1a08d3337e0656afa26c9f8a4b18e41c3d8fa7ba876cc2a3"
+  },
+  {
+    "upstream": "magic/Magdir/softquad",
+    "vendored": "data/magic-source/softquad",
+    "included_in_default_database": true,
+    "sha256": "fad9b2824a862bcad1b117d6f3b3e412876e60d5ed8d8b40755f5ff871bfe4c9"
+  },
+  {
+    "upstream": "magic/Magdir/sosi",
+    "vendored": "data/magic-source/sosi",
+    "included_in_default_database": true,
+    "sha256": "738106e408f207b77025dd78f8a57c2cf0d84877cc4c5b81375bab8d5d217bae"
+  },
+  {
+    "upstream": "magic/Magdir/spec",
+    "vendored": "data/magic-source/spec",
+    "included_in_default_database": true,
+    "sha256": "fd6171157e96fbe5c1b581466dda84db93f1d2837367e798b452854a76250231"
+  },
+  {
+    "upstream": "magic/Magdir/spectrum",
+    "vendored": "data/magic-source/spectrum",
+    "included_in_default_database": true,
+    "sha256": "80ebc1181afc18b83459dd8a85adc3b28819aa7e0faba91f3921f0153c78035e"
+  },
+  {
+    "upstream": "magic/Magdir/sql",
+    "vendored": "data/magic-source/sql",
+    "included_in_default_database": true,
+    "sha256": "80c64674c92cd9b1d1a8ae50736a44306230ab8b512c8829a492a2e44a4e2262"
+  },
+  {
+    "upstream": "magic/Magdir/ssh",
+    "vendored": "data/magic-source/ssh",
+    "included_in_default_database": true,
+    "sha256": "38e6e7049f18a557950a50167c40a4dff7529bbfdaaa240d612889431cd382fd"
+  },
+  {
+    "upstream": "magic/Magdir/ssl",
+    "vendored": "data/magic-source/ssl",
+    "included_in_default_database": true,
+    "sha256": "2a606fb0edfe4df2cb3ffdef8a412a74cdf154bec64d21c8fd5624fbfbe3aee0"
+  },
+  {
+    "upstream": "magic/Magdir/statistics",
+    "vendored": "data/magic-source/statistics",
+    "included_in_default_database": true,
+    "sha256": "bd29b5b8d61c6f806c109e77077da3441e326df34d9b5eb141ba99d5322cbbf9"
+  },
+  {
+    "upstream": "magic/Magdir/subtitle",
+    "vendored": "data/magic-source/subtitle",
+    "included_in_default_database": true,
+    "sha256": "3dc19f4b5396c011bd09ea2453e4ff2f7d934b828a5fd421f1552b60b37fbec9"
+  },
+  {
+    "upstream": "magic/Magdir/sun",
+    "vendored": "data/magic-source/sun",
+    "included_in_default_database": true,
+    "sha256": "696989f5a33463bd3036f508e5df7bb7bc95200f82401c8c9b4b5b1046fe4426"
+  },
+  {
+    "upstream": "magic/Magdir/svf",
+    "vendored": "data/magic-source/svf",
+    "included_in_default_database": true,
+    "sha256": "7b357d155dd28220ec6676392b037be93c8adb09d16edaa2187b804a96745a9f"
+  },
+  {
+    "upstream": "magic/Magdir/syd",
+    "vendored": "data/magic-source/syd",
+    "included_in_default_database": true,
+    "sha256": "7b6bc707a84e1def17da0536ca26f41b67b1ba222226640d445954190301eed5"
+  },
+  {
+    "upstream": "magic/Magdir/sylk",
+    "vendored": "data/magic-source/sylk",
+    "included_in_default_database": true,
+    "sha256": "fdd09150df692c7a42b9cb8fa19d30308cf34ba02618f935a1e7a0c0c31cd825"
+  },
+  {
+    "upstream": "magic/Magdir/symbos",
+    "vendored": "data/magic-source/symbos",
+    "included_in_default_database": true,
+    "sha256": "411a5af2f6c99748481547e136080cb91899652e0ebad817a68cede153013697"
+  },
+  {
+    "upstream": "magic/Magdir/sysex",
+    "vendored": "data/magic-source/sysex",
+    "included_in_default_database": true,
+    "sha256": "f8134f2c962fe371154fc7a5e4cf93805180f4dd45fa0c4a45b6ceb47088038a"
+  },
+  {
+    "upstream": "magic/Magdir/sysstat",
+    "vendored": "data/magic-source/sysstat",
+    "included_in_default_database": true,
+    "sha256": "d53d99ff2ab9ce5cbca73d6575be934b86cc2c60cbf5eff27c6f2fe49677ba01"
+  },
+  {
+    "upstream": "magic/Magdir/tapebackup",
+    "vendored": "data/magic-source/tapebackup",
+    "included_in_default_database": true,
+    "sha256": "4958093f6d89406e450eff06cc32eeb0842d6193381ced6f3ba853cc84c3a121"
+  },
+  {
+    "upstream": "magic/Magdir/tarantool",
+    "vendored": "data/magic-source/tarantool",
+    "included_in_default_database": true,
+    "sha256": "6f9a2749ed246ceb8b920cc98488f32fd0f5520cf030fedc5cea9d3074f5ea1f"
+  },
+  {
+    "upstream": "magic/Magdir/tcl",
+    "vendored": "data/magic-source/tcl",
+    "included_in_default_database": true,
+    "sha256": "21c19c858dcd80bbbbd84aa18fc4a8b824c25bbe24022218093758f48b3796b9"
+  },
+  {
+    "upstream": "magic/Magdir/teapot",
+    "vendored": "data/magic-source/teapot",
+    "included_in_default_database": true,
+    "sha256": "6d7e1cb3e49041ff968786342cb505416b6e0dafdbd54a2a14775c3cb1274b98"
+  },
+  {
+    "upstream": "magic/Magdir/terminfo",
+    "vendored": "data/magic-source/terminfo",
+    "included_in_default_database": true,
+    "sha256": "7cfc031f4e7520fc7e8d619bda625eb0845a2be27b24590ce4203413d092c871"
+  },
+  {
+    "upstream": "magic/Magdir/tex",
+    "vendored": "data/magic-source/tex",
+    "included_in_default_database": true,
+    "sha256": "c0b76e956359edfdcf134cbd4dae203da245feed7aa4fa8221cba9dba35daf9b"
+  },
+  {
+    "upstream": "magic/Magdir/tgif",
+    "vendored": "data/magic-source/tgif",
+    "included_in_default_database": true,
+    "sha256": "615660727c08a2931cbb33cd8d27872479da52aff839657e00148ce61db11e55"
+  },
+  {
+    "upstream": "magic/Magdir/ti-8x",
+    "vendored": "data/magic-source/ti-8x",
+    "included_in_default_database": true,
+    "sha256": "8f904e91b19ba7a56849259fc887e3222001309e27ab54f419a6295e263ce740"
+  },
+  {
+    "upstream": "magic/Magdir/timezone",
+    "vendored": "data/magic-source/timezone",
+    "included_in_default_database": true,
+    "sha256": "5ff2c1c89a34b7748daf4bab44892f04d520532b3db0583cf04437d06e259869"
+  },
+  {
+    "upstream": "magic/Magdir/tplink",
+    "vendored": "data/magic-source/tplink",
+    "included_in_default_database": true,
+    "sha256": "98e47114a4f2281027bc6f2ad7b9f8e3d628d85b9df6eadf168d1eb2ca9b3445"
+  },
+  {
+    "upstream": "magic/Magdir/troff",
+    "vendored": "data/magic-source/troff",
+    "included_in_default_database": true,
+    "sha256": "c4caba721f7570b91df8c41d265141f852d14a23148ec35f147e7c44c4597230"
+  },
+  {
+    "upstream": "magic/Magdir/tuxedo",
+    "vendored": "data/magic-source/tuxedo",
+    "included_in_default_database": true,
+    "sha256": "a55ffd40b41f3284bc38203154da7a96b028832ca1c2880e2f4a86d9695b5827"
+  },
+  {
+    "upstream": "magic/Magdir/typeset",
+    "vendored": "data/magic-source/typeset",
+    "included_in_default_database": true,
+    "sha256": "524f7a3b1a1e826e888f952fa8634d415851f0a6ec6f671dcdec74a49899cb42"
+  },
+  {
+    "upstream": "magic/Magdir/uf2",
+    "vendored": "data/magic-source/uf2",
+    "included_in_default_database": true,
+    "sha256": "0ec8d60d404b644e7b7b15da80c9b5a4f37183cc10faff0896366c380ad69a46"
+  },
+  {
+    "upstream": "magic/Magdir/unicode",
+    "vendored": "data/magic-source/unicode",
+    "included_in_default_database": true,
+    "sha256": "35725c813529ddcfdec117c643443dfea853c23c6c9d0998ba43880c8bf530ca"
+  },
+  {
+    "upstream": "magic/Magdir/unisig",
+    "vendored": "data/magic-source/unisig",
+    "included_in_default_database": true,
+    "sha256": "269ae2b958e8b7da183038bab79d1dfab5b3f53d14861a827e1af3225cb0eec9"
+  },
+  {
+    "upstream": "magic/Magdir/unknown",
+    "vendored": "data/magic-source/unknown",
+    "included_in_default_database": true,
+    "sha256": "2950280ef73e456eeac0cee53491c99dfc88c05f22201a2bd48888648dcb4878"
+  },
+  {
+    "upstream": "magic/Magdir/usd",
+    "vendored": "data/magic-source/usd",
+    "included_in_default_database": true,
+    "sha256": "894d7a2e15bd78bf69beaf8fda213b8eee5f39f1d221ec83f14430e9228816d6"
+  },
+  {
+    "upstream": "magic/Magdir/uterus",
+    "vendored": "data/magic-source/uterus",
+    "included_in_default_database": true,
+    "sha256": "4345ed900627e7d0e473fcdd93a97e68c4f65daa5b4500d6796f334212f7d761"
+  },
+  {
+    "upstream": "magic/Magdir/uuencode",
+    "vendored": "data/magic-source/uuencode",
+    "included_in_default_database": true,
+    "sha256": "6da462e9835acb35c852c790b979e47fade207660bbde988b37b384ccb10583a"
+  },
+  {
+    "upstream": "magic/Magdir/uxn",
+    "vendored": "data/magic-source/uxn",
+    "included_in_default_database": true,
+    "sha256": "93adae8a8ac99075bc23cb4db810e04843ad305a4ad87f9c82f7de045d8476d7"
+  },
+  {
+    "upstream": "magic/Magdir/vacuum-cleaner",
+    "vendored": "data/magic-source/vacuum-cleaner",
+    "included_in_default_database": true,
+    "sha256": "3d0bbf0d6f79e01f0b2ab6d607c4b995e176b557b646139b6d120a43d36048b4"
+  },
+  {
+    "upstream": "magic/Magdir/varied.out",
+    "vendored": "data/magic-source/varied.out",
+    "included_in_default_database": true,
+    "sha256": "b8ba572eb3231e448f7ac541a27cf9d51e0fc1f464e686684b3dfef7d4694282"
+  },
+  {
+    "upstream": "magic/Magdir/varied.script",
+    "vendored": "data/magic-source/varied.script",
+    "included_in_default_database": true,
+    "sha256": "b75264901c720b49a5043af2eb48917f728eeee6ed5af0ab44688af8a2362b2b"
+  },
+  {
+    "upstream": "magic/Magdir/vax",
+    "vendored": "data/magic-source/vax",
+    "included_in_default_database": true,
+    "sha256": "02a6254c7798014de6e91a7869866ddef92b2d71f4a2c65a4ee017d23e7984d5"
+  },
+  {
+    "upstream": "magic/Magdir/vicar",
+    "vendored": "data/magic-source/vicar",
+    "included_in_default_database": true,
+    "sha256": "3f65887a954426d06663e91abe4600f2c65fd4047fec7683fbb4f48c431fb329"
+  },
+  {
+    "upstream": "magic/Magdir/virtual",
+    "vendored": "data/magic-source/virtual",
+    "included_in_default_database": true,
+    "sha256": "bf09a7bae94c7b88189e65e6df43fd844316814861254b20307770b2d82c754d"
+  },
+  {
+    "upstream": "magic/Magdir/virtutech",
+    "vendored": "data/magic-source/virtutech",
+    "included_in_default_database": true,
+    "sha256": "04ea1ad2d369aea4a46502def0ce7ee2a892645bebb358de809040f8b6050a7a"
+  },
+  {
+    "upstream": "magic/Magdir/visx",
+    "vendored": "data/magic-source/visx",
+    "included_in_default_database": true,
+    "sha256": "801a3437f097b3fc86b78a01c7a7fe09f5582e795938fa92ff154356602a7e12"
+  },
+  {
+    "upstream": "magic/Magdir/vms",
+    "vendored": "data/magic-source/vms",
+    "included_in_default_database": true,
+    "sha256": "adc6eb2cfab02dbdaf0d74be7e09b567ed466c4cfb2f8c999b5e1ca82b3a4649"
+  },
+  {
+    "upstream": "magic/Magdir/vmware",
+    "vendored": "data/magic-source/vmware",
+    "included_in_default_database": true,
+    "sha256": "14a35432830332d5d59d1e85036a482e927fba1d2587452521763ee327010681"
+  },
+  {
+    "upstream": "magic/Magdir/vorbis",
+    "vendored": "data/magic-source/vorbis",
+    "included_in_default_database": true,
+    "sha256": "2f42574301888aa4f83dc6158f84dfc36941faf59d84d0bad131bafdf93f928d"
+  },
+  {
+    "upstream": "magic/Magdir/vxl",
+    "vendored": "data/magic-source/vxl",
+    "included_in_default_database": true,
+    "sha256": "dba97428be0decc6b309a71b31225509778392f85949f7b5471d6c7f1d5abcc9"
+  },
+  {
+    "upstream": "magic/Magdir/warc",
+    "vendored": "data/magic-source/warc",
+    "included_in_default_database": true,
+    "sha256": "497198228eefd965e632751d003688ee642a1ebfb08f7c40a3adcb7e3075604d"
+  },
+  {
+    "upstream": "magic/Magdir/weak",
+    "vendored": "data/magic-source/weak",
+    "included_in_default_database": true,
+    "sha256": "869883c38337605b1607281c3bbbbc57469a717c33e759b7d928724d535d7c63"
+  },
+  {
+    "upstream": "magic/Magdir/web",
+    "vendored": "data/magic-source/web",
+    "included_in_default_database": true,
+    "sha256": "c002a251cb2c95ed838fc0a9cb28270334e6cf1d1e9072580f5144d15d897e07"
+  },
+  {
+    "upstream": "magic/Magdir/webassembly",
+    "vendored": "data/magic-source/webassembly",
+    "included_in_default_database": true,
+    "sha256": "66d542539460417c2a42edf2d738b4940931e31dfbf454f4a8a5577eb041776e"
+  },
+  {
+    "upstream": "magic/Magdir/windows",
+    "vendored": "data/magic-source/windows",
+    "included_in_default_database": true,
+    "sha256": "6cfbbbaa843e461da1095dd93815c1f9a5e7c626a93b2f107a16f11fea252f75"
+  },
+  {
+    "upstream": "magic/Magdir/wireless",
+    "vendored": "data/magic-source/wireless",
+    "included_in_default_database": true,
+    "sha256": "a17c82e6fbaf9494c608a880ef7e79daea4e99ca2e0bd59991ffbb0d8496d611"
+  },
+  {
+    "upstream": "magic/Magdir/wordprocessors",
+    "vendored": "data/magic-source/wordprocessors",
+    "included_in_default_database": true,
+    "sha256": "ffae6557abc7f0bdcd9e57beb98ff03c946740fb1b47a6ef322d9a031cbd303c"
+  },
+  {
+    "upstream": "magic/Magdir/wsdl",
+    "vendored": "data/magic-source/wsdl",
+    "included_in_default_database": true,
+    "sha256": "3d9377272b6a08be3af3ea6ccaf03c75a9fb4bd8e82a201a8b50adbda8ec58d9"
+  },
+  {
+    "upstream": "magic/Magdir/x68000",
+    "vendored": "data/magic-source/x68000",
+    "included_in_default_database": true,
+    "sha256": "ec8a0db82970381a1bf59c303c6e1f0c2929679babac15dedfa3c191a7de2454"
+  },
+  {
+    "upstream": "magic/Magdir/xdelta",
+    "vendored": "data/magic-source/xdelta",
+    "included_in_default_database": true,
+    "sha256": "bdcfb41abfa9d2a715edfe87c601ffff88f600841e2c6bdfd30b508add7aad37"
+  },
+  {
+    "upstream": "magic/Magdir/xenix",
+    "vendored": "data/magic-source/xenix",
+    "included_in_default_database": true,
+    "sha256": "47362b5e1567f67f4f5cc1da7dafcd66e576ed0d77960fe8e9e11a2d55825a8b"
+  },
+  {
+    "upstream": "magic/Magdir/xilinx",
+    "vendored": "data/magic-source/xilinx",
+    "included_in_default_database": true,
+    "sha256": "75ec5ca0797f6549fd9e8756f7781519d8c899c52e8f5dffb5dc7994e126733a"
+  },
+  {
+    "upstream": "magic/Magdir/xo65",
+    "vendored": "data/magic-source/xo65",
+    "included_in_default_database": true,
+    "sha256": "e891522d2d92e7fc1e59644f904b828098a9518e0a210f35cc9ada7bc50cd82a"
+  },
+  {
+    "upstream": "magic/Magdir/xwindows",
+    "vendored": "data/magic-source/xwindows",
+    "included_in_default_database": true,
+    "sha256": "3665ee10b66d78dc090f697d633d795d50581bfdd01dfdb3c6bdc24e51cff735"
+  },
+  {
+    "upstream": "magic/Magdir/yara",
+    "vendored": "data/magic-source/yara",
+    "included_in_default_database": true,
+    "sha256": "0e5039bda5e8b5fa09b749ead02eae6090d093dc086a12ff02ac2fdae3736391"
+  },
+  {
+    "upstream": "magic/Magdir/zfs",
+    "vendored": "data/magic-source/zfs",
+    "included_in_default_database": true,
+    "sha256": "2804eb31bb15034c2569f325e82899445ae91303540d859ada02bcf9f68d006f"
+  },
+  {
+    "upstream": "magic/Magdir/zilog",
+    "vendored": "data/magic-source/zilog",
+    "included_in_default_database": true,
+    "sha256": "4c876e76aa514c388bf7938ce0a8ba8267318732f75ec40027d0db874c0d4610"
+  },
+  {
+    "upstream": "magic/Magdir/zip",
+    "vendored": "data/magic-source/zip",
+    "included_in_default_database": true,
+    "sha256": "5a6c1f1c82174946b8562c61888279756df32ddc67c75fccc51d31a63678ebaa"
+  },
+  {
+    "upstream": "magic/Magdir/zyxel",
+    "vendored": "data/magic-source/zyxel",
+    "included_in_default_database": true,
+    "sha256": "25dfb98c01b4cb3924ce21d058c38b64245edf45b168b47ada69fe57b94c23a6"
+  },
+  {
+    "upstream": "magic/Magdir/etf",
+    "vendored": "data/extras/etf",
+    "included_in_default_database": false,
+    "sha256": "4ffe8dc21b95313dffd13345f89c61be14b4c360fc7b0a9b434b9016a9aa87a5"
+  }
+]

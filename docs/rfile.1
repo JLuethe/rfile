@@ -1,0 +1,78 @@
+.TH RFILE 1 "October 2026" "rfile 0.1.0" "User Commands"
+.SH NAME
+rfile \- identify files using a bounded Rust magic engine
+.SH SYNOPSIS
+.B rfile
+.RI [ options ] " FILE..."
+.SH DESCRIPTION
+rfile independently evaluates file magic rules and built-in text and format
+recognizers. It embeds rules from file 5.48, commit
+41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59.
+A FILE of - reads standard input. No operands prints usage and exits with status 1.
+.SH OPTIONS
+.TP
+.BR -b , " --brief"
+Omit filenames.
+.TP
+.BR -i , " --mime"
+Print MIME type and encoding. --mime-type and --mime-encoding select either half.
+.TP
+.BR -k , " --keep-going"
+Continue after matches. Normal output escapes embedded newlines as octal bytes.
+.TP
+.BI "-m " PATHS
+Load source rules or v21 compiled databases. Unix lists are colon-separated.
+.TP
+.BI "-f " LIST
+Read LF-separated filenames immediately using options selected so far.
+A LIST of - reads filenames from standard input.
+.TP
+.BR -L , " -h"
+Follow or do not follow symbolic links. POSIXLY_CORRECT selects following by default.
+.TP
+.BR -z , " -Z"
+Inspect one gzip/zlib layer. -Z hides the outer description.
+Other codecs return an explicit unsupported error when decompression is requested.
+.TP
+.BR -r , " -0 , " -N , " -n"
+Print raw bytes; add NUL after filename; omit padding; flush each record.
+Repeating -0 also NUL-terminates the result and removes the separator.
+.TP
+.BI "-F " SEP
+Use SEP instead of the filename colon.
+.TP
+.BR -E , " -s , " -p"
+Report filesystem failures as errors; permit device reads; restore access times.
+.TP
+.BI "-e " TEST
+Exclude a detector. See --help for names. --exclude-quiet ignores unknown names.
+.TP
+.BI "-P " NAME=VALUE
+Set a resource parameter. Additional Rust budgets are steps, work and output.
+.TP
+.BR --extension , " --apple"
+Print extension or Apple annotations.
+.TP
+.BR -C , " -c , " -l"
+Compile, check or list rules. Use -m to select the source/database.
+Check/list/debug diagnostic text differs from C file.
+.TP
+.BR -S , " -v , " --help"
+Accept sandbox-disable option; display version/features; display help.
+This build has no kernel sandbox.
+.SH ENVIRONMENT
+MAGIC supplies a database list when -m is absent. HOME supplies optional .magic
+configuration before the embedded default. POSIXLY_CORRECT enables symlink following.
+Filename escaping and display alignment currently implement the C locale profile.
+.SH EXIT STATUS
+Zero means classification completed, including unknown data and ordinary per-file
+filesystem diagnostics. -E, setup failures, resource errors and failed writes
+produce status 1. A classification is a heuristic, not validation of the whole file.
+.SH FILES
+The default rules are embedded; normal operation needs neither libmagic nor a C
+compiler. See data/UPSTREAM.json and data/SOURCES.json for data provenance.
+.SH LIMITATIONS
+Version 0.1.0 is tested on x86_64 Linux. Full CDF summaries, some ELF/core details,
+local-time formatting, POSIX backreferences/collation, other decompression codecs,
+and kernel sandboxing remain incomplete. See docs/06-implementation-status.md
+for compatibility results and release gates. No C ABI is provided.

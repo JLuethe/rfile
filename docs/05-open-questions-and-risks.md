@@ -6,7 +6,7 @@ Baseline: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Reasonable working assumpt
 |---|---|---|
 | Critical | Full upstream replacement is much larger than signature matching | 25,176 rule records plus CDF/ELF/encoding/compression; each incomplete subsystem needs explicit scope/status. Do not call a fixture subset complete. |
 | Critical | Bounded memory does not bound total CPU | source rules multiply input scanning, nested use/indirect and regex; enforce aggregate work/byte budgets across all child calls, not just recursion depth. |
-| High | POSIX longest regex vs Rust regex | offsets/rendered spans depend on longest match; initial byte regex backend differs. Implement/test a safe longest-match strategy before exact parity claim. Unsupported backreferences need explicit diagnostics. |
+| High | POSIX longest regex vs Rust regex | offsets/rendered spans depend on longest match; overall earliest/longest selection is now implemented and regression-tested. Backreferences/collation/libc syntax and platform cases still need closure. Unsupported backreferences need explicit diagnostics. |
 | High | Upstream regex discards search-region final byte | `softmagic.c:2387`; source-observed behavior needs minimal oracle test and versioned compatibility handling. Do not “fix” unnoticed. |
 | High | Native sort ties and hidden provenance bytes | `apprentice_sort` compares complete record except line; empty desc contains debug filename. Source-compiler ordering may be architecture/path dependent; compiled-oracle comparison isolates evaluator. |
 | High | Recently added types might parse but not evaluate | ID3, varints and certain indirect doubles have enum/parser entries but incomplete-looking `mconvert`/`magiccheck` switches. Treat as suspected defects, add custom magic repro before deciding parity. No unverified claim that every documented type works. |
@@ -24,3 +24,5 @@ Baseline: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Reasonable working assumpt
 | Low | Optional libmagic C ABI required by adopters? | independent Rust API first; ABI later only with panic containment, ownership and symbols tested. |
 
 Decision rule: preserve safe, observed compatibility quirks; expose corrected behavior only as an explicit semantic profile. Fail safely on malformed/unsupported states instead of reproducing UB. Report the resulting deviation with reproducible evidence. No unresolved issue should be hidden by changing expected files to match the Rust output.
+
+Resolved during implementation: exact selected-source compilation (including signed mask storage and final unterminated source line numbering); global keep-going separator state and database annotation boundaries; CDF FileHeader-based HWP detection; common Linux ELF enrichment; bounded synchronized regex caching; raw captured-string output. See the status document for evidence, remaining scope and release gates.

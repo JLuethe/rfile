@@ -71,5 +71,9 @@
     "#define HAVE_LINUX_LANDLOCK_H 1",
     "#define PACKAGE_VERSION \"5.48\"",
     "#define VERSION \"5.48\""
-  ]
+  ],
+  "repository": "https://github.com/file/file",
+  "asset_generator": "independent Rust rfile compiler (verified byte-identical to pinned C compiler)",
+  "default_source_files": 361,
+  "excluded_upstream_fragment": "magic/Magdir/etf (not selected by upstream magic/Makefile.am)"
 }

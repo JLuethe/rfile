@@ -1,0 +1,1299 @@
+{
+  "total": 108,
+  "equal": 102,
+  "elapsed_seconds": 4.805138787996839,
+  "environment": {
+    "LC_ALL": "C",
+    "TZ": "UTC"
+  },
+  "cases": [
+    {
+      "intentional_difference": null,
+      "case": 0,
+      "flags": [],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 1,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 2,
+      "flags": [
+        "-bb"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 3,
+      "flags": [
+        "-bbb"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 4,
+      "flags": [
+        "-N"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 5,
+      "flags": [
+        "-F",
+        "|"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 6,
+      "flags": [
+        "-0"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 7,
+      "flags": [
+        "-00"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 8,
+      "flags": [
+        "-b",
+        "-00"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 9,
+      "flags": [
+        "-n"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 10,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 11,
+      "flags": [
+        "--mime-type"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 12,
+      "flags": [
+        "--mime-encoding"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 13,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 14,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 15,
+      "flags": [
+        "-r"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 16,
+      "flags": [
+        "-k"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 17,
+      "flags": [
+        "-ki"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 18,
+      "flags": [
+        "-e",
+        "soft"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 19,
+      "flags": [
+        "-e",
+        "text"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 20,
+      "flags": [
+        "-e",
+        "encoding"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 21,
+      "flags": [
+        "--exclude-quiet",
+        "bogus"
+      ],
+      "args": [
+        "<TEMP>/text",
+        "<TEMP>/longer-name"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 22,
+      "flags": [],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 23,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 24,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 25,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 26,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 27,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 28,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/empty"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 29,
+      "flags": [],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 30,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 31,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 32,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 33,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 34,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 35,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/binary"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 36,
+      "flags": [],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 37,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 38,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 39,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 40,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 41,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 42,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/missing"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 43,
+      "flags": [],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 44,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 45,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 46,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 47,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 48,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 49,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 50,
+      "flags": [],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 51,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 52,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 53,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 54,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 55,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 56,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/broken"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 57,
+      "flags": [],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 58,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 59,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 60,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 61,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": "C annotation-only FIFO reaches a sandbox-killed syscall; Rust rejects content inspection",
+      "case": 62,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "",
+        "stderr": "",
+        "status": -31
+      },
+      "rust": {
+        "stdout": "/tmp/rfile-cli-ioqno27q/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stderr": "",
+        "status": 1
+      }
+    },
+    {
+      "intentional_difference": "C annotation-only FIFO reaches a sandbox-killed syscall; Rust rejects content inspection",
+      "case": 63,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/fifo"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "",
+        "stderr": "",
+        "status": -31
+      },
+      "rust": {
+        "stdout": "/tmp/rfile-cli-ioqno27q/fifo: ERROR: unsupported: annotation content inspection of FIFO\n",
+        "stderr": "",
+        "status": 1
+      }
+    },
+    {
+      "intentional_difference": null,
+      "case": 64,
+      "flags": [],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 65,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 66,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 67,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 68,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 69,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 70,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>/socket"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 71,
+      "flags": [],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 72,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 73,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 74,
+      "flags": [
+        "-E"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 75,
+      "flags": [
+        "-L"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 76,
+      "flags": [
+        "--extension"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 77,
+      "flags": [
+        "--apple"
+      ],
+      "args": [
+        "<TEMP>"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 78,
+      "flags": [],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 79,
+      "flags": [
+        "-i"
+      ],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 80,
+      "flags": [
+        "-0"
+      ],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 81,
+      "flags": [
+        "-00"
+      ],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 82,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 83,
+      "flags": [
+        "-P",
+        "bytes=1"
+      ],
+      "args": [
+        "-"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 84,
+      "flags": [
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 85,
+      "flags": [
+        "-n",
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 86,
+      "flags": [
+        "-i",
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 87,
+      "flags": [
+        "-0",
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 88,
+      "flags": [
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/blank"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 89,
+      "flags": [
+        "-f",
+        "-"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": "Rust native gzip decoding is independent of the C sandbox/native-decoder guard",
+      "case": 90,
+      "flags": [
+        "-z",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "ERROR:[zlib: Fork is required to uncompress, but disabled] (gzip compressed data, max compression, original size modulo 2^32 6)\n",
+        "stderr": "",
+        "status": 0
+      },
+      "rust": {
+        "stdout": "ASCII text (gzip compressed data, max compression, original size modulo 2^32 6)\n",
+        "stderr": "",
+        "status": 0
+      }
+    },
+    {
+      "intentional_difference": "Rust native gzip decoding is independent of the C sandbox/native-decoder guard",
+      "case": 91,
+      "flags": [
+        "-Z",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "ERROR:[zlib: Fork is required to uncompress, but disabled]\n",
+        "stderr": "",
+        "status": 0
+      },
+      "rust": {
+        "stdout": "ASCII text\n",
+        "stderr": "",
+        "status": 0
+      }
+    },
+    {
+      "intentional_difference": "Rust native gzip decoding is independent of the C sandbox/native-decoder guard",
+      "case": 92,
+      "flags": [
+        "-zi",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "application/x-decompression-error-zlib-Fork-is-required-to-uncompress--but-disabled compressed-encoding=application/gzip; charset=binary\n",
+        "stderr": "",
+        "status": 0
+      },
+      "rust": {
+        "stdout": "text/plain; charset=us-ascii compressed-encoding=application/gzip; charset=binary\n",
+        "stderr": "",
+        "status": 0
+      }
+    },
+    {
+      "intentional_difference": "Rust native gzip decoding is independent of the C sandbox/native-decoder guard",
+      "case": 93,
+      "flags": [
+        "-Zi",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": false,
+      "reference": {
+        "stdout": "application/x-decompression-error-zlib-Fork-is-required-to-uncompress--but-disabled\n",
+        "stderr": "",
+        "status": 0
+      },
+      "rust": {
+        "stdout": "text/plain; charset=us-ascii\n",
+        "stderr": "",
+        "status": 0
+      }
+    },
+    {
+      "intentional_difference": null,
+      "case": 94,
+      "flags": [
+        "-S",
+        "-z",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 95,
+      "flags": [
+        "-S",
+        "-Z",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 96,
+      "flags": [
+        "-S",
+        "-zi",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 97,
+      "flags": [
+        "-S",
+        "-Zi",
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/compressed.gz"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 98,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/link"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 99,
+      "flags": [
+        "-p"
+      ],
+      "args": [
+        "<TEMP>/text"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 100,
+      "flags": [],
+      "args": [
+        "<TEMP>/ trailing ",
+        "<TEMP>/carriage\r",
+        "<TEMP>/line\n",
+        "<TEMP>/tab\t",
+        "<TEMP>/utf8-\u00e9",
+        "<TEMP>/invalid-\udcff"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 101,
+      "flags": [
+        "-r"
+      ],
+      "args": [
+        "<TEMP>/ trailing ",
+        "<TEMP>/carriage\r",
+        "<TEMP>/line\n",
+        "<TEMP>/tab\t",
+        "<TEMP>/utf8-\u00e9",
+        "<TEMP>/invalid-\udcff"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 102,
+      "flags": [
+        "-0"
+      ],
+      "args": [
+        "<TEMP>/ trailing ",
+        "<TEMP>/carriage\r",
+        "<TEMP>/line\n",
+        "<TEMP>/tab\t",
+        "<TEMP>/utf8-\u00e9",
+        "<TEMP>/invalid-\udcff"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 103,
+      "flags": [
+        "-00"
+      ],
+      "args": [
+        "<TEMP>/ trailing ",
+        "<TEMP>/carriage\r",
+        "<TEMP>/line\n",
+        "<TEMP>/tab\t",
+        "<TEMP>/utf8-\u00e9",
+        "<TEMP>/invalid-\udcff"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 104,
+      "flags": [
+        "-b"
+      ],
+      "args": [
+        "<TEMP>/ trailing ",
+        "<TEMP>/carriage\r",
+        "<TEMP>/line\n",
+        "<TEMP>/tab\t",
+        "<TEMP>/utf8-\u00e9",
+        "<TEMP>/invalid-\udcff"
+      ],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 105,
+      "flags": [
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/weird-list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 106,
+      "flags": [
+        "-n",
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/weird-list"
+      ],
+      "args": [],
+      "equal": true
+    },
+    {
+      "intentional_difference": null,
+      "case": 107,
+      "flags": [
+        "-r",
+        "-f",
+        "/tmp/rfile-cli-ioqno27q/weird-list"
+      ],
+      "args": [],
+      "equal": true
+    }
+  ]
+}

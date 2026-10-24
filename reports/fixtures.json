@@ -1,0 +1,521 @@
+{
+  "total": 103,
+  "equal": 103,
+  "cases": [
+    {
+      "fixture": "Animated_PNG_example_bouncing_beach_ball.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "CVE-2014-1943.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "HWP2016.hwp.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "HWP2016.hwpx.zip.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "HWP97.hwp.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "JW07022A.mp3.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "android-vdex-1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "android-vdex-2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "apng-ffmpeg.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "arj.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "ascii-escape-so-si.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "bcachefs.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "bcachefs2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "bgcode.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "cl8m8ocofedso.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "cmd1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "cmd2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "cmd3.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "cmd4.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "dsd64-dff.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "dsd64-dsf.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "efi-signature-list-sha256.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "escapevel.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "ext4.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "fit-map-data.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "gedcom.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "gpkg-1-zst.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "hddrawcopytool.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "hello-racket_rkt.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "issue311docx.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "issue359xlsx.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "jpeg-text.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json3.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json4.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json5.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json6.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json7.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "json8.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "jsonlines1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "keyman-0.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "keyman-1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "keyman-2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "matilde.arm.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "multiple.testfile",
+      "flags": 544,
+      "equal": true
+    },
+    {
+      "fixture": "osm.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pcjr.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pdf-no-version.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pdf-utf8-bom.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v2-phil.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v3-lutz.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-dsa.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-ecc-no-userid-secret.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-ecc-secret-key.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-rsa-key.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-rsa-no-userid-secret.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pgp-binary-key-v4-rsa-secret-key.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pnm1.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pnm2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "pnm3.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "regex-eol.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "registry-pol.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rpm-v3.0-bin-aarch64.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rpm-v3.0-bin-powerpc64.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rpm-v3.0-bin-s390x.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rpm-v3.0-bin-x86_64.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rpm-v3.0-src.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "rtfd.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "searchbug.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh-other-be.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh-other-le.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh4a-extra-be.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh4a-extra-le.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh4a-nofpu-be.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "sh4a-nofpu-le.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-index.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-not.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-run.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-snap.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-vylog.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "tarantool-xlog.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "uf2.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "utf16xmlsvg.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "xclbin.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "xilinx.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.2-FF.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.3-FF.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.4-FF.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.5-FF.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.6-FF.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.7-21.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.7-22.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-01.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-02.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-03.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-16.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-20.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-21.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-22.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-23.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-F4.testfile",
+      "flags": 512,
+      "equal": true
+    },
+    {
+      "fixture": "zstd-v0.8-FF.testfile",
+      "flags": 512,
+      "equal": true
+    }
+  ]
+}

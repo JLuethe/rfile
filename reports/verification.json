@@ -1,0 +1,206 @@
+{
+  "status": "passed",
+  "elapsed_seconds": 40.65458897499775,
+  "steps": [
+    {
+      "name": "format",
+      "status": 0,
+      "seconds": 0.09576829899742734,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ]
+    },
+    {
+      "name": "clippy",
+      "status": 0,
+      "seconds": 0.10056861599878175,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "clippy",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ]
+    },
+    {
+      "name": "cargo-test",
+      "status": 0,
+      "seconds": 0.4181772160009132,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--locked"
+      ]
+    },
+    {
+      "name": "cargo-release-test",
+      "status": 0,
+      "seconds": 0.13212203100556508,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--release",
+        "--locked"
+      ]
+    },
+    {
+      "name": "cargo-build",
+      "status": 0,
+      "seconds": 0.01799528900301084,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "--release",
+        "--locked"
+      ]
+    },
+    {
+      "name": "database-rebuild",
+      "status": 0,
+      "seconds": 0.09585922399855917,
+      "command": [
+        "python3",
+        "tools/rebuild_database.py"
+      ]
+    },
+    {
+      "name": "fuzz-smoke",
+      "status": 0,
+      "seconds": 1.5156531549946521,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--test",
+        "hardening",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ]
+    },
+    {
+      "name": "fuzz-format",
+      "status": 0,
+      "seconds": 0.03967261600337224,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--",
+        "--check"
+      ]
+    },
+    {
+      "name": "fuzz-build",
+      "status": 0,
+      "seconds": 0.024744239999563433,
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--locked",
+        "--bins"
+      ]
+    },
+    {
+      "name": "upstream-check",
+      "status": 0,
+      "seconds": 2.2487065449968213,
+      "command": [
+        "make",
+        "-C",
+        "upstream",
+        "check"
+      ]
+    },
+    {
+      "name": "compiler",
+      "status": 0,
+      "seconds": 0.22604620600031922,
+      "command": [
+        "python3",
+        "tools/compiler_compare.py"
+      ]
+    },
+    {
+      "name": "fixtures",
+      "status": 0,
+      "seconds": 2.187302047997946,
+      "command": [
+        "python3",
+        "tools/fixture_compare.py"
+      ]
+    },
+    {
+      "name": "differential-broad",
+      "status": 0,
+      "seconds": 11.414528323999548,
+      "command": [
+        "python3",
+        "tools/differential.py",
+        "--limit",
+        "3000"
+      ]
+    },
+    {
+      "name": "extended",
+      "status": 0,
+      "seconds": 12.251492661001976,
+      "command": [
+        "python3",
+        "tools/extended_compare.py"
+      ]
+    },
+    {
+      "name": "semantics-differential",
+      "status": 0,
+      "seconds": 3.3835047949978616,
+      "command": [
+        "python3",
+        "tools/semantics_compare.py"
+      ]
+    },
+    {
+      "name": "cli-differential",
+      "status": 0,
+      "seconds": 4.8507886590014095,
+      "command": [
+        "python3",
+        "tools/cli_compare.py"
+      ]
+    },
+    {
+      "name": "benchmark",
+      "status": 0,
+      "seconds": 1.5947404980033753,
+      "command": [
+        "python3",
+        "tools/benchmark.py"
+      ]
+    }
+  ],
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "binary_sha256": "8612e16c186d82c93cb22adc13aae932bca14f76e31889b86a8d21b4a53569a0",
+  "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "mutation_smoke": [
+    {
+      "database_cases": 10000,
+      "elapsed_seconds": 1.488868968,
+      "fixture_truncations": 1339,
+      "random_input_cases": 10000,
+      "seed": "4f6c655275737421",
+      "source_cases": 10000
+    }
+  ],
+  "scope": "Linux supported profile; known CLI deviations allowed by explicit case labels; remaining release gaps documented"
+}

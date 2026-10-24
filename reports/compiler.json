@@ -1,0 +1,24 @@
+{
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "fragments": 361,
+  "reference_header": [
+    4045276188,
+    21,
+    17627,
+    7549
+  ],
+  "rust_header": [
+    4045276188,
+    21,
+    17627,
+    7549
+  ],
+  "raw_equal": true,
+  "reference_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "rust_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "normalization": "line numbers zero; bytes after an empty description NUL zero (debug path only)",
+  "normalized_order_equal": true,
+  "normalized_position_equal": 25176,
+  "reference_only_records": 0,
+  "rust_only_records": 0
+}

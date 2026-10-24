@@ -1,0 +1,21 @@
+rfile is an independent Rust implementation of file(1) magic evaluation.
+It does not link to libmagic or execute the C file program for detection.
+
+Behavioral reference and magic database:
+  https://github.com/file/file
+  Commit 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59 (file 5.48)
+  Copyright (c) Ian F. Darwin and contributors; maintained by Christos Zoulas.
+  See data/UPSTREAM-COPYING and notices retained in source files/fragments.
+
+The EBCDIC mapping table is retained from upstream src/encoding.c.
+CDF and DER source notices credit Christos Zoulas and the NetBSD contributors.
+Original rule-fragment comments, authorship and license notices are preserved.
+The database has been rebuilt with Rust and verified byte-for-byte against the
+pinned upstream compiler. data/SOURCES.json maps every retained source asset.
+The etf fragment is retained separately because upstream does not include it
+in the default build at this commit.
+
+New Rust code: BSD-2-Clause, LICENSE. Existing notices remain applicable.
+Dependency metadata: reports/dependencies.json; exact terms are reproduced in
+LICENSES/dependencies. Cargo.lock is the resolved dependency identity.
+Test-only libFuzzer tooling is separate from the production detector.

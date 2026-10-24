@@ -5,3 +5,11 @@
 /fuzz/target/
 /fuzz/artifacts/
 /fuzz/corpus/
+/Magdir.mgc
+/magic-source.mgc
+/reports/oracle-bench
+/reports/rust-compiled.mgc
+/reports/bcache-*.txt
+
+__pycache__/
+*.pyc

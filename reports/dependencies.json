@@ -1,0 +1,162 @@
+[
+  {
+    "name": "adler2",
+    "version": "2.0.1",
+    "license": "0BSD OR MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/oyvindln/adler2",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "aho-corasick",
+    "version": "1.1.5",
+    "license": "Unlicense OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/BurntSushi/aho-corasick",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "cfg-if",
+    "version": "1.0.5",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/cfg-if",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "crc32fast",
+    "version": "1.5.3",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/srijs/rust-crc32fast",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "flate2",
+    "version": "1.1.10",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/flate2-rs",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "itoa",
+    "version": "1.0.18",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/itoa",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "memchr",
+    "version": "2.8.3",
+    "license": "Unlicense OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/BurntSushi/memchr",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "miniz_oxide",
+    "version": "0.9.1",
+    "license": "MIT OR Zlib OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "proc-macro2",
+    "version": "1.0.107",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/proc-macro2",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "quote",
+    "version": "1.0.47",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/quote",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "regex-automata",
+    "version": "0.4.18",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/regex",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "regex-syntax",
+    "version": "0.8.11",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/regex",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "serde",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "serde_core",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "serde_derive",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "serde_json",
+    "version": "1.0.154",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/json",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "simd-adler32",
+    "version": "0.3.10",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/mcountryman/simd-adler32",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "syn",
+    "version": "3.0.9",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/syn",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "unicode-ident",
+    "version": "1.0.27",
+    "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/unicode-ident",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "zmij",
+    "version": "1.0.23",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/zmij",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  }
+]

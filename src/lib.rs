@@ -1,0 +1,500 @@
+/*
+ * Copyright (c) Christos Zoulas 2003.
+ * All Rights Reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice immediately at the beginning of the file, without modification,
+ *    this list of conditions, and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+// Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
+#![forbid(unsafe_code)]
+mod cdf;
+pub mod cli;
+mod database;
+mod detectors;
+mod elf;
+mod encoding;
+mod error;
+mod eval;
+mod filesystem;
+mod flags;
+mod format;
+mod limits;
+mod parser;
+mod regex_engine;
+pub use database::{Database, FORMAT_VERSION, UPSTREAM_COMMIT};
+pub use error::{Error, Result};
+pub use flags::Flags;
+pub use limits::Limits;
+
+use std::{io::Read, sync::Arc};
+
+#[derive(Clone, Debug)]
+pub struct Classification {
+    pub description: String,
+    pub mime_type: String,
+    pub encoding: String,
+    pub extensions: Option<String>,
+    pub apple: Option<String>,
+    pub output: Vec<u8>,
+    pub truncated: bool,
+    pub diagnostics: Vec<String>,
+}
+impl Classification {
+    pub fn as_bytes(&self) -> &[u8] {
+        &self.output
+    }
+}
+
+#[derive(Clone, Debug)]
+pub struct Engine {
+    database: Arc<Database>,
+    pub flags: Flags,
+    pub limits: Limits,
+}
+impl Engine {
+    pub fn new(database: Arc<Database>) -> Self {
+        Self {
+            database,
+            flags: Flags::default(),
+            limits: Limits::default(),
+        }
+    }
+    pub fn builtin() -> Result<Self> {
+        static BUILTIN: std::sync::OnceLock<std::result::Result<Arc<Database>, String>> =
+            std::sync::OnceLock::new();
+        let db =
+            BUILTIN.get_or_init(|| Database::builtin().map(Arc::new).map_err(|e| e.to_string()));
+        Ok(Self::new(
+            db.as_ref().map_err(|e| Error::Database(e.clone()))?.clone(),
+        ))
+    }
+    pub fn database(&self) -> &Database {
+        &self.database
+    }
+    pub fn classify(&self, data: &[u8]) -> Result<Classification> {
+        self.limits.validate()?;
+        self.check_output(self.classify_input(data, None, false, None))
+    }
+    pub fn classify_path(&self, path: &std::path::Path) -> Result<Classification> {
+        self.limits.validate()?;
+        self.check_output(filesystem::classify_path(self, path))
+    }
+    pub fn classify_reader(&self, reader: &mut impl std::io::Read) -> Result<Classification> {
+        self.limits.validate()?;
+        let mut b = Vec::new();
+        reader.take(self.limits.bytes as u64).read_to_end(&mut b)?;
+        let mut c = self.classify(&b)?;
+        c.truncated = b.len() == self.limits.bytes;
+        Ok(c)
+    }
+    pub fn classify_file(&self, file: &mut std::fs::File) -> Result<Classification> {
+        self.limits.validate()?;
+        self.check_output(filesystem::classify_file(self, file))
+    }
+    fn check_output(&self, result: Result<Classification>) -> Result<Classification> {
+        let classified = result?;
+        if classified.output.len() > self.limits.output {
+            return Err(Error::Limit("output"));
+        }
+        Ok(classified)
+    }
+    pub(crate) fn basic(
+        &self,
+        description: Vec<u8>,
+        mime: &str,
+        encoding: &str,
+        truncated: bool,
+    ) -> Classification {
+        let raw = if self.flags.has(Flags::MIME) {
+            let mut out = Vec::new();
+            if self.flags.has(Flags::MIME_TYPE) {
+                out.extend_from_slice(mime.as_bytes());
+            }
+            if self.flags.has(Flags::MIME_ENCODING) {
+                if self.flags.has(Flags::MIME_TYPE) {
+                    out.extend_from_slice(b"; charset=");
+                }
+                out.extend_from_slice(encoding.as_bytes());
+            }
+            out
+        } else if self.flags.has(Flags::APPLE | Flags::EXTENSION) {
+            Vec::new()
+        } else {
+            description.clone()
+        };
+        Classification {
+            description: String::from_utf8_lossy(&description).into_owned(),
+            mime_type: mime.into(),
+            encoding: encoding.into(),
+            extensions: None,
+            apple: None,
+            output: if self.flags.has(Flags::RAW) {
+                raw
+            } else {
+                format::escape(&raw)
+            },
+            truncated,
+            diagnostics: Vec::new(),
+        }
+    }
+    pub(crate) fn classify_input(
+        &self,
+        data: &[u8],
+        tail: Option<&[u8]>,
+        executable: bool,
+        elf_suffix: Option<&[u8]>,
+    ) -> Result<Classification> {
+        let truncated = data.len() > self.limits.bytes;
+        let data = &data[..data.len().min(self.limits.bytes)];
+        if data.len() <= 1 {
+            let mut c = self.basic(
+                if data.is_empty() {
+                    b"empty".to_vec()
+                } else {
+                    b"very short file (no magic)".to_vec()
+                },
+                if data.is_empty() {
+                    "application/x-empty"
+                } else {
+                    "application/octet-stream"
+                },
+                "binary",
+                truncated,
+            );
+            if !self.flags.has(Flags::MIME) {
+                if self.flags.has(Flags::APPLE) {
+                    c.output = b"UNKNUNKN".to_vec();
+                } else if self.flags.has(Flags::EXTENSION) {
+                    c.output = b"???".to_vec();
+                }
+            }
+            return Ok(c);
+        }
+        let enc = if self.flags.has(Flags::NO_ENCODING) {
+            encoding::Encoding::binary()
+        } else {
+            encoding::detect(data, self.limits.encoding)
+        };
+        if self.flags.has(Flags::COMPRESS)
+            && !self.flags.has(Flags::NO_COMPRESS)
+            && detectors::compression(data).is_some()
+        {
+            let expanded = match detectors::compression(data) {
+                Some("gzip") => detectors::decompress_gzip(data, self.limits.bytes)?,
+                Some("zlib") => detectors::decompress_zlib(data, self.limits.bytes)?,
+                Some(codec) => {
+                    return Err(Error::Unsupported(format!(
+                        "{codec} decompression; built-in codecs are gzip and zlib"
+                    )));
+                }
+                None => unreachable!("checked compression signature"),
+            };
+            let mut inner = self.clone();
+            inner.flags.0 &= !Flags::COMPRESS;
+            let mut result = inner.classify(&expanded)?;
+            if !self.flags.has(Flags::TRANSPARENT)
+                && (!self.flags.has(Flags::MIME) || self.flags.0 & Flags::MIME == Flags::MIME)
+            {
+                let outer = inner.classify(data)?;
+                let mut output = result.output.clone();
+                output.extend_from_slice(if self.flags.has(Flags::MIME) {
+                    b" compressed-encoding="
+                } else {
+                    b" ("
+                });
+                output.extend_from_slice(&outer.output);
+                if !self.flags.has(Flags::MIME) {
+                    output.push(b')');
+                }
+                if output.len() > self.limits.output {
+                    return Err(Error::Limit("output"));
+                }
+                result.output = output;
+            }
+            return Ok(result);
+        }
+        let mut evaluator = eval::Evaluator::new(
+            &self.database,
+            self.flags,
+            &self.limits,
+            enc.text,
+            executable,
+        );
+        let mut output = Vec::new();
+        let mut description = Vec::new();
+        let mut mime = String::new();
+        let mut extensions = None;
+        let mut apple = None;
+        let mut stage_matched = false;
+        if !self.flags.has(Flags::APPLE | Flags::EXTENSION) {
+            let mut builtins: Vec<(Vec<u8>, &str)> = Vec::new();
+            if !self.flags.has(Flags::NO_TAR) {
+                let detected = detectors::tar(data);
+                stage_matched = detected.is_some();
+                if let Some(t) = detected {
+                    builtins.push((t.as_bytes().to_vec(), "application/x-tar"));
+                }
+            }
+            if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
+                && !self.flags.has(Flags::NO_JSON)
+            {
+                let detected = detectors::json(data);
+                stage_matched = detected.is_some();
+                if let Some(nd) = detected {
+                    builtins.push((
+                        if nd {
+                            b"New Line Delimited JSON text data".to_vec()
+                        } else {
+                            b"JSON text data".to_vec()
+                        },
+                        if nd {
+                            "application/x-ndjson"
+                        } else {
+                            "application/json"
+                        },
+                    ));
+                }
+            }
+            if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
+                && !self.flags.has(Flags::NO_CSV)
+            {
+                stage_matched = enc.text && detectors::csv(data);
+                if stage_matched {
+                    builtins.push((format!("CSV {} text", enc.label).into_bytes(), "text/csv"));
+                }
+            }
+            if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
+                && !self.flags.has(Flags::NO_SIMH)
+            {
+                stage_matched = detectors::simh(data);
+                if stage_matched {
+                    builtins.push((b"SIMH tape data".to_vec(), "application/SIMH-tape-data"));
+                }
+            }
+            if (builtins.is_empty() || self.flags.has(Flags::CONTINUE))
+                && !self.flags.has(Flags::NO_CDF)
+            {
+                let detected = cdf::detect(data);
+                stage_matched = detected.is_some();
+                if let Some(t) = detected {
+                    builtins.push(t);
+                }
+            }
+            for (desc, typ) in builtins {
+                if !output.is_empty() && !output.ends_with(b"\n- ") {
+                    output.extend_from_slice(b"\n- ");
+                }
+                let part: &[u8] = if self.flags.has(Flags::MIME_TYPE) {
+                    typ.as_bytes()
+                } else if self.flags.has(Flags::MIME_ENCODING) {
+                    b""
+                } else {
+                    &desc
+                };
+                output.extend_from_slice(part);
+                description = desc;
+                mime = typ.into();
+                if !self.flags.has(Flags::CONTINUE) {
+                    return Ok(self.finish(
+                        output,
+                        description,
+                        mime,
+                        enc.mime,
+                        (None, None),
+                        truncated,
+                    ));
+                }
+                output.extend_from_slice(b"\n- ");
+            }
+        }
+        if !self.flags.has(Flags::NO_SOFT) {
+            let matched = evaluator.run(&eval::Input { head: data, tail }, database::BINTEST)?;
+            stage_matched =
+                matched.found && (!self.flags.annotation() || !matched.bytes.is_empty());
+            if stage_matched {
+                if !output.is_empty() && !output.ends_with(b"\n- ") {
+                    output.extend_from_slice(b"\n- ");
+                }
+                output.extend_from_slice(&matched.bytes);
+                if !self.flags.annotation() {
+                    description = matched.bytes;
+                    if let Some(suffix) = elf_suffix {
+                        output.extend_from_slice(suffix);
+                        description.extend_from_slice(suffix);
+                    }
+                }
+                if let Some(v) = matched.mime {
+                    mime = String::from_utf8_lossy(&v).into_owned();
+                }
+                extensions = matched
+                    .extension
+                    .map(|x| String::from_utf8_lossy(&x).into_owned());
+                apple = matched
+                    .apple
+                    .map(|x| String::from_utf8_lossy(&x).into_owned());
+                if !self.flags.has(Flags::CONTINUE) && !output.is_empty() {
+                    return Ok(self.finish(
+                        output,
+                        description,
+                        if mime.is_empty() {
+                            "application/octet-stream".into()
+                        } else {
+                            mime
+                        },
+                        enc.mime,
+                        (extensions, apple),
+                        truncated,
+                    ));
+                }
+                if self.flags.has(Flags::CONTINUE) {
+                    output.extend_from_slice(b"\n- ");
+                }
+            }
+        }
+        let mut text_found = false;
+        if !self.flags.has(Flags::NO_TEXT) {
+            let text_enc = encoding::for_text(data, self.limits.encoding);
+            if text_enc.text && data.len() > 1 {
+                let utf8 = text_enc.utf8();
+                let matched = if !self.flags.has(Flags::NO_SOFT) && !utf8.is_empty() {
+                    evaluator.run(
+                        &eval::Input {
+                            head: &utf8,
+                            tail: None,
+                        },
+                        database::TEXTTEST,
+                    )?
+                } else {
+                    eval::MatchOutput::default()
+                };
+                if self.flags.has(Flags::APPLE | Flags::EXTENSION) {
+                    if matched.found && !matched.bytes.is_empty() {
+                        output = matched.bytes;
+                        text_found = true;
+                    }
+                } else if self.flags.has(Flags::MIME) {
+                    if !matched.bytes.is_empty() {
+                        if !output.is_empty() && !output.ends_with(b"\n- ") {
+                            output.extend_from_slice(b"\n- ");
+                        }
+                        output.extend_from_slice(&matched.bytes);
+                        if let Some(v) = matched.mime {
+                            mime = String::from_utf8_lossy(&v).into_owned();
+                        }
+                    }
+                    if (self.flags.has(Flags::CONTINUE) || output.is_empty())
+                        && self.flags.has(Flags::MIME_TYPE)
+                    {
+                        if !output.is_empty() && !output.ends_with(b"\n- ") {
+                            output.extend_from_slice(b"\n- ");
+                        }
+                        output.extend_from_slice(b"text/plain");
+                        mime = "text/plain".into();
+                    }
+                    text_found = true;
+                } else {
+                    if !matched.bytes.is_empty() {
+                        if !output.is_empty() && !output.ends_with(b"\n- ") {
+                            output.extend_from_slice(b"\n- ");
+                        }
+                        output.extend_from_slice(&matched.bytes);
+                    }
+                    output = encoding::text_description(&output, &text_enc);
+                    description = output.clone();
+                    if let Some(v) = matched.mime {
+                        mime = String::from_utf8_lossy(&v).into_owned();
+                    }
+                    if mime.is_empty() {
+                        mime = "text/plain".into();
+                    }
+                    text_found = true;
+                }
+            }
+        }
+        if !self.flags.has(Flags::NO_TEXT) {
+            stage_matched = text_found;
+        }
+        if !stage_matched
+            || output.is_empty()
+                && (!self.flags.has(Flags::MIME_ENCODING) || self.flags.has(Flags::MIME_TYPE))
+        {
+            if self.flags.has(Flags::MIME_TYPE) {
+                output.extend_from_slice(b"application/octet-stream");
+                mime = "application/octet-stream".into();
+            } else if self.flags.has(Flags::APPLE) {
+                output.extend_from_slice(b"UNKNUNKN");
+            } else if self.flags.has(Flags::EXTENSION) {
+                output.extend_from_slice(b"???");
+            } else if !self.flags.has(Flags::MIME_ENCODING) {
+                output.extend_from_slice(b"data");
+                description = b"data".to_vec();
+            }
+        }
+        if output.len() > self.limits.output {
+            return Err(Error::Limit("output"));
+        }
+        if mime.is_empty() {
+            mime = "application/octet-stream".into();
+        }
+        Ok(self.finish(
+            output,
+            description,
+            mime,
+            enc.mime,
+            (extensions, apple),
+            truncated,
+        ))
+    }
+    fn finish(
+        &self,
+        mut output: Vec<u8>,
+        description: Vec<u8>,
+        mime_type: String,
+        encoding: &str,
+        annotations: (Option<String>, Option<String>),
+        truncated: bool,
+    ) -> Classification {
+        let (extensions, apple) = annotations;
+        if output.len() >= 4 && output.ends_with(b"\n- ") {
+            output.truncate(output.len() - 3);
+        }
+        if self.flags.has(Flags::MIME_ENCODING) {
+            if self.flags.has(Flags::MIME_TYPE) {
+                output.extend_from_slice(b"; charset=");
+            }
+            output.extend_from_slice(encoding.as_bytes());
+        }
+        if !self.flags.has(Flags::RAW) {
+            output = format::escape(&output);
+        }
+        Classification {
+            description: String::from_utf8_lossy(&description).into_owned(),
+            mime_type,
+            encoding: encoding.into(),
+            extensions,
+            apple,
+            output,
+            truncated,
+            diagnostics: Vec::new(),
+        }
+    }
+}

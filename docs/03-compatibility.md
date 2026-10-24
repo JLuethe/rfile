@@ -1,6 +1,6 @@
 # Compatibility matrix and explicit decisions
 
-Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v21. “Exact” means bytes, channel and status under the same locale, rules and build features. This is the required compatibility policy, **not a statement of completed implementation**. Actual results and remaining gaps belong in `reports/` and `docs/06-implementation-status.md` after building.
+Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v21. “Exact” means bytes, channel and status under the same locale, rules and build features. This is the required compatibility policy, **not a statement of completed implementation**. Actual results and remaining gaps are recorded in `reports/` and [implementation status](06-implementation-status.md).
 
 | Surface | Required target | Stage | Intentional difference or gap policy | Verification |
 |---|---|---|---|---|
@@ -23,13 +23,13 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | name/use, endian flip | recursive context/evidence/limits | B | bounded calls and no uncontrolled stack | recursive/cyclic names and ^ uses |
 | string/pstring/string16 | byte-oriented quirks and displayed values | B | no full Unicode replacement of string16 semantics | prefix/width/NUL/whitespace/case vectors |
 | literal search | bounded positions and continuation base | B | memmem boundary quirk retained only when verified | range last-position tests |
-| regex | POSIX ERE C-locale leftmost-longest, last-byte truncation | B/C | initial Rust regex leftmost-first and unsupported POSIX syntax are declared gaps; no C FFI | alternation, NUL, $, classes, limits |
+| regex | POSIX ERE C-locale leftmost-longest, last-byte truncation | B/C | earliest-start/longest-overall-match implemented; unsupported backreferences/collation remain gaps; no C FFI | alternation, NUL, $, classes, limits |
 | dates/float/GUID/DER/octal/varints | typed matching and exact display | B/C | varint/ID3 at pin may have broken evaluator support; track suspected defects | cross-endian vectors, TZ, NaN |
 | metadata/symlinks/special files | Unix lstat/stat and MIME inode results | B/C | no reading devices without -s; unsupported platforms declared | fifo/socket/link/device/permissions |
 | text/encoding | ordered recognizers, character tables, normalized rules, suffixes | B/C | unsupported encodings must be listed, not guessed as UTF8 | BOM, invalid/truncated Unicode, EBCDIC |
-| tar/JSON/CSV/SIMH | upstream heuristic, not just format validity | B/C | interim strict JSON library differences disclosed | existing+generated fixtures |
+| tar/JSON/CSV/SIMH | upstream heuristic, not just format validity | B/C | dedicated bounded heuristic recognizer; retain malformed-prefix behavior | existing+generated fixtures |
 | ELF/CDF | metadata ordering and bounded malformed handling | C | generic identification is not equivalent to detailed output | real files, core notes, sector cycles |
-| compression | -z/-Z one layer, wrapper MIME and error descriptions | B/C | gzip first; no external helper; other codecs explicit | same codec feature set, bombs and truncation |
+| compression | -z/-Z one layer, wrapper MIME and error descriptions | B/C | gzip and zlib implemented; no external helper; other codecs explicit unsupported errors | same codec feature set, bombs and truncation |
 | limits | upstream defaults plus safe global budgets | A+ | new limit errors are intentional, never masquerade as data match | tiny/zero/absurd limit values |
 | preserve atime | platform restoration behavior | C | reject flag if not implemented rather than no-op | timestamp/fd ownership tests |
 | sandbox | Linux seccomp/Landlock enabled features reported | C | safe parser does not imply kernel sandbox; missing sandbox declared | strace/denial process tests |
@@ -41,3 +41,5 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 Intentional changes are restricted to: memory-safe rejection of malformed/overflow states; finite total work/output/database budgets; immutable shareable database and owned Rust results; no external decompression helpers; distinct executable identity; pinned embedded data fallback; optional strict source mode and portable binary output. Every other deviation remains a compatibility gap until explicitly approved as a design change. Do not count a MIME-only match as an exact human-output match, or a buffer match as fd API parity.
 
 Potential upstream defects should be represented as separate expected observations, with minimal reproducer and exact flags/build attached. Preserve defined, safe quirks in compatibility mode; do not reproduce out-of-bounds access, UB or denial of service. A corrected semantic profile must be named/versioned, with paired legacy and corrected tests.
+
+Observed delivered profile: all 103 upstream goldens, the standard differential corpus and the selected extended flag profile pass in the reports. CLI has six documented differences on this sandboxed host (four native gzip guard cases and two FIFO SIGSYS cases). These figures do not certify untested platforms or the remaining ELF/CDF/locale/compiler-diagnostic surfaces. Local-time date rendering currently uses UTC; source warnings, native sort on other endian targets, strict CRC errors, parameter quirks and oversized buffer sampling remain gaps or declared changes.

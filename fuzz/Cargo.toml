@@ -1,0 +1,64 @@
+[package]
+name = "rfile-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+rfile = { path = ".." }
+
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "compiled_database"
+path = "fuzz_targets/compiled_database.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "magic_source"
+path = "fuzz_targets/magic_source.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "classify"
+path = "fuzz_targets/classify.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "rules_and_data"
+path = "fuzz_targets/rules_and_data.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "formatter"
+path = "fuzz_targets/formatter.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "encoding"
+path = "fuzz_targets/encoding.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "compression"
+path = "fuzz_targets/compression.rs"
+test = false
+doc = false
+bench = false

@@ -1,0 +1,26 @@
+[package]
+name = "rfile"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Independent bounded Rust implementation of file magic evaluation"
+license = "BSD-2-Clause"
+publish = false
+default-run = "rfile"
+
+[dependencies]
+regex-automata = { version = "0.4", default-features = false, features = ["std", "syntax", "dfa-build", "dfa-search", "nfa-pikevm"] }
+flate2 = { version = "1.1", default-features = false, features = ["miniz_oxide"] }
+serde_json = "1.0"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[[bin]]
+name = "rfile"
+path = "src/main.rs"
+
+[[bin]]
+name = "rfile-probe"
+path = "src/bin/probe.rs"
