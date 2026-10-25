@@ -12,7 +12,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
-| R8 C ABI | pending | source diagnostics/list prerequisite and all 19 ABI functions/client contracts |
+| R8 C ABI | experimental implementation on feat/c-api-diagnostics | all 19 exports and safe ownership/state boundary; 43/49 initial whole-state cases exact, six frozen source-diagnostic gaps; qualification remains open |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
@@ -231,3 +231,31 @@ configuration header and database hashes match the earlier build. See
 [verification-extended.json](../reports/verification-extended.json). Reference
 tools now reject tracked changes and support an explicit `RFILE_REFERENCE` path;
 the final report records clean source, configuration and binary identities.
+
+
+## R8 experimental C surface checkpoint
+
+The branch `feat/c-api-diagnostics` implements the 19 pinned functions and one
+implementation extension in `rfile-ffi`, with a distinct SONAME and retained
+header notices. It is a functioning experimental interface, not full drop-in
+certification. See the detailed ABI spec for its caller ownership, poisoning,
+source snapshot, buffer/descriptor and atomic compilation contracts.
+
+Verification passed 31 full-project stages and 134 ordinary debug/release tests;
+132 default tests and MSRV 1.87 also pass. Source-check primitive coverage remains
+582/582 successful dump cases. The initial ABI whole-state/action matrix is
+43/49 exact with six precisely frozen malformed-source diagnostic differences.
+Native/Rust C/C++ ownership and concurrency clients pass, including C ASan/UBSan;
+20 dynamic exports and the distinct SONAME were checked. A pinned python-magic
+0.4.27 consumer selects the Rust library through an isolated alias and passes
+buffer/path/descriptor description and MIME checks. No system install occurred.
+The full benchmark checksum matches; warm Rust/C ratio was 1.63 on this host.
+
+There are now 24 fuzz targets. The ABI target completed 160,079 executions in
+30.900628 measured CPU seconds with address instrumentation, with no reported
+failure. This is smoke, not the required 24 CPU-hours. The isolated campaign
+supervisor measures the real child inside the namespace; a preliminary outer
+wait4 accounting attempt is explicitly superseded. Independent review and
+sustained qualification remain open. The next code milestone is typed native
+parser diagnostics and continue-after-error/warning-cap ordering, followed by
+expanded IO/state cases and same-candidate qualification.

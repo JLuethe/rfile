@@ -18,21 +18,28 @@ not installed. Security restrictions require review, not automatic resubmission.
   allowlist patch. Never treat it as clean or discard its edits. Use the separately
   built `.reference/file-clean` at the exact pin. Tools now reject tracked source
   modifications; reference-audit.json records the correction and final identities.
-- Active branch is `feat/c-api-diagnostics`, R8 prerequisite work. A bounded
-  byte-preserving `Database::legacy_list` renderer and focused listing and source-check tests are
-  implemented. Initial comparison: 5/5 listing stdout results match the clean
-  reference, but four source-load stderr warnings are missing. A bounded source
-  check-dump primitive now matches 221 valid synthetic programs and all 361
-  selected upstream source fragments (582/582 successful dump cases); malformed
-  warning rendering and complete loader actions are still open. This is research,
-  **not completed action/ABI conformance**; see reports/r8a-listing-baseline.json.
-- C ABI exports do not exist yet. Next: source-load origins/diagnostics, complete
-  check/list action ordering/state, then all 19 functions and client/ownership/
-  packaging verification per docs/remaining/07-c-abi.md. That spec's header line
-  reference was corrected to magic.h.in:128–162 during this review.
-- No build/fuzz worker remains active at this checkpoint. Native quantified
-  histories, broader semantics/platforms, sustained campaigns and independent
-  review remain open. No global install or new release has been performed.
+- Active branch is `feat/c-api-diagnostics`, R8 experimental ABI preview. All
+  19 exports exist in an isolated crate, with panic/cookie/pointer ownership
+  boundaries, native parameter widths and compiled-header diagnostics, bounded
+  source snapshots, legacy list/check dumps and distinct library identity.
+  It is **not drop-in certified**. Next is the typed parser diagnostic stream;
+  six malformed-source cases remain frozen in data/abi-known-gaps.json.
+- Full replay passed 31 stages, 134 ordinary debug/release tests, 132 isolated
+  default tests, MSRV 1.87 and 582/582 successful source-check dump cases.
+  ABI state comparison: 43/49 exact; six recorded diagnostic gaps. C/C++ clients
+  (including C ASan/UBSan), 20-symbol/SONAME/linkage checks and pinned python-magic
+  0.4.27 pass. ABI sanitizer smoke: 160,079 cases, 30.900628 measured CPU seconds.
+  The core still forbids unsafe; reports/unsafe.json includes the separate FFI.
+- Packaging tools now create an isolated tree with headers, pkg-config, rule
+  sources/notices and a vendored source archive. An offline source-package check
+  found an omitted compile-time test fixture; the packaging allowlist was fixed.
+  Rebuild and rerun package check before claiming that final package gate passed.
+- Fuzz campaigns now require bubblewrap isolation. CPU is measured by an inner
+  wait4 parent, because the outer namespace supervisor did not include descendant
+  CPU on this host. No sustained campaign or independent review gate has passed.
+  Do not resume old manifests across different supervisor/source/binary hashes.
+- Inspect workers: an isolated cargo-audit tool build may still be running.
+  No global install, system replacement or new release was performed.
 
 ## Resume
 
@@ -40,15 +47,17 @@ not installed. Security restrictions require review, not automatic resubmission.
    R7 is already merged. Rebase the R8 branch onto origin/main if not yet done.
 2. Use `RFILE_REFERENCE=/home/john/Code/rfile/.reference/file-clean` for oracle
    tooling. `upstream/` is the preserved modified historical checkout.
-3. Continue R8 source diagnostics/listing. Trace `apprentice_1`,
-   `file_apprentice`, `file_magwarn`, `file_mdump`, and source parser outcomes.
-   Do not confuse matching listing stdout with matching stderr/state or the ABI.
-4. Run focused differential and error/state/ownership tests; once implementation
-   stabilizes, run the full matrix and native client/packaging checks. Serialize
-   default/all-feature integration tests or use separate target directories:
-   building one feature set can replace a CLI still used by another test run.
-5. Update docs/evidence, push a PR, require both hosted checks, then proceed to
-   the next milestone. Keep feature delivery separate from security qualification.
+3. Checkpoint the tested R8 preview in a PR; require Linux and MSRV checks.
+   Rebuild/verify the isolated package including its offline source archive.
+4. Continue the typed parser diagnostics prerequisite in docs/remaining/07-c-abi.md.
+   Preserve strict Rust parsing; implement native diagnostic event ordering and
+   warning state without quadratic prefix reparse or Display-string heuristics.
+5. Run affected differential/ownership checks and then the full matrix. Keep
+   default/all-feature CLI tests serialized or use isolated target directories.
+6. Continue R9 audit/coverage and isolated sustained campaigns; retain actual
+   independent review and residual fidelity/platform gates. Keep implementation
+   delivery separate from security qualification; do not claim completed work
+   based on symbol counts, successful compilation or short fuzz smoke.
 
 Cargo: `/home/john/.cargo/bin/cargo`. Prepare a clean test-only oracle with
 `RFILE_REFERENCE=/absolute/clean/checkout bash tools/build_reference.sh`; use the

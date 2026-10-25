@@ -165,6 +165,20 @@ impl Engine {
             &budget,
         )
     }
+    /// Inspect an entire borrowed C-API buffer, independently of the file-read
+    /// sampling parameter, while preserving all other shared inspection limits.
+    /// This entry point remains safe Rust and accepts at most 256 MiB.
+    #[doc(hidden)]
+    pub fn classify_complete_buffer(&self, data: &[u8]) -> Result<Classification> {
+        if data.len() > 256 * 1024 * 1024 {
+            return Err(Error::Limit("ABI buffer input"));
+        }
+        let budget = self.budget()?;
+        self.check_output(
+            self.classify_input_complete(data, None, false, None, None, &budget, false),
+            &budget,
+        )
+    }
     pub fn classify_path(&self, path: &std::path::Path) -> Result<Classification> {
         let budget = self.budget()?;
         self.check_output(filesystem::classify_path(self, path, &budget), &budget)
@@ -306,6 +320,19 @@ impl Engine {
     ) -> Result<Classification> {
         let truncated = data.len() > self.limits.bytes;
         let data = &data[..data.len().min(self.limits.bytes)];
+        self.classify_input_complete(data, tail, executable, elf_suffix, view, budget, truncated)
+    }
+    #[allow(clippy::too_many_arguments)]
+    fn classify_input_complete(
+        &self,
+        data: &[u8],
+        tail: Option<&[u8]>,
+        executable: bool,
+        elf_suffix: Option<&[u8]>,
+        view: Option<&mut dyn input::InputView>,
+        budget: &InspectionBudget,
+        truncated: bool,
+    ) -> Result<Classification> {
         if data.len() <= 1 {
             let mut c = self.basic(
                 if data.is_empty() {
@@ -355,7 +382,8 @@ impl Engine {
             if !self.flags.has(Flags::TRANSPARENT)
                 && (!self.flags.has(Flags::MIME) || self.flags.0 & Flags::MIME == Flags::MIME)
             {
-                let outer = inner.classify_input(data, None, false, None, None, budget)?;
+                let outer =
+                    inner.classify_input_complete(data, None, false, None, None, budget, false)?;
                 let mut output = result.output.clone();
                 append_output(
                     &mut output,

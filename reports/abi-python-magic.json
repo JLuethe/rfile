@@ -1,0 +1,33 @@
+{
+  "scope": "Pinned python-magic consumer using local loader alias; no system install. Consumer tests only, not universal client compatibility.",
+  "library_sha256": "7995358fd0951c722dff48e3427f2e9f70697476f72bd2fb9732b6636a72798a",
+  "status": 0,
+  "stderr": "",
+  "result": {
+    "package_version": "0.4.27",
+    "implementation": {
+      "implementation": "rfile",
+      "version": "0.1.0",
+      "upstream": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+      "profile": "Pinned548",
+      "manifest_version": 1,
+      "abi": "experimental",
+      "drop_in_compatible": false
+    },
+    "rows": [
+      {
+        "mime": false,
+        "buffer": "ASCII text",
+        "file": "ASCII text",
+        "descriptor": "ASCII text"
+      },
+      {
+        "mime": true,
+        "buffer": "text/plain",
+        "file": "text/plain",
+        "descriptor": "text/plain"
+      }
+    ],
+    "module_sha256": "8c31760002258f7b972a33fac7fc0485762e3eb65b97e005dd30236f49dd7829"
+  }
+}

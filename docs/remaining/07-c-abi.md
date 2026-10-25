@@ -1,6 +1,6 @@
 # C ABI: independent libmagic-compatible interface
 
-ABI-01 through ABI-12 specify the compatibility library requested in the [parent plan](../07-remaining-work-spec.md). The current project exposes Rust APIs only. This is a new interface around the independent Rust engine, not a binding to the original C detector.
+ABI-01 through ABI-12 specify the compatibility library requested in the [parent plan](../07-remaining-work-spec.md). The mainline baseline exposed Rust APIs only; the R8 branch now contains an experimental C interface as recorded below. This is a new interface around the independent Rust engine, not a binding to the original C detector.
 
 ## ABI-01: exact target, artifacts and scope
 
@@ -121,7 +121,7 @@ Ordinary mapping: preserve the underlying errno for IO; invalid IDs EINVAL; dete
 
 ## ABI-09: headers, symbols and package identity
 
-Generate a reviewed header with all pinned constants/macros, 19 prototypes, opaque handle and C++ extern-C guards. A generation tool is optional; adding cbindgen requires its own version/license review and cannot be assumed to reproduce the legacy header. Compare preprocessed constants and C sizeof/signatures using a compiled client. Export only public magic_* and explicitly prefixed rfile_* extensions through a linker version script; hide Rust/internal symbols. Verify dynamic dependencies contain no libmagic or native detection codecs.
+Generate a reviewed header with all pinned constants/macros, 19 prototypes, opaque handle and C++ extern-C guards. A generation tool is optional; adding cbindgen requires its own version/license review and cannot be assumed to reproduce the legacy header. Compare preprocessed constants and C sizeof/signatures using a compiled client. Export only public magic_* and explicitly prefixed rfile_* extensions through the Rust cdylib linker export allowlist (or a reviewed platform version script); hide Rust/internal symbols. Verify dynamic dependencies contain no libmagic or native detection codecs.
 
 Default install prefix supplies `include/rfile/magic.h`, librfile_magic shared/static artifacts, `rfile-magic.pc`, license/notices, rules and capability manifest. An opt-in libmagic compatibility prefix supplies its conventional names after tests, without changing the machine's system package. Retain the correct SONAME and symlink chain; version script tags do not invent symbol versions unsupported by intended clients. Test actual loader behavior and C/C++ link commands. crates.io publication and global installation are separate explicit release decisions.
 
@@ -183,3 +183,69 @@ is caller-selected up to 16 MiB and source size remains capped at 128 MiB; it
 returns completed dump records alongside a parse/limit error. These bounded
 primitive APIs do not imply completed loader diagnostics or foreign-pointer ABI
 contracts. No C export or system-library replacement exists at this checkpoint.
+
+
+## R8 preview implementation and refined gates (2026-10-25)
+
+`crates/rfile-ffi` now implements all 19 entry points plus the implementation
+extension. This is an experimental surface preview; R8 is **not complete**.
+The safe engine remains independent of the native detector. The cdylib export
+allowlist was verified with nm/readelf: 20 symbols, SONAME librfile_magic.so.1,
+no libmagic dependency. No manual second linker version script is needed on the
+initial Rust/Linux toolchain because rustc supplies the export allowlist.
+
+Safe snapshots now parse directory fragments once with global source sorting;
+check dumps preserve parse order. ABI buffer classification bypasses only file
+sampling, keeping the 256 MiB hard cap and execution/output budgets. The cookie
+adapter has a panic boundary and poisoned state; detectable NULL/alignment/size
+errors are checked before slices; caller synchronization still owns pointer
+lifetimes. A temporary CLOEXEC descriptor duplicate preserves ownership and
+seekable cursor restoration. Default flags, native parameter widths, early zero
+buffer-load state and compiled-header error precedence have explicit tests.
+
+Database source/compiled reads require a regular file, opened nonblocking before
+checking its metadata. This intentionally excludes FIFO/device database sources.
+Aggregate action reads are capped at 128 MiB and action output at 16 MiB.
+Compilation uses exclusive same-directory staging, mode 0644 subject to umask and
+atomic replacement; destination inode/symlink semantics deliberately differ from
+C O_TRUNC. The output directory must be trusted. Getpath's configured data file
+is real in the isolated package; embedded CLI fallback is not substituted.
+
+The native `apprentice_buf` stores MAP_TYPE_USER pointers (apprentice.c:3306–3325);
+its buffers must stay alive until unloading/close. The common C test now honors
+that lifetime. An initial harness incorrectly freed native memory early and
+failed; it was a harness contract violation, not a newly established upstream
+vulnerability. Only Rust tests the stronger copy-and-own guarantee by freeing
+source bytes immediately after return. This distinction also applies to Python
+ctypes probes: keep their allocations live through close for the native oracle.
+
+Current comparison covers 49 whole action/state scenarios, 43 exact and six
+frozen malformed-source differences. Each disagreement records both full byte
+channels and state; `data/abi-known-gaps.json` freezes exact observed payloads so
+changed failures cannot silently inherit an allowlist label. Six C/C++ client
+runs (native/Rust, including C ASan/UBSan) pass. Client sanitization does not
+instrument Rust allocations. A separate address-sanitized stateful ABI target
+uses only valid owned foreign allocations; it does not generate arbitrary
+pointers or host paths. Successful header diagnostics do not mean arbitrary
+compiled records accepted by C must bypass Rust structural validation.
+
+Next ABI gates, in dependency order:
+
+1. Add typed source diagnostic events with physical source positions, warning
+   counters, native continue-after-error ordering and annotation/error taxonomy.
+   Preserve existing strict Rust parsing; do not translate arbitrary Display
+   strings or reparse prefixes quadratically to fake a diagnostic stream.
+2. Expand state fixtures to multiple failures, malformed directory members,
+   cap boundaries mid-file, no-final-newline lines, non-UTF8 provenance,
+   conditional rules, invalid format annotations and source/compiled fallback.
+   Resolve the six frozen cases with the shared renderer; remove their baseline
+   entries only after reference evidence and ordinary regressions pass.
+3. Complete IO failure and special-file state cases, errno/locale wording and
+   DEBUG behavior decisions. Keep unsupported/native-only behavior explicit.
+4. Validate isolated prefix packaging, pkg-config/default discovery, static and
+   dynamic clients, all feature combinations and a pinned python-magic consumer.
+5. Run the final same-candidate full matrix, stateful sanitizer campaign and
+   applicable ownership/Miri tests; retain independent review as a separate gate.
+
+The first step is a parser/diagnostic milestone, not a reason to claim the whole
+ABI complete because the exported function count is correct.

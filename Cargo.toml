@@ -44,6 +44,6 @@ name = "rfile-probe"
 path = "src/bin/probe.rs"
 
 [workspace]
-members = [".", "crates/rfile-platform"]
+members = [".", "crates/rfile-platform", "crates/rfile-ffi"]
 default-members = [".", "crates/rfile-platform"]
 resolver = "3"

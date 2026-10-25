@@ -11,14 +11,30 @@ pub struct SourceCheck {
     pub output: Vec<u8>,
 }
 pub(crate) fn check(source: &[u8], name: &str, time: &TimeContext, limit: usize) -> SourceCheck {
+    if source.len() > crate::database::MAX_DB || name.len() > 65536 {
+        return SourceCheck {
+            database: Err(Error::Limit("source database")),
+            output: Vec::new(),
+        };
+    }
+    let mut owned = Vec::new();
+    if owned.try_reserve_exact(source.len()).is_err() {
+        return SourceCheck {
+            database: Err(Error::Limit("source allocation")),
+            output: Vec::new(),
+        };
+    }
+    owned.extend_from_slice(source);
+    check_fragments(&[(name.into(), owned)], time, limit)
+}
+pub(crate) fn check_fragments(
+    sources: &[(String, Vec<u8>)],
+    time: &TimeContext,
+    limit: usize,
+) -> SourceCheck {
     let mut output = Vec::new();
     let database = (|| -> Result<Database> {
-        if source.len() > crate::database::MAX_DB {
-            return Err(Error::Limit("source database"));
-        }
-        if name.len() > 65536 {
-            return Err(Error::Limit("source name"));
-        }
+        Database::validate_source_fragments(sources)?;
         if limit > 16 * 1024 * 1024 {
             return Err(Error::Limit("source diagnostic configuration"));
         }
@@ -27,12 +43,7 @@ pub(crate) fn check(source: &[u8], name: &str, time: &TimeContext, limit: usize)
             b"cont\toffset\ttype\topcode\tmask\tvalue\tdesc\n",
             limit,
         )?;
-        let mut owned = Vec::new();
-        owned
-            .try_reserve_exact(source.len())
-            .map_err(|_| Error::Limit("source allocation"))?;
-        owned.extend_from_slice(source);
-        crate::parser::parse_sources_observed(&[(name.into(), owned)], &mut |rule| {
+        crate::parser::parse_sources_observed(sources, &mut |rule| {
             append(&mut output, &dump(rule, time)?, limit)
         })
     })();

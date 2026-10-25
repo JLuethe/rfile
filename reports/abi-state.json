@@ -1,0 +1,585 @@
+{
+  "schema_version": 1,
+  "scope": "Experimental ABI state/action comparison; discrepancies remain explicit, not a drop-in certification.",
+  "reference": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "library_sha256": "7995358fd0951c722dff48e3427f2e9f70697476f72bd2fb9732b6636a72798a",
+  "total": 49,
+  "exact": 43,
+  "cases": [
+    {
+      "name": "buffer-invalid:empty",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:header",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:short",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:trailing",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:magic",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:version",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:count",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:sum",
+      "exact": true
+    },
+    {
+      "name": "null",
+      "exact": true
+    },
+    {
+      "name": "params",
+      "exact": true
+    },
+    {
+      "name": "state",
+      "exact": true
+    },
+    {
+      "name": "buffer-owner",
+      "exact": true
+    },
+    {
+      "name": "buffer-bytes",
+      "exact": true
+    },
+    {
+      "name": "descriptor:0",
+      "exact": true
+    },
+    {
+      "name": "descriptor:1",
+      "exact": true
+    },
+    {
+      "name": "descriptor-invalid",
+      "exact": true
+    },
+    {
+      "name": "pipe",
+      "exact": true
+    },
+    {
+      "name": "path",
+      "exact": true
+    },
+    {
+      "name": "file:input",
+      "exact": true
+    },
+    {
+      "name": "file:empty",
+      "exact": true
+    },
+    {
+      "name": "file:missing",
+      "exact": true
+    },
+    {
+      "name": "file:link",
+      "exact": true
+    },
+    {
+      "name": "file:directory",
+      "exact": true
+    },
+    {
+      "name": "action:load:magic",
+      "exact": true
+    },
+    {
+      "name": "action:load:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:load:directory",
+      "exact": true
+    },
+    {
+      "name": "action:load:malformed",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a6d616c666f726d65642c20313a205761726e696e673a20747970652060626f6775732078206d616c666f726d65642720696e76616c69640a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "load",
+            "value": -1,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "load",
+            "value": -1,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "action:check:magic",
+      "exact": true
+    },
+    {
+      "name": "action:check:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:check:directory",
+      "exact": true
+    },
+    {
+      "name": "action:check:malformed",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a636f6e74096f66667365740974797065096f70636f6465096d61736b0976616c756509646573630a6d616c666f726d65642c20313a205761726e696e673a20747970652060626f6775732078206d616c666f726d65642720696e76616c69640a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "check",
+            "value": -1,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a636f6e74096f66667365740974797065096f70636f6465096d61736b0976616c756509646573630a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "check",
+            "value": -1,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "action:list:magic",
+      "exact": true
+    },
+    {
+      "name": "action:list:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:list:directory",
+      "exact": true
+    },
+    {
+      "name": "action:list:malformed",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a6d616c666f726d65642c20313a205761726e696e673a20747970652060626f6775732078206d616c666f726d65642720696e76616c69640a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "list",
+            "value": -1,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520606d616c666f726d6564270a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "list",
+            "value": -1,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "action:compile:magic",
+      "exact": true
+    },
+    {
+      "name": "action:compile:magic.mgc",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "6d616769632e6d67632c20313a205761726e696e673a206f666673657420601c041ef1152720696e76616c69640a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "compile",
+            "value": -1,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "compile",
+            "value": -1,
+            "error": "6d61676963206c696e6520303a206d616769632e6d67633a206d61676963206c696e6520303a20696e76616c6964206f6666736574",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "6d61676963206c696e6520303a206d616769632e6d67633a206d61676963206c696e6520303a20696e76616c6964206f6666736574",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "action:compile:directory",
+      "exact": true
+    },
+    {
+      "name": "action:compile:malformed",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "6d616c666f726d65642c20313a205761726e696e673a20747970652060626f6775732078206d616c666f726d65642720696e76616c69640a",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "compile",
+            "value": -1,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "636f756c64206e6f742066696e6420616e792076616c6964206d616769632066696c657321",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "",
+        "state": [
+          {
+            "name": "setflags",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "compile",
+            "value": -1,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": null,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "paths:magic:missing",
+      "exact": true
+    },
+    {
+      "name": "paths:missing:magic",
+      "exact": true
+    },
+    {
+      "name": "paths:malformed:magic",
+      "exact": false,
+      "reference": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "6d616c666f726d65642c20313a205761726e696e673a20747970652060626f6775732078206d616c666f726d65642720696e76616c69640a",
+        "state": [
+          {
+            "name": "load",
+            "value": 0,
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": "73616d706c65",
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "rust": {
+        "status": 0,
+        "stdout_hex": "",
+        "stderr_hex": "",
+        "state": [
+          {
+            "name": "load",
+            "value": 0,
+            "error": "6d61676963206c696e6520313a206d616c666f726d65643a206d61676963206c696e6520313a20696e76616c6964207479706520626f677573",
+            "cookie_errno": 0,
+            "flags": 64
+          },
+          {
+            "name": "buffer",
+            "value": "73616d706c65",
+            "error": null,
+            "cookie_errno": 0,
+            "flags": 64
+          }
+        ],
+        "artifacts": {
+          "magic.mgc": "23d9e04024261b0fd4f531af4196f55ee23a39861d9624bc995d4b958573a302"
+        }
+      },
+      "known_gap": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic."
+    },
+    {
+      "name": "paths:magic:",
+      "exact": true
+    },
+    {
+      "name": "paths:",
+      "exact": true
+    },
+    {
+      "name": "paths::magic",
+      "exact": true
+    },
+    {
+      "name": "warnings:0",
+      "exact": true
+    },
+    {
+      "name": "warnings:1",
+      "exact": true
+    },
+    {
+      "name": "warnings:2",
+      "exact": true
+    },
+    {
+      "name": "warnings:3",
+      "exact": true
+    }
+  ],
+  "unexpected": []
+}

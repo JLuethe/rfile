@@ -348,11 +348,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "rfile-ffi"
+version = "0.1.0"
+dependencies = [
+ "libc",
+ "rfile",
+]
+
+[[package]]
 name = "rfile-fuzz"
 version = "0.0.0"
 dependencies = [
  "libfuzzer-sys",
  "rfile",
+ "rfile-ffi",
  "rfile-platform",
 ]
 

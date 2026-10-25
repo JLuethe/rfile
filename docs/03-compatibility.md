@@ -34,7 +34,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | preserve atime | platform restoration behavior | C | reject flag if not implemented rather than no-op | timestamp/fd ownership tests |
 | sandbox | Linux seccomp/Landlock enabled features reported | C | safe parser does not imply kernel sandbox; missing sandbox declared | strace/denial process tests |
 | Rust API | owned results, immutable DB, concurrent calls | A/B | deliberately idiomatic, no magic_t aliasing | API integration and multithread determinism |
-| C ABI | all exported libmagic entry points/constants | D, now requested | absent until separate crate and conformance suite; see [ABI plan](remaining/07-c-abi.md) | C client under sanitizers, pointer lifetimes |
+| C ABI | all 19 exported libmagic entry points/constants | experimental preview | distinct rfile-ffi library; ownership/state tests and 43/49 initial cases exact; malformed-source and qualification gaps remain; see [ABI plan](remaining/07-c-abi.md) | C/C++ clients under sanitizers, pointer lifetimes, separate-process state matrix |
 | packaging | deterministic versioned rule distribution | B/D | embedded pinned fallback, binary `rfile` | build without upstream tree or C compiler |
 | Windows/BSD/macOS/big endian | target-specific metadata and filename handling | C/D | Linux tested first; portable core alone is not platform certification | native CI/QEMU |
 
