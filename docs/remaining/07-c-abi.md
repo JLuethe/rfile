@@ -134,3 +134,52 @@ Use stateful property/fuzz tests with valid allocations and generated operation 
 Integration clients: a minimal C classifier, C++ extern-C client, Python ctypes driver and a pinned representative python-magic version in an isolated environment. Do not install over the system libmagic to perform the test. Compare file/buffer/descriptor paths, getpath/discovery and compiler/check/list diagnostics, not only MIME on one string.
 
 ABI-surface preview can ship with an explicit experimental capability level while detectors remain incomplete. **Drop-in behavioral compatibility** requires the CDF/ELF/codec/SEM gates, diagnostic/action/load-state closure, valid pointer/ownership conformance, supported-platform packaging and SEC review. Every intentional safety limit or profile difference remains visible in the compatibility matrix. No stubbed function, version number or successful link can substitute for those gates.
+
+
+## R8 execution refinements from source tracing (2026-10-25)
+
+The clean reference is selected through `RFILE_REFERENCE`; see the R7 reference
+audit. R8 work is on `feat/c-api-diagnostics`, not a delivered C ABI.
+
+- `apprentice_list` (apprentice.c:1163) prints each set's Binary/Text headings,
+  filters by the root mode and selects the first nonempty description and MIME
+  independently from the continuation group. Strings use C's first-NUL boundary;
+  invalid UTF-8 is preserved as bytes. Each successful path in a list action
+  prints the accumulated loaded lists again. Merging every path and printing once
+  is not equivalent. Initial pure-renderer evidence matches all five observed
+  database/source listing bodies; source discovery stderr is still a gap.
+- `file_mdump` (print.c:49) runs during parsing before MIME annotations and final
+  sorting. Check output is not a post-load strength listing. Its type/mask/string
+  modifier rendering includes observable oddities: a trailing shift in LE
+  varints and omitted trim/full-word letters. The bounded dump primitive matches
+  221 valid synthetic programs and all 361 selected source fragments. This
+  separates the known source-discovery warning from the dump; malformed parser
+  warnings and complete action state remain unimplemented requirements.
+- `apprentice_1` (apprentice.c:477–515) prefers compiled mapping for check/list;
+  source checking emits its header only when source parsing occurs. Compile
+  returns before attaching parsed lists: it can leave allocated empty lists,
+  whereas successful load/check/list attach parsed data. Verify subsequent
+  classification separately for each action, rather than assuming compile loads
+  its compiled rules. The earlier broad statement that all actions may leave
+  parsed lists must be interpreted with this distinction.
+- `file_magwarn` (print.c:275) increments before comparing the cap. The warning
+  reaching the cap prints suppression notices instead of its original message;
+  `load_1` (apprentice.c:1350) stops subsequent parsing once that count reaches
+  the cap. The counter is initialized with the cookie (apprentice.c:568), not
+  cleared by `file_reset` (funcs.c:537). Warning state therefore persists across
+  operations. Test cap zero/one, repeated loads, and changing the parameter.
+- Regular-source list observations confirm the second discovery warning carries
+  the previous file and next physical line (`a, 2` after one record). Rule
+  provenance line numbers and warning/current physical lines are distinct;
+  missing final newline must not collapse them into one counter. Owned Rust
+  context replaces dangling source-name storage; undefined native pointer output
+  is not a byte-for-byte contract.
+- Empty path components terminate the native path-list loop rather than merely
+  being skipped. A first empty component fails; a trailing empty component can
+  follow successful loads. Preserve partial success/error/cookie state separately.
+
+Diagnostic construction must be checked before growth. The new primitive's cap
+is caller-selected up to 16 MiB and source size remains capped at 128 MiB; it
+returns completed dump records alongside a parse/limit error. These bounded
+primitive APIs do not imply completed loader diagnostics or foreign-pointer ABI
+contracts. No C export or system-library replacement exists at this checkpoint.

@@ -574,6 +574,16 @@ impl Database {
     pub fn legacy_list(&self, output_limit: usize) -> Result<Vec<u8>> {
         crate::legacy_listing::render(self, output_limit)
     }
+    /// Parse one source and retain the bounded legacy check dump even on error.
+    /// This primitive does not perform file discovery or render parser warnings.
+    pub fn check_source_dump(
+        source: &[u8],
+        name: &str,
+        time: &crate::TimeContext,
+        output_limit: usize,
+    ) -> crate::SourceCheck {
+        crate::legacy_source::check(source, name, time, output_limit)
+    }
     pub fn list(&self) -> String {
         let mut out = String::new();
         for (set, groups) in [(0, &self.ordinary), (1, &self.named)] {

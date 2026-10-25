@@ -46,6 +46,8 @@ mod format;
 pub mod input;
 mod inspection;
 mod legacy_listing;
+mod legacy_source;
+pub use legacy_source::SourceCheck;
 mod limits;
 mod options;
 mod posix_time;

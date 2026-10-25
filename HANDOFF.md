@@ -19,9 +19,12 @@ not installed. Security restrictions require review, not automatic resubmission.
   built `.reference/file-clean` at the exact pin. Tools now reject tracked source
   modifications; reference-audit.json records the correction and final identities.
 - Active branch is `feat/c-api-diagnostics`, R8 prerequisite work. A bounded
-  byte-preserving `Database::legacy_list` renderer and two focused tests are
+  byte-preserving `Database::legacy_list` renderer and focused listing and source-check tests are
   implemented. Initial comparison: 5/5 listing stdout results match the clean
-  reference, but four source-load stderr warnings are missing. This is research,
+  reference, but four source-load stderr warnings are missing. A bounded source
+  check-dump primitive now matches 221 valid synthetic programs and all 361
+  selected upstream source fragments (582/582 successful dump cases); malformed
+  warning rendering and complete loader actions are still open. This is research,
   **not completed action/ABI conformance**; see reports/r8a-listing-baseline.json.
 - C ABI exports do not exist yet. Next: source-load origins/diagnostics, complete
   check/list action ordering/state, then all 19 functions and client/ownership/
