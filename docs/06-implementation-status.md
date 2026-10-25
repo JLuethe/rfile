@@ -36,7 +36,7 @@ The pinned oracle is file 5.48 at `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, bu
 | Check | Observed result | Evidence |
 |---|---|---|
 | Original build/tests | Autotools build and `make check` pass; 103 fixtures | [baseline](../reports/baseline.json), verification log steps |
-| Rust formatting/lints/tests | 113 ordinary tests pass in debug and release; Clippy warnings-as-errors passes | [verification](../reports/verification.json) |
+| Rust formatting/lints/tests | 113 ordinary tests pass in debug and release; Clippy warnings-as-errors passes | [all-feature verification](../reports/verification-extended.json) |
 | Direct upstream goldens | 103 / 103 exact | [fixtures.json](../reports/fixtures.json) |
 | Broad API differential | 22,544 / 22,544 exact; 2,818 files × buffer/path × description/MIME/type/charset | [differential.json](../reports/differential.json), [hashed corpus manifest](../reports/corpus-manifest.json) |
 | Additional flag profiles | 11,000 / 11,000 exact; balanced 500-file corpus × 11 flags/combinations × 2 entry points | [extended.json](../reports/extended.json) |
