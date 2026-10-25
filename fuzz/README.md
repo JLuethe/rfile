@@ -1,6 +1,6 @@
 # Fuzzing
 
-Twenty-two buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings, registry/decompression and ten per-codec targets,, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
+Twenty-three buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings, registry/decompression and ten per-codec targets, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
 
 ```sh
 cargo check --manifest-path fuzz/Cargo.toml --locked --bins
@@ -9,7 +9,7 @@ cargo +nightly fuzz run classify -- -max_len=65536
 cargo +nightly fuzz run compiled_database -- -max_len=1048576
 cargo +nightly fuzz run magic_source -- -max_len=65536
 cargo +nightly fuzz run rules_and_data -- -max_len=65536
-cargo +nightly fuzz run formatter -- -max_len=63
+cargo +nightly fuzz run formatter -- -max_len=73
 cargo +nightly fuzz run encoding -- -max_len=65536
 cargo +nightly fuzz run compression -- -max_len=65536
 cargo +nightly fuzz run cdf_container -- -max_len=65536
@@ -47,3 +47,11 @@ errors. The campaign identity now includes platform-crate source/manifests.
 Its final smoke ran 689,299 cases over 30.99 measured CPU seconds, without a
 reported failure; this does not instrument/prove glibc or satisfy sustained
 security gates. The core's C display remains safe Rust.
+
+
+`formatter` now separates type, description length and payload, exercising byte,
+f32 and f64 conversions through both semantic profiles. `time_context` parses
+bounded POSIX expressions or TZif bytes and evaluates local/Windows date rules
+in both profiles, without opening input-selected paths or modifying TZ. Seed
+with explicit J/n/M and perpetual-DST rules plus public TZif data. Neither target
+is a claim that the sustained campaign has completed.

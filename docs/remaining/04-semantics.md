@@ -154,3 +154,42 @@ smoke, concurrency and unwind controls supplement the exact locale differential;
 independent review, sustained campaigns, other encodings and platforms remain
 open. Date/float edge closure and full native quantified-regex histories are
 separate SEM work.
+
+
+## R6c reviewed implementation decisions (2026-10-25)
+
+The formatter must not clamp accepted precision to 64. The existing 4,096
+width/precision safety ceiling remains explicit; the pinned float path additionally
+preserves native field validation and its 1,024-byte per-print output ceiling.
+Native `%.1024f` calls the oversized field "width", whereas `%1.1024f` calls it
+"precision"; both diagnostics are observable contracts. Overlarge generic safety
+requests may fail before native emulation rather than allocate unbounded output.
+
+Pinned548 preserves the native fmtcheck rejection of float `%G`/`%F` and float
+length modifiers, including source-line and float/double call-site diagnostics.
+CorrectedV1 permits uppercase f/g formatting. Source-validator acceptance is a
+separate matrix from evaluating a type-correct patched v21 description. Matching
+errors requires matching diagnostic bytes, not merely two absent results.
+Alternate `%g` retains the measured native trailing-zero omission when rounding
+crosses from fixed to scientific notation. Preserve exact IEEE values/signs;
+no native printf call or float-to-decimal dependency is introduced.
+
+For explicit POSIX TZ expressions, Pinned548 evaluates the two transitions in
+the timestamp's UTC calendar year and retains the host's epoch-zero anchor for
+years at/before 1970. CorrectedV1 uses Jiff's recurring calendar semantics.
+The bounded internal representation is built only after Jiff validates the
+expression. It handles fixed offsets and explicit J/n/M transition forms,
+including signed transition times; ambiguous implicit DST rules remain visibly
+unsupported through this constructor. Named TZif contexts retain their existing
+checked tables and range policy. Standard offsets and DST flags are retained explicitly. Legacy FILETIME uses
+bounded inverse iteration and the host's 601,200-second bidirectional standard-
+time probes (229,222,804-second exclusive distance bound), then its one-hour
+fallback. This preserves unusual half-hour perpetual-DST cases that do not
+reduce to simply subtracting the standard offset. Host mktime cache-dependent
+ambiguities remain an explicit investigation rather than shared mutable state.
+
+Observed host behavior is checked against the pinned file build on glibc 2.44.
+The explanatory libc source is [GNU tzset.c, compute_change and __tz_compute](https://github.com/bminor/glibc/blob/master/time/tzset.c);
+that moving source is corroboration, not a substitute for the recorded native
+oracle. Extreme custom TZif/footer and host-specific rounding/locale behavior
+remain separate fidelity gates; these repairs do not certify every libc/platform.

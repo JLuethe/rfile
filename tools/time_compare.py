@@ -10,14 +10,20 @@ import subprocess
 import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 ZONES = ['UTC', 'PST8PDT,M3.2.0,M11.1.0', 'America/Los_Angeles',
-         'Europe/Berlin', 'Asia/Kolkata', 'Asia/Kathmandu', 'Australia/Lord_Howe']
+         'Europe/Berlin', 'Asia/Kolkata', 'Asia/Kathmandu', 'Australia/Lord_Howe',
+         'EST5EDT,0/0,J365/25', '<STD>-5:45<DST>-6:15,0/0,J365/25',
+         'UTC0', '<FIX>-14', 'AAA12BBB11,M10.1.0,M3.1.0',
+         'AAA0BBB,J60/1,J300/3', 'AAA0BBB,60/1,300/3',
+         'AAA0BBB,M3.5.0/-2,M10.5.0/26']
 KINDS = ['ledate', 'bedate', 'medate', 'leldate', 'beldate', 'meldate',
          'leqdate', 'beqdate', 'leqldate', 'beqldate', 'leqwdate', 'beqwdate']
 VALUES = [0, 1, 86399, 86400, 951782400, 1710064799, 1710064800,
           1730624399, 1730624400, 2147483647, 2147483648, 4294967295]
-WIDE = [(-1) & ((1 << 64)-1), 253402300799, 253402300800]
+WIDE = [n & ((1 << 64)-1) for n in [-2208988800, -15811200, -86400, -1,
+        17999, 18000, 31535999, 31536000, 31553999, 31554000,
+        4107542400, 253402300799, 253402300800]]
 WINDOWS = [0, 1, 864000000000, 116444736000000000, 116470656000000000,
-           125963424000000000, (1 << 63)-1]
+           125963424000000000, 133643520000000000, 133643519999999999, (1 << 63)-1]
 
 def invoke(binary, source, path, zone):
     result = subprocess.run([str(binary), '-b', '-m', str(source), str(path)],

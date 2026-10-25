@@ -162,3 +162,45 @@ fn upper_year_local_boundary_uses_checked_repeating_footer() {
         b"Thu Jan  1 08:00:00 1970"
     );
 }
+
+#[test]
+fn pinned_posix_uses_native_utc_year_boundaries() {
+    let n = (-15_811_200i64) as u64;
+    let tz = TimeContext::posix("PST8PDT,M3.2.0,M11.1.0").unwrap();
+    assert_eq!(
+        date("leqldate", n, tz.clone(), SemanticProfile::Pinned548),
+        b"Tue Jul  1 16:00:00 1969"
+    );
+    assert_eq!(
+        date("leqldate", n, tz, SemanticProfile::CorrectedV1),
+        b"Tue Jul  1 17:00:00 1969"
+    );
+    let tz = TimeContext::posix("EST5EDT,0/0,J365/25").unwrap();
+    assert_eq!(
+        date(
+            "leqldate",
+            (-1i64) as u64,
+            tz.clone(),
+            SemanticProfile::Pinned548
+        ),
+        b"Wed Dec 31 18:59:59 1969"
+    );
+    assert_eq!(
+        date("leqldate", (-1i64) as u64, tz, SemanticProfile::CorrectedV1),
+        b"Wed Dec 31 19:59:59 1969"
+    );
+}
+
+#[test]
+fn pinned_filetime_preserves_short_standard_period_search() {
+    let tz = TimeContext::posix("<STD>-5:45<DST>-6:15,0/0,J365/25").unwrap();
+    assert_eq!(
+        date(
+            "leqwdate",
+            133643520000000000,
+            tz,
+            SemanticProfile::Pinned548
+        ),
+        b"Mon Jul  1 18:45:00 2024"
+    );
+}

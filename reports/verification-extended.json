@@ -1,12 +1,12 @@
 {
   "features": "extended-codecs",
   "status": "passed",
-  "elapsed_seconds": 278.0311374479934,
+  "elapsed_seconds": 395.2311516619957,
   "steps": [
     {
       "name": "format",
       "status": 0,
-      "seconds": 0.13164206300280057,
+      "seconds": 0.32538112699694466,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -18,7 +18,7 @@
     {
       "name": "clippy",
       "status": 0,
-      "seconds": 0.08955832099309191,
+      "seconds": 0.9543768930016086,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "clippy",
@@ -33,7 +33,7 @@
     {
       "name": "cargo-test",
       "status": 0,
-      "seconds": 3.028799367006286,
+      "seconds": 6.887301322989515,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -44,7 +44,7 @@
     {
       "name": "cargo-release-test",
       "status": 0,
-      "seconds": 56.97609595800168,
+      "seconds": 73.92520538099052,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -56,7 +56,7 @@
     {
       "name": "cargo-build",
       "status": 0,
-      "seconds": 0.03802615200402215,
+      "seconds": 0.06492154800798744,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -68,7 +68,7 @@
     {
       "name": "database-rebuild",
       "status": 0,
-      "seconds": 0.13784020900493488,
+      "seconds": 0.3090024270059075,
       "command": [
         "python3",
         "tools/rebuild_database.py"
@@ -77,7 +77,7 @@
     {
       "name": "fuzz-smoke",
       "status": 0,
-      "seconds": 1.6371500760142226,
+      "seconds": 2.150386595996679,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -94,7 +94,7 @@
     {
       "name": "fuzz-format",
       "status": 0,
-      "seconds": 0.0491272770013893,
+      "seconds": 0.07953107700450346,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -107,7 +107,7 @@
     {
       "name": "fuzz-build",
       "status": 0,
-      "seconds": 0.44956385699333623,
+      "seconds": 1.4743062799971085,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "check",
@@ -120,7 +120,7 @@
     {
       "name": "upstream-check",
       "status": 0,
-      "seconds": 2.083694471002673,
+      "seconds": 2.7138709430000745,
       "command": [
         "make",
         "-C",
@@ -131,7 +131,7 @@
     {
       "name": "compiler",
       "status": 0,
-      "seconds": 0.22391776599397417,
+      "seconds": 0.5932815690030111,
       "command": [
         "python3",
         "tools/compiler_compare.py"
@@ -140,7 +140,7 @@
     {
       "name": "fixtures",
       "status": 0,
-      "seconds": 2.413393734008423,
+      "seconds": 3.623469312005909,
       "command": [
         "python3",
         "tools/fixture_compare.py"
@@ -149,7 +149,7 @@
     {
       "name": "differential-broad",
       "status": 0,
-      "seconds": 10.788116060008178,
+      "seconds": 15.47451414000534,
       "command": [
         "python3",
         "tools/differential.py",
@@ -160,7 +160,7 @@
     {
       "name": "extended",
       "status": 0,
-      "seconds": 11.10418402000505,
+      "seconds": 17.186201491989777,
       "command": [
         "python3",
         "tools/extended_compare.py"
@@ -169,7 +169,7 @@
     {
       "name": "semantics-differential",
       "status": 0,
-      "seconds": 2.981853332996252,
+      "seconds": 3.847429532004753,
       "command": [
         "python3",
         "tools/semantics_compare.py"
@@ -178,7 +178,7 @@
     {
       "name": "regex-differential",
       "status": 0,
-      "seconds": 4.422969849998481,
+      "seconds": 5.546203239995521,
       "command": [
         "python3",
         "tools/regex_compare.py"
@@ -187,7 +187,7 @@
     {
       "name": "elf-differential",
       "status": 0,
-      "seconds": 65.99297980700794,
+      "seconds": 93.17161546301213,
       "command": [
         "python3",
         "tools/elf_compare.py"
@@ -196,7 +196,7 @@
     {
       "name": "compression-differential",
       "status": 0,
-      "seconds": 72.5450685780088,
+      "seconds": 81.53533121300279,
       "command": [
         "python3",
         "tools/compression_compare.py"
@@ -205,7 +205,7 @@
     {
       "name": "cdf-differential",
       "status": 0,
-      "seconds": 6.031680398999015,
+      "seconds": 8.001422209010343,
       "command": [
         "python3",
         "tools/cdf_compare.py"
@@ -214,16 +214,25 @@
     {
       "name": "locale-differential",
       "status": 0,
-      "seconds": 9.000516365995281,
+      "seconds": 11.332233598004677,
       "command": [
         "python3",
         "tools/locale_compare.py"
       ]
     },
     {
+      "name": "float-differential",
+      "status": 0,
+      "seconds": 2.1000103399856016,
+      "command": [
+        "python3",
+        "tools/float_compare.py"
+      ]
+    },
+    {
       "name": "time-differential",
       "status": 0,
-      "seconds": 12.600783665999188,
+      "seconds": 48.721916409995174,
       "command": [
         "python3",
         "tools/time_compare.py"
@@ -232,7 +241,7 @@
     {
       "name": "component-differential",
       "status": 0,
-      "seconds": 0.14381881599547341,
+      "seconds": 0.20513390700216405,
       "command": [
         "python3",
         "tools/component_compare.py"
@@ -241,7 +250,7 @@
     {
       "name": "cli-differential",
       "status": 0,
-      "seconds": 4.641815391994896,
+      "seconds": 4.443028645997401,
       "command": [
         "python3",
         "tools/cli_compare.py"
@@ -250,7 +259,7 @@
     {
       "name": "benchmark",
       "status": 0,
-      "seconds": 10.464510006000637,
+      "seconds": 10.457120338003733,
       "command": [
         "python3",
         "tools/benchmark.py"
@@ -259,12 +268,12 @@
   ],
   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-  "binary_sha256": "3400c11cade0afceeee544caf39ec6aadd34e619902818b4b117f6f41a297b9a",
+  "binary_sha256": "6bd7e2b4c43567419156a46c049eafd2ea1db13e2367ddd4b1132d97358892e8",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "mutation_smoke": [
     {
       "database_cases": 10000,
-      "elapsed_seconds": 1.604291333,
+      "elapsed_seconds": 2.078749711,
       "fixture_truncations": 1339,
       "random_input_cases": 10000,
       "seed": "4f6c655275737421",

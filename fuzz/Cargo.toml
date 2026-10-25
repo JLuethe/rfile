@@ -169,3 +169,10 @@ path = "fuzz_targets/display_locale.rs"
 test = false
 doc = false
 bench = false
+
+[[bin]]
+name = "time_context"
+path = "fuzz_targets/time_context.rs"
+test = false
+doc = false
+bench = false

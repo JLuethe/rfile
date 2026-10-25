@@ -1,0 +1,27 @@
+{
+  "source_sha256": "d68d9e37c915d81fc2cdf15f2c22399bb254463d08f93782509c64ba2a61f269",
+  "checks": {
+    "default-tests": {
+      "log": "r6c-default-test.log",
+      "sha256": "a84d2aaea545b7877dda264db5a20f25160331cfc2598fd1b39ab3e1c6c7cb57",
+      "status": "passed"
+    },
+    "default-clippy": {
+      "log": "r6c-default-clippy.log",
+      "sha256": "ff8009a51830effbb4be5174543777772ee48e8b554d7e5a632843b4d4c7d921",
+      "status": "passed"
+    },
+    "msrv": {
+      "log": "r6c-msrv.log",
+      "sha256": "e177c4d77c73243d81a69f89ac3c3155a7d20eac87b9f7069f2c8283273c56dc",
+      "status": "passed"
+    },
+    "all-fuzz-targets": {
+      "log": "r6c-fuzz-check.log",
+      "sha256": "18a07f01d7926b615b8323a183fbe14cddad0f98548c2718036cd729fe1171b0",
+      "status": "passed"
+    }
+  },
+  "fuzz_targets": 23,
+  "note": "All-bin fuzz check repeated after adding time_context; full 25-stage run built the earlier target set before this addition. Production source was unchanged during verification."
+}
