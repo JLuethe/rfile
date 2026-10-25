@@ -4,6 +4,10 @@ Updated 2026-10-24. Read [the wrap-up plan](docs/09-wrap-up-plan.md), then the
 relevant detailed specification. This is a checkpoint, not permission to publish
 a release or a promise of active background work.
 
+Read [execution and recovery](docs/10-execution-and-recovery-spec.md) for R6c
+refinements and future supervisor requirements. Recovery automation is specified,
+not installed. Security restrictions require review, not automatic resubmission.
+
 ## Current state
 
 - Repo: https://github.com/JLuethe/rfile; local `/home/john/Code/rfile`.
