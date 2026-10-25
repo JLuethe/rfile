@@ -302,3 +302,44 @@ Next work remains concrete:
 4. Rebuild isolated ABI packaging after the final candidate, then run the full
    same-candidate matrix, sustained ownership/parser campaigns and independent
    review. PR #16's passing package is evidence for that earlier candidate only.
+
+
+## R8c CLI action integration
+
+`src/cli_database.rs` uses the same typed source parser and native compiled-header
+validation as the C ABI. Check output is now generated in parse order; a compiled
+neighbor takes precedence for check/list. List output repeats the accumulated
+sets after each successful path. Empty path components terminate processing;
+missing or malformed members can coexist with successful members, as in the pin.
+Raw cookie errors are written as bytes rather than lossy UTF-8.
+
+Source discovery warnings retain the previous attempted filename/line. A failed
+source open still produces the check header; this behavior is shared with the
+ABI. Native CLI database actions create a new CHECK cookie but never call
+`applyparam` (file.c:400–443), so `-P magwarn=0` deliberately does not suppress
+their warnings. The native default cap remains 64, independent of classification
+parameters. These quirks are verified, not inferred fixes.
+
+Action input reads are regular-file-only, aggregate 128 MiB; output is bounded
+to 16 MiB, path lists to 16 nonempty components and directories to 4,096 files /
+16,384 entries. Linux opens nonblocking before checking handle metadata, so a
+FIFO is rejected without waiting. Compilation retains atomic publication through
+the existing sandbox adapter. Quota violations abort even after partial success;
+this stronger bounded-resource policy is an intentional difference.
+
+Focused evidence: 243 exact CLI scenarios in off/auto/strict sandbox modes,
+including invalid headers, directories, path-list partial success, warning caps,
+source/compiled preference and ignored action parameters. Only the diagnostic
+program-name prefix `file:` is normalized to `rfile:`. Compilation artifact
+hashes and all other stdout/stderr/status bytes are compared. Four ordinary Rust
+regressions preserve core action contracts; FIFO rejection is a separate safety
+check, not counted as native conformance. ABI diagnostics now cover 440 exact
+scenarios, including repeated missing-source actions.
+
+Remaining action gaps include default database discovery without `-m` (the CLI
+still explicitly requires it for database actions), DEBUG tracing, source-load
+warnings in ordinary classification, IO errors after an earlier directory member,
+accepted truncation/escape/format warnings and broader conditional grammar.
+Directory source bytes are snapshotted before parsing: a racing later read error
+can prevent earlier dump records, unlike the native incremental file reader.
+These are still open and are not hidden by the passing action matrix.

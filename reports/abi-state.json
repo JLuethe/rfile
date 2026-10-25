@@ -16,7 +16,7 @@
     "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
     "version_stderr": ""
   },
-  "library_sha256": "c00696f79e316303945eef9db464544492ecb4db4f07d348630b2fbca4319b27",
+  "library_sha256": "4785c6147a54a076fb3ed515a79dd0fd98e03d8b7e6d180b0ace82c174e874d1",
   "total": 49,
   "exact": 49,
   "cases": [

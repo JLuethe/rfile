@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "R8c same-candidate local checks; fuzz queue smoke recorded separately",
+  "full_verification_stages": 33,
+  "debug_tests": 145,
+  "release_tests": 145,
+  "default_tests": 143,
+  "msrv": "1.87.0",
+  "cli_action_scenarios": 243,
+  "cli_action_modes": [
+    "off",
+    "auto",
+    "strict"
+  ],
+  "abi_diagnostic_scenarios": 440,
+  "checks": {
+    "reports/r8c-default.log": "bbb903ea4467da882cde298a5343e7df3a26c6fa40a4386b62e8bfc963efeefe",
+    "reports/r8c-msrv.log": "261eeb8727c2b995e0e25a264bbac11610915c81717159f9cfbf8548bc27211b",
+    "reports/r8c-fuzz-build.log": "909aa14350c6969202624da885e3df6ef0b2d7a6357230e29250fa3304982a7a"
+  }
+}

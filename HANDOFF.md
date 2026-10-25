@@ -6,10 +6,10 @@ This records evidence, not a completed security qualification or release.
 
 ## Repository and reference
 
-- R7 PR #15 and the experimental C ABI PR #16 are merged. Latest reviewed main:
-  `59c7c384241046833de904dafd2440eac53bfc37`. Linux/MSRV checks passed.
-- Active branch: `feat/source-diagnostic-events`. It adds typed parser diagnostics,
-  persistent ABI warning/error/line state and safe continuation-jump evaluation.
+- R7 PR #15 and the experimental C ABI PR #16 are merged. Typed diagnostics PR #17 is also merged. Latest reviewed main:
+  `51a31affc81c1068d8b2f94f2d3e67ddd8d2c624`. Linux/MSRV checks passed.
+- Active branch: `feat/cli-source-actions`. It integrates native CLI database
+  action output, missing-file provenance and bounded regular-file reads.
   Inspect Git/GitHub for its latest commit/PR before resuming or publishing.
 - The primary clean oracle is `.reference/file-clean`, exact upstream commit
   `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always use
@@ -21,10 +21,10 @@ This records evidence, not a completed security qualification or release.
 
 ## Tested current increment
 
-- All 32 stages of `tools/verify.py --all-features --benchmark` passed:
-  141 ordinary debug/release tests; 139 isolated default tests; Rust 1.87;
-  unchanged v21 database and matching benchmark checksum (warm ratio 1.661).
-- ABI state: 49/49 original scenarios and 420/420 expanded diagnostic scenarios
+- All 33 stages of `tools/verify.py --all-features --benchmark` passed:
+  145 ordinary debug/release tests; 143 isolated default tests; Rust 1.87;
+  unchanged v21 database and matching benchmark checksum (warm ratio 1.607).
+- ABI state: 49/49 original scenarios and 440/440 expanded diagnostic scenarios
   exact. The six previously frozen diagnostic differences are now resolved.
   Strict Rust source constructors retain their existing first-error behavior.
 - 582/582 valid source-check dumps pass. Seven new ordinary source regressions
@@ -33,7 +33,7 @@ This records evidence, not a completed security qualification or release.
 - Two applicable FFI Miri tests pass with `LC_ALL=C TZ=UTC0` and
   `MIRIFLAGS='-Zmiri-env-forward=LC_ALL -Zmiri-env-forward=TZ'`.
   Miri does not establish host timezone/locale/kernel correctness.
-- 25 ASan fuzz targets build. Latest short isolated runs: 519,332 diagnostic
+- 25 ASan fuzz targets build. Historical R8b short isolated runs: 519,332 diagnostic
   cases / 30.120558 CPU seconds; 156,904 ABI sequences / 30.932193 CPU seconds.
   No sustained target has met its 24-CPU-hour gate. Review actual live manifests
   and process identities before launching duplicate work.
@@ -47,9 +47,9 @@ This records evidence, not a completed security qualification or release.
 
 1. Reconcile Git, current reports, running processes and GitHub checks. Preserve
    edits. Checkpoint this increment through a PR; require Linux and MSRV success.
-2. Continue [ABI remaining actions](docs/remaining/07-c-abi.md): CLI `-c` still
-   uses the old post-load list. Integrate check/compile/list source actions while
-   preserving discovery, path-list partial success and sandbox setup ordering.
+2. CLI actions now have 243 exact cases across off/auto/strict modes. Continue
+   [remaining actions](docs/remaining/07-c-abi.md): default discovery, DEBUG, broader
+   accepted warnings/IO behavior and ordinary classification source loads.
 3. Expand accepted native warning/format/conditional/directory/IO error fixtures;
    unmapped diagnostics remain explicit gaps. No universal drop-in claim.
 4. Continue R9 isolated measured campaigns, coverage and resource/ownership review.

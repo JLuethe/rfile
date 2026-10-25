@@ -57,6 +57,7 @@ if not args.no_oracle:
  run('time-differential',['python3','tools/time_compare.py'])
  run('component-differential',['python3','tools/component_compare.py'])
  run('cli-differential',['python3','tools/cli_compare.py'])
+ run('cli-database-differential',['python3','tools/cli_database_compare.py','--binary','target/release/rfile']+(['--sandbox-matrix']if args.all_features else []))
  cli=json.loads((ROOT/'reports/cli.json').read_text())
  if any(not r['equal']and not r.get('intentional_difference')for r in cli['cases']):raise SystemExit('unexpected CLI discrepancy')
  if args.all_features:run('sandbox-differential',['python3','tools/sandbox_compare.py'])
