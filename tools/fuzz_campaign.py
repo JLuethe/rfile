@@ -8,6 +8,8 @@ binary, source tree, lockfiles and initial configuration. Run one supervisor
 per target; each owns its child and wait4 accounting.
 """
 import argparse
+import fcntl
+import math
 import hashlib
 import json
 import os
@@ -44,12 +46,17 @@ def main():
     ap.add_argument('--resume',action='store_true')
     args=ap.parse_args()
     if not re.fullmatch(r'[a-z_]+',args.target):raise SystemExit('Invalid target')
-    if not 1<=args.seconds<=3600 or args.cpu_hours<0:raise SystemExit('Invalid campaign duration')
+    if not 1<=args.seconds<=3600 or not math.isfinite(args.cpu_hours) or not 0<=args.cpu_hours<=168:raise SystemExit('Invalid campaign duration')
+    if not 1<=args.max_len<=16*1024*1024 or not 128<=args.rss_mib<=4096:raise SystemExit('Invalid input/RSS limit')
     binary=ROOT/'fuzz/target/x86_64-unknown-linux-gnu/release'/args.target
     corpus=ROOT/'fuzz/corpus'/args.target;corpus.mkdir(parents=True,exist_ok=True)
     artifacts=ROOT/'fuzz/artifacts'/args.target;artifacts.mkdir(parents=True,exist_ok=True)
     logs_root=ROOT/'fuzz/campaign-logs'/args.target;logs_root.mkdir(parents=True,exist_ok=True)
     record=ROOT/'reports'/f'fuzz-{args.target}.json'
+    # Keep this file descriptor open throughout the run, including final save.
+    lock=(logs_root/'campaign.lock').open('a')
+    try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    except BlockingIOError:raise SystemExit('Another campaign owns this target')
     configuration=dict(supervisor_sha256=digest(Path(__file__)),isolation='bubblewrap unshare-all; no host home/network; private tmp; readonly binary/system libraries',kernel=platform.platform(),toolchain=subprocess.check_output([str(Path.home()/'.cargo/bin/rustc'),'+nightly','--version'],text=True).strip(),target=args.target,binary_sha256=digest(binary),source_sha256=source_digest(),
                        seed=args.seed,max_len=args.max_len,rss_mib=args.rss_mib,sanitizer='address',
                        build='cargo +nightly fuzz build; default optimized debug assertions + instrumented std',
@@ -111,7 +118,7 @@ def main():
         report['current_corpus']=seeds(corpus)
         report['requested_cpu_hours']=args.cpu_hours
         report['completed_gate']=bool(target_cpu>=86400 and report['measured_cpu_seconds']>=target_cpu and all(c['returncode']==0 and c['accounting_valid'] for c in report['chunks']))
-        report['status']='failed' if child.returncode or not accounting_valid else 'gate-passed' if report['completed_gate'] else 'smoke-only' if not target_cpu else 'running'
+        report['status']='failed' if child.returncode or not accounting_valid else 'gate-passed' if report['completed_gate'] else 'smoke-only' if not target_cpu else 'partial-campaign-complete' if report['measured_cpu_seconds']>=target_cpu else 'running'
         report.pop('active_child_pid',None);report.pop('active_command',None);save()
         print(json.dumps(dict(target=args.target,**chunk,accumulated_cpu_seconds=report['measured_cpu_seconds'],status=report['status'])),flush=True)
         if child.returncode or not accounting_valid:raise SystemExit('Fuzzer failed; preserve log/artifact and add a minimized regression')

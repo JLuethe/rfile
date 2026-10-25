@@ -34,6 +34,7 @@ pub struct InspectionMetrics {
 }
 #[derive(Debug, Default)]
 struct Counters {
+    magic_line: Cell<Option<u32>>,
     steps: Cell<usize>,
     work: Cell<usize>,
     reads: Cell<usize>,
@@ -64,6 +65,12 @@ impl InspectionBudget {
         };
         budget.checkpoint()?;
         Ok(budget)
+    }
+    pub(crate) fn note_magic_line(&self, line: u32) {
+        self.counters.magic_line.set(Some(line));
+    }
+    pub(crate) fn last_magic_line(&self) -> Option<u32> {
+        self.counters.magic_line.get()
     }
     pub fn checkpoint(&self) -> Result<()> {
         if self

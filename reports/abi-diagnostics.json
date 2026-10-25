@@ -1,0 +1,2630 @@
+{
+  "schema_version": 1,
+  "scope": "Source diagnostic event research: mismatches remain open unless individually resolved. Successful native parse with a warning is distinct from Rust rejection.",
+  "reference": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "library_sha256": "c00696f79e316303945eef9db464544492ecb4db4f07d348630b2fbca4319b27",
+  "fixtures": {
+    "empty": {
+      "hex": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "type": {
+      "hex": "3020626f6775732078206261640a",
+      "sha256": "154cdbee8aeadb8698046899df79ef65b84486946aafd87643dd0c337ae0dbab"
+    },
+    "offset": {
+      "hex": "62616420627974652030206261640a",
+      "sha256": "781fff77607ccacbc6a7a8c30484ce1099a6642c8e17fd2c83974d358c837d85"
+    },
+    "relative": {
+      "hex": "263020627974652030206261640a",
+      "sha256": "8864c4c24eabb24712d58c3e401f15ef65a465e92a0b57ab52c120630dad8bdc"
+    },
+    "missing-test": {
+      "hex": "3020627974650a",
+      "sha256": "01d53add2c4c8e9845f05d58d8e7eaef7a44952083f3c71c0ec06e1b3d152c76"
+    },
+    "two-errors": {
+      "hex": "3020626f67757320782066697273740a62616420627974652030207365636f6e640a",
+      "sha256": "943d3b39f6f9a6b08667a7268b13a795935423a4913945e2f90b1249db43d298"
+    },
+    "valid-between": {
+      "hex": "3020626f67757320782066697273740a3020737472696e6720414243206d6964646c650a62616420627974652030206c6173740a",
+      "sha256": "10cae9f6b191794764852fef6d677107a497c5acfb70af8f42c72094aa442fd1"
+    },
+    "no-final-newline": {
+      "hex": "23636f6d6d656e740a0a3020626f6775732078206c617374",
+      "sha256": "c6470b7acb3e86468b0359ec5dc33823f963065ee21ef1163839abd10ad58583"
+    },
+    "crlf": {
+      "hex": "3020626f6775732078206261640d0a",
+      "sha256": "4c0d64e618a725431e7e34472725f253eb60e1f67f77dfdec25006f693e287f8"
+    },
+    "nul": {
+      "hex": "62616420627974652030206261640069676e6f7265640a",
+      "sha256": "3ba3a4b4ad65ba139977efc16238cfe8f7042bf4d0b2fcb1ff9155e576277918"
+    },
+    "unsigned-type": {
+      "hex": "302075626f6775732078206261640a",
+      "sha256": "78d52ae15c824b1ae8bcd0402d60be674cefa1dc158ca68323afd5f9f08eea09"
+    },
+    "raw-path": {
+      "hex": "3020626f6775732078206261640a",
+      "sha256": "154cdbee8aeadb8698046899df79ef65b84486946aafd87643dd0c337ae0dbab"
+    },
+    "unknown-annotation": {
+      "hex": "213a626f67757320780a",
+      "sha256": "2ce188186031ac991048d7339f518f6063671162b28f9a072901f195ee3d0e53"
+    },
+    "orphan-mime": {
+      "hex": "213a6d696d6520746578742f706c61696e0a",
+      "sha256": "033bfba84a9d1a31a3fbfc1eaf8a6954817fd9c48d0fc01924b4e1d46e3cc40b"
+    },
+    "duplicate-mime": {
+      "hex": "3020737472696e67204142432073616d706c650a213a6d696d6520746578742f706c61696e0a213a6d696d65206170706c69636174696f6e2f782d6f746865720a",
+      "sha256": "3e7f93a963539b416080277a3e533f7b5345b711ec0ccb58583f11df25c2fa14"
+    },
+    "strength": {
+      "hex": "30206279746520312073616d706c650a213a737472656e677468207a340a",
+      "sha256": "8e5a33ec390babc90d673ff17473b7be801a3623cbdb0978ee29dc0b33cbf8ac"
+    },
+    "numeric": {
+      "hex": "30206c6f6e67206e6f6e73656e7365206261640a",
+      "sha256": "89e4a6a42f450c7ff9e8f355fadc7ab3764c960ab945c73a16a82a4ce6cc5225"
+    },
+    "orphan-continuation": {
+      "hex": "3e3020627974652031206368696c640a",
+      "sha256": "ff061b024b18c6c9ba958e68d622a646a5a76b577ad0fa76d8d89373fdefb2c4"
+    },
+    "skipped-continuation": {
+      "hex": "302062797465203120726f6f740a3e3e3020627974652032206368696c640a",
+      "sha256": "4dea42a8b5ea0d5b6b1cd9876197514896e006fd987a658a5f22434c0a791ed1"
+    },
+    "continued-name": {
+      "hex": "302062797465203120726f6f740a3e30206e616d65206e616d65640a",
+      "sha256": "b5bc7a763ab14d84f6244dbdc244daf415713821677c15c307a51c09a0a6f715"
+    },
+    "stale-descendant": {
+      "hex": "3020737472696e672041424320726f6f740a3e3020737472696e6720414243206f6e650a3e3e3020737472696e67204142432074776f0a3e3e3e3020737472696e67204142432074687265650a3e3020737472696e672058595a206d6973730a3e3e3e3e3020737472696e6720414243207374616c650a3e3020737472696e6720414243206c6173740a",
+      "sha256": "6851e0f32165b3c5f53d73c488f16c73892e73821d5b8f5026142f7f587d0a3c"
+    }
+  },
+  "total": 420,
+  "exact": 420,
+  "cases": [
+    {
+      "fixture": "empty",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "empty",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "type",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "offset",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "relative",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing-test",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "two-errors",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "valid-between",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "no-final-newline",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "crlf",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "nul",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unsigned-type",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "raw-path",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "unknown-annotation",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-mime",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "duplicate-mime",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "strength",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "numeric",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "orphan-continuation",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "skipped-continuation",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "continued-name",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "stale-descendant",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    }
+  ]
+}

@@ -165,6 +165,7 @@ impl<'a> Evaluator<'a> {
                     .checked_add(length)
                     .and_then(|end| input.head.get(start..end));
                 if actual != Some(r.bytes()) {
+                    self.budget.note_magic_line(r.line);
                     self.budget.step()?;
                     self.budget.bytes(length)?;
                     continue;
@@ -220,6 +221,13 @@ impl<'a> Evaluator<'a> {
         for r in &g.rules {
             self.budget.step()?;
             let level = r.level as usize;
+            // Native source permits skipped levels with a warning. Invalidate
+            // every descendant before checking the parent so a later jump
+            // cannot reuse a successful descendant from an earlier sibling.
+            active[level + 1..].fill(false);
+            if level > 0 && active[0] {
+                self.budget.note_magic_line(r.line);
+            }
             if level > 0 && !active[level - 1] {
                 active[level] = false;
                 continue;
@@ -268,6 +276,9 @@ impl<'a> Evaluator<'a> {
                     continue;
                 };
                 offset = pos;
+            }
+            if level == 0 {
+                self.budget.note_magic_line(r.line);
             }
             let bytes = if tail_mode {
                 input.tail.unwrap_or(input.head)

@@ -1,47 +1,47 @@
 {
   "schema_version": 2,
-  "started_utc": "2026-10-25T09:16:10.395939+00:00",
-  "supervisor_pid": 3589202,
+  "started_utc": "2026-10-25T10:07:04.270717+00:00",
+  "supervisor_pid": 3812321,
   "configuration": {
-    "supervisor_sha256": "63fe95274da9fa5200bad695c9d526cf29f202b12f000b73e8d3ea15c0f9d45e",
+    "supervisor_sha256": "3c61545f8fe505584e146d66c62edff20002683909260ed4924601080f39c892",
     "isolation": "bubblewrap unshare-all; no host home/network; private tmp; readonly binary/system libraries",
     "kernel": "Linux-7.2.8-9-omarchy-x86_64-with-glibc2.44",
     "toolchain": "rustc 1.101.0-nightly (48f4b0553 2026-10-23)",
     "target": "abi_state",
-    "binary_sha256": "ae03683d1c9fa2ceb130ad0ae43624050137c4150366c3faf0c2c16f817e5b75",
-    "source_sha256": "53999d6fb5be8d8f2ec06699b83fea3b95d68057afdb0de739d227f93c232608",
+    "binary_sha256": "611fd313e5b3f6173cd429fdd2d3cf928258a8501ca63f5097d0086752e1552a",
+    "source_sha256": "afbb8cd8e348c7ed51463ab25ed13dc8dbc9b5939c63e415461aa89b9a86a9b2",
     "seed": 548,
-    "max_len": 4096,
+    "max_len": 65536,
     "rss_mib": 512,
     "sanitizer": "address",
     "build": "cargo +nightly fuzz build; default optimized debug assertions + instrumented std",
     "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59"
   },
   "initial_corpus": {
-    "files": 1152,
-    "bytes": 98321,
-    "sha256": "ef0864f3331429919b66518e92c7d9f43a0886c3952788cc45d4052da619f400"
+    "files": 1843,
+    "bytes": 184235,
+    "sha256": "f19a284b9209e68b34035171a518415feed7c60f57e4ca128f184be1375690a8"
   },
   "chunks": [
     {
       "index": 0,
       "returncode": 0,
       "supervisor_kill": false,
-      "cpu_seconds": 30.900627999999998,
-      "wall_seconds": 31.219618838993483,
-      "peak_rss_kib": 436928,
+      "cpu_seconds": 30.932192999999998,
+      "wall_seconds": 31.23044909100281,
+      "peak_rss_kib": 457836,
       "stats": {
-        "number_of_executed_units": 160079,
-        "average_exec_per_sec": 5163,
-        "new_units_added": 880,
+        "number_of_executed_units": 156904,
+        "average_exec_per_sec": 5061,
+        "new_units_added": 634,
         "slowest_unit_time_sec": 0,
-        "peak_rss_mb": 426
+        "peak_rss_mb": 447
       },
       "accounting_valid": true,
       "fuzzer_exit_status": 0,
-      "supervisor_cpu_seconds": 0.002536,
-      "log": "fuzz/campaign-logs/abi_state/669af84f-f2ef-4c44-bb8b-c96c8738465d/chunk-0.log",
-      "log_sha256": "75eceab59a09cb6c040b8c8e6bb23e1a4249ba7d55fb05c7ff870ef36bead3a3",
+      "supervisor_cpu_seconds": 0.0024879999999999998,
+      "log": "fuzz/campaign-logs/abi_state/f0316cee-3ddb-4656-a353-b8a86531fb98/chunk-0.log",
+      "log_sha256": "14deb0e49afe2d449a88c7133bb0bf480728e42f8ef5c495ee2f16152e18a643",
       "command": [
         "/usr/bin/bwrap",
         "--unshare-all",
@@ -97,24 +97,24 @@
         "/home/john/Code/rfile/fuzz/corpus/abi_state",
         "-seed=548",
         "-max_total_time=30",
-        "-max_len=4096",
+        "-max_len=65536",
         "-timeout=3",
         "-rss_limit_mb=512",
         "-print_final_stats=1",
         "-artifact_prefix=/home/john/Code/rfile/fuzz/artifacts/abi_state/"
       ],
-      "finished_utc": "2026-10-25T09:16:41.634008+00:00"
+      "finished_utc": "2026-10-25T10:07:35.530207+00:00"
     }
   ],
-  "measured_cpu_seconds": 30.900627999999998,
-  "wall_seconds": 31.219618838993483,
+  "measured_cpu_seconds": 30.932192999999998,
+  "wall_seconds": 31.23044909100281,
   "completed_gate": false,
-  "log_directory": "fuzz/campaign-logs/abi_state/669af84f-f2ef-4c44-bb8b-c96c8738465d",
+  "log_directory": "fuzz/campaign-logs/abi_state/f0316cee-3ddb-4656-a353-b8a86531fb98",
   "status": "smoke-only",
   "current_corpus": {
-    "files": 1843,
-    "bytes": 184235,
-    "sha256": "f19a284b9209e68b34035171a518415feed7c60f57e4ca128f184be1375690a8"
+    "files": 2387,
+    "bytes": 267296,
+    "sha256": "9129ab3a7f43280aaee7754f988c648ca97e899488ddae7db887b9e439294ab5"
   },
   "requested_cpu_hours": 0
 }
