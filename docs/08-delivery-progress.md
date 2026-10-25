@@ -10,7 +10,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R3 CDF | merged in PR #7 | shared positional sector/mini/FAT/DIFAT traversal, typed directory/property/catalog evidence, corrected rendering, pinned fallback and generated fixtures |
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
-| R6 full semantics | regex merged in PR #10; locale/display implemented locally with 24 local stages passed | bounded capture VM and GNU front end with explicit pinned restrictions; date/float/full native history closure remains |
+| R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | 24 local stages passed; float research has 2,552 differences in 6,630 cases; date/float/full native history closure remains |
 | R7–R8 sandbox and C ABI | pending | real denied-operation tests and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
