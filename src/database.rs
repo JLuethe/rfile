@@ -569,6 +569,11 @@ impl Database {
         }
         Ok(out)
     }
+    /// Pinned libmagic strength listing, preserving non-UTF-8 description bytes.
+    /// The caller supplies an output cap, at most 16 MiB. This does not emit IO.
+    pub fn legacy_list(&self, output_limit: usize) -> Result<Vec<u8>> {
+        crate::legacy_listing::render(self, output_limit)
+    }
     pub fn list(&self) -> String {
         let mut out = String::new();
         for (set, groups) in [(0, &self.ordinary), (1, &self.named)] {

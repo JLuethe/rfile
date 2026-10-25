@@ -45,6 +45,7 @@ mod flags;
 mod format;
 pub mod input;
 mod inspection;
+mod legacy_listing;
 mod limits;
 mod options;
 mod posix_time;

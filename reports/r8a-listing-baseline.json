@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "scope": "Initial R8 listing research, not ABI conformance. Strength-list stdout matches; source-load stderr remains incomplete.",
+  "total": 5,
+  "stdout_equal": 5,
+  "all_channels_equal": 1,
+  "cases": [
+    {
+      "database": "/home/john/Code/rfile/data/magic.mgc",
+      "equal": true,
+      "reference_status": 0,
+      "rust_status": 0,
+      "reference_stderr": "",
+      "rust_stderr": "",
+      "reference_stdout_sha256": "c34e92ae135d1406aad2c85541563186b794f33df39ca69893c12ce643aea79b",
+      "rust_stdout_sha256": "c34e92ae135d1406aad2c85541563186b794f33df39ca69893c12ce643aea79b"
+    },
+    {
+      "database": "/home/john/Code/rfile/.reference/file-clean/tests/multiple-A.magic",
+      "equal": false,
+      "reference_status": 0,
+      "rust_status": 0,
+      "reference_stderr": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520602f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f66696c652d636c65616e2f74657374732f6d756c7469706c652d412e6d61676963270a",
+      "rust_stderr": "",
+      "reference_stdout_sha256": "b954d289799773d91dd1eb15329a42f12c713ae45312a06c3c221e61d0e40c40",
+      "rust_stdout_sha256": "b954d289799773d91dd1eb15329a42f12c713ae45312a06c3c221e61d0e40c40"
+    },
+    {
+      "database": "/home/john/Code/rfile/.reference/file-clean/tests/multiple-B.magic",
+      "equal": false,
+      "reference_status": 0,
+      "rust_status": 0,
+      "reference_stderr": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520602f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f66696c652d636c65616e2f74657374732f6d756c7469706c652d422e6d61676963270a",
+      "rust_stderr": "",
+      "reference_stdout_sha256": "24eeede8d6264d8da038ced721261102ed97dd3a74e2beae73ba7a5be3599523",
+      "rust_stdout_sha256": "24eeede8d6264d8da038ced721261102ed97dd3a74e2beae73ba7a5be3599523"
+    },
+    {
+      "database": "/home/john/Code/rfile/.reference/file-clean/tests/regex-eol.magic",
+      "equal": false,
+      "reference_status": 0,
+      "rust_status": 0,
+      "reference_stderr": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520602f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f66696c652d636c65616e2f74657374732f72656765782d656f6c2e6d61676963270a",
+      "rust_stderr": "",
+      "reference_stdout_sha256": "22effc2fec2d8da947fd557b8a778c0230a34920acad31d50f40bf2641e1c09d",
+      "rust_stdout_sha256": "22effc2fec2d8da947fd557b8a778c0230a34920acad31d50f40bf2641e1c09d"
+    },
+    {
+      "database": "/home/john/Code/rfile/.reference/file-clean/tests/searchbug.magic",
+      "equal": false,
+      "reference_status": 0,
+      "rust_status": 0,
+      "reference_stderr": "5761726e696e673a207573696e6720726567756c6172206d616769632066696c6520602f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f66696c652d636c65616e2f74657374732f7365617263686275672e6d61676963270a",
+      "rust_stderr": "",
+      "reference_stdout_sha256": "33059907923050c61363c9da217257f89933cdc8611a8b13ed83f375b604e3dc",
+      "rust_stdout_sha256": "33059907923050c61363c9da217257f89933cdc8611a8b13ed83f375b604e3dc"
+    }
+  ]
+}

@@ -10,50 +10,42 @@ not installed. Security restrictions require review, not automatic resubmission.
 
 ## Current state
 
-- Main is `5d8a8757324e9a499915954404d710ad645c5281`, R6c PR #14 merged;
-  both hosted Linux and MSRV checks passed. R6c has 120 tests, 15,447 float and
-  2,850 date comparisons, and 23 buildable fuzz targets; sustained gates are open.
-- Active work is `feat/linux-confinement`, R7: optional Linux/glibc x86_64
-  Landlock/seccomp adapter, ordered CLI planning, auto/strict/off/status, stable
-  preopened strict inputs and private descriptor-relative compile publication.
-- Focused CLI and eight kernel-child scenarios pass locally on Landlock ABI 10.
-  The first full run passed 26 stages and 126 tests; 104 sandbox replay batches
-  cover 5,760 operand comparisons across 411 fixtures. A separate 128-input test
-  then found the BPF instruction ceiling. Contiguous approved FD ranges fix it;
-  the 128-input/-p regression and descriptor-hole denial pass focused checks.
-- The full rerun after the FD fix passed 26 stages. A subsequent reference audit
-  found an older unrecorded seccomp patch in `upstream/src/seccomp.c`. Preserve
-  that checkout. A separate clean pinned worktree is built at
-  `.reference/file-clean`; the final clean replay in `r7-clean-verification.log`
-  **passed all 26 stages**, with 126 debug/release tests and the same six named
-  CLI differences. Reports record clean reference source/config/binary identities.
-  Configuration/database hashes match the old build. Isolated default checks
-  pass (124 tests), and MSRV 1.87 passes. No verification worker remains running
-  at this checkpoint; query actual processes when resuming.
-- No sandbox feature is enabled by default. Ordinary library calls never install
-  confinement. Missing kernels are certification skips, not successful denial
-  tests. Native tracing/other kernels/independent review remain qualification work.
-- R8 C ABI is not implemented. Its source diagnostics/listing prerequisite is
-  next after publishing R7. Native quantified-regex histories, broader semantics,
-  sustained final-candidate fuzzing and independent review remain open.
+- R7 PR #15 is merged on main at `c53bc2ac91d7e4a821231f12e0c4fd6bc65ad8ba`.
+  Hosted Linux/MSRV checks passed. Final clean-reference full replay passed all
+  26 stages with 126 debug/release tests, 124 default tests and 5,760 sandboxed
+  operand comparisons. Kernel policy remains opt-in; qualification gaps remain.
+- The old `upstream/` checkout has a preserved, previously unrecorded seccomp
+  allowlist patch. Never treat it as clean or discard its edits. Use the separately
+  built `.reference/file-clean` at the exact pin. Tools now reject tracked source
+  modifications; reference-audit.json records the correction and final identities.
+- Active branch is `feat/c-api-diagnostics`, R8 prerequisite work. A bounded
+  byte-preserving `Database::legacy_list` renderer and two focused tests are
+  implemented. Initial comparison: 5/5 listing stdout results match the clean
+  reference, but four source-load stderr warnings are missing. This is research,
+  **not completed action/ABI conformance**; see reports/r8a-listing-baseline.json.
+- C ABI exports do not exist yet. Next: source-load origins/diagnostics, complete
+  check/list action ordering/state, then all 19 functions and client/ownership/
+  packaging verification per docs/remaining/07-c-abi.md. That spec's header line
+  reference was corrected to magic.h.in:128–162 during this review.
+- No build/fuzz worker remains active at this checkpoint. Native quantified
+  histories, broader semantics/platforms, sustained campaigns and independent
+  review remain open. No global install or new release has been performed.
 
 ## Resume
 
-1. Inspect `git status --short --branch`, history and `git fetch origin`; preserve
-   local edits. Query GitHub before repeating any push/merge after interruption.
-2. Inspect `r7-clean-verification.log`, the worker/process tree and individual stage
-   logs. A missing completion is UNKNOWN. Do not run default/all-feature tests
-   concurrently using the same target directory: Cargo can replace the CLI
-   executable while integration tests are running. That interference was observed
-   once; it is recorded in `r7-initial-test-interference.log`.
-3. R7 PR #15 has final local evidence; inspect its latest head and hosted checks.
-   The initial implementation head passed Linux/MSRV. Wait for both checks on
-   the final evidence/reference-audit commit before merging.
-4. Publish/merge R7 PR #15 if still pending; query first to avoid duplicate actions.
-   Keep initial feature delivery distinct from all SBX/security qualification.
-5. Continue R8 from `docs/remaining/07-c-abi.md`: native source diagnostics/list
-   behavior first, then all 19 ABI functions, client differential and packaging.
-   Do not publish a replacement/stable release before its acceptance gates.
+1. Inspect Git/workers/GitHub before repeating any action; preserve local edits.
+   R7 is already merged. Rebase the R8 branch onto origin/main if not yet done.
+2. Use `RFILE_REFERENCE=/home/john/Code/rfile/.reference/file-clean` for oracle
+   tooling. `upstream/` is the preserved modified historical checkout.
+3. Continue R8 source diagnostics/listing. Trace `apprentice_1`,
+   `file_apprentice`, `file_magwarn`, `file_mdump`, and source parser outcomes.
+   Do not confuse matching listing stdout with matching stderr/state or the ABI.
+4. Run focused differential and error/state/ownership tests; once implementation
+   stabilizes, run the full matrix and native client/packaging checks. Serialize
+   default/all-feature integration tests or use separate target directories:
+   building one feature set can replace a CLI still used by another test run.
+5. Update docs/evidence, push a PR, require both hosted checks, then proceed to
+   the next milestone. Keep feature delivery separate from security qualification.
 
 Cargo: `/home/john/.cargo/bin/cargo`. Prepare a clean test-only oracle with
 `RFILE_REFERENCE=/absolute/clean/checkout bash tools/build_reference.sh`; use the
@@ -66,10 +58,9 @@ toolchains, corpora and `upstream/` are not guaranteed by a fresh clone.
 
 ## Bounded continuation request
 
-“Read HANDOFF.md and docs/09-wrap-up-plan.md in my rfile repository. Reconcile
-R7 source, live verification workers and GitHub state. Finish its next bounded
-verification/publication step, then continue R8 as specified. Preserve named
-compatibility decisions and update the checkpoint with actual results.”
+“Read HANDOFF.md and the remaining-work specs. Reconcile R8 source, workers and
+GitHub state. Continue the source diagnostics/listing prerequisite, then the
+specified C ABI. Preserve compatibility decisions and checkpoint actual results.”
 
 This scopes authorized maintenance; it is not an access-control workaround.
 For repeated product restrictions, preserve files, record the exact notice and
