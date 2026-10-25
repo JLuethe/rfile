@@ -259,3 +259,10 @@ wait4 accounting attempt is explicitly superseded. Independent review and
 sustained qualification remain open. The next code milestone is typed native
 parser diagnostics and continue-after-error/warning-cap ordering, followed by
 expanded IO/state cases and same-candidate qualification.
+
+Isolated package verification also passed for code commit 62d7b13: dynamic and
+static C clients through pkg-config, configured default-path loading, all
+packaged hashes, and an offline workspace/all-feature/all-target check from the
+vendored source archive. The first source-package check found a missing test
+fixture; the source allowlist now includes it. This is local package validation,
+not publication or the final R10 compatibility release.

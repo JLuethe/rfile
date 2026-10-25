@@ -33,12 +33,15 @@ not installed. Security restrictions require review, not automatic resubmission.
 - Packaging tools now create an isolated tree with headers, pkg-config, rule
   sources/notices and a vendored source archive. An offline source-package check
   found an omitted compile-time test fixture; the packaging allowlist was fixed.
-  Rebuild and rerun package check before claiming that final package gate passed.
+  The rebuilt 62d7b13 package passed dynamic/static clients, default discovery
+  and an offline vendored source rebuild; reports/abi-package.json records it.
 - Fuzz campaigns now require bubblewrap isolation. CPU is measured by an inner
   wait4 parent, because the outer namespace supervisor did not include descendant
   CPU on this host. No sustained campaign or independent review gate has passed.
   Do not resume old manifests across different supervisor/source/binary hashes.
-- Inspect workers: an isolated cargo-audit tool build may still be running.
+- PR #16 is open for the preview; inspect latest hosted checks before merging.
+  cargo-audit 0.22.2 completed against a recorded RustSec database revision;
+  see reports/dependency-audit*.json for results and exact scope.
   No global install, system replacement or new release was performed.
 
 ## Resume
