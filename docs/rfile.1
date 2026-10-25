@@ -8,7 +8,8 @@ rfile \- identify files using a bounded Rust magic engine
 rfile independently evaluates file magic rules and built-in text and format
 recognizers. It embeds rules from file 5.48, commit
 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59.
-A FILE of - reads standard input. No operands prints usage and exits with status 1.
+A FILE of - reads standard input. No operands prints usage and exits with status 1,
+except explicit status/help/version requests.
 .SH OPTIONS
 .TP
 .BR -b , " --brief"
@@ -24,15 +25,17 @@ Continue after matches. Normal output escapes embedded newlines as octal bytes.
 Load source rules or v21 compiled databases. Unix lists are colon-separated.
 .TP
 .BI "-f " LIST
-Read LF-separated filenames immediately using options selected so far.
-A LIST of - reads filenames from standard input.
+Read LF-separated filenames in option-event order. Cookie flags/database are
+frozen at the first list; later formatting and limits follow their option events.
+A LIST of - reads filenames from standard input outside strict sandbox mode.
 .TP
 .BR -L , " -h"
 Follow or do not follow symbolic links. POSIXLY_CORRECT selects following by default.
 .TP
 .BR -z , " -Z"
-Inspect one gzip/zlib layer. -Z hides the outer description.
-Other codecs return an explicit unsupported error when decompression is requested.
+Inspect compiled codecs with finite nested decoding budgets. -Z hides the outer
+description. Default builds include gzip/zlib; extended-codecs enables additional
+selected formats. Uncompiled/unsupported codecs return explicit errors.
 .TP
 .BR -r , " -0 , " -N , " -n"
 Print raw bytes; add NUL after filename; omit padding; flush each record.
@@ -57,13 +60,31 @@ Print extension or Apple annotations.
 Compile, check or list rules. Use -m to select the source/database.
 Check/list/debug diagnostic text differs from C file.
 .TP
-.BR -S , " -v , " --help"
-Accept sandbox-disable option; display version/features; display help.
-This build has no kernel sandbox.
+.BR --sandbox=auto|strict|off , " -S"
+Select optional Linux CLI confinement; -S means off. Last selection wins.
+With the sandbox feature on x86_64 Linux/glibc, auto is the default and attempts
+Landlock/seccomp read-only restrictions before resource parsing. Auto is not
+input-confined. Strict requires seccomp and Landlock ABI 5 or later; classification
+preopens at most 128 input entries, then denies new content opens. Strict rejects
+stdin filename lists and no-buffer file lists. Stdin content is supported.
+Compilation has a separate output-directory write policy; mixed compile and
+classification plans are rejected while sandboxing is enabled. Check/list retain
+read-only filesystem scope. Library classification does not install restrictions.
+.TP
+.B --sandbox-status
+Print actual enforcement and read scope as JSON on stderr. This does not alter
+ordinary classification stdout. Unsupported builds report compiled=false; strict
+fails. Kernel feature absence may degrade auto with a warning; installation
+errors fail. Nonempty LD_PRELOAD is rejected in strict mode.
+.TP
+.BR -v , " --help"
+Display version/build features or help. Version does not attest runtime confinement.
 .SH ENVIRONMENT
 MAGIC supplies a database list when -m is absent. HOME supplies optional .magic
 configuration before the embedded default. POSIXLY_CORRECT enables symlink following.
-Filename escaping and display alignment currently implement the C locale profile.
+LC_ALL, LC_CTYPE and LANG select immutable display contexts. C is portable;
+selected UTF-8 locales use the Linux/glibc adapter. TZ selects an immutable
+timezone context. No process-global locale/environment mutation is performed.
 .SH EXIT STATUS
 Zero means classification completed, including unknown data and ordinary per-file
 filesystem diagnostics. -E, setup failures, resource errors and failed writes

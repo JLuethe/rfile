@@ -5,6 +5,10 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 CARGO=os.environ.get('CARGO',shutil.which('cargo')or str(pathlib.Path.home()/'.cargo/bin/cargo'))
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('POSIXLY_CORRECT',None)
 ap=argparse.ArgumentParser();ap.add_argument('--all-features',action='store_true');ap.add_argument('--benchmark',action='store_true');ap.add_argument('--no-oracle',action='store_true');args=ap.parse_args()
+oracle_identity = None
+if not args.no_oracle:
+ from reference import UP, manifest
+ oracle_identity = manifest()
 features=["--all-features"]if args.all_features else []
 steps=[];started=time.perf_counter()
 def run(name,command):
@@ -22,9 +26,9 @@ run('fuzz-smoke',[CARGO,'test','--release','--locked','--test','hardening']+feat
 run('fuzz-format',[CARGO,'fmt','--manifest-path','fuzz/Cargo.toml','--','--check'])
 run('fuzz-build',[CARGO,'check','--manifest-path','fuzz/Cargo.toml','--locked','--bins'])
 if not args.no_oracle:
- expected=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit'];actual=subprocess.check_output(['git','-C',str(ROOT/'upstream'),'rev-parse','HEAD'],text=True).strip()
+ expected=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit'];actual=subprocess.check_output(['git','-C',str(UP),'rev-parse','HEAD'],text=True).strip()
  if actual!=expected:raise SystemExit(f'oracle revision mismatch: {actual} != {expected}')
- run('upstream-check',['make','-C','upstream','check'])
+ run('upstream-check',['make','-C',str(UP),'check'])
  run('compiler',['python3','tools/compiler_compare.py'])
  if not json.loads((ROOT/'reports/compiler.json').read_text())['raw_equal']:raise SystemExit('compiler wire bytes differ')
  run('fixtures',['python3','tools/fixture_compare.py'])
@@ -59,5 +63,5 @@ if 'libmagic' in linked.stdout:raise SystemExit('production executable unexpecte
 smoke=[]
 for line in (ROOT/'fuzz-smoke.log').read_text().splitlines():
  if line.startswith('{'):smoke.append(json.loads(line))
-report={'features':'all-features'if args.all_features else 'default','status':'passed','elapsed_seconds':time.perf_counter()-started,'steps':steps,'cargo':subprocess.check_output([CARGO,'--version'],text=True).strip(),'rustc':subprocess.check_output([str(pathlib.Path(CARGO).with_name('rustc')),'--version'],text=True).strip(),'binary_sha256':hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),'database_sha256':hashlib.sha256((ROOT/'data/magic.mgc').read_bytes()).hexdigest(),'mutation_smoke':smoke,'scope':'Linux supported profile; known CLI deviations allowed by explicit case labels; remaining release gaps documented'}
+report={'oracle':oracle_identity,'features':'all-features'if args.all_features else 'default','status':'passed','elapsed_seconds':time.perf_counter()-started,'steps':steps,'cargo':subprocess.check_output([CARGO,'--version'],text=True).strip(),'rustc':subprocess.check_output([str(pathlib.Path(CARGO).with_name('rustc')),'--version'],text=True).strip(),'binary_sha256':hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),'database_sha256':hashlib.sha256((ROOT/'data/magic.mgc').read_bytes()).hexdigest(),'mutation_smoke':smoke,'scope':'Linux supported profile; known CLI deviations allowed by explicit case labels; remaining release gaps documented'}
 (ROOT/('reports/verification-extended.json'if args.all_features else 'reports/verification.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items()if k!='steps'},indent=2))

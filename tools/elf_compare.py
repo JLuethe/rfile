@@ -5,11 +5,12 @@ import json,os,subprocess,tempfile,hashlib,struct
 from pathlib import Path
 from differential import library,run_group
 from elf_fixtures import cases,elf,note
+from reference import UP
 ROOT=Path(__file__).resolve().parents[1]
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC')
 def main():
     pin=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit']
-    if subprocess.check_output(['git','-C',str(ROOT/'upstream'),'rev-parse','HEAD'],text=True).strip()!=pin:raise SystemExit('Reference revision drift')
+    if subprocess.check_output(['git','-C',str(UP),'rev-parse','HEAD'],text=True).strip()!=pin:raise SystemExit('Reference revision drift')
     api=[];cli=[];stdin=[];manifest=[]
     with tempfile.TemporaryDirectory(prefix='rfile-elf-')as directory:
         paths=[]
@@ -28,14 +29,14 @@ def main():
         for path in paths:
             for flags in [[],['-i'],['-k'],['-r']]:
                 results=[]
-                for binary in [ROOT/'upstream/src/file',ROOT/'target/release/rfile']:
+                for binary in [UP/'src/file',ROOT/'target/release/rfile']:
                     r=subprocess.run([str(binary),'-b','-m',str(ROOT/'data/magic.mgc'),*flags,str(path)],env=ENV,capture_output=True,timeout=10)
                     results.append(dict(status=r.returncode,stdout_hex=r.stdout.hex(),stderr_hex=r.stderr.hex()))
                 cli.append(dict(case=path.stem,flags=flags,reference=results[0],rust=results[1],equal=results[0]==results[1]))
         for path in paths:
             for flags in [[],['-i'],['-k'],['-r']]:
                 results=[]
-                for binary in [ROOT/'upstream/src/file',ROOT/'target/release/rfile']:
+                for binary in [UP/'src/file',ROOT/'target/release/rfile']:
                     r=subprocess.run([str(binary),'-b','-m',str(ROOT/'data/magic.mgc'),*flags,'-'],input=path.read_bytes(),env=ENV,capture_output=True,timeout=10)
                     results.append(dict(status=r.returncode,stdout_hex=r.stdout.hex(),stderr_hex=r.stderr.hex()))
                 stdin.append(dict(case=path.stem,flags=flags,reference=results[0],rust=results[1],equal=results[0]==results[1]))

@@ -5,6 +5,7 @@ import hashlib,json,math,os,platform,random,struct,subprocess,tempfile
 from pathlib import Path
 from differential import library
 from fuzz_campaign import source_digest
+from reference import UP
 ROOT=Path(__file__).resolve().parents[1]
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC')
 def main():
@@ -21,11 +22,11 @@ def main():
             for i,value in enumerate(bits):
                 data=value.to_bytes(width,'little');p=directory/f'{kind}-{i}';p.write_bytes(data);paths.append(p);payloads.append(data)
             template=directory/'template';template.write_text(f'0 {kind} x %g\n')
-            subprocess.run([str(ROOT/'upstream/src/file'),'-C','-m',str(template)],cwd=directory,env=ENV,check=True,capture_output=True)
+            subprocess.run([str(UP/'src/file'),'-C','-m',str(template)],cwd=directory,env=ENV,check=True,capture_output=True)
             template_bytes=Path(str(template)+'.mgc').read_bytes()
             for fmt in formats:
                 source=f'0 {kind} x {fmt}\n';magic=directory/'rules';magic.write_text(source)
-                c=subprocess.run([str(ROOT/'upstream/src/file'),'-C','-m',str(magic)],cwd=directory,env=ENV,capture_output=True)
+                c=subprocess.run([str(UP/'src/file'),'-C','-m',str(magic)],cwd=directory,env=ENV,capture_output=True)
                 # The C source validator rejects some type-correct alternate
                 # forms. Runtime file_checkfmt accepts them; patch only the
                 # fixed description field in its valid same-kind v21 template.

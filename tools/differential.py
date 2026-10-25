@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Pinned libmagic oracle vs independent Rust path/buffer API. Never used by detection."""
 import argparse, ctypes, hashlib, json, locale, os, pathlib, subprocess, time
+from reference import UP
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-UP=ROOT/'upstream'; DB=UP/'magic/magic.mgc'
+DB=UP/'magic/magic.mgc'
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC',MAGIC=str(DB));ENV.pop('POSIXLY_CORRECT',None)
 locale.setlocale(locale.LC_ALL,'C');os.environ['TZ']='UTC';time.tzset()
 
@@ -46,7 +47,7 @@ def run_group(lib,files,db,flags,mode,extra=0):
   expected=result if result is not None else None
   actual=bytes.fromhex(row['hex']) if 'hex'in row else None
   equal=actual is not None and expected is not None and actual==expected
-  comparisons.append({'path':str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),'mode':mode,'flags':requested_flags,'effective_flags':flags,'database':str(db.relative_to(ROOT)),'equal':equal,**({} if equal else {'reference':expected.decode('utf-8','backslashreplace') if expected is not None else None,'rust':actual.decode('utf-8','backslashreplace') if actual is not None else None,'rust_error':row.get('error'),'reference_error':lib.magic_error(h).decode(errors='replace') if expected is None and lib.magic_error(h) else None})})
+  comparisons.append({'path':str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),'mode':mode,'flags':requested_flags,'effective_flags':flags,'database':str(db.relative_to(ROOT)) if db.is_relative_to(ROOT) else str(db),'equal':equal,**({} if equal else {'reference':expected.decode('utf-8','backslashreplace') if expected is not None else None,'rust':actual.decode('utf-8','backslashreplace') if actual is not None else None,'rust_error':row.get('error'),'reference_error':lib.magic_error(h).decode(errors='replace') if expected is None and lib.magic_error(h) else None})})
   if expected is None or actual is None:
    error=lib.magic_error(h)if expected is None else None
    comparisons[-1].update(reference_error_hex=error.hex()if error is not None else None,rust_error_hex=row.get('error_hex'))

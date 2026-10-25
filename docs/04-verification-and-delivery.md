@@ -52,3 +52,22 @@ A reproducible smoke benchmark may run sooner, but optimization gates require no
 | P3 optional ABI/release | fidelity+hardening | isolated ABI, headers, packages/SBOM/manpages, signed release metadata | C client symbol/lifetime tests; reproducible build without C/runtime oracle; no release unless gates met |
 
 Do not mark P2/P3 complete because P0/P1 compiles. A working independently detecting binary is a useful deliverable; replacing libmagic in mail scanners requires the full safety and compatibility gates. If time/environment prevents finishing a gate, leave an actionable failing/mismatch artifact and state exactly what remains.
+
+
+## Reference identity enforcement (2026-10-25)
+
+Use `RFILE_REFERENCE=/absolute/path/to/clean/pinned/checkout` to select a separate
+reference worktree. Otherwise verification tools use `upstream/`. The shared
+`tools/reference.py` requires the exact pin and rejects tracked modifications;
+`tools/build_reference.sh` refuses to build a modified reference instead of
+resetting user changes. The full verification report records source cleanliness,
+configuration hashes, executable/library/wrapper hashes, database hash and native
+version output. Untracked generated build files alone are not source changes.
+
+During R7 review the existing local `upstream/src/seccomp.c` was found to include
+a previously unrecorded pselect6/pselect6_time64 allowance. It is preserved and
+recorded in `reports/reference-audit.json` and the accompanying patch. A separate
+clean worktree at the same pin was built for the final replay; no mismatch
+allowlist was broadened. Historical CLI counts are observations against their
+then-local executable, not proof of a pristine pinned CLI. Library detector
+source was unchanged, but final evidence still reruns against the clean build.

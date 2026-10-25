@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Capture stdout, stderr and status for generated CLI cases against the pinned C binary."""
 import itertools, json, os, pathlib, subprocess, tempfile, time, gzip, socket
-ROOT=pathlib.Path(__file__).resolve().parents[1];UP=ROOT/'upstream';DB=UP/'magic/magic.mgc';ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('MAGIC',None);ENV.pop('POSIXLY_CORRECT',None)
+from reference import UP
+ROOT=pathlib.Path(__file__).resolve().parents[1];DB=UP/'magic/magic.mgc';ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('MAGIC',None);ENV.pop('POSIXLY_CORRECT',None)
 def invoke(binary,flags,args,data=None,env=None):
  r=subprocess.run([str(binary),'-m',str(DB),*flags,*map(str,args)],input=data,capture_output=True,env=env or ENV,timeout=20)
  return {'stdout':r.stdout.hex(),'stderr':r.stderr.hex(),'status':r.returncode}

@@ -8,6 +8,7 @@ No production helper is used. The oracle's .Z/ZIP paths do invoke test helpers.
 import hashlib,json,os,subprocess,argparse
 from pathlib import Path
 from differential import library,run_group
+from reference import UP
 ROOT=Path(__file__).resolve().parents[1]
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('POSIXLY_CORRECT',None)
 def row_key(section,row):
@@ -18,7 +19,7 @@ def signature(row):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--record-decisions',action='store_true');args=ap.parse_args()
     pin=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit']
-    assert subprocess.check_output(['git','-C',str(ROOT/'upstream'),'rev-parse','HEAD'],text=True).strip()==pin
+    assert subprocess.check_output(['git','-C',str(UP),'rev-parse','HEAD'],text=True).strip()==pin
     manifest=json.loads((ROOT/'tests/fixtures/compression/manifest.json').read_text())
     # Lzip has independent Python LZMA1/container vectors, but is not native in
     # this oracle build; never report it as capability-matched differential.
@@ -31,7 +32,7 @@ def main():
         for options in [['-z'],['-Z'],['-z','-i'],['-z','--mime-type'],['-z','--mime-encoding'],['-z','-k'],['-z','--apple'],['-z','--extension']]:
             for sequential,rows in [(False,cli),(True,stdin)]:
                 results=[]
-                for binary in [ROOT/'upstream/src/file',ROOT/'target/release/rfile']:
+                for binary in [UP/'src/file',ROOT/'target/release/rfile']:
                     r=subprocess.run([str(binary),'-S','-b','-m',str(ROOT/'data/magic.mgc'),*options,'-'if sequential else str(path)],input=path.read_bytes()if sequential else None,env=ENV,capture_output=True,timeout=10)
                     results.append(dict(status=r.returncode,stdout_hex=r.stdout.hex(),stderr_hex=r.stderr.hex()))
                 rows.append(dict(case=path.name,options=options,reference=results[0],rust=results[1],equal=results[0]==results[1]))

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Compile the exact upstream fragment list with both engines and compare wire records."""
 import collections, hashlib, json, os, pathlib, re, shutil, struct, subprocess, tempfile
-ROOT=pathlib.Path(__file__).resolve().parents[1];UP=ROOT/'upstream';ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('MAGIC',None)
+from reference import UP
+ROOT=pathlib.Path(__file__).resolve().parents[1];ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('MAGIC',None)
 text=(UP/'magic/Makefile.am').read_text();fragment_text=text.split('MAGIC_FRAGMENTS =',1)[1].split('EXTRA_DIST',1)[0]
 files=re.findall(r'\$\(MAGIC_DIR\)/([^\s\\]+)|\$\(MAGIC_FRAGMENT_DIR\)/([^\s\\]+)',fragment_text)
 paths=[UP/'magic'/a if a else UP/'magic/Magdir'/b for a,b in files]

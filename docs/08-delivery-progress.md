@@ -11,7 +11,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
-| R7 sandbox | implementation on feat/linux-confinement; final rerun pending | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
+| R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
 | R8 C ABI | pending | source diagnostics/list prerequisite and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
@@ -208,8 +208,9 @@ tests. Its sandbox matrix passed 104 batches: 5,760 operand comparisons across
 411 fixtures, covering every compiled codec, MIME, annotations and keep-going.
 An additional 128-input boundary probe found filter-size overflow; exact adjacent
 FD range compression fixed it without admitting holes, and the at-cap `-p` test
-passes. **Final full rerun after that change is pending at this checkpoint.**
-MSRV 1.87 passes. A prior simultaneous default/all-feature test invocation replaced
+passes. The final clean-reference replay passed all 26 stages after the fix.
+MSRV 1.87 and isolated default checks pass (124 tests). The warm API benchmark
+checksum matches the reference, with an observed Rust/C ratio of 1.64. A prior simultaneous default/all-feature test invocation replaced
 the CLI executable mid-test; future feature runs are serialized or isolated.
 
 Remaining R7 qualification includes native syscall tracing, additional kernel/
@@ -217,3 +218,16 @@ container/architecture environments and independent review. Historical reports
 are tied to their binary hashes. R8 source diagnostics/list compatibility and all
 19 C functions are still next; sustained fuzzing and security review are not
 completed by these focused tests.
+
+
+R7 reference-audit correction: the old local `upstream/src/seccomp.c` contained
+an unrecorded pselect6/pselect6_time64 allowlist patch, predating this work. The
+checkout and patch are preserved; prior statements calling the local CLI wholly
+unchanged were inaccurate. Detection-library source was unchanged. A new clean
+worktree at the exact pin was configured/built/tested, and the complete final
+matrix was replayed against it without broadening accepted differences. The
+configuration header and database hashes match the earlier build. See
+[reference-audit.json](../reports/reference-audit.json), the retained patch and
+[verification-extended.json](../reports/verification-extended.json). Reference
+tools now reject tracked changes and support an explicit `RFILE_REFERENCE` path;
+the final report records clean source, configuration and binary identities.

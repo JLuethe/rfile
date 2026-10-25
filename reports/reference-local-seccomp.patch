@@ -1,0 +1,18 @@
+diff --git i/src/seccomp.c w/src/seccomp.c
+index 0a8b053f..adb4c309 100644
+--- i/src/seccomp.c
++++ w/src/seccomp.c
+@@ -195,6 +195,13 @@ enable_sandbox(int flags, int action)
+ 	ALLOW_RULE(rt_sigprocmask);
+ 	ALLOW_RULE(rt_sigreturn);
+ 	ALLOW_RULE(select);
++	/* glibc implements select() using pselect6 on Linux. */
++#ifdef __NR_pselect6
++	ALLOW_RULE(pselect6);
++#endif
++#ifdef __NR_pselect6_time64
++	ALLOW_RULE(pselect6_time64);
++#endif
+ 	ALLOW_RULE(stat);
+ 	ALLOW_RULE(statx);
+ 	ALLOW_RULE(stat64);

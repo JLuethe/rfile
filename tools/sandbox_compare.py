@@ -5,6 +5,7 @@ Run after cargo build --release --all-features. No sandbox is applied to this
 parent. The report records actual policy state and exact output/status equality.
 """
 import hashlib,json,os,pathlib,platform,subprocess,tempfile,time
+from reference import UP
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 BIN=ROOT/'target/release/rfile'
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC')
@@ -19,7 +20,7 @@ with tempfile.TemporaryDirectory(prefix='rfile-sandbox-') as tmp:
     actual=json.loads(status.stderr)['sandbox']
     if not all(actual[k] for k in ['seccomp_enforced','landlock_enforced','input_content_confined']): raise SystemExit('strict policy did not enforce all required layers')
     fixtures=sorted(p for p in (ROOT/'tests/fixtures').rglob('*') if p.is_file())
-    fixtures += sorted((ROOT/'upstream/tests').glob('*.testfile'))
+    fixtures += sorted((UP/'tests').glob('*.testfile'))
     fixtures += [pathlib.Path('/usr/bin/ls'),pathlib.Path('/usr/bin/bash'),ROOT/'README.md']
     # Stable fixture batches keep setup overhead realistic and exercise the 128-entry cap.
     for offset in range(0,len(fixtures),64):

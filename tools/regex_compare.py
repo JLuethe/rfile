@@ -5,6 +5,7 @@ import argparse,hashlib,itertools,json,os,subprocess,tempfile,platform
 from pathlib import Path
 from differential import library
 from fuzz_campaign import source_digest
+from reference import UP
 ROOT=Path(__file__).resolve().parents[1]
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC')
 def patterns():
@@ -27,7 +28,7 @@ def main():
                 literal=''.join('\\x%02x'%b for b in pattern.encode())
                 source=f'0 regex/b'+('c'if insensitive else'')+f' {literal} value=%s\n'
                 magic=directory/'rules.magic';magic.write_text(source)
-                compiled=subprocess.run([str(ROOT/'upstream/src/file'),'-C','-m',str(magic)],cwd=directory,env=ENV,capture_output=True)
+                compiled=subprocess.run([str(UP/'src/file'),'-C','-m',str(magic)],cwd=directory,env=ENV,capture_output=True)
                 if compiled.returncode:
                     if pattern != r'[a--]+':raise RuntimeError(f'Unexpected oracle compiler error: {pattern}: {compiled.stderr!r}')
                     compiles.append(dict(pattern=pattern,insensitive=insensitive,reference_error=compiled.stderr.decode(errors='replace')));continue
