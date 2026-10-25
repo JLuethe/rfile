@@ -471,6 +471,11 @@ impl Database {
     ) -> crate::SourceAction {
         crate::legacy_source::action(sources, time, options)
     }
+    /// Native header diagnostic order followed by bounded structural validation.
+    #[doc(hidden)]
+    pub fn from_compiled_named(bytes: &[u8], name: &[u8], file: bool) -> Result<Self> {
+        crate::legacy_compiled::load(bytes, name, file)
+    }
     pub fn load(path: &Path) -> Result<Self> {
         use std::io::Read;
         if !path.to_string_lossy().ends_with(".mgc") {

@@ -45,6 +45,7 @@ mod flags;
 mod format;
 pub mod input;
 mod inspection;
+mod legacy_compiled;
 mod legacy_listing;
 mod legacy_source;
 pub use legacy_source::{SourceAction, SourceActionOptions, SourceCheck, SourceFragment};

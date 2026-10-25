@@ -12,7 +12,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
-| R8 C ABI | preview merged in PR #16; typed diagnostic increment on feat/source-diagnostic-events | all 19 exports; 49/49 original state and 420/420 expanded diagnostic scenarios exact; wider action semantics and qualification remain open |
+| R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment on feat/cli-source-actions | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
@@ -296,3 +296,25 @@ directory, Rust 1.87 workspace checks and 582/582 valid source-check dumps pass.
 All 25 sanitizer targets build. Isolated ASan smoke executed 519,332 diagnostic
 cases in 30.120558 CPU seconds and 156,904 ABI sequences in 30.932193 CPU seconds.
 These short runs have no sustained qualification credit.
+
+
+## R8c CLI database actions — 2026-10-25
+
+PR #17 merged at `51a31affc81c1068d8b2f94f2d3e67ddd8d2c624` after Linux/MSRV
+success. CLI database actions now share typed source parsing and compiled-header
+diagnostics with the ABI. Check output is in parse order; compiled preference,
+partial path-list success, accumulated listing and raw error bytes are preserved.
+Failed source opens retain diagnostic provenance and emit the native check
+header. Native CLI action parameters intentionally retain their new-cookie defaults.
+
+The 243-scenario CLI matrix is exact with sandbox off, auto and strict (729
+Rust/native pairs); all 440 ABI diagnostic scenarios and 49 original state
+scenarios are exact. Four new ordinary regressions pass, and FIFO source rejection
+is separately checked. Source/compiler quotas and regular-file-only IO are
+explicit stronger contracts; DEBUG, default action discovery, source warning
+coverage and racing directory failures remain open.
+
+All 33 full-project stages passed with 145 ordinary debug/release tests, 143
+isolated default tests and Rust 1.87. Database bytes remain identical; benchmark
+checksums match, with warm runtime ratio 1.607 on this host. All 25 sanitizer
+targets rebuilt. No global install, system replacement or new release occurred.

@@ -16,8 +16,11 @@
     "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
     "version_stderr": ""
   },
-  "library_sha256": "c00696f79e316303945eef9db464544492ecb4db4f07d348630b2fbca4319b27",
+  "library_sha256": "4785c6147a54a076fb3ed515a79dd0fd98e03d8b7e6d180b0ace82c174e874d1",
   "fixtures": {
+    "missing": {
+      "missing": true
+    },
     "empty": {
       "hex": "",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -103,9 +106,129 @@
       "sha256": "6851e0f32165b3c5f53d73c488f16c73892e73821d5b8f5026142f7f587d0a3c"
     }
   },
-  "total": 420,
-  "exact": 420,
+  "total": 440,
+  "exact": 440,
   "cases": [
+    {
+      "fixture": "missing",
+      "action": "load",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "load",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "load",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "load",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "load",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "check",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "check",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "check",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "check",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "check",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "list",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "list",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "list",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "list",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "list",
+      "cap": 64,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "compile",
+      "cap": 0,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "compile",
+      "cap": 1,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "compile",
+      "cap": 2,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "compile",
+      "cap": 3,
+      "exact": true
+    },
+    {
+      "fixture": "missing",
+      "action": "compile",
+      "cap": 64,
+      "exact": true
+    },
     {
       "fixture": "empty",
       "action": "load",

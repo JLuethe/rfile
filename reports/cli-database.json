@@ -1,0 +1,2061 @@
+{
+  "schema_version": 1,
+  "sandbox_modes": [
+    "off",
+    "auto",
+    "strict"
+  ],
+  "reference": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "binary_sha256": "68febb84b0cf9fa72be41a923e5ff2161876aa754139b2ee14754a8aeb03ffa1",
+  "fifo_database_rejected": true,
+  "scope": "Explicit database actions only; normalize diagnostic executable prefix, compare all remaining bytes and status/artifact hashes. Default discovery, DEBUG and other platforms remain separate.",
+  "total": 243,
+  "exact": 243,
+  "cases": [
+    {
+      "label": "missing",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "empty",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "type",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "offset",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "relative",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "missing-test",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "two-errors",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "valid-between",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "no-final-newline",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "crlf",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "nul",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unsigned-type",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "raw-path",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "unknown-annotation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "duplicate-mime",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "strength",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "numeric",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "orphan-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "skipped-continuation",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "continued-name",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-P",
+        "magwarn=0"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "c",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "C",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "stale-descendant",
+      "action": "l",
+      "paths": "probe",
+      "options": [
+        "-i"
+      ],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "probe:other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "probe:other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "probe:other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "missing:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "missing:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "missing:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "probe:missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "probe:missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "probe:missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "bad:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "bad:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "bad:probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "probe:bad",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "probe:bad",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "probe:bad",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": ":probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": ":probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": ":probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "probe::other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "probe::other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "probe::other",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "missing",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "c",
+      "paths": "",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "C",
+      "paths": "",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "paths",
+      "action": "l",
+      "paths": "",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "compiled-preference",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-valid",
+      "action": "c",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-valid",
+      "action": "C",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-valid",
+      "action": "l",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-invalid",
+      "action": "c",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-invalid",
+      "action": "C",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "directory-invalid",
+      "action": "l",
+      "paths": "rules",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "warning-cap",
+      "action": "c",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "warning-cap",
+      "action": "C",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    },
+    {
+      "label": "warning-cap",
+      "action": "l",
+      "paths": "probe",
+      "options": [],
+      "exact": true
+    }
+  ]
+}

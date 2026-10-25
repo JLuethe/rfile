@@ -403,7 +403,17 @@ impl State {
         let files = source_files(&path)?;
         let mut sources = Vec::new();
         for file in &files {
-            let bytes = self.read(file)?;
+            let bytes = match self.read(file) {
+                Ok(bytes) => bytes,
+                Err(error) => {
+                    self.last_source =
+                        Some((file.as_os_str().as_bytes().to_vec(), self.diagnostic_line));
+                    if action == Action::Check {
+                        self.emit(b"cont\toffset\ttype\topcode\tmask\tvalue\tdesc\n", true)?;
+                    }
+                    return Err(error);
+                }
+            };
             sources.push(rfile::SourceFragment {
                 name: file.as_os_str().as_bytes().to_vec(),
                 bytes,

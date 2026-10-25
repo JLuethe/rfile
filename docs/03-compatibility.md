@@ -34,7 +34,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | preserve atime | platform restoration behavior | C | reject flag if not implemented rather than no-op | timestamp/fd ownership tests |
 | sandbox | Linux seccomp/Landlock enabled features reported | C | safe parser does not imply kernel sandbox; missing sandbox declared | strace/denial process tests |
 | Rust API | owned results, immutable DB, concurrent calls | A/B | deliberately idiomatic, no magic_t aliasing | API integration and multithread determinism |
-| C ABI | all 19 exported libmagic entry points/constants | experimental preview | distinct rfile-ffi library; ownership/state tests, 49/49 original and 420/420 expanded diagnostic scenarios exact; broader source-action and qualification gaps remain; see [ABI plan](remaining/07-c-abi.md) | C/C++ clients under sanitizers, pointer lifetimes, separate-process state matrix |
+| C ABI | all 19 exported libmagic entry points/constants | experimental preview | distinct rfile-ffi library; ownership/state tests, 49/49 original and 440/440 expanded diagnostic scenarios exact; broader source-action and qualification gaps remain; see [ABI plan](remaining/07-c-abi.md) | C/C++ clients under sanitizers, pointer lifetimes, separate-process state matrix |
 | packaging | deterministic versioned rule distribution | B/D | embedded pinned fallback, binary `rfile` | build without upstream tree or C compiler |
 | Windows/BSD/macOS/big endian | target-specific metadata and filename handling | C/D | Linux tested first; portable core alone is not platform certification | native CI/QEMU |
 
@@ -57,3 +57,11 @@ last mode option wins. Compiled support is distinct from enforced runtime status
 The optional Linux compile backend uses private descriptor-relative publication;
 atomic replacement intentionally changes symlink/inode/mode behavior relative to
 in-place writes. This is recorded behavior, not an unreported compatibility fix.
+
+
+Database CLI actions now have 243 exact explicit-path scenarios in each of off,
+auto and strict sandbox modes. Check dumps, compiled preference, partial path
+lists, warning caps and compiled artifact hashes are compared; only the executable
+diagnostic prefix is normalized. Regular-file-only source IO and finite aggregate
+quotas are intentional bounds. Default action discovery, DEBUG and wider source
+warning/IO semantics remain open; see [the R8c contract](remaining/07-c-abi.md#r8c-cli-action-integration).

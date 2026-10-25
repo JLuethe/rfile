@@ -5,7 +5,7 @@ import hashlib,json,os,subprocess,sys,tempfile
 from pathlib import Path
 from reference import ROOT,UP,manifest
 CASES={
-'empty':b'', 'type':b'0 bogus x bad\n', 'offset':b'bad byte 0 bad\n',
+'missing':None, 'empty':b'', 'type':b'0 bogus x bad\n', 'offset':b'bad byte 0 bad\n',
 'relative':b'&0 byte 0 bad\n','missing-test':b'0 byte\n',
 'two-errors':b'0 bogus x first\nbad byte 0 second\n',
 'valid-between':b'0 bogus x first\n0 string ABC middle\nbad byte 0 last\n',
@@ -26,7 +26,9 @@ def main():
  with tempfile.TemporaryDirectory(prefix='rfile-source-events-')as tmp:
   tmp=Path(tmp)
   for label,data in CASES.items():
-   name=os.fsdecode(b'probe-\xff')if label=='raw-path'else'probe';(tmp/name).write_bytes(data)
+   name=os.fsdecode(b'probe-\xff')if label=='raw-path'else'probe'
+   (tmp/name).unlink(missing_ok=True)
+   if data is not None:(tmp/name).write_bytes(data)
    for action in ['load','check','list','compile']:
     for cap in [0,1,2,3,64]:
      results=[]
@@ -39,7 +41,7 @@ def main():
      row=dict(fixture=label,action=action,cap=cap,exact=results[0]==results[1])
      if not row['exact']:row.update(reference=results[0],rust=results[1])
      rows.append(row)
- report=dict(schema_version=1,scope='Source diagnostic event research: mismatches remain open unless individually resolved. Successful native parse with a warning is distinct from Rust rejection.',reference=manifest(),library_sha256=hashlib.sha256(library.read_bytes()).hexdigest(),fixtures={k:dict(hex=v.hex(),sha256=hashlib.sha256(v).hexdigest())for k,v in CASES.items()},total=len(rows),exact=sum(r['exact']for r in rows),cases=rows)
+ report=dict(schema_version=1,scope='Source diagnostic event research: mismatches remain open unless individually resolved. Successful native parse with a warning is distinct from Rust rejection.',reference=manifest(),library_sha256=hashlib.sha256(library.read_bytes()).hexdigest(),fixtures={k:dict(hex=v.hex(),sha256=hashlib.sha256(v).hexdigest())if v is not None else dict(missing=True)for k,v in CASES.items()},total=len(rows),exact=sum(r['exact']for r in rows),cases=rows)
  (ROOT/'reports/abi-diagnostics.json').write_text(json.dumps(report,indent=2)+'\n');print(dict(total=report['total'],exact=report['exact'],differences=sorted({r['fixture']for r in rows if not r['exact']})))
  if report['exact']!=report['total']:raise SystemExit('Native diagnostic mismatch: see reports/abi-diagnostics.json')
 if __name__=='__main__':main()

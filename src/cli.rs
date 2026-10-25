@@ -303,6 +303,7 @@ enum Event {
     Database {
         action: char,
         path: OsString,
+        flags: Flags,
     },
     Version {
         path: Option<OsString>,
@@ -589,7 +590,11 @@ fn plan_events(args: &[OsString], plan: &mut CliPlan) -> Result<()> {
     if let Some(action) = action {
         let path = db_path(&magic_path)
             .ok_or_else(|| Error::Unsupported("database action requires -m source".into()))?;
-        events.push(Event::Database { action, path });
+        events.push(Event::Database {
+            action,
+            path,
+            flags,
+        });
         return Ok(());
     }
     if names.is_empty() && !had_lists {
@@ -616,37 +621,8 @@ fn plan_events(args: &[OsString], plan: &mut CliPlan) -> Result<()> {
     });
     Ok(())
 }
-fn execute_database(action: char, path: &OsStr) -> Result<()> {
-    let mut databases = Vec::new();
-    for path in std::env::split_paths(path) {
-        let db = if action == 'C' || action == 'c' {
-            Database::load_source(&path)?
-        } else {
-            Database::load(&path)?
-        };
-        if action == 'C' {
-            let mut output = path
-                .file_name()
-                .unwrap_or(OsStr::new("magic"))
-                .to_os_string();
-            output.push(".mgc");
-            atomic_database_write(Path::new(&output), &db.compile()?)?;
-        } else {
-            databases.push(db);
-        }
-    }
-    if action != 'C' {
-        let db = Database::merge(databases)?;
-        if action == 'c' {
-            eprint!("{}", db.list());
-        } else {
-            io::stdout()
-                .lock()
-                .write_all(&db.legacy_list(16 * 1024 * 1024)?)?;
-        }
-    }
-    Ok(())
-}
+#[path = "cli_database.rs"]
+mod database_action;
 /// Atomically publish compiled bytes in the caller-selected output directory.
 /// O_EXCL avoids following an existing staging symlink; the directory must be
 /// trusted against concurrent hostile renames, as documented for compile mode.
@@ -747,8 +723,12 @@ fn execute_events(events: Vec<Event>) -> Result<i32> {
                     failed |= operand(engine, &name, width, &presentation)?;
                 }
             }
-            Event::Database { action, path } => {
-                execute_database(action, &path)?;
+            Event::Database {
+                action,
+                path,
+                flags,
+            } => {
+                database_action::execute(action, &path, flags)?;
                 return Ok(0);
             }
             Event::Version { path } => {
@@ -796,7 +776,14 @@ pub fn run() -> i32 {
     match execute() {
         Ok(status) => status,
         Err(e) => {
-            eprintln!("rfile: {e}");
+            let mut stderr = io::stderr().lock();
+            let _ = stderr.write_all(b"rfile: ");
+            if let Some(bytes) = e.raw_diagnostic() {
+                let _ = stderr.write_all(bytes);
+            } else {
+                let _ = write!(stderr, "{e}");
+            }
+            let _ = stderr.write_all(b"\n");
             1
         }
     }

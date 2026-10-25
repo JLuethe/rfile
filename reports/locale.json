@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
-  "source_sha256": "afbb8cd8e348c7ed51463ab25ed13dc8dbc9b5939c63e415461aa89b9a86a9b2",
-  "binary_sha256": "1c12f67a4fdac0a760023d3bfb266784ba85cc06f51a44f536f39d590078c2f7",
+  "source_sha256": "6df3dd08faffbf5bb63c4fa96726899b4404a4c294d16091075ae3b88ac1b50d",
+  "binary_sha256": "68febb84b0cf9fa72be41a923e5ff2161876aa754139b2ee14754a8aeb03ffa1",
   "host": "Linux-7.2.8-9-omarchy-x86_64-with-glibc2.44",
   "libc": [
     "glibc",

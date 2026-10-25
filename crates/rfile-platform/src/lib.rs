@@ -45,3 +45,30 @@ impl Locale {
     target_arch = "x86_64"
 ))]
 pub mod sandbox;
+
+/// Open a regular database source without waiting for a FIFO writer on Linux.
+/// Opening arbitrary device sources is outside the database contract.
+pub fn open_regular_database(path: &std::path::Path) -> std::io::Result<std::fs::File> {
+    let mut options = std::fs::OpenOptions::new();
+    options.read(true);
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        options.custom_flags(libc::O_NONBLOCK | libc::O_NOCTTY);
+    }
+    #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
+    if !std::fs::metadata(path)?.is_file() {
+        return Err(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "database must be a regular file",
+        ));
+    }
+    let file = options.open(path)?;
+    if !file.metadata()?.is_file() {
+        return Err(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "database must be a regular file",
+        ));
+    }
+    Ok(file)
+}
