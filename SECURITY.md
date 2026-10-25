@@ -25,7 +25,9 @@ or personal data in a sample. A script generating a synthetic reproducer is idea
 The detection core forbids unsafe code. The separate `rfile-platform` crate
 contains inventoried Linux/glibc locale and optional kernel-policy boundaries; see its
 [ownership and safety contract](crates/rfile-platform/README.md) and the
-[first-party inventory](reports/unsafe.json). Std and dependencies may also
+[first-party inventory](reports/unsafe.json). The experimental `rfile-ffi` crate
+adds a reviewed-by-author foreign-pointer/cookie/descriptor boundary described
+in [its contract](crates/rfile-ffi/README.md); it is not a completed independent review. Std and dependencies may also
 use unsafe code. These boundaries have not completed an independent audit.
 An opt-in x86_64 Linux/glibc CLI sandbox adds Landlock/seccomp restrictions;
 its scope and remaining qualification gates are in docs/remaining/05-sandbox.md.

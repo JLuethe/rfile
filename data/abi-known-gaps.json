@@ -1,0 +1,26 @@
+{
+  "action:load:malformed": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "2757a2390f92b45f9e590d76f58c21c81741854531fae8e75e8bb9f128a5d4f6"
+  },
+  "action:check:malformed": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "a231f8f136d2deeb75238b5149b13af7d7d1b1b842cc541238912e3de386127e"
+  },
+  "action:list:malformed": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "fa8e2aecf96a99c54d9bdb3176915b4dd02cc1542dc650580740e4e24549e2b4"
+  },
+  "action:compile:magic.mgc": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "3baef2cfd809a0c90b140920a00d13a49f95c22eec54ae3f5340fe3a85218f72"
+  },
+  "action:compile:malformed": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "7ccc26bd99589ddc0da8d060180f56ffa2979f5cb236f0cec19445f034049d62"
+  },
+  "paths:malformed:magic": {
+    "reason": "Native malformed-source warning/error sequencing remains open; Rust rejects safely but uses its typed parser diagnostic.",
+    "observed_sha256": "48d7dea63ab4541507b5439cfd4529839819ee5c4443928475562911252270a7"
+  }
+}

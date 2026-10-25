@@ -1,0 +1,21 @@
+[package]
+name = "rfile-ffi"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.87"
+license = "GPL-3.0-only"
+publish = false
+description = "Experimental C interface for the independent rfile engine"
+
+[lib]
+name = "rfile_magic"
+crate-type = ["cdylib", "staticlib", "rlib"]
+
+[features]
+default = []
+fuzzing = []
+extended-codecs = ["rfile/extended-codecs"]
+
+[dependencies]
+rfile = { path = "../.." }
+libc = "=0.2.191"

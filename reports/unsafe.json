@@ -3,9 +3,395 @@
   "scope": "Lexical first-party inventory, includes test code. Not reachability analysis, a soundness proof, or an independent security review. Std/third-party unsafe is separately inventoried.",
   "core_forbids_unsafe": true,
   "permitted_crates": [
-    "crates/rfile-platform"
+    "crates/rfile-platform",
+    "crates/rfile-ffi"
   ],
   "items": [
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 31,
+      "code": "unsafe {",
+      "context": "}\nconst PANIC: &std::ffi::CStr = c\"rfile: cookie poisoned by an internal panic\";\nfn errno(n: i32) {\n    // SAFETY: glibc supplies a live thread-local int pointer.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 37,
+      "code": "unsafe fn with_cookie<T: Copy>(",
+      "context": "    }\n}\n/// All non-NULL handles must come from magic_open, remain live and be exclusively\n/// synchronized by the foreign caller (including access through returned pointers).",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 46,
+      "code": "let cookie = unsafe { &*handle.cast::<Cookie>() };",
+      "context": "    if handle.is_null() {\n        return failure;\n    }\n    // SAFETY: the caller contract guarantees a live, aligned Cookie allocation.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 65,
+      "code": "unsafe fn c_path(value: *const c_char) -> Result<Option<Vec<u8>>, ()> {",
+      "context": "    }\n}\n/// Read at most the accepted path-list ceiling. The caller must provide a live\n/// NUL-terminated allocation; this is a size limit, not an invalid-pointer probe.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 72,
+      "code": "let b = unsafe { *value.add(i) } as u8;",
+      "context": "    }\n    let mut bytes = Vec::new();\n    for i in 0..=65536 {\n        // SAFETY: caller guarantees readable bytes through its terminating NUL.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 83,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "        bytes.push(b);\n    }\n    unreachable!()\n}",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 99,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    })\n}\n/// # Safety\n/// `handle` is NULL or a live cookie owned by this caller, closed exactly once.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 100,
+      "code": "pub unsafe extern \"C\" fn magic_close(handle: *mut c_void) {",
+      "context": "}\n/// # Safety\n/// `handle` is NULL or a live cookie owned by this caller, closed exactly once.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 104,
+      "code": "drop(unsafe { Box::from_raw(handle.cast::<Cookie>()) });",
+      "context": "pub unsafe extern \"C\" fn magic_close(handle: *mut c_void) {\n    if !handle.is_null() {\n        let _ = catch_unwind(AssertUnwindSafe(|| {\n            // SAFETY: caller transfers sole ownership of an allocation from open.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 110,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    }\n}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 111,
+      "code": "pub unsafe extern \"C\" fn magic_error(handle: *mut c_void) -> *const c_char {",
+      "context": "}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 116,
+      "code": "if unsafe { &*handle.cast::<Cookie>() }",
+      "context": "    if handle.is_null() {\n        return c\"Magic database is not open\".as_ptr();\n    }\n    // SAFETY: live-cookie precondition; atomic access needs no state lock.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 123,
+      "code": "unsafe {",
+      "context": "    {\n        return PANIC.as_ptr();\n    }\n    // SAFETY: forwards the same cookie lifetime contract.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 131,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    }\n}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 132,
+      "code": "pub unsafe extern \"C\" fn magic_errno(handle: *mut c_void) -> c_int {",
+      "context": "}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 137,
+      "code": "if unsafe { &*handle.cast::<Cookie>() }",
+      "context": "    if handle.is_null() {\n        return libc::EINVAL;\n    }\n    // SAFETY: live-cookie precondition.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 144,
+      "code": "unsafe {",
+      "context": "    {\n        return libc::EFAULT;\n    }\n    // SAFETY: forwards the cookie lifetime contract.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 152,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    }\n}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 153,
+      "code": "pub unsafe extern \"C\" fn magic_getflags(handle: *mut c_void) -> c_int {",
+      "context": "}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 155,
+      "code": "unsafe { with_cookie(handle, -1, |s| s.flags) }",
+      "context": "/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]\npub unsafe extern \"C\" fn magic_getflags(handle: *mut c_void) -> c_int {\n    // SAFETY: forwards the cookie lifetime contract.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 159,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    unsafe { with_cookie(handle, -1, |s| s.flags) }\n}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 160,
+      "code": "pub unsafe extern \"C\" fn magic_setflags(handle: *mut c_void, flags: c_int) -> c_int {",
+      "context": "}\n/// # Safety\n/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 162,
+      "code": "unsafe {",
+      "context": "/// `handle` is NULL or a live, externally synchronized cookie.\n#[unsafe(no_mangle)]\npub unsafe extern \"C\" fn magic_setflags(handle: *mut c_void, flags: c_int) -> c_int {\n    // SAFETY: forwards the cookie lifetime contract.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 169,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "            0\n        })\n    }\n}",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 173,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "#[unsafe(no_mangle)]\npub extern \"C\" fn magic_version() -> c_int {\n    548\n}",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 181,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "thread_local! { static PATH_RESULT: RefCell<Option<CString>> = const { RefCell::new(None) }; }\n/// # Safety\n/// `name` is NULL or a live NUL-terminated string. Explicit names are returned\n/// unchanged; other results live until the next same-thread getpath mutation.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 182,
+      "code": "pub unsafe extern \"C\" fn magic_getpath(name: *const c_char, action: c_int) -> *const c_char {",
+      "context": "/// # Safety\n/// `name` is NULL or a live NUL-terminated string. Explicit names are returned\n/// unchanged; other results live until the next same-thread getpath mutation.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 198,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "        errno(libc::EFAULT);\n        ptr::null()\n    })\n}",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 211,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    }\n}\n/// # Safety\n/// A non-NULL `value` points to one writable aligned size_t. Cookie is live.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 212,
+      "code": "pub unsafe extern \"C\" fn magic_getparam(",
+      "context": "}\n/// # Safety\n/// A non-NULL `value` points to one writable aligned size_t. Cookie is live.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 222,
+      "code": "unsafe {",
+      "context": "        errno(libc::EFAULT);\n        return -1;\n    }\n    // SAFETY: cookie preconditions and writable size_t contract above.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 235,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    }\n}\n/// # Safety\n/// A non-NULL `value` points to one readable aligned size_t. Cookie is live.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 236,
+      "code": "pub unsafe extern \"C\" fn magic_setparam(",
+      "context": "}\n/// # Safety\n/// A non-NULL `value` points to one readable aligned size_t. Cookie is live.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 246,
+      "code": "unsafe {",
+      "context": "        errno(libc::EFAULT);\n        return -1;\n    }\n    // SAFETY: cookie preconditions and readable size_t contract above.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 265,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "}\n/// # Safety\n/// Cookie is live. A nonempty buffer is a readable allocation of `size` bytes,\n/// immutable throughout the call. NULL is accepted only with zero size.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 266,
+      "code": "pub unsafe extern \"C\" fn magic_buffer(",
+      "context": "/// # Safety\n/// Cookie is live. A nonempty buffer is a readable allocation of `size` bytes,\n/// immutable throughout the call. NULL is accepted only with zero size.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 272,
+      "code": "unsafe {",
+      "context": "    buffer: *const c_void,\n    size: usize,\n) -> *const c_char {\n    // SAFETY: cookie contract; buffer checked before constructing its borrow.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 308,
+      "code": "let owned = unsafe { libc::fcntl(fd, libc::F_DUPFD_CLOEXEC, 0) };",
+      "context": "        return s.accept(result);\n    }\n    // SAFETY: fcntl validates the integer descriptor. Only its successfully\n    // created duplicate is converted to File ownership; caller FD stays open.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 323,
+      "code": "let mut file = unsafe { std::fs::File::from_raw_fd(owned) };",
+      "context": "        );\n        return ptr::null();\n    }\n    // SAFETY: successful fcntl returned a fresh owned descriptor.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 330,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "}\n/// # Safety\n/// Cookie is live. Caller coordinates concurrent operations on `fd`'s shared\n/// open file description; this call never takes ownership of `fd`.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 331,
+      "code": "pub unsafe extern \"C\" fn magic_descriptor(handle: *mut c_void, fd: c_int) -> *const c_char {",
+      "context": "/// # Safety\n/// Cookie is live. Caller coordinates concurrent operations on `fd`'s shared\n/// open file description; this call never takes ownership of `fd`.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 333,
+      "code": "unsafe { with_cookie(handle, ptr::null(), |s| descriptor(s, fd)) }",
+      "context": "/// open file description; this call never takes ownership of `fd`.\n#[unsafe(no_mangle)]\npub unsafe extern \"C\" fn magic_descriptor(handle: *mut c_void, fd: c_int) -> *const c_char {\n    // SAFETY: forwards cookie contract; descriptor adapter validates fd via OS.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 337,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "    unsafe { with_cookie(handle, ptr::null(), |s| descriptor(s, fd)) }\n}\n/// # Safety\n/// Cookie is live; name is NULL (stdin) or a live NUL-terminated path.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 338,
+      "code": "pub unsafe extern \"C\" fn magic_file(handle: *mut c_void, name: *const c_char) -> *const c_char {",
+      "context": "}\n/// # Safety\n/// Cookie is live; name is NULL (stdin) or a live NUL-terminated path.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 340,
+      "code": "unsafe {",
+      "context": "/// Cookie is live; name is NULL (stdin) or a live NUL-terminated path.\n#[unsafe(no_mangle)]\npub unsafe extern \"C\" fn magic_file(handle: *mut c_void, name: *const c_char) -> *const c_char {\n    // SAFETY: forwards cookie and path contracts.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 367,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "macro_rules! action_export {\n    ($name:ident,$action:ident) => {\n        /// # Safety\n        /// Cookie is live; name is NULL or a live NUL-terminated path list.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 368,
+      "code": "pub unsafe extern \"C\" fn $name(handle: *mut c_void, name: *const c_char) -> c_int {",
+      "context": "    ($name:ident,$action:ident) => {\n        /// # Safety\n        /// Cookie is live; name is NULL or a live NUL-terminated path list.\n        #[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 370,
+      "code": "unsafe {",
+      "context": "        /// Cookie is live; name is NULL or a live NUL-terminated path list.\n        #[unsafe(no_mangle)]\n        pub unsafe extern \"C\" fn $name(handle: *mut c_void, name: *const c_char) -> c_int {\n            // SAFETY: forwards cookie and string lifetime contracts.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 395,
+      "code": "#[unsafe(no_mangle)]",
+      "context": "/// # Safety\n/// Cookie is live. For nonzero count, buffers and sizes are readable aligned\n/// arrays of that count. Each nonempty buffer is readable for its declared size.\n/// All arrays/bytes remain immutable during the call; none are retained or freed.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 396,
+      "code": "pub unsafe extern \"C\" fn magic_load_buffers(",
+      "context": "/// Cookie is live. For nonzero count, buffers and sizes are readable aligned\n/// arrays of that count. Each nonempty buffer is readable for its declared size.\n/// All arrays/bytes remain immutable during the call; none are retained or freed.\n#[unsafe(no_mangle)]",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 404,
+      "code": "unsafe {",
+      "context": "    count: usize,\n) -> c_int {\n    // SAFETY: cookie and foreign array contracts above; all detectable size/null\n    // failures are rejected before constructing any array or buffer borrow.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 475,
+      "code": "unsafe { magic_close(self.0) }",
+      "context": "    struct Owned(*mut c_void);\n    impl Drop for Owned {\n        fn drop(&mut self) {\n            // SAFETY: this sole owner closes its live handle exactly once.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 489,
+      "code": "unsafe {",
+      "context": "        .expect(\"fixed database\");\n    // SAFETY: all pointers below are to live, aligned owned allocations, on one\n    // thread. Counts always describe those allocations, except NULL+count cases\n    // explicitly guaranteed to be rejected before dereferencing.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 588,
+      "code": "unsafe {",
+      "context": "        let pointers = [db.as_ptr().cast::<c_void>()];\n        let sizes = [db.len()];\n        // SAFETY: one live cookie; allocations match declared sizes, except the\n        // documented early-rejected NULL/oversize combinations under test.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
+    {
+      "path": "crates/rfile-ffi/src/lib.rs",
+      "line": 615,
+      "code": "unsafe {",
+      "context": "    #[test]\n    fn panic_is_contained_and_cookie_is_poisoned() {\n        let h = magic_open(0);\n        // SAFETY: h is live, used on one thread and closed once.",
+      "source_sha256": "da5723c8c11e658e4224141e1bbc2de7cb44a78d03682ebdde752fb4dd943909"
+    },
     {
       "path": "crates/rfile-platform/src/locale.rs",
       "line": 11,

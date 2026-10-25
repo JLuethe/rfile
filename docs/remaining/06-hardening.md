@@ -1,6 +1,6 @@
 # Sustained fuzzing, resource assurance and security review
 
-SEC-01 through SEC-10 are the hardening gates for the [remaining-work plan](../07-remaining-work-spec.md). This document specifies work to execute; it does not claim a completed campaign or audit. The existing 31,339 deterministic mutation cases and seven buildable fuzz targets remain useful smoke evidence, not the final security gate.
+SEC-01 through SEC-10 are the hardening gates for the [remaining-work plan](../07-remaining-work-spec.md). This document specifies work to execute; it does not claim a completed campaign or audit. The original 31,339 deterministic mutation cases are smoke evidence, not the final security gate. The R8 branch now has 24 buildable targets, including stateful C ABI ownership/error transitions; current campaign manifests determine actual measured work.
 
 ## SEC-01: threat model and invariants
 
@@ -92,3 +92,25 @@ SEC-09: acceptance requires no unresolved critical/high findings; lower findings
 SEC-10: independent review is a separate deliverable. Record the reviewed commit, reviewer scope and findings. Self-review plus green tests cannot be labeled an independent audit. Until that gate is satisfied, keep the experimental security statement and recommend supervised deployment for hostile workloads without claiming completed certification.
 
 Tool references: [Rust Fuzz Book](https://rust-fuzz.github.io/book/cargo-fuzz.html), [Miri](https://github.com/rust-lang/miri). These describe tool capabilities, not the outcome of this project's future runs.
+
+
+### R8 harness refinement
+
+The campaign supervisor now requires bubblewrap isolation: private namespaces,
+no network or host home, a private temporary directory, read-only instrumented
+binary/system libraries, and only the selected corpus/artifact directories
+writable. Absence or failure of isolation is a failed run, not permission for an
+unsandboxed fallback. A small Python parent **inside** the namespace uses wait4
+on the actual fuzzer to measure user/system CPU and peak RSS. Waiting for the
+outer namespace supervisor did not include its descendant CPU on this host;
+that preliminary smoke receives no campaign-hour credit. Logs use unique run
+directories so fresh campaigns do not overwrite earlier chunk logs. Invalid or
+missing accounting cannot satisfy the sustained gate. Source/binary/tool hashes
+must match on resume; candidate changes stop the campaign before mixing work.
+
+The ABI target allocates and owns all pointers/handles itself, exercises valid
+and malformed v21 loads, parameters/flags, classification, NULL/zero/count
+failures and state queries, then closes each cookie exactly once. It never
+interprets bytes as arbitrary pointers or host filenames. This supplements C
+ASan/UBSan clients and panic-containment regressions, not a claim that passing
+one target proves full foreign-caller correctness.

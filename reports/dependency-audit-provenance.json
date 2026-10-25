@@ -1,0 +1,9 @@
+{
+  "audit_version": "cargo-audit 0.22.2",
+  "advisory_commit": "21d909e4c8bd4e14c7aea58bf980c881a0053ab1",
+  "advisory_worktree_clean": true,
+  "lock_sha256": "1b8077fb97322634635d3f4963b9d9c0f52ee0bad3eec485644f90cbe69b0096",
+  "checked_utc": "2026-10-25T09:27:32.353325+00:00",
+  "report_sha256": "4bd5f1adbefc6e93e99316142b9490ae8e304910b9618b9c7fdc6fc6c6bffe44",
+  "scope": "Resolved workspace lockfile, not an independent security review or absence of unknown defects"
+}

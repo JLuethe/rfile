@@ -12,6 +12,7 @@ cargo-fuzz = true
 libfuzzer-sys = "0.4"
 rfile = { path = "..", features = ["extended-codecs"] }
 rfile-platform = { path = "../crates/rfile-platform" }
+rfile-ffi = { path = "../crates/rfile-ffi", features = ["fuzzing", "extended-codecs"] }
 
 [workspace]
 members = ["."]
@@ -173,6 +174,13 @@ bench = false
 [[bin]]
 name = "time_context"
 path = "fuzz_targets/time_context.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "abi_state"
+path = "fuzz_targets/abi_state.rs"
 test = false
 doc = false
 bench = false

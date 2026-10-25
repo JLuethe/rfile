@@ -14,15 +14,18 @@ jobs:
         with:
           components: rustfmt, clippy
       - run: cargo fmt --all -- --check
-      - run: cargo clippy --all-targets --locked -- -D warnings
-      - run: cargo test --locked
-      - run: cargo clippy --all-targets --all-features --locked -- -D warnings
-      - run: cargo test --all-features --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - run: cargo test --workspace --locked
+      - run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
+      - run: cargo test --workspace --all-features --locked
       - run: cargo build --release --locked
       - run: python3 tools/rebuild_database.py
+      - run: cargo build -p rfile-ffi --all-features --locked
+      - run: python3 tools/abi_clients.py --rust-only
+      - run: python3 tools/unsafe_inventory.py
   msrv:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@1.87.0
-      - run: cargo check --all-features --all-targets --locked
+      - run: cargo check --workspace --all-features --all-targets --locked

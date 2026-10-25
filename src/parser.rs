@@ -31,7 +31,7 @@
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
 use crate::{Error, Result, database::*};
 
-const TYPES: &[&str] = &[
+pub(crate) const TYPES: &[&str] = &[
     "invalid",
     "byte",
     "short",
@@ -640,6 +640,12 @@ fn root_mode(r: &mut Rule) {
     };
 }
 pub(crate) fn parse_sources(sources: &[(String, Vec<u8>)]) -> Result<Database> {
+    parse_sources_observed(sources, &mut |_| Ok(()))
+}
+pub(crate) fn parse_sources_observed(
+    sources: &[(String, Vec<u8>)],
+    observer: &mut dyn FnMut(&Rule) -> Result<()>,
+) -> Result<Database> {
     let mut groups: Vec<Group> = Vec::new();
     let mut total = 0usize;
     for (file, source) in sources {
@@ -718,6 +724,7 @@ pub(crate) fn parse_sources(sources: &[(String, Vec<u8>)]) -> Result<Database> {
             }
             let r =
                 parse_rule(s, line, file).map_err(|e| parse_error(line, format!("{file}: {e}")))?;
+            observer(&r)?;
             total += 1;
             if total > 250_000 {
                 return Err(Error::Limit("source rules"));

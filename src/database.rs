@@ -435,6 +435,34 @@ impl Database {
         }
         crate::parser::parse_sources(&[("<memory>".into(), source.as_bytes().to_vec())])
     }
+    /// Parse an owned snapshot of source fragments, sorting all fragments as one
+    /// source database. Names are diagnostic provenance, never opened as paths.
+    pub fn from_source_fragments(sources: &[(String, Vec<u8>)]) -> Result<Self> {
+        Self::validate_source_fragments(sources)?;
+        crate::parser::parse_sources(sources)
+    }
+    pub(crate) fn validate_source_fragments(sources: &[(String, Vec<u8>)]) -> Result<()> {
+        if sources.len() > 4096 {
+            return Err(Error::Limit("magic source files"));
+        }
+        sources.iter().try_fold(0usize, |n, (name, bytes)| {
+            if name.len() > 65536 {
+                return Err(Error::Limit("source name"));
+            }
+            n.checked_add(bytes.len())
+                .filter(|&n| n <= MAX_DB)
+                .ok_or(Error::Limit("source database"))
+        })?;
+        Ok(())
+    }
+    /// Render parse-order check records while parsing a single source set.
+    pub fn check_source_fragments(
+        sources: &[(String, Vec<u8>)],
+        time: &crate::TimeContext,
+        output_limit: usize,
+    ) -> crate::SourceCheck {
+        crate::legacy_source::check_fragments(sources, time, output_limit)
+    }
     pub fn load(path: &Path) -> Result<Self> {
         use std::io::Read;
         if !path.to_string_lossy().ends_with(".mgc") {
@@ -568,6 +596,21 @@ impl Database {
             }
         }
         Ok(out)
+    }
+    /// Pinned libmagic strength listing, preserving non-UTF-8 description bytes.
+    /// The caller supplies an output cap, at most 16 MiB. This does not emit IO.
+    pub fn legacy_list(&self, output_limit: usize) -> Result<Vec<u8>> {
+        crate::legacy_listing::render(self, output_limit)
+    }
+    /// Parse one source and retain the bounded legacy check dump even on error.
+    /// This primitive does not perform file discovery or render parser warnings.
+    pub fn check_source_dump(
+        source: &[u8],
+        name: &str,
+        time: &crate::TimeContext,
+        output_limit: usize,
+    ) -> crate::SourceCheck {
+        crate::legacy_source::check(source, name, time, output_limit)
     }
     pub fn list(&self) -> String {
         let mut out = String::new();

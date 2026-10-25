@@ -1,0 +1,114 @@
+{
+  "reference": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "library_sha256": "7995358fd0951c722dff48e3427f2e9f70697476f72bd2fb9732b6636a72798a",
+  "scope": "Header, linkage, C/C++ client ownership/state/concurrency, C ASan/UBSan (Rust allocations are not ASan-instrumented).",
+  "checks": [
+    {
+      "library": "native",
+      "language": "c",
+      "sanitizers": false,
+      "status": 0,
+      "stdout": "C ownership/state/concurrency client passed\n",
+      "stderr": ""
+    },
+    {
+      "library": "native",
+      "language": "c",
+      "sanitizers": true,
+      "status": 0,
+      "stdout": "C ownership/state/concurrency client passed\n",
+      "stderr": ""
+    },
+    {
+      "library": "native",
+      "language": "cpp",
+      "sanitizers": false,
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "library": "rust",
+      "language": "c",
+      "sanitizers": false,
+      "status": 0,
+      "stdout": "C ownership/state/concurrency client passed\n",
+      "stderr": ""
+    },
+    {
+      "library": "rust",
+      "language": "c",
+      "sanitizers": true,
+      "status": 0,
+      "stdout": "C ownership/state/concurrency client passed\n",
+      "stderr": ""
+    },
+    {
+      "library": "rust",
+      "language": "cpp",
+      "sanitizers": false,
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "exports": [
+    "magic_buffer",
+    "magic_check",
+    "magic_close",
+    "magic_compile",
+    "magic_descriptor",
+    "magic_errno",
+    "magic_error",
+    "magic_file",
+    "magic_getflags",
+    "magic_getmaxparam",
+    "magic_getparam",
+    "magic_getpath",
+    "magic_list",
+    "magic_load",
+    "magic_load_buffers",
+    "magic_open",
+    "magic_setflags",
+    "magic_setparam",
+    "magic_version",
+    "rfile_implementation_version"
+  ],
+  "dynamic": "\nDynamic section at offset 0x508b78 contains 29 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]\n 0x000000000000000e (SONAME)             Library soname: [librfile_magic.so.1]\n 0x000000000000001e (FLAGS)              BIND_NOW\n 0x000000006ffffffb (FLAGS_1)            Flags: NOW\n 0x0000000000000007 (RELA)               0x13c8\n 0x0000000000000008 (RELASZ)             465648 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffff9 (RELACOUNT)          19325\n 0x0000000000000017 (JMPREL)             0x72eb8\n 0x0000000000000002 (PLTRELSZ)           96 (bytes)\n 0x0000000000000003 (PLTGOT)             0x51f768\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000006 (SYMTAB)             0x2d0\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000005 (STRTAB)             0xe54\n 0x000000000000000a (STRSZ)              1391 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0xdc0\n 0x0000000000000019 (INIT_ARRAY)         0x4d8f88\n 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x4d8f80\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000000000000c (INIT)               0x14d1b0\n 0x000000000000000d (FINI)               0x14d1cc\n 0x000000006ffffff0 (VERSYM)             0xbd0\n 0x000000006ffffffe (VERNEED)            0xc90\n 0x000000006fffffff (VERNEEDNUM)         3\n 0x0000000000000000 (NULL)               0x0\n",
+  "expected_exports": [
+    "magic_buffer",
+    "magic_check",
+    "magic_close",
+    "magic_compile",
+    "magic_descriptor",
+    "magic_errno",
+    "magic_error",
+    "magic_file",
+    "magic_getflags",
+    "magic_getmaxparam",
+    "magic_getparam",
+    "magic_getpath",
+    "magic_list",
+    "magic_load",
+    "magic_load_buffers",
+    "magic_open",
+    "magic_setflags",
+    "magic_setparam",
+    "magic_version",
+    "rfile_implementation_version"
+  ]
+}

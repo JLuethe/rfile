@@ -636,11 +636,13 @@ fn execute_database(action: char, path: &OsStr) -> Result<()> {
         }
     }
     if action != 'C' {
-        let text = Database::merge(databases)?.list();
+        let db = Database::merge(databases)?;
         if action == 'c' {
-            eprint!("{text}");
+            eprint!("{}", db.list());
         } else {
-            print!("{text}");
+            io::stdout()
+                .lock()
+                .write_all(&db.legacy_list(16 * 1024 * 1024)?)?;
         }
     }
     Ok(())

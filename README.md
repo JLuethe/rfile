@@ -59,3 +59,10 @@ to stderr. Strict classification requires Landlock ABI >=5 and seccomp, preopens
 at most 128 inputs, and denies subsequent content opens. Auto permits broad
 read-only filesystem access. Library calls never install confinement. This is
 an experimental feature with explicit [scope and qualification gaps](docs/remaining/05-sandbox.md).
+
+
+An [experimental C interface](crates/rfile-ffi/README.md) is available with
+`cargo build -p rfile-ffi --features extended-codecs`. It exports the 19 file 5.48
+functions through the Rust engine under the distinct `librfile_magic` name.
+Source diagnostics and other ABI qualification gates remain open; it is not yet
+a certified drop-in replacement. No library is installed by building it.
