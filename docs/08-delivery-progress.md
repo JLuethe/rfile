@@ -11,7 +11,8 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
-| R7–R8 sandbox and C ABI | pending | real denied-operation tests and all 19 ABI functions/client contracts |
+| R7 sandbox | implementation on feat/linux-confinement; final rerun pending | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
+| R8 C ABI | pending | source diagnostics/list prerequisite and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
@@ -176,3 +177,43 @@ These are smoke-only reports, not sustained gates or an independent review.
 Full native quantified-capture fidelity, exotic/custom TZif histories, caller
 rounding/locale state and other platforms remain explicit restrictions or future
 qualification. R6c closes this measured increment, not every SEM requirement.
+
+
+## R7 implementation checkpoint — 2026-10-25
+
+The existing SBX specification was reviewed and refined, not replaced. The
+optional `sandbox` feature implements x86_64 Linux/glibc CLI auto/strict/off modes,
+actual stderr status, baseline-before-resource-parsing and bounded strict input
+preparation. `-f` frozen-cookie/output ordering remains explicit; strict rejects
+streaming filename lists and mixed compile/classification actions. Compilation
+uses private staging and descriptor-relative publication on sandbox builds.
+
+The adapter uses landlock 0.4.7, seccompiler 0.5.0 (JSON disabled) and rustix 1.1.5
+filesystem APIs. Fixed Landlock V5 rights are reported as 0xffff, even on the
+observed ABI 10 host. The core remains `forbid(unsafe_code)`; the inventoried
+first-party unsafe boundary is 23 lexical entries including tests. Inherited
+extra FD authority is denied rather than unsafely closing unknown Rust owners.
+Kernel and strict-input state are thread-bound; ordinary library calls install
+nothing. No feature default, system installation or release is changed.
+
+Focused tests cover mode ordering, actual status, stdin, file lists, later option
+errors, symlinks, missing paths, timestamp restoration and compile replacement.
+Eight disposable kernel-child scenarios cover read-only/preopened/compile,
+inherited FD denial, unavailable and denied setup, deleted/replaced file identity,
+and gaps between approved descriptor ranges. No real unsupported-host skip is
+counted as certification. Pure injected ENOSYS/EPERM cases are labeled tests.
+
+The first full all-feature run passed 26 stages and 126 ordinary debug/release
+tests. Its sandbox matrix passed 104 batches: 5,760 operand comparisons across
+411 fixtures, covering every compiled codec, MIME, annotations and keep-going.
+An additional 128-input boundary probe found filter-size overflow; exact adjacent
+FD range compression fixed it without admitting holes, and the at-cap `-p` test
+passes. **Final full rerun after that change is pending at this checkpoint.**
+MSRV 1.87 passes. A prior simultaneous default/all-feature test invocation replaced
+the CLI executable mid-test; future feature runs are serialized or isolated.
+
+Remaining R7 qualification includes native syscall tracing, additional kernel/
+container/architecture environments and independent review. Historical reports
+are tied to their binary hashes. R8 source diagnostics/list compatibility and all
+19 C functions are still next; sustained fuzzing and security review are not
+completed by these focused tests.

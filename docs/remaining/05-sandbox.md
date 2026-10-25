@@ -4,7 +4,7 @@ SBX-01 through SBX-09 implement the isolation portion of the [parent specificati
 
 ## Baseline, primary sources and limits of the claim
 
-There is currently no Rust sandbox; `-S` is accepted and version output says none. The pinned CLI initializes Landlock then seccomp (`upstream/src/file.c:380–412`). `landlock.c:97` allows filesystem reads under `/`, some temporary writes for pipes and skips build actions. `seccomp.c:78` installs an allowlist and default kill action; it also contains read/write-open distinctions. LD_PRELOAD disables C seccomp automatically. The existing annotation-only FIFO SIGSYS and native-decoder no-fork failure are observed mismatches, not behavior to reproduce.
+Baseline at specification time: there was no Rust sandbox; `-S` was accepted and version output said none. The R7 implementation checkpoint below supersedes that baseline. The pinned CLI initializes Landlock then seccomp (`upstream/src/file.c:380–412`). `landlock.c:97` allows filesystem reads under `/`, some temporary writes for pipes and skips build actions. `seccomp.c:78` installs an allowlist and default kill action; it also contains read/write-open distinctions. LD_PRELOAD disables C seccomp automatically. The existing annotation-only FIFO SIGSYS and native-decoder no-fork failure are observed mismatches, not behavior to reproduce.
 
 The [kernel Landlock documentation](https://docs.kernel.org/userspace-api/landlock.html) describes self-restriction and runtime ABI negotiation. The [seccomp documentation](https://docs.kernel.org/userspace-api/seccomp_filter.html) explains syscall/argument filtering and no-new-privileges; pointer contents such as pathnames cannot be inspected by a filter. Therefore a path allowlist is not implemented with seccomp string comparisons. Landlock restrictions also do not cover every metadata operation or revoke all authority on already-open descriptors. Report those limits explicitly.
 
@@ -50,7 +50,7 @@ Use runtime ABI discovery and the intersection of tested compiled rights with av
 
 For auto read-only mode, reads under `/` reproduce a broad upstream capability but do not prevent reading other same-user files after a bug. For strict mode, use stable descriptors/allowed file identities, not string-prefix path validation. Symlinks, directory traversal, bind mounts, rename races, `/proc/self/fd`, deleted-but-open inputs and open descriptor inheritance need explicit tests. A stat of an outside path may still reveal metadata; do not describe Landlock as complete information-flow isolation.
 
-Close unneeded inherited descriptors before restricted execution, with a documented policy for caller-provided stdin/stdout/stderr. Restrictions do not revoke previously granted descriptor authority. Preopened writable output is legitimate; it must not be confused with permission to open arbitrary new outputs. Keep CLOEXEC even though execution is denied.
+Inventory and neutralize unneeded inherited descriptor authority before restricted execution, with a documented policy for caller-provided stdin/stdout/stderr. **R7 refinement:** do not close an unknown descriptor potentially owned by Rust; doing so violates IO safety. At single-threaded CLI startup, enumerate at most 32 extra descriptors through `/proc/self/fd` and deny their read/write/mmap/relative-open/fcntl/timestamp authority in seccomp. Metadata queries and closing remain possible. This preserves ownership while preventing content use. Descriptor inventory errors are fatal; this is not a promise to revoke memory mappings created before main. Restrictions do not revoke previously granted descriptor authority. Preopened writable output is legitimate; it must not be confused with permission to open arbitrary new outputs. Keep CLOEXEC even though execution is denied.
 
 ## SBX-05: seccomp policy
 
@@ -68,7 +68,7 @@ Deny socket/connect/bind/listen, execve/execveat, fork/clone process creation, p
 
 Keep a safe `SandboxPlan::prepare` / `install` boundary in `crates/rfile-platform`; core keeps forbid(unsafe_code). Audited unsafe is limited to OS calls and pointer/length lifetimes in that adapter. Never expose raw filters or unconstrained syscalls to untrusted rule data. Installation returns an owned immutable status; it cannot be cloned as proof that another thread is sandboxed.
 
-Inspected candidates: `landlock 0.4.7` (MIT OR Apache-2.0, MSRV 1.71), `seccompiler 0.5.0` (Apache-2.0 OR BSD-3-Clause), `rustix 1.1.5` (MIT/Apache alternatives, MSRV 1.65). See [manifest evidence](../../reports/remaining-candidate-dependencies.json). Seccompiler provides typed syscall rules/filter application; disable its optional JSON feature. Landlock supplies rule/compatibility state APIs; validate actual enforcement, not just builder success. Rustix supplies safe OS operations with its own reviewed backend. These are not detector FFI and are not yet product dependencies.
+Inspected candidates: `landlock 0.4.7` (MIT OR Apache-2.0, MSRV 1.71), `seccompiler 0.5.0` (Apache-2.0 OR BSD-3-Clause), `rustix 1.1.5` (MIT/Apache alternatives, MSRV 1.65). See [manifest evidence](../../reports/remaining-candidate-dependencies.json). Seccompiler provides typed syscall rules/filter application; disable its optional JSON feature. Landlock supplies rule/compatibility state APIs; validate actual enforcement, not just builder success. Rustix supplies safe OS operations with its own reviewed backend. These are not detector FFI. R7 selects landlock and seccompiler as optional, target-gated product dependencies; rustix supplies safe descriptor-relative compile publication. Resolved license texts are retained under `LICENSES/dependencies`.
 
 Do not install seccomp from library classification calls. In a multithreaded host, a per-thread policy is not process-wide protection and TSYNC has its own constraints. An application requiring process isolation should use an explicitly launched supervised worker; designing a general worker service is outside this change. The C ABI preserves the same no-surprise rule.
 
@@ -81,3 +81,68 @@ Positive cases: ordinary and malformed inputs, shared database/cache use, MIME/r
 Negative cases: read/write opens with every risky flag combination, create/truncate in an unauthorized directory, rename/unlink/link, outside strict input read including `/proc` aliases, use of an inherited extra writable descriptor, network socket, exec of a harmless test stub, process creation, unapproved ioctl and forbidden metadata mutation. The tests must assert an operation was denied; a success classification alone proves nothing. Test kernel ABI unavailable, partial rights, already restricted container, installation failure and LD_PRELOAD. Failure-injection must prove strict mode never begins classification after an installation error.
 
 Completion requires action/flag matrices, actual denied-operation evidence, documented read-scope limits, reviewed unsafe boundary and certified x86_64 Linux behavior. Other targets stay visibly unsupported/degraded until their own policy gate passes. Kernel restrictions do not replace the SEC fuzz/resource review.
+
+## R7 implementation refinement (2026-10-25)
+
+Implementation is on `feat/linux-confinement`; check the delivery ledger/PR for
+acceptance status. `sandbox` is opt-in and target-gated to x86_64 Linux/glibc.
+With it compiled, auto is the CLI default; without it auto reports unavailable
+when status is requested, and strict fails. No default feature promotion is
+implied by this checkpoint. The core and ordinary Engine calls never install it.
+
+- `src/cli.rs` builds the bounded ordered event plan; `src/cli_sandbox.rs`
+  installs the baseline before loading locale/time/database resources, then
+  executes auto events or prepares strict operands and tightens before detection.
+- `src/filesystem.rs::prepare_path` holds metadata-only outcomes or an owned
+  opened file, deferring content classification (including empty annotation
+  rules). The final path is never reopened. Original labels, errors, flags,
+  timestamp restoration and setuid/setgid/sticky output are preserved.
+- Strict classification accepts at most 128 total entries and regular filename
+  lists, with the existing 65,536-byte line cap. It rejects stdin filename lists
+  and `-n -f` streaming rather than claiming preserved streaming semantics after
+  preflight. Stdin **content** remains supported. List opens are nonblocking so
+  a FIFO cannot hang setup before rejection. Metadata-only entries count too.
+- Strict preparation necessarily resolves all input names before any output.
+  A later setup/list/database failure can therefore suppress earlier output;
+  this is an explicit strict-mode difference. Ordinary per-operand filesystem
+  failures and a later invalid CLI option retain their ordered output position.
+  Auto and off retain streaming and existing ordered-error behavior.
+- A single compile action uses a separate output-directory policy, requiring
+  seccomp and Landlock ABI >=5 even in auto. Mixed classification/compile is
+  rejected before any event output under sandbox modes; off preserves the old
+  event behavior. Check/list use the read-only action policy, not strict input
+  confinement. The status records the actual action scope.
+- Compile output on sandbox builds uses a private mode-0700 staging directory,
+  exclusive file creation, sync and descriptor-relative atomic rename in the
+  current output directory. Parent and staging directories are held by owned
+  descriptors; later pathname substitution cannot select a different directory. This intentionally replaces an existing symlink
+  entry instead of following it and creates a new inode/mode under the current
+  umask. The parent directory is synced after publication and cleanup; a later failure
+  can report an error after output has already been published. Same-user external
+  processes are not isolated by this policy. Non-sandbox builds retain bounded
+  exclusive-file staging in a trusted selected directory. No broad temporary-directory grant.
+- The Landlock policy handles exactly ABI V5 filesystem rights (0xffff), even
+  on newer kernels. V5 is the minimum, including truncate/refer/device-ioctl;
+  unsupported auto read-only falls back to the available layer with warnings.
+  An unexpected installation error is fatal. Later ABI rights are not claimed.
+- Approved contiguous descriptor numbers are coalesced into ranges to fit the
+  kernel BPF instruction ceiling at 128 inputs; holes remain excluded and new
+  descriptor creation is denied after tightening. Current-thread BPF denies unknown calls with EPERM and wrong architectures
+  with the compiler's kill action. No clone/exec/socket, FD duplication, writable
+  opens under read-only policy, or executable memory protection is permitted.
+  `getrandom` is deliberately allowed for Rust/runtime needs. Null timestamp
+  pathname checks use the complete 64-bit pointer, not its low word.
+- `--sandbox-status` emits explicit JSON on stderr. Version reports compiled
+  support only; library capabilities report no library-installed confinement.
+  The restriction status is !Send/!Sync and does not attest to another thread.
+  Startup requires exactly one thread; strict rejects nonempty LD_PRELOAD.
+  Pre-main code and mappings cannot be undone; this is not full information-flow
+  isolation or denial of outside-path metadata queries.
+
+Kernel tests run in child processes. Required-layer absence is an explicit
+certification skip; unexpected errors are failures. Injection tests distinguish
+ENOSYS unavailability from EPERM setup failure. Existing-descriptor, path-identity,
+read/write, mapping, network, execution and strict new-open cases are checked.
+Full syscall tracing, extra kernel/architecture qualification and independent
+policy review remain gates until recorded evidence
+actually closes them. Do not equate these initial cases with full SBX completion.

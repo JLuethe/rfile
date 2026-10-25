@@ -11,6 +11,7 @@ default-run = "rfile"
 
 [features]
 default = []
+sandbox = ["rfile-platform/sandbox"]
 extended-codecs = ["codec-bzip2", "codec-lzma", "codec-zstd", "codec-lz4", "codec-compress", "codec-zip"]
 codec-bzip2 = []
 codec-lzma = ["dep:lzma-rust2"]

@@ -49,6 +49,7 @@ if not args.no_oracle:
  run('cli-differential',['python3','tools/cli_compare.py'])
  cli=json.loads((ROOT/'reports/cli.json').read_text())
  if any(not r['equal']and not r.get('intentional_difference')for r in cli['cases']):raise SystemExit('unexpected CLI discrepancy')
+ if args.all_features:run('sandbox-differential',['python3','tools/sandbox_compare.py'])
  if args.benchmark:run('benchmark',['python3','tools/benchmark.py'])
  if args.benchmark and not json.loads((ROOT/'reports/benchmark.json').read_text())['same_output_checksum']:raise SystemExit('benchmark output checksums differ')
 # Linux loader evidence distinguishes the production program from the test oracle.
@@ -58,5 +59,5 @@ if 'libmagic' in linked.stdout:raise SystemExit('production executable unexpecte
 smoke=[]
 for line in (ROOT/'fuzz-smoke.log').read_text().splitlines():
  if line.startswith('{'):smoke.append(json.loads(line))
-report={'features':'extended-codecs'if args.all_features else 'default','status':'passed','elapsed_seconds':time.perf_counter()-started,'steps':steps,'cargo':subprocess.check_output([CARGO,'--version'],text=True).strip(),'rustc':subprocess.check_output([str(pathlib.Path(CARGO).with_name('rustc')),'--version'],text=True).strip(),'binary_sha256':hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),'database_sha256':hashlib.sha256((ROOT/'data/magic.mgc').read_bytes()).hexdigest(),'mutation_smoke':smoke,'scope':'Linux supported profile; known CLI deviations allowed by explicit case labels; remaining release gaps documented'}
+report={'features':'all-features'if args.all_features else 'default','status':'passed','elapsed_seconds':time.perf_counter()-started,'steps':steps,'cargo':subprocess.check_output([CARGO,'--version'],text=True).strip(),'rustc':subprocess.check_output([str(pathlib.Path(CARGO).with_name('rustc')),'--version'],text=True).strip(),'binary_sha256':hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),'database_sha256':hashlib.sha256((ROOT/'data/magic.mgc').read_bytes()).hexdigest(),'mutation_smoke':smoke,'scope':'Linux supported profile; known CLI deviations allowed by explicit case labels; remaining release gaps documented'}
 (ROOT/('reports/verification-extended.json'if args.all_features else 'reports/verification.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items()if k!='steps'},indent=2))

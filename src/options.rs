@@ -44,7 +44,12 @@ impl Capabilities {
             codecs: crate::codecs::COMPILED,
             regex_backreferences: true,
             c_abi: false,
-            kernel_sandbox: false,
+            kernel_sandbox: cfg!(all(
+                feature = "sandbox",
+                target_os = "linux",
+                target_env = "gnu",
+                target_arch = "x86_64"
+            )),
             display_locale: "C".into(),
             time_zone: "UTC".into(),
         }
