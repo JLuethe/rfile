@@ -6,7 +6,7 @@
     "glibc",
     "2.44"
   ],
-  "binary_sha256": "f581581e222927fba7c567579bc0df1921312ad1b581b77d03fceb52d18aef69",
+  "binary_sha256": "1c12f67a4fdac0a760023d3bfb266784ba85cc06f51a44f536f39d590078c2f7",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "actual_strict": {
     "compiled": true,
@@ -26,7 +26,7 @@
   "comparisons": 104,
   "equal": 104,
   "operand_comparisons": 5760,
-  "seconds": 6.454095205001067,
+  "seconds": 6.568661401004647,
   "cases": [
     {
       "mode": "auto",

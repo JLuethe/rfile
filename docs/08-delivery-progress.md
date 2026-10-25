@@ -12,7 +12,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
-| R8 C ABI | experimental implementation on feat/c-api-diagnostics | all 19 exports and safe ownership/state boundary; 43/49 initial whole-state cases exact, six frozen source-diagnostic gaps; qualification remains open |
+| R8 C ABI | preview merged in PR #16; typed diagnostic increment on feat/source-diagnostic-events | all 19 exports; 49/49 original state and 420/420 expanded diagnostic scenarios exact; wider action semantics and qualification remain open |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
@@ -266,3 +266,33 @@ packaged hashes, and an offline workspace/all-feature/all-target check from the
 vendored source archive. The first source-package check found a missing test
 fixture; the source allowlist now includes it. This is local package validation,
 not publication or the final R10 compatibility release.
+
+
+## R8b typed parser diagnostics — 2026-10-25
+
+The preview merged as main `59c7c384241046833de904dafd2440eac53bfc37`.
+The next increment uses typed parser events, preserves raw source provenance and
+native warning/error state, and observes classification diagnostic lines without
+changing public result metrics. Native-compatible source actions recover across
+known errors; strict Rust source helpers still fail at their first error.
+
+All six previous frozen ABI diagnostic differences are resolved. The initial
+49 scenarios and 420 expanded warning-cap/action/repetition scenarios are exact.
+Seven ordinary regressions cover event order, suppression, raw names, cookie
+errors, bounded failures, continuation state and Pascal-string record acceptance.
+Native-accepted continuation jumps cannot retain stale deeper match states.
+Oversized Pascal-string records are rejected before emitting unimportable v21.
+The detailed contract and remaining CLI/source-warning work are in the ABI spec.
+
+Full verification passed 32 stages, with 141 ordinary tests in debug and release,
+unchanged rule database bytes and matching benchmark output checksums (warm
+Rust/C ratio 1.661 on this host). Applicable FFI Miri tests pass with explicit
+C locale and UTC0; host timezone filesystem/locale/kernel behavior is not Miri
+coverage. The new source-diagnostics fuzz target brings the buildable total to
+25. Sustained qualification and independent review remain open.
+
+Supplementary checks: 139 ordinary default-feature tests in an isolated target
+directory, Rust 1.87 workspace checks and 582/582 valid source-check dumps pass.
+All 25 sanitizer targets build. Isolated ASan smoke executed 519,332 diagnostic
+cases in 30.120558 CPU seconds and 156,904 ABI sequences in 30.932193 CPU seconds.
+These short runs have no sustained qualification credit.

@@ -33,6 +33,7 @@ if not args.no_oracle:
  if actual!=expected:raise SystemExit(f'oracle revision mismatch: {actual} != {expected}')
  run('ffi-clients',['python3','tools/abi_clients.py'])
  run('ffi-state',['python3','tools/abi_compare.py'])
+ run('ffi-diagnostics',['python3','tools/abi_diagnostic_compare.py'])
  run('upstream-check',['make','-C',str(UP),'check'])
  run('compiler',['python3','tools/compiler_compare.py'])
  if not json.loads((ROOT/'reports/compiler.json').read_text())['raw_equal']:raise SystemExit('compiler wire bytes differ')

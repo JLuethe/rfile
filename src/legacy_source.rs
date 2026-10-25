@@ -49,6 +49,214 @@ pub(crate) fn check_fragments(
     })();
     SourceCheck { database, output }
 }
+/// An owned source snapshot with byte-preserving diagnostic provenance.
+#[derive(Debug)]
+pub struct SourceFragment {
+    pub name: Vec<u8>,
+    pub bytes: Vec<u8>,
+}
+#[derive(Clone, Copy, Debug)]
+pub struct SourceActionOptions {
+    pub check: bool,
+    pub warning_count: usize,
+    pub warning_limit: usize,
+    pub output_limit: usize,
+}
+#[derive(Debug)]
+pub struct SourceAction {
+    pub database: Result<Database>,
+    pub output: Vec<u8>,
+    pub warning_count: usize,
+    pub last_source: Option<(Vec<u8>, usize)>,
+    /// True only when every parse failure had a verified native warning mapping.
+    /// The caller then uses native action failure state, not Rust Display prose.
+    pub native_failure: bool,
+    pub native_error: Option<Vec<u8>>,
+}
+pub(crate) fn action(
+    sources: &[SourceFragment],
+    time: &TimeContext,
+    options: SourceActionOptions,
+) -> SourceAction {
+    struct Diagnostics<'a> {
+        time: &'a TimeContext,
+        options: SourceActionOptions,
+        output: Vec<u8>,
+        last: Option<(Vec<u8>, usize)>,
+        known_failure: bool,
+        unmapped_failure: bool,
+        native_error: Option<Vec<u8>>,
+    }
+    impl crate::parser::Observer for Diagnostics<'_> {
+        fn legacy(&self) -> bool {
+            true
+        }
+        fn begin(&mut self, file: &[u8]) -> Result<()> {
+            self.last = Some((file.to_vec(), 1));
+            Ok(())
+        }
+        fn line(&mut self, _file: &[u8], physical: usize) -> Result<bool> {
+            if let Some((_, line)) = &mut self.last {
+                *line = physical;
+            }
+            Ok(self.options.warning_count < self.options.warning_limit)
+        }
+        fn end(&mut self, _file: &[u8], next: usize) -> Result<()> {
+            if let Some((_, line)) = &mut self.last {
+                *line = next;
+            }
+            Ok(())
+        }
+        fn rule(&mut self, rule: &Rule) -> Result<()> {
+            if self.options.check {
+                append(
+                    &mut self.output,
+                    &dump(rule, self.time)?,
+                    self.options.output_limit,
+                )?;
+            }
+            Ok(())
+        }
+        fn failure(
+            &mut self,
+            failure: &crate::parser::ParseFailure,
+            file: &[u8],
+            physical: usize,
+            line: &[u8],
+        ) -> Result<bool> {
+            let Some(diagnostic) = &failure.diagnostic else {
+                self.unmapped_failure = true;
+                return Ok(false);
+            };
+            self.known_failure = true;
+            self.emit_diagnostic(diagnostic, file, physical, line)?;
+            Ok(true)
+        }
+        fn notice(
+            &mut self,
+            diagnostic: &crate::parser::ParseDiagnostic,
+            file: &[u8],
+            physical: usize,
+            line: &[u8],
+        ) -> Result<()> {
+            self.emit_diagnostic(diagnostic, file, physical, line)
+        }
+    }
+    impl Diagnostics<'_> {
+        fn emit_diagnostic(
+            &mut self,
+            diagnostic: &crate::parser::ParseDiagnostic,
+            file: &[u8],
+            physical: usize,
+            line: &[u8],
+        ) -> Result<()> {
+            use crate::parser::ParseDiagnostic;
+            if let ParseDiagnostic::CookieError(bytes) = diagnostic {
+                if self.native_error.is_none() {
+                    if bytes.len() > self.options.output_limit.saturating_sub(self.output.len()) {
+                        return Err(Error::Limit("source diagnostic error"));
+                    }
+                    self.options.output_limit -= bytes.len();
+                    self.native_error = Some(bytes.clone());
+                }
+                return Ok(());
+            }
+            self.options.warning_count = self.options.warning_count.saturating_add(1);
+            let limit = self.options.output_limit;
+            if self.options.warning_count == self.options.warning_limit {
+                for message in [
+                    format!(
+                        ", {physical}: Maximum number of warnings ({}) exceeded.\n",
+                        self.options.warning_limit
+                    ),
+                    format!(", {physical}: Additional warnings are suppressed.\n"),
+                ] {
+                    append(&mut self.output, cstr(file), limit)?;
+                    append(&mut self.output, message.as_bytes(), limit)?;
+                }
+            } else if self.options.warning_count < self.options.warning_limit {
+                append(&mut self.output, cstr(file), limit)?;
+                append(
+                    &mut self.output,
+                    format!(", {physical}: Warning: ").as_bytes(),
+                    limit,
+                )?;
+                match diagnostic {
+                    ParseDiagnostic::Warning(message) => append(&mut self.output, message, limit)?,
+                    ParseDiagnostic::WarningBytes(message) => {
+                        append(&mut self.output, message, limit)?
+                    }
+                    ParseDiagnostic::CookieError(_) => unreachable!("handled above"),
+                    ParseDiagnostic::WarningTail {
+                        prefix,
+                        offset,
+                        suffix,
+                    } => {
+                        append(&mut self.output, prefix, limit)?;
+                        let tail = line.get(*offset..).ok_or_else(|| {
+                            Error::Database("diagnostic position outside source line".into())
+                        })?;
+                        append(&mut self.output, cstr(tail), limit)?;
+                        append(&mut self.output, suffix, limit)?;
+                    }
+                }
+                append(&mut self.output, b"\n", limit)?;
+            }
+            Ok(())
+        }
+    }
+    let mut diagnostics = Diagnostics {
+        time,
+        options,
+        output: Vec::new(),
+        last: None,
+        known_failure: false,
+        unmapped_failure: false,
+        native_error: None,
+    };
+    let database = (|| -> Result<Database> {
+        if sources.len() > 4096 {
+            return Err(Error::Limit("magic source files"));
+        }
+        sources.iter().try_fold(0usize, |n, s| {
+            if s.name.len() > 65536 {
+                return Err(Error::Limit("source name"));
+            }
+            n.checked_add(s.bytes.len())
+                .filter(|&n| n <= crate::database::MAX_DB)
+                .ok_or(Error::Limit("source database"))
+        })?;
+        if options.output_limit > 16 * 1024 * 1024 {
+            return Err(Error::Limit("source diagnostic configuration"));
+        }
+        if options.check {
+            append(
+                &mut diagnostics.output,
+                b"cont\toffset\ttype\topcode\tmask\tvalue\tdesc\n",
+                options.output_limit,
+            )?;
+        }
+        let refs: Vec<_> = sources
+            .iter()
+            .map(|s| crate::parser::SourceRef {
+                name: &s.name,
+                bytes: &s.bytes,
+            })
+            .collect();
+        crate::parser::parse_sources_events(&refs, &mut diagnostics)
+    })();
+    let native_failure = diagnostics.known_failure
+        && !diagnostics.unmapped_failure
+        && matches!(&database, Err(Error::Parse { .. }));
+    SourceAction {
+        database,
+        output: diagnostics.output,
+        warning_count: diagnostics.options.warning_count,
+        last_source: diagnostics.last,
+        native_failure,
+        native_error: diagnostics.native_error,
+    }
+}
 fn append(out: &mut Vec<u8>, bytes: &[u8], limit: usize) -> Result<()> {
     let n = out
         .len()

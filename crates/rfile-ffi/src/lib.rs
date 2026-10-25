@@ -290,8 +290,8 @@ pub unsafe extern "C" fn magic_buffer(
             } else {
                 std::slice::from_raw_parts(buffer.cast::<u8>(), size)
             };
-            let result = s.engine().and_then(|e| e.classify_complete_buffer(bytes));
-            s.accept(result)
+            let result = s.engine().map(|e| e.inspect_complete_buffer(bytes));
+            s.accept_observed(result)
         })
     }
 }
@@ -300,8 +300,8 @@ fn descriptor(s: &mut State, fd: c_int) -> *const c_char {
         return ptr::null();
     }
     if fd == -1 {
-        let result = s.engine().and_then(|e| e.classify_complete_buffer(&[]));
-        return s.accept(result);
+        let result = s.engine().map(|e| e.inspect_complete_buffer(&[]));
+        return s.accept_observed(result);
     }
     // SAFETY: fcntl validates the integer descriptor. Only its successfully
     // created duplicate is converted to File ownership; caller FD stays open.
@@ -321,8 +321,8 @@ fn descriptor(s: &mut State, fd: c_int) -> *const c_char {
     }
     // SAFETY: successful fcntl returned a fresh owned descriptor.
     let mut file = unsafe { std::fs::File::from_raw_fd(owned) };
-    let result = s.engine().and_then(|e| e.classify_file(&mut file));
-    s.accept(result)
+    let result = s.engine().map(|e| e.inspect_file(&mut file));
+    s.accept_observed(result)
 }
 /// # Safety
 /// Cookie is live. Caller coordinates concurrent operations on `fd`'s shared
@@ -347,10 +347,8 @@ pub unsafe extern "C" fn magic_file(handle: *mut c_void, name: *const c_char) ->
             }
             match c_path(name) {
                 Ok(Some(name)) => {
-                    let result = s
-                        .engine()
-                        .and_then(|e| e.classify_path(&state::path(&name)));
-                    s.accept(result)
+                    let result = s.engine().map(|e| e.inspect_path(&state::path(&name)));
+                    s.accept_observed(result)
                 }
                 _ => {
                     s.fail(b"rfile limit exceeded: path size".to_vec(), libc::ERANGE);
@@ -597,6 +595,13 @@ mod tests {
             let p = magic_buffer(h, c"ABC".as_ptr().cast(), 3);
             assert_eq!(std::ffi::CStr::from_ptr(p).to_bytes(), b"match");
             assert!(magic_error(h).is_null());
+            assert_eq!(magic_errno(h), 0);
+            assert_eq!(magic_getflags(h), 0);
+            assert_eq!(magic_setflags(h, 16), 0);
+            let mut current = 0usize;
+            assert_eq!(magic_getparam(h, 6, (&mut current as *mut usize).cast()), 0);
+            // Non-result-mutating queries/flag changes retain the returned bytes.
+            assert_eq!(std::ffi::CStr::from_ptr(p).to_bytes(), b"match");
             assert_eq!(magic_load_buffers(h, ptr::null(), ptr::null(), 17), -1);
             assert_eq!(magic_errno(h), libc::ERANGE);
             assert!(magic_buffer(h, c"ABC".as_ptr().cast(), 3).is_null());

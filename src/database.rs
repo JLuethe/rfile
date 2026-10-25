@@ -342,7 +342,6 @@ impl Database {
     pub(crate) fn from_rules(a: Vec<Rule>, b: Vec<Rule>) -> Result<Self> {
         fn groups(rules: Vec<Rule>) -> Result<Vec<Group>> {
             let mut out: Vec<Group> = Vec::new();
-            let mut prev = 0u8;
             for r in rules {
                 if r.level == 0 {
                     if r.flags & (OFFADD | INDIROFFADD) != 0 {
@@ -352,10 +351,9 @@ impl Database {
                         rules: Vec::new(),
                         database_end: false,
                     });
-                } else if out.is_empty() || r.level > prev.saturating_add(1) {
+                } else if out.is_empty() {
                     return Err(Error::Database("invalid continuation hierarchy".into()));
                 }
-                prev = r.level;
                 out.last_mut()
                     .ok_or_else(|| Error::Database("missing root".into()))?
                     .rules
@@ -462,6 +460,16 @@ impl Database {
         output_limit: usize,
     ) -> crate::SourceCheck {
         crate::legacy_source::check_fragments(sources, time, output_limit)
+    }
+    /// Parse one source set with bounded native diagnostic events and check dumps.
+    /// Unmapped diagnostics remain explicit Rust errors; this does not silently
+    /// treat every malformed-source failure as native-compatible.
+    pub fn source_action(
+        sources: &[crate::SourceFragment],
+        time: &crate::TimeContext,
+        options: crate::SourceActionOptions,
+    ) -> crate::SourceAction {
+        crate::legacy_source::action(sources, time, options)
     }
     pub fn load(path: &Path) -> Result<Self> {
         use std::io::Read;

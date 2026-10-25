@@ -184,3 +184,10 @@ path = "fuzz_targets/abi_state.rs"
 test = false
 doc = false
 bench = false
+
+[[bin]]
+name = "source_diagnostics"
+path = "fuzz_targets/source_diagnostics.rs"
+test = false
+doc = false
+bench = false

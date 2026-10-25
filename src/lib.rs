@@ -47,7 +47,7 @@ pub mod input;
 mod inspection;
 mod legacy_listing;
 mod legacy_source;
-pub use legacy_source::SourceCheck;
+pub use legacy_source::{SourceAction, SourceActionOptions, SourceCheck, SourceFragment};
 mod limits;
 mod options;
 mod posix_time;
@@ -96,6 +96,14 @@ impl Classification {
     }
 }
 
+/// Internal compatibility observation for C cookie diagnostic state. It does
+/// not expose mutable evaluator state or extend any foreign pointer lifetime.
+#[doc(hidden)]
+#[derive(Debug)]
+pub struct LegacyInspection {
+    pub result: Result<Classification>,
+    pub last_magic_line: Option<u32>,
+}
 #[derive(Clone, Debug)]
 pub struct Engine {
     database: Arc<Database>,
@@ -170,18 +178,45 @@ impl Engine {
     /// This entry point remains safe Rust and accepts at most 256 MiB.
     #[doc(hidden)]
     pub fn classify_complete_buffer(&self, data: &[u8]) -> Result<Classification> {
+        self.inspect_complete_buffer(data).result
+    }
+    #[doc(hidden)]
+    pub fn inspect_complete_buffer(&self, data: &[u8]) -> LegacyInspection {
         if data.len() > 256 * 1024 * 1024 {
-            return Err(Error::Limit("ABI buffer input"));
+            return LegacyInspection {
+                result: Err(Error::Limit("ABI buffer input")),
+                last_magic_line: None,
+            };
         }
-        let budget = self.budget()?;
-        self.check_output(
-            self.classify_input_complete(data, None, false, None, None, &budget, false),
-            &budget,
-        )
+        self.observe_legacy(|budget| {
+            self.classify_input_complete(data, None, false, None, None, budget, false)
+        })
     }
     pub fn classify_path(&self, path: &std::path::Path) -> Result<Classification> {
-        let budget = self.budget()?;
-        self.check_output(filesystem::classify_path(self, path, &budget), &budget)
+        self.inspect_path(path).result
+    }
+    #[doc(hidden)]
+    pub fn inspect_path(&self, path: &std::path::Path) -> LegacyInspection {
+        self.observe_legacy(|b| filesystem::classify_path(self, path, b))
+    }
+    fn observe_legacy(
+        &self,
+        inspect: impl FnOnce(&InspectionBudget) -> Result<Classification>,
+    ) -> LegacyInspection {
+        let budget = match self.budget() {
+            Ok(b) => b,
+            Err(e) => {
+                return LegacyInspection {
+                    result: Err(e),
+                    last_magic_line: None,
+                };
+            }
+        };
+        let result = self.check_output(inspect(&budget), &budget);
+        LegacyInspection {
+            result,
+            last_magic_line: budget.last_magic_line(),
+        }
     }
     pub fn classify_reader(&self, reader: &mut impl std::io::Read) -> Result<Classification> {
         let budget = self.budget()?;
@@ -247,8 +282,11 @@ impl Engine {
         self.check_output(Ok(result), &budget)
     }
     pub fn classify_file(&self, file: &mut std::fs::File) -> Result<Classification> {
-        let budget = self.budget()?;
-        self.check_output(filesystem::classify_file(self, file, &budget), &budget)
+        self.inspect_file(file).result
+    }
+    #[doc(hidden)]
+    pub fn inspect_file(&self, file: &mut std::fs::File) -> LegacyInspection {
+        self.observe_legacy(|b| filesystem::classify_file(self, file, b))
     }
     fn check_output(
         &self,

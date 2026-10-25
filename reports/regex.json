@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "binary_sha256": "519b7006eccff5abfad412444390575f669a84f2ac6d4269bd2e7243170354e2",
-  "source_sha256": "53999d6fb5be8d8f2ec06699b83fea3b95d68057afdb0de739d227f93c232608",
+  "binary_sha256": "df80898680b9bf0e036d89d79352a889006550df58a40dc0e04962a3b8f39cee",
+  "source_sha256": "afbb8cd8e348c7ed51463ab25ed13dc8dbc9b5939c63e415461aa89b9a86a9b2",
   "host": "Linux-7.2.8-9-omarchy-x86_64-with-glibc2.44",
   "libc": [
     "glibc",

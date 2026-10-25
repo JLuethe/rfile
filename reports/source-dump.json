@@ -16,7 +16,7 @@
     "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
     "version_stderr": ""
   },
-  "driver_sha256": "f5e7a84bc92d7463df85335918643f99bdc2c83f8b1f0cf4a1be7d520dd9e648",
+  "driver_sha256": "2f6c95e00c228c71bee46d5f878281fa6cdfa257382582d8261b9adbcdbe3c74",
   "total": 584,
   "valid": 582,
   "valid_exact": 582,

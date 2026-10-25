@@ -16,12 +16,12 @@
   },
   "features": "all-features",
   "status": "passed",
-  "elapsed_seconds": 390.31656682598987,
+  "elapsed_seconds": 441.75597525699413,
   "steps": [
     {
       "name": "format",
       "status": 0,
-      "seconds": 0.18685727700358257,
+      "seconds": 0.1850636780000059,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -33,7 +33,7 @@
     {
       "name": "clippy",
       "status": 0,
-      "seconds": 0.22172010599751957,
+      "seconds": 0.07779678699444048,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "clippy",
@@ -49,7 +49,7 @@
     {
       "name": "cargo-test",
       "status": 0,
-      "seconds": 10.408754926000256,
+      "seconds": 13.183523544998025,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -61,7 +61,7 @@
     {
       "name": "cargo-release-test",
       "status": 0,
-      "seconds": 95.21788856601052,
+      "seconds": 86.67526085898862,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -74,7 +74,7 @@
     {
       "name": "cargo-build",
       "status": 0,
-      "seconds": 14.549707286001649,
+      "seconds": 13.301193193998188,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -86,7 +86,7 @@
     {
       "name": "ffi-build",
       "status": 0,
-      "seconds": 0.4548659149877494,
+      "seconds": 0.9678936540003633,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -99,7 +99,7 @@
     {
       "name": "ffi-rust-clients",
       "status": 0,
-      "seconds": 2.404477203002898,
+      "seconds": 2.9267878670070786,
       "command": [
         "python3",
         "tools/abi_clients.py",
@@ -109,7 +109,7 @@
     {
       "name": "unsafe-inventory",
       "status": 0,
-      "seconds": 0.03708829700190108,
+      "seconds": 0.035096442996291444,
       "command": [
         "python3",
         "tools/unsafe_inventory.py"
@@ -118,7 +118,7 @@
     {
       "name": "database-rebuild",
       "status": 0,
-      "seconds": 0.13337331400543917,
+      "seconds": 0.09223546400608029,
       "command": [
         "python3",
         "tools/rebuild_database.py"
@@ -127,7 +127,7 @@
     {
       "name": "fuzz-smoke",
       "status": 0,
-      "seconds": 7.348619153999607,
+      "seconds": 8.056736971993814,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -144,7 +144,7 @@
     {
       "name": "fuzz-format",
       "status": 0,
-      "seconds": 0.05566321399237495,
+      "seconds": 0.04132883400598075,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -157,7 +157,7 @@
     {
       "name": "fuzz-build",
       "status": 0,
-      "seconds": 0.29342398898734245,
+      "seconds": 0.5229872109921416,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "check",
@@ -170,7 +170,7 @@
     {
       "name": "ffi-clients",
       "status": 0,
-      "seconds": 2.7371174369909568,
+      "seconds": 4.141918663997785,
       "command": [
         "python3",
         "tools/abi_clients.py"
@@ -179,16 +179,25 @@
     {
       "name": "ffi-state",
       "status": 0,
-      "seconds": 4.526838883000892,
+      "seconds": 5.409884428998339,
       "command": [
         "python3",
         "tools/abi_compare.py"
       ]
     },
     {
+      "name": "ffi-diagnostics",
+      "status": 0,
+      "seconds": 41.86496748100035,
+      "command": [
+        "python3",
+        "tools/abi_diagnostic_compare.py"
+      ]
+    },
+    {
       "name": "upstream-check",
       "status": 0,
-      "seconds": 2.0257810930052074,
+      "seconds": 1.9727425989985932,
       "command": [
         "make",
         "-C",
@@ -199,7 +208,7 @@
     {
       "name": "compiler",
       "status": 0,
-      "seconds": 0.2487944259919459,
+      "seconds": 0.23584439599653706,
       "command": [
         "python3",
         "tools/compiler_compare.py"
@@ -208,7 +217,7 @@
     {
       "name": "fixtures",
       "status": 0,
-      "seconds": 2.325504758002353,
+      "seconds": 2.226185378007358,
       "command": [
         "python3",
         "tools/fixture_compare.py"
@@ -217,7 +226,7 @@
     {
       "name": "differential-broad",
       "status": 0,
-      "seconds": 12.112012576006236,
+      "seconds": 11.035703158995602,
       "command": [
         "python3",
         "tools/differential.py",
@@ -228,7 +237,7 @@
     {
       "name": "extended",
       "status": 0,
-      "seconds": 13.49023560299247,
+      "seconds": 11.083666901002289,
       "command": [
         "python3",
         "tools/extended_compare.py"
@@ -237,7 +246,7 @@
     {
       "name": "semantics-differential",
       "status": 0,
-      "seconds": 2.073902381991502,
+      "seconds": 2.9666299230011646,
       "command": [
         "python3",
         "tools/semantics_compare.py"
@@ -246,7 +255,7 @@
     {
       "name": "regex-differential",
       "status": 0,
-      "seconds": 3.0873794949875446,
+      "seconds": 4.355137050006306,
       "command": [
         "python3",
         "tools/regex_compare.py"
@@ -255,7 +264,7 @@
     {
       "name": "elf-differential",
       "status": 0,
-      "seconds": 62.6200012479967,
+      "seconds": 64.5674264029949,
       "command": [
         "python3",
         "tools/elf_compare.py"
@@ -264,7 +273,7 @@
     {
       "name": "compression-differential",
       "status": 0,
-      "seconds": 71.77569937398948,
+      "seconds": 71.25343274799525,
       "command": [
         "python3",
         "tools/compression_compare.py"
@@ -273,7 +282,7 @@
     {
       "name": "cdf-differential",
       "status": 0,
-      "seconds": 6.583675689005759,
+      "seconds": 7.769234874009271,
       "command": [
         "python3",
         "tools/cdf_compare.py"
@@ -282,7 +291,7 @@
     {
       "name": "locale-differential",
       "status": 0,
-      "seconds": 9.051248645002488,
+      "seconds": 11.665221357994596,
       "command": [
         "python3",
         "tools/locale_compare.py"
@@ -291,7 +300,7 @@
     {
       "name": "float-differential",
       "status": 0,
-      "seconds": 1.495845402998384,
+      "seconds": 2.0674425150064053,
       "command": [
         "python3",
         "tools/float_compare.py"
@@ -300,7 +309,7 @@
     {
       "name": "time-differential",
       "status": 0,
-      "seconds": 44.86389157400117,
+      "seconds": 52.89316172200779,
       "command": [
         "python3",
         "tools/time_compare.py"
@@ -309,7 +318,7 @@
     {
       "name": "component-differential",
       "status": 0,
-      "seconds": 0.18924241700733546,
+      "seconds": 0.20086280300165527,
       "command": [
         "python3",
         "tools/component_compare.py"
@@ -318,7 +327,7 @@
     {
       "name": "cli-differential",
       "status": 0,
-      "seconds": 5.158131547999801,
+      "seconds": 5.239975200995104,
       "command": [
         "python3",
         "tools/cli_compare.py"
@@ -327,7 +336,7 @@
     {
       "name": "sandbox-differential",
       "status": 0,
-      "seconds": 6.4983198330010055,
+      "seconds": 6.606640127007267,
       "command": [
         "python3",
         "tools/sandbox_compare.py"
@@ -336,7 +345,7 @@
     {
       "name": "benchmark",
       "status": 0,
-      "seconds": 8.067582440999104,
+      "seconds": 8.077655761007918,
       "command": [
         "python3",
         "tools/benchmark.py"
@@ -345,12 +354,12 @@
   ],
   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-  "binary_sha256": "f581581e222927fba7c567579bc0df1921312ad1b581b77d03fceb52d18aef69",
+  "binary_sha256": "1c12f67a4fdac0a760023d3bfb266784ba85cc06f51a44f536f39d590078c2f7",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "mutation_smoke": [
     {
       "database_cases": 10000,
-      "elapsed_seconds": 1.63006662,
+      "elapsed_seconds": 1.796752878,
       "fixture_truncations": 1339,
       "random_input_cases": 10000,
       "seed": "4f6c655275737421",

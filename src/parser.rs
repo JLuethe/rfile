@@ -29,7 +29,86 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 // Independent Rust implementation; upstream behavior and retained data notices credited in NOTICE.
-use crate::{Error, Result, database::*};
+use crate::{Error, database::*};
+type Result<T> = std::result::Result<T, ParseFailure>;
+#[derive(Debug)]
+pub(crate) struct ParseFailure {
+    pub error: Error,
+    pub diagnostic: Option<ParseDiagnostic>,
+}
+#[derive(Debug)]
+pub(crate) enum ParseDiagnostic {
+    Warning(&'static [u8]),
+    WarningBytes(Vec<u8>),
+    CookieError(Vec<u8>),
+    WarningTail {
+        prefix: &'static [u8],
+        offset: usize,
+        suffix: &'static [u8],
+    },
+}
+impl ParseFailure {
+    fn with_diagnostic(mut self, diagnostic: ParseDiagnostic) -> Self {
+        self.diagnostic = Some(diagnostic);
+        self
+    }
+    fn shifted(mut self, by: usize) -> Self {
+        if let Some(ParseDiagnostic::WarningTail { offset, .. }) = &mut self.diagnostic {
+            *offset += by;
+        }
+        self
+    }
+}
+impl From<Error> for ParseFailure {
+    fn from(error: Error) -> Self {
+        Self {
+            error,
+            diagnostic: None,
+        }
+    }
+}
+impl std::fmt::Display for ParseFailure {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        self.error.fmt(f)
+    }
+}
+pub(crate) struct SourceRef<'a> {
+    pub name: &'a [u8],
+    pub bytes: &'a [u8],
+}
+pub(crate) trait Observer {
+    fn legacy(&self) -> bool {
+        false
+    }
+    fn begin(&mut self, _file: &[u8]) -> crate::Result<()> {
+        Ok(())
+    }
+    fn line(&mut self, _file: &[u8], _physical: usize) -> crate::Result<bool> {
+        Ok(true)
+    }
+    fn end(&mut self, _file: &[u8], _next: usize) -> crate::Result<()> {
+        Ok(())
+    }
+    fn rule(&mut self, rule: &Rule) -> crate::Result<()>;
+    fn notice(
+        &mut self,
+        _diagnostic: &ParseDiagnostic,
+        _file: &[u8],
+        _physical: usize,
+        _line: &[u8],
+    ) -> crate::Result<()> {
+        Ok(())
+    }
+    fn failure(
+        &mut self,
+        _failure: &ParseFailure,
+        _file: &[u8],
+        _physical: usize,
+        _line: &[u8],
+    ) -> crate::Result<bool> {
+        Ok(false)
+    }
+}
 
 pub(crate) const TYPES: &[&str] = &[
     "invalid",
@@ -95,11 +174,12 @@ pub(crate) const TYPES: &[&str] = &[
     "bemsdostime",
     "octal",
 ];
-fn parse_error(line: usize, s: impl Into<String>) -> Error {
+fn parse_error(line: usize, s: impl Into<String>) -> ParseFailure {
     Error::Parse {
         line,
         message: s.into(),
     }
+    .into()
 }
 pub(crate) fn operation(c: u8) -> Option<u8> {
     b"&|^+-*/%".iter().position(|&x| x == c).map(|x| x as u8)
@@ -282,13 +362,20 @@ fn offset(s: &[u8], r: &mut Rule, line: usize) -> Result<()> {
         }
     }
     if r.level == 0 && r.flags & (OFFADD | INDIROFFADD) != 0 {
-        return Err(parse_error(line, "relative offset at level zero"));
+        return Err(parse_error(line, "relative offset at level zero")
+            .with_diagnostic(ParseDiagnostic::Warning(b"relative offset at level 0")));
     }
     if let Some(&b @ (b'-' | b'+')) = s.get(p) {
         r.flags |= if b == b'-' { OFFNEGATIVE } else { OFFPOSITIVE };
         p += 1;
     }
-    r.offset = integer(s, &mut p).ok_or_else(|| parse_error(line, "invalid offset"))? as i32;
+    r.offset = integer(s, &mut p).ok_or_else(|| {
+        parse_error(line, "invalid offset").with_diagnostic(ParseDiagnostic::WarningTail {
+            prefix: b"offset `",
+            offset: p,
+            suffix: b"' invalid",
+        })
+    })? as i32;
     if r.flags & INDIR != 0 {
         r.in_kind = 4;
         if matches!(s.get(p), Some(b'.' | b',')) {
@@ -378,7 +465,12 @@ fn type_field(s: &[u8], r: &mut Rule, line: usize) -> Result<()> {
                 return Err(parse_error(
                     line,
                     format!("invalid type {}", String::from_utf8_lossy(s)),
-                ));
+                )
+                .with_diagnostic(ParseDiagnostic::WarningTail {
+                    prefix: b"type `",
+                    offset: 0,
+                    suffix: b"' invalid",
+                }));
             }
         };
         p += 1;
@@ -412,7 +504,7 @@ fn type_field(s: &[u8], r: &mut Rule, line: usize) -> Result<()> {
     }
     Ok(())
 }
-fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
+fn parse_rule(s: &[u8], line: usize, file: &[u8]) -> Result<Rule> {
     let mut p = 0;
     while s.get(p) == Some(&b'>') {
         p += 1;
@@ -429,16 +521,24 @@ fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
     while p < s.len() && !space(s[p]) {
         p += 1;
     }
-    offset(&s[begin..p], &mut r, line)?;
+    offset(&s[begin..p], &mut r, line).map_err(|e| e.shifted(begin))?;
     skip(s, &mut p);
     let begin = p;
     while p < s.len() && !space(s[p]) {
         p += 1;
     }
-    type_field(&s[begin..p], &mut r, line)?;
+    type_field(&s[begin..p], &mut r, line).map_err(|e| e.shifted(begin))?;
     skip(s, &mut p);
     if r.kind == 45 && r.level != 0 {
-        return Err(parse_error(line, "name must be at top level"));
+        return Err(
+            parse_error(line, "name must be at top level").with_diagnostic(
+                ParseDiagnostic::WarningTail {
+                    prefix: b"`",
+                    offset: begin,
+                    suffix: b"' entries can only be declared at top level",
+                },
+            ),
+        );
     }
     if let Some(&c) = s.get(p) {
         if b"!><&^=".contains(&c) {
@@ -455,7 +555,13 @@ fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
             p += 1;
         }
     } else {
-        return Err(parse_error(line, "missing test"));
+        return Err(parse_error(line, "missing test").with_diagnostic(
+            ParseDiagnostic::WarningTail {
+                prefix: b"incomplete magic `",
+                offset: 0,
+                suffix: b"'",
+            },
+        ));
     }
     if r.relation != b'x' {
         if !string_kind(r.kind) && r.kind != 48 {
@@ -469,7 +575,8 @@ fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
                 r.vallen = r
                     .vallen
                     .checked_add(pstring_width(r.string_flags) as u8)
-                    .ok_or_else(|| parse_error(line, "pstring too long"))?;
+                    .filter(|&n| n <= 128)
+                    .ok_or_else(|| parse_error(line, "pstring stored length exceeds 128 bytes"))?;
             }
         } else if matches!(r.kind, 33..=38) {
             let begin = p;
@@ -496,7 +603,16 @@ fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
             p = end;
         } else {
             let negative = s.get(p) == Some(&b'-');
-            let n = integer(s, &mut p).ok_or_else(|| parse_error(line, "invalid numeric test"))?;
+            let number_start = p;
+            let n = integer(s, &mut p).ok_or_else(|| {
+                parse_error(line, "invalid numeric test").with_diagnostic(
+                    ParseDiagnostic::WarningTail {
+                        prefix: b"Unparsable number `",
+                        offset: number_start,
+                        suffix: b"'",
+                    },
+                )
+            })?;
             let w = width(r.kind).unwrap_or(8);
             let magnitude = if negative && n != u64::MAX {
                 n.wrapping_neg()
@@ -536,7 +652,7 @@ fn parse_rule(s: &[u8], line: usize, file: &str) -> Result<Rule> {
     crate::format::validate(&r.description, r.kind)
         .map_err(|e| parse_error(line, e.to_string()))?;
     if r.description.is_empty() {
-        r.provenance = file.as_bytes().iter().copied().take(62).collect();
+        r.provenance = file.iter().copied().take(62).collect();
     }
     if r.kind == 17 {
         r.regex = Some(std::sync::Arc::new(std::sync::OnceLock::new()));
@@ -639,18 +755,49 @@ fn root_mode(r: &mut Rule) {
         _ => BINTEST,
     };
 }
-pub(crate) fn parse_sources(sources: &[(String, Vec<u8>)]) -> Result<Database> {
+pub(crate) fn parse_sources(sources: &[(String, Vec<u8>)]) -> crate::Result<Database> {
     parse_sources_observed(sources, &mut |_| Ok(()))
 }
 pub(crate) fn parse_sources_observed(
     sources: &[(String, Vec<u8>)],
-    observer: &mut dyn FnMut(&Rule) -> Result<()>,
-) -> Result<Database> {
+    observer: &mut dyn FnMut(&Rule) -> crate::Result<()>,
+) -> crate::Result<Database> {
+    struct RuleObserver<'a>(&'a mut dyn FnMut(&Rule) -> crate::Result<()>);
+    impl Observer for RuleObserver<'_> {
+        fn rule(&mut self, r: &Rule) -> crate::Result<()> {
+            (self.0)(r)
+        }
+    }
+    let sources: Vec<_> = sources
+        .iter()
+        .map(|(name, bytes)| SourceRef {
+            name: name.as_bytes(),
+            bytes,
+        })
+        .collect();
+    parse_sources_events(&sources, &mut RuleObserver(observer))
+}
+pub(crate) fn parse_sources_events(
+    sources: &[SourceRef<'_>],
+    observer: &mut dyn Observer,
+) -> crate::Result<Database> {
+    parse_impl(sources, observer).map_err(|e| e.error)
+}
+fn parse_impl(sources: &[SourceRef<'_>], observer: &mut dyn Observer) -> Result<Database> {
     let mut groups: Vec<Group> = Vec::new();
     let mut total = 0usize;
-    for (file, source) in sources {
+    let mut first_failure = None;
+    for source in sources {
+        let (file, source) = (source.name, source.bytes);
+        observer.begin(file)?;
+        let mut next_line = 1;
         let mut has_root = false;
         for (index, raw) in source.split_inclusive(|&b| b == b'\n').enumerate() {
+            next_line = index + 1;
+            if !observer.line(file, next_line)? {
+                break;
+            }
+            next_line += 1;
             let terminated = raw.last() == Some(&b'\n');
             let line = index + usize::from(terminated);
             let s = if terminated {
@@ -658,96 +805,184 @@ pub(crate) fn parse_sources_observed(
             } else {
                 raw
             };
-            let s = if s.last() == Some(&b'\r') {
+            let s = if s.last() == Some(&b'\r') && !observer.legacy() {
                 &s[..s.len() - 1]
             } else {
                 s
             };
-            if s.len() > 65536 {
-                return Err(parse_error(line, "line too long"));
-            }
-            if s.is_empty() || s[0] == b'#' {
-                continue;
-            }
-            if s.starts_with(b"!:") {
-                if !has_root {
-                    return Err(parse_error(line, "annotation without a rule"));
+            let parsed = (|| -> Result<()> {
+                if s.len() > 65536 {
+                    return Err(parse_error(line, "line too long"));
                 }
-                let g = groups
-                    .last_mut()
-                    .ok_or_else(|| parse_error(line, "annotation without group"))?;
-                let mut p = 2;
-                while p < s.len() && !space(s[p]) {
-                    p += 1;
-                }
-                let name = &s[2..p];
-                skip(s, &mut p);
-                if name == b"strength" {
-                    let root = &mut g.rules[0];
-                    if root.factor_op != 0 || root.kind == 45 {
-                        return Err(parse_error(line, "invalid/repeated strength directive"));
-                    }
-                    root.factor_op = *s
-                        .get(p)
-                        .filter(|c| b"+-*/".contains(c))
-                        .ok_or_else(|| parse_error(line, "bad strength operator"))?;
-                    p += 1;
-                    skip(s, &mut p);
-                    let n = integer(s, &mut p)
-                        .filter(|&x| x <= 255)
-                        .ok_or_else(|| parse_error(line, "strength out of range"))?;
-                    if root.factor_op == b'/' && n == 0 {
-                        return Err(parse_error(line, "strength divides by zero"));
-                    }
-                    root.factor = n as u8;
+                let s = if observer.legacy() {
+                    &s[..s.iter().position(|&b| b == 0).unwrap_or(s.len())]
                 } else {
-                    let r = g
-                        .rules
-                        .last_mut()
-                        .ok_or_else(|| parse_error(line, "annotation without rule"))?;
-                    let (dest, limit) = match name {
-                        b"mime" => (&mut r.mime, 79),
-                        b"apple" => (&mut r.apple, 8),
-                        b"ext" => (&mut r.extension, 119),
-                        _ => return Err(parse_error(line, "unknown directive")),
-                    };
-                    if !dest.is_empty() {
-                        return Err(parse_error(line, "duplicate annotation"));
-                    }
-                    let begin = p;
+                    s
+                };
+                if s.is_empty() || s[0] == b'#' {
+                    return Ok(());
+                }
+                if s.starts_with(b"!:") {
+                    let mut p = 2;
                     while p < s.len() && !space(s[p]) {
                         p += 1;
                     }
-                    dest.extend(s[begin..p].iter().copied().take(limit));
+                    let mut name = &s[2..p];
+                    if observer.legacy() {
+                        let matched: [&[u8]; 4] = [b"mime", b"apple", b"ext", b"strength"];
+                        let Some(found) = matched
+                            .into_iter()
+                            .find(|n| s.len() > n.len() + 2 && s[2..].starts_with(n))
+                        else {
+                            let body = [b"Unknown !: entry `".as_slice(), s, b"'"].concat();
+                            return Err(parse_error(line, "unknown directive")
+                                .with_diagnostic(ParseDiagnostic::CookieError(body)));
+                        };
+                        name = found;
+                        p = 2 + name.len();
+                    }
+                    if !has_root {
+                        let mut failure = parse_error(line, "annotation without a rule");
+                        if observer.legacy() {
+                            failure = failure.with_diagnostic(ParseDiagnostic::CookieError(
+                                [b"No current entry for :!".as_slice(), name, b" type"].concat(),
+                            ));
+                        }
+                        return Err(failure);
+                    }
+                    let g = groups
+                        .last_mut()
+                        .ok_or_else(|| parse_error(line, "annotation without group"))?;
+                    let annotation_start = p;
+                    skip(s, &mut p);
+                    if name == b"strength" {
+                        let root = &mut g.rules[0];
+                        if root.factor_op != 0 || root.kind == 45 {
+                            return Err(parse_error(line, "invalid/repeated strength directive"));
+                        }
+                        root.factor_op =
+                            *s.get(p).filter(|c| b"+-*/".contains(c)).ok_or_else(|| {
+                                parse_error(line, "bad strength operator").with_diagnostic(
+                                    ParseDiagnostic::WarningBytes(
+                                        [
+                                            b"Unknown factor op `".as_slice(),
+                                            &[s.get(p).copied().unwrap_or(0)],
+                                            b"'",
+                                        ]
+                                        .concat(),
+                                    ),
+                                )
+                            })?;
+                        p += 1;
+                        skip(s, &mut p);
+                        let n = integer(s, &mut p)
+                            .filter(|&x| x <= 255)
+                            .ok_or_else(|| parse_error(line, "strength out of range"))?;
+                        if root.factor_op == b'/' && n == 0 {
+                            return Err(parse_error(line, "strength divides by zero"));
+                        }
+                        root.factor = n as u8;
+                    } else {
+                        let r = g
+                            .rules
+                            .last_mut()
+                            .ok_or_else(|| parse_error(line, "annotation without rule"))?;
+                        let (dest, limit) = match name {
+                            b"mime" => (&mut r.mime, 79),
+                            b"apple" => (&mut r.apple, 8),
+                            b"ext" => (&mut r.extension, 119),
+                            _ => return Err(parse_error(line, "unknown directive")),
+                        };
+                        if !dest.is_empty() {
+                            let label = match name {
+                                b"mime" => b"MIME".as_slice(),
+                                b"apple" => b"APPLE".as_slice(),
+                                _ => b"EXTENSION".as_slice(),
+                            };
+                            let body = [
+                                b"Current entry already has a ".as_slice(),
+                                label,
+                                b" type `",
+                                dest.as_slice(),
+                                b"', new type `",
+                                &s[annotation_start..],
+                                b"'",
+                            ]
+                            .concat();
+                            return Err(parse_error(line, "duplicate annotation")
+                                .with_diagnostic(ParseDiagnostic::WarningBytes(body)));
+                        }
+                        let begin = p;
+                        while p < s.len() && !space(s[p]) {
+                            p += 1;
+                        }
+                        dest.extend(s[begin..p].iter().copied().take(limit));
+                    }
+                    return Ok(());
                 }
-                continue;
-            }
-            let r =
-                parse_rule(s, line, file).map_err(|e| parse_error(line, format!("{file}: {e}")))?;
-            observer(&r)?;
-            total += 1;
-            if total > 250_000 {
-                return Err(Error::Limit("source rules"));
-            }
-            if r.level == 0 {
-                groups.push(Group {
-                    rules: Vec::new(),
-                    database_end: false,
-                });
-                has_root = true;
-            } else if !has_root {
-                return Err(parse_error(line, "continuation without root"));
-            }
-            let g = groups
-                .last_mut()
-                .ok_or_else(|| parse_error(line, "missing root"))?;
-            if let Some(prev) = g.rules.last() {
-                if r.level > prev.level.saturating_add(1) {
-                    return Err(parse_error(line, "skipped continuation level"));
+                if observer.legacy() && !has_root && s.first() == Some(&b'>') {
+                    return Err(
+                        parse_error(line, "continuation without root").with_diagnostic(
+                            ParseDiagnostic::CookieError(
+                                format!("line {}: No current entry for continuation", index + 1)
+                                    .into_bytes(),
+                            ),
+                        ),
+                    );
+                }
+                if observer.legacy() && has_root {
+                    let level = s.iter().take_while(|&&b| b == b'>').count();
+                    if let Some(previous) = groups.last().and_then(|g| g.rules.last()) {
+                        if level > usize::from(previous.level) + 1 {
+                            observer.notice(&ParseDiagnostic::WarningBytes(format!("New continuation level {level} is more than one larger than current level {}",previous.level).into_bytes()),file,index+1,s)?;
+                        }
+                    }
+                }
+                let r = parse_rule(s, line, file).map_err(|mut e| {
+                    e.error = Error::Parse {
+                        line,
+                        message: format!("{}: {e}", String::from_utf8_lossy(file)),
+                    };
+                    e
+                })?;
+                observer.rule(&r)?;
+                total += 1;
+                if total > 250_000 {
+                    return Err(Error::Limit("source rules").into());
+                }
+                if r.level == 0 {
+                    groups.push(Group {
+                        rules: Vec::new(),
+                        database_end: false,
+                    });
+                    has_root = true;
+                } else if !has_root {
+                    return Err(parse_error(line, "continuation without root"));
+                }
+                let g = groups
+                    .last_mut()
+                    .ok_or_else(|| parse_error(line, "missing root"))?;
+                if let Some(prev) = g.rules.last() {
+                    if !observer.legacy() && r.level > prev.level.saturating_add(1) {
+                        return Err(parse_error(line, "skipped continuation level"));
+                    }
+                }
+                g.rules.push(r);
+                Ok(())
+            })();
+            if let Err(failure) = parsed {
+                if !observer.failure(&failure, file, index + 1, s)? {
+                    return Err(failure);
+                }
+                if first_failure.is_none() {
+                    first_failure = Some(failure);
                 }
             }
-            g.rules.push(r);
         }
+        observer.end(file, next_line)?;
+    }
+    if let Some(failure) = first_failure {
+        return Err(failure);
     }
     for g in &mut groups {
         root_mode(&mut g.rules[0]);
@@ -771,5 +1006,5 @@ pub(crate) fn parse_sources_observed(
             a.extend(g.rules);
         }
     }
-    Database::from_rules(a, b)
+    Database::from_rules(a, b).map_err(Into::into)
 }

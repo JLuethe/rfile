@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "scope": "R8b supplementary checks; Miri limited to two FFI unit tests with C/UTC0, not host filesystem/locale/kernel execution",
+  "default_tests": 139,
+  "all_features_debug_tests": 141,
+  "all_features_release_tests": 141,
+  "full_stages": 32,
+  "source_dump_valid_exact": 582,
+  "source_dump_malformed_separate": 2,
+  "miri_tests": 2,
+  "msrv": "1.87.0",
+  "fuzz_targets_built": 25,
+  "checks": {
+    "default": {
+      "sha256": "6637a0146788ab5dd9b50681ef21d623ba54b498c9a795ca7936c2a43d26f566",
+      "path": "reports/r8b-default.log"
+    },
+    "msrv": {
+      "sha256": "323083b14ec3196e3cf811fca9607949fc8594ad4b2cf369422aef7fcff98353",
+      "path": "reports/r8b-msrv.log"
+    },
+    "miri": {
+      "sha256": "301c3674d7caed27905a922550037344d39231a5c0cbad32ba394b5d87805c0e",
+      "path": "reports/r8b-miri-ffi.log"
+    },
+    "fuzz-build": {
+      "sha256": "3891daebc78da516ce5d12313d43e998b404934edaa86adc4f0f1083f624d8e0",
+      "path": "reports/r8b-fuzz-build.log"
+    }
+  }
+}

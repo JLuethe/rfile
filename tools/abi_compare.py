@@ -59,6 +59,9 @@ def worker(library,case,base):
         load();record('fd-minus1',f['descriptor'](h,-1),True);record('fd-minus2',f['descriptor'](h,-2),True);buf()
     elif case=='pipe':
         load();r,w=os.pipe();os.write(w,b'ABC\n');os.close(w);record('pipe',f['descriptor'](h,r),True);rows.append(dict(open=os.fstat(r).st_size));os.close(r)
+    elif case.startswith('diagnostic:'):
+        _,action,cap,name=case.split(':',3);f['setflags'](h,64);v=C.c_size_t(int(cap));f['setparam'](h,9,C.byref(v))
+        for _ in range(3):record(action,f[action](h,os.fsencode(name)));buf()
     elif case.startswith('action:'):
         _,action,name=case.split(':',2);record('setflags',f['setflags'](h,64));record(action,f[action](h,os.fsencode(name)));buf()
     elif case.startswith('paths:'):

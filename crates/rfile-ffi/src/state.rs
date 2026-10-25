@@ -92,6 +92,7 @@ pub struct State {
     pub error_number: i32,
     pub warnings: usize,
     last_source: Option<(Vec<u8>, usize)>,
+    diagnostic_line: usize,
     read_remaining: usize,
     output_remaining: usize,
 }
@@ -106,6 +107,7 @@ impl State {
             error_number: -1,
             warnings: 0,
             last_source: None,
+            diagnostic_line: 0,
             read_remaining: 128 * 1024 * 1024,
             output_remaining: 16 * 1024 * 1024,
         }
@@ -186,6 +188,23 @@ impl State {
         engine.limits = self.limits();
         Ok(engine)
     }
+    pub fn accept_observed(
+        &mut self,
+        result: rfile::Result<rfile::LegacyInspection>,
+    ) -> *const libc::c_char {
+        match result {
+            Ok(observed) => {
+                if let Some(line) = observed.last_magic_line {
+                    self.diagnostic_line = line as usize;
+                    if let Some((_, old)) = &mut self.last_source {
+                        *old = line as usize;
+                    }
+                }
+                self.accept(observed.result)
+            }
+            Err(e) => self.accept(Err(e)),
+        }
+    }
     pub fn accept(&mut self, result: rfile::Result<rfile::Classification>) -> *const libc::c_char {
         match result {
             Ok(c) => {
@@ -205,7 +224,9 @@ impl State {
             let (name, line) = self
                 .last_source
                 .as_ref()
-                .map_or((b"(null)".as_slice(), 0), |(n, l)| (n.as_slice(), *l));
+                .map_or((b"(null)".as_slice(), self.diagnostic_line), |(n, l)| {
+                    (n.as_slice(), *l)
+                });
             bytes.extend_from_slice(name);
             bytes.extend_from_slice(
                 format!(
@@ -295,7 +316,8 @@ impl State {
                 break;
             }
             match self.one_path(name, action) {
-                Ok(db) => {
+                Ok(None) => {}
+                Ok(Some(db)) => {
                     any = true;
                     if action != Action::Compile {
                         let merged = if let Some(old) = combined.take() {
@@ -343,7 +365,7 @@ impl State {
             -1
         }
     }
-    fn one_path(&mut self, name: &[u8], action: Action) -> rfile::Result<Database> {
+    fn one_path(&mut self, name: &[u8], action: Action) -> rfile::Result<Option<Database>> {
         let path = path(name);
         if action != Action::Compile {
             let mut compiled = name.strip_suffix(b".mgc").unwrap_or(name).to_vec();
@@ -364,7 +386,7 @@ impl State {
             }
             match self.read(&super::state::path(&compiled)) {
                 Ok(bytes) => match crate::compiled::load(&bytes, &compiled, true) {
-                    Ok(db) => return Ok(db),
+                    Ok(db) => return Ok(Some(db)),
                     Err(e) => self.rust_error(e),
                 },
                 Err(Error::Io(_)) => {}
@@ -382,23 +404,34 @@ impl State {
         let mut sources = Vec::new();
         for file in &files {
             let bytes = self.read(file)?;
-            let line_count = bytes.split_inclusive(|&b| b == b'\n').count() + 1;
-            self.last_source = Some((file.as_os_str().as_bytes().to_vec(), line_count));
-            if self.warnings >= self.params[9] {
-                continue;
-            }
-            sources.push((file.to_string_lossy().into_owned(), bytes));
+            sources.push(rfile::SourceFragment {
+                name: file.as_os_str().as_bytes().to_vec(),
+                bytes,
+            });
         }
-        let db = if action == Action::Check {
-            let report = Database::check_source_fragments(
-                &sources,
-                &rfile::TimeContext::from_environment()?,
-                self.output_remaining,
-            );
-            self.emit(&report.output, true)?;
-            report.database?
-        } else {
-            Database::from_source_fragments(&sources)?
+        let report = Database::source_action(
+            &sources,
+            &rfile::TimeContext::from_environment()?,
+            rfile::SourceActionOptions {
+                check: action == Action::Check,
+                warning_count: self.warnings,
+                warning_limit: self.params[9],
+                output_limit: self.output_remaining,
+            },
+        );
+        self.warnings = report.warning_count;
+        self.last_source = report.last_source;
+        if let Some((_, line)) = &self.last_source {
+            self.diagnostic_line = *line;
+        }
+        if let Some(error) = report.native_error {
+            self.fail(error, 0);
+        }
+        self.emit(&report.output, true)?;
+        let db = match report.database {
+            Ok(db) => db,
+            Err(_) if report.native_failure => return Ok(None),
+            Err(e) => return Err(e),
         };
         if action == Action::Compile {
             let base = path.file_name().unwrap_or_default().as_bytes();
@@ -406,7 +439,7 @@ impl State {
             name.extend_from_slice(b".mgc");
             write_compiled(&super::state::path(&name), &db.compile()?)?;
         }
-        Ok(db)
+        Ok(Some(db))
     }
 }
 /// Atomic same-directory replacement; never follow a destination symlink.

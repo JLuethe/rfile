@@ -1,6 +1,6 @@
 # Sustained fuzzing, resource assurance and security review
 
-SEC-01 through SEC-10 are the hardening gates for the [remaining-work plan](../07-remaining-work-spec.md). This document specifies work to execute; it does not claim a completed campaign or audit. The original 31,339 deterministic mutation cases are smoke evidence, not the final security gate. The R8 branch now has 24 buildable targets, including stateful C ABI ownership/error transitions; current campaign manifests determine actual measured work.
+SEC-01 through SEC-10 are the hardening gates for the [remaining-work plan](../07-remaining-work-spec.md). This document specifies work to execute; it does not claim a completed campaign or audit. The original 31,339 deterministic mutation cases are smoke evidence, not the final security gate. The R8b candidate now has 25 buildable targets, including stateful C ABI ownership/error transitions; current campaign manifests determine actual measured work.
 
 ## SEC-01: threat model and invariants
 
@@ -114,3 +114,13 @@ failures and state queries, then closes each cookie exactly once. It never
 interprets bytes as arbitrary pointers or host filenames. This supplements C
 ASan/UBSan clients and panic-containment regressions, not a claim that passing
 one target proves full foreign-caller correctness.
+
+
+The source-diagnostic target generates bounded raw source fragments and diagnostic
+caps, then checks that every successful parse compiles to an importable database
+and can be classified within a finite budget. It complements the strict source
+parser target rather than counting its hours twice. There are now 25 mandatory
+targets: the full minimum gate is 600 measured CPU-hours, plus reruns after fixes.
+A partial development campaign must say `partial-campaign-complete`, never
+`gate-passed`. Per-target OS locks prevent concurrent supervisors from mutating
+the same report/corpus. Candidate/configuration changes still require a fresh run.

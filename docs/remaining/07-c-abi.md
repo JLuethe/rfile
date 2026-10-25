@@ -139,7 +139,9 @@ ABI-surface preview can ship with an explicit experimental capability level whil
 ## R8 execution refinements from source tracing (2026-10-25)
 
 The clean reference is selected through `RFILE_REFERENCE`; see the R7 reference
-audit. R8 work is on `feat/c-api-diagnostics`, not a delivered C ABI.
+audit. The experimental ABI preview merged in PR #16 at
+`59c7c384241046833de904dafd2440eac53bfc37`. The following source-tracing
+notes describe that preview; the R8b update below supersedes its diagnostic counts.
 
 - `apprentice_list` (apprentice.c:1163) prints each set's Binary/Text headings,
   filters by the root mode and selects the first nonempty description and MIME
@@ -249,3 +251,54 @@ Next ABI gates, in dependency order:
 
 The first step is a parser/diagnostic milestone, not a reason to claim the whole
 ABI complete because the exported function count is correct.
+
+## R8b source diagnostic contract and remaining actions
+
+The typed parser-event increment implements `Database::source_action` with raw
+byte source names, physical line counters, parse-order dumps, separately counted
+warnings and cookie errors, and continue-after-known-error behavior. The strict
+Rust constructors retain their first-error contract. No Display-string parsing
+or repeated prefix parsing is used. `SourceActionOptions` bounds diagnostics to
+16 MiB; action snapshots are bounded to 128 MiB/4,096 fragments. Output limits
+and unmapped diagnostics remain explicit Rust errors, not claimed native matches.
+
+Native warning counters survive successive actions. A warning increments the
+counter before testing its cap; reaching the cap prints both suppression lines,
+and parsing stops before the next physical line. Cookie errors neither increment
+the counter nor print as warnings; the first error is retained. Source action
+initialization resets the source filename, but preserves the last diagnostic
+line. Classification can replace that line with the last actually visited magic
+record. Root fast-rejection and continuation-skipping order therefore matter.
+`LegacyInspection` conveys this observation without changing public metrics or
+sharing mutable state between independent inspections.
+
+Forward continuation-level jumps are accepted by the native source-action and
+v21 import routes, with a source warning. Strict Rust source constructors retain
+their existing rejection. Before evaluating a shallower sibling, all deeper
+match states are cleared: a later jump cannot reuse a previous branch's match.
+The new regression checks source and compiled routes against the pinned oracle.
+Pascal strings whose stored length including their prefix exceeds the 128-byte
+v21 value field are explicitly rejected. This safety bound prevents successful
+compilation of a record the safe importer cannot accept; it is not native parity.
+
+Verification: all 49 original action/state scenarios now match; the six frozen
+diagnostic differences were removed after replay. A second matrix has 420 exact
+scenarios (21 inputs, four actions, five warning limits), each with three repeated
+action/classification cycles. It includes CRLF, NUL, missing newline, raw names,
+multiple failures, annotation errors and continuation warnings. These counts
+cover the named fixtures, not every malformed source grammar production.
+
+Next work remains concrete:
+
+1. Reuse the source-action pipeline for CLI check/compile/list; CLI `-c` still
+   uses its old post-load listing. Preserve compiled preference, path-list partial
+   success, discovery warnings, stdout/stderr/status and sandbox setup ordering.
+2. Extend typed events for accepted truncation/escape warnings, format annotations,
+   conditional-rule errors and malformed directory members. Record newly found
+   disagreements separately before changing acceptance or expected bytes.
+3. Complete IO failure/special-file action state, errno/locale and DEBUG decisions.
+   Native-only behavior must be explicit; broader source acceptance must still
+   compile/import safely and obey aggregate limits.
+4. Rebuild isolated ABI packaging after the final candidate, then run the full
+   same-candidate matrix, sustained ownership/parser campaigns and independent
+   review. PR #16's passing package is evidence for that earlier candidate only.
