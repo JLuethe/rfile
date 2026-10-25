@@ -597,8 +597,24 @@ impl<'a> Evaluator<'a> {
                             let rendered = if matches!(r.kind, 3 | 47) {
                                 r.description.clone()
                             } else {
-                                format::render(&r.description, &hit.value, self.executable)?
+                                format::render_rule(
+                                    &r.description,
+                                    &hit.value,
+                                    self.executable,
+                                    r.kind,
+                                    r.line,
+                                    self.profile,
+                                )?
                             };
+                            if self.profile == crate::SemanticProfile::Pinned548
+                                && matches!(r.kind, 33..=38)
+                                && rendered.len() > 1024
+                            {
+                                return Err(Error::LegacyOutput {
+                                    attempted: rendered.len(),
+                                    previous: out.bytes.len(),
+                                });
+                            }
                             self.append(&mut out.bytes, &rendered)?;
                         }
                         self.print.space = true;
@@ -612,8 +628,24 @@ impl<'a> Evaluator<'a> {
                         let rendered = if matches!(r.kind, 3 | 45 | 47) {
                             r.description.clone()
                         } else {
-                            format::render(&r.description, &hit.value, self.executable)?
+                            format::render_rule(
+                                &r.description,
+                                &hit.value,
+                                self.executable,
+                                r.kind,
+                                r.line,
+                                self.profile,
+                            )?
                         };
+                        if self.profile == crate::SemanticProfile::Pinned548
+                            && matches!(r.kind, 33..=38)
+                            && rendered.len() > 1024
+                        {
+                            return Err(Error::LegacyOutput {
+                                attempted: rendered.len(),
+                                previous: out.bytes.len(),
+                            });
+                        }
                         self.append(&mut out.bytes, &rendered)?;
                     }
                 }

@@ -13,6 +13,7 @@ pub struct TimeContext {
     zone: TimeZone,
     source: String,
     last_explicit_transition: i64,
+    posix: Option<crate::posix_time::PosixTime>,
 }
 impl Default for TimeContext {
     fn default() -> Self {
@@ -20,6 +21,7 @@ impl Default for TimeContext {
             zone: TimeZone::UTC,
             source: "UTC".into(),
             last_explicit_transition: i64::MIN,
+            posix: None,
         }
     }
 }
@@ -35,6 +37,11 @@ impl TimeContext {
             zone: TimeZone::posix(expression)
                 .map_err(|e| Error::Unsupported(format!("timezone: {e}")))?,
             source: expression.into(),
+            posix: Some(
+                crate::posix_time::PosixTime::parse(expression).ok_or_else(|| {
+                    Error::Unsupported("explicit POSIX timezone rules required".into())
+                })?,
+            ),
             last_explicit_transition: i64::MIN,
         })
     }
@@ -46,6 +53,7 @@ impl TimeContext {
             zone: TimeZone::tzif(name, bytes)
                 .map_err(|e| Error::Unsupported(format!("timezone: {e}")))?,
             source: name.into(),
+            posix: None,
             last_explicit_transition: last_transition(bytes).unwrap_or(i64::MAX),
         })
     }
@@ -111,6 +119,9 @@ impl TimeContext {
     pub(crate) fn legacy_windows_seconds(&self, wall: i64) -> Option<i64> {
         // The pin passes tm_isdst=0 to mktime even for its nominally UTC
         // FILETIME family. Preserve the host's standard-time interpretation.
+        if let Some(rules) = &self.posix {
+            return rules.legacy_standard(wall);
+        }
         let ts = Timestamp::from_second(wall).ok()?;
         let info = self.zone.to_offset_info(ts);
         let offset = if info.dst().is_std() {
@@ -131,7 +142,11 @@ impl TimeContext {
         };
         wall.checked_sub(offset.seconds() as i64)
     }
-    pub(crate) fn local_seconds(&self, seconds: i64) -> Option<i64> {
+    pub(crate) fn local_seconds(
+        &self,
+        seconds: i64,
+        profile: crate::SemanticProfile,
+    ) -> Option<i64> {
         let ts = Timestamp::from_second(seconds).ok().or_else(|| {
             // Jiff reserves one day at its civil range edges. Beyond the last
             // explicit TZif transition, footer rules repeat on the Gregorian
@@ -141,7 +156,17 @@ impl TimeContext {
                 .then(|| Timestamp::from_second(shifted).ok())
                 .flatten()
         })?;
-        seconds.checked_add(self.zone.to_offset(ts).seconds() as i64)
+        let offset = if profile == crate::SemanticProfile::Pinned548 {
+            if let Some(rules) = &self.posix {
+                let year = TimeZone::UTC.to_datetime(ts).year();
+                rules.offset(year, ts.as_second())?
+            } else {
+                self.zone.to_offset(ts).seconds()
+            }
+        } else {
+            self.zone.to_offset(ts).seconds()
+        };
+        seconds.checked_add(offset as i64)
     }
 }
 

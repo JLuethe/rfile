@@ -19,6 +19,7 @@ pub enum Error {
     Unsupported(String),
     ResourceLimit(LimitViolation),
     LegacyLimit(Vec<u8>),
+    LegacyFormat(Vec<u8>),
     LegacyOutput {
         attempted: usize,
         previous: usize,
@@ -44,7 +45,9 @@ impl fmt::Display for Error {
             Self::Limit(s) => write!(f, "{s} limit exceeded"),
             Self::Unsupported(s) => write!(f, "unsupported: {s}"),
             Self::ResourceLimit(v) => write!(f, "{} limit exceeded", v.resource),
-            Self::LegacyLimit(bytes) => f.write_str(&String::from_utf8_lossy(bytes)),
+            Self::LegacyLimit(bytes) | Self::LegacyFormat(bytes) => {
+                f.write_str(&String::from_utf8_lossy(bytes))
+            }
             Self::LegacyOutput {
                 attempted,
                 previous,
@@ -83,7 +86,7 @@ pub struct LimitViolation {
 impl Error {
     pub fn raw_diagnostic(&self) -> Option<&[u8]> {
         match self {
-            Self::LegacyLimit(bytes) => Some(bytes),
+            Self::LegacyLimit(bytes) | Self::LegacyFormat(bytes) => Some(bytes),
             Self::Filesystem { diagnostic, .. } => Some(diagnostic),
             _ => None,
         }

@@ -106,7 +106,7 @@ pub(crate) fn expand(bytes: &[u8], executable: bool) -> Vec<u8> {
     out
 }
 fn general(x: f64, precision: usize, upper: bool, alternate: bool) -> String {
-    let p = precision.clamp(1, 64);
+    let p = precision.max(1);
     if !x.is_finite() {
         let s = if x.is_nan() {
             if x.is_sign_negative() { "-nan" } else { "nan" }
@@ -117,11 +117,11 @@ fn general(x: f64, precision: usize, upper: bool, alternate: bool) -> String {
         };
         return if upper { s.to_uppercase() } else { s.into() };
     }
-    let mut exp = if x == 0.0 {
-        0
-    } else {
-        x.abs().log10().floor() as i32
-    };
+    let mut exp = format!("{x:e}")
+        .rsplit_once('e')
+        .and_then(|(_, exponent)| exponent.parse::<i32>().ok())
+        .unwrap_or(0);
+    let original_exp = exp;
     // Round before selecting %g's exponent representation.
     let scientific = format!("{:.prec$e}", x, prec = p - 1);
     if let Some((_, e)) = scientific.split_once('e') {
@@ -130,13 +130,16 @@ fn general(x: f64, precision: usize, upper: bool, alternate: bool) -> String {
     let mut s = if exp < -4 || exp >= p as i32 {
         let (mantissa, exponent) = scientific.split_once('e').unwrap_or((&scientific, "0"));
         let mut mantissa = mantissa.to_owned();
-        if !alternate && mantissa.contains('.') {
+        if (!alternate || (original_exp < p as i32 && exp >= p as i32)) && mantissa.contains('.') {
             while mantissa.ends_with('0') {
                 mantissa.pop();
             }
             if mantissa.ends_with('.') {
                 mantissa.pop();
             }
+        }
+        if alternate && !mantissa.contains('.') {
+            mantissa.push('.');
         }
         let e: i32 = exponent.parse().unwrap_or(0);
         format!("{mantissa}e{e:+03}")
@@ -151,6 +154,9 @@ fn general(x: f64, precision: usize, upper: bool, alternate: bool) -> String {
                 s.pop();
             }
         }
+        if alternate && !s.contains('.') {
+            s.push('.');
+        }
         s
     };
     if upper {
@@ -158,7 +164,70 @@ fn general(x: f64, precision: usize, upper: bool, alternate: bool) -> String {
     }
     s
 }
+// file_checkfmt skips a leading dot with flags, so %.1024f reports
+// "width" while %1.1024f reports "precision". Preserve the pinned diagnostic.
+fn check_native_fields(desc: &[u8]) -> Result<()> {
+    let mut p = 0;
+    while p < desc.len() {
+        if desc[p] != b'%' {
+            p += 1;
+            continue;
+        }
+        p += 1;
+        if desc.get(p) == Some(&b'%') {
+            p += 1;
+            continue;
+        }
+        while desc.get(p).is_some_and(|c| b"#0.'+- ".contains(c)) {
+            p += 1;
+        }
+        for field in ["width", "precision"] {
+            let mut n = 0usize;
+            while let Some(&c @ b'0'..=b'9') = desc.get(p) {
+                n = n * 10 + (c - b'0') as usize;
+                p += 1;
+                if n > 1024 {
+                    break;
+                }
+            }
+            if n >= 1024 {
+                let mut error = b"Bad magic format `".to_vec();
+                error.extend_from_slice(crate::database::cstr(desc));
+                error.extend_from_slice(format!("' (field {field} too large: {n})").as_bytes());
+                return Err(Error::LegacyFormat(error));
+            }
+            if field == "width" && desc.get(p) == Some(&b'.') {
+                p += 1;
+            } else {
+                break;
+            }
+        }
+    }
+    Ok(())
+}
+
 pub(crate) fn render(description: &[u8], value: &Value, executable: bool) -> Result<Vec<u8>> {
+    render_inner(description, value, executable, None)
+}
+
+pub(crate) fn render_rule(
+    description: &[u8],
+    value: &Value,
+    executable: bool,
+    kind: u8,
+    line: u32,
+    profile: crate::SemanticProfile,
+) -> Result<Vec<u8>> {
+    let native = (profile == crate::SemanticProfile::Pinned548).then_some((kind, line));
+    render_inner(description, value, executable, native)
+}
+
+fn render_inner(
+    description: &[u8],
+    value: &Value,
+    executable: bool,
+    native: Option<(u8, u32)>,
+) -> Result<Vec<u8>> {
     let desc = expand(description, executable);
     let mut out = Vec::new();
     let mut p = 0;
@@ -324,7 +393,20 @@ pub(crate) fn render(description: &[u8], value: &Value, executable: bool) -> Res
                 let Value::Float(x) = value else {
                     return Err(Error::Unsupported("float format for non-float".into()));
                 };
-                let prec = precision.unwrap_or(6).min(64);
+                if matches!(conversion, b'G' | b'F') || !long.is_empty() {
+                    if let Some((kind @ 33..=38, line)) = native {
+                        let location = if kind <= 35 { 759 } else { 778 };
+                        let mut message =
+                            format!("line {line}: softmagic.c, {location}: format `").into_bytes();
+                        message.extend_from_slice(crate::database::cstr(&desc));
+                        message.extend_from_slice(b"' does not match with `%g'");
+                        return Err(Error::LegacyFormat(message));
+                    }
+                }
+                if native.is_some() {
+                    check_native_fields(&desc)?;
+                }
+                let prec = precision.unwrap_or(6);
                 let mut s = if !x.is_finite() {
                     general(*x, prec, conversion.is_ascii_uppercase(), alternate)
                 } else {
@@ -334,12 +416,23 @@ pub(crate) fn render(description: &[u8], value: &Value, executable: bool) -> Res
                             let s = format!("{x:.prec$e}");
                             if let Some((m, e)) = s.split_once('e') {
                                 let e: i32 = e.parse().unwrap_or(0);
-                                format!("{m}e{e:+03}")
+                                let dot = if alternate && !m.contains('.') {
+                                    "."
+                                } else {
+                                    ""
+                                };
+                                format!("{m}{dot}e{e:+03}")
                             } else {
                                 s
                             }
                         }
-                        _ => format!("{x:.prec$}"),
+                        _ => {
+                            let mut s = format!("{x:.prec$}");
+                            if alternate && !s.contains('.') {
+                                s.push('.');
+                            }
+                            s
+                        }
                     }
                 };
                 if !s.starts_with('-') {
@@ -352,6 +445,10 @@ pub(crate) fn render(description: &[u8], value: &Value, executable: bool) -> Res
                 if conversion.is_ascii_uppercase() {
                     s.make_ascii_uppercase();
                 }
+                if zero && !left && x.is_finite() && width > s.len() {
+                    let sign = usize::from(s.starts_with(['-', '+', ' ']));
+                    s.insert_str(sign, &"0".repeat(width - s.len()));
+                }
                 s.into_bytes()
             }
             _ => {
@@ -362,14 +459,10 @@ pub(crate) fn render(description: &[u8], value: &Value, executable: bool) -> Res
             }
         };
         if width > b.len() {
-            let pad = vec![
-                if zero && !left && conversion != b's' {
-                    b'0'
-                } else {
-                    b' '
-                };
-                width - b.len()
-            ];
+            // Numeric zero padding is handled with the sign/prefix above.
+            // Precision disables integer zero fill; nonfinite/character/string
+            // conversions always use spaces here.
+            let pad = vec![b' '; width - b.len()];
             if left {
                 b.extend(pad);
             } else {
@@ -517,7 +610,7 @@ pub(crate) fn datetime(
         return "*Invalid datetime*".into();
     }
     if local {
-        let Some(adjusted) = time.local_seconds(seconds) else {
+        let Some(adjusted) = time.local_seconds(seconds, profile) else {
             return "*Invalid datetime*".into();
         };
         seconds = adjusted;

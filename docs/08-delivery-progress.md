@@ -10,7 +10,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R3 CDF | merged in PR #7 | shared positional sector/mini/FAT/DIFAT traversal, typed directory/property/catalog evidence, corrected rendering, pinned fallback and generated fixtures |
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
-| R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | 24 local stages passed; float research has 2,552 differences in 6,630 cases; date/float/full native history closure remains |
+| R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7–R8 sandbox and C ABI | pending | real denied-operation tests and all 19 ABI functions/client contracts |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
@@ -144,3 +144,35 @@ prove the host C library itself. `reports/unsafe.json` inventories 15 first-part
 unsafe declarations/blocks (including tests) within the locale adapter. The
 [platform contract](../crates/rfile-platform/README.md) states the invariants and
 trusted-host assumptions. No independent audit or sustained gate is claimed.
+
+
+## R6c formatter/date increment
+
+The typed formatter now respects accepted precision instead of clamping at 64,
+places zero fill after signs, preserves alternate decimal points and implements
+the native alternate-g carry quirk. Nonfinite values and integer-precision/character
+padding retain spaces. Pinned float fmtcheck/field/output errors preserve diagnostic
+bytes; CorrectedV1 supports uppercase formats. Native source acceptance and
+compiled-description runtime behavior have separate routes in the float matrix.
+
+Explicit POSIX timezone rules are validated through Jiff then held in a bounded
+immutable representation for native UTC-year/pre-1970 transition semantics.
+Corrected mode retains Jiff's recurring calendar behavior. Legacy FILETIME handles
+the bounded native standard-time probe search and one-hour fallback for unusually
+short standard-time periods. The upper-year 400-year shift remains checked.
+No process locale/TZ mutation, time FFI, native printf or new dependency was added.
+
+All 25 full-project verification stages passed with 120 ordinary debug/release
+tests, unchanged compiled database bytes, old matrices and named differences.
+The expanded float matrix has 15,447 exact results through source/v21 routes;
+dates have 2,850 exact results across 15 timezone configurations. Default tests,
+Clippy and Rust 1.87 pass. Warm benchmark checksum matches; runtime ratio is 1.55.
+The new time_context fuzz target brings the total to 23. All-bin check/formatting
+were repeated after adding it, separately recorded in r6c-additional-checks.json.
+Final ASan smoke: 223,077 formatter cases (30.31 CPU seconds) and 662,838 timezone
+cases (30.31 CPU seconds), no reported failure; source/binary identities match.
+These are smoke-only reports, not sustained gates or an independent review.
+
+Full native quantified-capture fidelity, exotic/custom TZif histories, caller
+rounding/locale state and other platforms remain explicit restrictions or future
+qualification. R6c closes this measured increment, not every SEM requirement.
