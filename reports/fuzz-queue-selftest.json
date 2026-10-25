@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "normal_queue": "/home/john/Code/rfile/.reference/fuzz-queues/21b47b6c-230c-4579-8a7e-d85abdc2c619/queue.json",
+  "queue_status": "complete",
+  "duplicate_queue_rejected": true,
+  "duplicate_target_rejected": true,
+  "partial_not_qualified": true,
+  "measured_cpu_seconds": 22.036955999999996,
+  "deadline_queue": "/home/john/Code/rfile/.reference/fuzz-queues/83d429cd-a986-46f0-bb44-44a3051b49e3/queue.json",
+  "deadline_stopped": true,
+  "supervisor_process_exited": true
+}

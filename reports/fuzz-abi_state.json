@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
-  "started_utc": "2026-10-25T10:07:04.270717+00:00",
-  "supervisor_pid": 3812321,
+  "started_utc": "2026-10-25T10:27:39.505248+00:00",
+  "supervisor_pid": 3951353,
   "configuration": {
-    "supervisor_sha256": "3c61545f8fe505584e146d66c62edff20002683909260ed4924601080f39c892",
+    "supervisor_sha256": "105294309e518e888f5ec7222abebdf7f3014a8d82dbc182af0b8c4f4439b1f8",
     "isolation": "bubblewrap unshare-all; no host home/network; private tmp; readonly binary/system libraries",
     "kernel": "Linux-7.2.8-9-omarchy-x86_64-with-glibc2.44",
     "toolchain": "rustc 1.101.0-nightly (48f4b0553 2026-10-23)",
     "target": "abi_state",
-    "binary_sha256": "611fd313e5b3f6173cd429fdd2d3cf928258a8501ca63f5097d0086752e1552a",
-    "source_sha256": "afbb8cd8e348c7ed51463ab25ed13dc8dbc9b5939c63e415461aa89b9a86a9b2",
+    "binary_sha256": "ac63b2eeba5c7434633ced0ab9cdde848916f7f3dbc500b0c75665f6a121dc5e",
+    "source_sha256": "6df3dd08faffbf5bb63c4fa96726899b4404a4c294d16091075ae3b88ac1b50d",
     "seed": 548,
     "max_len": 65536,
     "rss_mib": 512,
@@ -18,30 +18,30 @@
     "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59"
   },
   "initial_corpus": {
-    "files": 1843,
-    "bytes": 184235,
-    "sha256": "f19a284b9209e68b34035171a518415feed7c60f57e4ca128f184be1375690a8"
+    "files": 2513,
+    "bytes": 289498,
+    "sha256": "94d52e1e19d2337eabbcd7428b61a014ac374fdb83052c6dc2bc407370622ced"
   },
   "chunks": [
     {
       "index": 0,
       "returncode": 0,
       "supervisor_kill": false,
-      "cpu_seconds": 30.932192999999998,
-      "wall_seconds": 31.23044909100281,
-      "peak_rss_kib": 457836,
+      "cpu_seconds": 11.043743,
+      "wall_seconds": 11.210408630999154,
+      "peak_rss_kib": 438832,
       "stats": {
-        "number_of_executed_units": 156904,
-        "average_exec_per_sec": 5061,
-        "new_units_added": 634,
+        "number_of_executed_units": 45173,
+        "average_exec_per_sec": 4106,
+        "new_units_added": 162,
         "slowest_unit_time_sec": 0,
-        "peak_rss_mb": 447
+        "peak_rss_mb": 428
       },
       "accounting_valid": true,
       "fuzzer_exit_status": 0,
-      "supervisor_cpu_seconds": 0.0024879999999999998,
-      "log": "fuzz/campaign-logs/abi_state/f0316cee-3ddb-4656-a353-b8a86531fb98/chunk-0.log",
-      "log_sha256": "14deb0e49afe2d449a88c7133bb0bf480728e42f8ef5c495ee2f16152e18a643",
+      "supervisor_cpu_seconds": 0.0019529999999999999,
+      "log": "fuzz/campaign-logs/abi_state/c74842f8-54bf-4060-a739-959ca6fb5c4f/chunk-0.log",
+      "log_sha256": "7c72a7b1f3a6e42c120f175202b258c17d632e2c225d56b554a765222c56c784",
       "command": [
         "/usr/bin/bwrap",
         "--unshare-all",
@@ -96,25 +96,25 @@
         "/home/john/Code/rfile/fuzz/target/x86_64-unknown-linux-gnu/release/abi_state",
         "/home/john/Code/rfile/fuzz/corpus/abi_state",
         "-seed=548",
-        "-max_total_time=30",
+        "-max_total_time=10",
         "-max_len=65536",
         "-timeout=3",
         "-rss_limit_mb=512",
         "-print_final_stats=1",
         "-artifact_prefix=/home/john/Code/rfile/fuzz/artifacts/abi_state/"
       ],
-      "finished_utc": "2026-10-25T10:07:35.530207+00:00"
+      "finished_utc": "2026-10-25T10:27:50.748067+00:00"
     }
   ],
-  "measured_cpu_seconds": 30.932192999999998,
-  "wall_seconds": 31.23044909100281,
+  "measured_cpu_seconds": 11.043743,
+  "wall_seconds": 11.210408630999154,
   "completed_gate": false,
-  "log_directory": "fuzz/campaign-logs/abi_state/f0316cee-3ddb-4656-a353-b8a86531fb98",
-  "status": "smoke-only",
+  "log_directory": "fuzz/campaign-logs/abi_state/c74842f8-54bf-4060-a739-959ca6fb5c4f",
+  "status": "partial-campaign-complete",
   "current_corpus": {
-    "files": 2387,
-    "bytes": 267296,
-    "sha256": "9129ab3a7f43280aaee7754f988c648ca97e899488ddae7db887b9e439294ab5"
+    "files": 2671,
+    "bytes": 319219,
+    "sha256": "3d001f2b004cd4fbc133fa36333fd1907385673d4842faafd4201c02e3837995"
   },
-  "requested_cpu_hours": 0
+  "requested_cpu_hours": 0.0001
 }

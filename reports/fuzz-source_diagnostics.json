@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
-  "started_utc": "2026-10-25T10:06:32.903147+00:00",
-  "supervisor_pid": 3803427,
+  "started_utc": "2026-10-25T10:27:39.477531+00:00",
+  "supervisor_pid": 3951352,
   "configuration": {
-    "supervisor_sha256": "3c61545f8fe505584e146d66c62edff20002683909260ed4924601080f39c892",
+    "supervisor_sha256": "105294309e518e888f5ec7222abebdf7f3014a8d82dbc182af0b8c4f4439b1f8",
     "isolation": "bubblewrap unshare-all; no host home/network; private tmp; readonly binary/system libraries",
     "kernel": "Linux-7.2.8-9-omarchy-x86_64-with-glibc2.44",
     "toolchain": "rustc 1.101.0-nightly (48f4b0553 2026-10-23)",
     "target": "source_diagnostics",
-    "binary_sha256": "60e3e3afa058a81fb2817e0f1c9b4d3ab10cf90fd7efe550c439cdd664e088af",
-    "source_sha256": "afbb8cd8e348c7ed51463ab25ed13dc8dbc9b5939c63e415461aa89b9a86a9b2",
+    "binary_sha256": "de8ecbe75c349bfa2fd04b0be41024ca7a78e15e144d691f318755f0386b1f2b",
+    "source_sha256": "6df3dd08faffbf5bb63c4fa96726899b4404a4c294d16091075ae3b88ac1b50d",
     "seed": 548,
     "max_len": 65536,
     "rss_mib": 512,
@@ -18,30 +18,30 @@
     "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59"
   },
   "initial_corpus": {
-    "files": 5,
-    "bytes": 307,
-    "sha256": "9690f65352d48ed372440f392f0bd0f1196e5a2536a392c311ad1cdd96319cf4"
+    "files": 2877,
+    "bytes": 163958,
+    "sha256": "d71f2f5adb9ad5860fddb90bd320cae91a5a2ed884470af3fe258a58eaaa9953"
   },
   "chunks": [
     {
       "index": 0,
       "returncode": 0,
       "supervisor_kill": false,
-      "cpu_seconds": 30.120558,
-      "wall_seconds": 31.23501374400803,
-      "peak_rss_kib": 271304,
+      "cpu_seconds": 10.993212999999999,
+      "wall_seconds": 11.210273874996346,
+      "peak_rss_kib": 360288,
       "stats": {
-        "number_of_executed_units": 519332,
-        "average_exec_per_sec": 16752,
-        "new_units_added": 6917,
+        "number_of_executed_units": 165152,
+        "average_exec_per_sec": 15013,
+        "new_units_added": 970,
         "slowest_unit_time_sec": 0,
-        "peak_rss_mb": 264
+        "peak_rss_mb": 351
       },
       "accounting_valid": true,
       "fuzzer_exit_status": 0,
-      "supervisor_cpu_seconds": 0.002423,
-      "log": "fuzz/campaign-logs/source_diagnostics/41df2fb1-de61-4504-acb4-6c19939a7230/chunk-0.log",
-      "log_sha256": "7963dcf7069f8539552bbe228fc01e610f8ad524dc3834657845000c7ebeabc7",
+      "supervisor_cpu_seconds": 0.00199,
+      "log": "fuzz/campaign-logs/source_diagnostics/fe1f1122-5980-49b6-aa4f-25b6d3e3c25f/chunk-0.log",
+      "log_sha256": "279f54fcae39f7af5b498d56b0ee46de1a72d3c5b9f076b0fb2afaca7a74eccc",
       "command": [
         "/usr/bin/bwrap",
         "--unshare-all",
@@ -96,25 +96,25 @@
         "/home/john/Code/rfile/fuzz/target/x86_64-unknown-linux-gnu/release/source_diagnostics",
         "/home/john/Code/rfile/fuzz/corpus/source_diagnostics",
         "-seed=548",
-        "-max_total_time=30",
+        "-max_total_time=10",
         "-max_len=65536",
         "-timeout=3",
         "-rss_limit_mb=512",
         "-print_final_stats=1",
         "-artifact_prefix=/home/john/Code/rfile/fuzz/artifacts/source_diagnostics/"
       ],
-      "finished_utc": "2026-10-25T10:07:04.155561+00:00"
+      "finished_utc": "2026-10-25T10:27:50.728977+00:00"
     }
   ],
-  "measured_cpu_seconds": 30.120558,
-  "wall_seconds": 31.23501374400803,
+  "measured_cpu_seconds": 10.993212999999999,
+  "wall_seconds": 11.210273874996346,
   "completed_gate": false,
-  "log_directory": "fuzz/campaign-logs/source_diagnostics/41df2fb1-de61-4504-acb4-6c19939a7230",
-  "status": "smoke-only",
+  "log_directory": "fuzz/campaign-logs/source_diagnostics/fe1f1122-5980-49b6-aa4f-25b6d3e3c25f",
+  "status": "partial-campaign-complete",
   "current_corpus": {
-    "files": 1950,
-    "bytes": 94671,
-    "sha256": "0e74abf4573eef5106cc12f6897545ea343470a5551653ffbaaa313d7497242d"
+    "files": 3729,
+    "bytes": 240202,
+    "sha256": "3f5e83ce99f395be6e179dec14444d4a626a5e698aca87cf1a95eec80ad44d54"
   },
-  "requested_cpu_hours": 0
+  "requested_cpu_hours": 0.0001
 }

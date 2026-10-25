@@ -182,3 +182,14 @@ codex resume SESSION_ID "Read HANDOFF.md and docs/10-execution-and-recovery-spec
 Do not run it as-is. A request may still be restricted; resuming is not a guarantee
 of access. The supported response to repeated mistaken restrictions is review,
 feedback/Support and the official access process, not an infinite retry loop.
+
+
+### Local test workers are separate from agent recovery
+
+The implemented `tools/fuzz_queue.py` can continue a bounded local test workload
+outside a chat turn. It records real worker identities and results, and stops on
+failure, candidate change or deadline. It never invokes a model, retries a blocked
+request or restarts the GUI thread. Its scope and validation are in the
+[hardening specification](remaining/06-hardening.md#bounded-overnight-queue).
+An actual started service is recorded separately in HANDOFF and its manifest;
+shipping this runner does not itself mean a background job is active.
