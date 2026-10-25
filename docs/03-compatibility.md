@@ -43,3 +43,17 @@ Intentional changes are restricted to: memory-safe rejection of malformed/overfl
 Potential upstream defects should be represented as separate expected observations, with minimal reproducer and exact flags/build attached. Preserve defined, safe quirks in compatibility mode; do not reproduce out-of-bounds access, UB or denial of service. A corrected semantic profile must be named/versioned, with paired legacy and corrected tests.
 
 Observed delivered profile: all 103 upstream goldens, the standard differential corpus and the selected extended flag profile pass in the reports. CLI has six documented differences on this sandboxed host (four native gzip guard cases and two FIFO SIGSYS cases). These figures do not certify untested platforms or the remaining ELF/CDF/locale/compiler-diagnostic surfaces. Local-time date rendering currently uses UTC; source warnings, native sort on other endian targets, strict CRC errors, parameter quirks and oversized buffer sampling remain gaps or declared changes.
+
+
+### R7 confinement compatibility decisions (2026-10-25)
+
+The optional sandbox feature is an intentional process-behavior extension,
+not emulation of C SIGSYS failures. Auto preserves tested CLI outputs while
+restricting writes, execution and networking. Strict adds bounded preparation
+and input descriptor confinement. Its unsupported dynamic/streamed file lists,
+preflight-error ordering, 128-entry cap, and separate compile/check/list action
+scopes are explicit in [SBX](remaining/05-sandbox.md). `-S` disables restrictions;
+last mode option wins. Compiled support is distinct from enforced runtime status.
+The optional Linux compile backend uses private descriptor-relative publication;
+atomic replacement intentionally changes symlink/inode/mode behavior relative to
+in-place writes. This is recorded behavior, not an unreported compatibility fix.

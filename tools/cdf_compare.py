@@ -10,6 +10,7 @@ import subprocess
 import tempfile
 import cdf_fixtures as fixtures
 from differential import library, run_group
+from reference import UP
 ROOT=Path(__file__).resolve().parents[1]
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC')
 
@@ -21,7 +22,7 @@ def invoke(binary,path,flags,profile=None):
 
 def main():
     pin=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit']
-    if subprocess.check_output(['git','-C',str(ROOT/'upstream'),'rev-parse','HEAD'],text=True).strip()!=pin: raise SystemExit('Reference revision drift')
+    if subprocess.check_output(['git','-C',str(UP),'rev-parse','HEAD'],text=True).strip()!=pin: raise SystemExit('Reference revision drift')
     rows=[];corrected=[];api=[];manifest=[]
     with tempfile.TemporaryDirectory(prefix='rfile-cdf-')as directory:
         directory=Path(directory)
@@ -33,7 +34,7 @@ def main():
             path=directory/(name+'.cfb');path.write_bytes(data);paths.append(path)
             manifest.append(dict(name=name,bytes=len(data),sha256=hashlib.sha256(data).hexdigest()))
             for flags in [[],['-i'],['--mime-type'],['--mime-encoding'],['-k'],['-e','cdf']]:
-                c=invoke(ROOT/'upstream/src/file',path,flags)
+                c=invoke(UP/'src/file',path,flags)
                 rust=invoke(ROOT/'target/release/rfile',path,flags)
                 equal=c==rust
                 limit=(name=='vector-limit' and flags!=['-e','cdf'] and rust==dict(status=1,stdout_hex=b'ERROR: CDF vector elements limit exceeded\n'.hex(),stderr_hex=''))

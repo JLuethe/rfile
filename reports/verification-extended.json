@@ -1,12 +1,27 @@
 {
-  "features": "extended-codecs",
+  "oracle": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "features": "all-features",
   "status": "passed",
-  "elapsed_seconds": 395.2311516619957,
+  "elapsed_seconds": 270.11882111600426,
   "steps": [
     {
       "name": "format",
       "status": 0,
-      "seconds": 0.32538112699694466,
+      "seconds": 0.1663340219965903,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -18,7 +33,7 @@
     {
       "name": "clippy",
       "status": 0,
-      "seconds": 0.9543768930016086,
+      "seconds": 0.11044447698805016,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "clippy",
@@ -33,7 +48,7 @@
     {
       "name": "cargo-test",
       "status": 0,
-      "seconds": 6.887301322989515,
+      "seconds": 9.862158791002003,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -44,7 +59,7 @@
     {
       "name": "cargo-release-test",
       "status": 0,
-      "seconds": 73.92520538099052,
+      "seconds": 1.5972362479951698,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -56,7 +71,7 @@
     {
       "name": "cargo-build",
       "status": 0,
-      "seconds": 0.06492154800798744,
+      "seconds": 0.03845431799709331,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "build",
@@ -68,7 +83,7 @@
     {
       "name": "database-rebuild",
       "status": 0,
-      "seconds": 0.3090024270059075,
+      "seconds": 0.09822156900190748,
       "command": [
         "python3",
         "tools/rebuild_database.py"
@@ -77,7 +92,7 @@
     {
       "name": "fuzz-smoke",
       "status": 0,
-      "seconds": 2.150386595996679,
+      "seconds": 1.6351926460047252,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "test",
@@ -94,7 +109,7 @@
     {
       "name": "fuzz-format",
       "status": 0,
-      "seconds": 0.07953107700450346,
+      "seconds": 0.047483043003012426,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "fmt",
@@ -107,7 +122,7 @@
     {
       "name": "fuzz-build",
       "status": 0,
-      "seconds": 1.4743062799971085,
+      "seconds": 0.030231530996388756,
       "command": [
         "/home/john/.cargo/bin/cargo",
         "check",
@@ -120,18 +135,18 @@
     {
       "name": "upstream-check",
       "status": 0,
-      "seconds": 2.7138709430000745,
+      "seconds": 1.9798676290083677,
       "command": [
         "make",
         "-C",
-        "upstream",
+        "/home/john/Code/rfile/.reference/file-clean",
         "check"
       ]
     },
     {
       "name": "compiler",
       "status": 0,
-      "seconds": 0.5932815690030111,
+      "seconds": 0.22047444399504457,
       "command": [
         "python3",
         "tools/compiler_compare.py"
@@ -140,7 +155,7 @@
     {
       "name": "fixtures",
       "status": 0,
-      "seconds": 3.623469312005909,
+      "seconds": 2.2802001259988174,
       "command": [
         "python3",
         "tools/fixture_compare.py"
@@ -149,7 +164,7 @@
     {
       "name": "differential-broad",
       "status": 0,
-      "seconds": 15.47451414000534,
+      "seconds": 10.466324591005105,
       "command": [
         "python3",
         "tools/differential.py",
@@ -160,7 +175,7 @@
     {
       "name": "extended",
       "status": 0,
-      "seconds": 17.186201491989777,
+      "seconds": 10.712561712003662,
       "command": [
         "python3",
         "tools/extended_compare.py"
@@ -169,7 +184,7 @@
     {
       "name": "semantics-differential",
       "status": 0,
-      "seconds": 3.847429532004753,
+      "seconds": 2.977975931004039,
       "command": [
         "python3",
         "tools/semantics_compare.py"
@@ -178,7 +193,7 @@
     {
       "name": "regex-differential",
       "status": 0,
-      "seconds": 5.546203239995521,
+      "seconds": 4.300283264004975,
       "command": [
         "python3",
         "tools/regex_compare.py"
@@ -187,7 +202,7 @@
     {
       "name": "elf-differential",
       "status": 0,
-      "seconds": 93.17161546301213,
+      "seconds": 65.44831725300173,
       "command": [
         "python3",
         "tools/elf_compare.py"
@@ -196,7 +211,7 @@
     {
       "name": "compression-differential",
       "status": 0,
-      "seconds": 81.53533121300279,
+      "seconds": 71.64875789200596,
       "command": [
         "python3",
         "tools/compression_compare.py"
@@ -205,7 +220,7 @@
     {
       "name": "cdf-differential",
       "status": 0,
-      "seconds": 8.001422209010343,
+      "seconds": 7.749918442001217,
       "command": [
         "python3",
         "tools/cdf_compare.py"
@@ -214,7 +229,7 @@
     {
       "name": "locale-differential",
       "status": 0,
-      "seconds": 11.332233598004677,
+      "seconds": 11.49553853199177,
       "command": [
         "python3",
         "tools/locale_compare.py"
@@ -223,7 +238,7 @@
     {
       "name": "float-differential",
       "status": 0,
-      "seconds": 2.1000103399856016,
+      "seconds": 2.0977468630007934,
       "command": [
         "python3",
         "tools/float_compare.py"
@@ -232,7 +247,7 @@
     {
       "name": "time-differential",
       "status": 0,
-      "seconds": 48.721916409995174,
+      "seconds": 51.6795722770039,
       "command": [
         "python3",
         "tools/time_compare.py"
@@ -241,7 +256,7 @@
     {
       "name": "component-differential",
       "status": 0,
-      "seconds": 0.20513390700216405,
+      "seconds": 0.196499732992379,
       "command": [
         "python3",
         "tools/component_compare.py"
@@ -250,16 +265,25 @@
     {
       "name": "cli-differential",
       "status": 0,
-      "seconds": 4.443028645997401,
+      "seconds": 5.109203692001756,
       "command": [
         "python3",
         "tools/cli_compare.py"
       ]
     },
     {
+      "name": "sandbox-differential",
+      "status": 0,
+      "seconds": 6.5491539709910285,
+      "command": [
+        "python3",
+        "tools/sandbox_compare.py"
+      ]
+    },
+    {
       "name": "benchmark",
       "status": 0,
-      "seconds": 10.457120338003733,
+      "seconds": 1.5663704159960616,
       "command": [
         "python3",
         "tools/benchmark.py"
@@ -268,12 +292,12 @@
   ],
   "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
   "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
-  "binary_sha256": "6bd7e2b4c43567419156a46c049eafd2ea1db13e2367ddd4b1132d97358892e8",
+  "binary_sha256": "c04042a6623a4628ecf7d2c633652122f206653c93954ced3333f2d6ebf94c62",
   "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
   "mutation_smoke": [
     {
       "database_cases": 10000,
-      "elapsed_seconds": 2.078749711,
+      "elapsed_seconds": 1.603889892,
       "fixture_truncations": 1339,
       "random_input_cases": 10000,
       "seed": "4f6c655275737421",

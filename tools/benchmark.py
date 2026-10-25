@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import hashlib,json,os,pathlib,platform,statistics,subprocess,tempfile
-ROOT=pathlib.Path(__file__).resolve().parents[1];UP=ROOT/'upstream';CARGO=os.environ.get('CARGO',str(pathlib.Path.home()/'.cargo/bin/cargo'))
+from reference import UP
+ROOT=pathlib.Path(__file__).resolve().parents[1];CARGO=os.environ.get('CARGO',str(pathlib.Path.home()/'.cargo/bin/cargo'))
 ENV=dict(os.environ,LC_ALL='C',TZ='UTC');ENV.pop('POSIXLY_CORRECT',None)
 subprocess.run([CARGO,'build','--release','--locked','--example','benchmark'],cwd=ROOT,check=True)
 subprocess.run(['cc','-O2','-I'+str(UP/'src'),str(ROOT/'tools/oracle_bench.c'),'-L'+str(UP/'src/.libs'),'-Wl,-rpath,'+str(UP/'src/.libs'),'-lmagic','-o',str(ROOT/'reports/oracle-bench')],check=True)

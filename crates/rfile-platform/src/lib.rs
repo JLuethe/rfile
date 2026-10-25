@@ -37,3 +37,11 @@ impl Locale {
         Err(std::io::ErrorKind::Unsupported.into())
     }
 }
+
+#[cfg(all(
+    feature = "sandbox",
+    target_os = "linux",
+    target_env = "gnu",
+    target_arch = "x86_64"
+))]
+pub mod sandbox;

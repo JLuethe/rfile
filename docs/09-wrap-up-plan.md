@@ -1,6 +1,6 @@
 # Wrap-up plan and repository review
 
-Reviewed 2026-10-24. This checkpoint distinguishes implementation delivery from
+Historical review: 2026-10-24. Current execution state is in [HANDOFF](../HANDOFF.md) and [the delivery ledger](08-delivery-progress.md). This checkpoint distinguishes implementation delivery from
 complete compatibility and security qualification. Detailed contracts remain in
 [the remaining-work specification](07-remaining-work-spec.md).
 

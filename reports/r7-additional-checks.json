@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "scope": "Additional R7 checks; kernel policy tests execute eight disposable child cases. Missing kernel support is a skip, not certification. CLI limit test also appears in final full suite.",
+  "checks": [
+    {
+      "log": "r7-kernel-tests.log",
+      "sha256": "06a73a00ff31ae26fe28cd67761f8b55487ab641df3b1d0c5dfbbf5b249a9c3f",
+      "status": "passed"
+    },
+    {
+      "log": "r7-cli-tests.log",
+      "sha256": "2b43db913ad78502f5105f36989e436979c7f35f621cfd024f8ff8ed7db7e4cc",
+      "status": "passed"
+    },
+    {
+      "log": "r7-msrv.log",
+      "sha256": "0c13b6e0cffac92c9cbb4ae9abb04c1b5e647f1c0597e879ecbb0351d2736c64",
+      "status": "passed"
+    },
+    {
+      "log": "r7-default-clippy.log",
+      "sha256": "f057333950e750dd10dc5af5ffa1318ec62a7f63f02db404e5550b9a4f32331b",
+      "status": "passed"
+    },
+    {
+      "log": "r7-default-tests.log",
+      "sha256": "f59bf748f07cfa55a283a4fc15fa92750fc1649fea9adcc82f21be06c15be9e9",
+      "status": "passed"
+    },
+    {
+      "log": "r7-dirty-oracle-rejection.log",
+      "sha256": "9261d5c12eb628a8bfed067ffb91101e2492147814d81c8814ab24e26b4af34a",
+      "status": "expected-rejection"
+    }
+  ],
+  "all_feature_tests": 126,
+  "default_feature_tests": 124,
+  "kernel_child_cases": 8,
+  "host_landlock_abi": 10,
+  "first_party_unsafe_lexical_entries": 23,
+  "core_forbids_unsafe": true,
+  "full_verification": "reports/verification-extended.json",
+  "oracle_identity_unchanged_after_run": true,
+  "known_test_runner_interference": "An initial shared-target concurrent default/all-feature run replaced the CLI during an integration test; serialized/isolated subsequent runs passed.",
+  "native_syscall_trace": "not executed: strace is unavailable",
+  "independent_security_review": false
+}

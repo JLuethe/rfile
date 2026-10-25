@@ -95,7 +95,8 @@ def cases():
     result.append(('note-before-pie',elf([(4,note(b'GNU\0',3,b'12345678'),4,0),(2,struct.pack('<QQ',0x6ffffffb,0x8000000),8,0)],kind=3)))
     for machine,arch in [(62,'386'),(2,'sparc')]:
         import re
-        header=(__import__('pathlib').Path(__file__).resolve().parents[1]/'upstream/src/readelf.h').read_text()
+        from reference import UP
+        header=(UP/'src/readelf.h').read_text()
         constants=[(name,int(value,16))for name,value in re.findall(r'^#define\s+(AV_'+('386'if arch=='386'else'SPARC')+r'_\w+)\s+(0x[0-9a-fA-F]+)',header,re.M)]
         for name,value in constants:
             result.append(('cap-'+name,elf(sections=[('.SUNW_cap',0x6ffffff5,struct.pack('<QQ',1,value))],kind=1,machine=machine)))

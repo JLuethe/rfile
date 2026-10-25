@@ -43,3 +43,20 @@ locale-object destruction or process-global `setlocale` changes. The core never
 performs those mutations. The standard C library is not rebuilt or proven safe
 by this adapter. Sanitizer smoke, concurrency and unwind tests are evidence;
 sustained campaigns and independent review remain explicit security gates.
+
+## Optional kernel adapter
+
+The `sandbox` feature on x86_64 Linux/glibc exposes explicit current-thread
+`SandboxPlan::prepare` / `install`, never called by detection or locale APIs.
+Typed policies generate bounded seccompiler BPF and fixed V5 Landlock rules.
+Installation consumes the plan; status is !Send/!Sync. Unexpected query/install
+errors propagate; partial irreversible installation is never described as undone.
+The caller must not treat a returned status as process-wide protection in a
+multithreaded host. The CLI checks single-threaded startup and denies new threads.
+
+First-party unsafe calls are only integer fcntl/PR_GET_SECCOMP queries and the
+NULL/zero-length Landlock ABI query. None takes a user-provided raw pointer or
+owns/closes an unknown FD. Third-party landlock/seccompiler perform the policy
+syscalls; rustix provides safe descriptor-relative staging/publication and must be included in dependency review. Descriptor inventory avoids
+closing foreign Rust-owned descriptors; policy denies their content authority.
+See [the complete scope and limitations](../../docs/remaining/05-sandbox.md).

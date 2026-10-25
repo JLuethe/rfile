@@ -6,7 +6,7 @@ ABI-01 through ABI-12 specify the compatibility library requested in the [parent
 
 The C ABI defaults to Pinned548; CorrectedV1 is available through the Rust/CLI interfaces unless a separately versioned extension explicitly exposes it.
 
-Target the **19 public functions** declared by pinned `upstream/src/magic.h.in:157–210`, including `magic_getmaxparam`. Use the generated header's constants/signatures as the Linux baseline. Pin numeric flag/parameter values and `MAGIC_VERSION=548`; `magic_version()` is the supported libmagic API/data compatibility version, not the Rust package SemVer. A separate `rfile_implementation_version()` extension returns the actual engine version, upstream commit, profile and capability-manifest version.
+Target the **19 public functions** declared by pinned `upstream/src/magic.h.in:128–162`, including `magic_getmaxparam`. Use the generated header's constants/signatures as the Linux baseline. Pin numeric flag/parameter values and `MAGIC_VERSION=548`; `magic_version()` is the supported libmagic API/data compatibility version, not the Rust package SemVer. A separate `rfile_implementation_version()` extension returns the actual engine version, upstream commit, profile and capability-manifest version.
 
 Create `crates/rfile-ffi` with `cdylib` and optional `staticlib`, depending on the safe core and reviewed platform adapter. Default shared identity is **librfile_magic.so.1** with `librfile_magic.so` development symlink; headers and pkg-config use a distinct prefix/package (`rfile-magic`). Linux x86_64/glibc is the first certified ABI. macOS dylib/Windows DLL, calling conventions and Windows ssize_t/paths are separate gates.
 

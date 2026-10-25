@@ -24,6 +24,14 @@
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
+    "name": "bitflags",
+    "version": "2.13.2",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/bitflags/bitflags",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
     "name": "block-buffer",
     "version": "0.12.1",
     "license": "MIT OR Apache-2.0",
@@ -104,6 +112,30 @@
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
+    "name": "enumflags2",
+    "version": "0.7.12",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/meithecatte/enumflags2",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "enumflags2_derive",
+    "version": "0.7.12",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/meithecatte/enumflags2",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "errno",
+    "version": "0.3.14",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/lambda-fairy/rust-errno",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
     "name": "flate2",
     "version": "1.1.10",
     "license": "MIT OR Apache-2.0",
@@ -152,11 +184,27 @@
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
+    "name": "landlock",
+    "version": "0.4.7",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/landlock-lsm/rust-landlock",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
     "name": "libc",
     "version": "0.2.191",
     "license": "MIT OR Apache-2.0",
     "license_file": null,
     "repository": "https://github.com/rust-lang/libc",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "linux-raw-sys",
+    "version": "0.12.1",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/sunfishcode/linux-raw-sys",
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
@@ -248,11 +296,27 @@
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
+    "name": "rustix",
+    "version": "1.1.5",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/bytecodealliance/rustix",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
     "name": "ruzstd",
     "version": "0.9.1",
     "license": "MIT",
     "license_file": null,
     "repository": "https://github.com/KillingSpark/zstd-rs",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "seccompiler",
+    "version": "0.5.0",
+    "license": "Apache-2.0 OR BSD-3-Clause",
+    "license_file": null,
+    "repository": "https://github.com/rust-vmm/seccompiler",
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {
@@ -357,6 +421,22 @@
     "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
     "license_file": null,
     "repository": "https://github.com/dtolnay/unicode-ident",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "windows-link",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/microsoft/windows-rs",
+    "source": "registry+https://github.com/rust-lang/crates.io-index"
+  },
+  {
+    "name": "windows-sys",
+    "version": "0.61.2",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/microsoft/windows-rs",
     "source": "registry+https://github.com/rust-lang/crates.io-index"
   },
   {

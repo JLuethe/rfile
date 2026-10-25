@@ -8,6 +8,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 
+from reference import UP
 ROOT = Path(__file__).resolve().parents[1]
 RESEARCH = json.loads((ROOT / 'reports/remaining-spec-observations.json').read_text())
 ENV = dict(os.environ, LC_ALL='C', TZ='UTC')
@@ -24,7 +25,7 @@ def invoke(binary, database, path, flags):
 
 def main():
     actual_pin = subprocess.check_output(
-        ['git', '-C', str(ROOT / 'upstream'), 'rev-parse', 'HEAD'], text=True).strip()
+        ['git', '-C', str(UP), 'rev-parse', 'HEAD'], text=True).strip()
     if actual_pin != PIN:
         raise SystemExit('Reference revision drift')
     rows = []
@@ -49,7 +50,7 @@ def main():
             if source is not None:
                 database = directory / (name + '.magic')
                 database.write_bytes(source)
-            reference = invoke(ROOT / 'upstream/src/file', database, path, flags)
+            reference = invoke(UP/'src/file', database, path, flags)
             rust = invoke(ROOT / 'target/release/rfile', database, path, flags)
             expected_reference = {k: baseline[0][k] for k in reference}
             expected_rust = {k: baseline[1][k] for k in rust}

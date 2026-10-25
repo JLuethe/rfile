@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "discovered": "2026-10-25",
+  "pin": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "scope": "Historical local reference CLI contained a pselect6/pselect6_time64 allowlist patch; the detection library source was unchanged. Existing results were not sufficient to attest a clean CLI reference. Preserve old checkout and use separate clean build; do not broaden accepted mismatches.",
+  "patched_source_sha256": "4567cfc9480cad2ec3ed5c47e066693825dc6ce642c007402dc3cc1ddc7fb410",
+  "patch_sha256": "0d92632d3e4fad88a97f3fdad300dfb29d26964120624eba6d4fa73729f2a262",
+  "old_binaries": {
+    "src/.libs/file": "5d785cf61061e103f69044f4c959be3bbbeae539a542cccd4eb872fe5142df55",
+    "src/.libs/libmagic.so": "39b81212614aeb69c18e53b9cbc74189411a00ed8b49c5ea63701fa18cc46558",
+    "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8"
+  },
+  "clean_checkout": ".reference/file-clean",
+  "clean_build": "autoreconf -fiv; configure --prefix=<repo>/.reference; make -j4; make check",
+  "clean_cli_replay": {
+    "total": 108,
+    "exact": 102,
+    "named_differences": 6,
+    "unexpected": 0
+  },
+  "clean_full_replay": "passed",
+  "clean_identity": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "config_matches_old_build": true,
+  "verification_report": "reports/verification-extended.json"
+}

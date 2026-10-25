@@ -9,3 +9,11 @@ description = "Narrow platform boundary for rfile locale and confinement service
 
 [target.'cfg(all(target_os = "linux", target_env = "gnu"))'.dependencies]
 libc = "=0.2.191"
+
+[features]
+sandbox = ["dep:landlock", "dep:seccompiler", "dep:rustix"]
+
+[target.'cfg(all(target_os = "linux", target_env = "gnu", target_arch = "x86_64"))'.dependencies]
+rustix = { version = "=1.1.5", features = ["fs"], optional = true }
+landlock = { version = "=0.4.7", optional = true }
+seccompiler = { version = "=0.5.0", default-features = false, optional = true }

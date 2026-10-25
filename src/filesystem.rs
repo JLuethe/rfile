@@ -67,10 +67,64 @@ fn diagnostic(engine: &Engine, description: Vec<u8>) -> Classification {
 fn metadata_result(engine: &Engine, description: Vec<u8>, kind: &str) -> Classification {
     engine.basic(description, &format!("inode/{kind}"), "binary", false)
 }
+pub(crate) struct PreparedPath {
+    ready: Result<Classification>,
+    pending: PendingContent,
+}
+enum PendingContent {
+    None,
+    Empty,
+    File(File, fs::Metadata),
+}
+impl PreparedPath {
+    #[cfg(all(
+        feature = "sandbox",
+        target_os = "linux",
+        target_env = "gnu",
+        target_arch = "x86_64"
+    ))]
+    pub(crate) fn descriptor(&self) -> Option<i32> {
+        use std::os::fd::AsRawFd;
+        match &self.pending {
+            PendingContent::File(file, _) => Some(file.as_raw_fd()),
+            _ => None,
+        }
+    }
+    pub(crate) fn classify(
+        self,
+        engine: &Engine,
+        budget: &InspectionBudget,
+    ) -> Result<Classification> {
+        match self.pending {
+            PendingContent::None => self.ready,
+            PendingContent::Empty => engine.classify_input(&[], None, false, None, None, budget),
+            PendingContent::File(mut file, meta) => finish_path(engine, &mut file, &meta, budget),
+        }
+    }
+}
+/// Resolve metadata and open a stable input without reading or detecting content.
+/// Metadata-only diagnostics are retained for ordered output after confinement.
+pub(crate) fn prepare_path(
+    engine: &Engine,
+    path: &Path,
+    budget: &InspectionBudget,
+) -> PreparedPath {
+    let mut pending = PendingContent::None;
+    let ready = prepare_raw(engine, path, budget, &mut pending);
+    PreparedPath { ready, pending }
+}
 pub(crate) fn classify_path(
     engine: &Engine,
     path: &Path,
     budget: &InspectionBudget,
+) -> Result<Classification> {
+    prepare_path(engine, path, budget).classify(engine, budget)
+}
+fn prepare_raw(
+    engine: &Engine,
+    path: &Path,
+    budget: &InspectionBudget,
+    pending: &mut PendingContent,
 ) -> Result<Classification> {
     // Bound the path before std's OS-string conversion or diagnostic copies.
     let path_len = path.as_os_str().as_encoded_bytes().len();
@@ -209,7 +263,8 @@ pub(crate) fn classify_path(
     }
     if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
         return if annotation_only {
-            engine.classify_input(&[], None, false, None, None, budget)
+            *pending = PendingContent::Empty;
+            Ok(engine.basic(Vec::new(), "inode/x-empty", "binary", false))
         } else {
             Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
         };
@@ -221,7 +276,7 @@ pub(crate) fn classify_path(
         use std::os::unix::fs::OpenOptionsExt;
         options.custom_flags(0x800);
     }
-    let mut file = match options.open(path) {
+    let file = match options.open(path) {
         Ok(f) => f,
         Err(e) => {
             if engine.flags.has(Flags::ERROR) {
@@ -239,7 +294,16 @@ pub(crate) fn classify_path(
             ));
         }
     };
-    let result = read_file(engine, &mut file, false, budget);
+    *pending = PendingContent::File(file, meta);
+    Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
+}
+fn finish_path(
+    engine: &Engine,
+    file: &mut File,
+    meta: &fs::Metadata,
+    budget: &InspectionBudget,
+) -> Result<Classification> {
+    let result = read_file(engine, file, false, budget);
     if engine.flags.has(Flags::PRESERVE_ATIME) {
         if let (Ok(a), Ok(m)) = (meta.accessed(), meta.modified()) {
             let _ = file.set_times(std::fs::FileTimes::new().set_accessed(a).set_modified(m));

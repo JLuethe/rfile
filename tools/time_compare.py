@@ -8,6 +8,7 @@ from pathlib import Path
 import platform
 import subprocess
 import tempfile
+from reference import UP
 ROOT = Path(__file__).resolve().parents[1]
 ZONES = ['UTC', 'PST8PDT,M3.2.0,M11.1.0', 'America/Los_Angeles',
          'Europe/Berlin', 'Asia/Kolkata', 'Asia/Kathmandu', 'Australia/Lord_Howe',
@@ -33,7 +34,7 @@ def invoke(binary, source, path, zone):
 
 def main():
     pin = json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit']
-    if subprocess.check_output(['git', '-C', str(ROOT/'upstream'), 'rev-parse', 'HEAD'], text=True).strip() != pin:
+    if subprocess.check_output(['git', '-C', str(UP), 'rev-parse', 'HEAD'], text=True).strip() != pin:
         raise SystemExit('Reference revision drift')
     rows = []
     with tempfile.TemporaryDirectory(prefix='rfile-time-') as directory:
@@ -50,7 +51,7 @@ def main():
                     data = bytes([data[1], data[0], data[3], data[2]])
                 path.write_bytes(data)
                 for zone in ZONES:
-                    c = invoke(ROOT/'upstream/src/file', source, path, zone)
+                    c = invoke(UP/'src/file', source, path, zone)
                     rust = invoke(ROOT/'target/release/rfile', source, path, zone)
                     rows.append(dict(kind=kind, value=value, zone=zone, reference=c, rust=rust, equal=c == rust))
     hashes = {}
