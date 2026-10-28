@@ -1,6 +1,6 @@
 {
   "scope": "Pinned python-magic consumer using local loader alias; no system install. Consumer tests only, not universal client compatibility.",
-  "library_sha256": "7995358fd0951c722dff48e3427f2e9f70697476f72bd2fb9732b6636a72798a",
+  "library_sha256": "4785c6147a54a076fb3ed515a79dd0fd98e03d8b7e6d180b0ace82c174e874d1",
   "status": 0,
   "stderr": "",
   "result": {

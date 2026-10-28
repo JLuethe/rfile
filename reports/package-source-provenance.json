@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "package_manifest_sha256": "bb6dd51f325e18a4b4611c2324a1fe2d3919288ce4607ef0ca703b2c8c2decaa",
+  "source_commit": "1198c0ee0a37757be5d0491834c42925d4024051",
+  "compared_files": 966,
+  "mismatches": [],
+  "scope": "All bundled first-party source content compared against recorded Git commit. The package dirty flag came from regenerated excluded evidence reports; no source discrepancy was found. Not a second-platform or reproducible-binary certification."
+}
