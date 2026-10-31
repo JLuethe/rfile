@@ -767,10 +767,13 @@ impl<'a> Evaluator<'a> {
         }
         if matches!(kind, 5 | 13 | 18 | 19 | 20 | 17 | 61) {
             let required = if kind == 17 { 0 } else { r.vallen as usize };
-            if position > b.len() || required > b.len() - position {
+            // Native string16 wildcards beyond EOF represent an empty string.
+            // Synthesize that value without reading or relaxing other bounds.
+            let empty_string16 = matches!(kind, 18 | 19) && r.relation == b'x' && required == 0;
+            if !empty_string16 && (position > b.len() || required > b.len() - position) {
                 return Ok(None);
             }
-            let bytes = &b[position..];
+            let bytes = b.get(position..).unwrap_or_default();
             if kind == 17 {
                 let mut length = if r.string_flags & (1 << 11) != 0 {
                     (r.range as usize).saturating_mul(80)

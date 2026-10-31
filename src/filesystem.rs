@@ -224,6 +224,11 @@ fn prepare_raw(
             }
             return Ok(metadata_result(engine, b"socket".to_vec(), "socket"));
         }
+        if t.is_fifo() && engine.flags.has(Flags::DEVICES) {
+            return Err(Error::Unsupported(
+                "content inspection of FIFO is not supported".into(),
+            ));
+        }
         if !engine.flags.has(Flags::DEVICES) {
             if t.is_fifo() {
                 if annotation_only {
@@ -261,14 +266,6 @@ fn prepare_raw(
             }
         }
     }
-    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
-        return if annotation_only {
-            *pending = PendingContent::Empty;
-            Ok(engine.basic(Vec::new(), "inode/x-empty", "binary", false))
-        } else {
-            Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
-        };
-    }
     let mut options = fs::OpenOptions::new();
     options.read(true);
     #[cfg(target_os = "linux")]
@@ -279,6 +276,18 @@ fn prepare_raw(
     let file = match options.open(path) {
         Ok(f) => f,
         Err(e) => {
+            if meta.is_file() && e.kind() == std::io::ErrorKind::PermissionDenied {
+                let (writable, executable) = rfile_platform::unreadable_access(path);
+                let mut description = Vec::new();
+                if writable {
+                    description.extend_from_slice(b"writable, ");
+                }
+                if executable {
+                    description.extend_from_slice(b"executable, ");
+                }
+                description.extend_from_slice(b"regular file, no read permission");
+                return Ok(diagnostic(engine, description));
+            }
             if engine.flags.has(Flags::ERROR) {
                 return Err(e.into());
             }
@@ -294,6 +303,14 @@ fn prepare_raw(
             ));
         }
     };
+    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
+        return if annotation_only {
+            *pending = PendingContent::Empty;
+            Ok(engine.basic(Vec::new(), "inode/x-empty", "binary", false))
+        } else {
+            Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
+        };
+    }
     *pending = PendingContent::File(file, meta);
     Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
 }

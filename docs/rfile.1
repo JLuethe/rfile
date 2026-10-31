@@ -53,6 +53,10 @@ Use SEP instead of the filename colon.
 .TP
 .BR -E , " -s , " -p"
 Report filesystem failures as errors; permit device reads; restore access times.
+An unreadable regular file with available metadata produces a permission
+description in every output mode, including -E. FIFO content inspection with -s
+is unsupported and fails without opening the FIFO; default FIFO identification
+uses metadata and does not inspect queued content.
 .TP
 .BI "-e " TEST
 Exclude a detector. See --help for names. --exclude-quiet ignores unknown names.
@@ -117,7 +121,7 @@ Zero means classification completed, including unknown data and ordinary per-fil
 filesystem diagnostics. -E, setup failures, resource errors and failed writes
 produce status 1. Broken output pipes produce a quiet status 1. Sandbox status
 messages on stderr are best effort. On the supported Rust runtime, a standard
-descriptor already closed before startup is reopened as /dev/null; the CLI
+descriptor already closed before startup is reopened as /dev/null; the CLI checks made after runtime startup
 cannot distinguish that case from deliberate redirection to /dev/null.
 A classification is a heuristic, not validation of the whole file.
 .SH FILES

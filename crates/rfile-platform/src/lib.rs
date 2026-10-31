@@ -90,3 +90,28 @@ pub fn check_stdout_writable() -> std::io::Result<()> {
     }
     Ok(())
 }
+
+/// Query the real-user access bits used by the pinned unreadable-file diagnostic.
+/// This checks access only; it never opens the file or changes permissions.
+pub fn unreadable_access(path: &std::path::Path) -> (bool, bool) {
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        use std::os::unix::ffi::OsStrExt;
+        let Ok(path) = std::ffi::CString::new(path.as_os_str().as_bytes()) else {
+            return (false, false);
+        };
+        // SAFETY: both calls receive a live NUL-terminated CString and valid
+        // access-mode constants. access borrows the path and writes no memory.
+        unsafe {
+            (
+                libc::access(path.as_ptr(), libc::W_OK) == 0,
+                libc::access(path.as_ptr(), libc::X_OK) == 0,
+            )
+        }
+    }
+    #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
+    {
+        let _ = path;
+        (false, false)
+    }
+}

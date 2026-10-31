@@ -333,3 +333,28 @@ fn sticky_from_end_offsets_preserve_source_and_compiled_results() {
         }
     }
 }
+
+#[test]
+fn string16_wildcards_past_eof_synthesize_empty_without_reading() {
+    for kind in ["lestring16", "bestring16"] {
+        let source = format!("0 byte x T\n>20 {kind} x S[%s]\n");
+        let db = Database::from_source(&source).unwrap();
+        for db in [Database::from_compiled(&db.compile().unwrap()).unwrap(), db] {
+            assert_eq!(
+                Engine::new(Arc::new(db))
+                    .classify(b"abcdefghijkl")
+                    .unwrap()
+                    .output,
+                b"T S[]"
+            );
+        }
+    }
+    assert_eq!(
+        classify("0 byte x T\n>20 string x wrong\n", b"abcdefghijkl"),
+        "T"
+    );
+    assert_eq!(
+        classify("0 byte x T\n>20 lestring16 =foo wrong\n", b"abcdefghijkl"),
+        "T"
+    );
+}

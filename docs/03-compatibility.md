@@ -78,3 +78,33 @@ must not turn into confident fallback descriptions. The cap is configurable via
 wrapper without `-z`/`-Z` avoids decoding. Prefix sampling would require a
 separate, explicitly incomplete result contract and is deferred. Boundary
 regressions cover 7 MiB minus one, exact, plus one, and raising the configured cap.
+
+### Claude pass 3: truncated inputs and filesystem diagnostics
+
+For truncated inputs, the pinned oracle can evaluate `use` block reads at the
+sum of the use offset and block-relative offset while checking only the latter
+against the input length. Past-end data can therefore be zero-filled and match.
+Rfile checks the absolute position and omits those fragments. This is not generic
+large-buffer sampling or a rule limited to end-relative offsets: explicit use
+positions also exhibit the oracle quirk. Observed families include gzip, ZIP
+with -k, PNG/APNG, PGP and zstd; reported examples include missing `was ""`,
+`from FAT filesystem`, `made by v0.0`, PNG geometry, PGP creation and zstd dictionary
+fragments. The pass-3 short-input --mime-type sweep matched; extensions and other
+inputs are not thereby certified. Rfile does not emulate the omitted bounds check.
+The separate F-04b 1–2-byte text-encoding differences remain unroot-caused/open.
+
+A narrow safe compatibility exception synthesizes an empty value for explicit
+lestring16/bestring16 wildcard reads beyond EOF, preserving the native padding
+without reading memory out of bounds or relaxing other types/use-block reads.
+Invalid CDF sector shifts (0,1,7,8) violate the format's geometry; earlier rejection
+may select a different failure stage/message. No unsafe stage parity is promised.
+
+Unreadable regular files return their permission description in every mode,
+including -E, with real-user writable/executable access prefixes on Linux/glibc.
+This follows the pinned metadata result; actual stat/other open errors retain
+normal -E behavior. For FIFOs, -s content inspection is explicitly unsupported
+and returns an error before open, independent of queued data or writer presence.
+It never represents uninspected content as empty. The pinned oracle's FIFO -s
+error was also reproduced in an unsandboxed distro build; the earlier general
+seccomp-only attribution is retracted. Previously recorded annotation-only FIFO
+SIGSYS observations are separate, narrowly identified cases.
