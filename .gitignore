@@ -16,3 +16,5 @@ __pycache__/
 
 /fuzz/campaign-logs/
 /reports/*.json.tmp
+/reports/.verification.lock
+/reports/verification-runs/

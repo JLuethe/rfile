@@ -1,11 +1,13 @@
 # Delivered Rust implementation: status and evidence
 
-Current increments and exact counts are in [the delivery ledger](08-delivery-progress.md)
-and [HANDOFF](../HANDOFF.md). The initial validation tables below are historical.
+Current release scope and PR decisions are in [the release contract](release-scope.md).
+Implementation history and exact past counts are in [the delivery ledger](08-delivery-progress.md)
+and [HANDOFF](../HANDOFF.md). The initial validation tables below are historical;
+fresh independent results are linked from the release contract and release plan.
 The experimental C ABI, typed source diagnostics and CLI database actions are now
 implemented; sustained qualification, remaining fidelity and release gates are open.
 
-Version **0.1.0** is built and runnable in this workspace. The architecture/specification was committed first as `fc385f1`; implementation followed. The final user instruction authorized the build after the spec, superseding the earlier instruction to stop at specification.
+Version **0.1.0** is built and runnable in this workspace. The architecture/specification was committed first as `fc385f1`; implementation followed. The current release preparation retains the default x86_64 Linux/glibc profile.
 
 This is an independent Rust detector, source parser/compiler, CLI and library. Production code neither links libmagic nor invokes `file` or decompression helpers. The C checkout, ctypes harness and small C benchmark driver are test oracles only. No system utility was replaced or globally installed. The project is published at https://github.com/JLuethe/rfile as an experimental GPL-3.0-only source release; no crates.io package is published.
 
@@ -31,10 +33,10 @@ On this machine Cargo is `/home/john/.cargo/bin/cargo`. The release binary is `t
 | Detection | Ordered text/encoding recognizers, EBCDIC conversion, tar, JSON/NDJSON, CSV, SIMH, DER, gzip/zlib and opt-in additional codecs, checked CDF property/catalog metadata, expanded ELF/core/AUXV/OS/Solaris enrichment; [encoding.rs](../src/encoding.rs), [detectors.rs](../src/detectors.rs), [cdf.rs](../src/cdf.rs), [elf.rs](../src/elf.rs). |
 | CLI/IO | Filename framing, brief/NUL/raw/MIME/Apple/extensions, file lists, stdin, ordered options/exclusions/parameters, metadata, symlinks, timestamp restoration and bounded reads; [cli.rs](../src/cli.rs), [filesystem.rs](../src/filesystem.rs). |
 | Rust API | Owned output/results; immutable shared database with bounded synchronized lazy regex caches; buffer/path/reader/borrowed-file entry points, restored seek position; [lib.rs](../src/lib.rs). Experimental separate `rfile-ffi` C interface; not certified drop-in compatibility. |
-| Hardening | Core `forbid(unsafe_code)` plus an inventoried platform locale boundary, checked reads/arithmetic, bounded allocations/recursion/regex/work/output/decompression; [limits.rs](../src/limits.rs), [hardening tests](../tests/hardening.rs), twenty-three [fuzz targets](../fuzz/README.md). Transitive std/dependency unsafe is outside the first-party prohibition. |
+| Hardening | Core `forbid(unsafe_code)` plus inventoried platform locale/kernel-policy and experimental FFI boundaries, checked reads/arithmetic, bounded allocations/recursion/regex/work/output/decompression; [limits.rs](../src/limits.rs), [hardening tests](../tests/hardening.rs), twenty-five [fuzz targets](../fuzz/README.md). Transitive std/dependency unsafe is outside the first-party prohibition. |
 | Distribution | Embedded Rust-built rules, unmodified selected source fragments, separate upstream-excluded `etf`, hashes and notice bundle; [data](../data/), [NOTICE](../NOTICE), locked dependencies, Linux CI configuration. |
 
-## Executed evidence
+## Historical executed evidence
 
 The pinned oracle is file 5.48 at `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, built locally with the features in [baseline.json](../reports/baseline.json). Runs use `LC_ALL=C`, `TZ=UTC`, explicit rules/flags, and matching bounded bytes. These figures describe this corpus and host; they are not universal compatibility claims.
 
@@ -49,7 +51,7 @@ The pinned oracle is file 5.48 at `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, bu
 | CLI bytes/channels/status | 102 / 108 exact; six explicitly recorded differences below | [cli.json](../reports/cli.json) |
 | Source compiler | Byte-identical 10,876,464-byte v21 image; all 25,176 records and source ordering match | [compiler.json](../reports/compiler.json), [Rust-only rebuild](../tools/rebuild_database.py) |
 | Stable mutation campaign | 10,000 database mutations + 10,000 source mutations + 10,000 random buffers + 1,339 fixture truncations; no panic | verification mutation summary; deterministic seed `4f6c655275737421` |
-| Fuzz infrastructure | Twenty-three targets include per-codec adapters, captures and locale conversion; sanitizer smoke evidence is separate from the unexecuted sustained gate | [fuzz README](../fuzz/README.md), verification steps |
+| Fuzz infrastructure | The historical increment had twenty-three targets; the current source has twenty-five, including ABI state and source diagnostics; sanitizer smoke evidence is separate from the unexecuted sustained gate | [fuzz README](../fuzz/README.md), verification steps |
 | Runtime independence | Production loader has no libmagic dependency | [runtime-linkage.txt](../reports/runtime-linkage.txt) |
 
 Database SHA-256: `8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8`. [SOURCES.json](../data/SOURCES.json) maps the exact vendored inputs. The byte comparison is raw equality, not merely normalized equality.
@@ -66,8 +68,8 @@ Remaining gaps are concrete release work:
 
 1. **Structured formats:** CDF and ELF/core milestones are merged (#7/#8), including checked metadata and named profile decisions. CDF unknown codepages/opaque property types remain explicit; exhaustive host IO failure prose, other-platform behavior and sustained security certification remain open. See the [delivery ledger](08-delivery-progress.md) for the exact supported notes/properties and evidence.
 2. **Regex/date/display:** the bounded capture VM and GNU C-byte lexer now support ordinary/nested/empty/optional/repeated references. Pinned548 explicitly rejects the conservatively identified quantified-history construct class; CorrectedV1 enumerates those histories. Unknown-escape/ICASE quirks are profiled, classes are parsed, and source/v21 comparisons are separate. Full glibc history fidelity, multicharacter collation, uncertified locales/encodings, caller rounding modes and exceptional custom timezone cases remain R6 work. The formatter/date increment has 15,447 exact float and 2,850 exact date comparisons.
-3. **Grammar/diagnostics:** ordinary upstream sources compile identically, but strict errors replace some warning/truncation behavior. `-c/-l/-d` output differs. Parameter parsing rejects `atoi`/prefix quirks. ID3/varint and selected indirect-double evaluator behavior needs further minimal repros; affected paths report unsupported rather than silently ignore rules. Full C API state/error/parameter compatibility is not provided.
-4. **Compression:** default builds include gzip/zlib; `extended-codecs` adds bzip2, XZ/LZMA/lzip, Zstd, modern LZ4, UNIX compress and first-entry stored/deflate ZIP. Randomized historical bzip2 blocks, stored ZIP entries with unknown descriptor boundaries, external dictionaries, legacy frames, lrzip/frozen/pack/SCO remain explicit gaps. Strict checksum/truncation/output-cap handling intentionally differs from some C paths. These features remain experimental and off by default. No production helpers or kernel sandbox are implemented.
+3. **Grammar/diagnostics:** ordinary upstream sources compile identically. Typed parser diagnostics, native-compatible source actions and CLI `-c/-l/-C` behavior are implemented; the R8c ledger records 243 exact action scenarios across sandbox modes and 440 ABI diagnostic scenarios. Strict Rust source constructors retain first-error behavior. DEBUG tracing, broader accepted-warning/IO/default-discovery cases, source limits and documented evaluator differences remain explicit gaps. The C interface is implemented but not a certified full replacement.
+4. **Compression:** default builds include gzip/zlib; `extended-codecs` adds bzip2, XZ/LZMA/lzip, Zstd, modern LZ4, UNIX compress and first-entry stored/deflate ZIP. Randomized historical bzip2 blocks, stored ZIP entries with unknown descriptor boundaries, external dictionaries, legacy frames, lrzip/frozen/pack/SCO remain explicit gaps. Strict checksum/truncation/output-cap handling intentionally differs from some C paths. These features remain experimental and off by default. No production decompression helpers are invoked. The optional Linux CLI sandbox is implemented separately with Landlock/seccomp; its qualification remains open.
 5. **Sampling/limits/filesystems:** buffer input is sampled at `Limits.bytes`, unlike unrestricted C `magic_buffer`; truncation is exposed. Additional finite budgets intentionally reject workloads C may attempt. Reader truncation at exactly the cap is conservative. Socket permission reporting approximates Unix mode bits rather than complete ACL/access policy. Special device reads may block when explicitly enabled.
 6. **Platforms/security:** x86_64 Linux/glibc is the only executed platform. macOS/BSD/Windows, musl, 32-bit and actual big-endian machines remain unverified; swapped database vectors do not certify a big-endian host. No 24-hour-per-target campaign, comprehensive historical CVE coverage or independent security audit has been completed. Two applicable FFI Miri unit tests pass; this is not whole-program Miri coverage. Do not deploy this 0.1 build as a fully certified libmagic replacement in hostile production pipelines yet.
 

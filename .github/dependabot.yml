@@ -14,4 +14,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # The versioned action is our supported minimum, not an upgrade target.
+    # Review changes to the public MSRV deliberately alongside Cargo.toml.
+    ignore:
+      - dependency-name: dtolnay/rust-toolchain
     open-pull-requests-limit: 3

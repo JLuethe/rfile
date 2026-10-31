@@ -33,9 +33,26 @@ fn supported(root: &Path) -> bool {
     )) {
         assert!(!output.status.success());
         assert!(String::from_utf8_lossy(&output.stderr).contains("not compiled"));
+        assert!(
+            std::env::var("RFILE_REQUIRE_SANDBOX").as_deref() != Ok("1"),
+            "required CLI sandbox certification not compiled"
+        );
+        println!(
+            "{}",
+            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"skipped","reason":"not-compiled"}"#
+        );
         return false;
     }
     if String::from_utf8_lossy(&output.stderr).contains("required confinement needs") {
+        assert!(
+            std::env::var("RFILE_REQUIRE_SANDBOX").as_deref() != Ok("1"),
+            "required CLI sandbox certification unavailable: {}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        println!(
+            "{}",
+            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"skipped","reason":"unsupported-kernel"}"#
+        );
         eprintln!(
             "SKIP strict CLI certification: {}",
             String::from_utf8_lossy(&output.stderr)
@@ -70,7 +87,8 @@ fn cli_policy_modes_order_and_identity() {
     assert!(off.status.success());
     let status: serde_json::Value = serde_json::from_slice(&off.stderr).unwrap();
     assert_eq!(status["sandbox"]["seccomp_enforced"], false);
-    if supported(&root) {
+    let sandbox_executed = supported(&root);
+    if sandbox_executed {
         let cases: &[&[&str]] = &[
             &["-b", "text", "binary", "empty", "missing"],
             &["-bi", "text"],
@@ -197,4 +215,10 @@ fn cli_policy_modes_order_and_identity() {
         }
     }
     fs::remove_dir_all(root).unwrap();
+    if sandbox_executed {
+        println!(
+            "{}",
+            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"executed"}"#
+        );
+    }
 }

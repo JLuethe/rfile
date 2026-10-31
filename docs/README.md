@@ -12,8 +12,12 @@ Read in order:
 
 [Live delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
 
-For the current repository audit, remaining sequence and recovery workflow, read
-the [wrap-up plan](09-wrap-up-plan.md) and [restart checkpoint](../HANDOFF.md).
+For the current feature scope, PR decisions and verification controls, read
+the [release contract](release-scope.md). The
+[GitHub release plan](11-github-release-plan.md) records the review and
+Claude-testing/Codex-fixing workflow. The earlier
+[wrap-up plan](09-wrap-up-plan.md) and [restart checkpoint](../HANDOFF.md)
+retain historical implementation and recovery context.
 The [execution and recovery specification](10-execution-and-recovery-spec.md)
 maps existing contracts, refines R6c and specifies bounded recovery behavior.
 

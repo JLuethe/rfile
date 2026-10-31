@@ -1,16 +1,22 @@
 # rfile restart checkpoint
 
-Updated 2026-10-25. Read [the remaining plan](docs/07-remaining-work-spec.md),
+Updated 2026-10-30. Start with [release scope and PR decisions](docs/release-scope.md),
+then [the remaining plan](docs/07-remaining-work-spec.md),
 [delivery ledger](docs/08-delivery-progress.md), and the relevant component spec.
 This records evidence, not a completed security qualification or release.
 
 ## Repository and reference
 
-- R7 PR #15 and the experimental C ABI PR #16 are merged. Typed diagnostics PR #17 is also merged. Latest reviewed main:
-  `51a31affc81c1068d8b2f94f2d3e67ddd8d2c624`. Linux/MSRV checks passed.
-- Active branch: `feat/bounded-fuzz-queue`. CLI action work is merged as PR #18.
-  This branch adds the bounded campaign queue and interruption/locking checks.
-  Inspect Git/GitHub for its latest commit/PR before resuming or publishing.
+- Current release-preparation branch: `fix/release-readiness-baseline`, based on
+  `7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76` (PR #19 head). Main was
+  `5150a1ac832902cc1e866930ff2b2d45d3ef841a` when rechecked.
+- PR #19 is still open with passing Linux/MSRV checks; independent queue review
+  remains before merge/qualification. PR #20 was closed because it replaced the
+  declared Rust 1.87 minimum check. Other dependency/action PRs are explicitly
+  deferred in the release contract. No new release or dependency upgrade occurred.
+- The user authorized steps 1 and 2: Claude tests/retests, Codex fixes and performs
+  other validation. Scope is a default-feature x86_64 Linux/glibc CLI and source
+  release. Packaging and final candidate/version freeze remain subsequent work.
 - The primary clean oracle is `.reference/file-clean`, exact upstream commit
   `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always use
   `RFILE_REFERENCE=/home/john/Code/rfile/.reference/file-clean`.
@@ -19,7 +25,20 @@ This records evidence, not a completed security qualification or release.
 - `.reference/cdf-pointer` is an explicitly patched auxiliary oracle only.
   Ignored binaries, toolchains, corpora and logs are not supplied by a fresh clone.
 
-## Tested current increment
+## Release-readiness increment
+
+- The independent baseline in `reports/release-review-2026-10-30/` passed 143
+  default and 145 all-feature tests, formatting, all-feature Clippy, a release
+  build and two CLI smoke commands. One mutation test was ignored.
+- Claude then reproduced a false coverage success: an explicit reference with
+  103 fixtures yielded zero fixture truncations. The fix honors the reference,
+  requires fixtures by default and records explicit opt-outs.
+- Sandbox tests now emit structured coverage and can require execution.
+  Verification runs preserve per-run logs, source identity and failure/interruption
+  status, replacing the latest summary at startup. Check the follow-up independent
+  QA report before treating this changed implementation as retested.
+
+## Historical 2026-10-25 validation
 
 - All 33 stages of `tools/verify.py --all-features --benchmark` passed:
   145 ordinary debug/release tests; 143 isolated default tests; Rust 1.87;
@@ -38,17 +57,19 @@ This records evidence, not a completed security qualification or release.
   Duplicate-job rejection, partial-run status and deadline cleanup pass.
   No sustained target has met its 24-CPU-hour gate. Review actual live manifests
   and process identities before launching duplicate work.
-- PR #16's isolated package passed dynamic/static clients, default discovery and
-  an offline vendored-source rebuild (`reports/abi-package.json`, code 62d7b13).
-  That package is historical and must be rebuilt for a later release candidate.
+- Historical isolated packages passed dynamic/static clients, default discovery
+  and an offline vendored-source rebuild. The latest source-provenance report
+  records `1198c0e` and 966 matching files. Those artifacts must be rebuilt and
+  retested for a later release candidate.
   cargo-audit had no findings at its recorded RustSec revision; independent
   review has not occurred. No global installation/system replacement/new release.
 
 ## Next actions
 
-1. Reconcile Git, reports, running workers and GitHub checks. Preserve edits.
-   The new queue needs its own PR and Linux/MSRV checks. Rebuild/verify a clean
-   isolated package before starting an overnight candidate-freeze campaign.
+1. Read the release contract and independent follow-up QA evidence. Finish PR
+   #19's queue review/self-test and release-readiness fixes before final candidate
+   freeze. Build and verify the default CLI/source packages on a clean host.
+   No overnight campaign was started by this increment.
 2. CLI actions now have 243 exact cases across off/auto/strict modes. Continue
    [remaining actions](docs/remaining/07-c-abi.md): default discovery, DEBUG, broader
    accepted warnings/IO behavior and ordinary classification source loads.
@@ -74,6 +95,6 @@ Inspect the linked queue.json and user-systemd status before claiming it is acti
 requires review, not an automatic retry loop. Local builds may continue after a
 chat disconnect; inspect their logs/PIDs instead of assuming completion or death.
 
-Continuation: “Read HANDOFF.md and the remaining-work specs. Reconcile source,
-workers and GitHub. Continue the next bounded ABI/CLI task, then hardening.
-Preserve compatibility decisions and checkpoint actual results.”
+Continuation: “Read HANDOFF.md, docs/release-scope.md and independent QA evidence.
+Continue the experimental CLI release preparation; Claude tests/retests and Codex
+fixes plus validates. Preserve the separate security qualification gates.”
