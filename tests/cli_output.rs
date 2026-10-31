@@ -66,3 +66,21 @@ fn broken_output_stream_exits_quietly_without_panicking() {
         assert!(output.stderr.is_empty(), "{output:?}");
     }
 }
+
+#[test]
+fn debug_diagnostics_do_not_panic_on_unwritable_stderr() {
+    let path =
+        std::env::temp_dir().join(format!("rfile-debug-output-{}.magic", std::process::id()));
+    std::fs::write(&path, b"0 byte x matched\n").unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["-d", "-b", "-m"])
+        .arg(&path)
+        .arg(&path)
+        .env("TZ", "UTC0")
+        .stderr(OpenOptions::new().write(true).open("/dev/full").unwrap())
+        .output()
+        .unwrap();
+    std::fs::remove_file(path).unwrap();
+    assert!(output.status.success());
+    assert_eq!(output.stdout, b"matched\n");
+}

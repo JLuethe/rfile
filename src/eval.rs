@@ -35,7 +35,7 @@ use crate::{
     format::{self, Value},
     limits::Budget,
 };
-use std::cmp::Ordering;
+use std::{cmp::Ordering, io::Write};
 
 pub(crate) struct Input<'a> {
     pub head: &'a [u8],
@@ -677,9 +677,12 @@ impl<'a> Evaluator<'a> {
                 break;
             }
             if self.flags.has(Flags::DEBUG) {
-                eprintln!(
+                let _ = writeln!(
+                    std::io::stderr().lock(),
                     "[rfile line={} type={} offset={} matched]",
-                    r.line, r.kind, hit.position
+                    r.line,
+                    r.kind,
+                    hit.position
                 );
             }
         }
