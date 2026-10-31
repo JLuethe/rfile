@@ -108,7 +108,11 @@ inputs. Install timezone data, unset TZ, or choose UTC when UTC is intended.
 .SH EXIT STATUS
 Zero means classification completed, including unknown data and ordinary per-file
 filesystem diagnostics. -E, setup failures, resource errors and failed writes
-produce status 1. A classification is a heuristic, not validation of the whole file.
+produce status 1. Broken output pipes produce a quiet status 1. Sandbox status
+messages on stderr are best effort. On the supported Rust runtime, a standard
+descriptor already closed before startup is reopened as /dev/null; the CLI
+cannot distinguish that case from deliberate redirection to /dev/null.
+A classification is a heuristic, not validation of the whole file.
 .SH FILES
 The default rules are embedded; normal operation needs neither libmagic nor a C
 compiler. See data/UPSTREAM.json and data/SOURCES.json for data provenance.

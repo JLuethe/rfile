@@ -306,3 +306,30 @@ fn odd_little_endian_string16_and_nonfinite_float_display() {
         b"value=-nan"
     );
 }
+
+#[test]
+fn sticky_from_end_offsets_preserve_source_and_compiled_results() {
+    let cases = [
+        (
+            "0 byte x T\n>-1 byte x P\n>&0 byte x C\n",
+            &b"abcdef"[..],
+            "T P",
+        ),
+        (
+            "0 byte x T\n>-3 byte x P\n>&-1 byte x Q\n>0 byte x [%c]\n",
+            &b"abcdefghij"[..],
+            "T P Q [a]",
+        ),
+        ("0 byte x T\n>-4 long x P\n>0 byte x S\n", &b"ab"[..], "T"),
+    ];
+    for (source, input, expected) in cases {
+        let db = Database::from_source(source).unwrap();
+        let wire = db.compile().unwrap();
+        for db in [db, Database::from_compiled(&wire).unwrap()] {
+            assert_eq!(
+                Engine::new(Arc::new(db)).classify(input).unwrap().output,
+                expected.as_bytes()
+            );
+        }
+    }
+}

@@ -9,7 +9,8 @@ pub(super) const COMPILED: bool = cfg!(all(
 ));
 fn status_off(plan: &CliPlan, reason: &str) {
     if plan.sandbox_status {
-        eprintln!(
+        let _ = writeln!(
+            io::stderr().lock(),
             "{}",
             serde_json::json!({"sandbox": {"mode": plan.sandbox.name(), "compiled": COMPILED, "seccomp_enforced": false, "landlock_enforced": false, "input_content_confined": false, "reason": reason}})
         );
@@ -58,15 +59,17 @@ mod linux {
 
     fn report(plan: &CliPlan, status: &Status, preload: bool) {
         for reason in &status.degraded {
-            eprintln!("rfile: sandbox degraded: {reason}");
+            let _ = writeln!(io::stderr().lock(), "rfile: sandbox degraded: {reason}");
         }
         if preload {
-            eprintln!(
+            let _ = writeln!(
+                io::stderr().lock(),
                 "rfile: sandbox: LD_PRELOAD is present; confinement cannot undo code executed before main"
             );
         }
         if plan.sandbox_status {
-            eprintln!(
+            let _ = writeln!(
+                io::stderr().lock(),
                 "{}",
                 serde_json::json!({"sandbox": {"mode": plan.sandbox.name(), "compiled": true,
                 "seccomp_available": status.seccomp_available, "seccomp_enforced": status.seccomp_enforced,
@@ -322,14 +325,14 @@ mod linux {
                         failed |= emit_operand(&engine, &name, width, &presentation, classified)?;
                     }
                 }
-                PreparedEvent::Text(text) => print!("{text}"),
+                PreparedEvent::Text(text) => write_stdout(text)?,
                 PreparedEvent::End => return Ok(0),
                 PreparedEvent::Help => {
-                    help();
+                    help()?;
                     return Ok(0);
                 }
                 PreparedEvent::Error(e) => {
-                    eprintln!("rfile: {e}");
+                    let _ = writeln!(io::stderr().lock(), "rfile: {e}");
                     return Ok(1);
                 }
             }

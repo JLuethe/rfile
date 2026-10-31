@@ -72,3 +72,21 @@ pub fn open_regular_database(path: &std::path::Path) -> std::io::Result<std::fs:
     }
     Ok(file)
 }
+
+/// Detect invalid/read-only CLI stdout before Rust's stdio suppresses EBADF.
+/// This is a CLI check only; library users retain their own output policy.
+pub fn check_stdout_writable() -> std::io::Result<()> {
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        // SAFETY: F_GETFL reads flags for a numeric descriptor, takes no pointer,
+        // and does not borrow, close or change ownership of the descriptor.
+        let flags = unsafe { libc::fcntl(libc::STDOUT_FILENO, libc::F_GETFL) };
+        if flags < 0 {
+            return Err(std::io::Error::last_os_error());
+        }
+        if flags & libc::O_ACCMODE == libc::O_RDONLY {
+            return Err(std::io::Error::from_raw_os_error(libc::EBADF));
+        }
+    }
+    Ok(())
+}
