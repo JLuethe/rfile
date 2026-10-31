@@ -4,7 +4,7 @@ use rfile::{Engine, Flags};
 use std::{fs, os::unix::fs::PermissionsExt, process::Command};
 
 #[test]
-fn unreadable_regular_files_keep_diagnostics_across_modes_and_error_flag() {
+fn empty_metadata_order_respects_content_inspection_modes() {
     let dir = std::env::temp_dir().join(format!("rfile-unreadable-{}", std::process::id()));
     fs::create_dir(&dir).unwrap();
     let path = dir.join("input");
@@ -37,21 +37,41 @@ fn unreadable_regular_files_keep_diagnostics_across_modes_and_error_flag() {
                     .output()
                     .unwrap();
                 assert!(output.status.success(), "{sandbox}: {output:?}");
-                assert_eq!(output.stdout, format!("{expected}\n").as_bytes());
+                let expected_mime = if empty {
+                    "inode/x-empty; charset=binary"
+                } else {
+                    &expected
+                };
+                assert_eq!(output.stdout, format!("{expected_mime}\n").as_bytes());
             }
-            for flags in [
-                0,
-                Flags::MIME,
-                Flags::MIME_TYPE,
-                Flags::MIME_ENCODING,
-                Flags::EXTENSION,
-                Flags::APPLE,
+            for (flags, empty_output) in [
+                (0, &b"empty"[..]),
+                (Flags::MIME, &b"inode/x-empty; charset=binary"[..]),
+                (Flags::MIME_TYPE, &b"inode/x-empty"[..]),
+                (Flags::MIME_ENCODING, &b"binary"[..]),
+                (Flags::EXTENSION, &b""[..]),
+                (Flags::APPLE, &b""[..]),
             ] {
-                for extra in [0, Flags::ERROR, Flags::DEVICES, Flags::SYMLINK] {
+                for extra in [
+                    0,
+                    Flags::ERROR,
+                    Flags::DEVICES,
+                    Flags::DEVICES | Flags::ERROR,
+                    Flags::SYMLINK,
+                ] {
                     engine.flags = Flags(flags | extra);
+                    let expected_output = if empty
+                        && extra & Flags::DEVICES == 0
+                        && flags & (Flags::APPLE | Flags::EXTENSION) == 0
+                    {
+                        empty_output
+                    } else {
+                        expected.as_bytes()
+                    };
                     assert_eq!(
                         engine.classify_path(&path).unwrap().output,
-                        expected.as_bytes()
+                        expected_output,
+                        "empty={empty} mode={mode:o} flags={flags:x} extra={extra:x}"
                     );
                 }
             }

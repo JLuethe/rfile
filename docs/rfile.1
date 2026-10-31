@@ -53,7 +53,10 @@ Use SEP instead of the filename colon.
 .TP
 .BR -E , " -s , " -p"
 Report filesystem failures as errors; permit device reads; restore access times.
-An unreadable regular file with available metadata produces a permission
+In normal and MIME modes, a size-zero regular file is identified from metadata
+before opening, including with -E. With -s or annotation-only --apple/--extension,
+this shortcut is disabled and read permissions are checked.
+For other unreadable regular files, available metadata produces a permission
 description in every output mode, including -E. FIFO content inspection with -s
 is unsupported and fails without opening the FIFO; default FIFO identification
 uses metadata and does not inspect queued content.

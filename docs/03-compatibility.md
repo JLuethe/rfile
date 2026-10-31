@@ -99,7 +99,11 @@ without reading memory out of bounds or relaxing other types/use-block reads.
 Invalid CDF sector shifts (0,1,7,8) violate the format's geometry; earlier rejection
 may select a different failure stage/message. No unsafe stage parity is promised.
 
-Unreadable regular files return their permission description in every mode,
+Size-zero regular files are identified as empty from metadata before opening,
+in normal/MIME modes even with -E; MIME output uses inode/x-empty. With -s or
+annotation-only --apple/--extension that shortcut is disabled and unreadable
+files produce the permission diagnostic. Other
+unreadable regular files return their permission description in every mode,
 including -E, with real-user writable/executable access prefixes on Linux/glibc.
 This follows the pinned metadata result; actual stat/other open errors retain
 normal -E behavior. For FIFOs, -s content inspection is explicitly unsupported

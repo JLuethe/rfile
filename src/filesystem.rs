@@ -73,7 +73,6 @@ pub(crate) struct PreparedPath {
 }
 enum PendingContent {
     None,
-    Empty,
     File(File, fs::Metadata),
 }
 impl PreparedPath {
@@ -97,7 +96,6 @@ impl PreparedPath {
     ) -> Result<Classification> {
         match self.pending {
             PendingContent::None => self.ready,
-            PendingContent::Empty => engine.classify_input(&[], None, false, None, None, budget),
             PendingContent::File(mut file, meta) => finish_path(engine, &mut file, &meta, budget),
         }
     }
@@ -266,6 +264,11 @@ fn prepare_raw(
             }
         }
     }
+    // Normal/MIME modes use the metadata shortcut; -s and annotation-only
+    // modes inspect content and therefore must check open permissions first.
+    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) && !annotation_only {
+        return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
+    }
     let mut options = fs::OpenOptions::new();
     options.read(true);
     #[cfg(target_os = "linux")]
@@ -303,14 +306,6 @@ fn prepare_raw(
             ));
         }
     };
-    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
-        return if annotation_only {
-            *pending = PendingContent::Empty;
-            Ok(engine.basic(Vec::new(), "inode/x-empty", "binary", false))
-        } else {
-            Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
-        };
-    }
     *pending = PendingContent::File(file, meta);
     Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
 }
