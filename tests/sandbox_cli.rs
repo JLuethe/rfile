@@ -38,8 +38,7 @@ fn supported(root: &Path) -> bool {
             "required CLI sandbox certification not compiled"
         );
         println!(
-            "{}",
-            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"skipped","reason":"not-compiled"}"#
+            r#"RFILE_COVERAGE {{"component":"sandbox_cli","status":"skipped","reason":"not-compiled"}}"#
         );
         return false;
     }
@@ -50,8 +49,7 @@ fn supported(root: &Path) -> bool {
             String::from_utf8_lossy(&output.stderr)
         );
         println!(
-            "{}",
-            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"skipped","reason":"unsupported-kernel"}"#
+            r#"RFILE_COVERAGE {{"component":"sandbox_cli","status":"skipped","reason":"unsupported-kernel"}}"#
         );
         eprintln!(
             "SKIP strict CLI certification: {}",
@@ -216,9 +214,6 @@ fn cli_policy_modes_order_and_identity() {
     }
     fs::remove_dir_all(root).unwrap();
     if sandbox_executed {
-        println!(
-            "{}",
-            r#"RFILE_COVERAGE {"component":"sandbox_cli","status":"executed"}"#
-        );
+        println!(r#"RFILE_COVERAGE {{"component":"sandbox_cli","status":"executed"}}"#);
     }
 }

@@ -1,0 +1,759 @@
+[
+  {
+    "name": "00-cargo-version",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "--version"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.01,
+    "timeout_s": 20,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "00-rustc-version",
+    "argv": [
+      "/home/john/.cargo/bin/rustc",
+      "--version"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.02,
+    "timeout_s": 20,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "00-git-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.0,
+    "timeout_s": 20,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "00-git-status",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=all"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.1,
+    "timeout_s": 20,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "01a-fmt",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.18,
+    "timeout_s": 60,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "02-prebuild-hardening-release",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "--no-run"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 17.68,
+    "timeout_s": 300,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "02a-positive-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": "/home/john/Code/rfile/.reference/file-clean"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 2.39,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 2.35s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"mutation_fixtures\",\"fixture_files\":103,\"path\":\"/home/john/Code/rfile/.reference/file-clean/tests\",\"required\":true,\"status\":\"executed\"}"
+    ],
+    "json": [
+      "{\"database_cases\":10000,\"elapsed_seconds\":2.349736761,\"fixture_files\":103,\"fixture_path\":\"/home/john/Code/rfile/.reference/file-clean/tests\",\"fixture_status\":\"executed\",\"fixture_truncations\":1339,\"random_input_cases\":10000,\"seed\":\"4f6c655275737421\",\"source_cases\":10000}"
+    ],
+    "failures": []
+  },
+  {
+    "name": "02b-missing-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": "/tmp/rfile-readiness-qa/does-not-exist-ref"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.04,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700437) panicked at tests/hardening.rs:117:23:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02c-empty-reference-dir-with-empty-tests",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": "/tmp/rfile-readiness-qa/empty-ref"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.03,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700451) panicked at tests/hardening.rs:123:5:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02c2-empty-reference-bare-dir",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": "/tmp/rfile-readiness-qa/empty-ref-bare"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.04,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700465) panicked at tests/hardening.rs:117:23:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02c3-empty-string-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": ""
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.04,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700479) panicked at tests/hardening.rs:123:5:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02d-no-reference-default",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.03,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700493) panicked at tests/hardening.rs:117:23:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02e-optout-no-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_FIXTURES": "0"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 2.2,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 2.16s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"mutation_fixtures\",\"fixture_files\":0,\"path\":\"/tmp/rfile-readiness-0ee7f29/upstream/tests\",\"required\":false,\"status\":\"skipped\"}"
+    ],
+    "json": [
+      "{\"database_cases\":10000,\"elapsed_seconds\":2.157881114,\"fixture_files\":0,\"fixture_path\":\"/tmp/rfile-readiness-0ee7f29/upstream/tests\",\"fixture_status\":\"skipped\",\"fixture_truncations\":0,\"random_input_cases\":10000,\"seed\":\"4f6c655275737421\",\"source_cases\":10000}"
+    ],
+    "failures": []
+  },
+  {
+    "name": "02f-optout-invalid-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_FIXTURES": "0",
+      "RFILE_REFERENCE": "/tmp/rfile-readiness-qa/does-not-exist-ref"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.04,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700722) panicked at tests/hardening.rs:117:23:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "02g-optout-empty-reference",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--test",
+      "hardening",
+      "deterministic_mutation_campaign",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_FIXTURES": "0",
+      "RFILE_REFERENCE": "/tmp/rfile-readiness-qa/empty-ref"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 0.04,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test deterministic_mutation_campaign ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s",
+      "thread 'deterministic_mutation_campaign' (700737) panicked at tests/hardening.rs:123:5:",
+      "error: test failed, to rerun pass `-p rfile --test hardening`"
+    ]
+  },
+  {
+    "name": "03a-default-sandbox_cli-require",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--test",
+      "sandbox_cli",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_SANDBOX": "1"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 6.82,
+    "timeout_s": 300,
+    "test_results": [
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": [
+      "test cli_policy_modes_order_and_identity ... FAILED",
+      "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s",
+      "thread 'cli_policy_modes_order_and_identity' (701891) panicked at tests/sandbox_cli.rs:36:9:",
+      "error: test failed, to rerun pass `-p rfile --test sandbox_cli`"
+    ]
+  },
+  {
+    "name": "03b-default-sandbox_cli-norequire",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--test",
+      "sandbox_cli",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.3,
+    "timeout_s": 120,
+    "test_results": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"sandbox_cli\",\"status\":\"skipped\",\"reason\":\"not-compiled\"}"
+    ],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "03c-default-platform-sandbox-require",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "rfile-platform",
+      "--test",
+      "sandbox",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_SANDBOX": "1"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.09,
+    "timeout_s": 200,
+    "test_results": [
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    ],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "03d-allfeat-sandbox_cli-require",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--all-features",
+      "--test",
+      "sandbox_cli",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_SANDBOX": "1"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 16.11,
+    "timeout_s": 300,
+    "test_results": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.90s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"sandbox_cli\",\"status\":\"executed\"}"
+    ],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "03e-allfeat-platform-sandbox-require",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--all-features",
+      "-p",
+      "rfile-platform",
+      "--test",
+      "sandbox",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REQUIRE_SANDBOX": "1"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 0.29,
+    "timeout_s": 200,
+    "test_results": [
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"executed\",\"child_cases\":8}"
+    ],
+    "json": [],
+    "failures": []
+  },
+  {
+    "name": "01b-test-default",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--workspace",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 4.07,
+    "timeout_s": 300,
+    "test_results": [
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s",
+      "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s",
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 9 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.02s",
+      "test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s",
+      "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s",
+      "test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s",
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"sandbox_cli\",\"status\":\"skipped\",\"reason\":\"not-compiled\"}"
+    ],
+    "json": [],
+    "failures": [
+      "thread 'tests::panic_is_contained_and_cookie_is_poisoned' (705801) panicked at crates/rfile-ffi/src/lib.rs:622:49:",
+      "thread 'locale::tests::guard_restores_on_success_error_and_unwind' (705803) panicked at crates/rfile-platform/src/locale.rs:304:13:"
+    ]
+  },
+  {
+    "name": "01c-test-allfeatures",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "--workspace",
+      "--all-features",
+      "--",
+      "--nocapture"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 15.51,
+    "timeout_s": 300,
+    "test_results": [
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s",
+      "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.92s",
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 9 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s",
+      "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.32s",
+      "test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.33s",
+      "test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"sandbox_cli\",\"status\":\"executed\"}",
+      "RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"executed\",\"child_cases\":8}"
+    ],
+    "json": [],
+    "failures": [
+      "thread 'tests::panic_is_contained_and_cookie_is_poisoned' (707967) panicked at crates/rfile-ffi/src/lib.rs:622:49:",
+      "thread 'locale::tests::guard_restores_on_success_error_and_unwind' (707969) panicked at crates/rfile-platform/src/locale.rs:304:13:"
+    ]
+  },
+  {
+    "name": "01d-clippy-allfeat-alltargets",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--all-features",
+      "--locked",
+      "--offline",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "env_overrides": {},
+    "env_removed": "all inherited RFILE_*",
+    "exit": 101,
+    "seconds": 2.74,
+    "timeout_s": 300,
+    "test_results": [],
+    "coverage": [
+      "32 |                 r#\"RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"skipped\",\"reason\":\"unsupported-kernel\"}\"#",
+      "32 -                 r#\"RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"skipped\",\"reason\":\"unsupported-kernel\"}\"#",
+      "31 +                 \"RFILE_COVERAGE {{\\\"component\\\":\\\"sandbox_kernel\\\",\\\"status\\\":\\\"skipped\\\",\\\"reason\\\":\\\"unsupported-kernel\\\"}}\"",
+      "74 |         r#\"RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"executed\",\"child_cases\":8}\"#",
+      "74 -         r#\"RFILE_COVERAGE {\"component\":\"sandbox_kernel\",\"status\":\"executed\",\"child_cases\":8}\"#",
+      "73 +         \"RFILE_COVERAGE {{\\\"component\\\":\\\"sandbox_kernel\\\",\\\"status\\\":\\\"executed\\\",\\\"child_cases\\\":8}}\""
+    ],
+    "json": [],
+    "failures": [
+      "error: literal with an empty format string",
+      "error: literal with an empty format string",
+      "error: could not compile `rfile-platform` (test \"sandbox\") due to 2 previous errors"
+    ]
+  },
+  {
+    "name": "01e-release-hardening-allfeat",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--all-features",
+      "--test",
+      "hardening",
+      "--",
+      "--ignored",
+      "--nocapture"
+    ],
+    "env_overrides": {
+      "RFILE_REFERENCE": "/home/john/Code/rfile/.reference/file-clean"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 24.42,
+    "timeout_s": 300,
+    "test_results": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 2.27s"
+    ],
+    "coverage": [
+      "RFILE_COVERAGE {\"component\":\"mutation_fixtures\",\"fixture_files\":103,\"path\":\"/home/john/Code/rfile/.reference/file-clean/tests\",\"required\":true,\"status\":\"executed\"}"
+    ],
+    "json": [
+      "{\"database_cases\":10000,\"elapsed_seconds\":2.26765654,\"fixture_files\":103,\"fixture_path\":\"/home/john/Code/rfile/.reference/file-clean/tests\",\"fixture_status\":\"executed\",\"fixture_truncations\":1339,\"random_input_cases\":10000,\"seed\":\"4f6c655275737421\",\"source_cases\":10000}"
+    ],
+    "failures": []
+  },
+  {
+    "name": "01f-msrv-1.87-check",
+    "argv": [
+      "/home/john/.cargo/bin/cargo",
+      "+1.87.0",
+      "check",
+      "--workspace",
+      "--all-features",
+      "--all-targets",
+      "--locked",
+      "--offline"
+    ],
+    "env_overrides": {
+      "CARGO_TARGET_DIR": "/tmp/rfile-readiness-0ee7f29/target/msrv-1.87"
+    },
+    "env_removed": "all inherited RFILE_*",
+    "exit": 0,
+    "seconds": 6.64,
+    "timeout_s": 300,
+    "test_results": [],
+    "coverage": [],
+    "json": [],
+    "failures": []
+  }
+]

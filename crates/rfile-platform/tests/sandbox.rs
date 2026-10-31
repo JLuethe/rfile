@@ -28,8 +28,7 @@ fn kernel_policy_children() {
                 "required kernel policy certification unavailable: {e}"
             );
             println!(
-                "{}",
-                r#"RFILE_COVERAGE {"component":"sandbox_kernel","status":"skipped","reason":"unsupported-kernel"}"#
+                r#"RFILE_COVERAGE {{"component":"sandbox_kernel","status":"skipped","reason":"unsupported-kernel"}}"#
             );
             eprintln!("SKIP kernel policy certification: {e}");
             return;
@@ -70,8 +69,7 @@ fn kernel_policy_children() {
         );
     }
     println!(
-        "{}",
-        r#"RFILE_COVERAGE {"component":"sandbox_kernel","status":"executed","child_cases":8}"#
+        r#"RFILE_COVERAGE {{"component":"sandbox_kernel","status":"executed","child_cases":8}}"#
     );
 }
 fn denied<T>(result: std::io::Result<T>) {
