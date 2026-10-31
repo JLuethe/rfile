@@ -1,6 +1,6 @@
 # Next experimental release: scope and PR decisions
 
-Updated 2026-10-30. This is the current release-preparation contract. The
+Updated 2026-10-31 UTC. This is the current release-preparation contract. The
 [release plan](11-github-release-plan.md) preserves the initial review and the
 larger sequence. The existing public v0.1.0 remains unchanged.
 
@@ -8,8 +8,8 @@ larger sequence. The existing public v0.1.0 remains unchanged.
 
 The next downloadable binary is the **default-feature `rfile` CLI for x86_64
 Linux/glibc**, accompanied by complete source, notices, checksums, manual and
-installation instructions. Default gzip/zlib inspection is included. A minimum
-glibc version must be measured before labeling binary compatibility. Rust 1.87
+installation instructions. Default gzip/zlib inspection is included. The binary requires GLIBC 2.34 symbols and is tested on Ubuntu 22.04
+(glibc 2.35); other glibc 2.34 distributions are not certified. Rust 1.87
 remains the declared source-build minimum. No crates.io publication is planned.
 
 | Surface | Current implementation | Release promise / remaining boundary |
@@ -22,13 +22,13 @@ remains the declared source-build minimum. No crates.io publication is planned.
 | Other platforms / ABIs | No new executed platform evidence | No new support claim |
 | Security qualification | 25 fuzz targets and bounded queue infrastructure | Long campaigns, coverage/resource review and independent security audit remain open |
 
-Do not confuse the release-preparation baseline with a final release candidate.
-The baseline is `7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76`; this increment is
-on `fix/release-readiness-baseline`. The proposed version is now `0.2.0-rc.1`. The final candidate commit and
-artifact hashes will be frozen after fixes, independent retesting and packaging.
-A report must identify the exact source snapshot it tested, including local
-changes when applicable. Existing historical reports are not transferred to a
-new candidate by changing their labels.
+The frozen `0.2.0-rc.1` source is
+`e64ce034bee6a6c0959872d9b8f632d692dbfaa3`, merged in PR #23. Its Git tree
+`91506a94437571b6fc3257f1d2e860824e19b727` exactly matches independently tested
+`a781c017b3495121a4203053cbabe55225cb0130`; reports keep their actual executed
+commit identities. Later documentation/evidence commits do not change the
+release target. Exact final archive acceptance passed; the unpublished draft and evidence are
+linked in [the final acceptance record](../reports/release-0.2.0-rc.1/final/README.md).
 
 ## PR disposition
 
@@ -92,7 +92,7 @@ the exact run report/logs before using them as release evidence; a committed
 summary alone does not preserve ignored logs. No artifact is published by the
 verification runner.
 
-## Packaging work in progress
+## Packaging and final acceptance
 
 `tools/package_cli.py` creates a default CLI archive and complete vendored source
 archive from an immutable Git snapshot; it rejects dirty checkouts. The artifacts
@@ -107,7 +107,7 @@ comparison harnesses and sanitizer/Miri results. The queued Claude retry was
 cancelled when the user requested Luna. The default pinned-oracle CI passed on
 `0c04563`; its all-feature lane exposed a narrowly recorded gzip-helper ZIP64
 text variant. Luna independently accepted the precise FILETIME and ZIP64 corrections; the
-complete final candidate matrix remains required.
+complete final candidate matrix has now passed on the identical a781/e64 tree.
 
 Both `linux` and `msrv` are required branch checks. CI includes debug/release
 workspace tests for both profiles and a bounded oracle workflow; its all-feature
@@ -123,5 +123,8 @@ explicit `CARGO_BUILD_JOBS` override is honored). The PATH failure was independe
 without a system timezone failed before classification; the follow-up uses UTC
 only for an absent implicit zone (and built-in TZ=UTC), preserving explicit
 configuration errors. Luna accepted the fix on `09f2c36` through 13 constrained-container checks, now
-implemented in candidate CI. Final source/artifact freeze and exact-archive
-acceptance remain pending.
+implemented in candidate CI. Final source is frozen at e64ce034; the final
+artifact workflow is run 41178070592. Independent exact-archive acceptance
+passed all 14 package, 10 installer and 13 minimal-runtime checks, plus an
+offline source build and raw-byte filename tests. The release remains an
+unpublished draft for maintainer review.

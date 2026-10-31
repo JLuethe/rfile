@@ -1,0 +1,606 @@
+{
+  "schema_version": 2,
+  "run_id": "20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1",
+  "status": "passed",
+  "started_utc": "2026-10-31T06:41:25.129546+00:00",
+  "features": "default",
+  "requirements": {
+    "oracle": true,
+    "sandbox": false
+  },
+  "run_directory": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1",
+  "steps": [
+    {
+      "name": "format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/format.log",
+      "seconds": 0.18630650799968862,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "clippy",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/clippy.log",
+      "seconds": 0.09334587799821747,
+      "log_sha256": "99f71393b9903dca098310bb446022a4bdee195ea9996f351a787195555210a6"
+    },
+    {
+      "name": "cargo-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cargo-test.log",
+      "seconds": 0.9798165809988859,
+      "log_sha256": "40bb5ee17f03e8cbfa203f5b145efa6fe82adfc26ebdbaf9574188ab64428243"
+    },
+    {
+      "name": "cargo-release-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cargo-release-test.log",
+      "seconds": 0.41291937200003304,
+      "log_sha256": "54ae0f00318628c7176d37bbc16368259c72300fc9bc0c27ba7fb9477d71b921"
+    },
+    {
+      "name": "cargo-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "--release",
+        "--locked"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cargo-build.log",
+      "seconds": 0.035251510998932645,
+      "log_sha256": "222a02ed477d249a21359df8cae975864a62d848f4739cadc5b00b6190a963c6"
+    },
+    {
+      "name": "ffi-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "-p",
+        "rfile-ffi",
+        "--locked"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/ffi-build.log",
+      "seconds": 0.03303907000008621,
+      "log_sha256": "a13905646e2aed93ec6ea9ed6ac91490a4e01f91af0215c3965279a910612149"
+    },
+    {
+      "name": "ffi-rust-clients",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_clients.py",
+        "--rust-only"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/ffi-rust-clients.log",
+      "seconds": 2.6743714200019895,
+      "log_sha256": "a66d18c4c05dd3e36dcf83c85e6a894cd181901d8d355b65e46899c6fdf5db69"
+    },
+    {
+      "name": "unsafe-inventory",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/unsafe_inventory.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/unsafe-inventory.log",
+      "seconds": 0.047715528002299834,
+      "log_sha256": "6ea618c37bfd89f3b236af81596d55f540f4391f7499aacb4ec64e32c5d780e5"
+    },
+    {
+      "name": "database-rebuild",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/rebuild_database.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/database-rebuild.log",
+      "seconds": 0.09869239500039839,
+      "log_sha256": "6502f6b429f9250369cf7a6460c1f7f11c1913340260ff6d01255a28b83e4630"
+    },
+    {
+      "name": "fuzz-smoke",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--test",
+        "hardening",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/fuzz-smoke.log",
+      "seconds": 13.806022044998826,
+      "log_sha256": "2911e2d91d458c12d217bdcbf5d710ca8302d123a139fcee1342f477a4945d3d"
+    },
+    {
+      "name": "fuzz-format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/fuzz-format.log",
+      "seconds": 0.04518967799958773,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fuzz-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--locked",
+        "--bins"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/fuzz-build.log",
+      "seconds": 20.079894422997313,
+      "log_sha256": "321aa065d98b8f0439e515e420847058b9544e944206871c507ccfbd403638fc"
+    },
+    {
+      "name": "ffi-clients",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_clients.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/ffi-clients.log",
+      "seconds": 3.18662672100254,
+      "log_sha256": "1d86cfb4f587ef932270dc2823cc9ee9cd3f4330f6e0db6a79ef9287e85e220a"
+    },
+    {
+      "name": "ffi-state",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/ffi-state.log",
+      "seconds": 5.397941000999708,
+      "log_sha256": "5b49c704125e60fcc0e37cd2bf57ecb05af9df6bd8a5c3eba0149048f9f7c695"
+    },
+    {
+      "name": "ffi-diagnostics",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_diagnostic_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/ffi-diagnostics.log",
+      "seconds": 55.04376827899978,
+      "log_sha256": "86fe5843ea0b5b8e25e3fa6e6de990bd3934684caa71db006765058d328e7150"
+    },
+    {
+      "name": "upstream-check",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "make",
+        "-C",
+        "/home/john/Code/rfile/.reference/file-clean",
+        "check"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/upstream-check.log",
+      "seconds": 2.1470634670004074,
+      "log_sha256": "6fc0e6516b7eb72c2cd046dc658f5043196ab6f70dbda96cf58f75831e490043"
+    },
+    {
+      "name": "compiler",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/compiler_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/compiler.log",
+      "seconds": 0.32761155100160977,
+      "log_sha256": "86961d9260015fadceae4a1f46383514f5e4ccae97d5e5948a9fa2dacc782452"
+    },
+    {
+      "name": "fixtures",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/fixture_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/fixtures.log",
+      "seconds": 2.870506793002278,
+      "log_sha256": "9648e8c2ae9e563e01bc2fea0e5e6373d3c2cac2d0c7bc7deadd5bb1511bc153"
+    },
+    {
+      "name": "differential-broad",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/differential.py",
+        "--limit",
+        "3000"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/differential-broad.log",
+      "seconds": 12.793582274000073,
+      "log_sha256": "c75c8da56cd5d91ba03ac146a85c2a9c483616a589779f5d54521fb803ae8cbd"
+    },
+    {
+      "name": "extended",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/extended_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/extended.log",
+      "seconds": 11.48298616199827,
+      "log_sha256": "888fab360cd5e147b54ec774a7516fa8400558380ed45759ba68dd492038ecf1"
+    },
+    {
+      "name": "semantics-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/semantics_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/semantics-differential.log",
+      "seconds": 3.1929432969991467,
+      "log_sha256": "c928f07887edc162d16ce337e67230f42d61f08ebdbb245b3a79b0e7e9c80526"
+    },
+    {
+      "name": "regex-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/regex_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/regex-differential.log",
+      "seconds": 4.62694112600002,
+      "log_sha256": "d1a5b61c0bc6945d82bf6a50427f1cc5c4f5eb5f8e5d13d8c0460ef202f1e973"
+    },
+    {
+      "name": "elf-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/elf_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/elf-differential.log",
+      "seconds": 58.52842905799844,
+      "log_sha256": "41c69e2426cdbcacaa338da19b1926305fa0e0a92b325b417fc3caab9f5c11f4"
+    },
+    {
+      "name": "cdf-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cdf_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cdf-differential.log",
+      "seconds": 7.0693898539975635,
+      "log_sha256": "7dd59d714191c38ef6b24196e59db075a0566bb709d4171b1f0d830b8bc737cc"
+    },
+    {
+      "name": "locale-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/locale_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/locale-differential.log",
+      "seconds": 10.710932123998646,
+      "log_sha256": "d27a750b30ad47169c37536f39dea20b3be662968b10482423d6e27eefa001b0"
+    },
+    {
+      "name": "float-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/float_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/float-differential.log",
+      "seconds": 1.75114689199836,
+      "log_sha256": "ca1e2e0c952261b20037718b1f082b488c1463460e7041ec9a4d8092651ddfe7"
+    },
+    {
+      "name": "time-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/time_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/time-differential.log",
+      "seconds": 40.27327552399947,
+      "log_sha256": "46ace7d1127d260f4139d6daa078d599500c3d189ed2e600a193978ba92858b1"
+    },
+    {
+      "name": "oracle-report-regressions",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_oracle_boundaries.py",
+        "-v"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/oracle-report-regressions.log",
+      "seconds": 0.07708834900040529,
+      "log_sha256": "d5d67248fed4b3d8aee545b62bccf4a44491d6fbb601e095a731519604b000b3"
+    },
+    {
+      "name": "component-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/component_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/component-differential.log",
+      "seconds": 0.15295604599668877,
+      "log_sha256": "14e3ad7a299c4024863ecc64fb182df79394152d40d00751241e91dcad4ca812"
+    },
+    {
+      "name": "cli-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cli_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cli-differential.log",
+      "seconds": 5.308262429000024,
+      "log_sha256": "35e612cdc6a1c4e44a03384393db6adc813c60ff40a36a516213b89551150063"
+    },
+    {
+      "name": "cli-database-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cli_database_compare.py",
+        "--binary",
+        "target/release/rfile"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/cli-database-differential.log",
+      "seconds": 3.5070339820013032,
+      "log_sha256": "9758af1a9811b7d393838f752bc31304f74c5011c2fbebdb756a9fa3e6b0f650"
+    },
+    {
+      "name": "benchmark",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/benchmark.py"
+      ],
+      "log": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/logs/benchmark.log",
+      "seconds": 14.916687788001582,
+      "log_sha256": "930fc151354dabf890f547995e2d0ad3f6bf2134f7a68e6151257d9dc311391c"
+    }
+  ],
+  "coverage": [
+    {
+      "step": "cargo-test",
+      "component": "sandbox_cli",
+      "status": "skipped",
+      "reason": "not-compiled"
+    },
+    {
+      "step": "cargo-release-test",
+      "component": "sandbox_cli",
+      "status": "skipped",
+      "reason": "not-compiled"
+    },
+    {
+      "step": "fuzz-smoke",
+      "component": "mutation_fixtures",
+      "fixture_files": 103,
+      "path": "/home/john/Code/rfile/.reference/file-clean/tests",
+      "required": true,
+      "status": "executed"
+    }
+  ],
+  "artifacts": {
+    "abi-clients-rust.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/abi-clients-rust.json",
+      "sha256": "295b2b649b357a57e4b3be1d1c2e1baff5f411285e39817cb070afab3c059b19"
+    },
+    "unsafe.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/unsafe.json",
+      "sha256": "5d13b6e197f2fa747deeca7749eca0d77efd05e6f5df4658bce3d2a3adc30542"
+    },
+    "abi-clients.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/abi-clients.json",
+      "sha256": "359025fda9aa94b2997dbf48f51fbe719b843bd82b8b15a70c86b35321396f66"
+    },
+    "abi-state.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/abi-state.json",
+      "sha256": "c66769a33818d619b1e325d1a442ee6a68053925ff10b6c0f1c998f06f249ed8"
+    },
+    "abi-diagnostics.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/abi-diagnostics.json",
+      "sha256": "cf195db4ef5ba232a4cfebe2fc27b8356024e79acb1cdc67ef1b18e996c5d797"
+    },
+    "compiler.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/compiler.json",
+      "sha256": "86961d9260015fadceae4a1f46383514f5e4ccae97d5e5948a9fa2dacc782452"
+    },
+    "compiler-differences.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/compiler-differences.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "fixtures.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/fixtures.json",
+      "sha256": "d3d61ec43899e0b9aa9c923a2e4656f5be972baf39aa60f792e321c3d3b7b499"
+    },
+    "differential.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/differential.json",
+      "sha256": "26a53982001608326cbe1459d14a5b97506ae8ce1227d49a5cbc550452fced39"
+    },
+    "corpus-manifest.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/corpus-manifest.json",
+      "sha256": "439f04f9400c078aeb66df722282943e4355920076dda8546940960bcc4abe7f"
+    },
+    "extended.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/extended.json",
+      "sha256": "63e287e55e3f3602f715e3ce941148be00c0426e66eeeed3832b7307ea2baf11"
+    },
+    "semantics.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/semantics.json",
+      "sha256": "321252085fe02a49a2f4116cd99f1d054f3a278ecfaa22e0fc48d38592ae957c"
+    },
+    "regex.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/regex.json",
+      "sha256": "f3cde24a0617cc1dbb6de3014a37c9ec2adcff6726f2165266c895f73925a6c5"
+    },
+    "elf.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/elf.json",
+      "sha256": "b58fb79df067df2ba1f85df26d3c96bb582676b0b3ec7efdaab2588fc7022735"
+    },
+    "cdf.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/cdf.json",
+      "sha256": "5b0cdc778e8c4ae595cb391ec8c22db0a9939ec4d757ce90ff5459f2ac0ed443"
+    },
+    "locale.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/locale.json",
+      "sha256": "6725c464911e46a15a2f3aa399ce8ffb6f7945098ff98161f022e31ad29e535a"
+    },
+    "float.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/float.json",
+      "sha256": "5cc6df7dd34575edfec3973c50524d42e28f6e2321075e1ce38774fa0a4bf015"
+    },
+    "time.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/time.json",
+      "sha256": "2f99992d13373bc3364f6010d1ead820454ccc32409aad85ce31337e73650b57"
+    },
+    "components.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/components.json",
+      "sha256": "d0b1ef32bc35fa8216670064ac8efe55ff3da43f0b14e09a6397038e4ef9d74b"
+    },
+    "cli.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/cli.json",
+      "sha256": "48e89a6dba6e762eefe30592d0df667a7c7f21e9f7829673d211260259b83ae3"
+    },
+    "cli-database.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/cli-database.json",
+      "sha256": "cf279ca7f5ebd3fc0fc39afe8f50894e02eaedd4646dbd635d0aaa4472304f83"
+    },
+    "benchmark.json": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/benchmark.json",
+      "sha256": "d34f0914b3bdd358810081b4bead1ea517f51dbbe5a312c02c64ae62f367dee1"
+    },
+    "runtime-linkage.txt": {
+      "path": "reports/verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/artifacts/runtime-linkage.txt",
+      "sha256": "48197b6568e98273e372daa4952a1b45988feb3e41a05490c62981f24c10c48d"
+    }
+  },
+  "oracle": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "elapsed_seconds": 282.1488515810015,
+  "git_head": "a781c017b3495121a4203053cbabe55225cb0130",
+  "git_status": [
+    " M reports/verification.json"
+  ],
+  "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "binary_sha256": "6151ecb583fd5870603a29bbec706169533d88b7412eb88967ef5e7da2084f40",
+  "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "mutation_smoke": [
+    {
+      "database_cases": 10000,
+      "elapsed_seconds": 1.863438199,
+      "fixture_files": 103,
+      "fixture_path": "/home/john/Code/rfile/.reference/file-clean/tests",
+      "fixture_status": "executed",
+      "fixture_truncations": 1339,
+      "random_input_cases": 10000,
+      "seed": "4f6c655275737421",
+      "source_cases": 10000
+    }
+  ],
+  "scope": "Linux supported profile; coverage skips recorded separately; not sustained security qualification",
+  "finished_utc": "2026-10-31T06:46:07.278383+00:00"
+}

@@ -1,0 +1,6 @@
+658ec9b089e431f281445795c4b030c85fdae893a70a7a7b439f929cf3ca487e  .reference/package-qa-e64/candidate/SHA256SUMS
+0604f658a18ce789735c64b335fdd4c712e6523d5e25d3a526975ff066d3490a  .reference/package-qa-e64/candidate/minimal-runtime-qa.json
+21e829881dc339c8f9e2c407b42151960fedc3deabd891d783201b9e55ae7472  .reference/package-qa-e64/candidate/package-qa.json
+bf25a496a1914675ada5ec45dd7895e735336c197a1474c7ffc47eaf9ba92120  .reference/package-qa-e64/candidate/release-manifest.json
+f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1  .reference/package-qa-e64/candidate/rfile-0.2.0-rc.1-source.tar.gz
+d2b01ffb9988a7797e9467c9a3c2efee3fa28128a70d35dcb0db7d4b791cd379  .reference/package-qa-e64/candidate/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz
