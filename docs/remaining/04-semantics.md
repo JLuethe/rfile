@@ -47,6 +47,17 @@ Selected candidate is `jiff 0.2.38`, Unlicense OR MIT, manifest MSRV 1.70; inspe
 
 Windows FILETIME uses signed 64-bit 100 ns ticks in the pin. Pinned548 retains its bounded calendar normalization/month-boundary/pre-1601 quirks where deterministic; failed native conversion cannot authorize uninitialized `tv_sec`. CorrectedV1 uses checked ticks-to-Unix conversion with the 1601 epoch. CDF's editing-time threshold and duration formatting share this module but are different from rule Windows-date fields. DOS invalid-month substitution, zero day and two-second precision are tested as legacy formatting rather than normalized silently.
 
+The semantic/date comparison reports identify the specific native early-return
+branch separately: signed ticks at or above
+`(10000 - 1601) * 365 * 86400 * 10_000_000` produce an approximate year greater
+than 9999 in `src/cdf_time.c:cdf_timestamp_to_timespec`. That branch leaves
+`ts.tv_sec` uninitialized, and `src/print.c:file_fmtdatetime` ignores the error.
+Observed native bytes are retained but do not count as exact oracle comparisons,
+even when they happen to match. Those cases instead require Rfile's exact invalid
+datetime marker. Negative signed values and every other mismatch remain outside
+this exception. This corrects a harness assumption exposed on Ubuntu 24.04;
+it does not change production date semantics or patch the primary oracle.
+
 Golden matrix: epoch/negative epoch, signed 32-bit boundaries including 2038, leap days and century boundaries, year-field limits, FILETIME zero/negative/maximum and month boundaries, DOS zero/invalid fields, UTC and named zones America/Los_Angeles/Europe/Berlin/Asia/Kolkata, a non-hour-offset zone, pre/post DST transitions and POSIX TZ strings. Timestamp-to-local conversion is unambiguous; test reverse calendar normalization separately where the legacy algorithm uses it. Record leap-second and TZif leap-table treatment as a named host contract, not assumed POSIX equivalence.
 
 ## SEM-05: floating formatting

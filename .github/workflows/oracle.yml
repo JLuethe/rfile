@@ -7,6 +7,9 @@ on:
       - 'tools/verify.py'
       - 'tools/verification_run.py'
       - 'tools/reference.py'
+      - 'tools/oracle_boundaries.py'
+      - 'tools/semantics_compare.py'
+      - 'tools/time_compare.py'
       - 'tools/build_reference.sh'
 permissions:
   contents: read

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Small custom magic programs, including truncation and numeric/string boundaries."""
-import ctypes,importlib.util,json,pathlib,subprocess,tempfile,struct
+import ctypes,importlib.util,json,pathlib,subprocess,tempfile,struct,sys
+from oracle_boundaries import filetime_has_uninitialized_seconds
 ROOT=pathlib.Path(__file__).resolve().parents[1];spec=importlib.util.spec_from_file_location('d',ROOT/'tools/differential.py');d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d);lib=d.library()
 cases=[]
 for t in ['byte','ubyte','short','ushort','beshort','leshort','long','ulong','belong','lelong','melong','quad','uquad','bequad','lequad']:
@@ -33,7 +34,18 @@ with tempfile.TemporaryDirectory(prefix='rfile-semantics-')as temp:
   actual=[json.loads(x)for x in proc.stdout.splitlines()]
   for b,row in zip(inputs,actual):
    ref=lib.magic_buffer(h,b,len(b));out=bytes.fromhex(row['hex'])if'hex'in row else None;equal=ref is not None and out is not None and ref==out
-   rows.append({'case':label,'source':source,'input_hex':b.hex(),'equal':equal,**({}if equal else{'reference':ref.decode('utf8','backslashreplace')if ref is not None else None,'rust':out.decode('utf8','backslashreplace')if out is not None else row})})
+   undefined=False
+   if label in ('qwdate','leqwdate','beqwdate'):
+    order='big'if label.startswith('be')else'little'if label.startswith('le')else sys.byteorder
+    undefined=filetime_has_uninitialized_seconds(int.from_bytes(b[:8].ljust(8,b'\0'),order))
+   if undefined:
+    rows.append(dict(case=label,source=source,input_hex=b.hex(),equal=False,raw_equal=equal,
+      disposition='native-filetime-uninitialized-seconds',oracle_defined=False,
+      reference_hex=ref.hex()if ref is not None else None,rust_hex=out.hex()if out is not None else None,
+      rust_error=row.get('error'),safe_result_validated=out==b'value=*Invalid datetime*'))
+   else:
+    rows.append({'case':label,'source':source,'input_hex':b.hex(),'equal':equal,**({}if equal else{'reference':ref.decode('utf8','backslashreplace')if ref is not None else None,'rust':out.decode('utf8','backslashreplace')if out is not None else row})})
   lib.magic_close(h)
-report={'flags':flags,'total':sum('equal'in r for r in rows),'equal':sum(r.get('equal',False)for r in rows),'compiler_errors':sum('compile_error'in r for r in rows),'cases':rows};(ROOT/'reports/semantics.json').write_text(json.dumps(report,indent=2)+'\n');print({k:v for k,v in report.items()if k!='cases'})
+report={'schema_version':2,'flags':flags,'total':sum('equal'in r for r in rows),'equal':sum(r.get('equal',False)for r in rows),'oracle_undefined':sum(r.get('oracle_defined')is False for r in rows),'oracle_undefined_validated':sum(r.get('safe_result_validated',False)for r in rows),'compiler_errors':sum('compile_error'in r for r in rows),'cases':rows};report['unexpected']=report['total']-report['equal']-report['oracle_undefined_validated'];(ROOT/'reports/semantics.json').write_text(json.dumps(report,indent=2)+'\n');print({k:v for k,v in report.items()if k!='cases'})
 for r in [r for r in rows if r.get('equal')is False][:30]:print(json.dumps(r))
+if report['unexpected'] or report['compiler_errors']:raise SystemExit('Unexpected custom rule mismatch: inspect reports/semantics.json')
