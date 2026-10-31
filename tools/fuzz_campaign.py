@@ -26,7 +26,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def source_digest():
-    paths=[*ROOT.glob('crates/**/*.rs'),*ROOT.glob('crates/**/Cargo.toml'),*ROOT.glob('src/**/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.inc'),ROOT/'Cargo.toml',ROOT/'Cargo.lock',ROOT/'fuzz/Cargo.toml',ROOT/'fuzz/Cargo.lock']
+    paths=[*ROOT.glob('crates/**/*.rs'),*ROOT.glob('crates/**/Cargo.toml'),*ROOT.glob('src/**/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.rs'),*ROOT.glob('fuzz/fuzz_targets/*.inc'),ROOT/'Cargo.toml',ROOT/'Cargo.lock',ROOT/'fuzz/Cargo.toml',ROOT/'fuzz/Cargo.lock',ROOT/'data/magic.mgc',ROOT/'data/UPSTREAM.json']
     h=hashlib.sha256()
     for path in sorted(paths):
         h.update(str(path.relative_to(ROOT)).encode()+b'\0'+bytes.fromhex(digest(path)))
@@ -64,6 +64,7 @@ def main():
     if args.resume:
         report=json.loads(record.read_text())
         if report['configuration']!=configuration:raise SystemExit('Candidate/config changed; start a fresh campaign')
+        if any(c['returncode'] or not c['accounting_valid'] for c in report['chunks']):raise SystemExit('Failed/interrupted chunks require review and a fresh campaign')
     else:
         report=dict(schema_version=2,started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),supervisor_pid=os.getpid(),configuration=configuration,initial_corpus=seeds(corpus),chunks=[],
                     measured_cpu_seconds=0.0,wall_seconds=0.0,completed_gate=False)
@@ -73,8 +74,15 @@ def main():
     else:
         logs=logs_root/str(uuid.uuid4());logs.mkdir();report['log_directory']=str(logs.relative_to(ROOT))
     target_cpu=args.cpu_hours*3600
+    stop_requested=False
+    def stop(_signum,_frame):
+        nonlocal stop_requested
+        stop_requested=True
+    signal.signal(signal.SIGTERM,stop)
+    signal.signal(signal.SIGINT,stop)
     def save():
         temporary=record.with_suffix('.json.tmp');temporary.write_text(json.dumps(report,indent=2)+'\n');temporary.replace(record)
+    report['supervisor_pid']=os.getpid()
     report['status']='starting';save()
     while True:
         index=len(report['chunks'])
@@ -91,7 +99,7 @@ def main():
             '--setenv','TZ','UTC','--setenv','RUST_BACKTRACE','1',
             '/usr/bin/python3','-I','-c',
             'import os,subprocess,sys; p=subprocess.Popen(sys.argv[1:]); _,s,u=os.wait4(p.pid,0); p.returncode=os.waitstatus_to_exitcode(s); print("RFILE_FUZZ_USAGE",u.ru_utime,u.ru_stime,u.ru_maxrss,p.returncode,file=sys.stderr,flush=True); sys.exit(p.returncode if p.returncode>=0 else 128-p.returncode)',*command]
-        started=time.monotonic();killed=False
+        started=time.monotonic();killed=False;stop_started=None
         with log.open('wb')as output:
             child=subprocess.Popen(command,stdout=output,stderr=subprocess.STDOUT,cwd=ROOT,
                                    env=dict(os.environ,RUST_BACKTRACE='1'),start_new_session=True,preexec_fn=lambda:os.nice(10))
@@ -101,8 +109,14 @@ def main():
                 if pid:
                     child.returncode=os.waitstatus_to_exitcode(status);break
                 elapsed=time.monotonic()-started
-                if elapsed>args.seconds+30:
-                    os.killpg(child.pid,signal.SIGKILL);killed=True
+                if stop_requested and stop_started is None:
+                    stop_started=time.monotonic()
+                    try:os.killpg(child.pid,signal.SIGTERM)
+                    except ProcessLookupError:pass
+                if elapsed>args.seconds+30 or (stop_started is not None and time.monotonic()-stop_started>5):
+                    try:os.killpg(child.pid,signal.SIGKILL)
+                    except ProcessLookupError:pass
+                    killed=True
                 time.sleep(0.2)
         wall=time.monotonic()-started
         data=log.read_text(errors='replace')
@@ -118,9 +132,10 @@ def main():
         report['current_corpus']=seeds(corpus)
         report['requested_cpu_hours']=args.cpu_hours
         report['completed_gate']=bool(target_cpu>=86400 and report['measured_cpu_seconds']>=target_cpu and all(c['returncode']==0 and c['accounting_valid'] for c in report['chunks']))
-        report['status']='failed' if child.returncode or not accounting_valid else 'gate-passed' if report['completed_gate'] else 'smoke-only' if not target_cpu else 'partial-campaign-complete' if report['measured_cpu_seconds']>=target_cpu else 'running'
+        report['status']='interrupted' if stop_requested else 'failed' if child.returncode or not accounting_valid else 'gate-passed' if report['completed_gate'] else 'smoke-only' if not target_cpu else 'partial-campaign-complete' if report['measured_cpu_seconds']>=target_cpu else 'running'
         report.pop('active_child_pid',None);report.pop('active_command',None);save()
         print(json.dumps(dict(target=args.target,**chunk,accumulated_cpu_seconds=report['measured_cpu_seconds'],status=report['status'])),flush=True)
+        if stop_requested:raise SystemExit(2)
         if child.returncode or not accounting_valid:raise SystemExit('Fuzzer failed; preserve log/artifact and add a minimized regression')
         if not target_cpu or report['measured_cpu_seconds']>=target_cpu:break
         if source_digest()!=configuration['source_sha256'] or digest(binary)!=configuration['binary_sha256']:

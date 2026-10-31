@@ -12,7 +12,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
-| R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment on feat/cli-source-actions | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
+| R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment merged in PR #18 | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
 | R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
@@ -318,3 +318,25 @@ All 33 full-project stages passed with 145 ordinary debug/release tests, 143
 isolated default tests and Rust 1.87. Database bytes remain identical; benchmark
 checksums match, with warm runtime ratio 1.607 on this host. All 25 sanitizer
 targets rebuilt. No global install, system replacement or new release occurred.
+
+
+## R9 bounded queue foundation
+
+The local queue is implemented on `feat/bounded-fuzz-queue`, independently of
+agent/session recovery. It enforces a repository lock, finite worker/time limits,
+source/binary/supervisor identities, failure stop and graceful interruption.
+`tools/fuzz_queue_check.py` exercises real duplicate queue/target rejection,
+partial completion without a gate claim, and deadline termination. Previous
+manifests and worker logs are retained under `.reference/fuzz-queues/`.
+
+A four-worker, all-25-target development smoke passed in a transient user-systemd
+unit with 3 GiB memory, no swap and 400% CPU quota. Measured fuzzer CPU was
+81.238734 seconds; service peak memory was 1.1 GiB (systemd rounded). This tests
+the queue and target startup/corpus replay. It is not sustained qualification.
+An intentional deadline test interrupts encoding; its manifest must remain
+`interrupted`, not be mistaken for a detector finding or passing campaign.
+
+No overnight job is claimed by this implementation checkpoint. Starting a longer
+job requires a recorded actual unit and queue manifest. No agent is automatically
+restarted and no security notice is resubmitted. Independent review, branch
+coverage and 600 measured CPU-hours across the 25 mandatory targets remain open.

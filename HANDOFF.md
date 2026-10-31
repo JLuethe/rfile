@@ -8,8 +8,8 @@ This records evidence, not a completed security qualification or release.
 
 - R7 PR #15 and the experimental C ABI PR #16 are merged. Typed diagnostics PR #17 is also merged. Latest reviewed main:
   `51a31affc81c1068d8b2f94f2d3e67ddd8d2c624`. Linux/MSRV checks passed.
-- Active branch: `feat/cli-source-actions`. It integrates native CLI database
-  action output, missing-file provenance and bounded regular-file reads.
+- Active branch: `feat/bounded-fuzz-queue`. CLI action work is merged as PR #18.
+  This branch adds the bounded campaign queue and interruption/locking checks.
   Inspect Git/GitHub for its latest commit/PR before resuming or publishing.
 - The primary clean oracle is `.reference/file-clean`, exact upstream commit
   `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always use
@@ -33,8 +33,9 @@ This records evidence, not a completed security qualification or release.
 - Two applicable FFI Miri tests pass with `LC_ALL=C TZ=UTC0` and
   `MIRIFLAGS='-Zmiri-env-forward=LC_ALL -Zmiri-env-forward=TZ'`.
   Miri does not establish host timezone/locale/kernel correctness.
-- 25 ASan fuzz targets build. Historical R8b short isolated runs: 519,332 diagnostic
-  cases / 30.120558 CPU seconds; 156,904 ABI sequences / 30.932193 CPU seconds.
+- 25 ASan fuzz targets build. A resource-constrained all-target smoke completed
+  81.238734 measured CPU seconds, separately archived in fuzz-queue-all-smoke.json.
+  Duplicate-job rejection, partial-run status and deadline cleanup pass.
   No sustained target has met its 24-CPU-hour gate. Review actual live manifests
   and process identities before launching duplicate work.
 - PR #16's isolated package passed dynamic/static clients, default discovery and
@@ -45,8 +46,9 @@ This records evidence, not a completed security qualification or release.
 
 ## Next actions
 
-1. Reconcile Git, current reports, running processes and GitHub checks. Preserve
-   edits. Checkpoint this increment through a PR; require Linux and MSRV success.
+1. Reconcile Git, reports, running workers and GitHub checks. Preserve edits.
+   The new queue needs its own PR and Linux/MSRV checks. Rebuild/verify a clean
+   isolated package before starting an overnight candidate-freeze campaign.
 2. CLI actions now have 243 exact cases across off/auto/strict modes. Continue
    [remaining actions](docs/remaining/07-c-abi.md): default discovery, DEBUG, broader
    accepted warnings/IO behavior and ordinary classification source loads.
@@ -66,7 +68,9 @@ CPU accounting. Never combine campaigns across source/binary/supervisor hashes.
 ## Interruption recovery
 
 [Recovery specification](docs/10-execution-and-recovery-spec.md) remains the
-contract. No agent auto-restart service is installed. A security/content notice
+contract. No agent auto-restart service is installed. The local fuzz queue is implemented;
+its latest actual job is recorded in ignored `.reference/fuzz-queues/latest.json`.
+Inspect the linked queue.json and user-systemd status before claiming it is active. A security/content notice
 requires review, not an automatic retry loop. Local builds may continue after a
 chat disconnect; inspect their logs/PIDs instead of assuming completion or death.
 

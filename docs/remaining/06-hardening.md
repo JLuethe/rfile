@@ -124,3 +124,36 @@ targets: the full minimum gate is 600 measured CPU-hours, plus reruns after fixe
 A partial development campaign must say `partial-campaign-complete`, never
 `gate-passed`. Per-target OS locks prevent concurrent supervisors from mutating
 the same report/corpus. Candidate/configuration changes still require a fresh run.
+
+
+## Bounded overnight queue
+
+`tools/fuzz_queue.py` runs prebuilt targets through the isolated campaign
+supervisor. It has one repository lock, at most four workers, explicit CPU-hours
+per target and a maximum elapsed deadline. It archives previous manifests before
+starting fresh campaigns; each result is tied to the queue's source/binary and
+supervisor hashes. A failed target, changed candidate, signal or deadline stops
+new dispatch and terminates active children. No retries or code changes occur.
+The queue never certifies a release: independent review/coverage remain separate.
+
+Example development pass, **not** the 24-hour-per-target gate:
+
+```sh
+python3 tools/fuzz_queue.py --workers 4 --cpu-hours-per-target 1 \
+  --max-wall-hours 8 --chunk-seconds 300
+```
+
+Reports and per-worker logs persist under ignored `.reference/fuzz-queues/`;
+`latest.json` points to the current run. Completed target manifests remain under
+`reports/fuzz-TARGET.json`. Check actual status and hashes before resuming work.
+There is no automatic queue restart after interruption, nor any agent/API retry.
+Two different queues cannot own this repository; independent campaigns also
+have a per-target lock. SIGTERM/SIGINT are checkpointed. Incomplete chunks with
+missing accounting get no CPU credit and cannot silently satisfy qualification.
+
+On the current host, a transient user-systemd unit can enforce aggregate memory
+and CPU limits and keep the job independent of the chat process. This is a local
+test worker, not a globally installed rfile or an enabled boot/restart service.
+Each libFuzzer process additionally uses its configured RSS/watchdog limits;
+those polling limits alone are not a kernel-enforced memory ceiling. The actual
+unit configuration and live status must be recorded when a job is started.
