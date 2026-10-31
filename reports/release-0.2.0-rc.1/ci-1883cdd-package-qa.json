@@ -1,0 +1,177 @@
+{
+  "source_commit": "1883cdde6e3c607735c74888ac9328f60b24c7e9",
+  "version": "0.2.0-rc.1",
+  "archives": {
+    "rfile-0.2.0-rc.1-source.tar.gz": "407ddd2365c353f2fe58b13485f9cff7a6a8ef4e12e34515166193ed31288ba2",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "b9d71f05810a1a64f218d8bb93318eb90a4cbe002ae1433c37c3db4f0174a173"
+  },
+  "checks": [
+    {
+      "name": "version",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "rfile-0.2.0-rc.1\nmagic v21 from embedded pinned database\nupstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\nfeatures: safe-rust regex miniz_oxide; kernel sandbox compiled=false\n",
+      "stderr": ""
+    },
+    {
+      "name": "help",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "Additional options: --profile=pinned-5.48|corrected-v1; --capabilities; --sandbox=auto|strict|off; --sandbox-status (stderr JSON)\nUsage: rfile [options] FILE...\n       rfile -C [-m MAGIC]\nIndependent Rust file classifier, pinned magic v21.\n\n  -b, --brief                 omit filename\n  -m, --magic-file LIST       colon-separated magic sources/databases\n  -i, --mime                  output MIME type and encoding\n      --mime-type             output MIME type\n      --mime-encoding         output encoding\n      --extension             output extensions\n      --apple                 output Apple creator/type\n  -k, --keep-going            continue matching\n  -e, --exclude TEST          skip a detector\n  -f, --files-from FILE       read newline-delimited filenames (- for stdin)\n  -F, --separator STRING      filename separator\n  -N, --no-pad                disable filename padding\n  -n, --no-buffer             flush each result\n  -0, --print0                NUL after filename; twice for NUL records\n  -L, --dereference           follow symbolic links\n  -h, --no-dereference        inspect symbolic links\n  -s, --special-files         read devices\n  -p, --preserve-date         restore access/modification times\n  -z, --uncompress            inspect compiled codec contents (bounded)\n  -Z, --uncompress-noreport   inspect compiled codecs; omit wrapper\n  -P, --parameter NAME=N      set input/recursion/regex/work limits\n  -E                          make filesystem failures errors\n  -r, --raw                   preserve nonprintable output\n  -d, --debug                 diagnostic evaluation trace\n  -c, --checking-printout     parse/check source and list groups\n  -C, --compile               compile source to v21 .mgc\n  -l, --list                  list rule strengths\n  -S, --no-sandbox            disable kernel sandbox\n  -v, --version               engine, rule identity and features\n      --help                  show this help\n",
+      "stderr": ""
+    },
+    {
+      "name": "capabilities",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--capabilities"
+      ],
+      "status": 0,
+      "stdout": "{\"c_abi\":false,\"codecs\":[\"gzip\",\"zlib\"],\"database_format\":21,\"display_backend\":\"portable C bytes\",\"display_locale\":\"C\",\"engine_version\":\"0.2.0-rc.1\",\"hardening\":{\"independent_security_review\":false,\"sustained_fuzz_gate\":false},\"profile\":\"pinned-5.48\",\"regex\":{\"capture_groups\":32,\"corrected_capture_histories\":true,\"instructions\":65536,\"pinned_quantified_backreferences\":\"restricted\"},\"regex_backreferences\":true,\"sandbox\":{\"compiled\":false,\"enforced\":false},\"schema_version\":1,\"time_zone\":\"UTC\",\"upstream_commit\":\"41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "file-mime",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-i",
+        "/tmp/rfile-artifact-check-6dsmiq9a/plain input.txt"
+      ],
+      "status": 0,
+      "stdout": "text/plain; charset=us-ascii\n",
+      "stderr": ""
+    },
+    {
+      "name": "stdin",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-"
+      ],
+      "status": 0,
+      "stdout": "ASCII text\n",
+      "stderr": ""
+    },
+    {
+      "name": "gzip-inner",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-Z",
+        "/tmp/rfile-artifact-check-6dsmiq9a/input.gz"
+      ],
+      "status": 0,
+      "stdout": "ASCII text\n",
+      "stderr": ""
+    },
+    {
+      "name": "missing-file-error",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-E",
+        "/tmp/rfile-artifact-check-6dsmiq9a/missing"
+      ],
+      "status": 1,
+      "stdout": "/tmp/rfile-artifact-check-6dsmiq9a/missing: ERROR: cannot stat `/tmp/rfile-artifact-check-6dsmiq9a/missing' (No such file or directory)\n",
+      "stderr": ""
+    },
+    {
+      "name": "install",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/tmp/rfile-artifact-check-6dsmiq9a/installed with spaces"
+      ],
+      "status": 0,
+      "stdout": "Installed rfile 0.2.0-rc.1 into /tmp/rfile-artifact-check-6dsmiq9a/installed with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "installed-version",
+      "command": [
+        "/tmp/rfile-artifact-check-6dsmiq9a/installed with spaces/bin/rfile",
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "rfile-0.2.0-rc.1\nmagic v21 from embedded pinned database\nupstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\nfeatures: safe-rust regex miniz_oxide; kernel sandbox compiled=false\n",
+      "stderr": ""
+    },
+    {
+      "name": "refuse-existing-install",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/tmp/rfile-artifact-check-6dsmiq9a/installed with spaces"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "rfile is already installed at this prefix; uninstall it first\n"
+    },
+    {
+      "name": "refuse-modified-uninstall",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "uninstall",
+        "--prefix",
+        "/tmp/rfile-artifact-check-6dsmiq9a/installed with spaces"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Refusing to remove changed or missing installed file: /tmp/rfile-artifact-check-6dsmiq9a/installed with spaces/bin/rfile\n"
+    },
+    {
+      "name": "uninstall",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "uninstall",
+        "--prefix",
+        "/tmp/rfile-artifact-check-6dsmiq9a/installed with spaces"
+      ],
+      "status": 0,
+      "stdout": "Removed rfile 0.2.0-rc.1 from /tmp/rfile-artifact-check-6dsmiq9a/installed with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "refuse-symlink-prefix",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/tmp/rfile-artifact-check-6dsmiq9a/symlink-prefix"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 98, in <module>\n    main()\n  File \"/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 47, in main\n    path = destination(prefix, name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 24, in destination\n    raise ValueError(f'Refusing symlink in installed path: {parent}')\nValueError: Refusing symlink in installed path: /tmp/rfile-artifact-check-6dsmiq9a/symlink-prefix/bin\n"
+    },
+    {
+      "name": "offline-source-rebuild",
+      "command": [
+        "/home/runner/.cargo/bin/cargo",
+        "check",
+        "--workspace",
+        "--all-targets",
+        "--all-features",
+        "--locked",
+        "--offline"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": "\u001b[1m\u001b[92m   Compiling\u001b[0m proc-macro2 v1.0.107\n\u001b[1m\u001b[92m   Compiling\u001b[0m quote v1.0.47\n\u001b[1m\u001b[92m   Compiling\u001b[0m unicode-ident v1.0.27\n\u001b[1m\u001b[92m   Compiling\u001b[0m libc v0.2.191\n\u001b[1m\u001b[92m   Compiling\u001b[0m thiserror v2.0.21\n\u001b[1m\u001b[92m    Checking\u001b[0m typenum v1.20.1\n\u001b[1m\u001b[92m   Compiling\u001b[0m rustix v1.1.5\n\u001b[1m\u001b[92m    Checking\u001b[0m bitflags v2.13.2\n\u001b[1m\u001b[92m   Compiling\u001b[0m syn v3.0.9\n\u001b[1m\u001b[92m   Compiling\u001b[0m syn v2.0.119\n\u001b[1m\u001b[92m    Checking\u001b[0m hybrid-array v0.4.15\n\u001b[1m\u001b[92m    Checking\u001b[0m linux-raw-sys v0.12.1\n\u001b[1m\u001b[92m    Checking\u001b[0m cfg-if v1.0.5\n\u001b[1m\u001b[92m    Checking\u001b[0m crypto-common v0.2.2\n\u001b[1m\u001b[92m    Checking\u001b[0m block-buffer v0.12.1\n\u001b[1m\u001b[92m    Checking\u001b[0m seccompiler v0.5.0\n\u001b[1m\u001b[92m    Checking\u001b[0m const-oid v0.10.2\n\u001b[1m\u001b[92m   Compiling\u001b[0m zmij v1.0.23\n\u001b[1m\u001b[92m   Compiling\u001b[0m serde_core v1.0.229\n\u001b[1m\u001b[92m   Compiling\u001b[0m crc32fast v1.5.3\n\u001b[1m\u001b[92m    Checking\u001b[0m digest v0.11.3\n\u001b[1m\u001b[92m   Compiling\u001b[0m enumflags2_derive v0.7.12\n\u001b[1m\u001b[92m    Checking\u001b[0m twox-hash v2.1.5\n\u001b[1m\u001b[92m    Checking\u001b[0m simd-adler32 v0.3.10\n\u001b[1m\u001b[92m    Checking\u001b[0m adler2 v2.0.1\n\u001b[1m\u001b[92m    Checking\u001b[0m cpufeatures v0.3.1\n\u001b[1m\u001b[92m   Compiling\u001b[0m thiserror-impl v2.0.21\n\u001b[1m\u001b[92m   Compiling\u001b[0m serde_json v1.0.154\n\u001b[1m\u001b[92m    Checking\u001b[0m sha2 v0.11.0\n\u001b[1m\u001b[92m    Checking\u001b[0m miniz_oxide v0.9.1\n\u001b[1m\u001b[92m    Checking\u001b[0m enumflags2 v0.7.12\n\u001b[1m\u001b[92m    Checking\u001b[0m jiff-core v0.1.1\n\u001b[1m\u001b[92m    Checking\u001b[0m itoa v1.0.18\n\u001b[1m\u001b[92m    Checking\u001b[0m memchr v2.8.3\n\u001b[1m\u001b[92m    Checking\u001b[0m landlock v0.4.7\n\u001b[1m\u001b[92m    Checking\u001b[0m regex-syntax v0.8.11\n\u001b[1m\u001b[92m    Checking\u001b[0m rfile-platform v0.2.0-rc.1 (/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-source/crates/rfile-platform)\n\u001b[1m\u001b[92m    Checking\u001b[0m jiff v0.2.38\n\u001b[1m\u001b[92m    Checking\u001b[0m flate2 v1.1.10\n\u001b[1m\u001b[92m    Checking\u001b[0m lzma-rust2 v0.23.0\n\u001b[1m\u001b[92m    Checking\u001b[0m regex-automata v0.4.18\n\u001b[1m\u001b[92m    Checking\u001b[0m lz4_flex v0.14.0\n\u001b[1m\u001b[92m    Checking\u001b[0m ruzstd v0.9.1\n\u001b[1m\u001b[92m   Compiling\u001b[0m rfile-ffi v0.2.0-rc.1 (/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-source/crates/rfile-ffi)\n\u001b[1m\u001b[92m    Checking\u001b[0m rfile v0.2.0-rc.1 (/tmp/rfile-artifact-check-6dsmiq9a/rfile-0.2.0-rc.1-source)\n\u001b[1m\u001b[92m    Finished\u001b[0m `dev` profile [unoptimized + debuginfo] target(s) in 8.66s\n"
+    }
+  ],
+  "status": "passed"
+}
