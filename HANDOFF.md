@@ -6,7 +6,29 @@ Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-4 correction awaiting Claude retest
+## Pass-5 candidate awaiting Claude retest
+
+Fix commit `e8cdcb409edfcab152eb5c411fd08567834b2c3a`, tree
+`c3337de53018900f5ba7c4430352c99a1cbc205d`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-5 review and retest instructions](reports/claude-pass5-codex-review.md).
+
+Claude's pass-5 ledger independently verified the earlier 8e33173 empty-file
+ordering fix in 324 rows per build/profile; no findings were closed. The new
+candidate fixes annotation-only unreadable symlink diagnostics and documents
+mixed-flag concatenation and non-regular-target differences. F-04b is now
+root-caused in a preceding report-only commit; encoding code remains unchanged.
+Non-wildcard string16 behavior is documented without extending the evaluator.
+
+Local focused tests and Clippy pass. A Codex paired 324-row matrix has 10
+differences versus 18 before, eight newly exact matches and no newly differing
+rows. This is not independent acceptance or packaged-artifact verification.
+Original Claude ledgers/evidence, the old draft, tags and release assets remain
+unchanged. All maintainer decisions and final verification/security gates remain
+open. The pass-4 and older sections below are historical records superseded by
+this candidate and the original pass-5 ledger.
+
+## Pass-4 correction awaiting Claude retest (historical)
 
 Code candidate `8e33173217dd89b20c227d7665319681114ee9cb`, tree
 `b20a51c44a44e42bf65bdde5e11ee4a10ac34ad7`, on local branch
