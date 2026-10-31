@@ -22,6 +22,9 @@ impl Action {
             io::stdout().flush()?;
             io::stderr().lock().write_all(value)?;
         } else {
+            if !value.is_empty() {
+                rfile_platform::check_stdout_writable()?;
+            }
             io::stdout().lock().write_all(value)?;
         }
         Ok(())

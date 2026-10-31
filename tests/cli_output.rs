@@ -84,3 +84,23 @@ fn debug_diagnostics_do_not_panic_on_unwritable_stderr() {
     assert!(output.status.success());
     assert_eq!(output.stdout, b"matched\n");
 }
+
+#[test]
+fn silent_compilation_does_not_require_writable_stdout() {
+    let dir = std::env::temp_dir().join(format!("rfile-silent-compile-{}", std::process::id()));
+    std::fs::create_dir(&dir).unwrap();
+    let rules = dir.join("rules.magic");
+    std::fs::write(&rules, b"0 byte x matched\n").unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["--sandbox=off", "-C", "-m"])
+        .arg(&rules)
+        .current_dir(&dir)
+        .env("TZ", "UTC0")
+        .stdout(File::open("/dev/null").unwrap())
+        .stderr(Stdio::piped())
+        .output()
+        .unwrap();
+    assert!(output.status.success(), "{output:?}");
+    assert!(dir.join("rules.magic.mgc").exists());
+    std::fs::remove_dir_all(dir).unwrap();
+}

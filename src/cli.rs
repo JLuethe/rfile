@@ -179,6 +179,7 @@ fn emit_operand(
         }
     };
     line.push(if p.nulls > 1 { 0 } else { b'\n' });
+    rfile_platform::check_stdout_writable()?;
     let mut out = io::stdout().lock();
     out.write_all(&line)?;
     if p.no_buffer {
@@ -245,6 +246,9 @@ fn file_list(engine: &Engine, path: &OsStr, p: &Presentation) -> Result<bool> {
 }
 
 fn write_stdout(text: String) -> Result<()> {
+    if !text.is_empty() {
+        rfile_platform::check_stdout_writable()?;
+    }
     let mut out = io::stdout().lock();
     out.write_all(text.as_bytes())?;
     out.flush()?;
@@ -785,7 +789,6 @@ fn execute_events(events: Vec<Event>) -> Result<i32> {
     Ok(i32::from(failed))
 }
 fn execute() -> Result<i32> {
-    rfile_platform::check_stdout_writable()?;
     let args: Vec<OsString> = std::env::args_os().skip(1).collect();
     execute_plan(CliPlan::parse(&args))
 }
