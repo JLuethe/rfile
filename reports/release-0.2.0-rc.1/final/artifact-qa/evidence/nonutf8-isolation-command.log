@@ -1,0 +1,44 @@
+{
+  "raw_filename_hex": "6e616d652dff2e747874",
+  "direct_host": {
+    "status": 0,
+    "stdout": "ASCII text\n",
+    "stderr": "",
+    "argv_hex": [
+      "2f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f7061636b6167652d71612d6536342f62696e6172792d6578747261637465642f7266696c652d302e322e302d72632e312d7838365f36342d756e6b6e6f776e2d6c696e75782d676e752f62696e2f7266696c65",
+      "2d62",
+      "2f686f6d652f6a6f686e2f436f64652f7266696c652f2e7265666572656e63652f7061636b6167652d71612d6536342f66697874757265732f6e616d652dff2e747874"
+    ]
+  },
+  "container_shell_glob": {
+    "status": 0,
+    "stdout": "ASCII text\n",
+    "stderr": "",
+    "command": [
+      "podman",
+      "run",
+      "--rm",
+      "--network=none",
+      "--read-only",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges",
+      "--user=65534:65534",
+      "--memory=256m",
+      "--pids-limit=32",
+      "--cpus=1",
+      "--env",
+      "TZ=UTC0",
+      "--volume",
+      "/home/john/Code/rfile/.reference/package-qa-e64/binary-extracted/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile:/qa/rfile:ro",
+      "--volume",
+      "/home/john/Code/rfile/.reference/package-qa-e64/fixtures:/fixtures:ro",
+      "docker.io/library/ubuntu@sha256:076e7bf82319619f28dd0aa9c02ab34b055ad37100395b4f49a2ffba04fb5e11",
+      "/bin/sh",
+      "-c",
+      "for path in /fixtures/name-*.txt; do exec /qa/rfile -b \"$path\"; done; exit 2"
+    ]
+  },
+  "expected_stdout": "ASCII text\\n",
+  "status": "passed"
+}
+exit_status=0
