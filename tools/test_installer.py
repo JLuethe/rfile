@@ -50,6 +50,26 @@ class InstallerDiagnostics(unittest.TestCase):
         self.refuse(blocker / 'prefix')
         self.assertEqual(blocker.read_bytes(), b'keep')
 
+    def test_invalid_manifest_schema_fails_before_creating_prefix(self):
+        path = self.archive / 'MANIFEST.json'
+        valid = json.loads(path.read_text())
+        mutations = [lambda m: m.pop('version'), lambda m: m.pop('source_commit'),
+                     lambda m: m.__setitem__('files', []),
+                     lambda m: m['files']['bin/rfile'].pop('mode'),
+                     lambda m: m['files'].__setitem__('bin/rfile', 'bad'),
+                     lambda m: m['files']['bin/rfile'].__setitem__('mode', '755'),
+                     lambda m: m['files']['bin/rfile'].__setitem__('mode', 2**70)]
+        for mutate in mutations:
+            manifest = json.loads(json.dumps(valid))
+            mutate(manifest)
+            path.write_text(json.dumps(manifest))
+            prefix = self.root / 'prefix'
+            self.refuse(prefix)
+            self.assertFalse(prefix.exists())
+        path.write_text('[]')
+        self.refuse(self.root / 'prefix')
+        self.assertFalse((self.root / 'prefix').exists())
+
     def test_malformed_manifest_is_a_normal_error(self):
         (self.archive / 'MANIFEST.json').write_text('{')
         prefix = self.root / 'prefix'

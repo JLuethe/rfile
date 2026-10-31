@@ -25,6 +25,29 @@ def destination(prefix, name):
     return path
 
 
+def load_manifest(path):
+    manifest = json.loads(path.read_text())
+    if not isinstance(manifest, dict):
+        raise ValueError('Manifest must be a JSON object')
+    for key in ('version', 'source_commit'):
+        if not isinstance(manifest.get(key), str) or not manifest[key]:
+            raise ValueError(f'Manifest requires a nonempty {key}')
+    files = manifest.get('files')
+    if not isinstance(files, dict) or not files:
+        raise ValueError('Manifest files must be a nonempty object')
+    for name, info in files.items():
+        if not isinstance(name, str) or not isinstance(info, dict):
+            raise ValueError('Manifest file entries must map paths to objects')
+        digest = info.get('sha256')
+        if not isinstance(digest, str) or len(digest) != 64 or any(
+                c not in '0123456789abcdefABCDEF' for c in digest):
+            raise ValueError(f'Invalid manifest checksum: {name}')
+        mode = info.get('mode')
+        if type(mode) is not int or not 0 <= mode <= 0o777:
+            raise ValueError(f'Invalid manifest permissions: {name}')
+    return manifest
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['install', 'uninstall'])
@@ -39,7 +62,7 @@ def main():
     receipt = destination(prefix, 'share/rfile/install-receipt.json')
     if args.action == 'install':
         root = Path(__file__).resolve().parent
-        manifest = json.loads((root / 'MANIFEST.json').read_text())
+        manifest = load_manifest(root / 'MANIFEST.json')
         files = manifest['files']
         if receipt.exists():
             raise SystemExit('rfile is already installed at this prefix; uninstall it first')
@@ -74,7 +97,7 @@ def main():
     else:
         if not receipt.is_file():
             raise SystemExit('No rfile installation receipt at this prefix')
-        manifest = json.loads(receipt.read_text())
+        manifest = load_manifest(receipt)
         paths = []
         for name, info in manifest['files'].items():
             path = destination(prefix, name)
