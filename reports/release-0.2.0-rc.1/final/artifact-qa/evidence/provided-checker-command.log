@@ -1,0 +1,4 @@
+Caller PATH lacks ~/.cargo/bin; CARGO unset; CARGO_BUILD_JOBS=1; TMPDIR under .reference/package-qa-e64/tmp
+python3 tools/check_cli_package.py <candidate> --report <evidence/provided-checker.json>
+{"status": "passed", "checks": 14, "source_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3"}
+exit_status=0

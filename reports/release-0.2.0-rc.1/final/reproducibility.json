@@ -1,0 +1,90 @@
+{
+  "reproducible": true,
+  "host": {
+    "system": "Linux",
+    "release": "7.2.8-9-omarchy",
+    "machine": "x86_64"
+  },
+  "source": {
+    "frozen_main_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+    "frozen_main_tree": "91506a94437571b6fc3257f1d2e860824e19b727",
+    "sanitizer_execution_commit": "a781c017b3495121a4203053cbabe55225cb0130",
+    "sanitizer_execution_tree": "91506a94437571b6fc3257f1d2e860824e19b727",
+    "trees_equal": true,
+    "attribution": "ASan/Miri execution remains attributed to a781c01; equality of Git trees does not change the recorded execution SHA."
+  },
+  "toolchain": {
+    "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "build_jobs": 1,
+    "cargo_net_offline": true,
+    "package_option": "--offline"
+  },
+  "package_cli": "tools/package_cli.py",
+  "runs": {
+    "run-1": {
+      "cwd": "/home/john/Code/rfile/.reference/package-repro-e64ce03/clone",
+      "command": [
+        "python3",
+        "tools/package_cli.py",
+        "--output",
+        "/home/john/Code/rfile/.reference/package-repro-e64ce03/artifacts/run-1",
+        "--offline"
+      ],
+      "environment_overrides": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_NET_OFFLINE": "true",
+        "TMPDIR": "/home/john/Code/rfile/.reference/package-repro-e64ce03/tmp"
+      },
+      "returncode": 0,
+      "started_utc": "2026-10-31T06:49:33.304070+00:00",
+      "ended_utc": "2026-10-31T06:50:14.117716+00:00",
+      "log_sha256": "90adc435eaf62f7e28d6c7fffc2715738eeaeffd2cfb730e5fc534626d06cca2",
+      "output": "/home/john/Code/rfile/.reference/package-repro-e64ce03/artifacts/run-1"
+    },
+    "run-2": {
+      "cwd": "/home/john/Code/rfile/.reference/package-repro-e64ce03/clone",
+      "command": [
+        "python3",
+        "tools/package_cli.py",
+        "--output",
+        "/home/john/Code/rfile/.reference/package-repro-e64ce03/artifacts/run-2",
+        "--offline"
+      ],
+      "environment_overrides": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_NET_OFFLINE": "true",
+        "TMPDIR": "/home/john/Code/rfile/.reference/package-repro-e64ce03/tmp"
+      },
+      "returncode": 0,
+      "started_utc": "2026-10-31T06:50:16.469255+00:00",
+      "ended_utc": "2026-10-31T06:51:01.494151+00:00",
+      "log_sha256": "c55a157c2b5e0dec643e1836d1830040cc8cc07bd1e6d5dea37c4c8651ab2921",
+      "output": "/home/john/Code/rfile/.reference/package-repro-e64ce03/artifacts/run-2"
+    }
+  },
+  "artifact_sha256_run_1": {
+    "SHA256SUMS": "a1f2220bcdce4e5c94597b53f3bd05b2b0f57dd302ed75fea703649347ce9763",
+    "release-manifest.json": "ea38b2427a13dac09d3fd1af96f3870542bbeb67781900f4cfa3ad103ef22985",
+    "rfile-0.2.0-rc.1-source.tar.gz": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "b504906fb5b92451115949eda78fa2ec182d4f8ed47bace40e344241edbafe56"
+  },
+  "artifact_sha256_run_2": {
+    "SHA256SUMS": "a1f2220bcdce4e5c94597b53f3bd05b2b0f57dd302ed75fea703649347ce9763",
+    "release-manifest.json": "ea38b2427a13dac09d3fd1af96f3870542bbeb67781900f4cfa3ad103ef22985",
+    "rfile-0.2.0-rc.1-source.tar.gz": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "b504906fb5b92451115949eda78fa2ec182d4f8ed47bace40e344241edbafe56"
+  },
+  "artifact_hashes_identical": true,
+  "checksum_verification": {
+    "run_1": 0,
+    "run_2": 0
+  },
+  "sanitizer_miri_compact_archive": {
+    "path": "/home/john/Code/rfile/.reference/rfile-sanitizer-evidence-a781c01.tar.gz",
+    "sha256": "6b3cd8bd16eb63ec8c20941034f17ae4542ca43e78e0927c5d2ad26b7b6b091b",
+    "note": "Contains prior smoke and a781c01 QA only; excludes caches, tmp and binaries."
+  },
+  "command_record_count": 10,
+  "command_log_hash_mismatches": []
+}

@@ -1,0 +1,4 @@
+rfile-0.2.0-rc.1
+magic v21 from embedded pinned database
+upstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59
+features: safe-rust regex miniz_oxide; kernel sandbox compiled=false

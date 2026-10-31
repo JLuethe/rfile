@@ -1,0 +1,48 @@
+{
+  "candidate_commit": "a781c017b3495121a4203053cbabe55225cb0130",
+  "candidate_tree": "91506a94437571b6fc3257f1d2e860824e19b727",
+  "main_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "tree_identical": true,
+  "runs": [
+    {
+      "run_id": "20261031T063351Z-fc377b5d8eaa4ad3ad3e115b61975ef3",
+      "status": "failed",
+      "steps": 7,
+      "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+      "report_sha256": "67cb2e7363642cc27cc7805a27144ca2af7e9f39d0857bfc0f2f3ef480bb4710",
+      "report_path": "verification-runs/20261031T063351Z-fc377b5d8eaa4ad3ad3e115b61975ef3/report.json"
+    },
+    {
+      "run_id": "20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1",
+      "status": "passed",
+      "steps": 32,
+      "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+      "report_sha256": "1637cdabb2d17c901c871ee63e3af46e4ee63d3f627c6d05558c78b3e45ddfd5",
+      "report_path": "verification-runs/20261031T064125Z-a3042b1ba8174e46bbf595049ca064f1/report.json"
+    },
+    {
+      "run_id": "20261031T064611Z-0435bcdcfc0a46bd810f4fd07e6eaa92",
+      "status": "running",
+      "steps": 5,
+      "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+      "report_sha256": "4c1fa24f97d5075f72fbd3a87825d278fb3926d47e76229b79783306114848a8",
+      "report_path": "verification-runs/20261031T064611Z-0435bcdcfc0a46bd810f4fd07e6eaa92/report.json"
+    },
+    {
+      "run_id": "20261031T065606Z-f76dd754f11640cc879bc7f74038ee10",
+      "status": "failed",
+      "steps": 3,
+      "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+      "report_sha256": "d9dc3748c340646f42f70b492abca49fdb44dd34eee328f07eea0f67625022da",
+      "report_path": "verification-runs/20261031T065606Z-f76dd754f11640cc879bc7f74038ee10/report.json"
+    },
+    {
+      "run_id": "20261031T065741Z-18f18ef5938f4b7da66d4f0e6c9850b0",
+      "status": "passed",
+      "steps": 34,
+      "source_sha256": "64ed7072cc801c52b00aedda06c616ad3ae7141337df3c455aa8077f2bb0304d",
+      "report_sha256": "f5aa027eb57eb3e82612cbb5938a1cdedf5e4032fb1b2975810afc1ebe930602",
+      "report_path": "verification-runs/20261031T065741Z-18f18ef5938f4b7da66d4f0e6c9850b0/report.json"
+    }
+  ]
+}

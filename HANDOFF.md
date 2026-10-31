@@ -1,102 +1,78 @@
 # rfile restart checkpoint
 
-Updated 2026-10-30, late evening PDT (2026-10-31 UTC). The user authorized
-continuing release preparation overnight and explicitly requested independent
-GPT-6 Luna subagents after Claude's quota was exhausted. Codex implements fixes;
-the testing agents test/retest. Keep this work recoverable; do not publish the
-release without the maintainer's final approval.
+Updated 2026-10-31 UTC (overnight October 30–31 PDT). The user authorized
+release preparation overnight with independent GPT-6 Luna testing agents after
+Claude exhausted its quota. Codex fixes; independent agents test and retest.
+The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
+vendored source. Publication requires the maintainer's final approval.
 
-Start with [release scope](docs/release-scope.md) and the
-[release plan](docs/11-github-release-plan.md). The endpoint is an experimental
-0.2.0-rc.1 default-feature x86_64 Linux/glibc CLI plus complete vendored source,
-not completed security qualification or universal libmagic compatibility.
+## Frozen candidate and GitHub state
 
-## Current GitHub / working state
+- Repository: https://github.com/JLuethe/rfile.
+- Release preparation [PR #23](https://github.com/JLuethe/rfile/pull/23) merged
+  with all checks passing. Frozen release source:
+  `e64ce034bee6a6c0959872d9b8f632d692dbfaa3`.
+- Its Git tree `91506a94437571b6fc3257f1d2e860824e19b727` exactly equals
+  `a781c017b3495121a4203053cbabe55225cb0130`, the independently tested commit.
+  Reports retain actual executed identities; squash-merge equivalence is recorded
+  separately. Later documentation/evidence commits do not change the release target.
+- Final package workflow: https://github.com/JLuethe/rfile/actions/runs/41178070592.
+- PR #19 merged after independent queue QA. PRs #20 and #1 closed; optional
+  dependency PRs #21/#22 remain explicitly deferred. Both Linux and MSRV checks
+  are required, including for administrators.
+- Existing public v0.1.0 remains unchanged. No new release is published.
+- CLI requires GLIBC 2.34 symbols; the oldest tested runtime is Ubuntu 22.04
+  (glibc 2.35), not every glibc 2.34 distribution. Source MSRV remains Rust 1.87.
+  Additional codecs, confinement and C interface remain experimental source options.
 
-- Repo: https://github.com/JLuethe/rfile. PR #19 passed independent Luna queue QA
-  and was squash-merged into main as `5316cb814b2f5e349425f8349ae508cc0f162750`.
-- Release PR #23: https://github.com/JLuethe/rfile/pull/23, branch
-  `fix/release-readiness-baseline`, now based on main. The feature branch merged
-  main to reconcile squash ancestry; that merge changed no source files.
-- PR #20 was closed (incorrect MSRV update); PR #1 was closed as superseded by
-  the tested pinned checkout upgrade. Optional dependency PRs #21/#22 are
-  explicitly deferred. Both `linux` and `msrv` are required branch checks.
-- No new release is published. Existing v0.1.0 is unchanged. Do not tag or
-  substitute final artifacts until independent acceptance of their exact hashes.
-- Packaging, installer, complete vendored source, checksums, release notes,
-  release-mode CI and bounded pinned-oracle CI are implemented. Artifacts are
-  built from clean immutable Git snapshots. Current binary requires GLIBC 2.34;
-  Ubuntu 22.04 is the intended oldest executed runtime, not a claim for every
-  glibc 2.34 distribution. Rust 1.87 remains the source-build minimum.
+## Independent findings and validation
 
-## Independent reviews and open acceptance work
+Initial Claude reports are preserved in `reports/release-review-2026-10-30/`
+and `reports/release-readiness-2026-10-30/`. Luna independently reviewed the
+queue, exact FILETIME undefined-reference boundary, and ZIP64 helper variants.
+The artifact review found and closed fresh-cache rustc discovery and missing
+system timezone failures through Codex fixes and independent retests. Historical
+rejected archives and infrastructure failures remain recorded, not relabeled.
 
-- Initial Claude baseline/retests: `reports/release-review-2026-10-30/` and
-  `reports/release-readiness-2026-10-30/`. Correct fixture coverage, fail-closed
-  verification reporting and actual sandbox coverage passed. The queued Claude
-  retry was cancelled when the user requested Luna; do not assume it is active.
-- Luna queue QA: `reports/release-0.2.0-rc.1/queue-qa/`, passed bounded locking,
-  duplicate rejection, partial accounting and deadline cleanup. It used explicitly
-  identified prebuilt binaries and makes no sustained qualification claim.
-- Default full oracle CI passed on `0c04563`. New Ubuntu CI exposed the known
-  native FILETIME uninitialized-seconds path. The precise harness correction
-  passed Luna's 37 direct vectors, 10,875 semantic cases (10,848 exact + 27
-  separately validated undefined-reference cases), and 2,850 date cases (2,820
-  exact + 30 separately validated). No production date semantics changed.
-- The all-feature CI then exposed 64 ZIP64 native gzip-helper text variants.
-  `dc103ea` preserves exact supplemental whole-observation hashes, requires
-  unchanged Rust results/status and records the helper version/hash. Luna independently accepted the exact 64-case replay, rejected mutated Rust/native
-  observations, and passed the local 3,268-case codec matrix. Fresh full CI remains
-  required.
-- Artifact QA found the fresh-cache checker could lose rustc when the caller's
-  PATH omitted ~/.cargo/bin. `9f4d20f` preserves the selected Cargo toolchain
-  directory; a follow-up bounds default fresh-build parallelism to one job.
-  Luna is retesting the original failure and exact archives.
-- Artifact QA also found the default CLI failed in minimal Ubuntu without tzdata.
-  `09f2c36` adds UTC for an absent implicit system zone and built-in `TZ=UTC`;
-  explicit invalid zones and malformed/unreadable existing files still fail.
-  Luna accepted the fix through 13 constrained-container checks. The reusable
-  checker is integrated into candidate CI; final exact assets remain pending.
-- Fresh 25-target sanitizer smoke and two FFI Miri tests ran in an isolated
-  clone. Read its actual manifests/logs and final reviewer report before using
-  the result. No target met its 24-CPU-hour gate.
+Both pinned-oracle CI profiles, Linux/MSRV checks, packaging and 13 minimal-image
+checks passed on a781. Independent full-source and exact final artifact acceptance passed and are
+recorded under the final evidence directory below. A bounded
+25-target ASan replay passed with 75.771719 measured CPU seconds; Miri passed two
+tests. No target met its 24-CPU-hour qualification gate.
 
-## Active agents / durable scratch
+## Completed delivery and recovery paths
 
-Use the live collaboration inventory if this thread resumes; never assume an
-agent or process survived an interruption. Current testing tasks are:
+The [unpublished release draft](https://github.com/JLuethe/rfile/releases/tag/untagged-c161acd97cb00e0a1c09)
+targets e64 and holds the exact accepted Ubuntu CI archives. The
+[final acceptance record](reports/release-0.2.0-rc.1/final/README.md) contains
+checksums, source equivalence, independent reports and scope limitations.
+Default/all-feature verification passed 32/34 stages; strict sandbox checks
+executed in debug/release. Fixture coverage is 103 files / 1,339 truncations.
+Rust 1.87, 15 Python regressions and 582/582 valid source dumps passed.
+Exact archives passed 14 package, 10 installer and 13 minimal-Ubuntu checks.
+Two clean local builds were reproducible on the same host/toolchain; their source
+matches CI, but cross-host binary reproducibility is not claimed.
 
-- `luna_independent_qa`: queue + FILETIME + ZIP64 comparison review. Evidence in
-  `/tmp/rfile-queue-review-qa/` and `/tmp/rfile-night-review/`; isolated source
-  `/home/john/Code/rfile/.reference/release-acceptance-source`. Its reusable
-  Python regression is integrated as `tools/test_oracle_boundaries.py`.
-- `luna_artifact_qa`: exact CI archives from run `41176219039`, source
-  `0f1054d2404d8049d2d2357e22af97c5e8f22d3c`. Scratch/evidence under
-  `/home/john/Code/rfile/.reference/package-qa-0f/`. It must retest final assets.
-- `luna_sanitizer_qa`: isolated clone
-  `/home/john/Code/rfile/.reference/release-rc1-sanitizers`, build commit
-  `408c940fcc37e938d6f9e47ef43eddd2641872af`. Read `qa-evidence/` and the actual
-  `.reference/fuzz-queues/latest.json` within that clone. Final-candidate replay
-  is still required before attaching this evidence to a different source SHA.
+Durable evidence/scratch, if the thread resumes:
 
-## Next release actions
+- `.reference/release-final-e64/`: delivery checkpoint, assets, release notes and
+  final raw evidence. Consult `CHECKPOINT.md` before restarting any work.
+- `.reference/qa-checkouts/a781c01`: source-test checkout. The old
+  `/tmp/rfile-final-acceptance-a781c01` symlink preserves cached fixture paths.
+- `.reference/release-final-e64/evidence/source-qa/rfile-final-acceptance-a781c01-qa/`:
+  runner/checkpoint and command logs, including failed prerequisite attempts.
+- `.reference/package-qa-e64/`: accepted exact archive QA, full report and recovery
+  instructions. The older `.reference/package-qa-0f/` preserves rejected artifacts.
+- `.reference/release-rc1-sanitizers/qa-evidence/candidate-a781c01/`: actual
+  25-target ASan and two-test Miri execution with command and binary hashes.
+- `.reference/package-repro-e64ce03/`: two clean final builds and comparison.
 
-1. Finish independent ZIP64 and artifact retests. Integrate the portable Luna
-   regression and invoke report-contract tests only against fresh oracle reports.
-   Archive raw findings and retests with truthful model/source identities.
-2. Reconcile docs/PR body, commit remaining fixes/evidence, and require all CI
-   lanes to pass. Merge PR #23 only after independent blockers are closed.
-3. Freeze the final commit, build exact CLI/source archives (prefer Ubuntu 22.04
-   CI), and have agents run the complete final oracle/strict-sandbox matrix,
-   artifact checks, source rebuild and bounded sanitizer/Miri replay against
-   that identity. Compare two clean builds for any reproducibility statement.
-4. Prepare an unpublished GitHub release draft with exact assets, checksums,
-   evidence, supported scope and remaining limitations. Keep main protection,
-   existing tags and the clean primary oracle intact. Final publication is for
-   the maintainer to approve in the morning.
-5. Preserve future fidelity/security work separately. The full 25-target minimum
-   is 600 measured CPU-hours plus branch/resource evidence and independent review;
-   neither overnight smoke nor a green CI run closes that gate.
+No production blocker found by these release checks remains open. The maintainer
+still reviews and publishes the draft; no public release is authorized. Do not
+rebuild or substitute accepted assets without new checksums and retesting.
+Future qualification remains separate: at least 600 measured CPU-hours across
+25 targets, coverage/resource evidence and independent unsafe/resource review.
+Optional dependency PRs #21/#22 and other-platform certification remain deferred.
 
 ## Reference / resources
 

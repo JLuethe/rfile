@@ -1,0 +1,10 @@
+{
+  "tested_commit": "a781c017b3495121a4203053cbabe55225cb0130",
+  "release_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "trees": {
+    "a781c017b3495121a4203053cbabe55225cb0130": "91506a94437571b6fc3257f1d2e860824e19b727",
+    "e64ce034bee6a6c0959872d9b8f632d692dbfaa3": "91506a94437571b6fc3257f1d2e860824e19b727"
+  },
+  "identical_git_tree": true,
+  "note": "Squash merge changes commit identity only. Reports retain the source commit actually executed."
+}

@@ -1,0 +1,51 @@
+{
+  "source_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "tree": "91506a94437571b6fc3257f1d2e860824e19b727",
+  "alias_tree_a781": "91506a94437571b6fc3257f1d2e860824e19b727",
+  "release_source_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "release_source_git_archive_sha256": "d371abe9119ea89074f4e6e9ba320d8b66c197ca940b1ce9b31cc8f0233cd065",
+  "computed_git_archive_sha256": "d371abe9119ea89074f4e6e9ba320d8b66c197ca940b1ce9b31cc8f0233cd065",
+  "package_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "archive_hashes": {
+    "rfile-0.2.0-rc.1-source.tar.gz": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "d2b01ffb9988a7797e9467c9a3c2efee3fa28128a70d35dcb0db7d4b791cd379"
+  },
+  "binary_manifest_file_count": 129,
+  "binary_manifest_errors": [],
+  "expected_support_files": [
+    "INSTALL.md",
+    "install.py"
+  ],
+  "source_files": 5058,
+  "vendored_crates": 64,
+  "license_files": 120,
+  "required_notices": {
+    "LICENSE": {
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149
+    },
+    "NOTICE": {
+      "sha256": "62c359b1b8ad7bcacc61a0afbfe3be9ed6f456a182ba923e9648edaedee13507",
+      "bytes": 1500
+    },
+    "LICENSES/README.md": {
+      "sha256": "809d561f09e59b92d39d239e585962b2a3a132d52337efe87e3b01e6235d90d4",
+      "bytes": 1075
+    },
+    "data/UPSTREAM-COPYING": {
+      "sha256": "0bfa856a9930bddadbef95d1be1cf4e163c0be618e76ea3275caaf255283e274",
+      "bytes": 1649
+    },
+    "data/UPSTREAM.json": {
+      "sha256": "ecf3f799246ee2f02d18e5ca8d935a636aca98a01f538adffffe3b3eacf7cb75",
+      "bytes": 1751
+    },
+    "data/SOURCES.json": {
+      "sha256": "f3a2b5824f16aba07f515469b8d153cd81fed34c4915311a072b831a6a35c51b",
+      "bytes": 77602
+    }
+  },
+  "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "lock_sha256": "c7a1d2b995471286b3b89b3cfa5c18ece793d0a87c23c5e03ab0e6f2155f3f12",
+  "status": "passed"
+}

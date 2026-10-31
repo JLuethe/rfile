@@ -1,0 +1,22 @@
+CARGO_HOME=empty scratch; CARGO_TARGET_DIR=scratch; CARGO_BUILD_JOBS=1; PATH includes stable toolchain; offline
+cargo build -p rfile --bin rfile --release --locked --no-default-features --target x86_64-unknown-linux-gnu --offline
+   Compiling libc v0.2.191
+   Compiling crc32fast v1.5.3
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling cfg-if v1.0.5
+   Compiling simd-adler32 v0.3.10
+   Compiling adler2 v2.0.1
+   Compiling serde_json v1.0.154
+   Compiling miniz_oxide v0.9.1
+   Compiling regex-syntax v0.8.11
+   Compiling jiff-core v0.1.1
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling jiff v0.2.38
+   Compiling regex-automata v0.4.18
+   Compiling rfile-platform v0.2.0-rc.1 (/home/john/Code/rfile/.reference/package-qa-e64/source-extracted/rfile-0.2.0-rc.1-source/crates/rfile-platform)
+   Compiling flate2 v1.1.10
+   Compiling rfile v0.2.0-rc.1 (/home/john/Code/rfile/.reference/package-qa-e64/source-extracted/rfile-0.2.0-rc.1-source)
+    Finished `release` profile [optimized] target(s) in 35.99s
+exit_status=0

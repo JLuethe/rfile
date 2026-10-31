@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "release": "v0.2.0-rc.1",
+  "release_status": "unpublished draft; maintainer review required",
+  "release_commit": "e64ce034bee6a6c0959872d9b8f632d692dbfaa3",
+  "tested_source_commit": "a781c017b3495121a4203053cbabe55225cb0130",
+  "identical_tree": "91506a94437571b6fc3257f1d2e860824e19b727",
+  "independent_tester": "GPT-6 Luna (initial baseline/retests by Claude retained separately)",
+  "source_acceptance": "PASS: 32 default stages, 34 all-feature stages, 15 Python tests, Rust 1.87, 582/582 valid source dumps",
+  "artifact_acceptance": "PASS: 14 package checks, 10 installer checks, 13 minimal Ubuntu checks, 129 payload checks, offline source build, raw-byte filenames",
+  "security_scope": "25 ASan targets, 75.771719 CPU seconds; 2 Miri tests; no sustained gate complete, independent security review open",
+  "artifacts": {
+    "rfile-0.2.0-rc.1-source.tar.gz": {
+      "sha256": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+      "bytes": 18526636
+    },
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": {
+      "sha256": "d2b01ffb9988a7797e9467c9a3c2efee3fa28128a70d35dcb0db7d4b791cd379",
+      "bytes": 1438861
+    },
+    "SHA256SUMS": {
+      "sha256": "658ec9b089e431f281445795c4b030c85fdae893a70a7a7b439f929cf3ca487e",
+      "bytes": 212
+    },
+    "release-manifest.json": {
+      "sha256": "bf25a496a1914675ada5ec45dd7895e735336c197a1474c7ffc47eaf9ba92120",
+      "bytes": 24986
+    },
+    "package-qa.json": {
+      "sha256": "21e829881dc339c8f9e2c407b42151960fedc3deabd891d783201b9e55ae7472",
+      "bytes": 12018
+    },
+    "minimal-runtime-qa.json": {
+      "sha256": "0604f658a18ce789735c64b335fdd4c712e6523d5e25d3a526975ff066d3490a",
+      "bytes": 17413
+    },
+    "rfile-0.2.0-rc.1-qa-evidence.tar.gz": {
+      "sha256": "7299cfd767ba929645c8c8a7cee52eeff4f16240077dd15b8629ff2b3498ad04",
+      "bytes": 1867620
+    }
+  }
+}

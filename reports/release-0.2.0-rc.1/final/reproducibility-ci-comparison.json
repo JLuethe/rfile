@@ -1,0 +1,15 @@
+{
+  "source_archive_matches_ci": true,
+  "binary_archive_matches_ci": false,
+  "scope": "Two clean same-host/toolchain builds are byte-identical. Cross-host binary reproducibility is not claimed; CI Ubuntu binary remains the shipped artifact.",
+  "ci_archives": {
+    "rfile-0.2.0-rc.1-source.tar.gz": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "d2b01ffb9988a7797e9467c9a3c2efee3fa28128a70d35dcb0db7d4b791cd379"
+  },
+  "local_archives": {
+    "SHA256SUMS": "a1f2220bcdce4e5c94597b53f3bd05b2b0f57dd302ed75fea703649347ce9763",
+    "release-manifest.json": "ea38b2427a13dac09d3fd1af96f3870542bbeb67781900f4cfa3ad103ef22985",
+    "rfile-0.2.0-rc.1-source.tar.gz": "f7d2356b2699908cfe765c433e7d99e73eaffb4c9d979fbc99e658081d913bd1",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "b504906fb5b92451115949eda78fa2ec182d4f8ed47bace40e344241edbafe56"
+  }
+}
