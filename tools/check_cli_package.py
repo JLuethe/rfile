@@ -109,10 +109,15 @@ def main():
             if list(outside.iterdir()):
                 raise RuntimeError('Installer wrote through a symlink')
             cargo = os.environ.get('CARGO', shutil.which('cargo') or str(Path.home() / '.cargo/bin/cargo'))
+            # A fresh CARGO_HOME has no bin/ rustup proxies. Keep the explicitly
+            # selected Cargo toolchain discoverable even when the caller's PATH
+            # omits ~/.cargo/bin and we used the absolute-path fallback above.
+            cargo_path = Path(shutil.which(cargo) or cargo).absolute()
+            toolchain_path = str(cargo_path.parent) + os.pathsep + env.get('PATH', os.defpath)
             fresh = temporary / 'empty-cargo-home'
             fresh.mkdir()
             run('offline-source-rebuild', [cargo, 'check', '--workspace', '--all-targets', '--all-features', '--locked', '--offline'],
-                cwd=source, timeout=300, extra=dict(CARGO_HOME=str(fresh), CARGO_TARGET_DIR=str(temporary / 'source-target')))
+                cwd=source, timeout=300, extra=dict(CARGO_HOME=str(fresh), CARGO_TARGET_DIR=str(temporary / 'source-target'), PATH=toolchain_path))
         report['status'] = 'passed'
     except BaseException as error:
         report.update(status='failed', error=str(error))
