@@ -8,8 +8,9 @@ vendored source. Publication requires the maintainer's final approval.
 
 ## Claude follow-up fix results (2026-10-31)
 
-Local branch: `fix/claude-timezone-diagnostic`. Code candidate is
-`aafff27664ee7c6f91da76af8ca6a86f960235bc`. See the
+Local branch: `fix/claude-timezone-diagnostic`. The earlier pass-2 code candidate was
+`aafff27664ee7c6f91da76af8ca6a86f960235bc`; the F-01/F-02/F-09 batch below
+records the latest candidate. See the
 [retest index](reports/claude-pass2-fix-retest/README.md) and original Claude
 ledger `/home/john/Code/rfile-qa-claude/pass2/LEDGER-pass2.md`.
 
@@ -36,6 +37,25 @@ replacement, resolve/dispose remaining findings, freeze the final candidate,
 run its required release checks and independently accept exact CI-built archives.
 The original completion record below concerns the old experimental draft and
 must not be read as closure of the newly discovered findings.
+
+## F-01 / F-02 / F-09 follow-up (2026-10-31)
+
+Code candidate `2bed7f803c5ca1fbcab2ae7b6feea2ec20adfdb2` on the same local
+branch passed Claude's independent retest; see the
+[batch report](reports/claude-f01-f02-f09-retest/README.md).
+F-01 signed ELF position/read-span diagnostics match all 5,880 expanded cases
+and 5,461 standard ELF comparisons. F-09 expected refusals and malformed
+manifest/receipt validation pass on the packaged installer. F-02's delegated
+choice is to retain/document the complete-decode hard cap with configurable
+`bytes`, rather than introduce prefix sampling; boundary/workaround/integrity
+checks pass on the exact archive binary. Package checker: 14/14.
+
+Raw evidence and recovery: `.reference/claude-2bed7f8-evidence/`; intermediate
+failures and corrections remain in `.reference/claude-ec687fc-evidence/` and
+`.reference/claude-f01-f02-f09-evidence/`. No tester processes remain running.
+Full final verify.py/CI release artifacts were not run for this batch. The old
+e64 draft is unchanged. Other findings, final release gates and the security
+qualification endpoint remain open as described above.
 
 ## Frozen candidate and GitHub state
 
