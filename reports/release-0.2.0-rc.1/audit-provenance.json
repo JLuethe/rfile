@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-10-31T05:46:12.080609+00:00",
+  "lock_sha256": {
+    "Cargo.lock": "c7a1d2b995471286b3b89b3cfa5c18ece793d0a87c23c5e03ab0e6f2155f3f12",
+    "fuzz/Cargo.lock": "28a0f365cd93ac3fb8f18abb300d5ddd7e40b4014986e113be6e1c4fe41d2cc3"
+  },
+  "tool": "cargo-audit 0.22.2",
+  "scope": "Resolved workspace and fuzz lockfiles; no current advisory findings; not an independent security audit"
+}
