@@ -35,7 +35,9 @@ with tempfile.TemporaryDirectory(prefix='rfile-semantics-')as temp:
   for b,row in zip(inputs,actual):
    ref=lib.magic_buffer(h,b,len(b));out=bytes.fromhex(row['hex'])if'hex'in row else None;equal=ref is not None and out is not None and ref==out
    undefined=False
-   if label in ('qwdate','leqwdate','beqwdate'):
+   # file_buffer handles zero/one-byte input before invoking softmagic, so
+   # those cases never reach the undefined timestamp conversion.
+   if len(b)>1 and label in ('qwdate','leqwdate','beqwdate'):
     order='big'if label.startswith('be')else'little'if label.startswith('le')else sys.byteorder
     undefined=filetime_has_uninitialized_seconds(int.from_bytes(b[:8].ljust(8,b'\0'),order))
    if undefined:
