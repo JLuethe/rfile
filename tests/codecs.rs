@@ -311,3 +311,47 @@ fn trailing_bytes_and_skippable_frames_follow_explicit_profiles() {
         assert!(r.unwrap_err().is_limit());
     }
 }
+
+#[test]
+fn gzip_and_zlib_enforce_the_complete_decode_cap_at_seven_mib() {
+    use std::io::Write;
+    let cap = Limits::default().bytes;
+    assert_eq!(cap, 7 * 1024 * 1024);
+    for size in [cap - 1, cap, cap + 1] {
+        let payload = vec![b'a'; size];
+        let mut gz = flate2::write::GzEncoder::new(Vec::new(), flate2::Compression::fast());
+        gz.write_all(&payload).unwrap();
+        let mut zlib = flate2::write::ZlibEncoder::new(Vec::new(), flate2::Compression::fast());
+        zlib.write_all(&payload).unwrap();
+        for (id, input) in [
+            (CodecId::Gzip, gz.finish().unwrap()),
+            (CodecId::Zlib, zlib.finish().unwrap()),
+        ] {
+            for profile in [SemanticProfile::Pinned548, SemanticProfile::CorrectedV1] {
+                let result = inspect(&input, id, Limits::default(), profile);
+                if size <= cap {
+                    let decoded = result.unwrap();
+                    assert!(decoded.facts.complete);
+                    assert_eq!(&*decoded.bytes, payload.as_slice());
+                } else {
+                    assert!(matches!(
+                        result,
+                        Err(rfile::Error::Limit("decompression output"))
+                    ));
+                    let decoded = inspect(
+                        &input,
+                        id,
+                        Limits {
+                            bytes: cap + 1,
+                            ..Limits::default()
+                        },
+                        profile,
+                    )
+                    .unwrap();
+                    assert!(decoded.facts.complete);
+                    assert_eq!(&*decoded.bytes, payload.as_slice());
+                }
+            }
+        }
+    }
+}

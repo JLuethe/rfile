@@ -36,6 +36,13 @@ Follow or do not follow symbolic links. POSIXLY_CORRECT selects following by def
 Inspect compiled codecs with finite nested decoding budgets. -Z hides the outer
 description. Default builds include gzip/zlib; extended-codecs enables additional
 selected formats. Uncompiled/unsupported codecs return explicit errors.
+Decoded output above the bytes parameter (default 7340032 bytes, 7 MiB)
+produces a decompression output limit error and status 1. Unlike libmagic's
+prefix sampling, rfile does not classify a partial decoded stream or present it
+as a complete decode. The outer description is not returned on this error.
+For a larger trusted workload, for example, -P bytes=16777216 -z raises this cap
+to 16 MiB; memory, work, window and other limits still apply. Without -z/-Z,
+ordinary wrapper identification does not require decompression.
 .TP
 .BR -r , " -0 , " -N , " -n"
 Print raw bytes; add NUL after filename; omit padding; flush each record.

@@ -258,3 +258,45 @@ fn reader_spools_elf_for_random_access_with_a_separate_finite_cap() {
             .is_none()
     );
 }
+
+#[test]
+fn negative_signed_note_positions_are_diagnostics_without_a_read() {
+    for big in [false, true] {
+        for offset in [1u64 << 63, u64::MAX - 15, u64::MAX] {
+            let mut data = fixture(if big {
+                "64-be-core-auxv"
+            } else {
+                "64-le-core-auxv"
+            });
+            data[72..80].copy_from_slice(&if big {
+                offset.to_be_bytes()
+            } else {
+                offset.to_le_bytes()
+            });
+            for mime_only in [false, true] {
+                let budget =
+                    InspectionBudget::new(&Limits::default(), ExecutionControl::default()).unwrap();
+                let result = elf::inspect(
+                    &mut SliceView::new(&data),
+                    &data[..512.min(data.len())],
+                    elf::Options {
+                        mime_only,
+                        ..elf::Options::default()
+                    },
+                    &budget,
+                )
+                .unwrap()
+                .unwrap();
+                if mime_only {
+                    assert!(result.suffix.is_empty());
+                } else {
+                    assert_eq!(
+                        result.suffix,
+                        format!(" can't read note section at {}", offset as i64).as_bytes()
+                    );
+                }
+                assert!(result.notes.is_empty());
+            }
+        }
+    }
+}

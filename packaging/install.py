@@ -95,4 +95,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except (OSError, ValueError, KeyError) as error:
+        raise SystemExit(f'rfile installer: {error}') from None

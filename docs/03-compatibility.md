@@ -65,3 +65,16 @@ lists, warning caps and compiled artifact hashes are compared; only the executab
 diagnostic prefix is normalized. Regular-file-only source IO and finite aggregate
 quotas are intentional bounds. Default action discovery, DEBUG and wider source
 warning/IO semantics remain open; see [the R8c contract](remaining/07-c-abi.md#r8c-cli-action-integration).
+
+### Claude F-02: bounded decompression (2026-10-31)
+
+The decoder retains its complete-stream contract. Above `Limits.bytes` (default
+7,340,032 decoded bytes), gzip/zlib and the other enabled decoders report an
+explicit limit error instead of sampling a prefix. Classification returns no
+partial inner/wrapper result on this error. A short sampled prefix cannot
+establish the integrity of an unread trailer or later members; resource errors
+must not turn into confident fallback descriptions. The cap is configurable via
+`-P bytes=N` within the independent memory/work/window budgets. Identifying the
+wrapper without `-z`/`-Z` avoids decoding. Prefix sampling would require a
+separate, explicitly incomplete result contract and is deferred. Boundary
+regressions cover 7 MiB minus one, exact, plus one, and raising the configured cap.

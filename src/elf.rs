@@ -917,6 +917,15 @@ pub fn inspect(
                     }
                 }
                 if matches!(typ, 2..=4) {
+                    if i64::try_from(poff).is_err() {
+                        // Match the signed off_t diagnostic, without passing an
+                        // invalid negative position to the input implementation.
+                        if !mime_only {
+                            out.push_str(&format!(" can't read section at {}", poff as i64))?;
+                        }
+                        program_complete = false;
+                        break;
+                    }
                     let b = e.read(poff, psize.min(2024) as usize)?;
                     match typ {
                         2 => {
@@ -995,6 +1004,12 @@ pub fn inspect(
                     .word(&ph, if e.is64 { 32 } else { 16 })
                     .unwrap_or(0)
                     .min(2024) as usize;
+                if i64::try_from(offset).is_err() {
+                    // Only the diagnostic uses the signed bit interpretation;
+                    // no read or allocation is attempted for this offset.
+                    out.push_str(&format!(" can't read note section at {}", offset as i64))?;
+                    break;
+                }
                 let bytes = e.read(offset, size)?;
                 notes(&mut e, &bytes, 4, &mut out, &mut state, offset)?;
             }
