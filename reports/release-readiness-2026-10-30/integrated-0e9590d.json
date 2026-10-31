@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "run_id": "20261031T053545Z-48894d7255384c7591b87c93ed44a2a4",
+  "status": "passed",
+  "started_utc": "2026-10-31T05:35:45.891952+00:00",
+  "features": "all-features",
+  "requirements": {
+    "oracle": false,
+    "sandbox": true
+  },
+  "run_directory": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4",
+  "steps": [
+    {
+      "name": "format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/format.log",
+      "seconds": 0.19680529100151034,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "clippy",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--all-features",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/clippy.log",
+      "seconds": 0.0872277229973406,
+      "log_sha256": "ee1d3fffa2022e962e63e0dbe4d35c9c198450a20c29fc09030f635dbb38bfcd"
+    },
+    {
+      "name": "cargo-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--all-features",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/cargo-test.log",
+      "seconds": 18.85279138599799,
+      "log_sha256": "e92aaba48aee552c121d1a9840547e866a8530cb7224a1cb86e4892e82640ae4"
+    },
+    {
+      "name": "cargo-release-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--all-features",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/cargo-release-test.log",
+      "seconds": 111.42503511399991,
+      "log_sha256": "febeece523a87a498e1e452f420cef00602cdf8f2cc434f0203cc1ee7c26f5ad"
+    },
+    {
+      "name": "cargo-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--all-features"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/cargo-build.log",
+      "seconds": 24.13687246399786,
+      "log_sha256": "d5670548722341edc00dcdedd7584107ad8dc541295d5f08959290eee392554f"
+    },
+    {
+      "name": "ffi-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "-p",
+        "rfile-ffi",
+        "--locked",
+        "--all-features"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/ffi-build.log",
+      "seconds": 2.68052562199955,
+      "log_sha256": "287043246c1dd91c92b924ccd1ea7b64e6b2484427bbe38f189784d0e03093a9"
+    },
+    {
+      "name": "ffi-rust-clients",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_clients.py",
+        "--rust-only"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/ffi-rust-clients.log",
+      "seconds": 3.827911268999742,
+      "log_sha256": "a66d18c4c05dd3e36dcf83c85e6a894cd181901d8d355b65e46899c6fdf5db69"
+    },
+    {
+      "name": "unsafe-inventory",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/unsafe_inventory.py"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/unsafe-inventory.log",
+      "seconds": 0.041854884002532344,
+      "log_sha256": "6ea618c37bfd89f3b236af81596d55f540f4391f7499aacb4ec64e32c5d780e5"
+    },
+    {
+      "name": "database-rebuild",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/rebuild_database.py"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/database-rebuild.log",
+      "seconds": 0.10839724100151216,
+      "log_sha256": "6502f6b429f9250369cf7a6460c1f7f11c1913340260ff6d01255a28b83e4630"
+    },
+    {
+      "name": "fuzz-smoke",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--test",
+        "hardening",
+        "--all-features",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/fuzz-smoke.log",
+      "seconds": 10.56809716600037,
+      "log_sha256": "bd99c083762ece2b04da5bca523c4c724f6a93e36f4a769e5414299c02870565"
+    },
+    {
+      "name": "fuzz-format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/fuzz-format.log",
+      "seconds": 0.0604647809996095,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fuzz-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--locked",
+        "--bins"
+      ],
+      "log": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/logs/fuzz-build.log",
+      "seconds": 9.040178897997976,
+      "log_sha256": "c33b62db23c5c9cb18fc37d2d0dee169226ad0eb2a4a2f3e2dc46ffdd07223c0"
+    }
+  ],
+  "coverage": [
+    {
+      "step": "cargo-test",
+      "component": "sandbox_cli",
+      "status": "executed"
+    },
+    {
+      "step": "cargo-test",
+      "component": "sandbox_kernel",
+      "status": "executed",
+      "child_cases": 8
+    },
+    {
+      "step": "cargo-release-test",
+      "component": "sandbox_cli",
+      "status": "executed"
+    },
+    {
+      "step": "cargo-release-test",
+      "component": "sandbox_kernel",
+      "status": "executed",
+      "child_cases": 8
+    },
+    {
+      "step": "fuzz-smoke",
+      "component": "mutation_fixtures",
+      "fixture_files": 0,
+      "path": "/tmp/rfile-readiness-final/upstream/tests",
+      "required": false,
+      "status": "skipped"
+    }
+  ],
+  "artifacts": {
+    "abi-clients-rust.json": {
+      "path": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/artifacts/abi-clients-rust.json",
+      "sha256": "6617b0adacff0cf9e42e6455d393d4597dad61dcbb3c41748970285b6d6e3216"
+    },
+    "unsafe.json": {
+      "path": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/artifacts/unsafe.json",
+      "sha256": "3af6dabe4b787ef23b0f96a5fbdbdd6e843b009007215dbfbc83c1eabb34ed92"
+    },
+    "runtime-linkage.txt": {
+      "path": "reports/verification-runs/20261031T053545Z-48894d7255384c7591b87c93ed44a2a4/artifacts/runtime-linkage.txt",
+      "sha256": "f2c2edaa7ec6d017d39f03be58d572f457c86b4cf9280dfd76b76c950bd13c5e"
+    }
+  },
+  "oracle": null,
+  "elapsed_seconds": 181.22020864200022,
+  "git_head": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "git_status": [
+    " M reports/verification-extended.json"
+  ],
+  "source_sha256": "18e1ea9307150c6b93c48e906dbb6cf5b0fd5782aa5f672374e828cd942ad389",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "binary_sha256": "68febb84b0cf9fa72be41a923e5ff2161876aa754139b2ee14754a8aeb03ffa1",
+  "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "mutation_smoke": [
+    {
+      "database_cases": 10000,
+      "elapsed_seconds": 2.42900793,
+      "fixture_files": 0,
+      "fixture_path": "/tmp/rfile-readiness-final/upstream/tests",
+      "fixture_status": "skipped",
+      "fixture_truncations": 0,
+      "random_input_cases": 10000,
+      "seed": "4f6c655275737421",
+      "source_cases": 10000
+    }
+  ],
+  "scope": "Linux supported profile; coverage skips recorded separately; not sustained security qualification",
+  "finished_utc": "2026-10-31T05:38:47.112138+00:00"
+}

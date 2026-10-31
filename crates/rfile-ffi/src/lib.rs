@@ -172,7 +172,11 @@ pub extern "C" fn magic_version() -> c_int {
 }
 #[unsafe(no_mangle)]
 pub extern "C" fn rfile_implementation_version() -> *const c_char {
-    c"{\"implementation\":\"rfile\",\"version\":\"0.1.0\",\"upstream\":\"41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\",\"profile\":\"Pinned548\",\"manifest_version\":1,\"abi\":\"experimental\",\"drop_in_compatible\":false}".as_ptr()
+    concat!(
+        "{\"implementation\":\"rfile\",\"version\":\"",
+        env!("CARGO_PKG_VERSION"),
+        "\",\"upstream\":\"41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\",\"profile\":\"Pinned548\",\"manifest_version\":1,\"abi\":\"experimental\",\"drop_in_compatible\":false}\0"
+    ).as_ptr().cast()
 }
 thread_local! { static PATH_RESULT: RefCell<Option<CString>> = const { RefCell::new(None) }; }
 /// # Safety

@@ -1,0 +1,42 @@
+name: Release candidate
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'Cargo.*'
+      - 'src/**'
+      - 'crates/**'
+      - 'packaging/**'
+      - 'tools/package_cli.py'
+      - 'tools/check_cli_package.py'
+      - '.github/workflows/release-candidate.yml'
+permissions:
+  contents: read
+concurrency:
+  group: release-candidate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  package-linux:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Build committed CLI and vendored source archives
+        run: python3 tools/package_cli.py --output "$RUNNER_TEMP/rfile-dist"
+      - name: Test exact archives and offline source rebuild
+        run: python3 tools/check_cli_package.py "$RUNNER_TEMP/rfile-dist" --report "$RUNNER_TEMP/rfile-dist/package-qa.json"
+      - name: Retain candidate artifacts and evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rfile-candidate-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/rfile-dist/
+          if-no-files-found: error
+          retention-days: 14

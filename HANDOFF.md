@@ -1,6 +1,6 @@
 # rfile restart checkpoint
 
-Updated 2026-10-30. Start with [release scope and PR decisions](docs/release-scope.md),
+Updated 2026-10-30 (overnight release preparation). Start with [release scope and PR decisions](docs/release-scope.md),
 then [the remaining plan](docs/07-remaining-work-spec.md),
 [delivery ledger](docs/08-delivery-progress.md), and the relevant component spec.
 This records evidence, not a completed security qualification or release.
@@ -14,9 +14,10 @@ This records evidence, not a completed security qualification or release.
   remains before merge/qualification. PR #20 was closed because it replaced the
   declared Rust 1.87 minimum check. Other dependency/action PRs are explicitly
   deferred in the release contract. No new release or dependency upgrade occurred.
-- The user authorized steps 1 and 2: Claude tests/retests, Codex fixes and performs
+- The user authorized completing outstanding release preparation overnight: Claude tests/retests, Codex fixes and performs
   other validation. Scope is a default-feature x86_64 Linux/glibc CLI and source
-  release. Packaging and final candidate/version freeze remain subsequent work.
+  release. The proposed version is 0.2.0-rc.1. CLI/source packaging and candidate CI are
+  implemented on the branch; independent artifact QA and final freeze remain open.
 - The primary clean oracle is `.reference/file-clean`, exact upstream commit
   `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always use
   `RFILE_REFERENCE=/home/john/Code/rfile/.reference/file-clean`.
@@ -35,8 +36,12 @@ This records evidence, not a completed security qualification or release.
   requires fixtures by default and records explicit opt-outs.
 - Sandbox tests now emit structured coverage and can require execution.
   Verification runs preserve per-run logs, source identity and failure/interruption
-  status, replacing the latest summary at startup. Check the follow-up independent
-  QA report before treating this changed implementation as retested.
+  status, replacing the latest summary at startup. Claude retested 0e9590d successfully: 12 integrated no-oracle stages with strict
+  sandbox execution in debug/release, Rust 1.87 and ten regression tests. Its
+  report is in reports/release-readiness-2026-10-30/claude-pass-0e9590d.md.
+- Claude quota then expired; reset is 23:50 America/Los_Angeles on 2026-10-30.
+  Queue and package tests have not run. Continue Codex build/CI work, then resume
+  Claude independent tests. Do not label the quota-limited queue attempt a pass.
 
 ## Historical 2026-10-25 validation
 
