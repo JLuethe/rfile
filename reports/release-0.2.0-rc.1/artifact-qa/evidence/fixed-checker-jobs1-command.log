@@ -1,0 +1,3 @@
+PATH lacks ~/.cargo/bin; CARGO unset; CARGO_BUILD_JOBS=1
+$ python3 tools/check_cli_package.py <candidate> --report <evidence/fixed-checker-jobs1.json>
+{"status": "passed", "checks": 14, "source_commit": "0f1054d2404d8049d2d2357e22af97c5e8f22d3c"}

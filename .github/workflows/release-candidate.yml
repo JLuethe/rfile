@@ -6,9 +6,16 @@ on:
       - 'Cargo.*'
       - 'src/**'
       - 'crates/**'
+      - 'data/**'
+      - 'LICENSES/**'
+      - 'LICENSE'
+      - 'NOTICE'
+      - 'README.md'
+      - 'docs/rfile.1'
       - 'packaging/**'
       - 'tools/package_cli.py'
       - 'tools/check_cli_package.py'
+      - 'tools/check_timezone_runtime.py'
       - '.github/workflows/release-candidate.yml'
 permissions:
   contents: read
@@ -32,6 +39,26 @@ jobs:
         run: python3 tools/package_cli.py --output "$RUNNER_TEMP/rfile-dist"
       - name: Test exact archives and offline source rebuild
         run: python3 tools/check_cli_package.py "$RUNNER_TEMP/rfile-dist" --report "$RUNNER_TEMP/rfile-dist/package-qa.json"
+      - name: Check exact binary in minimal Ubuntu 22.04
+        run: |
+          docker pull docker.io/library/ubuntu@sha256:076e7bf82319619f28dd0aa9c02ab34b055ad37100395b4f49a2ffba04fb5e11
+          python3 - <<'PY'
+          import json, os, subprocess, tarfile
+          from pathlib import Path
+          temporary = Path(os.environ['RUNNER_TEMP'])
+          package = temporary / 'rfile-dist'
+          release = json.loads((package / 'release-manifest.json').read_text())
+          name = f'rfile-{release["version"]}-{release["target"]}'
+          extracted = temporary / 'runtime-check'
+          extracted.mkdir()
+          with tarfile.open(package / (name + '.tar.gz')) as archive:
+              archive.extractall(extracted, filter='data')
+          subprocess.run(['python3', 'tools/check_timezone_runtime.py',
+              '--engine', 'docker',
+              '--image', 'docker.io/library/ubuntu@sha256:076e7bf82319619f28dd0aa9c02ab34b055ad37100395b4f49a2ffba04fb5e11',
+              '--binary', str(extracted / name / 'bin/rfile'),
+              '--report', str(package / 'minimal-runtime-qa.json')], check=True)
+          PY
       - name: Retain candidate artifacts and evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

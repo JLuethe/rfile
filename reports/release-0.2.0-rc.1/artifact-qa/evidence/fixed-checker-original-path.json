@@ -1,0 +1,178 @@
+{
+  "source_commit": "0f1054d2404d8049d2d2357e22af97c5e8f22d3c",
+  "version": "0.2.0-rc.1",
+  "archives": {
+    "rfile-0.2.0-rc.1-source.tar.gz": "45461255d5c6aa3c04083bfce939d43953bc04cadc6b72840fe8d46c0abf4c41",
+    "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz": "67a61daa94bbcacc3e0bd8dc15cdc97cd1b1a5e21b34c3de4cfa6491442e1c72"
+  },
+  "checks": [
+    {
+      "name": "version",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "rfile-0.2.0-rc.1\nmagic v21 from embedded pinned database\nupstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\nfeatures: safe-rust regex miniz_oxide; kernel sandbox compiled=false\n",
+      "stderr": ""
+    },
+    {
+      "name": "help",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "Additional options: --profile=pinned-5.48|corrected-v1; --capabilities; --sandbox=auto|strict|off; --sandbox-status (stderr JSON)\nUsage: rfile [options] FILE...\n       rfile -C [-m MAGIC]\nIndependent Rust file classifier, pinned magic v21.\n\n  -b, --brief                 omit filename\n  -m, --magic-file LIST       colon-separated magic sources/databases\n  -i, --mime                  output MIME type and encoding\n      --mime-type             output MIME type\n      --mime-encoding         output encoding\n      --extension             output extensions\n      --apple                 output Apple creator/type\n  -k, --keep-going            continue matching\n  -e, --exclude TEST          skip a detector\n  -f, --files-from FILE       read newline-delimited filenames (- for stdin)\n  -F, --separator STRING      filename separator\n  -N, --no-pad                disable filename padding\n  -n, --no-buffer             flush each result\n  -0, --print0                NUL after filename; twice for NUL records\n  -L, --dereference           follow symbolic links\n  -h, --no-dereference        inspect symbolic links\n  -s, --special-files         read devices\n  -p, --preserve-date         restore access/modification times\n  -z, --uncompress            inspect compiled codec contents (bounded)\n  -Z, --uncompress-noreport   inspect compiled codecs; omit wrapper\n  -P, --parameter NAME=N      set input/recursion/regex/work limits\n  -E                          make filesystem failures errors\n  -r, --raw                   preserve nonprintable output\n  -d, --debug                 diagnostic evaluation trace\n  -c, --checking-printout     parse/check source and list groups\n  -C, --compile               compile source to v21 .mgc\n  -l, --list                  list rule strengths\n  -S, --no-sandbox            disable kernel sandbox\n  -v, --version               engine, rule identity and features\n      --help                  show this help\n",
+      "stderr": ""
+    },
+    {
+      "name": "capabilities",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "--capabilities"
+      ],
+      "status": 0,
+      "stdout": "{\"c_abi\":false,\"codecs\":[\"gzip\",\"zlib\"],\"database_format\":21,\"display_backend\":\"portable C bytes\",\"display_locale\":\"C\",\"engine_version\":\"0.2.0-rc.1\",\"hardening\":{\"independent_security_review\":false,\"sustained_fuzz_gate\":false},\"profile\":\"pinned-5.48\",\"regex\":{\"capture_groups\":32,\"corrected_capture_histories\":true,\"instructions\":65536,\"pinned_quantified_backreferences\":\"restricted\"},\"regex_backreferences\":true,\"sandbox\":{\"compiled\":false,\"enforced\":false},\"schema_version\":1,\"time_zone\":\"UTC\",\"upstream_commit\":\"41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "file-mime",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-i",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/plain input.txt"
+      ],
+      "status": 0,
+      "stdout": "text/plain; charset=us-ascii\n",
+      "stderr": ""
+    },
+    {
+      "name": "stdin",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-"
+      ],
+      "status": 0,
+      "stdout": "ASCII text\n",
+      "stderr": ""
+    },
+    {
+      "name": "gzip-inner",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-b",
+        "-Z",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/input.gz"
+      ],
+      "status": 0,
+      "stdout": "ASCII text\n",
+      "stderr": ""
+    },
+    {
+      "name": "missing-file-error",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/bin/rfile",
+        "-E",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/missing"
+      ],
+      "status": 1,
+      "stdout": "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/missing: ERROR: cannot stat `/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/missing' (No such file or directory)\n",
+      "stderr": ""
+    },
+    {
+      "name": "install",
+      "command": [
+        "/usr/bin/python3",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces"
+      ],
+      "status": 0,
+      "stdout": "Installed rfile 0.2.0-rc.1 into /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "installed-version",
+      "command": [
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces/bin/rfile",
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "rfile-0.2.0-rc.1\nmagic v21 from embedded pinned database\nupstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59\nfeatures: safe-rust regex miniz_oxide; kernel sandbox compiled=false\n",
+      "stderr": ""
+    },
+    {
+      "name": "refuse-existing-install",
+      "command": [
+        "/usr/bin/python3",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "rfile is already installed at this prefix; uninstall it first\n"
+    },
+    {
+      "name": "refuse-modified-uninstall",
+      "command": [
+        "/usr/bin/python3",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "uninstall",
+        "--prefix",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Refusing to remove changed or missing installed file: /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces/bin/rfile\n"
+    },
+    {
+      "name": "uninstall",
+      "command": [
+        "/usr/bin/python3",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "uninstall",
+        "--prefix",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces"
+      ],
+      "status": 0,
+      "stdout": "Removed rfile 0.2.0-rc.1 from /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/installed with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "refuse-symlink-prefix",
+      "command": [
+        "/usr/bin/python3",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py",
+        "install",
+        "--prefix",
+        "/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/symlink-prefix"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 98, in <module>\n    main()\n    ~~~~^^\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 47, in main\n    path = destination(prefix, name)\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 24, in destination\n    raise ValueError(f'Refusing symlink in installed path: {parent}')\nValueError: Refusing symlink in installed path: /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/symlink-prefix/bin\n"
+    },
+    {
+      "name": "offline-source-rebuild",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--workspace",
+        "--all-targets",
+        "--all-features",
+        "--locked",
+        "--offline"
+      ],
+      "status": 101,
+      "stdout": "",
+      "stderr": "   Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling libc v0.2.191\n    Checking typenum v1.20.1\n   Compiling thiserror v2.0.21\n   Compiling rustix v1.1.5\n    Checking linux-raw-sys v0.12.1\n    Checking bitflags v2.13.2\n    Checking cfg-if v1.0.5\n   Compiling serde_core v1.0.229\n    Checking const-oid v0.10.2\n   Compiling crc32fast v1.5.3\n   Compiling zmij v1.0.23\n    Checking twox-hash v2.1.5\n    Checking simd-adler32 v0.3.10\n    Checking cpufeatures v0.3.1\n    Checking adler2 v2.0.1\n   Compiling serde_json v1.0.154\n    Checking itoa v1.0.18\n    Checking miniz_oxide v0.9.1\n    Checking jiff-core v0.1.1\n    Checking memchr v2.8.3\n    Checking regex-syntax v0.8.11\n    Checking lz4_flex v0.14.0\n    Checking ruzstd v0.9.1\n   Compiling rfile-ffi v0.2.0-rc.1 (/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-source/crates/rfile-ffi)\n    Checking flate2 v1.1.10\n    Checking hybrid-array v0.4.15\nerror: could not compile `hybrid-array` (lib)\n\nCaused by:\n  process didn't exit successfully: `/home/john/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name hybrid_array --edition=2024 /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-source/vendor/hybrid-array/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata -C embed-bitcode=no -C debuginfo=2 --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"alloc\", \"arbitrary\", \"bytemuck\", \"ctutils\", \"extra-sizes\", \"serde\", \"subtle\", \"zerocopy\", \"zeroize\"))' -C metadata=e3981231754459a1 -C extra-filename=-6bb984e6d72887c0 --out-dir /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps -L dependency=/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps --extern typenum=/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps/libtypenum-5ac36d31d7874c9a.rmeta --cap-lints allow` (signal: 9, SIGKILL: kill)\nwarning: build failed, waiting for other jobs to finish...\n"
+    }
+  ],
+  "status": "failed",
+  "error": "offline-source-rebuild: unexpected exit 101;    Compiling proc-macro2 v1.0.107\n   Compiling unicode-ident v1.0.27\n   Compiling quote v1.0.47\n   Compiling libc v0.2.191\n    Checking typenum v1.20.1\n   Compiling thiserror v2.0.21\n   Compiling rustix v1.1.5\n    Checking linux-raw-sys v0.12.1\n    Checking bitflags v2.13.2\n    Checking cfg-if v1.0.5\n   Compiling serde_core v1.0.229\n    Checking const-oid v0.10.2\n   Compiling crc32fast v1.5.3\n   Compiling zmij v1.0.23\n    Checking twox-hash v2.1.5\n    Checking simd-adler32 v0.3.10\n    Checking cpufeatures v0.3.1\n    Checking adler2 v2.0.1\n   Compiling serde_json v1.0.154\n    Checking itoa v1.0.18\n    Checking miniz_oxide v0.9.1\n    Checking jiff-core v0.1.1\n    Checking memchr v2.8.3\n    Checking regex-syntax v0.8.11\n    Checking lz4_flex v0.14.0\n    Checking ruzstd v0.9.1\n   Compiling rfile-ffi v0.2.0-rc.1 (/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-source/crates/rfile-ffi)\n    Checking flate2 v1.1.10\n    Checking hybrid-array v0.4.15\nerror: could not compile `hybrid-array` (lib)\n\nCaused by:\n  process didn't exit successfully: `/home/john/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name hybrid_array --edition=2024 /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/rfile-0.2.0-rc.1-source/vendor/hybrid-array/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata -C embed-bitcode=no -C debuginfo=2 --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"alloc\", \"arbitrary\", \"bytemuck\", \"ctutils\", \"extra-sizes\", \"serde\", \"subtle\", \"zerocopy\", \"zeroize\"))' -C metadata=e3981231754459a1 -C extra-filename=-6bb984e6d72887c0 --out-dir /home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps -L dependency=/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps --extern typenum=/home/john/Code/rfile/.reference/package-qa-0f/tmp/rfile-artifact-check-gd66h5pl/source-target/debug/deps/libtypenum-5ac36d31d7874c9a.rmeta --cap-lints allow` (signal: 9, SIGKILL: kill)\nwarning: build failed, waiting for other jobs to finish...\n"
+}

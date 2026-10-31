@@ -55,7 +55,8 @@ not completed security qualification or universal libmagic compatibility.
 - Artifact QA also found the default CLI failed in minimal Ubuntu without tzdata.
   `09f2c36` adds UTC for an absent implicit system zone and built-in `TZ=UTC`;
   explicit invalid zones and malformed/unreadable existing files still fail.
-  The container regression is being independently retested before acceptance.
+  Luna accepted the fix through 13 constrained-container checks. The reusable
+  checker is integrated into candidate CI; final exact assets remain pending.
 - Fresh 25-target sanitizer smoke and two FFI Miri tests ran in an isolated
   clone. Read its actual manifests/logs and final reviewer report before using
   the result. No target met its 24-CPU-hour gate.

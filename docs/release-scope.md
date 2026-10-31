@@ -119,8 +119,9 @@ oracle-report directory; it never treats committed historical reports as fresh.
 Luna's artifact review found that a fresh Cargo cache hid rustup proxies when the
 caller's PATH omitted `~/.cargo/bin`. The checker now preserves the selected
 Cargo toolchain directory and defaults the fresh-cache build to one job (an
-explicit `CARGO_BUILD_JOBS` override is honored). Independent retesting is in progress. Artifact QA also found that minimal images
+explicit `CARGO_BUILD_JOBS` override is honored). The PATH failure was independently retested successfully with one build job. Artifact QA also found that minimal images
 without a system timezone failed before classification; the follow-up uses UTC
 only for an absent implicit zone (and built-in TZ=UTC), preserving explicit
-configuration errors. Final container retesting and source/artifact freeze remain
-pending.
+configuration errors. Luna accepted the fix on `09f2c36` through 13 constrained-container checks, now
+implemented in candidate CI. Final source/artifact freeze and exact-archive
+acceptance remain pending.

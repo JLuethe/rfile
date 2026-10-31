@@ -1,0 +1,13 @@
+{
+  "source_commit": "0f1054d2404d8049d2d2357e22af97c5e8f22d3c",
+  "version": "0.2.0-rc.1",
+  "manifest_files": 129,
+  "file_errors": [],
+  "expected_uninstalled_support_files": [
+    "INSTALL.md",
+    "install.py"
+  ],
+  "unexpected_files": [],
+  "missing_support_files": [],
+  "status": "passed"
+}

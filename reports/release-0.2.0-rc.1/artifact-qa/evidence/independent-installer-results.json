@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "name": "absolute-space-prefix-install",
+      "status": 0,
+      "stdout": "Installed rfile 0.2.0-rc.1 into /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/absolute prefix with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "changed-payload-uninstall-refused",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Refusing to remove changed or missing installed file: /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/absolute prefix with spaces/bin/rfile\n"
+    },
+    {
+      "name": "uninstall-clean",
+      "status": 0,
+      "stdout": "Removed rfile 0.2.0-rc.1 from /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/absolute prefix with spaces\n",
+      "stderr": ""
+    },
+    {
+      "name": "relative-prefix-rejected",
+      "status": 2,
+      "stdout": "",
+      "stderr": "usage: install.py [-h] --prefix PREFIX {install,uninstall}\ninstall.py: error: Prefix must be absolute\n"
+    },
+    {
+      "name": "pre-existing-destination-refused",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Refusing to overwrite existing file: /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/preexisting/bin/rfile\n"
+    },
+    {
+      "name": "symlink-component-refused",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 98, in <module>\n    main()\n    ~~~~^^\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 47, in main\n    path = destination(prefix, name)\n  File \"/home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu/install.py\", line 24, in destination\n    raise ValueError(f'Refusing symlink in installed path: {parent}')\nValueError: Refusing symlink in installed path: /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/symlink-prefix/bin\n"
+    },
+    {
+      "name": "tampered-payload-refused",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Archive payload checksum mismatch: share/licenses/rfile/LICENSE\n"
+    },
+    {
+      "name": "manifest-checksum-tampering-refused",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Archive payload checksum mismatch: bin/rfile\n"
+    },
+    {
+      "name": "prefix-alias-resolved",
+      "status": 0,
+      "stdout": "Installed rfile 0.2.0-rc.1 into /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/real-prefix\n",
+      "stderr": ""
+    },
+    {
+      "name": "prefix-alias-uninstall",
+      "status": 0,
+      "stdout": "Removed rfile 0.2.0-rc.1 from /home/john/Code/rfile/.reference/package-qa-0f/tmp/installer-independent/real-prefix\n",
+      "stderr": ""
+    }
+  ],
+  "count": 10,
+  "status": "passed"
+}
