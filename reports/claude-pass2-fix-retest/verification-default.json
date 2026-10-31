@@ -1,0 +1,617 @@
+{
+  "schema_version": 2,
+  "run_id": "20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0",
+  "status": "passed",
+  "started_utc": "2026-10-31T18:12:14.335526+00:00",
+  "features": "default",
+  "requirements": {
+    "oracle": true,
+    "sandbox": false
+  },
+  "run_directory": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0",
+  "steps": [
+    {
+      "name": "format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/format.log",
+      "seconds": 0.19282947201281786,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "clippy",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/clippy.log",
+      "seconds": 0.09492769998905715,
+      "log_sha256": "ee1d3fffa2022e962e63e0dbe4d35c9c198450a20c29fc09030f635dbb38bfcd"
+    },
+    {
+      "name": "cargo-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cargo-test.log",
+      "seconds": 1.0999638909997884,
+      "log_sha256": "8b1c5ebd57bf23dd297bbc10aa1e8aa47f4daa958a2087803d3d4535038c4429"
+    },
+    {
+      "name": "cargo-release-test",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--workspace",
+        "--release",
+        "--locked",
+        "--",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cargo-release-test.log",
+      "seconds": 0.4932027150061913,
+      "log_sha256": "39e92e524b98c9e2279a763241fd2a6c31519fa6e6c34cea20ec8fcd02ebb1a2"
+    },
+    {
+      "name": "cargo-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "--release",
+        "--locked"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cargo-build.log",
+      "seconds": 0.04005730600329116,
+      "log_sha256": "222a02ed477d249a21359df8cae975864a62d848f4739cadc5b00b6190a963c6"
+    },
+    {
+      "name": "ffi-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "build",
+        "-p",
+        "rfile-ffi",
+        "--locked"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/ffi-build.log",
+      "seconds": 0.03233713698864449,
+      "log_sha256": "a13905646e2aed93ec6ea9ed6ac91490a4e01f91af0215c3965279a910612149"
+    },
+    {
+      "name": "ffi-rust-clients",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_clients.py",
+        "--rust-only"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/ffi-rust-clients.log",
+      "seconds": 2.6205212250060868,
+      "log_sha256": "a66d18c4c05dd3e36dcf83c85e6a894cd181901d8d355b65e46899c6fdf5db69"
+    },
+    {
+      "name": "unsafe-inventory",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/unsafe_inventory.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/unsafe-inventory.log",
+      "seconds": 0.049536543010617606,
+      "log_sha256": "639ee4eaf4a9fe9858637a7ec9ac42b52b7a66694445009c8a28f4aad0d2e590"
+    },
+    {
+      "name": "database-rebuild",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/rebuild_database.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/database-rebuild.log",
+      "seconds": 0.11577456998929847,
+      "log_sha256": "6502f6b429f9250369cf7a6460c1f7f11c1913340260ff6d01255a28b83e4630"
+    },
+    {
+      "name": "fuzz-smoke",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "test",
+        "--release",
+        "--locked",
+        "--test",
+        "hardening",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/fuzz-smoke.log",
+      "seconds": 1.8209196100069676,
+      "log_sha256": "59a1cd7c3d1a85c9e2931a2821749ee92aa299c071267ffd3263c86c594b36f4"
+    },
+    {
+      "name": "fuzz-format",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "fmt",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/fuzz-format.log",
+      "seconds": 0.039328529994236305,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fuzz-build",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "/home/john/.cargo/bin/cargo",
+        "check",
+        "--manifest-path",
+        "fuzz/Cargo.toml",
+        "--locked",
+        "--bins"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/fuzz-build.log",
+      "seconds": 0.037657733002561145,
+      "log_sha256": "a13905646e2aed93ec6ea9ed6ac91490a4e01f91af0215c3965279a910612149"
+    },
+    {
+      "name": "ffi-clients",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_clients.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/ffi-clients.log",
+      "seconds": 3.1023045150068356,
+      "log_sha256": "1d86cfb4f587ef932270dc2823cc9ee9cd3f4330f6e0db6a79ef9287e85e220a"
+    },
+    {
+      "name": "ffi-state",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/ffi-state.log",
+      "seconds": 4.687444144001347,
+      "log_sha256": "eaede6857f0a57c92f8ec2efdc88bc9e49266d8e87595b0838b3b00728f4967d"
+    },
+    {
+      "name": "ffi-diagnostics",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/abi_diagnostic_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/ffi-diagnostics.log",
+      "seconds": 44.236610844993265,
+      "log_sha256": "86fe5843ea0b5b8e25e3fa6e6de990bd3934684caa71db006765058d328e7150"
+    },
+    {
+      "name": "upstream-check",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "make",
+        "-C",
+        "/home/john/Code/rfile/.reference/claude-pass2-retest-evidence/oracle-private",
+        "check"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/upstream-check.log",
+      "seconds": 1.261558812999283,
+      "log_sha256": "7aa69fb836327879a80da23c26cabbe8f5485e370a2dfc467931a1c8c0d03c41"
+    },
+    {
+      "name": "compiler",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/compiler_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/compiler.log",
+      "seconds": 0.24952307900821324,
+      "log_sha256": "86961d9260015fadceae4a1f46383514f5e4ccae97d5e5948a9fa2dacc782452"
+    },
+    {
+      "name": "fixtures",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/fixture_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/fixtures.log",
+      "seconds": 2.151669997998397,
+      "log_sha256": "9648e8c2ae9e563e01bc2fea0e5e6373d3c2cac2d0c7bc7deadd5bb1511bc153"
+    },
+    {
+      "name": "differential-broad",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/differential.py",
+        "--limit",
+        "3000"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/differential-broad.log",
+      "seconds": 14.614169722000952,
+      "log_sha256": "34e3499528275ea4de1b155eb084c1e7fa8f786ec623faece1863492e9456b86"
+    },
+    {
+      "name": "extended",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/extended_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/extended.log",
+      "seconds": 14.551696681999601,
+      "log_sha256": "888fab360cd5e147b54ec774a7516fa8400558380ed45759ba68dd492038ecf1"
+    },
+    {
+      "name": "semantics-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/semantics_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/semantics-differential.log",
+      "seconds": 2.1576161020057043,
+      "log_sha256": "c928f07887edc162d16ce337e67230f42d61f08ebdbb245b3a79b0e7e9c80526"
+    },
+    {
+      "name": "regex-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/regex_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/regex-differential.log",
+      "seconds": 3.166061839001486,
+      "log_sha256": "d2c6d6238881e13ce6edb4b7efac31af6d69419d3dbdb88334543bc9b9de963d"
+    },
+    {
+      "name": "elf-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/elf_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/elf-differential.log",
+      "seconds": 61.907398635012214,
+      "log_sha256": "41c69e2426cdbcacaa338da19b1926305fa0e0a92b325b417fc3caab9f5c11f4"
+    },
+    {
+      "name": "cdf-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cdf_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cdf-differential.log",
+      "seconds": 8.459903751005186,
+      "log_sha256": "7dd59d714191c38ef6b24196e59db075a0566bb709d4171b1f0d830b8bc737cc"
+    },
+    {
+      "name": "locale-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/locale_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/locale-differential.log",
+      "seconds": 13.655047231004573,
+      "log_sha256": "01d2ff94bd265df3e237b1b8ccb9871910fb5f7dd1e485dd1cc2ee15877b4247"
+    },
+    {
+      "name": "float-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/float_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/float-differential.log",
+      "seconds": 2.7602747509954497,
+      "log_sha256": "940d5449f6a053c8fadebee472d3ea00f58dec17e2e98d5759ff998d20774613"
+    },
+    {
+      "name": "time-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/time_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/time-differential.log",
+      "seconds": 55.884949849001714,
+      "log_sha256": "46ace7d1127d260f4139d6daa078d599500c3d189ed2e600a193978ba92858b1"
+    },
+    {
+      "name": "oracle-report-regressions",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_oracle_boundaries.py",
+        "-v"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/oracle-report-regressions.log",
+      "seconds": 0.0676966379978694,
+      "log_sha256": "c4da4ca5c2dc97811fd4b9aaa9895b11563f8b64002e54efb6466bd76324229d"
+    },
+    {
+      "name": "component-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/component_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/component-differential.log",
+      "seconds": 0.1851420830062125,
+      "log_sha256": "f95bc1c2b586dd4f48b2df9a0527ff846159c5effdb4a7272057d1c6c6a4910f"
+    },
+    {
+      "name": "cli-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cli_compare.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cli-differential.log",
+      "seconds": 4.722579932989902,
+      "log_sha256": "61a4d8536b38a901a4d8fa614e29224bd1a686237079d53dd68044f677f1cfff"
+    },
+    {
+      "name": "cli-database-differential",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/cli_database_compare.py",
+        "--binary",
+        "target/release/rfile"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/cli-database-differential.log",
+      "seconds": 4.3965049229882425,
+      "log_sha256": "9758af1a9811b7d393838f752bc31304f74c5011c2fbebdb756a9fa3e6b0f650"
+    },
+    {
+      "name": "benchmark",
+      "status": 0,
+      "state": "passed",
+      "command": [
+        "python3",
+        "tools/benchmark.py"
+      ],
+      "log": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/logs/benchmark.log",
+      "seconds": 9.494821047992446,
+      "log_sha256": "646d4f9c63a978878a63abdbf86238c69f63a2f1b591b485aaa7796edfb0bc7a"
+    }
+  ],
+  "coverage": [
+    {
+      "step": "cargo-test",
+      "component": "sandbox_cli",
+      "status": "skipped",
+      "reason": "not-compiled"
+    },
+    {
+      "step": "cargo-release-test",
+      "component": "sandbox_cli",
+      "status": "skipped",
+      "reason": "not-compiled"
+    },
+    {
+      "step": "fuzz-smoke",
+      "component": "mutation_fixtures",
+      "fixture_files": 103,
+      "path": "/home/john/Code/rfile/.reference/claude-pass2-retest-evidence/oracle-private/tests",
+      "required": true,
+      "status": "executed"
+    }
+  ],
+  "artifacts": {
+    "abi-clients-rust.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/abi-clients-rust.json",
+      "sha256": "4e6dd90440350b38fba4c62df2564385ae63398ab517b0fcd800abe9a3e922ef"
+    },
+    "unsafe.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/unsafe.json",
+      "sha256": "529437e39560f12652bfc2c7948129ac7fd942658fd0badfef2fa21e3ffb0067"
+    },
+    "abi-clients.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/abi-clients.json",
+      "sha256": "c3c023ed2e879be2f028003a5e3329043afc6010c42382f77df609b1692f2510"
+    },
+    "abi-state.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/abi-state.json",
+      "sha256": "80acb3ded8f71e6f4ef80468d46fd1fc5a081403ee112d05e534fb7c0c130de8"
+    },
+    "abi-diagnostics.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/abi-diagnostics.json",
+      "sha256": "2fe088dc74e9ed85e62250a125395a4ff490fdf22562951d9c86a2d19c8cd95f"
+    },
+    "compiler-differences.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/compiler-differences.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "compiler.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/compiler.json",
+      "sha256": "86961d9260015fadceae4a1f46383514f5e4ccae97d5e5948a9fa2dacc782452"
+    },
+    "fixtures.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/fixtures.json",
+      "sha256": "d3d61ec43899e0b9aa9c923a2e4656f5be972baf39aa60f792e321c3d3b7b499"
+    },
+    "corpus-manifest.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/corpus-manifest.json",
+      "sha256": "3e87e7eac2e68ea7e6a56a203ee8dd08b985db1ca942c1a0d401d7cef090071b"
+    },
+    "differential.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/differential.json",
+      "sha256": "ce85416e3ff7d9dbbe7d8f25d1f36cb9fa9969d36cc75543b2a4a9c3e18f72fe"
+    },
+    "extended.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/extended.json",
+      "sha256": "0a564cec6dae96a1aa881e926f8d4a58705ae22e3d75dd058c84907aca376eb7"
+    },
+    "semantics.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/semantics.json",
+      "sha256": "321252085fe02a49a2f4116cd99f1d054f3a278ecfaa22e0fc48d38592ae957c"
+    },
+    "regex.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/regex.json",
+      "sha256": "993fbfa506ba2f50f0da24eea91a77f9ab4ac1b6f031d5fbe732bba9c5f88527"
+    },
+    "elf.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/elf.json",
+      "sha256": "0b6faf039ccaa53873451f17b092a12ecee46315f27ea49c4ab949874894ba76"
+    },
+    "cdf.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/cdf.json",
+      "sha256": "be1f2e8327cc041f2d7fd6fae7f0f7e80bf0777563155cc47661254cea55bfbe"
+    },
+    "locale.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/locale.json",
+      "sha256": "0475acc77451d7288c398fdb22e50bf9005b2d04db8dd7b7be8c02e2360bbe26"
+    },
+    "float.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/float.json",
+      "sha256": "e30e4905a918458c9a6c5c892e5f65c77b9e3e4d535db6a96243a2a237c1442e"
+    },
+    "time.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/time.json",
+      "sha256": "2f99992d13373bc3364f6010d1ead820454ccc32409aad85ce31337e73650b57"
+    },
+    "components.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/components.json",
+      "sha256": "9f37f5f33d80a87df236062f158bbc045dbfed626cd308fca153e1a57cf94f99"
+    },
+    "cli.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/cli.json",
+      "sha256": "bfe5e6ebbc2c480c6470da3e13487e3ec792a3d600e21e7708d3ba424ea3e14c"
+    },
+    "cli-database.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/cli-database.json",
+      "sha256": "d136f7e81408b71ac0e4409741dbad8eb783b73037b15a628906333a5bb79934"
+    },
+    "benchmark.json": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/benchmark.json",
+      "sha256": "149dd31c8c9dfb005e801cb4d3381fedd28002bb4ef613cd7582668c241a0009"
+    },
+    "runtime-linkage.txt": {
+      "path": "reports/verification-runs/20261031T181214Z-8b338eb40e334fd0b1ba022e28888ad0/artifacts/runtime-linkage.txt",
+      "sha256": "8e1c860c18a300abd3d7d781f919366434aaec3cc54c936e78cffbd033be4aa1"
+    }
+  },
+  "oracle": {
+    "path": "/home/john/Code/rfile/.reference/claude-pass2-retest-evidence/oracle-private",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "cab2c3d903a963c0bc67a0ac058917699a06110661999f7415e624ccc9031ac8",
+      "src/.libs/libmagic.so": "5d54373670408fa0933d3f07a65b9ddcabddb785580461a673fc7b2b50b5cbb3",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "5ceefc94ca27434463d1cb7401971a87831ce5b03002657709c86f8c2dbe26a2",
+      "src/file": "9e0961a6d0ac57bed9e750ed49202aa55d8934f87e406f8e1cdd6918932710e1"
+    },
+    "version_stdout": "file-5.48\nmagic file from /usr/local/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "elapsed_seconds": 258.7781755269971,
+  "git_head": "d7d0eca9d5da7f0a867e6ea95aab505840d398c8",
+  "git_status": [
+    " M reports/abi-clients-rust.json",
+    " M reports/abi-clients.json",
+    " M reports/abi-diagnostics.json",
+    " M reports/abi-state.json",
+    " M reports/corpus-manifest.json",
+    " M reports/differential.json",
+    " M reports/elf.json",
+    " M reports/extended.json",
+    " M reports/regex.json",
+    " M reports/semantics.json",
+    " M reports/unsafe.json",
+    " M reports/verification.json"
+  ],
+  "source_sha256": "0b1b5bdbf1531e40feeedbd2c05287bf22c6905710b09f7511d75516749001e9",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "binary_sha256": "a1355b3a4c884b040c78aa00fd0a9aaf3a232bd699119621d78b867de411b60b",
+  "database_sha256": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+  "mutation_smoke": [
+    {
+      "database_cases": 10000,
+      "elapsed_seconds": 1.7788252359999999,
+      "fixture_files": 103,
+      "fixture_path": "/home/john/Code/rfile/.reference/claude-pass2-retest-evidence/oracle-private/tests",
+      "fixture_status": "executed",
+      "fixture_truncations": 1339,
+      "random_input_cases": 10000,
+      "seed": "4f6c655275737421",
+      "source_cases": 10000
+    }
+  ],
+  "scope": "Linux supported profile; coverage skips recorded separately; not sustained security qualification",
+  "finished_utc": "2026-10-31T18:16:33.113685+00:00"
+}

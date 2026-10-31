@@ -6,6 +6,37 @@ Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
+## Claude follow-up fix results (2026-10-31)
+
+Local branch: `fix/claude-timezone-diagnostic`. Code candidate is
+`aafff27664ee7c6f91da76af8ca6a86f960235bc`. See the
+[retest index](reports/claude-pass2-fix-retest/README.md) and original Claude
+ledger `/home/john/Code/rfile-qa-claude/pass2/LEDGER-pass2.md`.
+
+- F-03: prior diagnostic/documentation changes at 3903a19/8343a33 passed exact
+  local archive testing as a documented limitation; maintainer acceptance pending.
+- F-05/F-06: d7d0eca fixes passed Claude's 28 offset probes, 284-case compiled
+  parity matrix, byte comparisons and bounded scaling (D200k: 0.12 CPU seconds,
+  124 MB RSS versus about 19 seconds before). Both full verifier profiles passed
+  32/34 stages at d7, using a recorded private clean build of the same oracle pin.
+- F-07: d7 plus 2ef0bbc/aafff27 follow-ups fix output panics, read-only stdout,
+  quiet EPIPE, debug/status stderr failures, and preserve silent compilation.
+  Claude's final focused default/all-feature and strict-sandbox tests passed at
+  aaff. Inherited-closed stdout remains an explicitly documented open criterion.
+
+Execution reports retain actual source identities. Full d7 results and focused
+final aaff results do not claim a full verifier execution at aaff. Original
+failed environment attempts are preserved. No tester processes remain running.
+Other ledger findings and final finding dispositions remain open.
+
+Raw evidence and recovery: `.reference/claude-pass2-retest-evidence/`,
+`.reference/claude-debug-retest-evidence/`, `.reference/claude-final-output-evidence/`.
+The old e64 draft remains unchanged and does not contain these fixes. Before
+replacement, resolve/dispose remaining findings, freeze the final candidate,
+run its required release checks and independently accept exact CI-built archives.
+The original completion record below concerns the old experimental draft and
+must not be read as closure of the newly discovered findings.
+
 ## Frozen candidate and GitHub state
 
 - Repository: https://github.com/JLuethe/rfile.
