@@ -1,0 +1,60 @@
+name: Pinned oracle verification
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/oracle.yml'
+      - 'tools/verify.py'
+      - 'tools/verification_run.py'
+      - 'tools/reference.py'
+      - 'tools/build_reference.sh'
+permissions:
+  contents: read
+concurrency:
+  group: oracle-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  oracle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [default, all-features]
+    env:
+      RFILE_REFERENCE: ${{ github.workspace }}/.reference/file-clean
+      LC_ALL: C
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Prepare test-only C oracle dependencies and locales
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y autoconf automake libtool build-essential zlib1g-dev libbz2-dev liblzma-dev libzstd-dev liblz4-dev libseccomp-dev locales
+          sudo localedef -i en_US -f UTF-8 en_US.UTF-8
+      - name: Build clean pinned file 5.48 oracle
+        run: bash tools/build_reference.sh
+      - name: Run bounded default verification
+        if: matrix.profile == 'default'
+        run: timeout --signal=TERM --kill-after=30s 25m python3 tools/verify.py --benchmark
+      - name: Run bounded all-feature verification with required sandbox execution
+        if: matrix.profile == 'all-features'
+        run: timeout --signal=TERM --kill-after=30s 25m python3 tools/verify.py --all-features --require-sandbox --benchmark
+      - name: Retain run-specific logs and reports, including failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: oracle-${{ matrix.profile }}-${{ github.event.pull_request.head.sha || github.sha }}
+          path: reports/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: error

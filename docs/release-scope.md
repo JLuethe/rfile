@@ -41,9 +41,9 @@ decision; it does not assert that a dependency is vulnerability-free.
 | #20 Rust toolchain 1.120 | Closed during this increment | It changes the MSRV test away from declared 1.87 and its MSRV check fails. Dependabot configuration now leaves this deliberate minimum alone. |
 | #21 rustix 1.1.6 | Defer from this default-CLI increment | Optional sandbox dependency; requires matching workspace/fuzz lockfiles, notices and independent kernel regression checks. Its PR currently changes only the workspace lock and platform manifest. |
 | #22 lzma-rust2 0.24 | Defer from this default-CLI increment | Optional codec dependency; changes decoder accounting/padding behavior. Requires both lockfiles, notices and codec differential/boundary retesting. |
-| #1 checkout v7 | Superseded in this branch; closure awaits CI | Both existing jobs now use the reviewed v7 commit, and candidate packaging uses pinned checkout/Python/upload actions. Hosted runner compatibility is documented upstream; fresh CI is required. |
+| #1 checkout v7 | Superseded; closed after fresh CI passed | Both existing jobs and candidate packaging use pinned v7. Linux, MSRV and candidate artifact checks passed on `1883cdd`; the standalone dependency PR is redundant. |
 
-PRs #1, #19, #21 and #22 remain open. Neither a green unit-test run nor this
+PRs #19, #21 and #22 remain open. Neither a green unit-test run nor this
 scope decision closes their independent review gates. Revisit dependency
 decisions if an advisory affects the shipped profile before artifact freeze.
 
@@ -105,3 +105,9 @@ pending. Claude reached its five-hour quota after the reporting increment passed
 its reset is 23:50 America/Los_Angeles on 2026-10-30. Queue/package acceptance must
 wait for independent execution after that reset. Codex continues build, provenance
 and CI validation in the meantime.
+
+The candidate packaging job on `1883cdd` passed on Ubuntu 22.04, including
+installation/removal and a fresh-cache offline source build. Linux and Rust 1.87
+checks also passed. Both `linux` and `msrv` are required branch checks. The CI now
+includes release-mode workspace tests for both profiles and a bounded oracle
+workflow; its all-feature lane requires actual sandbox execution.
