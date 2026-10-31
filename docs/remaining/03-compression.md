@@ -110,4 +110,13 @@ Strict integrity/truncation rejection and an explicit output-cap error are inten
 
 The differential review made three explicit additional decisions for **both** profiles: emit one in-process `.Z` result instead of repeating native gzip/uncompress dispatch, inspect the first valid ZIP entry without reproducing helper-dependent warning/errors, and accept a valid empty LZ4 frame rather than the reference native adapter's `unable to decompress file`. This means Pinned548 does not promise exact output for those named cases. `upstream/src/compress.c:216–218,325–407` explains duplicate `.Z` dispatch; `:914` is the empty-LZ4 error. The helper ZIP behavior depends on installed gzip and entry layout. In this host's vectors, ncompress round-trips all four `.Z` widths; gzip rejects a valid 9-bit stream. No native helper defect is reintroduced into the Rust decoder.
 
+The comparison harness retains exact whole-observation hashes, including Rust
+bytes and status, for these decisions. `compatibility-observations.json` adds 64
+ZIP64/ZIP64-descriptor observations from Ubuntu 24.04: only the native helper's
+error text changed; the Rust result and all other fields match the original
+accepted observation. It is tied to the original decision-file hash and upstream
+pin. Unknown results still fail, and no arbitrary helper text is stripped. Reports
+identify supplemental matches and record the actual gzip executable hash/version.
+Updating base decisions requires deliberate review of this supplemental file too.
+
 `tests/fixtures/compression/compatibility-decisions.json` freezes the complete raw C/Rust observation hash for every reviewed disagreement, keyed by fixture/API/options. The harness rejects a new or changed disagreement rather than assigning a broad format-wide ignore. Exact matches, frozen decisions and unexpected results have separate totals. The fixture manifest and complete report retain actual bytes/hashes; the decision hash is not output normalization. `.Z` is not self-delimiting and cannot reliably distinguish every truncated code-group suffix from an ordinary end; its absent checksum and that limitation remain observable.

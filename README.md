@@ -17,6 +17,12 @@ printf 'hello\n' | ./target/release/rfile -b -
 ./target/release/rfile -m custom.magic example.bin
 ```
 
+CLI candidate archives include the executable, manual, notices and
+[installation/removal instructions](packaging/INSTALL.md). Verify the supplied
+`SHA256SUMS` before extracting. The paired source archive vendors the locked
+dependencies for offline rebuilding; `MANIFEST.json` records the binary's exact
+source commit, features and required glibc version.
+
 Rust 1.87 or later is required. `--help` lists CLI options. Gzip/zlib inspection uses `-z`; `-Z` omits the outer description. Experimental additional codecs are available with `cargo build --release --locked --features extended-codecs`: bzip2, XZ/LZMA/lzip, modern Zstd/LZ4, UNIX compress and the first stored/deflate ZIP entry. They remain off by default pending sustained security gates. `--capabilities` reports the actual compiled set. Unsupported codecs return an explicit inspection error; ordinary outer identification still uses the rules. See [codec contracts and gaps](docs/remaining/03-compression.md).
 
 ```rust

@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "base_decisions_sha256": "0c66ab2e97ffc416bc6c29bc40aa96fff6633b2f3826d693c67a7939e89275f9",
+  "observation_source": "https://github.com/JLuethe/rfile/actions/runs/41175352308",
+  "source_commit": "0c045636947e21ce3a1b1997529dc8ff7ff75a9d",
+  "environment": "Ubuntu 24.04; helper version was not recorded by the old harness",
+  "policy": "Additional exact ZIP64 helper-error observations under the existing first-entry ZIP decision. Every non-reference field, including Rust bytes/status, matches the original accepted observation. Unknown observations still fail.",
+  "cases": {
+    "[\"api\",\"zip64\",\"path\",4,null]": {
+      "observation_sha256": "8e9d251dbcce0955e0e4e67696ce4e2d2f86e7470a5d70f4ff0520f1245cf29b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",4,null]": {
+      "observation_sha256": "18a7c09924910473172a5ad1e53809984ea1645ba122e05e4ce8950b021572c1",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",33554436,null]": {
+      "observation_sha256": "7c6fef232595211de14c5474883e328792403ad2763de7dc78fe9f8966c8964e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",33554436,null]": {
+      "observation_sha256": "d0b31e64682cda429b40aec2bdf04e5f9ede33a869e1a693ee458ad0133aaf2d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",1044,null]": {
+      "observation_sha256": "2f8fb7ece9b7927c8f7593be1b0aa8f02a081fb459e3cce19f65534d1baed3a6",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",1044,null]": {
+      "observation_sha256": "b57f97de43acf6161b4bcc67a4e6b5f32b48146f3b460019888daf984df82b50",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",20,null]": {
+      "observation_sha256": "ece4159d802aa435108c7f1adbfb08fbdc3921dccd435f32f989ece17f40ab86",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",20,null]": {
+      "observation_sha256": "a975a1aa0176d8c30b066f39570421dff48ca0061aaf6bac2b0abd1f7fd46c9e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",1028,null]": {
+      "observation_sha256": "75200ab56fc263df79fdb6545a2d58812c9925ef9b7a5be8b8d00db1a868d57f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",1028,null]": {
+      "observation_sha256": "4d3dfb55a7d1bb148501dc8401aaf649efcc8f4fcc31d12967adb852bcf1c864",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",36,null]": {
+      "observation_sha256": "ae025d6188e4668d7aa65f3f8cd0ea76202ad5ee90712a7ec1a3b60e5e5972bb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",36,null]": {
+      "observation_sha256": "749d9cab4d4e510a45726bfafe5fed936db2e83b9134db1287d2fee3e69f7ac7",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",2052,null]": {
+      "observation_sha256": "188f556537d8b5e3e252c1e5f43fcd5a44317e5bd900e3ba2b486f63b1d2a43f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",2052,null]": {
+      "observation_sha256": "a193097860f5948579f4ddcafd1bd33f4bce68ee238573bb17a08d62d5201a6b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"path\",16777220,null]": {
+      "observation_sha256": "8eeeba4ccb8bbe7185ff9b47574730f3eacfa2f6adeda094b9a42e95a4352269",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"path\",16777220,null]": {
+      "observation_sha256": "82e83d3664720e3bfa6269a827965418f3d962a7a592f6ac4bebe27551f2c0db",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",4,null]": {
+      "observation_sha256": "3f5a5388385cd7216a0817138200f3d7c05609d73b33428a4c4ab63162749b73",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",4,null]": {
+      "observation_sha256": "3e567a9b1aae3481937067ee27900b6b606a8f4e773ca122abb69d484026f85f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",33554436,null]": {
+      "observation_sha256": "fba23d8948a3f2760c82aad477a47b5ea880587ecd5cea3ddb56da74b37235b2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",33554436,null]": {
+      "observation_sha256": "3cfe3828683b5c6f41e0cce9e5ef27ca3bfb09e491235a248b7a31ed8949121b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",1044,null]": {
+      "observation_sha256": "0d18642447117c1d4a391a37812e6d52472359e5fe75abb1d46b4103f791e007",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",1044,null]": {
+      "observation_sha256": "96706f844fbe4eafc0324282138a664afc880c3356176198f11c3d2bee36755b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",20,null]": {
+      "observation_sha256": "2e6a34c64bc7aca5ea1a2ab7eb597e8f81c2c5cc2d4f2aca605d4816c1debe50",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",20,null]": {
+      "observation_sha256": "99924753d1e53fe8205f827ead5d0af40a594f48e4ec606e477c9b00afdbb3fb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",1028,null]": {
+      "observation_sha256": "7fffce06128fccfce12be8bf3f1ad41579bed99789058b77ee54046edcd39f39",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",1028,null]": {
+      "observation_sha256": "e524a3d60cfb8e346defefdaf7853a8948c9910c4e921469fd0c1bba5498f91f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",36,null]": {
+      "observation_sha256": "06835b2cb861d5427a0228f627cfad3c5cbb0c5f113fe85aad182e84267af046",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",36,null]": {
+      "observation_sha256": "493f5b6b7702400dc85bd61081b595df120741d5259ad78ce4078183a18c33c2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",2052,null]": {
+      "observation_sha256": "d7a5e90384e64f8413ea4daf94e1b2beaaae7add9af9e7305dd6fc2323b77d60",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",2052,null]": {
+      "observation_sha256": "4d3632895cb7d8f74a854f18cf988632b2c6b11e8f7e81d88b6f4465d1c34c09",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"buffer\",16777220,null]": {
+      "observation_sha256": "79b32c39a137e998d7e3b15af0bceed5a79f710067f3f7cbd51a4af80c59ff73",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"buffer\",16777220,null]": {
+      "observation_sha256": "ea98ca912939e0df5fedb9b8fdb4b4794e5b4c7508768fb488c696d700028485",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",4,null]": {
+      "observation_sha256": "ce18c8d2bcc9f86ccf8c5d8ab9896b8d3c83753d15bc5fe161d6e825f02c284a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",4,null]": {
+      "observation_sha256": "fd273673f97291691a715234f8b335ab7f23f9259146e22f4e78eaa04020449e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "6973cc0ac26f750d45698c109542a0ee9574f9f8067d7df3b55929f3cfdcc3e0",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",33554436,null]": {
+      "observation_sha256": "2a6da2640b7aa1bbb5e44e57f63187d51ea65ae7eca38baac56c3d5c0c1016ca",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",1044,null]": {
+      "observation_sha256": "3258f72fc9ba7b320da5f62db3e1fde9c17dc22cdae8fb3fedef8e988870b40e",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",1044,null]": {
+      "observation_sha256": "e36511b9a94cd5c976e8e48da8bfa9892584dbbdaae15ca58cfee2d502507077",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",20,null]": {
+      "observation_sha256": "961a3b08bf07a2fc4391fbfa5c27e9366d1c2726f82e074867e3763d43e130d2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",20,null]": {
+      "observation_sha256": "d4211f00fc100f555515c2a48d9dfd4c6fe8e3eaaed3e451b272cb51c70c9ba3",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",1028,null]": {
+      "observation_sha256": "5598b7d895644508d327eea0ccb40c9f1f7ca2a68c6c31d943cd18f069a18ecf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",1028,null]": {
+      "observation_sha256": "3ff56a68e0dbaf55717f7fcce89d11a7b65d51080d97a539aa6bc7540fe93a14",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",36,null]": {
+      "observation_sha256": "5d0881d800d52f0a2a634ba4b2be3ac5f89be0a0ff91fcbb90124b795a2160ad",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",36,null]": {
+      "observation_sha256": "a483e3dfbf55113761f6fe108b079a37fdb0f88e2ea036b1eaaf7f63b8fa581a",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",2052,null]": {
+      "observation_sha256": "965d16e03a5d0bfc52b2be22fd61a12b92ef2fa332de8436dcd93abaadec9f82",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",2052,null]": {
+      "observation_sha256": "c114652cf73a223b3d214c29bbfd500eec13b339451a574d5f60cbef1449a4d9",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "1708c7db115739993aeeab0d03d47326ceb3215b431b6d566fd2723693cd1f8b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"api\",\"zip64-descriptor\",\"descriptor\",16777220,null]": {
+      "observation_sha256": "213d407a4d232c75fc3dd4c7035075dba637812c81042b0134ed433534f5085b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\"]]": {
+      "observation_sha256": "658255f56d2323eddec491a99592075a1909b1a268cbd3a99169eabc736ed9b8",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "b580aa65ef0436cbd02fb0c3201d07ac65918298c721075776d20087dbcd0c2d",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "67121873ba897db7c99052856c619d4393000e75a0acf89bf8ef763b501ebf0b",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "390a0564b8ca239c3670ab48135ccdacf14c54f38f24b59feae444e611565387",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "76ab0ba2e14f820e020ebce46e3e4a5786bb4b3b57d174728a5b6a3682c4263f",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "ccda8ef1b5543d80620e2db333b526b7b2292526a9f8e68294521e23f472411c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "a579af00cff37c5bb98c7ba53c676d576f1fefe37f1732fd064a5baeb2be2674",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "b137c7f95a07e81b96ef4df229b177a69896ba714f504a6d21ebd551fdbecadb",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\"]]": {
+      "observation_sha256": "5f017edd36c8497b4bbf4d6a64ca68d0a6b8a990e03fed87bfd4360133de6840",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-Z\"]]": {
+      "observation_sha256": "e64f7ebd7b7b6b3c697f0fe63ff8d782544a43c6dc50f55a69fc95a49ad5edb2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"-i\"]]": {
+      "observation_sha256": "0f107805e5ee02b22eb06e078dee8df8816f73eb76e194fe8d245554197cd037",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-type\"]]": {
+      "observation_sha256": "483b9e82797f67ab5cadd8aa6204c35c3307fca7e07539350e1c99c1fbd418cf",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--mime-encoding\"]]": {
+      "observation_sha256": "2665236e20c0bd0a3f7b29ba6ad614508fbd5b8d29e27ded076f7e3cbebe0fe2",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"-k\"]]": {
+      "observation_sha256": "7d71e7f9e70cf3afa96dab646d23b0463f4cf44795c6d105381e0b570aac3bce",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--apple\"]]": {
+      "observation_sha256": "8fe8008ff0bd2452be7204b15039cc0b7e3eb1eddb63f1388c77fa0d2636f59c",
+      "decision": "helper-ZIP-first-entry"
+    },
+    "[\"cli\",\"zip64-descriptor\",null,null,[\"-z\",\"--extension\"]]": {
+      "observation_sha256": "159aac7b012196a8dc2adc497d89537293ad094ecd96cd92051cf22b185ec8bc",
+      "decision": "helper-ZIP-first-entry"
+    }
+  }
+}

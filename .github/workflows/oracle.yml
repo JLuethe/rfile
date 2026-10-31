@@ -10,6 +10,8 @@ on:
       - 'tools/oracle_boundaries.py'
       - 'tools/semantics_compare.py'
       - 'tools/time_compare.py'
+      - 'tools/compression_compare.py'
+      - 'tests/fixtures/compression/compatibility-*.json'
       - 'tools/build_reference.sh'
 permissions:
   contents: read
