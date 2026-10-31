@@ -300,3 +300,49 @@ fn negative_signed_note_positions_are_diagnostics_without_a_read() {
         }
     }
 }
+
+#[test]
+fn executable_note_read_ranges_respect_signed_position_limits() {
+    for big in [false, true] {
+        for kind in [2u16, 3] {
+            for (offset, size) in [
+                (u64::MAX - 15, 0u64),
+                (1u64 << 63, 64),
+                (i64::MAX as u64, 1),
+                (i64::MAX as u64 - 1, 64),
+            ] {
+                let mut data = fixture(if big {
+                    "64-be-core-auxv"
+                } else {
+                    "64-le-core-auxv"
+                });
+                data[16..18].copy_from_slice(&if big {
+                    kind.to_be_bytes()
+                } else {
+                    kind.to_le_bytes()
+                });
+                data[72..80].copy_from_slice(&if big {
+                    offset.to_be_bytes()
+                } else {
+                    offset.to_le_bytes()
+                });
+                data[96..104].copy_from_slice(&if big {
+                    size.to_be_bytes()
+                } else {
+                    size.to_le_bytes()
+                });
+                let result = inspect(&data, Limits::default(), SemanticProfile::Pinned548)
+                    .unwrap()
+                    .unwrap();
+                assert_eq!(
+                    result.suffix,
+                    format!(
+                        ", can't read section at {}, no section header",
+                        offset as i64
+                    )
+                    .as_bytes()
+                );
+            }
+        }
+    }
+}

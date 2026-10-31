@@ -917,16 +917,21 @@ pub fn inspect(
                     }
                 }
                 if matches!(typ, 2..=4) {
-                    if i64::try_from(poff).is_err() {
-                        // Match the signed off_t diagnostic, without passing an
-                        // invalid negative position to the input implementation.
+                    let read_size = psize.min(2024);
+                    if i64::try_from(poff).is_err()
+                        || poff
+                            .checked_add(read_size)
+                            .is_none_or(|end| end > i64::MAX as u64)
+                    {
+                        // Match signed off_t position/range diagnostics without
+                        // asking the input implementation to perform an invalid read.
                         if !mime_only {
-                            out.push_str(&format!(" can't read section at {}", poff as i64))?;
+                            out.push_str(&format!(", can't read section at {}", poff as i64))?;
                         }
                         program_complete = false;
                         break;
                     }
-                    let b = e.read(poff, psize.min(2024) as usize)?;
+                    let b = e.read(poff, read_size as usize)?;
                     match typ {
                         2 => {
                             dynamic = true;

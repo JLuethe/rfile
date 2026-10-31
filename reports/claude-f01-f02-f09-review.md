@@ -10,11 +10,16 @@ required; this implementation record does not close findings.
   error. Diagnostic conversion is separate from IO; no invalid-position read is
   attempted. Core MIME output remains its existing identification. Executable
   program-section reads get the corresponding native diagnostic. Other IO and
-  resource failures still propagate normally.
+  resource failures still propagate normally. Follow-up expanded testing found
+  executable diagnostics also require their native comma and rejection of a read
+  span crossing i64::MAX even when the starting offset is nonnegative; both are
+  covered by the follow-up guard and regression.
 - **F-09:** expected filesystem/path/manifest refusal errors are caught at the
   installer entrypoint and printed as a concise status-1 diagnostic. Existing
   exclusive creation, preflight checks, rollback and uninstall protections are
-  unchanged. Unexpected programming exceptions are not generally swallowed.
+  unchanged. Follow-up schema validation rejects malformed metadata, file maps,
+  hashes and modes before creating directories or deleting files. Unexpected
+  programming exceptions are not generally swallowed.
 - **F-02 decision:** preserve the complete-decode hard error, explicitly document
   the default 7 MiB cap, missing partial/wrapper output on failure, the `-P bytes=N`
   workaround and independent budgets. A partial decoded prefix cannot establish
