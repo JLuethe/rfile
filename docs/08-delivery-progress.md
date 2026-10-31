@@ -16,7 +16,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c delivered (historical checkpoint below): 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
 | R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment merged in PR #18 | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
-| R9 sustained hardening | queue implemented in open PR #19; qualification pending | 25 targets; smoke does not satisfy measured campaigns, final-candidate replay or independent review |
+| R9 sustained hardening | queue merged in PR #19; qualification pending | 25 targets; smoke does not satisfy measured campaigns, final-candidate replay or independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
 The baseline reports are regenerated for each implementation candidate. `reports/components.json` separately records the additional CDF/regex cases. Ignored regression tests and known-open discrepancies are not counted as successful conformance. No sustained campaign or independent audit has been performed by this PR.

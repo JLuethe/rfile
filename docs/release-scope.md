@@ -37,20 +37,22 @@ decision; it does not assert that a dependency is vulnerability-free.
 
 | PR | Decision | Reason / next gate |
 |---|---|---|
-| #19 bounded fuzz queue | Keep as the development baseline; merge remains pending | Linux/MSRV checks pass. Claude's baseline covers Rust but not queue locking/interruption/accounting. Independent queue review/self-test is required before using it for qualification. It is not part of the shipped CLI runtime. |
+| #19 bounded fuzz queue | Merged as `5316cb8` | Required Linux/MSRV checks and independent GPT-6 Luna queue tests passed: locking, duplicate rejection, partial accounting and deadline cleanup. Evidence is in `reports/release-0.2.0-rc.1/queue-qa/`. This is experimental infrastructure, not sustained qualification. |
 | #20 Rust toolchain 1.120 | Closed during this increment | It changes the MSRV test away from declared 1.87 and its MSRV check fails. Dependabot configuration now leaves this deliberate minimum alone. |
 | #21 rustix 1.1.6 | Defer from this default-CLI increment | Optional sandbox dependency; requires matching workspace/fuzz lockfiles, notices and independent kernel regression checks. Its PR currently changes only the workspace lock and platform manifest. |
 | #22 lzma-rust2 0.24 | Defer from this default-CLI increment | Optional codec dependency; changes decoder accounting/padding behavior. Requires both lockfiles, notices and codec differential/boundary retesting. |
 | #1 checkout v7 | Superseded; closed after fresh CI passed | Both existing jobs and candidate packaging use pinned v7. Linux, MSRV and candidate artifact checks passed on `1883cdd`; the standalone dependency PR is redundant. |
 
-PRs #19, #21 and #22 remain open. Neither a green unit-test run nor this
+PRs #21 and #22 remain open and explicitly deferred. Neither a green unit-test run nor this
 scope decision closes their independent review gates. Revisit dependency
 decisions if an advisory affects the shipped profile before artifact freeze.
 
 ## Tester/fixer workflow
 
-Claude designs and executes tests, records reproducible findings, and retests
-Codex fixes. Codex implements fixes and performs other validation: source review,
+Claude performed the initial baseline and reporting retests. When its quota
+expired, the user explicitly requested GPT-6 Luna subagents to continue independent
+testing. Those agents design and execute tests, record reproducible findings, and
+retest Codex fixes; reports retain the actual model identity. Codex implements fixes and performs other validation: source review,
 formatting, documentation consistency, Git/CI inspection and evidence/provenance
 checks. Keep agent reports verbatim with separate corrections when necessary.
 Use isolated checkouts and serialize feature runs. Production failures,
@@ -100,14 +102,25 @@ exact archives, a private install prefix, safe uninstall behavior and a fresh-ca
 offline source rebuild. `packaging/INSTALL.md` documents installation.
 
 The release-candidate workflow builds on Ubuntu 22.04 and retains artifacts without
-publishing a release. Independent package QA and the pinned-oracle matrix are
-pending. Claude reached its five-hour quota after the reporting increment passed;
-its reset is 23:50 America/Los_Angeles on 2026-10-30. Queue/package acceptance must
-wait for independent execution after that reset. Codex continues build, provenance
-and CI validation in the meantime.
+publishing a release. Independent GPT-6 Luna agents are reviewing exact archives,
+comparison harnesses and sanitizer/Miri results. The queued Claude retry was
+cancelled when the user requested Luna. The default pinned-oracle CI passed on
+`0c04563`; its all-feature lane exposed a narrowly recorded gzip-helper ZIP64
+text variant. Luna independently accepted the precise FILETIME and ZIP64 corrections; the
+complete final candidate matrix remains required.
 
-The candidate packaging job on `1883cdd` passed on Ubuntu 22.04, including
-installation/removal and a fresh-cache offline source build. Linux and Rust 1.87
-checks also passed. Both `linux` and `msrv` are required branch checks. The CI now
-includes release-mode workspace tests for both profiles and a bounded oracle
-workflow; its all-feature lane requires actual sandbox execution.
+Both `linux` and `msrv` are required branch checks. CI includes debug/release
+workspace tests for both profiles and a bounded oracle workflow; its all-feature
+lane requires actual sandbox execution. The full oracle run also executes the
+independent date-report regression tests against reports generated in that run.
+Ordinary Python unit CI explicitly skips those two report checks without an
+oracle-report directory; it never treats committed historical reports as fresh.
+
+Luna's artifact review found that a fresh Cargo cache hid rustup proxies when the
+caller's PATH omitted `~/.cargo/bin`. The checker now preserves the selected
+Cargo toolchain directory and defaults the fresh-cache build to one job (an
+explicit `CARGO_BUILD_JOBS` override is honored). Independent retesting is in progress. Artifact QA also found that minimal images
+without a system timezone failed before classification; the follow-up uses UTC
+only for an absent implicit zone (and built-in TZ=UTC), preserving explicit
+configuration errors. Final container retesting and source/artifact freeze remain
+pending.

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "queue_pid": 932187,
+  "started_utc": "2026-10-31T06:18:05.495143+00:00",
+  "source_sha256": "5618e569908d2352e6d59ef624a7a293e8cd592c0ed5c735d1687e68b1550f36",
+  "supervisor_sha256": "105294309e518e888f5ec7222abebdf7f3014a8d82dbc182af0b8c4f4439b1f8",
+  "queue_sha256": "416b2ef3493464a5b876cebf8bb2812724ea0363500596c004f3e57aacc7c517",
+  "git_head": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "git_status": [
+    " M reports/fuzz-abi_state.json",
+    " M reports/fuzz-source_diagnostics.json"
+  ],
+  "limits": {
+    "targets": [
+      "source_diagnostics",
+      "abi_state"
+    ],
+    "workers": 2,
+    "cpu_hours_per_target": 0.0001,
+    "max_wall_hours": 0.02,
+    "chunk_seconds": 10,
+    "rss_mib": 512
+  },
+  "targets": {
+    "source_diagnostics": {
+      "status": "complete",
+      "binary_sha256": "de8ecbe75c349bfa2fd04b0be41024ca7a78e15e144d691f318755f0386b1f2b",
+      "pid": 932281,
+      "started_utc": "2026-10-31T06:18:05.539352+00:00",
+      "command": [
+        "/usr/bin/python3",
+        "/tmp/rfile-queue-review/tools/fuzz_campaign.py",
+        "source_diagnostics",
+        "--seconds",
+        "10",
+        "--cpu-hours",
+        "0.0001",
+        "--rss-mib",
+        "512"
+      ],
+      "returncode": 0,
+      "finished_utc": "2026-10-31T06:18:17.742526+00:00",
+      "measured_cpu_seconds": 10.959582,
+      "campaign_status": "partial-campaign-complete",
+      "completed_gate": false,
+      "report_sha256": "ff6f66f979203bf8bb6509b41980bc0258903cb39d7574e39e640d947c60cb7b"
+    },
+    "abi_state": {
+      "status": "complete",
+      "binary_sha256": "ac63b2eeba5c7434633ced0ab9cdde848916f7f3dbc500b0c75665f6a121dc5e",
+      "pid": 932301,
+      "started_utc": "2026-10-31T06:18:05.572619+00:00",
+      "command": [
+        "/usr/bin/python3",
+        "/tmp/rfile-queue-review/tools/fuzz_campaign.py",
+        "abi_state",
+        "--seconds",
+        "10",
+        "--cpu-hours",
+        "0.0001",
+        "--rss-mib",
+        "512"
+      ],
+      "returncode": 0,
+      "finished_utc": "2026-10-31T06:18:17.742926+00:00",
+      "measured_cpu_seconds": 10.96522,
+      "campaign_status": "partial-campaign-complete",
+      "completed_gate": false,
+      "report_sha256": "a8d254bd9ee2786b17a4b824ef70af864cc36d996697ccee2a0159d5c208d53e"
+    }
+  },
+  "run_directory": "/tmp/rfile-queue-review/.reference/fuzz-queues/6302a727-f9c4-41e2-8d5d-4c54dcec8814",
+  "qualified_release": false,
+  "heartbeat_utc": "2026-10-31T06:18:17.754875+00:00",
+  "wall_seconds": 12.25569459200051,
+  "finished_utc": "2026-10-31T06:18:17.755017+00:00",
+  "measured_cpu_seconds": 21.924802,
+  "sustained_targets_passed": []
+}

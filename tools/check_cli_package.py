@@ -117,7 +117,8 @@ def main():
             fresh = temporary / 'empty-cargo-home'
             fresh.mkdir()
             run('offline-source-rebuild', [cargo, 'check', '--workspace', '--all-targets', '--all-features', '--locked', '--offline'],
-                cwd=source, timeout=300, extra=dict(CARGO_HOME=str(fresh), CARGO_TARGET_DIR=str(temporary / 'source-target'), PATH=toolchain_path))
+                cwd=source, timeout=300, extra=dict(CARGO_HOME=str(fresh), CARGO_TARGET_DIR=str(temporary / 'source-target'),
+                    PATH=toolchain_path, CARGO_BUILD_JOBS=env.get('CARGO_BUILD_JOBS', '1')))
         report['status'] = 'passed'
     except BaseException as error:
         report.update(status='failed', error=str(error))

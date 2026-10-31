@@ -1,0 +1,13 @@
+{
+  "model": "gpt-6-luna",
+  "role": "independent testing",
+  "filetime_commit": "0c045636947e21ce3a1b1997529dc8ff7ff75a9d",
+  "codec_commit": "dc103ea7fe3b7a71b6d6ea348a48995b0a176576",
+  "regression_source": "/tmp/rfile-night-review/luna_test_oracle_boundary.py",
+  "integrated_path": "tools/test_oracle_boundaries.py",
+  "regression_sha256": "39c0d720087252f61c9e152c5f27e8bfe0588d93ba6e31168971422928bd20fd",
+  "ordinary_mode": "3 passed, 2 explicitly skipped; report tests require RFILE_ORACLE_REPORTS",
+  "fresh_report_mode": "5 passed",
+  "mutant": "exclusive lower-bound mutant rejected",
+  "limitations": "Targeted harness acceptance, not final artifact acceptance or security qualification"
+}

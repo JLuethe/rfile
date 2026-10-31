@@ -63,6 +63,8 @@ def main():
    run('locale-differential',['python3','tools/locale_compare.py'])
    run('float-differential',['python3','tools/float_compare.py'])
    run('time-differential',['python3','tools/time_compare.py'])
+   env['RFILE_ORACLE_REPORTS']=str(ROOT/'reports')
+   run('oracle-report-regressions',['python3','-m','unittest','discover','-s','tools','-p','test_oracle_boundaries.py','-v'])
    run('component-differential',['python3','tools/component_compare.py'])
    run('cli-differential',['python3','tools/cli_compare.py'])
    run('cli-database-differential',['python3','tools/cli_database_compare.py','--binary','target/release/rfile']+(['--sandbox-matrix']if args.all_features else []))

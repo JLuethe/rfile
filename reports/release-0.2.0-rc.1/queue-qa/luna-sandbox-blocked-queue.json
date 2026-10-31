@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "stopped",
+  "queue_pid": 10,
+  "started_utc": "2026-10-31T06:17:48.914191+00:00",
+  "source_sha256": "5618e569908d2352e6d59ef624a7a293e8cd592c0ed5c735d1687e68b1550f36",
+  "supervisor_sha256": "105294309e518e888f5ec7222abebdf7f3014a8d82dbc182af0b8c4f4439b1f8",
+  "queue_sha256": "416b2ef3493464a5b876cebf8bb2812724ea0363500596c004f3e57aacc7c517",
+  "git_head": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "git_status": [],
+  "limits": {
+    "targets": [
+      "source_diagnostics",
+      "abi_state"
+    ],
+    "workers": 2,
+    "cpu_hours_per_target": 0.0001,
+    "max_wall_hours": 0.02,
+    "chunk_seconds": 10,
+    "rss_mib": 512
+  },
+  "targets": {
+    "source_diagnostics": {
+      "status": "failed",
+      "binary_sha256": "de8ecbe75c349bfa2fd04b0be41024ca7a78e15e144d691f318755f0386b1f2b",
+      "pid": 15,
+      "started_utc": "2026-10-31T06:17:48.959920+00:00",
+      "command": [
+        "/usr/bin/python3",
+        "/tmp/rfile-queue-review/tools/fuzz_campaign.py",
+        "source_diagnostics",
+        "--seconds",
+        "10",
+        "--cpu-hours",
+        "0.0001",
+        "--rss-mib",
+        "512"
+      ],
+      "returncode": 1,
+      "finished_utc": "2026-10-31T06:17:49.992380+00:00"
+    },
+    "abi_state": {
+      "status": "failed",
+      "binary_sha256": "ac63b2eeba5c7434633ced0ab9cdde848916f7f3dbc500b0c75665f6a121dc5e",
+      "pid": 16,
+      "started_utc": "2026-10-31T06:17:48.992086+00:00",
+      "command": [
+        "/usr/bin/python3",
+        "/tmp/rfile-queue-review/tools/fuzz_campaign.py",
+        "abi_state",
+        "--seconds",
+        "10",
+        "--cpu-hours",
+        "0.0001",
+        "--rss-mib",
+        "512"
+      ],
+      "returncode": 1,
+      "finished_utc": "2026-10-31T06:17:49.992639+00:00",
+      "measured_cpu_seconds": 0.0,
+      "campaign_status": "failed",
+      "completed_gate": false,
+      "report_sha256": "e828d7e402393d1051186701c2491d8c50c09b62a119b4a16593290bcc5f6bb2"
+    }
+  },
+  "run_directory": "/tmp/rfile-queue-review/.reference/fuzz-queues/e4bcb8ad-357e-4f60-ba02-39716dcb670e",
+  "qualified_release": false,
+  "heartbeat_utc": "2026-10-31T06:17:49.992878+00:00",
+  "wall_seconds": 1.0741472909976437,
+  "stop_reason": "target-failed:source_diagnostics",
+  "finished_utc": "2026-10-31T06:17:49.992982+00:00",
+  "measured_cpu_seconds": 0.0,
+  "sustained_targets_passed": []
+}
