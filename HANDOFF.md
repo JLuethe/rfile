@@ -6,9 +6,33 @@ Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-3 candidate awaiting Claude retest
+## Pass-4 correction awaiting Claude retest
 
-Current code candidate: `098d99cc837a07e1d40b79c6e96acd97f00caa1e`, tree
+Code candidate `8e33173217dd89b20c227d7665319681114ee9cb`, tree
+`b20a51c44a44e42bf65bdde5e11ee4a10ac34ad7`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-4 review](reports/claude-pass4-codex-review.md).
+
+Restores metadata-first empty-file identification in normal/MIME modes, including
+-E. Both -s and annotation-only --apple/--extension must open/check permissions;
+the annotation exception was confirmed directly against the pinned oracle.
+Non-empty unreadable diagnostics, access prefixes and explicit FIFO -s errors
+are retained. The earlier PendingContent::Empty annotation shortcut is removed.
+
+Local default/all-feature filesystem regressions, sandbox CLI tests, Clippy and
+formatting passed. A Codex paired matrix matched 288/288 rows across empty/
+non-empty files, modes 000–500 and output/-E/-s combinations. This is local
+validation, not independent acceptance; Claude has not retested this commit.
+Retest per `/home/john/Code/rfile-qa-claude/pass4/LEDGER-pass4.md` section5 with
+its expected normal/MIME ordering and the verified annotation-only exception.
+
+Original ledgers remain unchanged. The remaining F-04/F-04b/F-03/F-07/CDF-stage
+dispositions and final release gates remain open; the old e64 draft is unchanged.
+The earlier pass-3 candidate notes below are historical and superseded here.
+
+## Earlier pass-3 candidate and implementation notes
+
+Earlier code candidate: `098d99cc837a07e1d40b79c6e96acd97f00caa1e`, tree
 `d3fe580ecaceee719b8d82a61cc51b79abe5a8c1`, local branch
 `fix/claude-timezone-diagnostic`. See
 [Codex pass-3 review](reports/claude-pass3-codex-review.md).
