@@ -96,6 +96,10 @@ configuration before the embedded default. POSIXLY_CORRECT enables symlink follo
 LC_ALL, LC_CTYPE and LANG select immutable display contexts. C is portable;
 selected UTF-8 locales use the Linux/glibc adapter. TZ selects an immutable
 timezone context. No process-global locale/environment mutation is performed.
+Empty TZ and TZ=UTC use built-in UTC. If TZ is unset and /etc/localtime is absent,
+UTC is the default, so minimal images do not need tzdata for ordinary detection.
+Explicit invalid/missing zones and malformed or unreadable existing system-zone
+files remain setup errors.
 .SH EXIT STATUS
 Zero means classification completed, including unknown data and ordinary per-file
 filesystem diagnostics. -E, setup failures, resource errors and failed writes

@@ -41,7 +41,17 @@ struct DateFields { year: i32, month: u8, day: u8, hour: u8,
 
 Raw numeric width, signedness, endianness and masks remain evaluator semantics. Convert date/ldate/qdate/qldate/Windows/DOS only after that stage. Local families use the configured zone; UTC families stay UTC. English asctime weekday/month names and spacing are fixed by the reference's renderer, not translated by LC_TIME. Preserve valid formatting at years -999..9999 where the pinned host's fixed asctime buffer permits it; larger/out-of-range values render the exact invalid marker or a declared profile error. Do not use a broad ISO8601 formatter as the human output.
 
-Timezone selection for the CLI: empty TZ means UTC; named TZ resolves against the configured system database; POSIX TZ expressions are parsed explicitly; a leading colon/file form is loaded as checked TZif where supported; absent TZ uses system local-zone data. Set a 1 MiB zone-file cap, bounded parsing/cache and path policy before IO. Named-zone resolution must prevent path traversal outside the configured database root; explicit TZ file paths are a separate allowed configuration input. Invalid/unavailable configuration is a clear setup error with provenance, not an unnoticed UTC substitution. Any host-native fallback that the pin performs differently is a documented configuration difference.
+Timezone selection for the CLI: empty TZ and `TZ=UTC` use built-in UTC without
+requiring tzdata; other named TZ values resolve against the configured system
+database; POSIX TZ expressions are parsed explicitly; a leading colon/file form
+is loaded as checked TZif where supported. Absent TZ uses system local-zone data,
+or UTC if the implicit `/etc/localtime` is absent (including a dangling symlink).
+That specific default permits operation in minimal container images. An existing
+malformed/unreadable system file, or any explicitly requested invalid/missing zone,
+remains a setup error. Set a 1 MiB zone-file cap, bounded parsing/cache and path
+policy before IO. Named-zone resolution must prevent path traversal outside the
+configured database root; explicit TZ file paths are separate configuration
+inputs. This fallback does not suppress explicit configuration errors.
 
 Selected candidate is `jiff 0.2.38`, Unlicense OR MIT, manifest MSRV 1.70; inspected APIs include immutable TimeZone, IANA get, POSIX expression and TZif construction. Use explicit std/TZif support and controlled database loading; do not enable every default platform/bundled-data feature without evaluating it. Reuse identical TZif bytes for C and Rust comparisons when possible and record tzdata hashes. Candidate capabilities are documented in the [TimeZone API](https://docs.rs/jiff/0.2.38/jiff/tz/struct.TimeZone.html); conversion behavior still needs libc differential tests. Parse/load the chosen zone under the baseline sandbox and before final strict input confinement; do not require lazy zone-file IO after the final filter. Rust API contexts do not hot-reload; C ABI compatibility refreshes a changed coordinated TZ setting at call entry rather than installing a process-global TZ.
 

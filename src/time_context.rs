@@ -93,16 +93,25 @@ impl TimeContext {
         Ok(context)
     }
     /// Snapshot CLI configuration once. Explicit TZ file paths are separate
-    /// configuration inputs; named zones cannot traverse out of `root`.
+    /// configuration inputs; named zones cannot traverse out of `root`. If no
+    /// zone was configured and the system zone is absent, use UTC.
     pub fn from_environment() -> Result<Self> {
         let root = PathBuf::from("/usr/share/zoneinfo");
         match std::env::var_os("TZ") {
-            None => Self::from_file(Path::new("/etc/localtime")),
+            None => match Self::from_file(Path::new("/etc/localtime")) {
+                // Minimal images need not install tzdata. Only an absent
+                // implicit default permits UTC; malformed/unreadable files and
+                // every explicitly requested missing zone remain setup errors.
+                Err(Error::Io(error)) if error.kind() == std::io::ErrorKind::NotFound => {
+                    Ok(Self::default())
+                }
+                result => result,
+            },
             Some(raw) => {
                 let text = raw
                     .to_str()
                     .ok_or_else(|| Error::Unsupported("non-UTF8 TZ".into()))?;
-                if text.is_empty() {
+                if text.is_empty() || text == "UTC" {
                     return Ok(Self::default());
                 }
                 let name = text.strip_prefix(':').unwrap_or(text);
