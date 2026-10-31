@@ -91,7 +91,9 @@ with -k, PNG/APNG, PGP and zstd; reported examples include missing `was ""`,
 `from FAT filesystem`, `made by v0.0`, PNG geometry, PGP creation and zstd dictionary
 fragments. The pass-3 short-input --mime-type sweep matched; extensions and other
 inputs are not thereby certified. Rfile does not emulate the omitted bounds check.
-The separate F-04b 1–2-byte text-encoding differences remain unroot-caused/open.
+Plain UTF-8 selection requires a completed decoded non-ASCII character; an
+incomplete trailing sequence alone does not identify UTF-8 (F-04b). Incomplete
+tails after a completed character remain tolerated, and BOM handling is separate.
 
 A narrow safe compatibility exception synthesizes an empty value for explicit
 lestring16/bestring16 wildcard reads beyond EOF, preserving the native padding
@@ -125,10 +127,13 @@ documented wording difference, not exact native output.
 On direct empty regular files, mixed -i --apple emits the MIME result once.
 The pinned oracle appends an annotation result to the metadata MIME result:
 an empty-content MIME result if readable, or a permission description if not.
-For an unreadable symlink target, rfile emits the permission description once;
-the oracle prefixes it with the symlink MIME result. Rfile deliberately does
-not concatenate these outputs. Annotation flags still request symlink-target
-inspection even when combined with MIME flags.
+For a regular symlink target, including readable, empty and chained targets,
+mixed -i --apple emits only the target result; for an unreadable target it emits
+the permission description. The oracle prefixes either result with
+inode/symlink; charset=binary. Rfile deliberately does not concatenate these
+outputs (F-08d). This differs from 8e33173, which emitted only the symlink MIME
+result for mixed flags. Annotation flags still request symlink-target inspection
+even when combined with MIME flags.
 
 String16 wildcard compatibility remains deliberately narrow. Pre-existing
 non-wildcard comparisons such as =\0 and <z on two-byte inputs can differ where

@@ -107,7 +107,8 @@ pub(crate) fn detect(buf: &[u8], limit: usize) -> Encoding {
         }
     }
     if let Some(chars) = utf8(b) {
-        if b.iter().any(|c| *c >= 128) {
+        // A discarded incomplete tail does not identify the input as UTF-8.
+        if chars.iter().any(|&c| c >= 128) {
             return make("Unicode text, UTF-8", "utf-8", chars);
         }
     }

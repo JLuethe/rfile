@@ -195,6 +195,55 @@ fn text_and_builtin_samples() {
     }
 }
 #[test]
+fn utf8_selection_requires_a_completed_non_ascii_character() {
+    // Pinned-oracle expectations from Claude's pass-6 F-04b probes.
+    let mut e = Engine::builtin().unwrap();
+    for (data, label, mime) in [
+        (b"\x60\xea".as_slice(), "ISO-8859", "iso-8859-1"), // ARJ, first 2
+        (b"\xef\xbb", "ISO-8859", "iso-8859-1"),            // PDF BOM, first 2
+        (b"a\xc3", "ISO-8859", "iso-8859-1"),
+        (b"\xe2\x82", "Non-ISO extended-ASCII", "unknown-8bit"),
+        (b"\xf0\x9f", "Non-ISO extended-ASCII", "unknown-8bit"),
+        (b"\xf0\x9f\x98", "Non-ISO extended-ASCII", "unknown-8bit"),
+        (b"\x80\x80", "Non-ISO extended-ASCII", "unknown-8bit"),
+        (b"\xc0\xaf", "ISO-8859", "iso-8859-1"),
+        (b"hi", "ASCII", "us-ascii"),
+        (b"\xc3\xa9", "Unicode text, UTF-8", "utf-8"),
+        (b"\xe2\x82\xac", "Unicode text, UTF-8", "utf-8"),
+        (b"\xf0\x9f\x98\x80", "Unicode text, UTF-8", "utf-8"),
+        (b"a\xc3\xa9", "Unicode text, UTF-8", "utf-8"),
+        (b"\xc3\xa9\xe2\x82", "Unicode text, UTF-8", "utf-8"),
+        (b"ab\xc3\xa9\xf0\x9f\x98", "Unicode text, UTF-8", "utf-8"),
+        (b"\xef\xbb\xbf", "Unicode text, UTF-8", "utf-8"),
+        (b"\xef\xbb\xbfa", "Unicode text, UTF-8 (with BOM)", "utf-8"),
+    ] {
+        e.flags = Flags(0);
+        assert_eq!(
+            e.classify(data).unwrap().output,
+            format!("{label} text, with no line terminators").as_bytes(),
+            "{data:x?}"
+        );
+        e.flags = Flags(Flags::MIME_ENCODING);
+        assert_eq!(
+            e.classify(data).unwrap().output,
+            mime.as_bytes(),
+            "{data:x?}"
+        );
+    }
+    e.flags = Flags(0);
+    for byte in [0xc3, 0xe2, 0x80, 0xff] {
+        assert_eq!(
+            e.classify(&[byte]).unwrap().output,
+            b"very short file (no magic)"
+        );
+    }
+    e.flags = Flags(Flags::CONTINUE);
+    assert_eq!(
+        e.classify(b"#!AMR\n<\x08[d\xde").unwrap().output,
+        b"Adaptive Multi-Rate Codec (GSM telephony)\\012- a AMR script, ISO-8859 text executable, with overstriking"
+    );
+}
+#[test]
 fn file_position_is_restored() {
     let e = engine("0 string AB root\n");
     let path = std::env::temp_dir().join(format!("rfile-test-{}", std::process::id()));
