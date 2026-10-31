@@ -6,7 +6,29 @@ Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-5 candidate awaiting Claude retest
+## Pass-6 candidate awaiting Claude retest
+
+Fix commit `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-6 review and retest instructions](reports/claude-pass6-codex-review.md).
+
+F-04b now selects plain UTF-8 using decoded non-ASCII characters, preserving
+incomplete-tail tolerance after completed characters, BOM handling and the
+one-byte very-short path. F-08d is documented in compatibility notes, man page
+and release notes: mixed -i --apple on readable/empty/chained regular symlink
+targets emits only the target result, without the oracle's symlink MIME prefix.
+No filesystem output behavior changed in this candidate.
+
+Local default/all-feature semantic tests pass (29 each), as do Clippy and
+formatting. The 24 pass-6 F-04b probes across three flag sets match the oracle in
+72/72 comparisons. Claude's independent retest of this candidate remains pending.
+Claude pass 6 verified F-08c's annotation-only unreadable symlink subset at e8cdcb4;
+mixed-flag, directory-wording and FIFO dispositions remain with the maintainer.
+Original evidence, draft and assets remain unchanged. All final verification and
+security gates remain open. Earlier checkpoint sections below are historical.
+
+## Pass-5 candidate awaiting Claude retest (historical)
 
 Fix commit `e8cdcb409edfcab152eb5c411fd08567834b2c3a`, tree
 `c3337de53018900f5ba7c4430352c99a1cbc205d`, on local branch
