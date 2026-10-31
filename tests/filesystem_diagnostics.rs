@@ -3,10 +3,19 @@
 use rfile::{Engine, Flags};
 use std::{fs, os::unix::fs::PermissionsExt, process::Command};
 
+fn scratch_directory(label: &str) -> std::path::PathBuf {
+    let nonce = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let dir = std::env::temp_dir().join(format!("rfile-{label}-{}-{nonce}", std::process::id()));
+    fs::create_dir(&dir).unwrap();
+    dir
+}
+
 #[test]
 fn empty_metadata_order_respects_content_inspection_modes() {
-    let dir = std::env::temp_dir().join(format!("rfile-unreadable-{}", std::process::id()));
-    fs::create_dir(&dir).unwrap();
+    let dir = scratch_directory("unreadable");
     let path = dir.join("input");
     let mut engine = Engine::builtin().unwrap();
     for empty in [false, true] {
@@ -85,7 +94,8 @@ fn empty_metadata_order_respects_content_inspection_modes() {
 
 #[test]
 fn fifo_content_requests_are_explicit_errors_instead_of_empty() {
-    let path = std::env::temp_dir().join(format!("rfile-fifo-diagnostic-{}", std::process::id()));
+    let dir = scratch_directory("fifo-diagnostic");
+    let path = dir.join("fifo");
     assert!(
         Command::new("mkfifo")
             .arg(&path)
@@ -107,5 +117,85 @@ fn fifo_content_requests_are_explicit_errors_instead_of_empty() {
                 .contains("content inspection of FIFO is not supported")
         );
     }
-    fs::remove_file(path).unwrap();
+    fs::remove_dir_all(dir).unwrap();
+}
+
+#[test]
+fn annotations_follow_unreadable_regular_symlink_targets_without_dereference_flag() {
+    // Oracle expectations from pass-5 tools_matrix.py rows l_e000/l_n000;
+    // also retain the writable/executable prefixes for target mode 0300.
+    use std::os::unix::fs::symlink;
+    let dir = scratch_directory("annotation-links");
+    let target = dir.join("target");
+    let link = dir.join("link");
+    symlink(&target, &link).unwrap();
+    let mut engine = Engine::builtin().unwrap();
+    for payload in [&b""[..], &b"hello\n"[..]] {
+        for mode in [0, 0o300] {
+            if target.exists() {
+                fs::set_permissions(&target, fs::Permissions::from_mode(0o600)).unwrap();
+            }
+            fs::write(&target, payload).unwrap();
+            fs::set_permissions(&target, fs::Permissions::from_mode(mode)).unwrap();
+            assert!(
+                fs::File::open(&target).is_err(),
+                "requires an unprivileged test runner"
+            );
+            let expected = if mode == 0 {
+                "regular file, no read permission"
+            } else {
+                "writable, executable, regular file, no read permission"
+            };
+            for flags in [
+                Flags::APPLE,
+                Flags::EXTENSION,
+                Flags::APPLE | Flags::EXTENSION,
+                Flags::DEVICES | Flags::APPLE,
+            ] {
+                engine.flags = Flags(flags);
+                assert_eq!(
+                    engine.classify_path(&link).unwrap().output,
+                    expected.as_bytes()
+                );
+            }
+            // Deliberate mixed-flag difference: one permission description,
+            // rather than the oracle's symlink-MIME prefix plus description.
+            engine.flags = Flags(Flags::MIME | Flags::APPLE);
+            assert_eq!(
+                engine.classify_path(&link).unwrap().output,
+                expected.as_bytes()
+            );
+            for args in [
+                vec!["--apple"],
+                vec!["--extension"],
+                vec!["--apple", "--extension"],
+                vec!["-s", "--apple"],
+                vec!["-i", "--apple"],
+            ] {
+                for sandbox in ["--sandbox=off", "--sandbox=auto"] {
+                    let output = Command::new(env!("CARGO_BIN_EXE_rfile"))
+                        .args([sandbox, "-b"])
+                        .args(&args)
+                        .arg(&link)
+                        .env("TZ", "UTC0")
+                        .output()
+                        .unwrap();
+                    assert!(output.status.success(), "{output:?}");
+                    assert_eq!(output.stdout, format!("{expected}\n").as_bytes());
+                }
+            }
+        }
+    }
+    fs::set_permissions(&target, fs::Permissions::from_mode(0o600)).unwrap();
+    let directory_link = dir.join("directory-link");
+    symlink(&dir, &directory_link).unwrap();
+    engine.flags = Flags(Flags::APPLE);
+    assert!(
+        engine
+            .classify_path(&directory_link)
+            .unwrap_err()
+            .to_string()
+            .contains("annotation content inspection of special symlink target")
+    );
+    fs::remove_dir_all(dir).unwrap();
 }

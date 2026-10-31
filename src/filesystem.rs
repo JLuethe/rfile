@@ -136,7 +136,7 @@ fn prepare_raw(
     } else {
         fs::symlink_metadata(path)
     };
-    let meta = match metadata {
+    let mut meta = match metadata {
         Ok(m) => m,
         Err(e) => {
             if engine.flags.has(Flags::ERROR) {
@@ -154,8 +154,9 @@ fn prepare_raw(
             return Ok(diagnostic(engine, text));
         }
     };
-    let annotation_only =
-        engine.flags.has(Flags::APPLE | Flags::EXTENSION) && !engine.flags.has(Flags::MIME);
+    let annotation_requested = engine.flags.has(Flags::APPLE | Flags::EXTENSION);
+    let annotation_only = annotation_requested && !engine.flags.has(Flags::MIME);
+    let mut annotation_link = false;
     if meta.is_dir() {
         if annotation_only {
             let mut diagnostic = b"cannot read `".to_vec();
@@ -190,13 +191,18 @@ fn prepare_raw(
             }
             return Ok(c);
         }
-        if annotation_only {
-            if !target_metadata.as_ref().is_ok_and(|m| m.is_file()) {
+        if annotation_requested {
+            let target_meta = target_metadata?;
+            if !target_meta.is_file() {
                 return Err(Error::Unsupported(
                     "annotation content inspection of special symlink target".into(),
                 ));
             }
-            // The C cookie falls through to reading a nonbroken link in annotation-only mode.
+            // Annotation flags follow regular-file targets even without -L,
+            // including mixed MIME/annotation requests. Keep target metadata
+            // for unreadable diagnostics; do not take the direct empty shortcut.
+            meta = target_meta;
+            annotation_link = true;
         } else {
             let mut desc = b"symbolic link to ".to_vec();
             desc.extend(path_bytes(&target));
@@ -266,7 +272,12 @@ fn prepare_raw(
     }
     // Normal/MIME modes use the metadata shortcut; -s and annotation-only
     // modes inspect content and therefore must check open permissions first.
-    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) && !annotation_only {
+    if meta.is_file()
+        && meta.len() == 0
+        && !engine.flags.has(Flags::DEVICES)
+        && !annotation_only
+        && !annotation_link
+    {
         return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
     }
     let mut options = fs::OpenOptions::new();

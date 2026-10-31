@@ -47,6 +47,11 @@ ordinary wrapper identification does not require decompression.
 .BR -r , " -0 , " -N , " -n"
 Print raw bytes; add NUL after filename; omit padding; flush each record.
 Repeating -0 also NUL-terminates the result and removes the separator.
+On direct empty regular files, mixed -i --apple emits the MIME result once
+instead of concatenating an annotation result. On unreadable symlink targets it
+emits the permission description without a symlink MIME prefix. Annotation flags
+inspect regular symlink targets without -L; non-regular symlink targets return an
+unsupported annotation error.
 .TP
 .BI "-F " SEP
 Use SEP instead of the filename colon.

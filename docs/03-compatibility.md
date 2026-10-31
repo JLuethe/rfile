@@ -112,3 +112,27 @@ It never represents uninspected content as empty. The pinned oracle's FIFO -s
 error was also reproduced in an unsandboxed distro build; the earlier general
 seccomp-only attribution is retracted. Previously recorded annotation-only FIFO
 SIGSYS observations are separate, narrowly identified cases.
+
+### Pass-5 remaining annotation/string16 differences
+
+Annotation flags follow symlinks to regular-file targets without -L, including
+mixed MIME/annotation requests, and permission descriptions use target metadata.
+Annotation requests on symlinks to non-regular targets fail with an explicit
+unsupported diagnostic before content open. For a directory target this differs
+from the pinned `cannot read ... (Is a directory)` diagnostic; it is a controlled,
+documented wording difference, not exact native output.
+
+On direct empty regular files, mixed -i --apple emits the MIME result once.
+The pinned oracle appends an annotation result to the metadata MIME result:
+an empty-content MIME result if readable, or a permission description if not.
+For an unreadable symlink target, rfile emits the permission description once;
+the oracle prefixes it with the symlink MIME result. Rfile deliberately does
+not concatenate these outputs. Annotation flags still request symlink-target
+inspection even when combined with MIME flags.
+
+String16 wildcard compatibility remains deliberately narrow. Pre-existing
+non-wildcard comparisons such as =\0 and <z on two-byte inputs can differ where
+the oracle compares a synthesized empty value past EOF; rfile does not extend
+the wildcard exception to these relations without a justified rule. This
+residual stays open. F-03, F-07 inherited-closed stdout, invalid CDF geometry and
+shifted-use bounds remain documented maintainer-disposition items, not closed.
