@@ -100,7 +100,9 @@ Empty TZ and TZ=UTC use built-in UTC. If TZ is unset and /etc/localtime is absen
 UTC is the default, so minimal images do not need tzdata for ordinary detection.
 Explicit invalid/missing zones and malformed or unreadable existing system-zone
 files remain setup errors. A named TZ such as America/New_York requires the
-corresponding timezone data even in a minimal image. An unavailable explicit TZ
+corresponding timezone data even in a minimal image. Some short forms such as
+EST5EDT also require timezone data; full POSIX rules such as
+PST8PDT,M3.2.0,M11.1.0 and UTC0 work without it. An unavailable explicit TZ
 stops the invocation before classification, including MIME-only and non-date
 inputs. Install timezone data, unset TZ, or choose UTC when UTC is intended.
 .SH EXIT STATUS
