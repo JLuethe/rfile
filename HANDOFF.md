@@ -6,6 +6,29 @@ Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
+## Pass-3 candidate awaiting Claude retest
+
+Current code candidate: `098d99cc837a07e1d40b79c6e96acd97f00caa1e`, tree
+`d3fe580ecaceee719b8d82a61cc51b79abe5a8c1`, local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-3 review](reports/claude-pass3-codex-review.md).
+
+F-08 now preserves unreadable regular-file descriptions and access prefixes in
+all output modes, including -E; checks open permission before identifying empty
+files; and rejects FIFO -s content inspection before open. String16 wildcard
+reads beyond EOF synthesize an empty value safely (F-10 padding candidate).
+General shifted-use bounds remain strict and are documented (F-04); invalid CDF
+geometry stage differences, F-03 headline caveat and F-07 release-note limitations
+are disclosed. F-04b remains unroot-caused; F-03/F-07 dispositions remain pending.
+
+Local targeted default/all-feature filesystem/semantics/sandbox CLI checks and
+Clippy passed. Independent Claude retest has NOT run on this commit. Pass-3
+ledger/checkpoint and section9 scripts are in `/home/john/Code/rfile-qa-claude/pass3/`.
+Run its filesystem/FIFO/paired string16/CDF matrices against this exact commit,
+using isolated unprivileged runners and bounded owned-process cleanup. No new
+archives or final release gate are claimed. The old e64 draft is unchanged.
+Earlier results below retain their executed identities and do not qualify 098d.
+
 ## Claude follow-up fix results (2026-10-31)
 
 Local branch: `fix/claude-timezone-diagnostic`. The earlier pass-2 code candidate was
