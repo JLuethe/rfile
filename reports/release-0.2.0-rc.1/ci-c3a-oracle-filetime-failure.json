@@ -1,0 +1,228 @@
+{
+  "source_commit": "c3a84377b2471370fa34a8769d3925ddb46256ae",
+  "ci_run": "https://github.com/JLuethe/rfile/actions/runs/41174190353",
+  "status": "failed",
+  "environment": "Ubuntu 24.04 / glibc 2.39",
+  "report_sha256": "fecca6d0fc6a552f082164c62620f034bbdf1d844047c62a7ab2e973c4948eaa",
+  "total": 10875,
+  "equal": 10848,
+  "mismatches": [
+    {
+      "case": "qwdate",
+      "source": "0 qwdate x value=%s\n",
+      "input_hex": "000000000000f87f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "qwdate",
+      "source": "0 qwdate x value=%s\n",
+      "input_hex": "000000000000f07f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "qwdate",
+      "source": "0 qwdate x value=%s\n",
+      "input_hex": "555555555555d53f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "qwdate",
+      "source": "0 qwdate x value=%s\n",
+      "input_hex": "8dedb5a0f7c6b03e",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "qwdate",
+      "source": "0 qwdate x value=%s\n",
+      "input_hex": "ea8ca039593e2946",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "leqwdate",
+      "source": "0 leqwdate x value=%s\n",
+      "input_hex": "000000000000f87f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "leqwdate",
+      "source": "0 leqwdate x value=%s\n",
+      "input_hex": "000000000000f07f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "leqwdate",
+      "source": "0 leqwdate x value=%s\n",
+      "input_hex": "555555555555d53f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "leqwdate",
+      "source": "0 leqwdate x value=%s\n",
+      "input_hex": "8dedb5a0f7c6b03e",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "leqwdate",
+      "source": "0 leqwdate x value=%s\n",
+      "input_hex": "ea8ca039593e2946",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "4142",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "414204",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "41420400",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "41420400585900",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "4142040058590000",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "414204005859000000000000000000",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "41420400585900000000000000000000",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "4142040058590000000000000000000000000000000000000000000000000000",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "6162",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a20",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a20202020",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a2020202020",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a202020202020202020202020",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a20202020202020202020202020",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "61620a2020202020202020202020202020202020202020202020202020202020",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    },
+    {
+      "case": "beqwdate",
+      "source": "0 beqwdate x value=%s\n",
+      "input_hex": "555555555555d53f",
+      "equal": false,
+      "reference": "value=Thu Jan  1 00:00:01 1970",
+      "rust": "value=*Invalid datetime*"
+    }
+  ],
+  "disposition": "Known native uninitialized tv_sec path; harness correction pending independent Claude retest; no production date change"
+}

@@ -1,0 +1,9 @@
+{
+  "supplemental_cases": 64,
+  "base_decisions_sha256": "0c66ab2e97ffc416bc6c29bc40aa96fff6633b2f3826d693c67a7939e89275f9",
+  "upstream_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "new_ci_observation_signatures_match": 64,
+  "all_non_reference_fields_equal_old_accepted_rows": 64,
+  "rust_bytes_or_status_mutations_rejected": 64,
+  "unapproved_native_diagnostic_mutations_rejected": 64
+}

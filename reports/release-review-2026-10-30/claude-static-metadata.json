@@ -1,0 +1,27 @@
+{
+  "source_commit": "7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "duration_ms": 61554,
+  "num_turns": 18,
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01TibaLhay3NERqvxMRGgKFr",
+      "tool_input": {
+        "command": "git log --oneline -3; git rev-parse HEAD; ls; cat Cargo.toml; cat .github/workflows/check.yml; wc -l HANDOFF.md; which cargo || ls /home/john/.cargo/bin/cargo; uname -a",
+        "description": "Inspect repo layout, manifest, CI config"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01B2BJRaXffPTneMNj5PmXCa",
+      "tool_input": {
+        "command": "git -C /tmp/rfile-review-7a3ea75/source rev-parse HEAD",
+        "description": "Show source commit SHA"
+      }
+    }
+  ],
+  "scope": "Independent static review; no tests executed; see plan for maintainer review of findings."
+}

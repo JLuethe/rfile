@@ -1,0 +1,18 @@
+{
+  "baseline_commit": "7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "duration_ms": 46015,
+  "scope": "Independent bounded reproduction before Codex fixes",
+  "permission_denials": [
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_01CTKqedC6kZiahF6TN89FzC",
+      "tool_input": {
+        "command": "ls /home/john/Code/rfile/.reference/file-clean/tests | head -20; ls /home/john/Code/rfile/.reference/file-clean/tests/*.testfile | wc -l; ls /tmp/rfile-review-7a3ea75/source/upstream/tests 2>&1 | head -3; grep -rn \"RFILE_REFERENCE\" /tmp/rfile-review-7a3ea75/source --include=*.rs --include=*.py --include=*.toml | head",
+        "description": "List reference fixtures and check upstream/tests"
+      }
+    }
+  ]
+}

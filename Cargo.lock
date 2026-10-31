@@ -326,7 +326,7 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
 name = "rfile"
-version = "0.1.0"
+version = "0.2.0-rc.1"
 dependencies = [
  "flate2",
  "jiff",
@@ -341,7 +341,7 @@ dependencies = [
 
 [[package]]
 name = "rfile-ffi"
-version = "0.1.0"
+version = "0.2.0-rc.1"
 dependencies = [
  "libc",
  "rfile",
@@ -349,7 +349,7 @@ dependencies = [
 
 [[package]]
 name = "rfile-platform"
-version = "0.1.0"
+version = "0.2.0-rc.1"
 dependencies = [
  "landlock",
  "libc",

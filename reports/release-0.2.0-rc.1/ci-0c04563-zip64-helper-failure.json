@@ -1,0 +1,1920 @@
+{
+  "source_commit": "0c045636947e21ce3a1b1997529dc8ff7ff75a9d",
+  "ci_run": "https://github.com/JLuethe/rfile/actions/runs/41175352308",
+  "raw_report_sha256": "5fa62850f49b5245d1f0d88c0e54df327bf5c9b0f1a466a8fe36c9e97f9a0639",
+  "count": 64,
+  "cases": [
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip- compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "path",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "path",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip- compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "buffer",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "buffer",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 4,
+        "effective_flags": 4,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5 UNIX, extract using at least v4.5, last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 33554436,
+        "effective_flags": 33554436,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error]",
+        "rust": "ASCII text, with no line terminators",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip- compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 1044,
+        "effective_flags": 1044,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error compressed-encoding=application/zip; charset=binary",
+        "rust": "text/plain; charset=us-ascii compressed-encoding=application/zip; charset=binary",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 20,
+        "effective_flags": 20,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "text/plain",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Stdin-has-more-than-one-entry--rest-ignored",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 1028,
+        "effective_flags": 1028,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "application/x-decompression-error-gzip-Invalid-compressed-data--length-error",
+        "rust": "us-ascii",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 36,
+        "effective_flags": 36,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust": "ASCII text, with no line terminators (Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive data, made by v4.5\\012-  UNIX\\012- , extract using at least v4.5\\012- , last modified Jan 02 2020 03:04:06, uncompressed size 136, method=deflate\\012-  Zip archive, with extra data prepended\\012- data)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 2052,
+        "effective_flags": 2052,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (UNKNUNKN)",
+        "rust": "UNKNUNKN (UNKNUNKN)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: ] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64",
+        "mode": "descriptor",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "api",
+      "previous": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Stdin has more than one entry--rest ignored] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      },
+      "current": {
+        "path": "tests/fixtures/compression/zip64-descriptor",
+        "mode": "descriptor",
+        "flags": 16777220,
+        "effective_flags": 16777220,
+        "database": "data/magic.mgc",
+        "equal": false,
+        "reference": "ERROR:[gzip: Invalid compressed data--length error] (???)",
+        "rust": "??? (???)",
+        "rust_error": null,
+        "reference_error": null
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a205d20285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-Z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a205d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f72730a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-Z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f72730a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "-i"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d20636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e3b20636861727365743d75732d617363696920636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "-i"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f7220636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e3b20636861727365743d75732d617363696920636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--mime-type"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e0a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--mime-type"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f720a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e0a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--mime-encoding"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "75732d61736369690a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--mime-encoding"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f720a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "75732d61736369690a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "-k"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a205d20285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "-k"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--apple"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a205d2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "554e4b4e554e4b4e2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--apple"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "554e4b4e554e4b4e2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--extension"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a205d20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "3f3f3f20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64",
+        "options": [
+          "-z",
+          "--extension"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "3f3f3f20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20537464696e20686173206d6f7265207468616e206f6e6520656e7472792d2d726573742069676e6f7265645d20285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e3520554e49582c2065787472616374207573696e67206174206c656173742076342e352c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c617465290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-Z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20537464696e20686173206d6f7265207468616e206f6e6520656e7472792d2d726573742069676e6f7265645d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f72730a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-Z"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d0a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f72730a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "-i"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d537464696e2d6861732d6d6f72652d7468616e2d6f6e652d656e7472792d2d726573742d69676e6f72656420636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e3b20636861727365743d75732d617363696920636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "-i"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f7220636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e3b20636861727365743d75732d617363696920636f6d707265737365642d656e636f64696e673d6170706c69636174696f6e2f7a69703b20636861727365743d62696e6172790a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--mime-type"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d537464696e2d6861732d6d6f72652d7468616e2d6f6e652d656e7472792d2d726573742d69676e6f7265640a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e0a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--mime-type"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f720a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "746578742f706c61696e0a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--mime-encoding"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d537464696e2d6861732d6d6f72652d7468616e2d6f6e652d656e7472792d2d726573742d69676e6f7265640a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "75732d61736369690a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--mime-encoding"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "6170706c69636174696f6e2f782d6465636f6d7072657373696f6e2d6572726f722d677a69702d496e76616c69642d636f6d707265737365642d646174612d2d6c656e6774682d6572726f720a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "75732d61736369690a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "-k"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20537464696e20686173206d6f7265207468616e206f6e6520656e7472792d2d726573742069676e6f7265645d20285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "-k"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "415343494920746578742c2077697468206e6f206c696e65207465726d696e61746f727320285a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a6970206172636869766520646174612c206d6164652062792076342e355c3031322d2020554e49585c3031322d202c2065787472616374207573696e67206174206c656173742076342e355c3031322d202c206c617374206d6f646966696564204a616e20303220323032302030333a30343a30362c20756e636f6d707265737365642073697a65203133362c206d6574686f643d6465666c6174655c3031322d20205a697020617263686976652c207769746820657874726120646174612070726570656e6465645c3031322d2064617461290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--apple"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20537464696e20686173206d6f7265207468616e206f6e6520656e7472792d2d726573742069676e6f7265645d2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "554e4b4e554e4b4e2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--apple"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "554e4b4e554e4b4e2028554e4b4e554e4b4e290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    },
+    {
+      "section": "cli",
+      "previous": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--extension"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20537464696e20686173206d6f7265207468616e206f6e6520656e7472792d2d726573742069676e6f7265645d20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "3f3f3f20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      },
+      "current": {
+        "case": "zip64-descriptor",
+        "options": [
+          "-z",
+          "--extension"
+        ],
+        "reference": {
+          "status": 0,
+          "stdout_hex": "4552524f523a5b677a69703a20496e76616c696420636f6d7072657373656420646174612d2d6c656e677468206572726f725d20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "rust": {
+          "status": 0,
+          "stdout_hex": "3f3f3f20283f3f3f290a",
+          "stderr_hex": ""
+        },
+        "equal": false
+      }
+    }
+  ]
+}

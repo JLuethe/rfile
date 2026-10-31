@@ -1,0 +1,130 @@
+[
+  {
+    "test": "t1_startup_running_preserves_previous",
+    "result": "FAIL",
+    "detail": {
+      "mid": "running",
+      "final": "failed"
+    }
+  },
+  {
+    "test": "t2_success_unique_retained_logs",
+    "result": "PASS",
+    "detail": {
+      "st": [
+        "passed",
+        "passed"
+      ],
+      "hashes": [
+        "417524c0d031fff4b155c3cfdfcb98444b397d4268d15e5c5160d8c0bfe33c26",
+        "94db7550c0147edb7cef987af9e657f6756739352c52b39905d756056104e317"
+      ],
+      "cov": [
+        {
+          "step": "s",
+          "component": "x",
+          "status": "executed"
+        }
+      ]
+    }
+  },
+  {
+    "test": "t3_nonzero_failed",
+    "result": "PASS",
+    "detail": {
+      "status": "failed",
+      "step": {
+        "name": "s",
+        "status": 7,
+        "state": "failed",
+        "command": [
+          "/usr/bin/python3",
+          "-c",
+          "import sys;sys.exit(7)"
+        ],
+        "log": "reports/verification-runs/20261031T053258Z-d1740f07787f4a009c83c6b4fc89be5c/logs/s.log",
+        "seconds": 0.008804852001048857,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "test": "t4_missing_executable_failed",
+    "result": "PASS",
+    "detail": {
+      "status": "failed",
+      "step": {
+        "name": "s",
+        "status": null,
+        "state": "failed",
+        "command": [
+          "/nonexistent/missing-binary"
+        ],
+        "log": "reports/verification-runs/20261031T053258Z-fb773e387589422da62b81a6fcd6417d/logs/s.log",
+        "seconds": 0.0009420400019735098,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "err": "[Errno 2] No such file or directory: '/nonexistent/missing-binary'"
+    }
+  },
+  {
+    "test": "t5_early_oracle_failure_real_verify_py",
+    "result": "PASS",
+    "detail": {
+      "rc": 1,
+      "status": "failed",
+      "err": "[Errno 2] No such file or directory: '/tmp/rfile-readiness-qa/vr-roots/t5-gwv845xo/data/UPSTREAM.json'",
+      "tail": "pathlib/__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/rfile-readiness-qa/vr-roots/t5-gwv845xo/data/UPSTREAM.json'\n"
+    }
+  },
+  {
+    "test": "t6_lock_rejects_second_writer",
+    "result": "FAIL",
+    "detail": {
+      "b_rc": 1,
+      "b_err": "Another verification run owns this checkout\n",
+      "same": true,
+      "runs": [
+        "20261031T053259Z-830f4ccbcc4c4ea69a2ac55479e579fa"
+      ]
+    }
+  },
+  {
+    "test": "t7_sigterm_interrupted_group_cleaned",
+    "result": "PASS",
+    "detail": {
+      "mid": "running",
+      "status": "interrupted",
+      "state": "interrupted",
+      "signal": 15,
+      "grand_alive": false,
+      "pg_alive": false,
+      "sec": 0.29
+    }
+  },
+  {
+    "test": "t7b_term_ignoring_child_sigkill_fallback",
+    "result": "PASS",
+    "detail": {
+      "status": "interrupted",
+      "grand_alive": false,
+      "pg_alive": false,
+      "sec": 5.29
+    }
+  },
+  {
+    "test": "t7c_sigkill_leaves_running_not_passed",
+    "result": "PASS",
+    "detail": {
+      "status": "running"
+    }
+  },
+  {
+    "test": "t8_source_mutation_invalidates",
+    "result": "PASS",
+    "detail": {
+      "status": "failed",
+      "err": "Source changed during verification; rerun a frozen candidate"
+    }
+  }
+]

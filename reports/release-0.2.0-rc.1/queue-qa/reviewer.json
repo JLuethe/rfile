@@ -1,0 +1,11 @@
+{
+  "reviewer": "independent delegated agent",
+  "model": "gpt-6-luna",
+  "requested_by_user": true,
+  "role": "testing; Codex parent implements fixes",
+  "source_commit": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "queue_pr_head": "7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76",
+  "queue_files_identical": true,
+  "report_sha256": "5171974d78b62eb90fed1bcb7b132fd3b7e5202ec6e750a206a29d0faccca46f",
+  "scope": "bounded infrastructure tests using prebuilt sanitizer binaries; not qualification"
+}

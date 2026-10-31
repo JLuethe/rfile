@@ -1,25 +1,116 @@
 # rfile restart checkpoint
 
-Updated 2026-10-25. Read [the remaining plan](docs/07-remaining-work-spec.md),
-[delivery ledger](docs/08-delivery-progress.md), and the relevant component spec.
-This records evidence, not a completed security qualification or release.
+Updated 2026-10-30, late evening PDT (2026-10-31 UTC). The user authorized
+continuing release preparation overnight and explicitly requested independent
+GPT-6 Luna subagents after Claude's quota was exhausted. Codex implements fixes;
+the testing agents test/retest. Keep this work recoverable; do not publish the
+release without the maintainer's final approval.
 
-## Repository and reference
+Start with [release scope](docs/release-scope.md) and the
+[release plan](docs/11-github-release-plan.md). The endpoint is an experimental
+0.2.0-rc.1 default-feature x86_64 Linux/glibc CLI plus complete vendored source,
+not completed security qualification or universal libmagic compatibility.
 
-- R7 PR #15 and the experimental C ABI PR #16 are merged. Typed diagnostics PR #17 is also merged. Latest reviewed main:
-  `51a31affc81c1068d8b2f94f2d3e67ddd8d2c624`. Linux/MSRV checks passed.
-- Active branch: `feat/bounded-fuzz-queue`. CLI action work is merged as PR #18.
-  This branch adds the bounded campaign queue and interruption/locking checks.
-  Inspect Git/GitHub for its latest commit/PR before resuming or publishing.
-- The primary clean oracle is `.reference/file-clean`, exact upstream commit
-  `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always use
-  `RFILE_REFERENCE=/home/john/Code/rfile/.reference/file-clean`.
-  The old `upstream/` has a preserved local seccomp patch; never reset it or call
-  it clean. `reports/reference-audit.json` records identities and the correction.
-- `.reference/cdf-pointer` is an explicitly patched auxiliary oracle only.
-  Ignored binaries, toolchains, corpora and logs are not supplied by a fresh clone.
+## Current GitHub / working state
 
-## Tested current increment
+- Repo: https://github.com/JLuethe/rfile. PR #19 passed independent Luna queue QA
+  and was squash-merged into main as `5316cb814b2f5e349425f8349ae508cc0f162750`.
+- Release PR #23: https://github.com/JLuethe/rfile/pull/23, branch
+  `fix/release-readiness-baseline`, now based on main. The feature branch merged
+  main to reconcile squash ancestry; that merge changed no source files.
+- PR #20 was closed (incorrect MSRV update); PR #1 was closed as superseded by
+  the tested pinned checkout upgrade. Optional dependency PRs #21/#22 are
+  explicitly deferred. Both `linux` and `msrv` are required branch checks.
+- No new release is published. Existing v0.1.0 is unchanged. Do not tag or
+  substitute final artifacts until independent acceptance of their exact hashes.
+- Packaging, installer, complete vendored source, checksums, release notes,
+  release-mode CI and bounded pinned-oracle CI are implemented. Artifacts are
+  built from clean immutable Git snapshots. Current binary requires GLIBC 2.34;
+  Ubuntu 22.04 is the intended oldest executed runtime, not a claim for every
+  glibc 2.34 distribution. Rust 1.87 remains the source-build minimum.
+
+## Independent reviews and open acceptance work
+
+- Initial Claude baseline/retests: `reports/release-review-2026-10-30/` and
+  `reports/release-readiness-2026-10-30/`. Correct fixture coverage, fail-closed
+  verification reporting and actual sandbox coverage passed. The queued Claude
+  retry was cancelled when the user requested Luna; do not assume it is active.
+- Luna queue QA: `reports/release-0.2.0-rc.1/queue-qa/`, passed bounded locking,
+  duplicate rejection, partial accounting and deadline cleanup. It used explicitly
+  identified prebuilt binaries and makes no sustained qualification claim.
+- Default full oracle CI passed on `0c04563`. New Ubuntu CI exposed the known
+  native FILETIME uninitialized-seconds path. The precise harness correction
+  passed Luna's 37 direct vectors, 10,875 semantic cases (10,848 exact + 27
+  separately validated undefined-reference cases), and 2,850 date cases (2,820
+  exact + 30 separately validated). No production date semantics changed.
+- The all-feature CI then exposed 64 ZIP64 native gzip-helper text variants.
+  `dc103ea` preserves exact supplemental whole-observation hashes, requires
+  unchanged Rust results/status and records the helper version/hash. Luna independently accepted the exact 64-case replay, rejected mutated Rust/native
+  observations, and passed the local 3,268-case codec matrix. Fresh full CI remains
+  required.
+- Artifact QA found the fresh-cache checker could lose rustc when the caller's
+  PATH omitted ~/.cargo/bin. `9f4d20f` preserves the selected Cargo toolchain
+  directory; a follow-up bounds default fresh-build parallelism to one job.
+  Luna is retesting the original failure and exact archives.
+- Artifact QA also found the default CLI failed in minimal Ubuntu without tzdata.
+  `09f2c36` adds UTC for an absent implicit system zone and built-in `TZ=UTC`;
+  explicit invalid zones and malformed/unreadable existing files still fail.
+  Luna accepted the fix through 13 constrained-container checks. The reusable
+  checker is integrated into candidate CI; final exact assets remain pending.
+- Fresh 25-target sanitizer smoke and two FFI Miri tests ran in an isolated
+  clone. Read its actual manifests/logs and final reviewer report before using
+  the result. No target met its 24-CPU-hour gate.
+
+## Active agents / durable scratch
+
+Use the live collaboration inventory if this thread resumes; never assume an
+agent or process survived an interruption. Current testing tasks are:
+
+- `luna_independent_qa`: queue + FILETIME + ZIP64 comparison review. Evidence in
+  `/tmp/rfile-queue-review-qa/` and `/tmp/rfile-night-review/`; isolated source
+  `/home/john/Code/rfile/.reference/release-acceptance-source`. Its reusable
+  Python regression is integrated as `tools/test_oracle_boundaries.py`.
+- `luna_artifact_qa`: exact CI archives from run `41176219039`, source
+  `0f1054d2404d8049d2d2357e22af97c5e8f22d3c`. Scratch/evidence under
+  `/home/john/Code/rfile/.reference/package-qa-0f/`. It must retest final assets.
+- `luna_sanitizer_qa`: isolated clone
+  `/home/john/Code/rfile/.reference/release-rc1-sanitizers`, build commit
+  `408c940fcc37e938d6f9e47ef43eddd2641872af`. Read `qa-evidence/` and the actual
+  `.reference/fuzz-queues/latest.json` within that clone. Final-candidate replay
+  is still required before attaching this evidence to a different source SHA.
+
+## Next release actions
+
+1. Finish independent ZIP64 and artifact retests. Integrate the portable Luna
+   regression and invoke report-contract tests only against fresh oracle reports.
+   Archive raw findings and retests with truthful model/source identities.
+2. Reconcile docs/PR body, commit remaining fixes/evidence, and require all CI
+   lanes to pass. Merge PR #23 only after independent blockers are closed.
+3. Freeze the final commit, build exact CLI/source archives (prefer Ubuntu 22.04
+   CI), and have agents run the complete final oracle/strict-sandbox matrix,
+   artifact checks, source rebuild and bounded sanitizer/Miri replay against
+   that identity. Compare two clean builds for any reproducibility statement.
+4. Prepare an unpublished GitHub release draft with exact assets, checksums,
+   evidence, supported scope and remaining limitations. Keep main protection,
+   existing tags and the clean primary oracle intact. Final publication is for
+   the maintainer to approve in the morning.
+5. Preserve future fidelity/security work separately. The full 25-target minimum
+   is 600 measured CPU-hours plus branch/resource evidence and independent review;
+   neither overnight smoke nor a green CI run closes that gate.
+
+## Reference / resources
+
+The primary oracle is `/home/john/Code/rfile/.reference/file-clean`, clean commit
+`41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`. Always set RFILE_REFERENCE explicitly.
+The old `upstream/` retains a local seccomp patch; never reset it or call it clean.
+`.reference/cdf-pointer` is an explicitly patched auxiliary oracle only.
+Cargo is `/home/john/.cargo/bin/cargo`. Default/all-feature runs must be serialized
+within a checkout. Use separate checkouts and CARGO_BUILD_JOBS=1 while other builds
+run; /tmp is RAM-backed, so large temporary builds should use scratch on disk.
+Rootless Podman works for disposable unprivileged offline runtime checks; the
+Docker socket does not. Do not change global configuration to work around that.
+
+## Historical 2026-10-25 validation
 
 - All 33 stages of `tools/verify.py --all-features --benchmark` passed:
   145 ordinary debug/release tests; 143 isolated default tests; Rust 1.87;
@@ -38,42 +129,23 @@ This records evidence, not a completed security qualification or release.
   Duplicate-job rejection, partial-run status and deadline cleanup pass.
   No sustained target has met its 24-CPU-hour gate. Review actual live manifests
   and process identities before launching duplicate work.
-- PR #16's isolated package passed dynamic/static clients, default discovery and
-  an offline vendored-source rebuild (`reports/abi-package.json`, code 62d7b13).
-  That package is historical and must be rebuilt for a later release candidate.
+- Historical isolated packages passed dynamic/static clients, default discovery
+  and an offline vendored-source rebuild. The latest source-provenance report
+  records `1198c0e` and 966 matching files. Those artifacts must be rebuilt and
+  retested for a later release candidate.
   cargo-audit had no findings at its recorded RustSec revision; independent
   review has not occurred. No global installation/system replacement/new release.
-
-## Next actions
-
-1. Reconcile Git, reports, running workers and GitHub checks. Preserve edits.
-   The new queue needs its own PR and Linux/MSRV checks. Rebuild/verify a clean
-   isolated package before starting an overnight candidate-freeze campaign.
-2. CLI actions now have 243 exact cases across off/auto/strict modes. Continue
-   [remaining actions](docs/remaining/07-c-abi.md): default discovery, DEBUG, broader
-   accepted warnings/IO behavior and ordinary classification source loads.
-3. Expand accepted native warning/format/conditional/directory/IO error fixtures;
-   unmapped diagnostics remain explicit gaps. No universal drop-in claim.
-4. Continue R9 isolated measured campaigns, coverage and resource/ownership review.
-   25 targets require at least 600 measured CPU-hours for the minimum full gate;
-   partial overnight work cannot substitute. Independent review is separate.
-5. Rebuild and verify final packages only against the tested candidate; retain
-   Linux-only and native regex/locale/CDF/codec limitations in release statements.
-
-Cargo is `/home/john/.cargo/bin/cargo`. Default/all-feature CLI tests must be
-serialized or use isolated `CARGO_TARGET_DIR` to avoid replacing each other's
-CLI during tests. Fuzz supervisors use bubblewrap, target locks and inner wait4
-CPU accounting. Never combine campaigns across source/binary/supervisor hashes.
 
 ## Interruption recovery
 
 [Recovery specification](docs/10-execution-and-recovery-spec.md) remains the
-contract. No agent auto-restart service is installed. The local fuzz queue is implemented;
-its latest actual job is recorded in ignored `.reference/fuzz-queues/latest.json`.
-Inspect the linked queue.json and user-systemd status before claiming it is active. A security/content notice
-requires review, not an automatic retry loop. Local builds may continue after a
-chat disconnect; inspect their logs/PIDs instead of assuming completion or death.
+contract. No permanent agent auto-restart service is installed. Check the live
+agent/process inventory and each isolated checkout's actual queue manifest before
+restarting work. A surviving process is not proof of a completed test; retain its
+exit status and logs. Do not duplicate a queue or combine campaign accounting
+across changed source/binary/supervisor identities.
 
-Continuation: “Read HANDOFF.md and the remaining-work specs. Reconcile source,
-workers and GitHub. Continue the next bounded ABI/CLI task, then hardening.
-Preserve compatibility decisions and checkpoint actual results.”
+Continuation: read this checkpoint, release scope and independent QA reports;
+continue the experimental release through fixes, independent retests, final
+artifact acceptance and an unpublished draft. Codex fixes; independent testing
+agents test/retest. Preserve all uncompleted security gates explicitly.

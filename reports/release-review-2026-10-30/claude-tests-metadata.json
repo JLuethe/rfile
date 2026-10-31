@@ -1,0 +1,11 @@
+{
+  "source_commit": "7a3ea756e79838e4c3ca252d23c3e9ff7ab8fe76",
+  "snapshot_method": "git archive HEAD extracted into isolated temporary directory",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "duration_ms": 104768,
+  "num_turns": 9,
+  "permission_denials": [],
+  "scope": "Independent bounded baseline test execution; no production fixes; not full release qualification."
+}

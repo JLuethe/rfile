@@ -1,4 +1,4 @@
-.TH RFILE 1 "October 2026" "rfile 0.1.0" "User Commands"
+.TH RFILE 1 "October 2026" "rfile 0.2.0-rc.1" "User Commands"
 .SH NAME
 rfile \- identify files using a bounded Rust magic engine
 .SH SYNOPSIS
@@ -58,7 +58,18 @@ Print extension or Apple annotations.
 .TP
 .BR -C , " -c , " -l"
 Compile, check or list rules. Use -m to select the source/database.
-Check/list/debug diagnostic text differs from C file.
+Check/list output and partial-load behavior follow the pinned profile for the
+tested source cases. Broader warnings, DEBUG and IO/discovery behavior retain
+documented compatibility boundaries.
+.TP
+.B --profile=pinned-5.48|corrected-v1
+Select pinned file 5.48 behavior (the default), or the explicitly implemented
+corrections. Corrected mode does not imply that every planned correction exists.
+.TP
+.B --capabilities
+Print JSON describing compiled features, current profiles and qualification
+status. Optional features and completed security gates must not be inferred
+from the version number.
 .TP
 .BR --sandbox=auto|strict|off , " -S"
 Select optional Linux CLI confinement; -S means off. Last selection wins.
@@ -77,7 +88,7 @@ ordinary classification stdout. Unsupported builds report compiled=false; strict
 fails. Kernel feature absence may degrade auto with a warning; installation
 errors fail. Nonempty LD_PRELOAD is rejected in strict mode.
 .TP
-.BR -v , " --help"
+.BR -v , " --version , " --help"
 Display version/build features or help. Version does not attest runtime confinement.
 .SH ENVIRONMENT
 MAGIC supplies a database list when -m is absent. HOME supplies optional .magic
@@ -85,6 +96,10 @@ configuration before the embedded default. POSIXLY_CORRECT enables symlink follo
 LC_ALL, LC_CTYPE and LANG select immutable display contexts. C is portable;
 selected UTF-8 locales use the Linux/glibc adapter. TZ selects an immutable
 timezone context. No process-global locale/environment mutation is performed.
+Empty TZ and TZ=UTC use built-in UTC. If TZ is unset and /etc/localtime is absent,
+UTC is the default, so minimal images do not need tzdata for ordinary detection.
+Explicit invalid/missing zones and malformed or unreadable existing system-zone
+files remain setup errors.
 .SH EXIT STATUS
 Zero means classification completed, including unknown data and ordinary per-file
 filesystem diagnostics. -E, setup failures, resource errors and failed writes
@@ -93,7 +108,12 @@ produce status 1. A classification is a heuristic, not validation of the whole f
 The default rules are embedded; normal operation needs neither libmagic nor a C
 compiler. See data/UPSTREAM.json and data/SOURCES.json for data provenance.
 .SH LIMITATIONS
-Version 0.1.0 is tested on x86_64 Linux. Full CDF summaries, some ELF/core details,
-local-time formatting, POSIX backreferences/collation, other decompression codecs,
-and kernel sandboxing remain incomplete. See docs/06-implementation-status.md
-for compatibility results and release gates. No C ABI is provided.
+Version 0.2.0-rc.1 is experimental. The downloadable CLI targets x86_64 Linux/glibc
+with default gzip/zlib inspection. CDF/ELF enrichment, immutable local-time and
+locale handling, and bounded regex captures are implemented with documented
+compatibility boundaries. Additional codecs, Linux confinement and a distinct
+librfile_magic C interface are experimental source-build options and are omitted
+from that CLI archive. Native regex-history fidelity, broader diagnostics and
+other platform coverage remain incomplete. See docs/06-implementation-status.md
+and docs/release-scope.md for exact scope. Sustained fuzzing and independent
+security qualification remain open; this is not a certified libmagic replacement.

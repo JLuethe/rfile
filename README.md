@@ -7,7 +7,7 @@
 
 An independent Rust implementation of `file` magic detection, with a CLI and library. Detection, magic parsing and compilation execute in Rust. The program does not link to libmagic or run the C utility. The pinned upstream rules are bundled, so ordinary builds and detection do not need the upstream checkout or a C compiler.
 
-This is version **0.1.0**, tested on x86_64 Linux. [Implementation status and remaining gaps](docs/06-implementation-status.md) distinguish the working profile from full libmagic replacement.
+This is release candidate **0.2.0-rc.1**, tested on x86_64 Linux/glibc. The [next-release scope](docs/release-scope.md) targets a default-feature CLI binary and source bundle. [Implementation status and remaining gaps](docs/06-implementation-status.md) distinguish the working profile from full libmagic replacement.
 
 ```sh
 cargo build --release --locked
@@ -16,6 +16,12 @@ cargo build --release --locked
 printf 'hello\n' | ./target/release/rfile -b -
 ./target/release/rfile -m custom.magic example.bin
 ```
+
+CLI candidate archives include the executable, manual, notices and
+[installation/removal instructions](packaging/INSTALL.md). Verify the supplied
+`SHA256SUMS` before extracting. The paired source archive vendors the locked
+dependencies for offline rebuilding; `MANIFEST.json` records the binary's exact
+source commit, features and required glibc version.
 
 Rust 1.87 or later is required. `--help` lists CLI options. Gzip/zlib inspection uses `-z`; `-Z` omits the outer description. Experimental additional codecs are available with `cargo build --release --locked --features extended-codecs`: bzip2, XZ/LZMA/lzip, modern Zstd/LZ4, UNIX compress and the first stored/deflate ZIP entry. They remain off by default pending sustained security gates. `--capabilities` reports the actual compiled set. Unsupported codecs return an explicit inspection error; ordinary outer identification still uses the rules. See [codec contracts and gaps](docs/remaining/03-compression.md).
 
@@ -33,11 +39,11 @@ assert_eq!(result.as_bytes(), b"text/plain; charset=us-ascii");
 
 The detection core uses `#![forbid(unsafe_code)]`. A separate [platform adapter](crates/rfile-platform/README.md) contains the bounded libc locale boundary; its pointer/ownership invariants and unsafe inventory are documented. Limits cover input, database size/count/files, recursion, matching work, IO, tracked inspection memory, regex construction/cache, expanded data, formatting and final output. `ExecutionControl` supplies cancellation and deadlines. `TimeContext` provides immutable UTC, named TZif or POSIX timezone settings; CLI local-date rules snapshot `TZ`. `DisplayContext` defaults to C bytes for Rust callers; explicit Linux/glibc locale contexts provide host Unicode printability/width, and the CLI snapshots LC_ALL/LC_CTYPE/LANG for LC_CTYPE only. `--capabilities` reports current support; [delivery progress](docs/08-delivery-progress.md) explains accounting boundaries. This is not a completed security audit: the long fuzz campaign and remaining format/platform gates are tracked in the status document.
 
-The [specification set](docs/README.md) was committed before Rust implementation (`fc385f1`). It includes architecture, source evidence, compatibility decisions, implementation semantics, verification milestones and open risks. The [remaining-work specification](docs/07-remaining-work-spec.md) defines the next CDF/ELF, codec, locale/date/regex, sandbox, security and C ABI milestones; the [delivery ledger](docs/08-delivery-progress.md) separates implemented milestones from remaining acceptance and security gates. CDF classification retains checked compound-document metadata, and ELF/core enrichment is merged. The bounded regex capture VM supports backreferences with an explicit pinned quantified-history restriction; `corrected-v1` selects exhaustive histories. Locale display now has C/C.UTF-8/en_US.UTF-8 evidence. R6c adds measured float/date edge compatibility. Optional Linux CLI confinement is described below. See the delivery ledger for remaining native-regex-history, security qualification and C ABI work.
+The [specification set](docs/README.md) was committed before Rust implementation (`fc385f1`). It includes architecture, source evidence, compatibility decisions, implementation semantics, verification milestones and open risks. The [remaining-work specification](docs/07-remaining-work-spec.md) defines the CDF/ELF, codec, locale/date/regex, sandbox, security and C ABI contracts; the [delivery ledger](docs/08-delivery-progress.md) separates implemented milestones from remaining acceptance and security gates. CDF classification retains checked compound-document metadata, and ELF/core enrichment is merged. The bounded regex capture VM supports backreferences with an explicit pinned quantified-history restriction; `corrected-v1` selects exhaustive histories. Locale display now has C/C.UTF-8/en_US.UTF-8 evidence. R6c adds measured float/date edge compatibility. Optional Linux CLI confinement is described below. See the delivery ledger for remaining native-regex-history, security qualification and C ABI work.
 
 ```sh
-cargo test --locked
-cargo clippy --all-targets --locked -- -D warnings
+cargo test --workspace --locked
+cargo clippy --workspace --all-targets --locked -- -D warnings
 python3 tools/rebuild_database.py       # Rust-only rebuild; verify pinned hash
 bash tools/build_reference.sh          # optional: pinned C oracle + upstream tests
 python3 tools/verify.py --benchmark    # full local conformance/hardening reports
@@ -64,5 +70,6 @@ an experimental feature with explicit [scope and qualification gaps](docs/remain
 An [experimental C interface](crates/rfile-ffi/README.md) is available with
 `cargo build -p rfile-ffi --features extended-codecs`. It exports the 19 file 5.48
 functions through the Rust engine under the distinct `librfile_magic` name.
-Source diagnostics and other ABI qualification gates remain open; it is not yet
-a certified drop-in replacement. No library is installed by building it.
+Typed source diagnostics and database actions are implemented. Broader warning,
+DEBUG, IO/discovery and security qualification gates remain open; this is not a
+certified drop-in replacement. No library is installed by building it.

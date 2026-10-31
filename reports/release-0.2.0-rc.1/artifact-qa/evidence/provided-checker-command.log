@@ -1,0 +1,17 @@
+$ python3 tools/check_cli_package.py <candidate> --report <evidence/provided-checker.json>
+Traceback (most recent call last):
+  File "/home/john/Code/rfile/.reference/package-qa-0f/source-extracted/rfile-0.2.0-rc.1-source/tools/check_cli_package.py", line 127, in <module>
+    main()
+    ~~~~^^
+  File "/home/john/Code/rfile/.reference/package-qa-0f/source-extracted/rfile-0.2.0-rc.1-source/tools/check_cli_package.py", line 114, in main
+    run('offline-source-rebuild', [cargo, 'check', '--workspace', '--all-targets', '--all-features', '--locked', '--offline'],
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cwd=source, timeout=300, extra=dict(CARGO_HOME=str(fresh), CARGO_TARGET_DIR=str(temporary / 'source-target')))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/john/Code/rfile/.reference/package-qa-0f/source-extracted/rfile-0.2.0-rc.1-source/tools/check_cli_package.py", line 41, in run
+    raise RuntimeError(f'{name}: unexpected exit {result.returncode}; {result.stderr.decode(errors="replace")}')
+RuntimeError: offline-source-rebuild: unexpected exit 101; error: could not execute process `rustc -vV` (never executed)
+
+Caused by:
+  No such file or directory (os error 2)
+

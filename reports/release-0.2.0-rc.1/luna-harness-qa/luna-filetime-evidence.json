@@ -1,0 +1,101 @@
+{
+  "reviewer": "GPT-6 Luna",
+  "candidate_commit": "0c045636947e21ce3a1b1997529dc8ff7ff75a9d",
+  "candidate_path": "/home/john/Code/rfile/.reference/release-acceptance-source",
+  "candidate_status": "clean after restoring generated reports",
+  "oracle_commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+  "oracle_path": "/home/john/Code/rfile/.reference/file-clean",
+  "oracle_status": "clean after removing build-generated .dirstamp",
+  "environment": {
+    "CARGO_NET_OFFLINE": "true",
+    "LC_ALL": "C",
+    "TZ": "UTC",
+    "RFILE_REFERENCE": "/home/john/Code/rfile/.reference/file-clean"
+  },
+  "native_undefined_range": {
+    "min_decimal": 2648708640000000000,
+    "min_hex": "24c21a7980b54000",
+    "max_decimal": 9223372036854775807,
+    "upper_exclusive": 9223372036854775808,
+    "basis": "approximate year 1601 + floor(days/365) > 9999 before tv_sec assignment"
+  },
+  "direct_vectors": {
+    "rows": 37,
+    "oracle_undefined": 10,
+    "safe_result_failures": 0,
+    "defined_mismatches": 0,
+    "short_widths": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7
+    ]
+  },
+  "time_compare": {
+    "exit_status": 0,
+    "total": 2850,
+    "exact": 2820,
+    "oracle_undefined": 30,
+    "oracle_undefined_validated": 30,
+    "unexpected": 0
+  },
+  "semantics_compare": {
+    "exit_status": 0,
+    "total": 10875,
+    "equal": 10848,
+    "oracle_undefined": 27,
+    "oracle_undefined_validated": 27,
+    "unexpected": 0,
+    "compiler_errors": 0
+  },
+  "verification_run_unittest": {
+    "exit_status": 0,
+    "tests_run": 10,
+    "failures": 0
+  },
+  "scratch_boundary_unittest": {
+    "exit_status": 0,
+    "tests_run": 5,
+    "failures": 0,
+    "mutant_exit_status": 1,
+    "mutant_failure": "inclusive-threshold test failed after scratch mutation"
+  },
+  "verdict": "accept harness correction; no blocker found",
+  "documentation_observations": [
+    "release note attributes final independent verdict to Claude; reviewer identity should reflect GPT-6 Luna",
+    "release-scope still says PR #19 merge pending after merge"
+  ],
+  "evidence_sha256": {
+    "luna-build-rfile.log": "726ba2640112ea97e990d1c03de73a269f20d88a3a8b6ce0131d0250da3b92df",
+    "luna-build-probe.log": "684a76fdae8cdb14baf1d9ec9bb49c80e45a23c745f26f999e14f12a953d827c",
+    "luna-time.log": "46ace7d1127d260f4139d6daa078d599500c3d189ed2e600a193978ba92858b1",
+    "luna-semantics.log": "c928f07887edc162d16ce337e67230f42d61f08ebdbb245b3a79b0e7e9c80526",
+    "luna-verification-run-tests.log": "da6946dcde0d7b316852368b2996f1cf2aca6807d62ec78f78ca6b6ca9eda3e9",
+    "luna-boundary-tests.log": "6ba41c169927803a1dad5e79ee35c9dc947eb76a4a54e26ded57e695305c202d",
+    "luna-boundary-mutant.log": "5b69daa98955fac5c13b11ac1ebd49d7d2a21c9397ccd22f5a375b1566edae7e",
+    "luna-filetime-vectors.log": "592fa96c69f443cff97c78c831cae7871e0aed746d9aafff55008d676cd7c55e",
+    "luna-filetime-vectors.json": "0665dd8aae98bf0c81298529bafea277c396b1051edcb3bcfeb9ea9aa0782445",
+    "luna_test_oracle_boundary.py": "39c0d720087252f61c9e152c5f27e8bfe0588d93ba6e31168971422928bd20fd",
+    "luna-oracle-boundaries-mutant.py": "adca740520d7b69923e1c094d6bb460e9a9616c4574b9f7ad29af0a7a5cc4633"
+  },
+  "portable_scratch_unittest": {
+    "path": "/tmp/rfile-night-review/luna_test_oracle_boundary.py",
+    "ordinary_mode": {
+      "passed": 3,
+      "skipped": 2,
+      "exit_status": 0
+    },
+    "fresh_report_mode": {
+      "passed": 5,
+      "skipped": 0,
+      "exit_status": 0
+    },
+    "strict_boundary_mutant": {
+      "exit_status": 1,
+      "reason": "inclusive minimum assertion failed"
+    }
+  }
+}

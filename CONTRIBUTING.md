@@ -14,8 +14,8 @@ rule data without updating provenance and verification evidence.
 
 ```sh
 cargo fmt --all -- --check
-cargo clippy --all-targets --locked -- -D warnings
-cargo test --locked
+cargo clippy --workspace --all-targets --locked -- -D warnings
+cargo test --workspace --locked
 cargo build --release --locked
 python3 tools/rebuild_database.py
 ```
@@ -38,3 +38,21 @@ Report security issues privately using SECURITY.md. Ordinary bug reports should
 include the commit, platform, flags, database identity and a small public or
 synthetically generated reproducer. Additional format/platform coverage and
 sustained fuzzing are welcome; see fuzz/README.md.
+
+## Independent release verification
+
+Claude owns test execution and retesting; Codex implements fixes and performs
+other validation. See [release scope and PR decisions](docs/release-scope.md)
+for the current contract. Use separate checkouts and serialize feature builds.
+
+Verification saves per-run reports/logs under `reports/verification-runs/` and
+updates a latest-run summary at startup and on success, failure or interruption.
+Full oracle runs require mutation fixtures from `RFILE_REFERENCE/tests`;
+`--no-oracle` explicitly permits a recorded missing-fixture skip. A direct ignored
+mutation run requires fixtures unless `RFILE_REQUIRE_FIXTURES=0` is set.
+An explicit `RFILE_REFERENCE` must always be valid.
+
+Use `python3 tools/verify.py --all-features --require-sandbox` on a capable host
+to require actual CLI and kernel sandbox coverage in debug and release. Without
+that flag, unsupported capability checks are recorded as skipped, not certified.
+Archive the run directory before treating an ignored local log as release evidence.

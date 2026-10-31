@@ -1,0 +1,9 @@
+{
+  "source_commit": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "duration_ms": 265667,
+  "regression_test_sha256": "46507b465a107ba7c64c1a364dafb3bd51e45747017c2f573e405f1039370e6e",
+  "scope": "Increment passed; integrated no-oracle verifier and strict sandbox executed; not packaging/full qualification"
+}

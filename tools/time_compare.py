@@ -9,6 +9,7 @@ import platform
 import subprocess
 import tempfile
 from reference import UP
+from oracle_boundaries import filetime_has_uninitialized_seconds
 ROOT = Path(__file__).resolve().parents[1]
 ZONES = ['UTC', 'PST8PDT,M3.2.0,M11.1.0', 'America/Los_Angeles',
          'Europe/Berlin', 'Asia/Kolkata', 'Asia/Kathmandu', 'Australia/Lord_Howe',
@@ -53,14 +54,25 @@ def main():
                 for zone in ZONES:
                     c = invoke(UP/'src/file', source, path, zone)
                     rust = invoke(ROOT/'target/release/rfile', source, path, zone)
-                    rows.append(dict(kind=kind, value=value, zone=zone, reference=c, rust=rust, equal=c == rust))
+                    undefined = 'qwdate' in kind and filetime_has_uninitialized_seconds(value)
+                    row = dict(kind=kind, value=value, zone=zone, reference=c, rust=rust,
+                               equal=c == rust and not undefined)
+                    if undefined:
+                        row.update(oracle_defined=False, raw_equal=c == rust,
+                                   disposition='native-filetime-uninitialized-seconds',
+                                   safe_result_validated=rust == dict(status=0,
+                                       stdout_hex=b'*Invalid datetime*\n'.hex(), stderr_hex=''))
+                    rows.append(row)
     hashes = {}
     for zone in ZONES:
         path = Path('/usr/share/zoneinfo')/zone
         if path.is_file(): hashes[zone] = hashlib.sha256(path.read_bytes()).hexdigest()
-    report = dict(schema_version=1, upstream_commit=pin, environment=dict(LC_ALL='C', libc=platform.libc_ver(), zone_sha256=hashes),
-                  total=len(rows), exact=sum(r['equal'] for r in rows), comparisons=rows)
+    report = dict(schema_version=2, upstream_commit=pin, environment=dict(LC_ALL='C', libc=platform.libc_ver(), zone_sha256=hashes),
+                  total=len(rows), exact=sum(r['equal'] for r in rows),
+                  oracle_undefined=sum(r.get('oracle_defined') is False for r in rows),
+                  oracle_undefined_validated=sum(r.get('safe_result_validated', False) for r in rows), comparisons=rows)
+    report['unexpected'] = report['total'] - report['exact'] - report['oracle_undefined_validated']
     (ROOT/'reports/time.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'comparisons'}))
-    if report['exact'] != report['total']: raise SystemExit('Date mismatch: inspect reports/time.json')
+    if report['unexpected']: raise SystemExit('Date mismatch: inspect reports/time.json')
 if __name__ == '__main__': main()

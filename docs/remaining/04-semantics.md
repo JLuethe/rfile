@@ -41,11 +41,32 @@ struct DateFields { year: i32, month: u8, day: u8, hour: u8,
 
 Raw numeric width, signedness, endianness and masks remain evaluator semantics. Convert date/ldate/qdate/qldate/Windows/DOS only after that stage. Local families use the configured zone; UTC families stay UTC. English asctime weekday/month names and spacing are fixed by the reference's renderer, not translated by LC_TIME. Preserve valid formatting at years -999..9999 where the pinned host's fixed asctime buffer permits it; larger/out-of-range values render the exact invalid marker or a declared profile error. Do not use a broad ISO8601 formatter as the human output.
 
-Timezone selection for the CLI: empty TZ means UTC; named TZ resolves against the configured system database; POSIX TZ expressions are parsed explicitly; a leading colon/file form is loaded as checked TZif where supported; absent TZ uses system local-zone data. Set a 1 MiB zone-file cap, bounded parsing/cache and path policy before IO. Named-zone resolution must prevent path traversal outside the configured database root; explicit TZ file paths are a separate allowed configuration input. Invalid/unavailable configuration is a clear setup error with provenance, not an unnoticed UTC substitution. Any host-native fallback that the pin performs differently is a documented configuration difference.
+Timezone selection for the CLI: empty TZ and `TZ=UTC` use built-in UTC without
+requiring tzdata; other named TZ values resolve against the configured system
+database; POSIX TZ expressions are parsed explicitly; a leading colon/file form
+is loaded as checked TZif where supported. Absent TZ uses system local-zone data,
+or UTC if the implicit `/etc/localtime` is absent (including a dangling symlink).
+That specific default permits operation in minimal container images. An existing
+malformed/unreadable system file, or any explicitly requested invalid/missing zone,
+remains a setup error. Set a 1 MiB zone-file cap, bounded parsing/cache and path
+policy before IO. Named-zone resolution must prevent path traversal outside the
+configured database root; explicit TZ file paths are separate configuration
+inputs. This fallback does not suppress explicit configuration errors.
 
 Selected candidate is `jiff 0.2.38`, Unlicense OR MIT, manifest MSRV 1.70; inspected APIs include immutable TimeZone, IANA get, POSIX expression and TZif construction. Use explicit std/TZif support and controlled database loading; do not enable every default platform/bundled-data feature without evaluating it. Reuse identical TZif bytes for C and Rust comparisons when possible and record tzdata hashes. Candidate capabilities are documented in the [TimeZone API](https://docs.rs/jiff/0.2.38/jiff/tz/struct.TimeZone.html); conversion behavior still needs libc differential tests. Parse/load the chosen zone under the baseline sandbox and before final strict input confinement; do not require lazy zone-file IO after the final filter. Rust API contexts do not hot-reload; C ABI compatibility refreshes a changed coordinated TZ setting at call entry rather than installing a process-global TZ.
 
 Windows FILETIME uses signed 64-bit 100 ns ticks in the pin. Pinned548 retains its bounded calendar normalization/month-boundary/pre-1601 quirks where deterministic; failed native conversion cannot authorize uninitialized `tv_sec`. CorrectedV1 uses checked ticks-to-Unix conversion with the 1601 epoch. CDF's editing-time threshold and duration formatting share this module but are different from rule Windows-date fields. DOS invalid-month substitution, zero day and two-second precision are tested as legacy formatting rather than normalized silently.
+
+The semantic/date comparison reports identify the specific native early-return
+branch separately: signed ticks at or above
+`(10000 - 1601) * 365 * 86400 * 10_000_000` produce an approximate year greater
+than 9999 in `src/cdf_time.c:cdf_timestamp_to_timespec`. That branch leaves
+`ts.tv_sec` uninitialized, and `src/print.c:file_fmtdatetime` ignores the error.
+Observed native bytes are retained but do not count as exact oracle comparisons,
+even when they happen to match. Those cases instead require Rfile's exact invalid
+datetime marker. Negative signed values and every other mismatch remain outside
+this exception. This corrects a harness assumption exposed on Ubuntu 24.04;
+it does not change production date semantics or patch the primary oracle.
 
 Golden matrix: epoch/negative epoch, signed 32-bit boundaries including 2038, leap days and century boundaries, year-field limits, FILETIME zero/negative/maximum and month boundaries, DOS zero/invalid fields, UTC and named zones America/Los_Angeles/Europe/Berlin/Asia/Kolkata, a non-hour-offset zone, pre/post DST transitions and POSIX TZ strings. Timestamp-to-local conversion is unambiguous; test reverse calendar normalization separately where the legacy algorithm uses it. Record leap-second and TZif leap-table treatment as a named host contract, not assumed POSIX equivalence.
 

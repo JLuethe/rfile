@@ -96,6 +96,45 @@ fn byte_order_masks_and_signed_boundaries() {
 #[ignore = "deterministic mutation campaign; run explicitly with --release --ignored"]
 fn deterministic_mutation_campaign() {
     let started = Instant::now();
+    let reference = std::env::var_os("RFILE_REFERENCE");
+    let require_fixtures =
+        reference.is_some() || std::env::var("RFILE_REQUIRE_FIXTURES").as_deref() != Ok("0");
+    let fixtures = reference
+        .map(std::path::PathBuf::from)
+        .unwrap_or_else(|| std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("upstream"))
+        .join("tests");
+    let mut fixture_paths = Vec::new();
+    match std::fs::read_dir(&fixtures) {
+        Ok(entries) => {
+            for entry in entries {
+                let path = entry.expect("read mutation fixture entry").path();
+                if path.extension().is_some_and(|e| e == "testfile") {
+                    fixture_paths.push(path);
+                }
+            }
+        }
+        Err(error) if !require_fixtures && error.kind() == std::io::ErrorKind::NotFound => {}
+        Err(error) => panic!(
+            "cannot read required mutation fixtures {}: {error}",
+            fixtures.display()
+        ),
+    }
+    fixture_paths.sort();
+    assert!(
+        !require_fixtures || !fixture_paths.is_empty(),
+        "required mutation fixtures contain no .testfile inputs: {}",
+        fixtures.display()
+    );
+    let fixture_status = if fixture_paths.is_empty() {
+        "skipped"
+    } else {
+        "executed"
+    };
+    println!(
+        "RFILE_COVERAGE {}",
+        serde_json::json!({"component":"mutation_fixtures", "status":fixture_status,
+            "path":fixtures, "fixture_files":fixture_paths.len(), "required":require_fixtures})
+    );
     let mut state = 0x4f6c655275737421u64;
     fn next(state: &mut u64) -> u64 {
         *state ^= *state << 13;
@@ -144,36 +183,31 @@ fn deterministic_mutation_campaign() {
         let _ = e.classify(&bytes);
         input_cases += 1;
     }
-    let fixtures = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("upstream/tests");
     let mut fixture_cases = 0;
-    if let Ok(entries) = std::fs::read_dir(fixtures) {
-        for entry in entries.flatten() {
-            if entry.path().extension().is_some_and(|e| e == "testfile") {
-                let b = std::fs::read(entry.path()).unwrap();
-                for n in [
-                    0,
-                    1,
-                    2,
-                    3,
-                    8,
-                    16,
-                    64,
-                    128,
-                    256,
-                    512,
-                    b.len() / 2,
-                    b.len().saturating_sub(1),
-                    b.len(),
-                ] {
-                    let _ = e.classify(&b[..n.min(b.len())]);
-                    fixture_cases += 1;
-                }
-            }
+    for path in &fixture_paths {
+        let b = std::fs::read(path).unwrap();
+        for n in [
+            0,
+            1,
+            2,
+            3,
+            8,
+            16,
+            64,
+            128,
+            256,
+            512,
+            b.len() / 2,
+            b.len().saturating_sub(1),
+            b.len(),
+        ] {
+            let _ = e.classify(&b[..n.min(b.len())]);
+            fixture_cases += 1;
         }
     }
     println!(
         "{}",
-        serde_json::json!({"seed":"4f6c655275737421","database_cases":db_cases,"source_cases":source_cases,"random_input_cases":input_cases,"fixture_truncations":fixture_cases,"elapsed_seconds":started.elapsed().as_secs_f64()})
+        serde_json::json!({"seed":"4f6c655275737421","database_cases":db_cases,"source_cases":source_cases,"random_input_cases":input_cases,"fixture_truncations":fixture_cases,"fixture_files":fixture_paths.len(),"fixture_status":fixture_status,"fixture_path":fixtures,"elapsed_seconds":started.elapsed().as_secs_f64()})
     );
 }
 #[test]

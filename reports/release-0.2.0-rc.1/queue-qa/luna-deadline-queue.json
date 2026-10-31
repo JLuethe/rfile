@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "stopped",
+  "queue_pid": 934344,
+  "started_utc": "2026-10-31T06:18:17.872898+00:00",
+  "source_sha256": "5618e569908d2352e6d59ef624a7a293e8cd592c0ed5c735d1687e68b1550f36",
+  "supervisor_sha256": "105294309e518e888f5ec7222abebdf7f3014a8d82dbc182af0b8c4f4439b1f8",
+  "queue_sha256": "416b2ef3493464a5b876cebf8bb2812724ea0363500596c004f3e57aacc7c517",
+  "git_head": "0e9590d252383932c44c53d9d0402ff7c32fe8df",
+  "git_status": [
+    " M reports/fuzz-abi_state.json",
+    " M reports/fuzz-source_diagnostics.json"
+  ],
+  "limits": {
+    "targets": [
+      "encoding"
+    ],
+    "workers": 1,
+    "cpu_hours_per_target": 1.0,
+    "max_wall_hours": 0.0003,
+    "chunk_seconds": 10,
+    "rss_mib": 512
+  },
+  "targets": {
+    "encoding": {
+      "status": "failed",
+      "binary_sha256": "7e85d1bec5b24ffd752e9af9a0c39b20662a071a9bbb926e92a541aee0c8c52f",
+      "pid": 934407,
+      "started_utc": "2026-10-31T06:18:17.932057+00:00",
+      "command": [
+        "/usr/bin/python3",
+        "/tmp/rfile-queue-review/tools/fuzz_campaign.py",
+        "encoding",
+        "--seconds",
+        "10",
+        "--cpu-hours",
+        "1.0",
+        "--rss-mib",
+        "512"
+      ],
+      "returncode": 2,
+      "finished_utc": "2026-10-31T06:18:20.946391+00:00",
+      "measured_cpu_seconds": 0.0,
+      "campaign_status": "interrupted",
+      "completed_gate": false,
+      "report_sha256": "ecf483c60f342e12166e6c560ed67f02fe8a335d7605fc23783a747ba7b57119"
+    }
+  },
+  "run_directory": "/tmp/rfile-queue-review/.reference/fuzz-queues/dfa83c9c-a760-4b99-80ea-09f1a57acb9d",
+  "qualified_release": false,
+  "heartbeat_utc": "2026-10-31T06:18:20.946773+00:00",
+  "wall_seconds": 3.0668151730023965,
+  "stop_reason": "wall-deadline",
+  "finished_utc": "2026-10-31T06:18:20.946905+00:00",
+  "measured_cpu_seconds": 0.0,
+  "sustained_targets_passed": []
+}

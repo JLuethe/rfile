@@ -1,0 +1,12 @@
+podman run --rm --network=none --read-only --cap-drop=ALL --security-opt=no-new-privileges --user=65534:65534 --memory=256m --pids-limit=32 --cpus=1 --volume /home/john/Code/rfile/.reference/package-qa-0f/binary-extracted/rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu:/qa:ro --volume /home/john/Code/rfile/.reference/package-qa-0f/fixtures:/fixtures:ro docker.io/library/ubuntu@sha256:076e7bf82319619f28dd0aa9c02ab34b055ad37100395b4f49a2ffba04fb5e11 /bin/sh -c getconf\ GNU_LIBC_VERSION\;\ /qa/bin/rfile\ --version\;\ /qa/bin/rfile\ --capabilities\;\ /qa/bin/rfile\ -b\ /fixtures/plain.txt\;\ /qa/bin/rfile\ -b\ -Z\ /fixtures/input.gz\;\ /qa/bin/rfile\ -b\ -i\ /fixtures/plain.txt\;\ /qa/bin/rfile\ -b\ \"/fixtures/name-\$\(printf\ \"\\\\377\"\).txt\" 
+glibc 2.35
+rfile-0.2.0-rc.1
+magic v21 from embedded pinned database
+upstream 41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59
+features: safe-rust regex miniz_oxide; kernel sandbox compiled=false
+rfile: No such file or directory (os error 2)
+rfile: No such file or directory (os error 2)
+rfile: No such file or directory (os error 2)
+rfile: No such file or directory (os error 2)
+rfile: No such file or directory (os error 2)
+exit_status=1

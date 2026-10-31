@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
 """Build an isolated C ABI package tree. Does not install at --prefix or publish."""
-import argparse,ctypes,hashlib,json,os,shutil,subprocess,tempfile,tarfile,gzip
+import argparse,ctypes,hashlib,json,os,shutil,subprocess,tempfile,tarfile,gzip,tomllib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
@@ -9,6 +9,9 @@ def main():
     output=Path(a.output).resolve();prefix=Path(a.prefix)
     if not prefix.is_absolute() or '\n'in str(prefix) or '\0'in str(prefix):raise SystemExit('Prefix must be an absolute path without line/NUL bytes')
     if output.exists():raise SystemExit('Output already exists; choose a new package directory')
+    if subprocess.check_output(['git','status','--porcelain','--untracked-files=all'],cwd=ROOT):
+        raise SystemExit('Release packaging requires a clean committed checkout; use an isolated clone')
+    version=tomllib.loads((ROOT/'Cargo.toml').read_text())['package']['version']
     cargo=os.environ.get('CARGO',str(Path.home()/'.cargo/bin/cargo'))
     features=['--features','extended-codecs']if a.extended_codecs else[]
     with tempfile.TemporaryDirectory(prefix='rfile-abi-package-')as tmp:
@@ -35,7 +38,7 @@ includedir=${{prefix}}/include/rfile
 
 Name: rfile-magic
 Description: Experimental independent Rust file classifier C interface
-Version: 0.1.0
+Version: {version}
 Libs: -L${{libdir}} -lrfile_magic
 Libs.private: -ldl -lpthread -lm
 Cflags: -I${{includedir}}
@@ -47,12 +50,12 @@ Cflags: -I${{includedir}}
         # with deterministic archive ownership/timestamps. No ignored checkout,
         # credentials, host corpus, logs or build artifacts enter the archive.
         source=Path(tmp)/'source';source.mkdir()
-        paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).split(b'\0')
+        paths=subprocess.check_output(['git','ls-files','--cached','-z'],cwd=ROOT).split(b'\0')
         accepted=[]
         for raw in paths:
             if not raw:continue
             name=os.fsdecode(raw);path=Path(name)
-            allowed_dirs={'src','crates','tests','examples','data','tools','docs','LICENSES','.github','fuzz'}
+            allowed_dirs={'src','crates','tests','examples','data','tools','docs','LICENSES','.github','fuzz','packaging'}
             allowed_files={'Cargo.toml','Cargo.lock','LICENSE','NOTICE','README.md','SECURITY.md','HANDOFF.md','.gitignore','reports/remaining-spec-observations.json'}
             if path.parts[0]not in allowed_dirs and name not in allowed_files:continue
             if not(ROOT/path).is_file() or (ROOT/path).is_symlink():continue

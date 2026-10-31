@@ -1,0 +1,1 @@
+TMPDIR=<qa>/tmp CARGO_HOME=<qa>/cargo-home CARGO_TARGET_DIR=<qa>/target CARGO_BUILD_JOBS=1 PATH=/home/john/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH cargo build -p rfile --bin rfile --release --locked --no-default-features --target x86_64-unknown-linux-gnu --offline

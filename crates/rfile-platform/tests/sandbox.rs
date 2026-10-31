@@ -23,6 +23,13 @@ fn kernel_policy_children() {
         &[],
     ) {
         Err(e) if e.kind() == std::io::ErrorKind::Unsupported => {
+            assert!(
+                std::env::var("RFILE_REQUIRE_SANDBOX").as_deref() != Ok("1"),
+                "required kernel policy certification unavailable: {e}"
+            );
+            println!(
+                r#"RFILE_COVERAGE {{"component":"sandbox_kernel","status":"skipped","reason":"unsupported-kernel"}}"#
+            );
             eprintln!("SKIP kernel policy certification: {e}");
             return;
         }
@@ -61,6 +68,9 @@ fn kernel_policy_children() {
             "child did not run {case}"
         );
     }
+    println!(
+        r#"RFILE_COVERAGE {{"component":"sandbox_kernel","status":"executed","child_cases":8}}"#
+    );
 }
 fn denied<T>(result: std::io::Result<T>) {
     assert!(matches!(

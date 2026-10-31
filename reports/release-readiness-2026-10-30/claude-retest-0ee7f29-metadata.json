@@ -1,0 +1,35 @@
+{
+  "source_commit": "0ee7f29d82398b1ad0a9f99ed71ff1bc01142318",
+  "models": [
+    "claude-opus-5-5"
+  ],
+  "duration_ms": 274598,
+  "scope": "Independent retest: functional controls passed, Clippy gate failed; not final signoff",
+  "permission_denials": [
+    {
+      "tool": "Bash",
+      "description": "List scratch dir, toolchains, reports",
+      "path": null
+    },
+    {
+      "tool": "Write",
+      "description": null,
+      "path": "/tmp/rfile-readiness-qa/run_cargo_retest.py"
+    },
+    {
+      "tool": "Write",
+      "description": null,
+      "path": "/tmp/rfile-readiness-qa/run_cargo_retest.py"
+    },
+    {
+      "tool": "Bash",
+      "description": "Run VerificationRun regression harness on synthetic roots",
+      "path": null
+    },
+    {
+      "tool": "Bash",
+      "description": "Show clippy failure output",
+      "path": null
+    }
+  ]
+}

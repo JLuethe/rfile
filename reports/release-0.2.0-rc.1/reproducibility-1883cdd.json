@@ -1,0 +1,32 @@
+{
+  "source_commit": "1883cdde6e3c607735c74888ac9328f60b24c7e9",
+  "checked_utc": "2026-10-31T05:51:28.956501+00:00",
+  "kind": "Codex build/provenance validation; independent artifact QA pending",
+  "scope": "Two clean builds on the same host/toolchain in different temporary directories; no cross-toolchain binary reproducibility claim",
+  "files": [
+    {
+      "file": "SHA256SUMS",
+      "build1": "0ad502f82705523b65c17a4dbcea0cafc2a88a676eababc94d8939034836e887",
+      "build2": "0ad502f82705523b65c17a4dbcea0cafc2a88a676eababc94d8939034836e887",
+      "equal": true
+    },
+    {
+      "file": "release-manifest.json",
+      "build1": "f824a4785d9aa0559531b1dcb484172e0411021442cfa59c59bcb4984dac605d",
+      "build2": "f824a4785d9aa0559531b1dcb484172e0411021442cfa59c59bcb4984dac605d",
+      "equal": true
+    },
+    {
+      "file": "rfile-0.2.0-rc.1-source.tar.gz",
+      "build1": "407ddd2365c353f2fe58b13485f9cff7a6a8ef4e12e34515166193ed31288ba2",
+      "build2": "407ddd2365c353f2fe58b13485f9cff7a6a8ef4e12e34515166193ed31288ba2",
+      "equal": true
+    },
+    {
+      "file": "rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz",
+      "build1": "3658a54e3ac57e4f4f5ddb91caebec3ec6bba478366c2628850dc1f0a38cea78",
+      "build2": "3658a54e3ac57e4f4f5ddb91caebec3ec6bba478366c2628850dc1f0a38cea78",
+      "equal": true
+    }
+  ]
+}

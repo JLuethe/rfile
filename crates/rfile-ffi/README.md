@@ -44,14 +44,23 @@ Compilation atomically replaces a same-directory output with mode 0644 subject
 to umask, intentionally replacing inode/symlink ownership instead of native
 O_TRUNC behavior. The containing output directory must be trusted.
 
-Current gaps include malformed-source warning/error sequencing, complete
-compiled-header diagnostics, source warning recovery/counter edge cases, DEBUG
-tracing, locale-specific IO error wording, special-file/failure paths, and the
-engine's recorded CDF/ELF/regex/platform limitations. A successful compile/link
-or `magic_version()==548` does not certify those behaviors. See
-[the ABI specification](../../docs/remaining/07-c-abi.md), `reports/abi-state.json`
-and `reports/abi-clients.json` for the exact comparison scope. Packaging and
-stateful ABI fuzzing remain release gates until their reports are present.
+Typed source events, compiled-header diagnostics and native-compatible recovery
+are implemented for the recorded cases. The R8c ledger records 49 original state
+scenarios and 440 expanded diagnostic scenarios as exact; those reports are
+historical evidence, not qualification of every later candidate.
+
+Remaining gaps include broader accepted-warning/IO/default-discovery cases,
+DEBUG tracing, locale-specific IO error wording, special-file/failure paths,
+and the engine's recorded CDF/ELF/regex/platform limitations. A successful
+compile/link or `magic_version()==548` does not certify those behaviors. See
+[the ABI specification](../../docs/remaining/07-c-abi.md) and
+[delivery ledger](../../docs/08-delivery-progress.md) for the comparison scope.
+Isolated package and short stateful fuzz reports exist; same-candidate package
+revalidation, sustained fuzzing and independent security review remain open.
+The [next release](../../docs/release-scope.md) does not include a C ABI binary.
+Ordinary development builds use a source-tree default database path; distribution
+builds must configure `RFILE_MAGIC_PATH` for their installation prefix and test
+that discovery behavior after installation.
 
 Run `python3 tools/abi_clients.py --rust-only` after building for C/C++ linkage,
 parameter, ownership and concurrency checks (including C ASan/UBSan). With a

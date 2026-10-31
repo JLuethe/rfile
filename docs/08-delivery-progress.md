@@ -1,5 +1,8 @@
 # Remaining-work delivery progress
 
+Current release preparation: [scope, PR decisions and verification controls](release-scope.md).
+The milestone narratives below retain their historical evidence.
+
 Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining work](07-remaining-work-spec.md). Spec PR #2 is merged. This ledger distinguishes implemented evidence from release gates.
 
 | Milestone | Current state | Evidence / next gate |
@@ -10,10 +13,10 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R3 CDF | merged in PR #7 | shared positional sector/mini/FAT/DIFAT traversal, typed directory/property/catalog evidence, corrected rendering, pinned fallback and generated fixtures |
 | R4 ELF/core | merged in PR #8 | OS/version/build ID/PaX/memtag/core/AUXV/Solaris, positional metadata and bounded stream spooling; 5,461 exact component comparisons |
 | R5 codecs | merged in PR #9 | opt-in bounded adapters, independent fixtures and per-codec fuzz targets; details below |
-| R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c implemented locally: 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
+| R6 full semantics | regex merged in PR #10; locale/display merged in PR #11, hosted CI passed | R6c delivered (historical checkpoint below): 25 stages passed, 15,447 exact float and 2,850 exact date comparisons; full native history/custom-zone closure remains |
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
 | R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment merged in PR #18 | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
-| R9 sustained hardening | pending | measured campaigns, final-candidate replay and independent review |
+| R9 sustained hardening | queue merged in PR #19; qualification pending | 25 targets; smoke does not satisfy measured campaigns, final-candidate replay or independent review |
 | R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
 
 The baseline reports are regenerated for each implementation candidate. `reports/components.json` separately records the additional CDF/regex cases. Ignored regression tests and known-open discrepancies are not counted as successful conformance. No sustained campaign or independent audit has been performed by this PR.

@@ -1,6 +1,6 @@
 # Security policy
 
-rfile parses untrusted files and rule databases. Version 0.1.0 is experimental:
+rfile parses untrusted files and rule databases. The 0.1.0 release and 0.2.0-rc.1 candidate are experimental:
 compatibility, resource limits and security hardening are still being reviewed.
 The current development branch receives fixes; no stable security support or
 response-time guarantee is offered for released versions yet.

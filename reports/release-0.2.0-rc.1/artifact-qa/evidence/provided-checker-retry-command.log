@@ -1,0 +1,4 @@
+CARGO=/home/john/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo
+PATH includes stable rust toolchain bin
+$ python3 tools/check_cli_package.py <candidate> --report <evidence/provided-checker-retry.json>
+{"status": "passed", "checks": 14, "source_commit": "0f1054d2404d8049d2d2357e22af97c5e8f22d3c"}
