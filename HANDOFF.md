@@ -1,12 +1,34 @@
 # rfile restart checkpoint
 
-Updated after Claude pass 9. The user authorized
+Updated after candidate CI/archive production following Claude pass 9. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-9 sweeps passed; next CI/archive acceptance
+## Candidate CI passed; exact archives await independent acceptance
+
+The requested candidate `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
+`f08995301414e2976b70f6e289fc58f00a05b62d`, is pushed on the dedicated branch
+`ci/rc1-pass9-3f9af8d`. Required linux/msrv checks passed in run
+[41272111258](https://github.com/JLuethe/rfile/actions/runs/41272111258).
+Release-candidate packaging passed in run
+[41272131089](https://github.com/JLuethe/rfile/actions/runs/41272131089), including
+14 package/offline-rebuild checks and 13 minimal-runtime checks. Both runs and
+the remote branch bind the exact requested commit/tree.
+
+[CI artifact 13069527384](https://github.com/JLuethe/rfile/actions/runs/41272131089/artifacts/13069527384)
+is downloadable until 2026-11-15T04:13:06Z. See
+[the completed CI handoff](reports/ci-3f9af8d-handoff.md) for every artifact hash,
+download commands, packaged binary identity, source binding and preserved logs.
+Raw evidence is retained under `.reference/ci-pass9-3f9af8d/`, with a checksum
+inventory. The downloaded ZIP hash matches GitHub's digest; both tarball hashes
+match their manifest. Claude/maintainer independent exact-archive acceptance is
+next and has not been inferred from CI self-checks. No publication, tags or draft
+asset replacements occurred. This checkpoint update is documentation after the
+fixed build target; the candidate branch remains pinned.
+
+## Pass-9 sweeps passed; next CI/archive acceptance (historical)
 
 Tested source remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
 `b6e431e70d286914acc5d52417982e99b36151de`. Claude's original pass-9 evidence
