@@ -1,1 +1,49 @@
-{"database":{"advisory-count":1352,"last-commit":null,"last-updated":null},"lockfile":{"dependency-count":59},"settings":{"target_arch":[],"target_os":[],"severity":null,"ignore":[],"informational_warnings":["unmaintained","unsound","notice"]},"vulnerabilities":{"found":false,"count":0,"list":[]},"warnings":{}}
+{
+  "_evidence_scope": {
+    "status": "historical_not_applicable_to_frozen_candidate",
+    "note": "The original audit result below covers the historical lock only. No audit was run by this documentation correction; do not use its no-findings result as current-candidate evidence.",
+    "historical_report": {
+      "path": "dependency-audit-2026-10-25.raw.json",
+      "sha256": "4bd5f1adbefc6e93e99316142b9490ae8e304910b9618b9c7fdc6fc6c6bffe44",
+      "provenance_file": "dependency-audit-provenance.json",
+      "checked_utc": "2026-10-25T09:27:32.353325+00:00",
+      "audited_lock_sha256": "1b8077fb97322634635d3f4963b9d9c0f52ee0bad3eec485644f90cbe69b0096",
+      "advisory_commit": "21d909e4c8bd4e14c7aea58bf980c881a0053ab1"
+    },
+    "frozen_candidate": {
+      "commit": "ca9465f5f93eca75c80352a18a5de108e20762a0",
+      "tree": "92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5",
+      "lock_sha256": {
+        "Cargo.lock": "c7a1d2b995471286b3b89b3cfa5c18ece793d0a87c23c5e03ab0e6f2155f3f12",
+        "fuzz/Cargo.lock": "28a0f365cd93ac3fb8f18abb300d5ddd7e40b4014986e113be6e1c4fe41d2cc3"
+      }
+    },
+    "historical_audit_applies_to_frozen_lock": false,
+    "fresh_frozen_candidate_audit": "not_run_by_this_change; requires authorization"
+  },
+  "database": {
+    "advisory-count": 1352,
+    "last-commit": null,
+    "last-updated": null
+  },
+  "lockfile": {
+    "dependency-count": 59
+  },
+  "settings": {
+    "target_arch": [],
+    "target_os": [],
+    "severity": null,
+    "ignore": [],
+    "informational_warnings": [
+      "unmaintained",
+      "unsound",
+      "notice"
+    ]
+  },
+  "vulnerabilities": {
+    "found": false,
+    "count": 0,
+    "list": []
+  },
+  "warnings": {}
+}

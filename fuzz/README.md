@@ -1,6 +1,12 @@
 # Fuzzing
 
-Twenty-three buildable libFuzzer targets cover compiled databases, source, classification, combined rules/data, formatting, encodings, registry/decompression and ten per-codec targets, positional CDF containers, property sets and seekable ELF/core notes. Production detection remains independent of the fuzz engine and any C library.
+Twenty-five libFuzzer targets are declared in fuzz/Cargo.toml, covering compiled
+databases, source and source diagnostics, classification, combined rules/data,
+formatting, encodings, registry/decompression and ten per-codec targets,
+positional CDF containers, property sets, seekable ELF/core notes, regex captures,
+locale/time handling and stateful C ABI calls. Production detection remains
+independent of the fuzz engine and any C library. This count is a manifest
+inventory, not evidence of a completed build or campaign on the current candidate.
 
 ```sh
 cargo check --manifest-path fuzz/Cargo.toml --locked --bins

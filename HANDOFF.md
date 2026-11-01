@@ -1,12 +1,34 @@
 # rfile restart checkpoint
 
-Updated after Claude pass-11 exact-archive acceptance. The user authorized
+Updated after security-scope documentation corrections. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-11 archives accepted; dispositions and security-review scope next
+## Security scope brief received; decisions remain pending
+
+Claude's planning-only brief is preserved at
+`/home/john/Code/rfile-qa-claude/security-scope/SECURITY-REVIEW-BRIEF.md`.
+Section-9 items 1–3 are corrected in the working documentation: release scope
+identifies accepted ca9465f and credits Claude's current passes separately from
+historical Luna work; fuzz/README.md inventories 25 targets; dependency-audit.json
+is marked historical with correct frozen-lock identities recorded separately.
+The verbatim old audit is preserved in dependency-audit-2026-10-25.raw.json and
+still matches its original provenance checksum. No fresh audit was run.
+
+See [the correction and section-8 decision record](reports/security-scope-docs-and-decisions.md).
+No proposed review plan or new decisions 8(a)–(h) have been explicitly approved.
+Existing private-reporting policy and the 600 CPU-hour minimum remain written
+baselines, not authorization to execute. Review scope, fresh audit approval,
+severity policy, seed allocation, host, external audit and release guidance need
+the recorded maintainer choices described there. No review or fuzz run started.
+
+The accepted ca9465f commit/tree and archives remain fixed. This is a later
+documentation-only correction; no production code, locks or release assets
+changed. Older checkpoint sections retain their historical identities and scope.
+
+## Pass-11 archives accepted; dispositions and security-review scope next (historical)
 
 Claude independently accepted CI artifact **13091831221**, packaging run
 **41326583263**, for commit `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
