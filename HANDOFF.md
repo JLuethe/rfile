@@ -1,12 +1,36 @@
 # rfile restart checkpoint
 
-Updated after candidate CI/archive production following Claude pass 9. The user authorized
+Updated after Claude pass-10 archive acceptance and installer dispositions. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Candidate CI passed; exact archives await independent acceptance
+## Pass-10 archives accepted; I-1/I-2 documented
+
+Claude independently accepted artifact 13069527384 from CI run 41272131089 for
+commit `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
+`f08995301414e2976b70f6e289fc58f00a05b62d`. Provenance, archive contents,
+packaged behavior, install/uninstall and fresh-cache offline rebuild passed.
+The exact packaged binary matched all 14,088 pass-9 default golden rows. See
+[the pass-10 review](reports/claude-pass10-codex-review.md) and the untouched
+original ledger at `/home/john/Code/rfile-qa-claude/pass10/LEDGER-pass10.md`.
+
+Optional installer observations I-1/I-2 are documented as intentional in
+packaging/INSTALL.md: receipts track files, uninstall can prune pre-existing empty
+installation-path parents below the prefix, and handled failure rollback leaves
+created directories. No installer or Rust code changed. Other maintainer
+dispositions remain open.
+
+Pass-10 acceptance binds the existing bytes. They do not contain this new
+INSTALL.md wording. Finish maintainer dispositions/documentation, then build
+fresh docs-inclusive CI archives and obtain focused exact-byte acceptance before
+shipping that wording. Independent security review, coverage/resource evidence,
+600 CPU-hour fuzzing and final-candidate replay remain open for security
+qualification. No CI run, publication, tags or draft-asset changes were made in
+this documentation pass. Earlier checkpoints below are historical.
+
+## Candidate CI passed; exact archives await independent acceptance (historical)
 
 The requested candidate `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
 `f08995301414e2976b70f6e289fc58f00a05b62d`, is pushed on the dedicated branch
