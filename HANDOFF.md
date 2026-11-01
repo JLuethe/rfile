@@ -1,12 +1,35 @@
 # rfile restart checkpoint
 
-Updated after docs-inclusive ca9465f CI/archive production. The user authorized
+Updated after Claude pass-11 exact-archive acceptance. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Docs-inclusive archives ready for focused Claude acceptance
+## Pass-11 archives accepted; dispositions and security-review scope next
+
+Claude independently accepted CI artifact **13091831221**, packaging run
+**41326583263**, for commit `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
+`92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`. ZIP SHA256 is
+`d7555442445044b8952ac3f3b9d38d963a815e0b6d84ed48bcc1020483945dd2`.
+Provenance, documentation/manifests, source correspondence, focused behavior,
+19 installer assertions and fresh-cache offline rebuilding passed with no
+defects. **I-1/I-2 are verified resolved as documented-intentional for these
+archive bytes.** Original evidence at
+`/home/john/Code/rfile-qa-claude/pass11/` remains unchanged; see
+[the pass-11 recording](reports/claude-pass11-codex-review.md).
+
+Keep this candidate and its accepted archives fixed. Next are
+[remaining maintainer dispositions](reports/remaining-maintainer-dispositions.md)
+and Claude's [security-review scope brief](reports/claude-security-review-scope-prompt.md).
+The brief is planning only, before review execution or any fuzz campaign.
+Independent security review, coverage/resource evidence, sustained fuzzing and
+final-candidate replay remain open. No build, publication, tags, draft-asset
+changes or campaign accompanied these handoff/brief record updates. Later
+documentation commits do not retarget the accepted candidate. Older checkpoints
+below retain their historical identities and scope.
+
+## Docs-inclusive archives ready for focused Claude acceptance (historical)
 
 Candidate `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
 `92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`, is pushed on the fixed branch
