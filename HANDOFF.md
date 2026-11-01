@@ -1,12 +1,38 @@
 # rfile restart checkpoint
 
-Updated after Claude pass-10 archive acceptance and installer dispositions. The user authorized
+Updated after docs-inclusive ca9465f CI/archive production. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-10 archives accepted; I-1/I-2 documented
+## Docs-inclusive archives ready for focused Claude acceptance
+
+Candidate `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
+`92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`, is pushed on the fixed branch
+`ci/rc1-final-ca9465f`. Required linux/msrv checks passed in run
+[41326558761](https://github.com/JLuethe/rfile/actions/runs/41326558761);
+packaging passed in run
+[41326583263](https://github.com/JLuethe/rfile/actions/runs/41326583263), including
+14 package/offline-build checks and 13 minimal-runtime checks.
+
+[Artifact 13091831221](https://github.com/JLuethe/rfile/actions/runs/41326583263/artifacts/13091831221)
+contains the exact committed INSTALL.md I-1/I-2 wording. Both binary and installer
+are byte-identical to pass 10. Runtime/build code, tests, dependencies and
+workflows are unchanged from 8325cef; the new archive bytes still need focused
+independent acceptance. INSTALL.md is archive documentation outside the installed
+file manifest; its hash and committed-content comparison are recorded separately.
+
+Give Claude [the pass-11 prompt](reports/claude-pass11-test-prompt.md) and
+[the completed CI handoff](reports/ci-ca9465f-handoff.md), which contains all
+artifact hashes, identities, download commands and preserved logs. Raw evidence
+and a checksum inventory are under `.reference/ci-final-ca9465f/`. Artifact expiry
+is 2026-11-15T16:30:30Z. No publication, tags, draft changes or security campaign
+were performed. Maintainer dispositions and security qualification remain open.
+This checkpoint and prompt are later documentation; the fixed CI build target
+remains ca9465f. Earlier checkpoints below are historical.
+
+## Pass-10 archives accepted; I-1/I-2 documented (historical)
 
 Claude independently accepted artifact 13069527384 from CI run 41272131089 for
 commit `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
