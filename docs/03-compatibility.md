@@ -136,8 +136,9 @@ result for mixed flags. Annotation flags still request symlink-target inspection
 even when combined with MIME flags.
 
 String16 wildcard compatibility remains deliberately narrow. Pre-existing
-non-wildcard comparisons such as =\0 and <z on two-byte inputs can differ where
-the oracle compares a synthesized empty value past EOF; rfile does not extend
-the wildcard exception to these relations without a justified rule. This
-residual stays open. F-03, F-07 inherited-closed stdout, invalid CDF geometry and
+non-wildcard comparisons such as =\0 and <z can differ where the oracle compares
+a synthesized empty value past EOF. The 1,200-case matrix observed these residuals
+at input lengths 2, 3, 12 and 13. Rfile does not extend the wildcard exception to
+these relations without a justified rule. This residual stays open.
+F-03, F-07 inherited-closed stdout, invalid CDF geometry and
 shifted-use bounds remain documented maintainer-disposition items, not closed.

@@ -1,12 +1,38 @@
 # rfile restart checkpoint
 
-Updated after Claude pass 8 (verifier runs dated 2026-11-01 UTC). The user authorized
+Updated after Claude pass 9. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-8 source verifiers passed; next independent sweep
+## Pass-9 sweeps passed; next CI/archive acceptance
+
+Tested source remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`. Claude's original pass-9 evidence
+is at `/home/john/Code/rfile-qa-claude/pass9/LEDGER-pass9.md` and is unchanged.
+Default and strict all-feature golden sweeps covered 103 fixtures, 4,696 derived
+inputs and 14,088 comparisons per profile. The five F-04b rows are resolved;
+the 240 documented F-04 residual rows are unchanged, with no new differences.
+The string16 1,200-case matrix confirms wildcard behavior and source/compiled
+parity; the 208 non-wildcard residuals remain. Both binaries reproduce F-03's
+documented limitation in the pinned minimal Ubuntu container. No product defects
+were reported.
+
+Compatibility wording is corrected: the tested string16 =\0/<z residual occurs
+at lengths 2, 3, 12 and 13, not only two-byte inputs. This update changes docs
+only; source-verifier evidence remains attributed to the tested source commit.
+
+Next gate: build fresh CI candidate archives from the new immutable docs-inclusive
+commit, then have Claude independently accept those exact downloaded bytes,
+including hashes/provenance, installer behavior and offline source rebuild.
+Record maintainer dispositions for the documented differences before publishing.
+Independent security review, coverage/resource evidence and the 600 CPU-hour
+campaign remain open for security qualification; review should precede the long
+campaign so any resulting code fixes can be included in its frozen candidate.
+Existing draft assets remain unchanged. Older checkpoint sections are historical.
+
+## Pass-8 source verifiers passed; next independent sweep (historical)
 
 The source candidate remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
 `b6e431e70d286914acc5d52417982e99b36151de`. Claude pass 7 verified F-04b fixed
