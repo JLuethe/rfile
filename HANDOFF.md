@@ -1,12 +1,36 @@
 # rfile restart checkpoint
 
-Updated 2026-10-31 UTC (overnight October 30–31 PDT). The user authorized
+Updated after Claude pass 8 (verifier runs dated 2026-11-01 UTC). The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
 
-## Pass-6 candidate awaiting Claude retest
+## Pass-8 source verifiers passed; next independent sweep
+
+The source candidate remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`. Claude pass 7 verified F-04b fixed
+and F-08d documentation accurate; pass 6 verified F-08c's annotation-only subset.
+Pass 8 ran both full source-verifier profiles sequentially on this candidate:
+31/31 default steps and 33/33 all-feature steps passed. Required sandbox CLI and
+kernel tests executed in all-feature debug/release stages. This meets the local
+source-verifier criterion on the reported host, without claiming release or
+security qualification.
+
+Codex reviewed the structured reports and Cargo logs and verified all 133 evidence
+inventory hashes. Reporting correction: each Cargo test stage logs two deliberate
+caught panics in passing containment/unwind tests; "no panic messages" is too
+broad. Original ledgers remain unchanged. See
+[the pass-8 evidence review](reports/claude-pass8-codex-review.md).
+
+Next: [Claude pass-9 prompt](reports/claude-pass9-test-prompt.md) for the full
+golden truncation sweep, string16 matrix and F-03 minimal-container repro on the
+same candidate. Maintainer dispositions, CI-built archives/exact-asset acceptance,
+sustained fuzzing, coverage/resource evidence and independent security review
+remain open. No source, draft, tag or asset changes accompany this update.
+Older checkpoint sections below are historical and retain their original scope.
+
+## Pass-6 candidate awaiting Claude retest (historical)
 
 Fix commit `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
 `b6e431e70d286914acc5d52417982e99b36151de`, on local branch
