@@ -10,21 +10,7 @@ import argparse,hashlib,json,os,subprocess,tempfile
 from pathlib import Path
 from reference import ROOT,UP,manifest
 from abi_diagnostic_compare import CASES
-
-def security_escape_only(label,action,reference,rust):
- expected=reference.copy()
- if label=='crlf':
-  raw=b'bogus x bad\r';safe=b'bogus x bad\\u{d}'
-  field='stderr_hex'
- elif label=='compiled-preference'and action=='l':
-  raw=b'\t';safe=b'\\u{9}'
-  field='stdout_hex'
- else:
-  return False
- data=bytes.fromhex(reference[field])
- if raw not in data:return False
- expected[field]=data.replace(raw,safe).hex()
- return all(expected==observed for observed in rust)
+from security_differential import database_security_escape_only
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--binary',default='target/debug/rfile');ap.add_argument('--sandbox-matrix',action='store_true');args=ap.parse_args()
@@ -47,7 +33,7 @@ def main():
     row=dict(label=label,action=action,paths=paths,options=options,exact=all(observed[0]==v for v in observed[1:]))
     if not row['exact']:
      row.update(reference=observed[0],rust=observed[1:])
-     if security_escape_only(label,action,observed[0],observed[1:]):
+     if database_security_escape_only(label,action,observed[0],observed[1:]):
       row['intentional_difference']='escaped-untrusted-database-output'
     rows.append(row)
   for name,data in CASES.items():
