@@ -351,7 +351,7 @@ fn prepare_raw(
     Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
 }
 
-#[cfg(all(test, target_os = "linux"))]
+#[cfg(all(test, target_os = "linux", target_env = "gnu"))]
 mod security_tests {
     use super::*;
     use std::os::unix::fs::symlink;
@@ -425,6 +425,31 @@ mod security_tests {
             original_target_atime
         );
         fs::remove_dir_all(dir).unwrap();
+    }
+}
+
+#[cfg(all(test, not(all(target_os = "linux", target_env = "gnu"))))]
+mod unsupported_path_tests {
+    use super::*;
+
+    #[test]
+    fn no_follow_path_fails_closed_with_or_without_error_flag() {
+        let path = std::env::temp_dir().join(format!(
+            "rfile-unsupported-path-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::write(&path, b"ordinary text\n").unwrap();
+        for flags in [0, Flags::ERROR] {
+            let mut engine = Engine::builtin().unwrap();
+            engine.flags = Flags(flags);
+            let budget = engine.budget().unwrap();
+            assert!(matches!(
+                prepare_path(&engine, &path, &budget).classify(&engine, &budget),
+                Err(Error::Unsupported(_))
+            ));
+        }
+        fs::remove_file(path).unwrap();
     }
 }
 fn finish_path(
