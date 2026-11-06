@@ -116,12 +116,14 @@ impl TimeContext {
                 }
                 let name = text.strip_prefix(':').unwrap_or(text);
                 if Path::new(name).is_absolute() {
-                    return Self::from_file(Path::new(name));
+                    return Self::from_file(Path::new(name))
+                        .map_err(|error| Error::Unsupported(format!("TZ={text:?}: {error}")));
                 }
                 if let Ok(context) = Self::posix(name) {
                     return Ok(context);
                 }
                 Self::named(name, &root)
+                    .map_err(|error| Error::Unsupported(format!("TZ={text:?}: {error}")))
             }
         }
     }

@@ -90,7 +90,7 @@ fn action_warning_cap_is_native_default_and_list_accumulates() {
 }
 #[cfg(unix)]
 #[test]
-fn raw_cookie_error_preserves_non_utf8_bytes() {
+fn cli_cookie_error_escapes_non_utf8_bytes() {
     let f = Fixture::new();
     fs::write(f.0.join("bad"), b"!:unknown \xff\n").unwrap();
     let output = f.run(&["-S", "-c", "-m", "bad"]);
@@ -98,6 +98,66 @@ fn raw_cookie_error_preserves_non_utf8_bytes() {
     assert!(
         output
             .stderr
-            .ends_with(b"rfile: Unknown !: entry `!:unknown \xff'\n")
+            .ends_with(b"rfile: Unknown !: entry `!:unknown \\377'\n")
     );
+}
+
+#[cfg(unix)]
+#[test]
+fn source_warning_escapes_filename_controls() {
+    use std::os::unix::ffi::OsStringExt;
+    let f = Fixture::new();
+    let name = std::ffi::OsString::from_vec(b"rules-\x1b]52;c;bad\x07\n".to_vec());
+    let path = f.0.join(&name);
+    fs::write(&path, b"0 bogus x invalid\n").unwrap();
+    let output = std::process::Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["-S", "-c", "-m"])
+        .arg(&path)
+        .current_dir(&f.0)
+        .output()
+        .unwrap();
+    assert_eq!(output.status.code(), Some(1));
+    assert!(!output.stderr.contains(&0x1b));
+    assert!(!output.stderr.contains(&0x07));
+    assert!(
+        output.stderr.windows(5).any(|w| w == b"\\u{a}"),
+        "{output:?}"
+    );
+}
+
+#[test]
+fn list_description_cannot_forge_a_new_line() {
+    let f = Fixture::new();
+    fs::write(f.0.join("rules"), b"0 string ABC first\\nFORGED\n").unwrap();
+    let output = f.run(&["-S", "-l", "-m", "rules"]);
+    assert!(output.status.success(), "{output:?}");
+    assert!(
+        !output.stdout.windows(7).any(|w| w == b"\nFORGED"),
+        "{output:?}"
+    );
+}
+
+#[test]
+fn compiled_listing_escapes_embedded_record_controls() {
+    let f = Fixture::new();
+    let mut wire = rfile::Database::from_source("0 string ABC first\n")
+        .unwrap()
+        .compile()
+        .unwrap();
+    wire[432 + 160..432 + 160 + 9].copy_from_slice(b"x\nFORGED\0");
+    fs::write(f.0.join("rules.mgc"), wire).unwrap();
+    let output = f.run(&["-S", "-l", "-m", "rules.mgc"]);
+    assert!(output.status.success(), "{output:?}");
+    assert!(!output.stdout.windows(7).any(|w| w == b"\nFORGED"));
+    assert!(output.stdout.windows(5).any(|w| w == b"\\u{a}"));
+}
+
+#[test]
+fn source_check_escapes_rule_diagnostic_controls() {
+    let f = Fixture::new();
+    fs::write(f.0.join("bad"), b"\x1b]52;c;bad\x07 byte 0 invalid\n").unwrap();
+    let output = f.run(&["-S", "-c", "-m", "bad"]);
+    assert_eq!(output.status.code(), Some(1));
+    assert!(!output.stderr.contains(&0x1b));
+    assert!(!output.stderr.contains(&0x07));
 }

@@ -78,8 +78,25 @@ pub(crate) fn action(
     time: &TimeContext,
     options: SourceActionOptions,
 ) -> SourceAction {
+    action_inner(sources, time, options, None)
+}
+pub(crate) fn action_cli(
+    sources: &[SourceFragment],
+    time: &TimeContext,
+    options: SourceActionOptions,
+    display: &crate::DisplayContext,
+) -> SourceAction {
+    action_inner(sources, time, options, Some(display))
+}
+fn action_inner(
+    sources: &[SourceFragment],
+    time: &TimeContext,
+    options: SourceActionOptions,
+    display: Option<&crate::DisplayContext>,
+) -> SourceAction {
     struct Diagnostics<'a> {
         time: &'a TimeContext,
+        display: Option<&'a crate::DisplayContext>,
         options: SourceActionOptions,
         output: Vec<u8>,
         last: Option<(Vec<u8>, usize)>,
@@ -109,11 +126,18 @@ pub(crate) fn action(
         }
         fn rule(&mut self, rule: &Rule) -> Result<()> {
             if self.options.check {
-                append(
-                    &mut self.output,
-                    &dump(rule, self.time)?,
-                    self.options.output_limit,
-                )?;
+                let row = dump(rule, self.time)?;
+                if let Some(display) = self.display {
+                    let field = row.strip_suffix(b"\n").unwrap_or(&row);
+                    append(
+                        &mut self.output,
+                        &display.diagnostic(field, false)?,
+                        self.options.output_limit,
+                    )?;
+                    append(&mut self.output, b"\n", self.options.output_limit)?;
+                } else {
+                    append(&mut self.output, &row, self.options.output_limit)?;
+                }
             }
             Ok(())
         }
@@ -171,20 +195,22 @@ pub(crate) fn action(
                     ),
                     format!(", {physical}: Additional warnings are suppressed.\n"),
                 ] {
-                    append(&mut self.output, cstr(file), limit)?;
+                    append_field(&mut self.output, cstr(file), limit, self.display)?;
                     append(&mut self.output, message.as_bytes(), limit)?;
                 }
             } else if self.options.warning_count < self.options.warning_limit {
-                append(&mut self.output, cstr(file), limit)?;
+                append_field(&mut self.output, cstr(file), limit, self.display)?;
                 append(
                     &mut self.output,
                     format!(", {physical}: Warning: ").as_bytes(),
                     limit,
                 )?;
                 match diagnostic {
-                    ParseDiagnostic::Warning(message) => append(&mut self.output, message, limit)?,
+                    ParseDiagnostic::Warning(message) => {
+                        append_field(&mut self.output, message, limit, self.display)?
+                    }
                     ParseDiagnostic::WarningBytes(message) => {
-                        append(&mut self.output, message, limit)?
+                        append_field(&mut self.output, message, limit, self.display)?
                     }
                     ParseDiagnostic::CookieError(_) => unreachable!("handled above"),
                     ParseDiagnostic::WarningTail {
@@ -196,7 +222,7 @@ pub(crate) fn action(
                         let tail = line.get(*offset..).ok_or_else(|| {
                             Error::Database("diagnostic position outside source line".into())
                         })?;
-                        append(&mut self.output, cstr(tail), limit)?;
+                        append_field(&mut self.output, cstr(tail), limit, self.display)?;
                         append(&mut self.output, suffix, limit)?;
                     }
                 }
@@ -207,6 +233,7 @@ pub(crate) fn action(
     }
     let mut diagnostics = Diagnostics {
         time,
+        display,
         options,
         output: Vec::new(),
         last: None,
@@ -255,6 +282,18 @@ pub(crate) fn action(
         last_source: diagnostics.last,
         native_failure,
         native_error: diagnostics.native_error,
+    }
+}
+fn append_field(
+    out: &mut Vec<u8>,
+    bytes: &[u8],
+    limit: usize,
+    display: Option<&crate::DisplayContext>,
+) -> Result<()> {
+    if let Some(display) = display {
+        append(out, &display.diagnostic(bytes, false)?, limit)
+    } else {
+        append(out, bytes, limit)
     }
 }
 fn append(out: &mut Vec<u8>, bytes: &[u8], limit: usize) -> Result<()> {

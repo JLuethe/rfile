@@ -14,15 +14,38 @@ struct Action {
 }
 impl Action {
     fn emit(&mut self, value: &[u8], stderr: bool) -> Result<()> {
+        // Database action output has trusted record separators, while source
+        // bytes within each record are untrusted. Source names are escaped
+        // before entering the formatter below.
+        let display = crate::DisplayContext::from_environment()?;
+        let value = if self.flags.has(Flags::RAW) {
+            value.to_vec()
+        } else {
+            let mut safe = Vec::new();
+            for part in value.split_inclusive(|&b| b == b'\n' || b == b'\t') {
+                let (text, separator) = match part.last() {
+                    Some(b'\n' | b'\t') => (&part[..part.len() - 1], Some(part[part.len() - 1])),
+                    _ => (part, None),
+                };
+                safe.extend(display.diagnostic(text, false)?);
+                if let Some(separator) = separator {
+                    safe.push(separator);
+                }
+            }
+            safe
+        };
         if value.len() > self.output_remaining {
             return Err(Error::Limit("database action output"));
         }
         self.output_remaining -= value.len();
         if stderr {
             io::stdout().flush()?;
-            io::stderr().lock().write_all(value)?;
+            io::stderr().lock().write_all(&value)?;
         } else {
-            io::stdout().lock().write_all(value)?;
+            if !value.is_empty() {
+                rfile_platform::check_stdout_writable()?;
+            }
+            io::stdout().lock().write_all(&value)?;
         }
         Ok(())
     }
@@ -45,6 +68,7 @@ impl Action {
     fn source_warning(&mut self, name: &[u8]) -> Result<()> {
         self.warnings += 1;
         let mut message = Vec::new();
+        let display = crate::DisplayContext::from_environment()?;
         // file.c does not apply -P parameters to database actions: the newly
         // opened action cookie has its default warning cap of 64.
         if self.warnings == 64 {
@@ -56,16 +80,16 @@ impl Action {
                 format!(", {line}: Maximum number of warnings (64) exceeded.\n"),
                 format!(", {line}: Additional warnings are suppressed.\n"),
             ] {
-                message.extend_from_slice(source);
+                message.extend(display.diagnostic(source, self.flags.has(Flags::RAW))?);
                 message.extend_from_slice(suffix.as_bytes());
             }
         } else if self.warnings < 64 {
             if let Some((source, line)) = &self.last_source {
-                message.extend_from_slice(source);
+                message.extend(display.diagnostic(source, self.flags.has(Flags::RAW))?);
                 message.extend_from_slice(format!(", {line}: ").as_bytes());
             }
             message.extend_from_slice(b"Warning: using regular magic file `");
-            message.extend_from_slice(name);
+            message.extend(display.diagnostic(name, self.flags.has(Flags::RAW))?);
             message.extend_from_slice(b"'\n");
         }
         self.emit(&message, true)
@@ -135,21 +159,33 @@ impl Action {
                     return Err(error);
                 }
             };
+            let source_name = bytes(file.as_os_str());
+            let source_name = if self.flags.has(Flags::RAW) {
+                source_name
+            } else {
+                crate::DisplayContext::from_environment()?.diagnostic(&source_name, false)?
+            };
             sources.push(SourceFragment {
-                name: bytes(file.as_os_str()),
+                name: source_name,
                 bytes: value,
             });
         }
-        let report = Database::source_action(
-            &sources,
-            &self.time,
-            SourceActionOptions {
-                check: action == 'c',
-                warning_count: self.warnings,
-                warning_limit: 64,
-                output_limit: self.output_remaining,
-            },
-        );
+        let options = SourceActionOptions {
+            check: action == 'c',
+            warning_count: self.warnings,
+            warning_limit: 64,
+            output_limit: self.output_remaining,
+        };
+        let report = if self.flags.has(Flags::RAW) {
+            Database::source_action(&sources, &self.time, options)
+        } else {
+            crate::legacy_source::action_cli(
+                &sources,
+                &self.time,
+                options,
+                &crate::DisplayContext::from_environment()?,
+            )
+        };
         self.warnings = report.warning_count;
         self.last_source = report.last_source;
         if let Some(error) = report.native_error {
@@ -200,7 +236,15 @@ pub(super) fn execute(action: char, path: &OsStr, flags: Flags) -> Result<()> {
                         Some(old) => Database::merge(vec![old, db])?,
                         None => db,
                     };
-                    state.emit(&db.legacy_list(state.output_remaining)?, false)?;
+                    let listing = if state.flags.has(Flags::RAW) {
+                        db.legacy_list(state.output_remaining)?
+                    } else {
+                        db.legacy_list_cli(
+                            state.output_remaining,
+                            &crate::DisplayContext::from_environment()?,
+                        )?
+                    };
+                    state.emit(&listing, false)?;
                     combined = Some(db);
                 }
             }

@@ -72,3 +72,93 @@ pub fn open_regular_database(path: &std::path::Path) -> std::io::Result<std::fs:
     }
     Ok(file)
 }
+
+/// Open input content without following the final symlink unless explicitly
+/// requested. The returned descriptor, rather than a prior path lookup, owns
+/// the metadata used for content classification.
+pub fn open_path_content(path: &std::path::Path, follow: bool) -> std::io::Result<std::fs::File> {
+    let mut options = std::fs::OpenOptions::new();
+    options.read(true);
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        let flags = libc::O_NONBLOCK | libc::O_NOCTTY | if follow { 0 } else { libc::O_NOFOLLOW };
+        options.custom_flags(flags);
+    }
+    #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
+    if !follow {
+        return Err(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "no-follow path inspection is unavailable on this platform",
+        ));
+    }
+    options.open(path)
+}
+
+/// Pin the inode used for path-kind decisions, even when it has no read
+/// permission. Linux O_PATH permits fstat on symlinks and unreadable files.
+pub fn open_path_metadata(path: &std::path::Path, follow: bool) -> std::io::Result<std::fs::File> {
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        let mut options = std::fs::OpenOptions::new();
+        options.read(true).custom_flags(
+            libc::O_PATH | libc::O_CLOEXEC | if follow { 0 } else { libc::O_NOFOLLOW },
+        );
+        options.open(path)
+    }
+    #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
+    {
+        if follow {
+            std::fs::File::open(path)
+        } else {
+            Err(std::io::Error::new(
+                std::io::ErrorKind::Unsupported,
+                "no-follow path metadata is unavailable on this platform",
+            ))
+        }
+    }
+}
+
+/// Detect invalid/read-only CLI stdout before Rust's stdio suppresses EBADF.
+/// This is a CLI check only; library users retain their own output policy.
+pub fn check_stdout_writable() -> std::io::Result<()> {
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        // SAFETY: F_GETFL reads flags for a numeric descriptor, takes no pointer,
+        // and does not borrow, close or change ownership of the descriptor.
+        let flags = unsafe { libc::fcntl(libc::STDOUT_FILENO, libc::F_GETFL) };
+        if flags < 0 {
+            return Err(std::io::Error::last_os_error());
+        }
+        if flags & libc::O_ACCMODE == libc::O_RDONLY {
+            return Err(std::io::Error::from_raw_os_error(libc::EBADF));
+        }
+    }
+    Ok(())
+}
+
+/// Query the real-user access bits used by the pinned unreadable-file diagnostic.
+/// This checks access only; it never opens the file or changes permissions.
+pub fn unreadable_access(path: &std::path::Path) -> (bool, bool) {
+    #[cfg(all(target_os = "linux", target_env = "gnu"))]
+    {
+        use std::os::unix::ffi::OsStrExt;
+        let Ok(path) = std::ffi::CString::new(path.as_os_str().as_bytes()) else {
+            return (false, false);
+        };
+        // SAFETY: both calls receive a live NUL-terminated CString and valid
+        // access-mode constants. access borrows the path and writes no memory.
+        unsafe {
+            (
+                libc::access(path.as_ptr(), libc::W_OK) == 0,
+                libc::access(path.as_ptr(), libc::X_OK) == 0,
+            )
+        }
+    }
+    #[cfg(not(all(target_os = "linux", target_env = "gnu")))]
+    {
+        let _ = path;
+        (false, false)
+    }
+}

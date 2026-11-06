@@ -36,16 +36,36 @@ Follow or do not follow symbolic links. POSIXLY_CORRECT selects following by def
 Inspect compiled codecs with finite nested decoding budgets. -Z hides the outer
 description. Default builds include gzip/zlib; extended-codecs enables additional
 selected formats. Uncompiled/unsupported codecs return explicit errors.
+Decoded output above the bytes parameter (default 7340032 bytes, 7 MiB)
+produces a decompression output limit error and status 1. Unlike libmagic's
+prefix sampling, rfile does not classify a partial decoded stream or present it
+as a complete decode. The outer description is not returned on this error.
+For a larger trusted workload, for example, -P bytes=16777216 -z raises this cap
+to 16 MiB; memory, work, window and other limits still apply. Without -z/-Z,
+ordinary wrapper identification does not require decompression.
 .TP
 .BR -r , " -0 , " -N , " -n"
 Print raw bytes; add NUL after filename; omit padding; flush each record.
 Repeating -0 also NUL-terminates the result and removes the separator.
+On direct empty regular files, mixed -i --apple emits the MIME result once
+instead of concatenating an annotation result. For mixed -i --apple on regular
+symlink targets, including readable, empty and chained targets, rfile emits only
+the target result (a permission description if unreadable), without the oracle's
+symlink MIME prefix. Annotation flags inspect regular symlink targets without -L;
+non-regular symlink targets return an unsupported annotation error.
 .TP
 .BI "-F " SEP
 Use SEP instead of the filename colon.
 .TP
 .BR -E , " -s , " -p"
 Report filesystem failures as errors; permit device reads; restore access times.
+In normal and MIME modes, a size-zero regular file is identified from metadata
+before opening, including with -E. With -s or annotation-only --apple/--extension,
+this shortcut is disabled and read permissions are checked.
+For other unreadable regular files, available metadata produces a permission
+description in every output mode, including -E. FIFO content inspection with -s
+is unsupported and fails without opening the FIFO; default FIFO identification
+uses metadata and does not inspect queued content.
 .TP
 .BI "-e " TEST
 Exclude a detector. See --help for names. --exclude-quiet ignores unknown names.
@@ -99,11 +119,20 @@ timezone context. No process-global locale/environment mutation is performed.
 Empty TZ and TZ=UTC use built-in UTC. If TZ is unset and /etc/localtime is absent,
 UTC is the default, so minimal images do not need tzdata for ordinary detection.
 Explicit invalid/missing zones and malformed or unreadable existing system-zone
-files remain setup errors.
+files remain setup errors. A named TZ such as America/New_York requires the
+corresponding timezone data even in a minimal image. Some short forms such as
+EST5EDT also require timezone data; full POSIX rules such as
+PST8PDT,M3.2.0,M11.1.0 and UTC0 work without it. An unavailable explicit TZ
+stops the invocation before classification, including MIME-only and non-date
+inputs. Install timezone data, unset TZ, or choose UTC when UTC is intended.
 .SH EXIT STATUS
 Zero means classification completed, including unknown data and ordinary per-file
 filesystem diagnostics. -E, setup failures, resource errors and failed writes
-produce status 1. A classification is a heuristic, not validation of the whole file.
+produce status 1. Broken output pipes produce a quiet status 1. Sandbox status
+messages on stderr are best effort. On the supported Rust runtime, a standard
+descriptor already closed before startup is reopened as /dev/null; the CLI checks made after runtime startup
+cannot distinguish that case from deliberate redirection to /dev/null.
+A classification is a heuristic, not validation of the whole file.
 .SH FILES
 The default rules are embedded; normal operation needs neither libmagic nor a C
 compiler. See data/UPSTREAM.json and data/SOURCES.json for data provenance.

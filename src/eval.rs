@@ -35,7 +35,7 @@ use crate::{
     format::{self, Value},
     limits::Budget,
 };
-use std::cmp::Ordering;
+use std::{cmp::Ordering, io::Write};
 
 pub(crate) struct Input<'a> {
     pub head: &'a [u8],
@@ -44,6 +44,8 @@ pub(crate) struct Input<'a> {
 #[derive(Default, Debug)]
 pub(crate) struct MatchOutput {
     pub bytes: Vec<u8>,
+    // First NUL, or length: maintained on each append instead of rescanning output.
+    cstr_len: usize,
     pub found: bool,
     pub leading_nospace: bool,
     pub annotation_stop: bool,
@@ -120,9 +122,10 @@ impl<'a> Evaluator<'a> {
         self.print = PrintState::default();
         self.groups(input, mode, 0)
     }
-    fn append(&self, out: &mut Vec<u8>, part: &[u8]) -> Result<()> {
-        out.truncate(crate::database::cstr(out).len());
+    fn append(&self, out: &mut MatchOutput, part: &[u8]) -> Result<()> {
+        out.bytes.truncate(out.cstr_len);
         if out
+            .bytes
             .len()
             .checked_add(part.len())
             .is_none_or(|n| n > self.budget.limits.output)
@@ -130,7 +133,8 @@ impl<'a> Evaluator<'a> {
             return Err(Error::Limit("output"));
         }
         self.budget.charge_retained(part.len().saturating_mul(4))?;
-        out.extend_from_slice(part);
+        out.cstr_len = out.bytes.len() + crate::database::cstr(part).len();
+        out.bytes.extend_from_slice(part);
         Ok(())
     }
     fn groups(&mut self, input: &Input<'_>, mode: u16, depth: usize) -> Result<MatchOutput> {
@@ -175,9 +179,9 @@ impl<'a> Evaluator<'a> {
             if matched.found {
                 if !matched.bytes.is_empty() {
                     if !result.bytes.is_empty() && !self.flags.has(Flags::CONTINUE) {
-                        self.append(&mut result.bytes, b"\n- ")?;
+                        self.append(&mut result, b"\n- ")?;
                     }
-                    self.append(&mut result.bytes, &matched.bytes)?;
+                    self.append(&mut result, &matched.bytes)?;
                 }
                 result.found = true;
                 if matched.annotation_stop && !g.database_end {
@@ -250,13 +254,16 @@ impl<'a> Evaluator<'a> {
                 };
                 let b = input.tail.unwrap_or(input.head);
                 let Some(pos) = b.len().checked_sub(magnitude) else {
-                    continue;
+                    break;
                 };
                 tail_mode = input.tail.is_some();
                 eof_base = pos;
                 offset = pos;
             } else {
-                if r.flags & OFFPOSITIVE != 0 || level == 0 {
+                if r.flags & OFFPOSITIVE != 0
+                    || level == 0
+                    || r.flags & (OFFADD | OFFNEGATIVE) == (OFFADD | OFFNEGATIVE)
+                {
                     tail_mode = false;
                     eof_base = 0;
                 }
@@ -266,7 +273,10 @@ impl<'a> Evaluator<'a> {
                     r.offset as i64
                 };
                 let start = if r.flags & OFFADD != 0 {
-                    parent
+                    let Some(start) = parent.checked_add(eof_base) else {
+                        continue;
+                    };
+                    start
                 } else if r.flags & OFFPOSITIVE != 0 || level == 0 {
                     0
                 } else {
@@ -417,6 +427,7 @@ impl<'a> Evaluator<'a> {
                         && !called.bytes.is_empty()
                     {
                         called.bytes.insert(0, b' ');
+                        called.cstr_len += 1;
                     }
                     if called.found {
                         if !self.flags.annotation() && !r.description.is_empty() {
@@ -430,6 +441,7 @@ impl<'a> Evaluator<'a> {
                                 self.executable,
                             )?;
                             text.extend(called.bytes);
+                            called.cstr_len = crate::database::cstr(&text).len();
                             called.bytes = text;
                         }
                         nested = Some(called);
@@ -517,9 +529,9 @@ impl<'a> Evaluator<'a> {
                         && r.flags & NOSPACE == 0
                         && !called.leading_nospace
                     {
-                        self.append(&mut out.bytes, b" ")?;
+                        self.append(&mut out, b" ")?;
                     }
-                    self.append(&mut out.bytes, &called.bytes)?;
+                    self.append(&mut out, &called.bytes)?;
                 }
                 if called.mime.is_some() {
                     out.mime = called.mime;
@@ -556,9 +568,9 @@ impl<'a> Evaluator<'a> {
                 } else {
                     !out.bytes.is_empty()
                 } {
-                    self.append(&mut out.bytes, b"\n- ")?;
+                    self.append(&mut out, b"\n- ")?;
                 }
-                self.append(&mut out.bytes, &value)?;
+                self.append(&mut out, &value)?;
                 if self.flags.has(Flags::CONTINUE) {
                     self.print = PrintState {
                         first: false,
@@ -585,23 +597,23 @@ impl<'a> Evaluator<'a> {
                     let keep = self.flags.has(Flags::CONTINUE);
                     if keep {
                         if r.kind == 45 {
-                            self.append(&mut out.bytes, &r.description)?;
+                            self.append(&mut out, &r.description)?;
                         }
                         if level == 0 {
                             self.print.printed = true;
                             self.print.space = true;
                             if !self.print.first {
-                                self.append(&mut out.bytes, b"\n- ")?;
+                                self.append(&mut out, b"\n- ")?;
                             }
                         } else {
                             if !self.print.printed {
                                 self.print.printed = true;
                                 if !self.print.first {
-                                    self.append(&mut out.bytes, b"\n- ")?;
+                                    self.append(&mut out, b"\n- ")?;
                                 }
                             }
                             if self.print.space && r.flags & NOSPACE == 0 {
-                                self.append(&mut out.bytes, b" ")?;
+                                self.append(&mut out, b" ")?;
                             }
                         }
                         if !matches!(r.kind, 41 | 45 | 46) {
@@ -626,7 +638,7 @@ impl<'a> Evaluator<'a> {
                                     previous: out.bytes.len(),
                                 });
                             }
-                            self.append(&mut out.bytes, &rendered)?;
+                            self.append(&mut out, &rendered)?;
                         }
                         self.print.space = true;
                     } else if !matches!(r.kind, 41 | 46) {
@@ -634,7 +646,7 @@ impl<'a> Evaluator<'a> {
                             out.leading_nospace = r.flags & NOSPACE != 0;
                         }
                         if !out.bytes.is_empty() && r.flags & NOSPACE == 0 {
-                            self.append(&mut out.bytes, b" ")?;
+                            self.append(&mut out, b" ")?;
                         }
                         let rendered = if matches!(r.kind, 3 | 45 | 47) {
                             r.description.clone()
@@ -657,7 +669,7 @@ impl<'a> Evaluator<'a> {
                                 previous: out.bytes.len(),
                             });
                         }
-                        self.append(&mut out.bytes, &rendered)?;
+                        self.append(&mut out, &rendered)?;
                     }
                 }
             }
@@ -665,9 +677,12 @@ impl<'a> Evaluator<'a> {
                 break;
             }
             if self.flags.has(Flags::DEBUG) {
-                eprintln!(
+                let _ = writeln!(
+                    std::io::stderr().lock(),
                     "[rfile line={} type={} offset={} matched]",
-                    r.line, r.kind, hit.position
+                    r.line,
+                    r.kind,
+                    hit.position
                 );
             }
         }
@@ -752,10 +767,13 @@ impl<'a> Evaluator<'a> {
         }
         if matches!(kind, 5 | 13 | 18 | 19 | 20 | 17 | 61) {
             let required = if kind == 17 { 0 } else { r.vallen as usize };
-            if position > b.len() || required > b.len() - position {
+            // Native string16 wildcards beyond EOF represent an empty string.
+            // Synthesize that value without reading or relaxing other bounds.
+            let empty_string16 = matches!(kind, 18 | 19) && r.relation == b'x' && required == 0;
+            if !empty_string16 && (position > b.len() || required > b.len() - position) {
                 return Ok(None);
             }
-            let bytes = &b[position..];
+            let bytes = b.get(position..).unwrap_or_default();
             if kind == 17 {
                 let mut length = if r.string_flags & (1 << 11) != 0 {
                     (r.range as usize).saturating_mul(80)
@@ -1316,4 +1334,38 @@ pub(crate) fn read_number(b: &[u8], p: usize, t: u8) -> Option<(u64, usize)> {
         value
     };
     Some((value, w))
+}
+
+#[cfg(test)]
+mod output_tests {
+    use super::*;
+    #[test]
+    fn append_preserves_c_string_replacement_and_final_suffix() {
+        let db = Database::from_source("0 byte x root\n").unwrap();
+        let time = crate::TimeContext::default();
+        let display = crate::DisplayContext::locale("C").unwrap();
+        let evaluator = Evaluator::new(
+            &db,
+            Flags::default(),
+            Budget::new(
+                &crate::Limits::default(),
+                crate::ExecutionControl::default(),
+            )
+            .unwrap(),
+            false,
+            false,
+            Context {
+                time: &time,
+                display: &display,
+                profile: crate::SemanticProfile::default(),
+            },
+        );
+        let mut output = MatchOutput::default();
+        evaluator.append(&mut output, b"A\0discard").unwrap();
+        assert_eq!(output.bytes, b"A\0discard");
+        evaluator.append(&mut output, b"B\0suffix").unwrap();
+        assert_eq!(output.bytes, b"AB\0suffix");
+        evaluator.append(&mut output, b"C").unwrap();
+        assert_eq!(output.bytes, b"ABC");
+    }
 }

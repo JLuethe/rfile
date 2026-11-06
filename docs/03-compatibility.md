@@ -65,3 +65,80 @@ lists, warning caps and compiled artifact hashes are compared; only the executab
 diagnostic prefix is normalized. Regular-file-only source IO and finite aggregate
 quotas are intentional bounds. Default action discovery, DEBUG and wider source
 warning/IO semantics remain open; see [the R8c contract](remaining/07-c-abi.md#r8c-cli-action-integration).
+
+### Claude F-02: bounded decompression (2026-10-31)
+
+The decoder retains its complete-stream contract. Above `Limits.bytes` (default
+7,340,032 decoded bytes), gzip/zlib and the other enabled decoders report an
+explicit limit error instead of sampling a prefix. Classification returns no
+partial inner/wrapper result on this error. A short sampled prefix cannot
+establish the integrity of an unread trailer or later members; resource errors
+must not turn into confident fallback descriptions. The cap is configurable via
+`-P bytes=N` within the independent memory/work/window budgets. Identifying the
+wrapper without `-z`/`-Z` avoids decoding. Prefix sampling would require a
+separate, explicitly incomplete result contract and is deferred. Boundary
+regressions cover 7 MiB minus one, exact, plus one, and raising the configured cap.
+
+### Claude pass 3: truncated inputs and filesystem diagnostics
+
+For truncated inputs, the pinned oracle can evaluate `use` block reads at the
+sum of the use offset and block-relative offset while checking only the latter
+against the input length. Past-end data can therefore be zero-filled and match.
+Rfile checks the absolute position and omits those fragments. This is not generic
+large-buffer sampling or a rule limited to end-relative offsets: explicit use
+positions also exhibit the oracle quirk. Observed families include gzip, ZIP
+with -k, PNG/APNG, PGP and zstd; reported examples include missing `was ""`,
+`from FAT filesystem`, `made by v0.0`, PNG geometry, PGP creation and zstd dictionary
+fragments. The pass-3 short-input --mime-type sweep matched; extensions and other
+inputs are not thereby certified. Rfile does not emulate the omitted bounds check.
+Plain UTF-8 selection requires a completed decoded non-ASCII character; an
+incomplete trailing sequence alone does not identify UTF-8 (F-04b). Incomplete
+tails after a completed character remain tolerated, and BOM handling is separate.
+
+A narrow safe compatibility exception synthesizes an empty value for explicit
+lestring16/bestring16 wildcard reads beyond EOF, preserving the native padding
+without reading memory out of bounds or relaxing other types/use-block reads.
+Invalid CDF sector shifts (0,1,7,8) violate the format's geometry; earlier rejection
+may select a different failure stage/message. No unsafe stage parity is promised.
+
+Size-zero regular files are identified as empty from metadata before opening,
+in normal/MIME modes even with -E; MIME output uses inode/x-empty. With -s or
+annotation-only --apple/--extension that shortcut is disabled and unreadable
+files produce the permission diagnostic. Other
+unreadable regular files return their permission description in every mode,
+including -E, with real-user writable/executable access prefixes on Linux/glibc.
+This follows the pinned metadata result; actual stat/other open errors retain
+normal -E behavior. For FIFOs, -s content inspection is explicitly unsupported
+and returns an error before open, independent of queued data or writer presence.
+It never represents uninspected content as empty. The pinned oracle's FIFO -s
+error was also reproduced in an unsandboxed distro build; the earlier general
+seccomp-only attribution is retracted. Previously recorded annotation-only FIFO
+SIGSYS observations are separate, narrowly identified cases.
+
+### Pass-5 remaining annotation/string16 differences
+
+Annotation flags follow symlinks to regular-file targets without -L, including
+mixed MIME/annotation requests, and permission descriptions use target metadata.
+Annotation requests on symlinks to non-regular targets fail with an explicit
+unsupported diagnostic before content open. For a directory target this differs
+from the pinned `cannot read ... (Is a directory)` diagnostic; it is a controlled,
+documented wording difference, not exact native output.
+
+On direct empty regular files, mixed -i --apple emits the MIME result once.
+The pinned oracle appends an annotation result to the metadata MIME result:
+an empty-content MIME result if readable, or a permission description if not.
+For a regular symlink target, including readable, empty and chained targets,
+mixed -i --apple emits only the target result; for an unreadable target it emits
+the permission description. The oracle prefixes either result with
+inode/symlink; charset=binary. Rfile deliberately does not concatenate these
+outputs (F-08d). This differs from 8e33173, which emitted only the symlink MIME
+result for mixed flags. Annotation flags still request symlink-target inspection
+even when combined with MIME flags.
+
+String16 wildcard compatibility remains deliberately narrow. Pre-existing
+non-wildcard comparisons such as =\0 and <z can differ where the oracle compares
+a synthesized empty value past EOF. The 1,200-case matrix observed these residuals
+at input lengths 2, 3, 12 and 13. Rfile does not extend the wildcard exception to
+these relations without a justified rule. This residual stays open.
+F-03, F-07 inherited-closed stdout, invalid CDF geometry and
+shifted-use bounds remain documented maintainer-disposition items, not closed.

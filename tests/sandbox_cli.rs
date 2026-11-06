@@ -194,6 +194,12 @@ fn cli_policy_modes_order_and_identity() {
             );
             std::os::unix::fs::symlink("text", root.join("link")).unwrap();
             std::os::unix::fs::symlink("absent", root.join("broken")).unwrap();
+            let no_follow = run(&root, &["--sandbox=strict", "-b", "link"], b"");
+            assert!(no_follow.status.success());
+            assert_eq!(no_follow.stdout, b"symbolic link to text\n");
+            let follow = run(&root, &["--sandbox=strict", "-b", "-L", "link"], b"");
+            assert!(follow.status.success());
+            assert!(!follow.stdout.starts_with(b"symbolic link"));
             for args in [
                 vec!["link", "broken", "."],
                 vec!["-L", "link"],

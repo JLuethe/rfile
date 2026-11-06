@@ -73,7 +73,6 @@ pub(crate) struct PreparedPath {
 }
 enum PendingContent {
     None,
-    Empty,
     File(File, fs::Metadata),
 }
 impl PreparedPath {
@@ -97,7 +96,6 @@ impl PreparedPath {
     ) -> Result<Classification> {
         match self.pending {
             PendingContent::None => self.ready,
-            PendingContent::Empty => engine.classify_input(&[], None, false, None, None, budget),
             PendingContent::File(mut file, meta) => finish_path(engine, &mut file, &meta, budget),
         }
     }
@@ -110,7 +108,7 @@ pub(crate) fn prepare_path(
     budget: &InspectionBudget,
 ) -> PreparedPath {
     let mut pending = PendingContent::None;
-    let ready = prepare_raw(engine, path, budget, &mut pending);
+    let ready = prepare_raw(engine, path, budget, &mut pending, || {});
     PreparedPath { ready, pending }
 }
 pub(crate) fn classify_path(
@@ -125,6 +123,7 @@ fn prepare_raw(
     path: &Path,
     budget: &InspectionBudget,
     pending: &mut PendingContent,
+    before_open: impl FnOnce(),
 ) -> Result<Classification> {
     // Bound the path before std's OS-string conversion or diagnostic copies.
     let path_len = path.as_os_str().as_encoded_bytes().len();
@@ -133,14 +132,14 @@ fn prepare_raw(
     }
     let _path_memory = budget.reserve(path_len.saturating_mul(4).saturating_add(1024))?;
     budget.bytes(path_len)?;
-    let metadata = if engine.flags.has(Flags::SYMLINK) {
-        fs::metadata(path)
-    } else {
-        fs::symlink_metadata(path)
-    };
-    let meta = match metadata {
+    let metadata = rfile_platform::open_path_metadata(path, engine.flags.has(Flags::SYMLINK))
+        .and_then(|file| file.metadata());
+    let mut meta = match metadata {
         Ok(m) => m,
         Err(e) => {
+            if e.kind() == std::io::ErrorKind::Unsupported {
+                return Err(Error::Unsupported(e.to_string()));
+            }
             if engine.flags.has(Flags::ERROR) {
                 let mut diagnostic = b"cannot stat `".to_vec();
                 diagnostic.extend(path_bytes(path));
@@ -156,8 +155,9 @@ fn prepare_raw(
             return Ok(diagnostic(engine, text));
         }
     };
-    let annotation_only =
-        engine.flags.has(Flags::APPLE | Flags::EXTENSION) && !engine.flags.has(Flags::MIME);
+    let annotation_requested = engine.flags.has(Flags::APPLE | Flags::EXTENSION);
+    let annotation_only = annotation_requested && !engine.flags.has(Flags::MIME);
+    let mut annotation_link = false;
     if meta.is_dir() {
         if annotation_only {
             let mut diagnostic = b"cannot read `".to_vec();
@@ -192,13 +192,18 @@ fn prepare_raw(
             }
             return Ok(c);
         }
-        if annotation_only {
-            if !target_metadata.as_ref().is_ok_and(|m| m.is_file()) {
+        if annotation_requested {
+            let target_meta = target_metadata?;
+            if !target_meta.is_file() {
                 return Err(Error::Unsupported(
                     "annotation content inspection of special symlink target".into(),
                 ));
             }
-            // The C cookie falls through to reading a nonbroken link in annotation-only mode.
+            // Annotation flags follow regular-file targets even without -L,
+            // including mixed MIME/annotation requests. Keep target metadata
+            // for unreadable diagnostics; do not take the direct empty shortcut.
+            meta = target_meta;
+            annotation_link = true;
         } else {
             let mut desc = b"symbolic link to ".to_vec();
             desc.extend(path_bytes(&target));
@@ -223,6 +228,11 @@ fn prepare_raw(
                 return Ok(diagnostic(engine, desc));
             }
             return Ok(metadata_result(engine, b"socket".to_vec(), "socket"));
+        }
+        if t.is_fifo() && engine.flags.has(Flags::DEVICES) {
+            return Err(Error::Unsupported(
+                "content inspection of FIFO is not supported".into(),
+            ));
         }
         if !engine.flags.has(Flags::DEVICES) {
             if t.is_fifo() {
@@ -261,24 +271,38 @@ fn prepare_raw(
             }
         }
     }
-    if meta.is_file() && meta.len() == 0 && !engine.flags.has(Flags::DEVICES) {
-        return if annotation_only {
-            *pending = PendingContent::Empty;
-            Ok(engine.basic(Vec::new(), "inode/x-empty", "binary", false))
-        } else {
-            Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false))
-        };
-    }
-    let mut options = fs::OpenOptions::new();
-    options.read(true);
-    #[cfg(target_os = "linux")]
+    // Normal/MIME modes use the metadata shortcut; -s and annotation-only
+    // modes inspect content and therefore must check open permissions first.
+    if meta.is_file()
+        && meta.len() == 0
+        && !engine.flags.has(Flags::DEVICES)
+        && !annotation_only
+        && !annotation_link
     {
-        use std::os::unix::fs::OpenOptionsExt;
-        options.custom_flags(0x800);
+        return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
     }
-    let file = match options.open(path) {
+    before_open();
+    let file = match rfile_platform::open_path_content(
+        path,
+        engine.flags.has(Flags::SYMLINK) || annotation_link,
+    ) {
         Ok(f) => f,
         Err(e) => {
+            if e.kind() == std::io::ErrorKind::Unsupported {
+                return Err(Error::Unsupported(e.to_string()));
+            }
+            if meta.is_file() && e.kind() == std::io::ErrorKind::PermissionDenied {
+                let (writable, executable) = rfile_platform::unreadable_access(path);
+                let mut description = Vec::new();
+                if writable {
+                    description.extend_from_slice(b"writable, ");
+                }
+                if executable {
+                    description.extend_from_slice(b"executable, ");
+                }
+                description.extend_from_slice(b"regular file, no read permission");
+                return Ok(diagnostic(engine, description));
+            }
             if engine.flags.has(Flags::ERROR) {
                 return Err(e.into());
             }
@@ -294,8 +318,139 @@ fn prepare_raw(
             ));
         }
     };
+    // Metadata and content must describe the same opened inode. In particular,
+    // a path replaced with a symlink after O_PATH metadata cannot redirect
+    // this no-follow open to a different target.
+    let opened_meta = file.metadata()?;
+    #[cfg(unix)]
+    if !engine.flags.has(Flags::SYMLINK) && !annotation_link {
+        use std::os::unix::fs::MetadataExt;
+        if opened_meta.dev() != meta.dev() || opened_meta.ino() != meta.ino() {
+            return Err(Error::Unsupported("path changed during inspection".into()));
+        }
+    }
+    let meta = opened_meta;
+    if meta.is_dir() {
+        if annotation_only {
+            return Err(Error::Filesystem {
+                source: std::io::Error::from(std::io::ErrorKind::IsADirectory),
+                diagnostic: b"cannot read directory".to_vec(),
+            });
+        }
+        return Ok(metadata_result(engine, b"directory".to_vec(), "directory"));
+    }
+    if meta.is_file()
+        && meta.len() == 0
+        && !engine.flags.has(Flags::DEVICES)
+        && !annotation_only
+        && !annotation_link
+    {
+        return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
+    }
     *pending = PendingContent::File(file, meta);
     Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
+}
+
+#[cfg(all(test, target_os = "linux", target_env = "gnu"))]
+mod security_tests {
+    use super::*;
+    use std::os::unix::fs::symlink;
+
+    #[test]
+    fn swapped_regular_path_cannot_follow_symlink() {
+        let dir = std::env::temp_dir().join(format!(
+            "rfile-nofollow-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir(&dir).unwrap();
+        let path = dir.join("input");
+        let target = dir.join("target");
+        fs::write(&path, b"ordinary text\n").unwrap();
+        fs::write(&target, b"\x89PNG\r\n\x1a\nsecret").unwrap();
+        let engine = Engine::builtin().unwrap();
+        let budget = engine.budget().unwrap();
+        let mut pending = PendingContent::None;
+        let result = prepare_raw(&engine, &path, &budget, &mut pending, || {
+            fs::remove_file(&path).unwrap();
+            symlink(&target, &path).unwrap();
+        });
+        assert!(matches!(pending, PendingContent::None));
+        assert!(!result.unwrap().output.windows(6).any(|w| w == b"secret"));
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn prepared_descriptor_and_atime_do_not_follow_later_replacement() {
+        let dir = std::env::temp_dir().join(format!(
+            "rfile-prepared-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir(&dir).unwrap();
+        let path = dir.join("input");
+        let target = dir.join("target");
+        fs::write(&path, b"ordinary text\n").unwrap();
+        fs::write(&target, b"\x89PNG\r\n\x1a\nsecret").unwrap();
+        let old_time =
+            std::time::SystemTime::UNIX_EPOCH + std::time::Duration::from_secs(1_000_000_000);
+        File::options()
+            .write(true)
+            .open(&target)
+            .unwrap()
+            .set_times(
+                fs::FileTimes::new()
+                    .set_accessed(old_time)
+                    .set_modified(old_time),
+            )
+            .unwrap();
+        let original_target_mtime = fs::metadata(&target).unwrap().modified().unwrap();
+        let original_target_atime = fs::metadata(&target).unwrap().accessed().unwrap();
+        let mut engine = Engine::builtin().unwrap();
+        engine.flags = Flags(Flags::PRESERVE_ATIME);
+        let budget = engine.budget().unwrap();
+        let prepared = prepare_path(&engine, &path, &budget);
+        #[cfg(all(feature = "sandbox", target_env = "gnu", target_arch = "x86_64"))]
+        assert!(prepared.descriptor().is_some());
+        fs::remove_file(&path).unwrap();
+        symlink(&target, &path).unwrap();
+        let classification = prepared.classify(&engine, &budget).unwrap();
+        assert!(!classification.output.windows(3).any(|w| w == b"PNG"));
+        assert_eq!(
+            fs::metadata(&target).unwrap().modified().unwrap(),
+            original_target_mtime
+        );
+        assert_eq!(
+            fs::metadata(&target).unwrap().accessed().unwrap(),
+            original_target_atime
+        );
+        fs::remove_dir_all(dir).unwrap();
+    }
+}
+
+#[cfg(all(test, not(all(target_os = "linux", target_env = "gnu"))))]
+mod unsupported_path_tests {
+    use super::*;
+
+    #[test]
+    fn no_follow_path_fails_closed_with_or_without_error_flag() {
+        let path = std::env::temp_dir().join(format!(
+            "rfile-unsupported-path-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::write(&path, b"ordinary text\n").unwrap();
+        for flags in [0, Flags::ERROR] {
+            let mut engine = Engine::builtin().unwrap();
+            engine.flags = Flags(flags);
+            let budget = engine.budget().unwrap();
+            assert!(matches!(
+                prepare_path(&engine, &path, &budget).classify(&engine, &budget),
+                Err(Error::Unsupported(_))
+            ));
+        }
+        fs::remove_file(path).unwrap();
+    }
 }
 fn finish_path(
     engine: &Engine,

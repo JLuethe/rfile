@@ -1,10 +1,319 @@
 # rfile restart checkpoint
 
-Updated 2026-10-31 UTC (overnight October 30–31 PDT). The user authorized
+Updated after security-scope documentation corrections. The user authorized
 release preparation overnight with independent GPT-6 Luna testing agents after
 Claude exhausted its quota. Codex fixes; independent agents test and retest.
 The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
 vendored source. Publication requires the maintainer's final approval.
+
+## Security scope brief received; decisions remain pending
+
+Claude's planning-only brief is preserved at
+`/home/john/Code/rfile-qa-claude/security-scope/SECURITY-REVIEW-BRIEF.md`.
+Section-9 items 1–3 are corrected in the working documentation: release scope
+identifies accepted ca9465f and credits Claude's current passes separately from
+historical Luna work; fuzz/README.md inventories 25 targets; dependency-audit.json
+is marked historical with correct frozen-lock identities recorded separately.
+The verbatim old audit is preserved in dependency-audit-2026-10-25.raw.json and
+still matches its original provenance checksum. No fresh audit was run.
+
+See [the correction and section-8 decision record](reports/security-scope-docs-and-decisions.md).
+No proposed review plan or new decisions 8(a)–(h) have been explicitly approved.
+Existing private-reporting policy and the 600 CPU-hour minimum remain written
+baselines, not authorization to execute. Review scope, fresh audit approval,
+severity policy, seed allocation, host, external audit and release guidance need
+the recorded maintainer choices described there. No review or fuzz run started.
+
+The accepted ca9465f commit/tree and archives remain fixed. This is a later
+documentation-only correction; no production code, locks or release assets
+changed. Older checkpoint sections retain their historical identities and scope.
+
+## Pass-11 archives accepted; dispositions and security-review scope next (historical)
+
+Claude independently accepted CI artifact **13091831221**, packaging run
+**41326583263**, for commit `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
+`92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`. ZIP SHA256 is
+`d7555442445044b8952ac3f3b9d38d963a815e0b6d84ed48bcc1020483945dd2`.
+Provenance, documentation/manifests, source correspondence, focused behavior,
+19 installer assertions and fresh-cache offline rebuilding passed with no
+defects. **I-1/I-2 are verified resolved as documented-intentional for these
+archive bytes.** Original evidence at
+`/home/john/Code/rfile-qa-claude/pass11/` remains unchanged; see
+[the pass-11 recording](reports/claude-pass11-codex-review.md).
+
+Keep this candidate and its accepted archives fixed. Next are
+[remaining maintainer dispositions](reports/remaining-maintainer-dispositions.md)
+and Claude's [security-review scope brief](reports/claude-security-review-scope-prompt.md).
+The brief is planning only, before review execution or any fuzz campaign.
+Independent security review, coverage/resource evidence, sustained fuzzing and
+final-candidate replay remain open. No build, publication, tags, draft-asset
+changes or campaign accompanied these handoff/brief record updates. Later
+documentation commits do not retarget the accepted candidate. Older checkpoints
+below retain their historical identities and scope.
+
+## Docs-inclusive archives ready for focused Claude acceptance (historical)
+
+Candidate `ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
+`92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`, is pushed on the fixed branch
+`ci/rc1-final-ca9465f`. Required linux/msrv checks passed in run
+[41326558761](https://github.com/JLuethe/rfile/actions/runs/41326558761);
+packaging passed in run
+[41326583263](https://github.com/JLuethe/rfile/actions/runs/41326583263), including
+14 package/offline-build checks and 13 minimal-runtime checks.
+
+[Artifact 13091831221](https://github.com/JLuethe/rfile/actions/runs/41326583263/artifacts/13091831221)
+contains the exact committed INSTALL.md I-1/I-2 wording. Both binary and installer
+are byte-identical to pass 10. Runtime/build code, tests, dependencies and
+workflows are unchanged from 8325cef; the new archive bytes still need focused
+independent acceptance. INSTALL.md is archive documentation outside the installed
+file manifest; its hash and committed-content comparison are recorded separately.
+
+Give Claude [the pass-11 prompt](reports/claude-pass11-test-prompt.md) and
+[the completed CI handoff](reports/ci-ca9465f-handoff.md), which contains all
+artifact hashes, identities, download commands and preserved logs. Raw evidence
+and a checksum inventory are under `.reference/ci-final-ca9465f/`. Artifact expiry
+is 2026-11-15T16:30:30Z. No publication, tags, draft changes or security campaign
+were performed. Maintainer dispositions and security qualification remain open.
+This checkpoint and prompt are later documentation; the fixed CI build target
+remains ca9465f. Earlier checkpoints below are historical.
+
+## Pass-10 archives accepted; I-1/I-2 documented (historical)
+
+Claude independently accepted artifact 13069527384 from CI run 41272131089 for
+commit `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
+`f08995301414e2976b70f6e289fc58f00a05b62d`. Provenance, archive contents,
+packaged behavior, install/uninstall and fresh-cache offline rebuild passed.
+The exact packaged binary matched all 14,088 pass-9 default golden rows. See
+[the pass-10 review](reports/claude-pass10-codex-review.md) and the untouched
+original ledger at `/home/john/Code/rfile-qa-claude/pass10/LEDGER-pass10.md`.
+
+Optional installer observations I-1/I-2 are documented as intentional in
+packaging/INSTALL.md: receipts track files, uninstall can prune pre-existing empty
+installation-path parents below the prefix, and handled failure rollback leaves
+created directories. No installer or Rust code changed. Other maintainer
+dispositions remain open.
+
+Pass-10 acceptance binds the existing bytes. They do not contain this new
+INSTALL.md wording. Finish maintainer dispositions/documentation, then build
+fresh docs-inclusive CI archives and obtain focused exact-byte acceptance before
+shipping that wording. Independent security review, coverage/resource evidence,
+600 CPU-hour fuzzing and final-candidate replay remain open for security
+qualification. No CI run, publication, tags or draft-asset changes were made in
+this documentation pass. Earlier checkpoints below are historical.
+
+## Candidate CI passed; exact archives await independent acceptance (historical)
+
+The requested candidate `3f9af8d89dcf2990a842cf6e4e6e9c1b28a0c228`, tree
+`f08995301414e2976b70f6e289fc58f00a05b62d`, is pushed on the dedicated branch
+`ci/rc1-pass9-3f9af8d`. Required linux/msrv checks passed in run
+[41272111258](https://github.com/JLuethe/rfile/actions/runs/41272111258).
+Release-candidate packaging passed in run
+[41272131089](https://github.com/JLuethe/rfile/actions/runs/41272131089), including
+14 package/offline-rebuild checks and 13 minimal-runtime checks. Both runs and
+the remote branch bind the exact requested commit/tree.
+
+[CI artifact 13069527384](https://github.com/JLuethe/rfile/actions/runs/41272131089/artifacts/13069527384)
+is downloadable until 2026-11-15T04:13:06Z. See
+[the completed CI handoff](reports/ci-3f9af8d-handoff.md) for every artifact hash,
+download commands, packaged binary identity, source binding and preserved logs.
+Raw evidence is retained under `.reference/ci-pass9-3f9af8d/`, with a checksum
+inventory. The downloaded ZIP hash matches GitHub's digest; both tarball hashes
+match their manifest. Claude/maintainer independent exact-archive acceptance is
+next and has not been inferred from CI self-checks. No publication, tags or draft
+asset replacements occurred. This checkpoint update is documentation after the
+fixed build target; the candidate branch remains pinned.
+
+## Pass-9 sweeps passed; next CI/archive acceptance (historical)
+
+Tested source remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`. Claude's original pass-9 evidence
+is at `/home/john/Code/rfile-qa-claude/pass9/LEDGER-pass9.md` and is unchanged.
+Default and strict all-feature golden sweeps covered 103 fixtures, 4,696 derived
+inputs and 14,088 comparisons per profile. The five F-04b rows are resolved;
+the 240 documented F-04 residual rows are unchanged, with no new differences.
+The string16 1,200-case matrix confirms wildcard behavior and source/compiled
+parity; the 208 non-wildcard residuals remain. Both binaries reproduce F-03's
+documented limitation in the pinned minimal Ubuntu container. No product defects
+were reported.
+
+Compatibility wording is corrected: the tested string16 =\0/<z residual occurs
+at lengths 2, 3, 12 and 13, not only two-byte inputs. This update changes docs
+only; source-verifier evidence remains attributed to the tested source commit.
+
+Next gate: build fresh CI candidate archives from the new immutable docs-inclusive
+commit, then have Claude independently accept those exact downloaded bytes,
+including hashes/provenance, installer behavior and offline source rebuild.
+Record maintainer dispositions for the documented differences before publishing.
+Independent security review, coverage/resource evidence and the 600 CPU-hour
+campaign remain open for security qualification; review should precede the long
+campaign so any resulting code fixes can be included in its frozen candidate.
+Existing draft assets remain unchanged. Older checkpoint sections are historical.
+
+## Pass-8 source verifiers passed; next independent sweep (historical)
+
+The source candidate remains `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`. Claude pass 7 verified F-04b fixed
+and F-08d documentation accurate; pass 6 verified F-08c's annotation-only subset.
+Pass 8 ran both full source-verifier profiles sequentially on this candidate:
+31/31 default steps and 33/33 all-feature steps passed. Required sandbox CLI and
+kernel tests executed in all-feature debug/release stages. This meets the local
+source-verifier criterion on the reported host, without claiming release or
+security qualification.
+
+Codex reviewed the structured reports and Cargo logs and verified all 133 evidence
+inventory hashes. Reporting correction: each Cargo test stage logs two deliberate
+caught panics in passing containment/unwind tests; "no panic messages" is too
+broad. Original ledgers remain unchanged. See
+[the pass-8 evidence review](reports/claude-pass8-codex-review.md).
+
+Next: [Claude pass-9 prompt](reports/claude-pass9-test-prompt.md) for the full
+golden truncation sweep, string16 matrix and F-03 minimal-container repro on the
+same candidate. Maintainer dispositions, CI-built archives/exact-asset acceptance,
+sustained fuzzing, coverage/resource evidence and independent security review
+remain open. No source, draft, tag or asset changes accompany this update.
+Older checkpoint sections below are historical and retain their original scope.
+
+## Pass-6 candidate awaiting Claude retest (historical)
+
+Fix commit `8325cefd5d3c8c7d22015d8a97c948196330c435`, tree
+`b6e431e70d286914acc5d52417982e99b36151de`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-6 review and retest instructions](reports/claude-pass6-codex-review.md).
+
+F-04b now selects plain UTF-8 using decoded non-ASCII characters, preserving
+incomplete-tail tolerance after completed characters, BOM handling and the
+one-byte very-short path. F-08d is documented in compatibility notes, man page
+and release notes: mixed -i --apple on readable/empty/chained regular symlink
+targets emits only the target result, without the oracle's symlink MIME prefix.
+No filesystem output behavior changed in this candidate.
+
+Local default/all-feature semantic tests pass (29 each), as do Clippy and
+formatting. The 24 pass-6 F-04b probes across three flag sets match the oracle in
+72/72 comparisons. Claude's independent retest of this candidate remains pending.
+Claude pass 6 verified F-08c's annotation-only unreadable symlink subset at e8cdcb4;
+mixed-flag, directory-wording and FIFO dispositions remain with the maintainer.
+Original evidence, draft and assets remain unchanged. All final verification and
+security gates remain open. Earlier checkpoint sections below are historical.
+
+## Pass-5 candidate awaiting Claude retest (historical)
+
+Fix commit `e8cdcb409edfcab152eb5c411fd08567834b2c3a`, tree
+`c3337de53018900f5ba7c4430352c99a1cbc205d`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-5 review and retest instructions](reports/claude-pass5-codex-review.md).
+
+Claude's pass-5 ledger independently verified the earlier 8e33173 empty-file
+ordering fix in 324 rows per build/profile; no findings were closed. The new
+candidate fixes annotation-only unreadable symlink diagnostics and documents
+mixed-flag concatenation and non-regular-target differences. F-04b is now
+root-caused in a preceding report-only commit; encoding code remains unchanged.
+Non-wildcard string16 behavior is documented without extending the evaluator.
+
+Local focused tests and Clippy pass. A Codex paired 324-row matrix has 10
+differences versus 18 before, eight newly exact matches and no newly differing
+rows. This is not independent acceptance or packaged-artifact verification.
+Original Claude ledgers/evidence, the old draft, tags and release assets remain
+unchanged. All maintainer decisions and final verification/security gates remain
+open. The pass-4 and older sections below are historical records superseded by
+this candidate and the original pass-5 ledger.
+
+## Pass-4 correction awaiting Claude retest (historical)
+
+Code candidate `8e33173217dd89b20c227d7665319681114ee9cb`, tree
+`b20a51c44a44e42bf65bdde5e11ee4a10ac34ad7`, on local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-4 review](reports/claude-pass4-codex-review.md).
+
+Restores metadata-first empty-file identification in normal/MIME modes, including
+-E. Both -s and annotation-only --apple/--extension must open/check permissions;
+the annotation exception was confirmed directly against the pinned oracle.
+Non-empty unreadable diagnostics, access prefixes and explicit FIFO -s errors
+are retained. The earlier PendingContent::Empty annotation shortcut is removed.
+
+Local default/all-feature filesystem regressions, sandbox CLI tests, Clippy and
+formatting passed. A Codex paired matrix matched 288/288 rows across empty/
+non-empty files, modes 000–500 and output/-E/-s combinations. This is local
+validation, not independent acceptance; Claude has not retested this commit.
+Retest per `/home/john/Code/rfile-qa-claude/pass4/LEDGER-pass4.md` section5 with
+its expected normal/MIME ordering and the verified annotation-only exception.
+
+Original ledgers remain unchanged. The remaining F-04/F-04b/F-03/F-07/CDF-stage
+dispositions and final release gates remain open; the old e64 draft is unchanged.
+The earlier pass-3 candidate notes below are historical and superseded here.
+
+## Earlier pass-3 candidate and implementation notes
+
+Earlier code candidate: `098d99cc837a07e1d40b79c6e96acd97f00caa1e`, tree
+`d3fe580ecaceee719b8d82a61cc51b79abe5a8c1`, local branch
+`fix/claude-timezone-diagnostic`. See
+[Codex pass-3 review](reports/claude-pass3-codex-review.md).
+
+F-08 now preserves unreadable regular-file descriptions and access prefixes in
+all output modes, including -E; checks open permission before identifying empty
+files; and rejects FIFO -s content inspection before open. String16 wildcard
+reads beyond EOF synthesize an empty value safely (F-10 padding candidate).
+General shifted-use bounds remain strict and are documented (F-04); invalid CDF
+geometry stage differences, F-03 headline caveat and F-07 release-note limitations
+are disclosed. F-04b remains unroot-caused; F-03/F-07 dispositions remain pending.
+
+Local targeted default/all-feature filesystem/semantics/sandbox CLI checks and
+Clippy passed. Independent Claude retest has NOT run on this commit. Pass-3
+ledger/checkpoint and section9 scripts are in `/home/john/Code/rfile-qa-claude/pass3/`.
+Run its filesystem/FIFO/paired string16/CDF matrices against this exact commit,
+using isolated unprivileged runners and bounded owned-process cleanup. No new
+archives or final release gate are claimed. The old e64 draft is unchanged.
+Earlier results below retain their executed identities and do not qualify 098d.
+
+## Claude follow-up fix results (2026-10-31)
+
+Local branch: `fix/claude-timezone-diagnostic`. The earlier pass-2 code candidate was
+`aafff27664ee7c6f91da76af8ca6a86f960235bc`; the F-01/F-02/F-09 batch below
+records the latest candidate. See the
+[retest index](reports/claude-pass2-fix-retest/README.md) and original Claude
+ledger `/home/john/Code/rfile-qa-claude/pass2/LEDGER-pass2.md`.
+
+- F-03: prior diagnostic/documentation changes at 3903a19/8343a33 passed exact
+  local archive testing as a documented limitation; maintainer acceptance pending.
+- F-05/F-06: d7d0eca fixes passed Claude's 28 offset probes, 284-case compiled
+  parity matrix, byte comparisons and bounded scaling (D200k: 0.12 CPU seconds,
+  124 MB RSS versus about 19 seconds before). Both full verifier profiles passed
+  32/34 stages at d7, using a recorded private clean build of the same oracle pin.
+- F-07: d7 plus 2ef0bbc/aafff27 follow-ups fix output panics, read-only stdout,
+  quiet EPIPE, debug/status stderr failures, and preserve silent compilation.
+  Claude's final focused default/all-feature and strict-sandbox tests passed at
+  aaff. Inherited-closed stdout remains an explicitly documented open criterion.
+
+Execution reports retain actual source identities. Full d7 results and focused
+final aaff results do not claim a full verifier execution at aaff. Original
+failed environment attempts are preserved. No tester processes remain running.
+Other ledger findings and final finding dispositions remain open.
+
+Raw evidence and recovery: `.reference/claude-pass2-retest-evidence/`,
+`.reference/claude-debug-retest-evidence/`, `.reference/claude-final-output-evidence/`.
+The old e64 draft remains unchanged and does not contain these fixes. Before
+replacement, resolve/dispose remaining findings, freeze the final candidate,
+run its required release checks and independently accept exact CI-built archives.
+The original completion record below concerns the old experimental draft and
+must not be read as closure of the newly discovered findings.
+
+## F-01 / F-02 / F-09 follow-up (2026-10-31)
+
+Code candidate `2bed7f803c5ca1fbcab2ae7b6feea2ec20adfdb2` on the same local
+branch passed Claude's independent retest; see the
+[batch report](reports/claude-f01-f02-f09-retest/README.md).
+F-01 signed ELF position/read-span diagnostics match all 5,880 expanded cases
+and 5,461 standard ELF comparisons. F-09 expected refusals and malformed
+manifest/receipt validation pass on the packaged installer. F-02's delegated
+choice is to retain/document the complete-decode hard cap with configurable
+`bytes`, rather than introduce prefix sampling; boundary/workaround/integrity
+checks pass on the exact archive binary. Package checker: 14/14.
+
+Raw evidence and recovery: `.reference/claude-2bed7f8-evidence/`; intermediate
+failures and corrections remain in `.reference/claude-ec687fc-evidence/` and
+`.reference/claude-f01-f02-f09-evidence/`. No tester processes remain running.
+Full final verify.py/CI release artifacts were not run for this batch. The old
+e64 draft is unchanged. Other findings, final release gates and the security
+qualification endpoint remain open as described above.
 
 ## Frozen candidate and GitHub state
 

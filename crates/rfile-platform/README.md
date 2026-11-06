@@ -2,6 +2,12 @@
 
 This crate provides platform services, not file-format detection. The detection,
 magic parser/evaluator, codecs and output formatter remain in the safe Rust core.
+On Linux/glibc, path inspection pins metadata with `O_PATH|O_NOFOLLOW`, opens
+content with `O_NOFOLLOW` unless following was requested, and checks descriptor
+identity before content inspection. Other supported build targets return an
+explicit error for no-follow path inspection until an equivalent adapter exists.
+These operations use safe standard-library descriptor ownership and add no
+platform unsafe blocks.
 No libmagic or native codec bindings are allowed here. Linux/glibc locale support
 uses an owned immutable `locale_t` acquisition from `newlocale(LC_CTYPE_MASK,
 name, NULL)`. The object is released once with `freelocale`; glibc can share its
