@@ -6,6 +6,65 @@ use std::{
 };
 
 #[test]
+fn filesystem_diagnostics_escape_control_bytes_unless_raw() {
+    use std::os::unix::ffi::OsStringExt;
+    let name = std::ffi::OsString::from_vec(b"missing-\x1b]52;c;bad\x07\r\n\xff".to_vec());
+    let safe = Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["--sandbox=off", "-E"])
+        .arg(&name)
+        .output()
+        .unwrap();
+    assert_eq!(safe.status.code(), Some(1));
+    assert!(!safe.stdout.contains(&0x1b));
+    assert!(!safe.stdout.contains(&b'\r'));
+    assert!(!safe.stdout.contains(&0x07));
+    assert!(safe.stdout.windows(4).any(|w| w == b"\\u{1"));
+    assert!(safe.stdout.windows(4).any(|w| w == b"\\377"));
+    let raw = Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["--sandbox=off", "-E", "--raw"])
+        .arg(&name)
+        .output()
+        .unwrap();
+    assert!(raw.stdout.contains(&0x1b));
+}
+
+#[test]
+fn diagnostic_renderer_keeps_unicode_and_escapes_bidi() {
+    use std::os::unix::ffi::OsStringExt;
+    let name = std::ffi::OsString::from_vec("missing-é-\u{202e}".as_bytes().to_vec());
+    let output = Command::new(env!("CARGO_BIN_EXE_rfile"))
+        .args(["--sandbox=off", "-E", "-b"])
+        .arg(name)
+        .output()
+        .unwrap();
+    assert_eq!(output.status.code(), Some(1));
+    assert!(output.stdout.windows(2).any(|w| w == "é".as_bytes()));
+    assert!(output.stdout.windows(8).any(|w| w == b"\\u{202e}"));
+    assert!(!output.stdout.windows(3).any(|w| w == "\u{202e}".as_bytes()));
+}
+
+#[test]
+fn normal_results_and_labels_escape_bidi_under_utf8_locale() {
+    let name = "missing-\u{202e}-\u{200f}-\u{061c}";
+    for error_mode in [false, true] {
+        let mut command = Command::new(env!("CARGO_BIN_EXE_rfile"));
+        command
+            .args(["--sandbox=off", name])
+            .env("LC_ALL", "C.UTF-8");
+        if error_mode {
+            command.arg("-E");
+        }
+        let output = command.output().unwrap();
+        assert!(!output.stdout.windows(3).any(|w| w == "\u{202e}".as_bytes()));
+        assert!(!output.stdout.windows(3).any(|w| w == "\u{200f}".as_bytes()));
+        assert!(!output.stdout.windows(2).any(|w| w == "\u{061c}".as_bytes()));
+        assert!(output.stdout.windows(8).any(|w| w == b"\\u{202e}"));
+        assert!(output.stdout.windows(8).any(|w| w == b"\\u{200f}"));
+        assert!(output.stdout.windows(7).any(|w| w == b"\\u{61c}"));
+    }
+}
+
+#[test]
 fn output_failures_are_errors_instead_of_panics_or_silent_success() {
     for args in [
         vec!["-b", "-"],

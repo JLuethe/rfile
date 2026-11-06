@@ -6,6 +6,20 @@ use crate::{
 };
 
 pub(crate) fn render(database: &Database, limit: usize) -> Result<Vec<u8>> {
+    render_inner(database, limit, None)
+}
+pub(crate) fn render_cli(
+    database: &Database,
+    limit: usize,
+    display: &crate::DisplayContext,
+) -> Result<Vec<u8>> {
+    render_inner(database, limit, Some(display))
+}
+fn render_inner(
+    database: &Database,
+    limit: usize,
+    display: Option<&crate::DisplayContext>,
+) -> Result<Vec<u8>> {
     if limit > 16 * 1024 * 1024 {
         return Err(Error::Limit("listing output configuration"));
     }
@@ -54,9 +68,17 @@ pub(crate) fn render(database: &Database, limit: usize) -> Result<Vec<u8>> {
                     )
                     .as_bytes(),
                 )?;
-                append(description)?;
+                if let Some(display) = display {
+                    append(&display.diagnostic(description, false)?)?;
+                } else {
+                    append(description)?;
+                }
                 append(b" [")?;
-                append(mime)?;
+                if let Some(display) = display {
+                    append(&display.diagnostic(mime, false)?)?;
+                } else {
+                    append(mime)?;
+                }
                 append(b"]\n")?;
             }
         }

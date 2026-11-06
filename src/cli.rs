@@ -144,10 +144,13 @@ fn emit_operand(
     let raw_name = bytes(label);
     let mut line = Vec::new();
     if p.brief == 0 {
+        let rendered_name = engine
+            .display_context()
+            .filename(&raw_name, engine.flags.has(Flags::RAW))?;
         line.extend(
             engine
                 .display_context()
-                .filename(&raw_name, engine.flags.has(Flags::RAW))?,
+                .diagnostic(&rendered_name, engine.flags.has(Flags::RAW))?,
         );
         if p.nulls > 0 {
             line.push(0);
@@ -165,16 +168,25 @@ fn emit_operand(
     }
     let failed = match result {
         Ok(c) => {
-            line.extend(c.output);
+            let output = engine
+                .display_context()
+                .diagnostic(&c.output, engine.flags.has(Flags::RAW))?;
+            if output.len() > engine.limits.output {
+                return Err(Error::Limit("output"));
+            }
+            line.extend(output);
             false
         }
         Err(e) => {
             line.extend_from_slice(b"ERROR: ");
-            if let Some(bytes) = e.raw_diagnostic() {
-                line.extend_from_slice(bytes);
-            } else {
-                line.extend_from_slice(e.to_string().as_bytes());
-            }
+            let bytes = e
+                .raw_diagnostic()
+                .map_or_else(|| e.to_string().into_bytes(), Vec::from);
+            line.extend(
+                engine
+                    .display_context()
+                    .diagnostic(&bytes, engine.flags.has(Flags::RAW))?,
+            );
             true
         }
     };
@@ -351,6 +363,7 @@ struct CliPlan {
     events: Vec<Event>,
     sandbox: SandboxMode,
     sandbox_status: bool,
+    raw_diagnostics: bool,
 }
 impl CliPlan {
     fn parse(args: &[OsString]) -> Self {
@@ -358,6 +371,7 @@ impl CliPlan {
             events: Vec::new(),
             sandbox: SandboxMode::Auto,
             sandbox_status: false,
+            raw_diagnostics: false,
         };
         if let Err(error) = plan_events(args, &mut plan) {
             plan.events.push(Event::Error(error));
@@ -548,7 +562,10 @@ fn plan_events(args: &[OsString], plan: &mut CliPlan) -> Result<()> {
                 'h' => flags.0 &= !Flags::SYMLINK,
                 's' => flags.0 |= Flags::DEVICES,
                 'p' => flags.0 |= Flags::PRESERVE_ATIME,
-                'r' => flags.0 |= Flags::RAW,
+                'r' => {
+                    flags.0 |= Flags::RAW;
+                    plan.raw_diagnostics = true;
+                }
                 'z' => flags.0 |= Flags::COMPRESS,
                 'Z' => flags.0 |= Flags::COMPRESS | Flags::TRANSPARENT,
                 'd' => flags.0 |= Flags::DEBUG | Flags::CHECK,
@@ -748,14 +765,20 @@ fn execute_events(events: Vec<Event>) -> Result<i32> {
                 return Ok(0);
             }
             Event::Version { path } => {
+                let source = match path {
+                    Some(path) => String::from_utf8_lossy(
+                        &crate::DisplayContext::from_environment()?
+                            .diagnostic(&bytes(&path), false)?,
+                    )
+                    .into_owned(),
+                    None => "embedded pinned database".into(),
+                };
                 write_stdout(
                     format!(
                         "rfile-{}\nmagic v{} from {}\nupstream {}\nfeatures: safe-rust regex miniz_oxide; kernel sandbox compiled={}",
                         env!("CARGO_PKG_VERSION"),
                         crate::FORMAT_VERSION,
-                        path.map_or("embedded pinned database".into(), |p| p
-                            .to_string_lossy()
-                            .into_owned()),
+                        source,
                         crate::UPSTREAM_COMMIT,
                         sandbox::COMPILED
                     ) + "\n",
@@ -788,25 +811,30 @@ fn execute_events(events: Vec<Event>) -> Result<i32> {
     io::stdout().flush()?;
     Ok(i32::from(failed))
 }
-fn execute() -> Result<i32> {
+fn execute() -> (Result<i32>, bool) {
     let args: Vec<OsString> = std::env::args_os().skip(1).collect();
-    execute_plan(CliPlan::parse(&args))
+    let plan = CliPlan::parse(&args);
+    let raw = plan.raw_diagnostics;
+    (execute_plan(plan), raw)
 }
 
 pub fn run() -> i32 {
     match execute() {
-        Ok(status) => status,
-        Err(e) => {
+        (Ok(status), _) => status,
+        (Err(e), raw) => {
             if matches!(&e, Error::Io(error) if error.kind() == io::ErrorKind::BrokenPipe) {
                 return 1;
             }
             let mut stderr = io::stderr().lock();
             let _ = stderr.write_all(b"rfile: ");
-            if let Some(bytes) = e.raw_diagnostic() {
-                let _ = stderr.write_all(bytes);
-            } else {
-                let _ = write!(stderr, "{e}");
-            }
+            let bytes = e
+                .raw_diagnostic()
+                .map_or_else(|| e.to_string().into_bytes(), Vec::from);
+            let displayed = crate::DisplayContext::from_environment()
+                .unwrap_or_default()
+                .diagnostic(&bytes, raw)
+                .unwrap_or_else(|_| b"diagnostic exceeds display limit".to_vec());
+            let _ = stderr.write_all(&displayed);
             let _ = stderr.write_all(b"\n");
             1
         }
@@ -818,6 +846,12 @@ mod plan_tests {
     use super::*;
     fn plan(args: &[&str]) -> CliPlan {
         CliPlan::parse(&args.iter().map(OsString::from).collect::<Vec<_>>())
+    }
+    #[test]
+    fn raw_diagnostic_mode_only_follows_parsed_option() {
+        assert!(!plan(&["--", "--raw"]).raw_diagnostics);
+        assert!(!plan(&["-m", "--raw"]).raw_diagnostics);
+        assert!(plan(&["--raw", "--unknown"]).raw_diagnostics);
     }
     #[test]
     fn planning_defers_missing_lists_and_later_errors() {

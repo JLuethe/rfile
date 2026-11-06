@@ -25,6 +25,11 @@ printf 'hello\n' | ./bin/rfile -b -
 For an installation in your own prefix, use Python 3.11 or later. Existing files
 are never overwritten; uninstall the earlier installation before upgrading.
 Keep this extracted directory for later uninstallation.
+The installer requires POSIX descriptor-relative filesystem operations and an
+owner-controlled prefix: the prefix and installed subdirectories must be owned
+by the process and not writable by group or others. Other platforms fail with
+an explicit error. It does not support installing into a shared writable tree.
+The selected prefix path and its ancestors must not contain symlinks.
 
 ```sh
 python3 install.py install --prefix "$HOME/.local"

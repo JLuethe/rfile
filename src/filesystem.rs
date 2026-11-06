@@ -108,7 +108,7 @@ pub(crate) fn prepare_path(
     budget: &InspectionBudget,
 ) -> PreparedPath {
     let mut pending = PendingContent::None;
-    let ready = prepare_raw(engine, path, budget, &mut pending);
+    let ready = prepare_raw(engine, path, budget, &mut pending, || {});
     PreparedPath { ready, pending }
 }
 pub(crate) fn classify_path(
@@ -123,6 +123,7 @@ fn prepare_raw(
     path: &Path,
     budget: &InspectionBudget,
     pending: &mut PendingContent,
+    before_open: impl FnOnce(),
 ) -> Result<Classification> {
     // Bound the path before std's OS-string conversion or diagnostic copies.
     let path_len = path.as_os_str().as_encoded_bytes().len();
@@ -131,14 +132,14 @@ fn prepare_raw(
     }
     let _path_memory = budget.reserve(path_len.saturating_mul(4).saturating_add(1024))?;
     budget.bytes(path_len)?;
-    let metadata = if engine.flags.has(Flags::SYMLINK) {
-        fs::metadata(path)
-    } else {
-        fs::symlink_metadata(path)
-    };
+    let metadata = rfile_platform::open_path_metadata(path, engine.flags.has(Flags::SYMLINK))
+        .and_then(|file| file.metadata());
     let mut meta = match metadata {
         Ok(m) => m,
         Err(e) => {
+            if e.kind() == std::io::ErrorKind::Unsupported {
+                return Err(Error::Unsupported(e.to_string()));
+            }
             if engine.flags.has(Flags::ERROR) {
                 let mut diagnostic = b"cannot stat `".to_vec();
                 diagnostic.extend(path_bytes(path));
@@ -280,16 +281,16 @@ fn prepare_raw(
     {
         return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
     }
-    let mut options = fs::OpenOptions::new();
-    options.read(true);
-    #[cfg(target_os = "linux")]
-    {
-        use std::os::unix::fs::OpenOptionsExt;
-        options.custom_flags(0x800);
-    }
-    let file = match options.open(path) {
+    before_open();
+    let file = match rfile_platform::open_path_content(
+        path,
+        engine.flags.has(Flags::SYMLINK) || annotation_link,
+    ) {
         Ok(f) => f,
         Err(e) => {
+            if e.kind() == std::io::ErrorKind::Unsupported {
+                return Err(Error::Unsupported(e.to_string()));
+            }
             if meta.is_file() && e.kind() == std::io::ErrorKind::PermissionDenied {
                 let (writable, executable) = rfile_platform::unreadable_access(path);
                 let mut description = Vec::new();
@@ -317,8 +318,114 @@ fn prepare_raw(
             ));
         }
     };
+    // Metadata and content must describe the same opened inode. In particular,
+    // a path replaced with a symlink after O_PATH metadata cannot redirect
+    // this no-follow open to a different target.
+    let opened_meta = file.metadata()?;
+    #[cfg(unix)]
+    if !engine.flags.has(Flags::SYMLINK) && !annotation_link {
+        use std::os::unix::fs::MetadataExt;
+        if opened_meta.dev() != meta.dev() || opened_meta.ino() != meta.ino() {
+            return Err(Error::Unsupported("path changed during inspection".into()));
+        }
+    }
+    let meta = opened_meta;
+    if meta.is_dir() {
+        if annotation_only {
+            return Err(Error::Filesystem {
+                source: std::io::Error::from(std::io::ErrorKind::IsADirectory),
+                diagnostic: b"cannot read directory".to_vec(),
+            });
+        }
+        return Ok(metadata_result(engine, b"directory".to_vec(), "directory"));
+    }
+    if meta.is_file()
+        && meta.len() == 0
+        && !engine.flags.has(Flags::DEVICES)
+        && !annotation_only
+        && !annotation_link
+    {
+        return Ok(engine.basic(b"empty".to_vec(), "inode/x-empty", "binary", false));
+    }
     *pending = PendingContent::File(file, meta);
     Ok(engine.basic(Vec::new(), "application/octet-stream", "binary", false))
+}
+
+#[cfg(all(test, target_os = "linux"))]
+mod security_tests {
+    use super::*;
+    use std::os::unix::fs::symlink;
+
+    #[test]
+    fn swapped_regular_path_cannot_follow_symlink() {
+        let dir = std::env::temp_dir().join(format!(
+            "rfile-nofollow-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir(&dir).unwrap();
+        let path = dir.join("input");
+        let target = dir.join("target");
+        fs::write(&path, b"ordinary text\n").unwrap();
+        fs::write(&target, b"\x89PNG\r\n\x1a\nsecret").unwrap();
+        let engine = Engine::builtin().unwrap();
+        let budget = engine.budget().unwrap();
+        let mut pending = PendingContent::None;
+        let result = prepare_raw(&engine, &path, &budget, &mut pending, || {
+            fs::remove_file(&path).unwrap();
+            symlink(&target, &path).unwrap();
+        });
+        assert!(matches!(pending, PendingContent::None));
+        assert!(!result.unwrap().output.windows(6).any(|w| w == b"secret"));
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn prepared_descriptor_and_atime_do_not_follow_later_replacement() {
+        let dir = std::env::temp_dir().join(format!(
+            "rfile-prepared-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir(&dir).unwrap();
+        let path = dir.join("input");
+        let target = dir.join("target");
+        fs::write(&path, b"ordinary text\n").unwrap();
+        fs::write(&target, b"\x89PNG\r\n\x1a\nsecret").unwrap();
+        let old_time =
+            std::time::SystemTime::UNIX_EPOCH + std::time::Duration::from_secs(1_000_000_000);
+        File::options()
+            .write(true)
+            .open(&target)
+            .unwrap()
+            .set_times(
+                fs::FileTimes::new()
+                    .set_accessed(old_time)
+                    .set_modified(old_time),
+            )
+            .unwrap();
+        let original_target_mtime = fs::metadata(&target).unwrap().modified().unwrap();
+        let original_target_atime = fs::metadata(&target).unwrap().accessed().unwrap();
+        let mut engine = Engine::builtin().unwrap();
+        engine.flags = Flags(Flags::PRESERVE_ATIME);
+        let budget = engine.budget().unwrap();
+        let prepared = prepare_path(&engine, &path, &budget);
+        #[cfg(all(feature = "sandbox", target_env = "gnu", target_arch = "x86_64"))]
+        assert!(prepared.descriptor().is_some());
+        fs::remove_file(&path).unwrap();
+        symlink(&target, &path).unwrap();
+        let classification = prepared.classify(&engine, &budget).unwrap();
+        assert!(!classification.output.windows(3).any(|w| w == b"PNG"));
+        assert_eq!(
+            fs::metadata(&target).unwrap().modified().unwrap(),
+            original_target_mtime
+        );
+        assert_eq!(
+            fs::metadata(&target).unwrap().accessed().unwrap(),
+            original_target_atime
+        );
+        fs::remove_dir_all(dir).unwrap();
+    }
 }
 fn finish_path(
     engine: &Engine,

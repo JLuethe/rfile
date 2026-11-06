@@ -37,6 +37,17 @@ int main(int argc,char **argv) {
     assert(magic_getmaxparam(MAGIC_PARAM_ELF_SHSIZE_MAX)==65535);
     assert(magic_setflags(h,MAGIC_MIME_TYPE)==0);
     assert(strcmp(magic_buffer(h,"hello\n",6),"text/plain")==0);
+#ifdef RFILE_OWNED_DATABASES
+    /* The C path entry point must share the descriptor-safe Rust resolver. */
+    assert(magic_setflags(h,MAGIC_MIME_TYPE)==0);
+    assert(strcmp(magic_file(h,argv[2]),"text/plain")==0);
+    char *link=malloc(strlen(argv[2])+6);assert(link);
+    sprintf(link,"%s.link",argv[2]);assert(symlink(argv[2],link)==0);
+    assert(strcmp(magic_file(h,link),"inode/symlink")==0);
+    assert(magic_setflags(h,MAGIC_MIME_TYPE|MAGIC_SYMLINK)==0);
+    assert(strcmp(magic_file(h,link),"text/plain")==0);
+    assert(unlink(link)==0);free(link);
+#endif
     assert(magic_load_buffers(h,NULL,NULL,0)==-1);assert(strcmp(magic_buffer(h,"hello\n",6),"text/plain")==0);
     FILE *f=fopen(database,"rb");assert(f);assert(fseek(f,0,SEEK_END)==0);long end=ftell(f);assert(end>0);rewind(f);
     size_t length=(size_t)end;void *bytes=malloc(length);assert(bytes);assert(fread(bytes,1,length,f)==length);fclose(f);

@@ -34,4 +34,7 @@ its scope and remaining qualification gates are in docs/remaining/05-sandbox.md.
 Ordinary library calls never restrict their host process. There is no completed
 independent security audit or prolonged coverage-guided fuzz campaign. Input sampling and classification are heuristic;
 a result does not validate a complete file or establish that it is safe to execute.
+The CLI escapes control characters in diagnostics by default; `--raw` opts into
+byte-preserving output. The archive installer requires an owner-controlled
+prefix and descriptor-relative POSIX filesystem operations.
 See docs/06-implementation-status.md for known compatibility and security gaps.

@@ -28,7 +28,65 @@ fn push(out: &mut Vec<u8>, part: &[u8], limit: usize) -> Result<()> {
     out.extend_from_slice(part);
     Ok(())
 }
+fn terminal_control(c: char) -> bool {
+    c.is_control()
+        || matches!(
+            c,
+            '\u{00ad}' | '\u{061c}' | '\u{200b}'..='\u{200f}' | '\u{2028}'..='\u{202e}'
+                | '\u{2060}'..='\u{206f}' | '\u{feff}'
+        )
+}
 impl DisplayContext {
+    /// Render an untrusted diagnostic as one terminal-safe field. Unlike
+    /// `result`, this retains embedded NULs and valid Unicode text.
+    pub(crate) fn diagnostic(&self, bytes: &[u8], raw: bool) -> Result<Vec<u8>> {
+        if raw {
+            return Ok(bytes.to_vec());
+        }
+        let mut out = Vec::new();
+        let limit = bytes
+            .len()
+            .checked_mul(16)
+            .ok_or(Error::Limit("diagnostic display"))?
+            .min(16 * 1024 * 1024);
+        let mut rest = bytes;
+        while !rest.is_empty() {
+            match std::str::from_utf8(rest) {
+                Ok(valid) => {
+                    for c in valid.chars() {
+                        if terminal_control(c) {
+                            push(&mut out, format!("\\u{{{:x}}}", c as u32).as_bytes(), limit)?;
+                        } else {
+                            let mut buf = [0; 4];
+                            push(&mut out, c.encode_utf8(&mut buf).as_bytes(), limit)?;
+                        }
+                    }
+                    break;
+                }
+                Err(error) => {
+                    let valid = &rest[..error.valid_up_to()];
+                    for c in std::str::from_utf8(valid)
+                        .expect("validated UTF-8 prefix")
+                        .chars()
+                    {
+                        if terminal_control(c) {
+                            push(&mut out, format!("\\u{{{:x}}}", c as u32).as_bytes(), limit)?;
+                        } else {
+                            let mut buf = [0; 4];
+                            push(&mut out, c.encode_utf8(&mut buf).as_bytes(), limit)?;
+                        }
+                    }
+                    rest = &rest[error.valid_up_to()..];
+                    let invalid = error.error_len().unwrap_or(rest.len());
+                    for &byte in &rest[..invalid] {
+                        push(&mut out, format!("\\{byte:03o}").as_bytes(), limit)?;
+                    }
+                    rest = &rest[invalid..];
+                }
+            }
+        }
+        Ok(out)
+    }
     pub fn locale(name: &str) -> Result<Self> {
         if name.len() > 1024 {
             return Err(Error::Limit("locale name"));
