@@ -225,7 +225,7 @@
   },
   {
     "name": "lzma-rust2",
-    "version": "0.23.0",
+    "version": "0.24.0",
     "license": "Apache-2.0",
     "license_file": null,
     "repository": "https://github.com/hasenbanck/lzma-rust2/",
@@ -297,7 +297,7 @@
   },
   {
     "name": "rustix",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
     "license_file": null,
     "repository": "https://github.com/bytecodealliance/rustix",
