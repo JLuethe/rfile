@@ -1,19 +1,19 @@
-# Next experimental release: scope and PR decisions
+# Published experimental release: scope and evidence
 
-Updated after Claude pass-11 acceptance and security-review scoping. This is the
-current release-preparation contract. The [release plan](11-github-release-plan.md)
-preserves the initial review and the
-larger sequence. The existing public v0.1.0 remains unchanged.
+This is the current scope of the published
+[v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1).
+The [release plan](11-github-release-plan.md) and dated reports preserve the
+earlier preparation and review sequence. The public v0.1.0 tag remains unchanged.
 
 ## Scope
 
-The next downloadable binary is the **default-feature `rfile` CLI for x86_64
+The downloadable binary is the **default-feature `rfile` CLI for x86_64
 Linux/glibc**, accompanied by complete source, notices, checksums, manual and
 installation instructions. Default gzip/zlib inspection is included. The binary requires GLIBC 2.34 symbols and is tested on Ubuntu 22.04
 (glibc 2.35); other glibc 2.34 distributions are not certified. Rust 1.87
 remains the declared source-build minimum. No crates.io publication is planned.
 
-| Surface | Current implementation | Release promise / remaining boundary |
+| Surface | Current implementation | v0.2.0-rc.1 release boundary |
 |---|---|---|
 | Default CLI and Rust engine | File-type detection, source/v21 magic, embedded rules, CDF/ELF, bounded matching and IO | Experimental supported profile; no full libmagic-replacement or security-audit claim |
 | Source actions and diagnostics | Typed events, partial-load behavior and CLI `-c/-l/-C`; historical CLI/ABI matrices are recorded | DEBUG, broader warning/IO/discovery behavior and documented semantic differences remain |
@@ -23,24 +23,35 @@ remains the declared source-build minimum. No crates.io publication is planned.
 | Other platforms / ABIs | No new executed platform evidence | No new support claim |
 | Security qualification | 25 fuzz targets and bounded queue infrastructure | Long campaigns, coverage/resource review and independent security audit remain open |
 
-The frozen, independently accepted `0.2.0-rc.1` candidate is
-`ca9465f5f93eca75c80352a18a5de108e20762a0`, tree
-`92b34ed5c86ea5737a4eb1f00e3ce085fe59dca5`. Packaging run 41326583263 produced
-artifact 13091831221; required linux/msrv checks passed in run 41326558761.
-Claude independently accepted those exact archives in pass 11. See
-[the CI identities and checksums](../reports/ci-ca9465f-handoff.md) and
-[the pass-11 acceptance record](../reports/claude-pass11-codex-review.md).
-Runtime/build/installer code is unchanged from independently tested 8325cef.
-Later handoff/documentation commits do not retarget these accepted archives.
+The shipped tag and both fresh archives were built from
+`7d3e700db435289e7b5d8774895a39293bf94152`. The Ubuntu 22.04
+[release workflow](https://github.com/JLuethe/rfile/actions/runs/42324324135)
+passed 14 package checks and 13 minimal-runtime checks. A second local check
+of the downloaded exact archives passed the same 14 and 13 checks; the extracted
+vendored source built offline with an empty Cargo cache, and all 129 manifest
+payload hashes and modes matched. The merged source passed 34 all-feature
+verification stages, including actual CLI/kernel sandbox execution; fresh
+RustSec checks of both shipped lockfiles reported zero vulnerabilities and zero
+warnings at database revision `309392b18f6b17022f82c701f300433126901068`.
+The release attaches `release-manifest.json`, `release-evidence.json`,
+`rfile-0.2.0-rc.1-qa-evidence.tar.gz` and checksum files.
 
-The older unpublished draft used source
-`e64ce034bee6a6c0959872d9b8f632d692dbfaa3`, tree
-`91506a94437571b6fc3257f1d2e860824e19b727`, matching the tested a781c017 tree.
-Its [historical acceptance record](../reports/release-0.2.0-rc.1/final/README.md)
-retains those original identities. That draft's assets have not been replaced
-by accepting ca9465f. Archive acceptance is not publication or security approval.
+Archive SHA-256 values for those published bytes:
 
-## PR disposition
+```text
+0ebf108fc73ea5a34a6cd4c1bf38c8092692cb10a33ccfdcf34f54e690d21bcb  rfile-0.2.0-rc.1-source.tar.gz
+58391f393c14f9c7fdedd87765ca9031f0e78935710c0eac5be7b9f2e0dd20ac  rfile-0.2.0-rc.1-x86_64-unknown-linux-gnu.tar.gz
+```
+
+Earlier candidates are historical. Claude's pass-11 acceptance covered
+`ca9465f5f93eca75c80352a18a5de108e20762a0` and its own archived bytes;
+see [the CI handoff](../reports/ci-ca9465f-handoff.md) and
+[acceptance record](../reports/claude-pass11-codex-review.md). The older
+unpublished draft used `e64ce034bee6a6c0959872d9b8f632d692dbfaa3`;
+its [record](../reports/release-0.2.0-rc.1/final/README.md) remains intact.
+Neither earlier archive identity describes the published tag.
+
+## Historical PR disposition and later review
 
 The following records the GitHub review on 2026-10-30; it is not a fresh PR-state
 check. Deferral below is a release-scope decision, not an assertion that a
@@ -54,10 +65,33 @@ dependency is vulnerability-free.
 | #22 lzma-rust2 0.24 | Defer from this default-CLI increment | Optional codec dependency; changes decoder accounting/padding behavior. Requires both lockfiles, notices and codec differential/boundary retesting. |
 | #1 checkout v7 | Superseded; closed after fresh CI passed | Both existing jobs and candidate packaging use pinned v7. Linux, MSRV and candidate artifact checks passed on `1883cdd`; the standalone dependency PR is redundant. |
 
-PRs #21 and #22 were open and explicitly deferred in that record. Neither a green
-unit-test run nor that scope decision closes their independent review gates.
-Revisit dependency decisions if an advisory affects the shipped profile before
-artifact freeze.
+PRs #21 and #22 were open and explicitly deferred in that dated record. Their
+post-release disposition follows. The published v0.2.0-rc.1 archives keep their
+original lockfiles.
+
+### Post-release dependency disposition
+
+[PR #29](https://github.com/JLuethe/rfile/pull/29) merged into `main` as
+`27e8619cf98e31d435166d7fc28a09e624dce03e`. It integrates rustix 1.1.6
+and lzma-rust2 0.24.0 with both workspace and fuzz lockfiles, resolved
+dependency metadata and matching retained license paths. All-feature workspace
+tests, Clippy and a fresh RustSec scan of both new lockfiles passed. Actual
+CLI/kernel sandbox checks executed, including eight kernel child cases; the
+codec suite passed nine tests and the pinned-oracle codec matrix retained
+3,268 comparisons with no unexpected differences. The exact candidate package
+passed 14 install/offline-build checks, and all hosted Linux/MSRV/oracle/package
+checks on #29 passed. This is post-release `main` evidence, not retesting or
+changing the published tag.
+
+[#21](https://github.com/JLuethe/rfile/pull/21) was closed as superseded by
+#29, with its sandbox review recorded in the closing comment. Dependabot had
+already closed [#22](https://github.com/JLuethe/rfile/pull/22) when the newer
+[#27](https://github.com/JLuethe/rfile/pull/27) appeared. #22's failing
+`package-linux` path left `fuzz/Cargo.lock` at lzma-rust2 0.23.0 while the
+workspace moved to 0.24.0; #29 fixed that mismatch and integrated 0.24.0.
+The later 0.25.0 update in #27 and separate
+[#28](https://github.com/JLuethe/rfile/pull/28) jiff update remain new review
+items, not part of the shipped release or #29.
 
 ## Tester/fixer workflow
 
@@ -117,8 +151,8 @@ actual required glibc symbol version. `tools/check_cli_package.py` exercises the
 exact archives, a private install prefix, safe uninstall behavior and a fresh-cache
 offline source rebuild. `packaging/INSTALL.md` documents installation.
 
-The release-candidate workflow builds on Ubuntu 22.04 and retains artifacts without
-publishing a release. For ca9465f, CI package/offline-rebuild checks passed 14/14
+The release-candidate workflow builds on Ubuntu 22.04 and retains artifacts; it
+does not publish a release on its own. For historical ca9465f, CI package/offline-rebuild checks passed 14/14
 and minimal-runtime checks passed 13/13. Claude's pass-11 focused independent
 acceptance verified provenance, all installed-file hashes/modes, archive contents,
 INSTALL.md's I-1/I-2 wording, behavior, 19 installer assertions and a fresh-cache
@@ -157,7 +191,8 @@ constrained-container checks, subsequently implemented in candidate CI. The olde
 e64 draft's workflow 41178070592 and its 14 package, 10 installer and 13
 minimal-runtime checks remain historical evidence for those bytes. Current
 accepted-candidate identities and Claude's pass-11 results are recorded above.
-The draft has not been updated or published by these documentation corrections.
+Those earlier documentation corrections did not update or publish the then-draft.
+The later published assets are identified at the top of this document.
 
 ## Dependency-audit evidence status
 
@@ -171,5 +206,8 @@ as a current-candidate audit. The verbatim report is retained as
 `reports/dependency-audit-2026-10-25.raw.json`, matching its original provenance
 checksum. A separate October 31 release audit record has matching frozen-lock
 hashes in `reports/release-0.2.0-rc.1/audit-provenance.json`; that is also historical
-evidence. A fresh audit for the security review against the frozen locks and a
-recorded current advisory-database revision remains unrun and requires authorization.
+evidence. Fresh RustSec audits for both lockfiles in the shipped `7d3e700`
+source are recorded in the published release's QA evidence bundle and summarized
+above. Subsequent dependency changes require their own audit and do not alter
+that release evidence. A dependency advisory scan is not an independent source
+security audit.

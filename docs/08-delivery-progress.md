@@ -1,6 +1,6 @@
 # Remaining-work delivery progress
 
-Current release preparation: [scope, PR decisions and verification controls](release-scope.md).
+The experimental [v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1) is published. Current scope, historical PR decisions and verification controls are in [the release contract](release-scope.md).
 The milestone narratives below retain their historical evidence.
 
 Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining work](07-remaining-work-spec.md). Spec PR #2 is merged. This ledger distinguishes implemented evidence from release gates.
@@ -17,7 +17,7 @@ Tracking: https://github.com/JLuethe/rfile/issues/3. Specification: [remaining w
 | R7 sandbox | implemented in PR #15; final clean-reference replay passes | ordered CLI, strict descriptors, typed kernel policy, child denial tests; see current R7 checkpoint below |
 | R8 C ABI | preview and typed diagnostics merged in PRs #16–#17; CLI action increment merged in PR #18 | all 19 exports; 49/49 original state and 440/440 expanded diagnostic scenarios exact; 243 exact CLI action cases across off/auto/strict modes; wider action semantics and qualification remain open |
 | R9 sustained hardening | queue merged in PR #19; qualification pending | 25 targets; smoke does not satisfy measured campaigns, final-candidate replay or independent review |
-| R10 compatibility release | pending | all declared release gates and remaining gaps reviewed |
+| R10 qualified compatibility release | pending | The narrower experimental v0.2.0-rc.1 CLI and vendored source were published; full compatibility/security gates and remaining gaps are still open. |
 
 The baseline reports are regenerated for each implementation candidate. `reports/components.json` separately records the additional CDF/regex cases. Ignored regression tests and known-open discrepancies are not counted as successful conformance. No sustained campaign or independent audit has been performed by this PR.
 

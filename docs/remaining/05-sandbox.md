@@ -70,6 +70,10 @@ Keep a safe `SandboxPlan::prepare` / `install` boundary in `crates/rfile-platfor
 
 Inspected candidates: `landlock 0.4.7` (MIT OR Apache-2.0, MSRV 1.71), `seccompiler 0.5.0` (Apache-2.0 OR BSD-3-Clause), `rustix 1.1.5` (MIT/Apache alternatives, MSRV 1.65). See [manifest evidence](../../reports/remaining-candidate-dependencies.json). Seccompiler provides typed syscall rules/filter application; disable its optional JSON feature. Landlock supplies rule/compatibility state APIs; validate actual enforcement, not just builder success. Rustix supplies safe OS operations with its own reviewed backend. These are not detector FFI. R7 selects landlock and seccompiler as optional, target-gated product dependencies; rustix supplies safe descriptor-relative compile publication. Resolved license texts are retained under `LICENSES/dependencies`.
 
+That candidate inventory is historical. Published v0.2.0-rc.1 pins rustix 1.1.5;
+post-release `main` uses 1.1.6 through [PR #29](https://github.com/JLuethe/rfile/pull/29),
+which passed actual CLI and kernel sandbox checks. The shipped tag is unchanged.
+
 Do not install seccomp from library classification calls. In a multithreaded host, a per-thread policy is not process-wide protection and TSYNC has its own constraints. An application requiring process isolation should use an explicitly launched supervised worker; designing a general worker service is outside this change. The C ABI preserves the same no-surprise rule.
 
 ## SBX-07 through SBX-09: tests and acceptance

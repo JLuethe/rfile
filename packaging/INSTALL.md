@@ -1,4 +1,4 @@
-# Experimental rfile CLI
+# rfile CLI installation (experimental)
 
 This archive contains the default-feature x86_64 Linux/glibc CLI, with embedded
 rules and gzip/zlib inspection. It does not replace `file` or libmagic. Additional
@@ -6,6 +6,11 @@ codecs, the optional sandbox and C interface are available in source and are not
 enabled in this binary. Read `MANIFEST.json` for the exact version, source commit,
 required glibc symbol version, compiler and checksums. Other platforms are not
 certified by this archive.
+
+For the published v0.2.0-rc.1 archives and their checksums, use the
+[GitHub release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1).
+These instructions also apply to later archives when their own manifest and
+checksums are verified.
 
 Verify `SHA256SUMS` against the downloaded archives before extracting them:
 

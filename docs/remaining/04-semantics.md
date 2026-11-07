@@ -63,7 +63,7 @@ branch separately: signed ticks at or above
 than 9999 in `src/cdf_time.c:cdf_timestamp_to_timespec`. That branch leaves
 `ts.tv_sec` uninitialized, and `src/print.c:file_fmtdatetime` ignores the error.
 Observed native bytes are retained but do not count as exact oracle comparisons,
-even when they happen to match. Those cases instead require Rfile's exact invalid
+even when they happen to match. Those cases instead require rfile's exact invalid
 datetime marker. Negative signed values and every other mismatch remain outside
 this exception. This corrects a harness assumption exposed on Ubuntu 24.04;
 it does not change production date semantics or patch the primary oracle.

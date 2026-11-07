@@ -57,7 +57,7 @@ compile/link or `magic_version()==548` does not certify those behaviors. See
 [delivery ledger](../../docs/08-delivery-progress.md) for the comparison scope.
 Isolated package and short stateful fuzz reports exist; same-candidate package
 revalidation, sustained fuzzing and independent security review remain open.
-The [next release](../../docs/release-scope.md) does not include a C ABI binary.
+The [published v0.2.0-rc.1 release](../../docs/release-scope.md) does not include a C ABI binary.
 Ordinary development builds use a source-tree default database path; distribution
 builds must configure `RFILE_MAGIC_PATH` for their installation prefix and test
 that discovery behavior after installation.

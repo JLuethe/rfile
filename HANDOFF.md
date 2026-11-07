@@ -1,10 +1,23 @@
-# rfile restart checkpoint
+# rfile release and historical restart checkpoints
 
-Updated after security-scope documentation corrections. The user authorized
-release preparation overnight with independent GPT-6 Luna testing agents after
-Claude exhausted its quota. Codex fixes; independent agents test and retest.
-The endpoint is an experimental default-feature x86_64 Linux/glibc CLI and
-vendored source. Publication requires the maintainer's final approval.
+**Current release:** [v0.2.0-rc.1](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1)
+is published from `7d3e700db435289e7b5d8774895a39293bf94152`. The default
+x86_64 Linux/glibc CLI and vendored source have nine release assets, including
+checksums and QA evidence. Three security advisories are published with rc1 as
+the fixed version. [Release scope](docs/release-scope.md) identifies the exact
+shipped bytes and remaining qualification gaps. Later `main` development does
+not change the published tag.
+
+The checkpoints below retain their original dates, candidates, test identities
+and then-current draft status. They are historical evidence, not instructions to
+publish or replace the current release.
+
+## Historical security-scope checkpoint
+
+At that checkpoint, the user authorized release preparation overnight with
+independent GPT-6 Luna testing agents after Claude exhausted its quota. Codex
+implemented fixes; independent agents tested and retested. Publication was then
+pending maintainer approval.
 
 ## Security scope brief received; decisions remain pending
 
@@ -351,8 +364,9 @@ tests. No target met its 24-CPU-hour qualification gate.
 
 ## Completed delivery and recovery paths
 
-The [unpublished release draft](https://github.com/JLuethe/rfile/releases/tag/untagged-c161acd97cb00e0a1c09)
-targets e64 and holds the exact accepted Ubuntu CI archives. The
+The former unpublished release draft targeted e64 and held the exact accepted
+Ubuntu CI archives at this checkpoint. Its assets were later replaced for the
+published 7d3e700 release. The
 [final acceptance record](reports/release-0.2.0-rc.1/final/README.md) contains
 checksums, source equivalence, independent reports and scope limitations.
 Default/all-feature verification passed 32/34 stages; strict sandbox checks

@@ -269,16 +269,51 @@ fn write_stdout(text: String) -> Result<()> {
 
 fn help() -> Result<()> {
     write_stdout(
-        String::from(
-            "Additional options: --profile=pinned-5.48|corrected-v1; --capabilities; --sandbox=auto|strict|off; --sandbox-status (stderr JSON)",
-        ) + "\n",
-    )?;
-    write_stdout(
-        String::from(
-            "Usage: rfile [options] FILE...\n       rfile -C [-m MAGIC]\nIndependent Rust file classifier, pinned magic v21.\n\n  -b, --brief                 omit filename\n  -m, --magic-file LIST       colon-separated magic sources/databases\n  -i, --mime                  output MIME type and encoding\n      --mime-type             output MIME type\n      --mime-encoding         output encoding\n      --extension             output extensions\n      --apple                 output Apple creator/type\n  -k, --keep-going            continue matching\n  -e, --exclude TEST          skip a detector\n  -f, --files-from FILE       read newline-delimited filenames (- for stdin)\n  -F, --separator STRING      filename separator\n  -N, --no-pad                disable filename padding\n  -n, --no-buffer             flush each result\n  -0, --print0                NUL after filename; twice for NUL records\n  -L, --dereference           follow symbolic links\n  -h, --no-dereference        inspect symbolic links\n  -s, --special-files         read devices\n  -p, --preserve-date         restore access/modification times\n  -z, --uncompress            inspect compiled codec contents (bounded)\n  -Z, --uncompress-noreport   inspect compiled codecs; omit wrapper\n  -P, --parameter NAME=N      set input/recursion/regex/work limits\n  -E                          make filesystem failures errors\n  -r, --raw                   preserve nonprintable output\n  -d, --debug                 diagnostic evaluation trace\n  -c, --checking-printout     parse/check source and list groups\n  -C, --compile               compile source to v21 .mgc\n  -l, --list                  list rule strengths\n  -S, --no-sandbox            disable kernel sandbox\n  -v, --version               engine, rule identity and features\n      --help                  show this help",
-        ) + "\n",
-    )?;
-    Ok(())
+        "Usage: rfile [options] FILE...
+       rfile -C [-m MAGIC]
+rfile identifies files with an independent bounded Rust magic engine.
+
+  -b, --brief                 omit filename
+  -m, --magic-file LIST       colon-separated magic sources/databases
+  -i, --mime                  output MIME type and encoding
+      --mime-type             output MIME type
+      --mime-encoding         output encoding
+      --extension             output extensions
+      --apple                 output Apple creator/type
+  -k, --keep-going            continue matching
+  -e, --exclude TEST          skip a detector
+      --exclude-quiet         ignore unknown detector names
+  -f, --files-from FILE       read newline-delimited filenames (- for stdin)
+  -F, --separator STRING      filename separator
+  -N, --no-pad                disable filename padding
+  -n, --no-buffer             flush each result
+  -0, --print0                NUL after filename; twice for NUL records
+  -L, --dereference           follow symbolic links
+  -h, --no-dereference        inspect symbolic links
+  -s, --special-files         read special files
+  -p, --preserve-date         restore access/modification times
+  -z, --uncompress            inspect compiled codec contents (bounded)
+  -Z, --uncompress-noreport   inspect compiled codecs; omit wrapper
+  -P, --parameter NAME=N      set input/recursion/regex/work limits
+  -E                          make filesystem failures errors
+  -r, --raw                   preserve nonprintable output
+  -d, --debug                 diagnostic evaluation trace
+  -c, --checking-printout     parse/check source and list groups
+  -C, --compile               compile source to v21 .mgc
+  -l, --list                  list rule strengths
+      --profile=NAME          pinned-5.48 (default) or corrected-v1
+      --capabilities          report compiled features and status as JSON
+      --sandbox=MODE          auto, strict or off (strict needs sandbox feature)
+      --sandbox-status        report actual policy state as JSON on stderr
+  -S, --no-sandbox            disable kernel sandbox
+  -v, --version               engine, rule identity and features
+      --help                  show this help
+
+The default build includes gzip/zlib; optional codecs and Linux sandboxing
+require build features. Use --capabilities to inspect this executable.
+"
+        .to_owned(),
+    )
 }
 fn long_short(name: &str) -> Option<char> {
     Some(match name {

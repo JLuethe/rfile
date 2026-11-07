@@ -10,7 +10,7 @@ Read in order:
 6. [Delivered implementation status and remaining gaps](06-implementation-status.md)
 7. [Implementation specifications for remaining fidelity, sandbox, hardening and C ABI work](07-remaining-work-spec.md)
 
-[Live delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
+[Published experimental v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1), [delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
 
 For the current feature scope, PR decisions and verification controls, read
 the [release contract](release-scope.md). The
@@ -20,7 +20,12 @@ Claude-testing/Codex-fixing workflow. The earlier
 retain historical implementation and recovery context.
 The [execution and recovery specification](10-execution-and-recovery-spec.md)
 maps existing contracts, refines R6c and specifies bounded recovery behavior.
+The [0.2.0-rc.1 release notes](releases/0.2.0-rc.1.md) identify the published
+archives; the [overnight handoff](12-overnight-handoff-and-agent-plan.md) is a
+dated historical plan.
 
 Upstream commit: `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`.
 
-Build/run instructions: [project README](../README.md). Machine-readable evidence: [verification](../reports/verification.json).
+Build/run instructions: [project README](../README.md). The published release
+attaches its manifest and QA evidence; [verification.json](../reports/verification.json)
+is a historical source-run report with its own recorded commit and feature scope.
