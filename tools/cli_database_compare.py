@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
-"""Database CLI actions: compare raw channels/status and compiled artifacts.
+"""Database CLI actions: compare channels/status and compiled artifacts.
 
-Only the executable diagnostic prefix file: is normalized to rfile:. All other
-bytes, including paths and line numbers, remain exact. No mismatch allowlist.
+Only the executable diagnostic prefix file: is normalized to rfile:. The two
+known control-character fixtures require exact safe escapes; all other bytes,
+including paths and line numbers, remain exact.
 """
 import argparse,hashlib,json,os,subprocess,tempfile
 from pathlib import Path
 from reference import ROOT,UP,manifest
 from abi_diagnostic_compare import CASES
+from security_differential import database_security_escape_only
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--binary',default='target/debug/rfile');ap.add_argument('--sandbox-matrix',action='store_true');args=ap.parse_args()
@@ -29,7 +31,10 @@ def main():
      stderr=b'\n'.join(b'rfile: '+line[6:] if line.startswith(b'file: ')else line for line in p.stderr.split(b'\n'))
      observed.append(dict(status=p.returncode,stdout_hex=p.stdout.hex(),stderr_hex=stderr.hex(),artifacts={p.name:hashlib.sha256(p.read_bytes()).hexdigest()for p in tmp.glob('*.mgc')}))
     row=dict(label=label,action=action,paths=paths,options=options,exact=all(observed[0]==v for v in observed[1:]))
-    if not row['exact']:row.update(reference=observed[0],rust=observed[1:])
+    if not row['exact']:
+     row.update(reference=observed[0],rust=observed[1:])
+     if database_security_escape_only(label,action,observed[0],observed[1:]):
+      row['intentional_difference']='escaped-untrusted-database-output'
     rows.append(row)
   for name,data in CASES.items():
    (tmp/'probe').unlink(missing_ok=True)
@@ -54,8 +59,9 @@ def main():
   fifo=tmp/'fifo';os.mkfifo(fifo)
   bounded=subprocess.run([str(binary),'-S','-c','-m','fifo'],cwd=tmp,env=env,capture_output=True,timeout=5)
   if bounded.returncode!=1 or b'database must be a regular file'not in bounded.stderr:raise SystemExit('FIFO database was not safely rejected')
- report=dict(schema_version=1,sandbox_modes=['off','auto','strict']if args.sandbox_matrix else ['off'],reference=manifest(),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),fifo_database_rejected=True,scope='Explicit database actions only; normalize diagnostic executable prefix, compare all remaining bytes and status/artifact hashes. Default discovery, DEBUG and other platforms remain separate.',total=len(rows),exact=sum(r['exact']for r in rows),cases=rows)
+ intentional=sum(bool(r.get('intentional_difference'))for r in rows)
+ report=dict(schema_version=1,sandbox_modes=['off','auto','strict']if args.sandbox_matrix else ['off'],reference=manifest(),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),fifo_database_rejected=True,scope='Explicit database actions only; normalize diagnostic executable prefix and exact safe escapes for control-character fixtures; compare all remaining bytes and status/artifact hashes. Default discovery, DEBUG and other platforms remain separate.',total=len(rows),exact=sum(r['exact']for r in rows),intentional_security_escapes=intentional,cases=rows)
  (ROOT/'reports/cli-database.json').write_text(json.dumps(report,indent=2)+'\n')
- print({k:report[k]for k in ['total','exact']})
- if report['total']!=report['exact']:raise SystemExit('Database CLI mismatch: reports/cli-database.json')
+ print({k:report[k]for k in ['total','exact','intentional_security_escapes']})
+ if report['total']!=report['exact']+intentional:raise SystemExit('Database CLI mismatch: reports/cli-database.json')
 if __name__=='__main__':main()

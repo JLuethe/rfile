@@ -6,6 +6,7 @@ from pathlib import Path
 from differential import library
 from fuzz_campaign import source_digest
 from reference import UP
+from security_differential import locale_security_escape_only
 ROOT=Path(__file__).resolve().parents[1]
 DB=ROOT/'data/magic.mgc'
 LOCALES=['C','C.UTF-8','en_US.UTF-8']
@@ -20,6 +21,10 @@ def main():
         names=[b'ascii',b'control-\x01',b'tab-\t',b'line-\n',b'del-\x7f',b'bad-\xff',b'partial-\xc3',b'partial-\xe2\x82',b'overlong-\xc0\x80']
         names += [s.encode()for s in ['café','e\u0301','漢字','😀','variation-❤\ufe0f','zero-\u200b','line-separator-\u2028','space-\u00a0']]
         names += ['café-'.encode()+b'\xff'+'-漢'.encode(),b'bad-\xff-'+'é'.encode()]
+        # The pinned C reference can emit these names raw in diagnostics or
+        # labels. Compare all other output exactly after only these tokens are
+        # independently escaped as the safer CLI contract requires.
+        unsafe_tokens=sorted(set(names+[b'missing-'+n for n in names]+['café-'.encode()+b'\xff']),key=len,reverse=True)
         for name in names:(directory/os.fsdecode(name)).write_bytes(b'hello\n')
         (directory/'broken').symlink_to(os.fsdecode('café-'.encode()+b'\xff'))
         (directory/'valid-link').symlink_to('café')
@@ -88,9 +93,13 @@ def main():
                             actual=bytes.fromhex(row['hex'])if'hex'in row else None
                             api.append(dict(case=index,locale=language,flags=flags,mode=mode,input_hex=payload.hex(),reference_hex=ref.hex()if ref is not None else None,rust_hex=actual.hex()if actual is not None else None,rust_error=row.get('error'),equal=ref is not None and ref==actual))
                     lib.magic_close(h)
-    report=dict(schema_version=1,upstream_commit=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit'],source_sha256=source_digest(),binary_sha256=hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),host=platform.platform(),libc=platform.libc_ver(),locale_data={str(p):hashlib.file_digest(p.open('rb'),'sha256').hexdigest()for p in [Path('/usr/lib/locale/locale-archive'),Path('/usr/lib/locale/C.utf8/LC_CTYPE'),Path('/usr/lib/locale/en_US.utf8/LC_CTYPE')]if p.is_file()},locales=LOCALES,filename_inputs_hex=[n.hex()for n in names],programs=programs,cli=cli,api=api,total=len(cli)+len(api),exact=sum(r['equal']for r in cli+api))
+    for row in cli:
+        if not row['equal'] and locale_security_escape_only(row,unsafe_tokens):
+            row['intentional_difference']='escaped-untrusted-cli-output'
+    intentional=sum(bool(r.get('intentional_difference'))for r in cli)
+    report=dict(schema_version=1,upstream_commit=json.loads((ROOT/'data/UPSTREAM.json').read_text())['commit'],source_sha256=source_digest(),binary_sha256=hashlib.sha256((ROOT/'target/release/rfile').read_bytes()).hexdigest(),host=platform.platform(),libc=platform.libc_ver(),locale_data={str(p):hashlib.file_digest(p.open('rb'),'sha256').hexdigest()for p in [Path('/usr/lib/locale/locale-archive'),Path('/usr/lib/locale/C.utf8/LC_CTYPE'),Path('/usr/lib/locale/en_US.utf8/LC_CTYPE')]if p.is_file()},locales=LOCALES,filename_inputs_hex=[n.hex()for n in names],programs=programs,cli=cli,api=api,total=len(cli)+len(api),exact=sum(r['equal']for r in cli+api),intentional_security_escapes=intentional)
     (ROOT/'reports/locale.json').write_text(json.dumps(report,indent=2)+'\n');print({k:v for k,v in report.items()if k not in ['cli','api','programs','filename_inputs_hex']})
     for section in ['cli','api']:
-        for row in [r for r in report[section]if not r['equal']][:12]:print(section,row)
-    if report['total']!=report['exact']:raise SystemExit('Locale differences')
+        for row in [r for r in report[section]if not r['equal']and not r.get('intentional_difference')][:12]:print(section,row)
+    if report['total']!=report['exact']+intentional:raise SystemExit('Unexpected locale differences')
 if __name__=='__main__':main()
