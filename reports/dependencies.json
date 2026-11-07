@@ -161,7 +161,7 @@
   },
   {
     "name": "jiff",
-    "version": "0.2.38",
+    "version": "0.2.39",
     "license": "Unlicense OR MIT",
     "license_file": null,
     "repository": "https://github.com/BurntSushi/jiff",
@@ -169,7 +169,7 @@
   },
   {
     "name": "jiff-core",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "Unlicense OR MIT",
     "license_file": null,
     "repository": "https://github.com/BurntSushi/jiff",
@@ -177,7 +177,7 @@
   },
   {
     "name": "jiff-static",
-    "version": "0.2.38",
+    "version": "0.2.39",
     "license": "Unlicense OR MIT",
     "license_file": null,
     "repository": "https://github.com/BurntSushi/jiff",
@@ -225,7 +225,7 @@
   },
   {
     "name": "lzma-rust2",
-    "version": "0.24.0",
+    "version": "0.25.0",
     "license": "Apache-2.0",
     "license_file": null,
     "repository": "https://github.com/hasenbanck/lzma-rust2/",
