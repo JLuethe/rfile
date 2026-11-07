@@ -7,7 +7,7 @@
 
 An independent Rust implementation of `file` magic detection, with a CLI and library. Detection, magic parsing and compilation execute in Rust. The program does not link to libmagic or run the C utility. The pinned upstream rules are bundled, so ordinary builds and detection do not need the upstream checkout or a C compiler.
 
-The published [v0.2.0-rc.1 experimental release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1) provides a default-feature x86_64 Linux/glibc CLI and a vendored source archive. Its source is the immutable tag at `7d3e700db435289e7b5d8774895a39293bf94152`; later `main` commits are development work, not changes to those release assets. The [release scope](docs/release-scope.md) and [implementation status](docs/06-implementation-status.md) distinguish the supported profile from full libmagic replacement.
+The published [v0.2.0-rc.1 experimental release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1) provides a default-feature x86_64 Linux/glibc CLI and a vendored source archive. Its source is the immutable tag at `7d3e700db435289e7b5d8774895a39293bf94152`; later `main` commits are development work, not changes to those release assets. The [release scope](docs/release-scope.md), [current compatibility profile](docs/compatibility-profile.md) and [implementation status](docs/06-implementation-status.md) distinguish the supported behavior from full libmagic replacement.
 
 ```sh
 cargo build --release --locked

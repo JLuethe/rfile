@@ -53,6 +53,7 @@ Remaining gaps include broader accepted-warning/IO/default-discovery cases,
 DEBUG tracing, locale-specific IO error wording, special-file/failure paths,
 and the engine's recorded CDF/ELF/regex/platform limitations. A successful
 compile/link or `magic_version()==548` does not certify those behaviors. See
+[the current experimental compatibility profile](../../docs/compatibility-profile.md),
 [the ABI specification](../../docs/remaining/07-c-abi.md) and
 [delivery ledger](../../docs/08-delivery-progress.md) for the comparison scope.
 Isolated package and short stateful fuzz reports exist; same-candidate package
