@@ -7,7 +7,7 @@ fresh independent results are linked from the release contract and release plan.
 The experimental C ABI, typed source diagnostics and CLI database actions are now
 implemented; sustained qualification, remaining fidelity and release gates are open.
 
-The source is preparing **0.2.0-rc.1**; the existing public **0.1.0** release remains historical. The architecture/specification was committed first as `fc385f1`; implementation followed. The current release preparation retains the default x86_64 Linux/glibc profile.
+The [experimental **v0.2.0-rc.1** release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1) is published from `7d3e700`; **v0.1.0** remains historical. Later `main` commits are not part of those shipped archives. The architecture/specification was committed first as `fc385f1`; implementation followed. The published binary retains the default x86_64 Linux/glibc profile.
 
 This is an independent Rust detector, source parser/compiler, CLI and library. Production code neither links libmagic nor invokes `file` or decompression helpers. The C checkout, ctypes harness and small C benchmark driver are test oracles only. No system utility was replaced or globally installed. The project is published at https://github.com/JLuethe/rfile as an experimental GPL-3.0-only source release; no crates.io package is published.
 

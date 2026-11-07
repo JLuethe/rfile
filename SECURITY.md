@@ -1,9 +1,13 @@
 # Security policy
 
-rfile parses untrusted files and rule databases. The 0.1.0 release and 0.2.0-rc.1 candidate are experimental:
+rfile parses untrusted files and rule databases. The published v0.1.0 and v0.2.0-rc.1 releases are experimental:
 compatibility, resource limits and security hardening are still being reviewed.
 The current development branch receives fixes; no stable security support or
 response-time guarantee is offered for released versions yet.
+
+The [v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1)
+fixes the issues disclosed in [the repository advisories](https://github.com/JLuethe/rfile/security/advisories).
+Its default binary does not enable the optional Linux sandbox or extended codecs.
 
 ## Reporting a vulnerability
 

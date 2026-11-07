@@ -84,13 +84,13 @@ regressions cover 7 MiB minus one, exact, plus one, and raising the configured c
 For truncated inputs, the pinned oracle can evaluate `use` block reads at the
 sum of the use offset and block-relative offset while checking only the latter
 against the input length. Past-end data can therefore be zero-filled and match.
-Rfile checks the absolute position and omits those fragments. This is not generic
+rfile checks the absolute position and omits those fragments. This is not generic
 large-buffer sampling or a rule limited to end-relative offsets: explicit use
 positions also exhibit the oracle quirk. Observed families include gzip, ZIP
 with -k, PNG/APNG, PGP and zstd; reported examples include missing `was ""`,
 `from FAT filesystem`, `made by v0.0`, PNG geometry, PGP creation and zstd dictionary
 fragments. The pass-3 short-input --mime-type sweep matched; extensions and other
-inputs are not thereby certified. Rfile does not emulate the omitted bounds check.
+inputs are not thereby certified. rfile does not emulate the omitted bounds check.
 Plain UTF-8 selection requires a completed decoded non-ASCII character; an
 incomplete trailing sequence alone does not identify UTF-8 (F-04b). Incomplete
 tails after a completed character remain tolerated, and BOM handling is separate.
@@ -130,7 +130,7 @@ an empty-content MIME result if readable, or a permission description if not.
 For a regular symlink target, including readable, empty and chained targets,
 mixed -i --apple emits only the target result; for an unreadable target it emits
 the permission description. The oracle prefixes either result with
-inode/symlink; charset=binary. Rfile deliberately does not concatenate these
+inode/symlink; charset=binary. rfile deliberately does not concatenate these
 outputs (F-08d). This differs from 8e33173, which emitted only the symlink MIME
 result for mixed flags. Annotation flags still request symlink-target inspection
 even when combined with MIME flags.
@@ -138,7 +138,7 @@ even when combined with MIME flags.
 String16 wildcard compatibility remains deliberately narrow. Pre-existing
 non-wildcard comparisons such as =\0 and <z can differ where the oracle compares
 a synthesized empty value past EOF. The 1,200-case matrix observed these residuals
-at input lengths 2, 3, 12 and 13. Rfile does not extend the wildcard exception to
+at input lengths 2, 3, 12 and 13. rfile does not extend the wildcard exception to
 these relations without a justified rule. This residual stays open.
 F-03, F-07 inherited-closed stdout, invalid CDF geometry and
 shifted-use bounds remain documented maintainer-disposition items, not closed.

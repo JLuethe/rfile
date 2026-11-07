@@ -1,6 +1,12 @@
 # GitHub release readiness and independent QA plan
 
-Review date: 2026-10-30 (America/Los_Angeles). This is a plan for **Rfile, the
+**Historical plan:** [v0.2.0-rc.1](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1)
+was subsequently published from `7d3e700db435289e7b5d8774895a39293bf94152`.
+The findings, candidate identities and workflow below describe the state at the
+dated review. Use [current release scope](release-scope.md) and
+[issue #3](https://github.com/JLuethe/rfile/issues/3) for present status.
+
+Review date: 2026-10-30 (America/Los_Angeles). This is a plan for **rfile, the
 Rust `file`/libmagic implementation**, not the `less` pager. Implementation
 fixes belong to Codex; test execution and acceptance belong to a separate agent,
 preferably Claude. This review does not authorize or perform a new publication.

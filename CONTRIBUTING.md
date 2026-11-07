@@ -41,9 +41,11 @@ sustained fuzzing are welcome; see fuzz/README.md.
 
 ## Independent release verification
 
-Claude owns test execution and retesting; Codex implements fixes and performs
-other validation. See [release scope and PR decisions](docs/release-scope.md)
-for the current contract. Use separate checkouts and serialize feature builds.
+For a release claim, keep implementation and independent retesting separate.
+Historical Claude/Codex responsibilities and results are recorded in the dated
+review reports; they are not permanent contributor roles. See
+[release scope](docs/release-scope.md) for the current contract. Use separate
+checkouts and serialize feature builds.
 
 Verification saves per-run reports/logs under `reports/verification-runs/` and
 updates a latest-run summary at startup and on success, failure or interruption.

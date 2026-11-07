@@ -1,6 +1,11 @@
 # Wrap-up plan and repository review
 
-Historical review: 2026-10-24. Current execution state is in [HANDOFF](../HANDOFF.md) and [the delivery ledger](08-delivery-progress.md). This checkpoint distinguishes implementation delivery from
+Historical review: 2026-10-24. The experimental
+[v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1)
+was published later; the dated GitHub and local state below is preserved as
+review evidence. Current execution state is in [HANDOFF](../HANDOFF.md),
+[release scope](release-scope.md) and [the delivery ledger](08-delivery-progress.md).
+This checkpoint distinguishes implementation delivery from
 complete compatibility and security qualification. Detailed contracts remain in
 [the remaining-work specification](07-remaining-work-spec.md).
 
