@@ -92,9 +92,15 @@ already closed [#22](https://github.com/JLuethe/rfile/pull/22) when the newer
 [#27](https://github.com/JLuethe/rfile/pull/27) appeared. #22's failing
 `package-linux` path left `fuzz/Cargo.lock` at lzma-rust2 0.23.0 while the
 workspace moved to 0.24.0; #29 fixed that mismatch and integrated 0.24.0.
-The later 0.25.0 update in #27 and separate
-[#28](https://github.com/JLuethe/rfile/pull/28) jiff update remain new review
-items, not part of the shipped release or #29.
+The later 0.25.0 update in [#27](https://github.com/JLuethe/rfile/pull/27)
+and separate [#28](https://github.com/JLuethe/rfile/pull/28) Jiff update were
+reviewed together in merged [#31](https://github.com/JLuethe/rfile/pull/31)
+(`727a70148ca20d9c18a95b4dbc793ab3d4046876`). #27/#28 were closed as
+superseded with recorded reasons. #31 aligned both lockfiles, retained notices
+and dependency metadata; the clean-commit archive passed 14 package checks,
+the codec/date matrices had zero unexpected differences, and hosted
+Linux/MSRV/package checks passed. The [source and behavior review](../reports/dependency-review-2026-11-06.md)
+records the details. These updates are not in the shipped release.
 
 ## Tester/fixer workflow
 

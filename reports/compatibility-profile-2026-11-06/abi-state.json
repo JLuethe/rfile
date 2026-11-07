@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "scope": "Experimental ABI state/action comparison; discrepancies remain explicit, not a drop-in certification.",
+  "reference": {
+    "path": "/home/john/Code/rfile/.reference/file-clean",
+    "commit": "41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59",
+    "tracked_worktree_clean": true,
+    "sha256": {
+      "src/.libs/file": "8be3d52406ecad1625fccc3b9dcb2d6a7e39c84e250c5f564bc4cfdc8f898985",
+      "src/.libs/libmagic.so": "1fcad93d7d2268076793ab57a6251aab136528fd391aada2ce4f010ff32c7584",
+      "magic/magic.mgc": "8eab57da91fd9cc4c7af3b8a4369a64d32124aa55dc376207a81e69abd4a5ac8",
+      "config.h": "dd0c9fcbb88153430a94db75cd637ae9cfe5ac800949e634322a22095d0ad3d3",
+      "config.status": "7ba0d787f1b16c89c1abf89519b03e4786b5f4b03fb7f917548c99f3c30e0ba6",
+      "src/file": "2b616d564e336964b45e7a28cdfc432a99fafa568b9087897035961c25e5249d"
+    },
+    "version_stdout": "file-5.48\nmagic file from /home/john/Code/rfile/.reference/share/misc/magic\nseccomp support included\nLandlock support included\n",
+    "version_stderr": ""
+  },
+  "library_sha256": "9f14daa63290ddd9331da3dbd7ece0bebf092fc9f5cf4e76163f9e497c51cf96",
+  "total": 49,
+  "exact": 49,
+  "cases": [
+    {
+      "name": "buffer-invalid:empty",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:header",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:short",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:trailing",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:magic",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:version",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:count",
+      "exact": true
+    },
+    {
+      "name": "buffer-invalid:sum",
+      "exact": true
+    },
+    {
+      "name": "null",
+      "exact": true
+    },
+    {
+      "name": "params",
+      "exact": true
+    },
+    {
+      "name": "state",
+      "exact": true
+    },
+    {
+      "name": "buffer-owner",
+      "exact": true
+    },
+    {
+      "name": "buffer-bytes",
+      "exact": true
+    },
+    {
+      "name": "descriptor:0",
+      "exact": true
+    },
+    {
+      "name": "descriptor:1",
+      "exact": true
+    },
+    {
+      "name": "descriptor-invalid",
+      "exact": true
+    },
+    {
+      "name": "pipe",
+      "exact": true
+    },
+    {
+      "name": "path",
+      "exact": true
+    },
+    {
+      "name": "file:input",
+      "exact": true
+    },
+    {
+      "name": "file:empty",
+      "exact": true
+    },
+    {
+      "name": "file:missing",
+      "exact": true
+    },
+    {
+      "name": "file:link",
+      "exact": true
+    },
+    {
+      "name": "file:directory",
+      "exact": true
+    },
+    {
+      "name": "action:load:magic",
+      "exact": true
+    },
+    {
+      "name": "action:load:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:load:directory",
+      "exact": true
+    },
+    {
+      "name": "action:load:malformed",
+      "exact": true
+    },
+    {
+      "name": "action:check:magic",
+      "exact": true
+    },
+    {
+      "name": "action:check:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:check:directory",
+      "exact": true
+    },
+    {
+      "name": "action:check:malformed",
+      "exact": true
+    },
+    {
+      "name": "action:list:magic",
+      "exact": true
+    },
+    {
+      "name": "action:list:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:list:directory",
+      "exact": true
+    },
+    {
+      "name": "action:list:malformed",
+      "exact": true
+    },
+    {
+      "name": "action:compile:magic",
+      "exact": true
+    },
+    {
+      "name": "action:compile:magic.mgc",
+      "exact": true
+    },
+    {
+      "name": "action:compile:directory",
+      "exact": true
+    },
+    {
+      "name": "action:compile:malformed",
+      "exact": true
+    },
+    {
+      "name": "paths:magic:missing",
+      "exact": true
+    },
+    {
+      "name": "paths:missing:magic",
+      "exact": true
+    },
+    {
+      "name": "paths:malformed:magic",
+      "exact": true
+    },
+    {
+      "name": "paths:magic:",
+      "exact": true
+    },
+    {
+      "name": "paths:",
+      "exact": true
+    },
+    {
+      "name": "paths::magic",
+      "exact": true
+    },
+    {
+      "name": "warnings:0",
+      "exact": true
+    },
+    {
+      "name": "warnings:1",
+      "exact": true
+    },
+    {
+      "name": "warnings:2",
+      "exact": true
+    },
+    {
+      "name": "warnings:3",
+      "exact": true
+    }
+  ],
+  "unexpected": []
+}
