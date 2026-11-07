@@ -109,6 +109,8 @@ fn invalid_ranges_groups_and_references_are_visible_source_errors() {
         r"(?=a)",
         "(",
         "[[:unknown:]]",
+        "[[.ch.]]",
+        "[[=ab=]]",
     ] {
         let literal = pattern
             .bytes()

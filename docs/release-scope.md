@@ -4,6 +4,9 @@ This is the current scope of the published
 [v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1).
 The [release plan](11-github-release-plan.md) and dated reports preserve the
 earlier preparation and review sequence. The public v0.1.0 tag remains unchanged.
+The [current experimental compatibility profile](compatibility-profile.md)
+states the deliberate regex, grammar, time/locale and C ABI parity limits for
+development `main`; it does not expand the immutable published binary.
 
 ## Scope
 

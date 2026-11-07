@@ -10,7 +10,7 @@ Read in order:
 6. [Delivered implementation status and remaining gaps](06-implementation-status.md)
 7. [Implementation specifications for remaining fidelity, sandbox, hardening and C ABI work](07-remaining-work-spec.md)
 
-[Published experimental v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1), [delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
+[Published experimental v0.2.0-rc.1 release](https://github.com/JLuethe/rfile/releases/tag/v0.2.0-rc.1), [current compatibility profile](compatibility-profile.md), [delivery progress](08-delivery-progress.md) and [GitHub tracking issue](https://github.com/JLuethe/rfile/issues/3).
 
 For the current feature scope, PR decisions and verification controls, read
 the [release contract](release-scope.md). The

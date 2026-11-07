@@ -1,6 +1,8 @@
 # Delivered Rust implementation: status and evidence
 
 Current release scope and PR decisions are in [the release contract](release-scope.md).
+The [experimental compatibility profile](compatibility-profile.md) states the
+deliberate regex, grammar, time/locale and C ABI parity boundaries.
 Implementation history and exact past counts are in [the delivery ledger](08-delivery-progress.md)
 and [HANDOFF](../HANDOFF.md). The initial validation tables below are historical;
 fresh independent results are linked from the release contract and release plan.
@@ -72,6 +74,13 @@ Remaining gaps are concrete release work:
 4. **Compression:** default builds include gzip/zlib; `extended-codecs` adds bzip2, XZ/LZMA/lzip, Zstd, modern LZ4, UNIX compress and first-entry stored/deflate ZIP. Randomized historical bzip2 blocks, stored ZIP entries with unknown descriptor boundaries, external dictionaries, legacy frames, lrzip/frozen/pack/SCO remain explicit gaps. Strict checksum/truncation/output-cap handling intentionally differs from some C paths. These features remain experimental and off by default. No production decompression helpers are invoked. The optional Linux CLI sandbox is implemented separately with Landlock/seccomp; its qualification remains open.
 5. **Sampling/limits/filesystems:** buffer input is sampled at `Limits.bytes`, unlike unrestricted C `magic_buffer`; truncation is exposed. Additional finite budgets intentionally reject workloads C may attempt. Reader truncation at exactly the cap is conservative. Socket permission reporting approximates Unix mode bits rather than complete ACL/access policy. Special device reads may block when explicitly enabled.
 6. **Platforms/security:** x86_64 Linux/glibc is the only executed platform. macOS/BSD/Windows, musl, 32-bit and actual big-endian machines remain unverified; swapped database vectors do not certify a big-endian host. No 24-hour-per-target campaign, comprehensive historical CVE coverage or independent security audit has been completed. Two applicable FFI Miri unit tests pass; this is not whole-program Miri coverage. Do not deploy this experimental build as a fully certified libmagic replacement in hostile production pipelines yet.
+
+The historical 2,850 date “exact” count above compared raw output bytes. A
+later branch review identified 30 FILETIME inputs where the native pin reads
+uninitialized seconds; the current differential separates those cases and
+requires the safe invalid marker. See the [dependency review](../reports/dependency-review-2026-11-06.md)
+and [experimental compatibility profile](compatibility-profile.md). Neither
+count is universal date conformance.
 
 The [compatibility matrix](03-compatibility.md) states the target and policy; this document states delivered scope. See the [prioritized plan](04-verification-and-delivery.md#milestones-and-acceptance) and [risk register](05-open-questions-and-risks.md) for closure criteria. P0 and the measured P1 profile are delivered. P2 fidelity/security/platform certification and P3 ABI qualification/release remain open; the experimental ABI implementation is delivered.
 

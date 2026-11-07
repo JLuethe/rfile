@@ -1,6 +1,6 @@
 # Compatibility matrix and explicit decisions
 
-Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v21. “Exact” means bytes, channel and status under the same locale, rules and build features. This is the required compatibility policy, **not a statement of completed implementation**. Actual results and remaining gaps are recorded in `reports/` and [implementation status](06-implementation-status.md).
+Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v21. “Exact” means bytes, channel and status under the same locale, rules and build features. This is the required compatibility policy, **not a statement of completed implementation**. The [current experimental profile](compatibility-profile.md) decides which delivered behavior has a parity claim and which remains outside it; actual results are recorded in `reports/` and [implementation status](06-implementation-status.md).
 
 | Surface | Required target | Stage | Intentional difference or gap policy | Verification |
 |---|---|---|---|---|
@@ -14,7 +14,7 @@ Target: upstream `41b1123083ab0bbdfe32f6d4ec14f6aec9a91e59`, file 5.48, magic v2
 | skip flags | independent pipeline exclusions and aliases | B/C | unsupported exclusions explicit until detector exists | pairwise flag matrix |
 | multiple matches | group priority, children, builtin continuation | B/C | do not deduplicate similar descriptions | -k on overlapping rules and fixtures |
 | magic source | escapes, numeric aliases, operations, full type set | B/C | strict mode rejects unsafe/ambiguous forms; compatibility mode names quirks | parser corpus, diagnostics, normalized records |
-| source checks/list | compile/check/list actions | B | diagnostics may differ initially; mismatch documented | stdout/stderr/status snapshot |
+| source checks/list | compile/check/list actions | B | named explicit-path action matrix exact; broader accepted warnings, default discovery and DEBUG remain outside the preview parity profile | stdout/stderr/status snapshot |
 | source compilation order | root strength plus native tie comparator | B | portable little-endian output; deterministic debug provenance | root order and normalized binary comparisons |
 | compiled v21 | read both endian orders; export LE | A/B | reject all other versions, no struct casts | C->Rust->C; truncation/count corruptions |
 | source directory/list loading | sorted fragments, sequential database list | B | embedded database fallback explicit | duplicate names, failed element, empty MAGIC |
@@ -42,7 +42,7 @@ Intentional changes are restricted to: memory-safe rejection of malformed/overfl
 
 Potential upstream defects should be represented as separate expected observations, with minimal reproducer and exact flags/build attached. Preserve defined, safe quirks in compatibility mode; do not reproduce out-of-bounds access, UB or denial of service. A corrected semantic profile must be named/versioned, with paired legacy and corrected tests.
 
-Observed delivered profile: all 103 upstream goldens, the standard differential corpus and the selected extended flag profile pass in the reports. CLI has six documented differences on this sandboxed host (four native gzip guard cases and two FIFO SIGSYS cases). These figures do not certify untested platforms or the remaining ELF/CDF/locale/compiler-diagnostic surfaces. Local-time date rendering currently uses UTC; source warnings, native sort on other endian targets, strict CRC errors, parameter quirks and oversized buffer sampling remain gaps or declared changes.
+Observed delivered profile: all 103 upstream goldens, the standard differential corpus and the selected extended flag profile pass in the reports. CLI has six documented differences on this sandboxed host (four native gzip guard cases and two FIFO SIGSYS cases). These figures do not certify untested platforms or every ELF/CDF/locale/compiler-diagnostic path. Local-time date rendering now uses an immutable selected timezone rather than UTC; exceptional custom zones, source warnings, native sort on other endian targets, strict CRC errors, parameter quirks and oversized buffer sampling remain gaps or declared changes.
 
 
 ### R7 confinement compatibility decisions (2026-10-25)
